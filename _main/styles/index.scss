@@ -1,0 +1,1523 @@
+// * Created by: Sandrina Pereira
+// * sandrina-p.net
+// * 14 nov 15
+
+/*------------------------------------*\
+### ORGANIZATION ###
+
+> VARIABLES
+
+> CLASS PATTERNS
+
+> HEADER
+> NAV
+
+> MAIN
+. PRESENTATION
+. SECTIONS
+PRACTICE
+THEORY
+BACKGROUND
+. WIDGETS (NOT YET)
+> FOTTER (NOT YET)
+
+> MEDIA QUERIES MOBILE TABLET
+
+> CLASS TO JQUERY
+
+\*------------------------------------*/
+
+
+@import "reset.css";
+@import "graphic.css";
+
+/*------------------------------------*\
+#VARIABLES
+\*------------------------------------*/
+
+$type0: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+$type1: 'Courier New', Courier, 'Lucida Sans Typewriter', 'Lucida Typewriter', monospace;
+// $type1: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+$safeArea: 12px;
+$borderWidth: 2px;
+$marginTopPage: $safeArea*4+4px;
+
+$black: #000;
+$white: #fff;
+$gray: #919191;
+
+$border: $borderWidth solid;
+
+$speed: 250ms;
+
+$fablet-width: 410px;
+$tablet-width: 650px;
+$desktop-width: 850px;
+
+
+//transition
+@mixin transition($speed) {
+    transition: all $speed ease-in-out;
+}
+
+@mixin squeeze {
+    letter-spacing: 2pt;
+    font-weight: 400;
+}
+
+@mixin centerxy {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@mixin centerx {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+
+}
+
+@mixin flexbox {
+    display: flex;
+}
+
+@mixin flexrow {
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+@mixin flexcol {
+    flex-direction: column;
+    flex-wrap: nowrap;
+}
+
+//mediaqueries
+@mixin fablet {
+    @media (min-width: #{$fablet-width}) {
+        @content;
+    }
+}
+
+@mixin tablet {
+    @media (min-width: #{$tablet-width}) {
+        @content;
+    }
+}
+
+@mixin desktop {
+    @media (min-width: #{$desktop-width}) and (min-height:600px) {
+        @content;
+    }
+}
+
+
+* {
+    padding: 0;
+    margin: 0;
+    color: #000;
+    box-sizing: border-box;
+}
+
+*::-webkit-scrollbar {
+    display: none;
+}
+
+body {
+    cursor: crosshair;
+    max-width: 100vw;
+    max-height: 100vh;
+    overflow: hidden;
+    background-color: $white;
+    // background: radial-gradient(ellipse at center, rgba(255,255,255,1) 0%,rgba(230, 230, 230, 1) 100%);
+}
+
+.loading-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: white;
+    display: none;
+    z-index: -3;
+    display: none;
+
+    .loading-square {
+        position: absolute;
+        top: calc(100px + 35vh - 125px);
+        left: calc(50vw - 125px);
+        width: 250px;
+        height: 250px;
+        padding: $safeArea;
+        padding-top: $safeArea/2;
+        @include flexbox;
+        @include flexcol;
+        justify-content: center;
+        text-align: center;
+        overflow: hidden;
+
+        h2 {
+            color: $white;
+            line-height: 1.2;
+            animation-name:blink;
+            animation-duration: 2s;
+            animation-iteration-count:infinite;
+            animation-timing-function:linear;
+        }
+
+        p {
+            position: relative;
+        }
+    }
+
+    .loading-border {
+        width: 100%;
+        height: 100%;
+        background-color: $black;
+        border: $border;
+        border-color: $white;
+        border-width: $borderWidth*2;
+        position: absolute;
+        top: 0; left: 0;
+    }
+
+    .loading-border-cover {
+        width: $borderWidth*15;
+        height: $borderWidth*15;
+        background-color: black;
+        position: absolute;
+        top: 0; left: 0;
+        animation-name: loading;
+        animation-duration: 5s;
+        animation-iteration-count:infinite;
+        animation-timing-function: linear;
+    }
+}
+
+@keyframes loading {
+    0% { top: 0; left: 0; }
+    25% { top: 0; left: 245px; }
+    50% { top: 245px; left: 245px; }
+    75% { top: 245px; left: 0; }
+    100% { top: 0; left: 0; }
+
+}
+
+@keyframes blink{
+    0%{
+        opacity: 1;
+    }
+
+    50%{
+        opacity: 0;
+    }
+
+    100%{
+        opacity: 1;
+    }
+}
+
+/*------------------------------------*\
+#PATTERNS CLASSES
+\*------------------------------------*/
+
+
+// DIVS started with .X- are patterns divs.
+
+// black squares
+.X-square {
+    position: relative;
+    width: $safeArea*2;
+    height: $safeArea*2;
+    background-color: $black;
+    border: $border;
+    color: $black;
+    cursor: pointer;
+}
+
+// titles with bottom line
+.X-sectionTitle {
+    position: absolute;
+    top: -$safeArea*2 + 2px;
+    left: $safeArea*2 -2px;
+    width: $safeArea*14;
+    border-bottom: $border;
+    color: $black;
+    cursor: pointer;
+}
+
+// all big sections of the page (theory, bg, practice)
+.X-bigSection {
+    position: relative;
+    width: 100vw;
+    height: auto;
+    max-height: 600px;
+    padding: $safeArea*3 0;
+    border-bottom: $border;
+    overflow: hidden;
+    background-color: $white;
+}
+
+// Theory article
+.X-theory-article {
+    display: flex;
+    justify-content: flex-end;
+    position: relative;
+    margin-top: 15vh;
+    border-top: $border;
+    color: $black;
+}
+
+// Theory Article with vertical simple content
+.X-article-vertical-content {
+    position: relative;
+    margin-top: -26px;
+}
+
+
+/*------------------------------------*\
+#HEADER
+\*------------------------------------*/
+
+header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100px;
+    z-index: 0;
+    cursor: pointer;
+}
+
+.header-click-area {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100vw;
+    height: 100px;
+    align-self: flex-start;
+    z-index: -1;
+}
+
+.header-title {
+    position: absolute;
+    right: $safeArea*2;
+    top: $safeArea*2;
+    width: 500px;
+    text-align: right;
+    cursor: pointer;
+    align-self: flex-end;
+}
+
+
+.nav-safearea {
+    position: absolute;
+    top: -24px;
+    left: $safeArea*2;
+    width: 200px;
+    height: $safeArea*2;
+}
+.navegacao-topo {
+    position: absolute;
+    left: $safeArea*2;
+    @include flexbox;
+    @include flexrow;
+    top: $safeArea*2;
+    z-index: 3;
+}
+
+.the-square { // square topo
+    @extend .X-square;
+    position: relative;
+    border: $border;
+    color: $white;
+}
+
+.nav-subTitles { // area dos titulos
+    @extend .X-sectionTitle;
+    position: relative;
+    // border: 0;
+    width: 0;
+    // background-color: $black;
+    max-height: $safeArea*2;
+    // border-color: $white;
+    border-style: solid;
+    border-width: 0;
+    top: 0px; // alinhado com top .square
+    left: -2px;
+    z-index: -1;
+    overflow: hidden;
+    @include transition($speed);
+}
+
+.n-subTitles-container { // container visivel dos titulos
+    background-color: $white;
+    max-height: $safeArea*2 - 3px;
+    overflow: hidden;
+    @include transition($speed);
+    margin-top: 1px;
+
+    ul { // lista dos titulos
+        //desk margin-top: 10px;
+        cursor: pointer;
+        @include transition($speed);
+        margin-top: 24px;
+        padding-right: $safeArea/3;
+        // background-color: rgba(255, 255, 255, 0.80);
+        //desk background-color: transparent;
+
+        li {
+            top: 0; left: 0;
+            position: relative;
+            text-align: right;
+            padding-top: $safeArea;
+
+            h3 {
+                // color: white;
+            }
+        }
+    }
+
+    .align-title-nothing {
+        margin-top: 24px;
+        height: $safeArea*2;
+    }
+    .align-title-practice {
+        margin-top: -11px;
+    }
+    .align-title-theory {
+        margin-top: -38px;
+
+    }
+    .align-title-background {
+        margin-top: -67px;
+    }
+}
+
+.nav-open {
+    max-height: 130px;
+}
+
+
+
+/*------------------------------------*\
+#MAIN
+\*------------------------------------*/
+main {
+    position: relative;
+    max-width: 100vw;
+    max-height: 100vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+
+/*------------------------------------*\
+NAV-PRESENTATION
+\*------------------------------------*/
+.presentation {
+    position: relative;
+    width: 100vw;
+    height: auto;
+    margin: 0;
+    margin-top: 100px;
+    @include flexbox;
+    @include flexcol;
+    z-index: -1;
+}
+
+
+
+.image-gif {
+    position: relative;
+    width: 250px;
+    height: 250px;
+    background: url(../data/index/bg_square_line.png) no-repeat;
+    background-size: 100%;
+    background-position: 0;
+    border: $border;
+    background-color: white;
+
+    align-self: flex-end;
+    margin-right: -155px;
+
+    @media (min-width: 350px) {
+        margin-right: -125px;
+    }
+
+
+    img {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+
+        &:hover {
+            opacity: 1 !important;
+        }
+    }
+}
+
+.mobile-welcome {
+    position: absolute;
+    top: 0;
+    // top: 50%;
+    // transform: translateY(-50%);
+    left: $safeArea*2;
+    width: calc(100vw - 24px - 129px); // 100vw - margin*2 - ( imagem/2 {125px} + border 2px *2 {4px} )
+}
+
+
+// all stuff just for desktop experience
+.hearder-click-area,
+.nav-subTitles-desktop,
+.help-trigger,
+.theory-trigger, .practice-trigger, .background-trigger,
+.project-index,
+.table-fixed,
+.widget-invert,
+.widget-resources {
+    display: none;
+}
+
+/*------------------------------------*\
+BUTTONS
+\*------------------------------------*/
+
+.button-rectangle {
+    position: relative;
+    display: inline-block;
+    margin-top: $safeArea;
+    background-color: $white;
+
+    border: $border;
+    border-color: $black;
+    cursor: pointer;
+
+    @include transition($speed*2);
+
+    &:hover .square-hover-black {
+        width: $safeArea*10;
+    }
+
+    p {
+        text-align: center;
+        padding: $safeArea/2 $safeArea;
+        font-family: $type1;
+        color: $black;
+    }
+}
+
+.button-expand-section {
+    @extend .button-rectangle;
+    display: block;
+    margin: auto;
+    margin-top: -$safeArea - 8px;
+    margin-bottom: -$safeArea - 4px;
+    z-index: 2;
+    width: 60vw;
+    border-left: 10px solid black;
+    border-right: 10px solid black;
+}
+
+.button-hover-fill {
+    position: absolute;
+    top: 0; left: 0;
+    height: 100%;
+    width: 0px;
+    @include transition($speed);
+    cursor: pointer;
+}
+
+.button-hover-no {
+    @extend .button-hover-fill;
+    background-color: red;
+    cursor: not-allowed;
+    animation: notallowed 2s ease infinite;
+}
+
+
+/*----------------------------------------*\
+#SECTIONS THEORY, PRACTICE, BACKGROUND
+\*----------------------------------------*/
+
+.section-practice {
+    @extend .X-bigSection;
+    padding-top: 0;
+    @include transition($speed);
+    margin-top: $safeArea*6;
+}
+
+.section-theory {
+    @extend .X-bigSection;
+    @include transition($speed);
+    margin: 0;
+    padding-bottom: 0;
+    filter: invert(100%);
+
+}
+
+.section-background {
+    @extend .X-bigSection;
+    @include transition($speed);
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+
+.bottom-fadeout {
+    position: absolute;
+    bottom: -150px; left: 0;
+    width: 100vw;
+    height: 150px;
+    color: $white;
+    opacity: .8;
+    box-shadow: 0px -80px 100px;
+}
+
+///// practice stuff
+
+.practice-content {
+    position: relative;
+    width: 100%;
+    height: auto;
+
+    ol {
+        li {
+            margin-bottom: $safeArea*6;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+}
+
+.p-project {
+    position: relative;
+    @include transition($speed*2);
+    width: auto;
+    max-width: 100vw;
+    padding-left: 5vw;
+    margin-bottom: $safeArea*3;
+
+    img {
+        position: relative;
+        width: auto;
+        max-width: 130%; //dont show mobile part because u r on mobile x)
+        margin-left: -6px;
+    }
+
+    .p-line {
+        position: relative;
+        height: 2px;
+        color: $black;
+        z-index: 2;
+        background-color: $black;
+        width: 77vw;
+        margin-top: -11.3vw;
+        margin-left: -5vw;
+        margin-bottom: $safeArea;
+    }
+
+    h4, p {
+        position: relative;
+    }
+
+    h4 {
+        width: 90vw;
+    }
+}
+
+#p-project-metro {
+    img {
+        max-width: 115%;
+    }
+
+    .p-line {
+        width: 74vw;
+        margin-top: -10.5vw;
+        margin-bottom: 20px;
+    }
+}
+
+#p-project-det {
+    img {
+        max-width: 100%;
+    }
+
+    .p-line  {
+        margin-bottom: 20px;
+        width: 67vw;
+        margin-top: -10.5vw;
+    }
+}
+
+///// theory stuff
+
+.t-development {
+    @extend .X-theory-article;
+    width: 30vw;
+    min-width: 280px;
+    margin-top: $safeArea*6;
+    max-width: 95vw;
+}
+
+.t-uxui {
+    @extend .X-theory-article;
+    justify-content: flex-start;
+    margin-top: $safeArea*6;
+    max-width: 100vw;
+    margin-left: 24vw;
+}
+
+.t-assets {
+    @extend .X-theory-article;
+
+    position: relative;
+    left: 30vw;
+    right: 0;
+    width: 70vw;
+    height: auto;
+    margin-top: $safeArea*6;
+    border: $border 0 0 $border;
+    @include flexbox;
+    @include flexcol;
+    justify-content: flex-end;
+
+
+    .X-article-vertical-content {
+        margin-bottom: 0;
+    }
+}
+
+.t-hobbies {
+    @extend .X-theory-article;
+    position: relative;
+    border-right: $border;
+    width: 150px;
+    text-align: right;
+    height: auto;
+    margin-top: $safeArea*5;
+    padding-right: $safeArea;
+
+}
+
+.t-tools {
+    @extend .X-theory-article;
+    width: 500px;
+    border-top: 2px solid black;
+    border-left: 2px solid black;
+    justify-content: flex-start;
+    margin: $safeArea*4 0 $safeArea*4 75vw ;
+
+    .X-article-vertical-content {
+        min-width: initial;
+        margin: 0;
+        margin-left: -150px;
+    }
+
+    .tool {
+        position: relative;
+        width: auto;
+        display: flex;
+        flex-direction: row;
+        margin-top: $safeArea;
+
+        p.inline {
+            width: 160px;
+        }
+
+        img {
+            width: 31px;
+            height: 30px;
+        }
+    }
+}
+
+///// background stuff
+
+.b-profile, .b-contact, .b-timeline {
+    position: relative;
+    margin-top: $safeArea*3;
+    max-width: 100vw;
+    padding-right: $safeArea/2;
+    //table em comum com todos os artigos /// REVER CODIGO/ORGANIZACAO NAO E DOS MELHORES
+    table {
+        position: relative;
+        margin-bottom: -2px; // para alinhar com linha vertical
+        tr {
+            td.top-left {
+                padding-bottom: $safeArea/4;
+                border-bottom: $border;
+                color: $black;
+                width: $safeArea*15;
+
+            }
+
+            td {
+                padding-left: $safeArea;
+                padding-top: $safeArea;
+
+                h5  {
+                    text-align: right;
+                }
+
+                p {
+                    text-align: left;
+                }
+
+                p.san {
+                    text-align: right;
+                }
+            }
+        }
+    }
+}
+
+.b-timeline {
+    position: relative;
+
+    table {
+        tr {
+            td.top-left {
+                padding-left: 0; // important
+                width: $safeArea*11;
+                min-width: 40vw;
+            }
+
+            td.middle-left {
+                border-right: $border;
+                padding: 0 $safeArea $safeArea*2 0;
+            }
+
+            td.bottom-left {
+                border-right: $border;
+                padding-right: $safeArea;
+                padding-bottom: $safeArea*16;
+            }
+
+            .soon {
+                opacity: 0.4;
+            }
+        }
+    }
+
+    .table-scroll {
+        position: relative;
+        display: block;
+        position: relative;
+        display: block;
+        width: 300px;
+        min-width: 50vw;
+        max-width: 95vw;
+        height: auto;
+
+        table {
+            margin-top: 0;
+        }
+    }
+
+    .table-scroll::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+.b-description {
+    display: none;
+    position: absolute;
+    top: 0;
+    margin: $safeArea;
+    width: 3800px;
+
+    p {
+        &:hover {
+            font-size: medium;
+        }
+    }
+
+    .p-description-click{
+        width: $safeArea*16;
+        right: $safeArea;
+    }
+}
+
+
+// ---- mobile bottom ------
+.mobile-bottom {
+    // desk display: none;
+    width: 100vw;
+    background-color: $white;
+    padding: $safeArea*4 $safeArea;
+    text-align: center;
+    filter: invert(100%);
+}
+
+
+/*------------------------------------*\
+Stuff - DESKTOP
+\*------------------------------------*/
+.theory-trigger {
+    position: absolute;
+    top: 0; left: 0;
+    margin: (-$safeArea) 0 0 237px; // img+square/2 0 0 img-square/2
+
+    .tt-square {
+        @extend .X-square;
+    }
+    .tt-title {
+        @extend .X-sectionTitle;
+        text-align: right;
+    }
+}
+
+.practice-trigger {
+    position: absolute;
+    top: 0; left: 0;
+    margin: 113px 0 0 (-$safeArea); // img/2+square/2 0 0 square/2
+
+    .pt-square {
+        @extend .X-square;
+    }
+    .pt-title {
+        @extend .X-sectionTitle;
+        text-align: left;
+        left: (-$safeArea*14);
+
+    }
+}
+
+.background-trigger {
+    position: absolute;
+    top: 0; left: 0;
+    margin: 238px 0 0 154px ; // img+square/2 0 0 img-square*2
+
+    .bt-square {
+        @extend .X-square;
+        width: $safeArea*8;
+    }
+    .bt-title {
+        @extend .X-sectionTitle;
+        left: -2px;
+        top: $safeArea*2 - 2px;
+        text-align: left;
+        padding: $safeArea*7 0 0 $safeArea/2;
+        border-bottom: 0;
+        border-left: $border;
+    }
+}
+
+.image-gif-behind {
+    position: absolute;
+    top: 5px; left: 5px;
+    // top: calc(40% - 125px);
+    // left: calc(50% - 125px);
+
+    img {
+        width: 100%;
+        height: 100%;
+    }
+}
+.widget-invert {
+    @extend .X-square;
+    position: absolute;
+    bottom: $safeArea*2;
+    left: $safeArea*2;
+    background-color: $white;
+    z-index: 5;
+    display: none;
+}
+
+.widget-resources {
+    @extend .X-square;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    height: $safeArea*6;
+    width: $safeArea;
+    z-index: 5;
+    display: none;
+}
+
+
+/*------------------------------------*\
+@MEDIA QUERIES
+\*------------------------------------*/
+
+
+$m-fablet: "(min-width: #{$fablet-width})";
+$m-tablet: "(min-width: #{$tablet-width})";
+$m-fablet-tablet: "(min-width: #{$fablet-width}) and (max-width: #{$tablet-width - 1px})";
+$m-fablet-desktop: "(min-width: #{$fablet-width}) and (max-width: #{$desktop-width - 1px})";
+$m-tablet-desktop: "(min-width: #{$tablet-width}) and (max-width: #{$desktop-width - 1px})";
+$m-desktop: "(min-width: #{$desktop-width}) and (min-height: 600px)";
+
+
+// FABLET < x =< TABLET
+@media #{$m-fablet-desktop} {
+
+    .X-bigSection {
+        padding: $safeArea*5 0;
+    }
+
+    .section-background {
+        padding-bottom: 0;
+    }
+
+    // nav fixed
+    .n-subTitles-container { // container visivel dos titulos
+
+        .align-title-nothing {
+            margin-top: 22px;
+        }
+        .align-title-practice {
+            margin-top: -13px;
+        }
+        .align-title-theory {
+            margin-top: -44px;
+
+        }
+        .align-title-background {
+            margin-top: -77px;
+        }
+    }
+
+    // practice
+    .p-project {
+
+        img {
+            max-width: 100%;
+        }
+
+        .p-line {
+            width: 60.5vw;
+            max-width: 454px;
+            margin-top: -8.5vw;
+        }
+    }
+
+    #p-project-metro {
+        img {
+            max-width: 100%;
+        }
+
+        .p-line {
+            width: 65.3vw;
+            max-width: 484px;
+            margin-top: -8.5vw;
+        }
+    }
+
+    #p-project-det {
+
+        .p-line  {
+            width: 68.1vw;
+            max-width: 510px;
+            margin-bottom: 25px;
+        }
+    }
+
+    //theory
+    .t-development {
+        min-width: 230px;
+    }
+
+    .t-uxui {
+        margin-left: 40vw;
+    }
+
+    .t-assets {
+        left: 45vw;
+    }
+
+    .t-tools {
+        margin-top: $safeArea*7;
+        margin-left: 85vw;
+        .tool {
+            margin-top: $safeArea*2;
+        }
+    }
+
+    //background
+    .b-contact {
+        table {
+            tr {
+                td.top-left {
+                    width: 25vw;
+                }
+            }
+        }
+    }
+
+    .b-profile {
+        table {
+            tr {
+                td.top-left {
+                    width: 50vw;
+                }
+            }
+        }
+    }
+}
+
+
+// => TABLET
+@media #{$m-tablet} {
+
+    .t-development {
+        min-width: 100vw;
+        right: 50vw;
+    }
+}
+
+
+// img are full size
+@media (min-width:738px) {
+    .p-project {
+        padding-left: $safeArea*3;
+
+        .p-line {
+            margin-top: -63px;
+        }
+    }
+
+    #p-project-metro {
+        .p-line {
+            margin-top: -63px;
+
+        }
+    }
+
+    #p-project-det {
+        .p-line  {
+            margin-top: -76px;
+        }
+    }
+}
+
+
+// desktop or big tablet - prevent windows too >16/9
+@media #{$m-desktop} {
+    // all stuff just for mobile experience
+
+    .mobile-welcome,
+    .mobile-bottom,
+    .button-expand-section,
+    .nav-subTitles-mobile, {
+        display: none;
+    }
+
+    // all stuff just for desktop experience
+    .loading-container {
+        display: block;
+        z-index: 6;
+    }
+
+    .hearder-click-area,
+    .help-trigger,
+    .nav-subTitles-desktop,
+    .theory-trigger, .practice-trigger, .background-trigger,
+    .project-index,
+    .b-description,
+    .table-fixed,
+    .widget-invert,
+    .widget-resources {
+        display: block;
+    }
+
+    .X-bigSection {
+        position: absolute;
+        max-height: 100vh;
+        height: calc(100vh - 100px);
+        top: 100vh;
+        background-color: $white;
+        overflow: hidden;
+        padding: 0;
+        border-bottom: 0;
+    }
+
+    .navegacao-topo {
+        top: $marginTopPage;
+        z-index: 1;
+    }
+
+    .nav-subTitles {
+        width: 200px;
+        background-color: white;
+        border-bottom: 2px solid black;
+        left: 0;
+        top: -22px;
+        z-index: 5;
+    }
+
+    .n-subTitles-container {
+        height: 24px;
+
+        ul li h3 {color: black;}
+
+        .align-title-practice {
+            padding-right: 0;
+        }
+        .align-title-theory {
+            margin-top: -42px;
+            padding-right: 0;
+        }
+        .align-title-background {
+            margin-top: -74px;
+            padding-right: 0;
+        }
+
+    }
+
+    .the-square {
+        color: $black;
+    }
+
+    .help-trigger { // input enter
+        position: absolute;
+        display: block;
+        width: 202px;
+        background-color: rgba(#ffffff, 0.8);
+        box-shadow: 0px -5px 5px rgba(#ffffff, 0.78);
+        bottom: calc(#{$safeArea*4} - #{$borderWidth});
+        left: calc(#{$safeArea*4} - #{$borderWidth});
+        @include flexbox;
+        @include flexrow;
+        align-items: center;
+        // justify-content: flex-end;
+
+        .h-welcome {
+            width: $safeArea*2;
+            min-height:  $safeArea*2;
+            border: 0;
+            border-left: 2px solid;
+            border-bottom: 2px solid;
+            padding-left: $safeArea/2;
+            padding-bottom: $safeArea/2;
+        }
+
+        .h-close {
+            position: absolute;
+            cursor: pointer;
+            position: absolute;
+            bottom: -5px;
+            left: $safeArea*2 - 1px;
+            display: none;
+            @include transition($speed);
+        }
+    }
+
+    header {
+        background-color: $white;
+    }
+
+    main {
+        height: calc(100vh - 100px);
+        max-height: calc(100vh - 100px);
+        margin-top: 100px;
+        overflow: hidden;
+        background-color: $white;
+    }
+
+    .presentation {
+        position: absolute;
+        width: 250px;
+        height: 250px;
+        top: calc(35vh - 125px);
+        left: calc(50vw - 125px);
+        margin: 0;
+        z-index: 0;
+    }
+
+    .image-gif {
+        margin-right: 0;
+        align-self: flex-start;
+    }
+
+    //sections
+
+    .bottom-fadeout {
+        box-shadow: 0px -50px 70px;
+    }
+
+    .section-theory, .section-practice, .section-background {
+        margin: 0;
+    }
+
+    .section-theory {
+        filter: invert(0%);
+    }
+
+
+    //practice
+
+    .practice-content {
+        height: calc(100vh - 100px);
+        overflow: scroll;
+        padding: $safeArea*6 0;
+    }
+
+    .p-project {
+        padding-left: 15vw;
+        margin-bottom: 15vh;
+
+        img {
+            margin-left: 0; //fix this to mobile
+        }
+        .p-line {
+            margin-left: -30vw;
+            width: calc(30vw + 418px);
+        }
+
+        h4 {
+            width: $safeArea*40;
+            margin-bottom: $safeArea;
+        }
+
+    }
+
+    #p-project-metro {
+        .p-line {
+            width: calc(30vw + 453px);
+        }
+    }
+
+    #p-project-det {
+        .p-line {
+            width: calc(30vw + 475px);
+        }
+    }
+
+    // theory stuff
+
+    .t-development {
+        margin-top: 15vh;
+        right: 68vw;
+    }
+
+    .t-uxui {
+        // position: absolute;
+        justify-content: flex-end;
+        width: 50vw;
+        left: -10vw;
+        margin-top: 15vh;
+        margin-left: 0;
+
+        .X-article-vertical-content {
+            margin-right: -35px;
+        }
+    }
+
+    .t-assets {
+        position: absolute;
+        top: -15vh; left: 50vw;
+        border-top: 0;
+        border-bottom: $border;
+        height: 20vh;
+        width: 120px;
+        border-left: $border;
+        padding-left: $safeArea;
+
+        .X-article-vertical-content {
+            margin-bottom: -174px;
+            margin-left: 7px;
+        }
+
+        // wtf just happend here :/
+        h5, p {
+            display: inline-block;
+        }
+
+        p {
+            min-height: 160px;
+        }
+    }
+
+    .t-hobbies {
+        position: absolute;
+        bottom: -5vh; right: 30vw;
+        height: $safeArea*18;
+        border-left: 0;
+        justify-content: flex-start;
+    }
+
+    .t-tools {
+        position: absolute;
+        top: -15vh; right: 5vw;
+        margin: 0;
+        padding-left: $safeArea*3;
+        width: $safeArea*2 + 6px;
+        height: 500px;
+        border: 0;
+        border-left: $border;
+        align-items: flex-end;
+
+        .X-article-vertical-content {
+            margin-left: -185px;
+        }
+    }
+
+    .b-profile,
+    .b-contact,
+    .b-timeline {
+        margin-top: 15vh;
+
+        table {
+            left: -5vw;
+        }
+    }
+
+    .b-contact {
+        table {
+            tr {
+                td.top-left {
+                    width: 20vw;
+                }
+            }
+        }
+    }
+
+    .b-profile {
+        table {
+            tr {
+                td.top-left {
+                    width: 25vw;
+                }
+            }
+        }
+    }
+
+    .b-timeline {
+        position: absolute;
+        left: 55vw;
+        bottom: 60vh; // height do article timeline
+        margin: 0;
+
+        table {
+            left: 0;
+            tr {
+                td.top-left {
+                    min-width: initial;
+                }
+                td.bottom-left {
+                    padding-bottom: $safeArea*8;
+                }
+            }
+        }
+
+        .table-scroll {
+            position: absolute;
+            width: $safeArea*29;
+            min-width:  $safeArea*29;
+            max-width:  $safeArea*29;
+            height: 60vh; // height do article timeline
+            overflow: scroll;
+
+            table {
+                margin-top: -39px;
+            }
+        }
+    }
+}
+
+
+/*------------------------------------*\
+#CLASS TO JQUERY MANIPULATION
+\*------------------------------------*/
+
+.js-bigSection-visible {
+    top: 5px;
+    border-top: $border;
+    // border-width: $borderWidth*2;
+    // box-shadow: 0px -5px 5px #cfcfcf;
+}
+
+.js-m-section-open {
+    max-height: initial;
+}
+
+.js-border {
+    border-top: $border;
+}
+
+.js-button-hover-fill-yes{
+    width: 100%;
+    background-color: $black;
+}
+
+.js-nav-subTitles-visible {
+    border-width: 2px;
+    @include transition($speed);
+    width: 125px;
+
+    @include fablet {
+        width: 150px;
+    }
+}
+
+.js-nav-subTitles-full-open {
+    border-width: 2px;
+    max-height: 200px;
+    width: 125px;
+    z-index: 1;
+    left: -2px;
+    @include transition($speed);
+
+    @include fablet {
+        width: 150px;
+    }
+
+    .n-subTitles-container {
+        max-height: 150px;
+        ul {
+            margin-top: 0;
+
+            li {
+                padding: $safeArea 0;
+            }
+        }
+    }
+
+    @include desktop {
+        top: 0;
+        left: 0;
+        width: 200px;
+        height: 140px;
+        border-left-width: 0;
+        border-right-width: 0;
+        border-top: 2px solid black;
+
+        .n-subTitles-container {
+            height: 140px;
+
+            ul {
+                margin-top: 0;
+
+                li {
+                    padding: $safeArea 0;
+                }
+            }
+
+            .align-title-practice,
+            .align-title-theory,
+            .align-title-background {
+                padding-right: 4px;
+            }
+        }
+    }
+}
+
+.js-loading-finished {
+    opacity: 0;
+    @include transition($speed*3);
+}
+
+.js-invert {
+    filter: invert(100%) !important;
+
+    img {
+        filter: invert(0%) !important;
+    }
+}

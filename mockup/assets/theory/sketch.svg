@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="32px" height="29px" viewBox="0 0 32 29" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.3.3 (12081) - http://www.bohemiancoding.com/sketch -->
+    <title>skect</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Welcome" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="theory" sketch:type="MSArtboardGroup" transform="translate(-962.000000, -352.000000)" stroke="#000000">
+            <g id="Group" sketch:type="MSLayerGroup" transform="translate(963.000000, 150.000000)">
+                <g id="skect" transform="translate(0.000000, 202.000000)" sketch:type="MSShapeGroup">
+                    <path d="M0.349718626,8.17067317 L4.550051,3.19534415 L9.73594337,0.688661318 L20.66713,0.688661318 L25.7300097,3.2177586 L29.9153991,8.08746801 L15.3707973,28.0916868 L0.349718626,8.17067317 Z" id="Path-27"></path>
+                    <path d="M4.62798381,3.23186656 L9.75598168,5.53699418 L20.7860725,5.53699418 L25.7747425,3.23186656" id="Path-31"></path>
+                    <path d="M15.4039552,28.0618373 L7.04001487,12.9710388 L9.74008185,5.60915798" id="Path-30"></path>
+                    <path d="M23.4039552,28.0618373 L15.0400149,12.9710388 L17.7400818,5.60915798" id="Path-30" transform="translate(19.221985, 16.835498) scale(-1, 1) translate(-19.221985, -16.835498) "></path>
+                    <path d="M0.367126458,8.17848427 L7.12069082,12.9687242 L23.3933468,12.9687242 L29.906189,8.07385254" id="Path-28"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
