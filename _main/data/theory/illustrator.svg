@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="31px" height="30px" viewBox="0 0 31 30" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.3.3 (12081) - http://www.bohemiancoding.com/sketch -->
+    <title>illustrator</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Welcome" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="theory" sketch:type="MSArtboardGroup" transform="translate(-964.000000, -200.000000)">
+            <g id="Group" sketch:type="MSLayerGroup" transform="translate(963.000000, 150.000000)">
+                <g id="illustrator" transform="translate(1.500000, 50.000000)" sketch:type="MSShapeGroup">
+                    <rect id="Rectangle-15" stroke="#000000" fill="#FFFFFF" x="0" y="0" width="30" height="30"></rect>
+                    <path d="M13.971,18.741 L15.063,22.374 L18.507,22.374 L14.118,8.22 L9.918,8.22 L5.592,22.374 L8.91,22.374 L9.918,18.741 L13.971,18.741 Z M10.38,16.347 L11.22,13.344 C11.451,12.525 11.661,11.454 11.871,10.614 L11.913,10.614 C12.123,11.454 12.375,12.504 12.627,13.344 L13.509,16.347 L10.38,16.347 Z M23.484,22.374 L23.484,12.105 L20.292,12.105 L20.292,22.374 L23.484,22.374 Z M21.888,7.632 C20.859,7.632 20.187,8.325 20.208,9.249 C20.187,10.131 20.859,10.845 21.867,10.845 C22.917,10.845 23.589,10.131 23.589,9.249 C23.568,8.325 22.917,7.632 21.888,7.632 L21.888,7.632 Z" id="Ai" fill="#000000"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

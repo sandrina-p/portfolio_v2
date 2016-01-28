@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="30px" height="31px" viewBox="0 0 30 31" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.3.3 (12081) - http://www.bohemiancoding.com/sketch -->
+    <title>principle</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Welcome" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="theory" sketch:type="MSArtboardGroup" transform="translate(-964.000000, -396.000000)">
+            <g id="Group" sketch:type="MSLayerGroup" transform="translate(963.000000, 150.000000)">
+                <g id="principle" transform="translate(1.500000, 247.000000)" sketch:type="MSShapeGroup">
+                    <circle id="Oval-1" stroke="#000000" fill="#FFFFFF" cx="14.5" cy="14.5" r="14.5"></circle>
+                    <g id="Principle" transform="translate(6.500000, 8.000000)">
+                        <path d="M8.75,10.0244609 C11.5114237,10.0244609 13.75,7.78588463 13.75,5.02446088 C13.75,2.26303713 11.5114237,0.0244608792 8.75,0.0244608792 C5.98857625,0.0244608792 3.75,2.26303713 3.75,5.02446088 L3.75,13.9755391" stroke="#000000" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="bevel"></path>
+                        <path d="M8.762146,11.3459473 C9.50773042,11.3459473 10.112146,10.7415317 10.112146,9.99594724 C10.112146,9.25036282 9.50773042,8.64594722 8.762146,8.64594722 C8.01656157,8.64594722 7.41214597,9.25036282 7.41214597,9.99594724 C7.41214597,10.7415317 8.01656157,11.3459473 8.762146,11.3459473 Z" id="Oval-4" fill="#FFFFFF"></path>
+                        <path d="M1.44997561,16.2 C2.19556004,16.2 2.79997563,15.5955844 2.79997563,14.85 C2.79997563,14.1044156 2.19556004,13.5 1.44997561,13.5 C0.704391184,13.5 0.0999755859,14.1044156 0.0999755859,14.85 C0.0999755859,15.5955844 0.704391184,16.2 1.44997561,16.2 Z" id="Oval-4" fill="#FFFFFF"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
