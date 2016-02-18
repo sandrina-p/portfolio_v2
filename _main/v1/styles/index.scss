@@ -51,7 +51,7 @@ $border: $borderWidth solid;
 
 $speed: 250ms;
 
-$fablet-width: 410px;
+$phablet-width: 410px;
 $tablet-width: 650px;
 $desktop-width: 850px;
 
@@ -95,8 +95,8 @@ $desktop-width: 850px;
 }
 
 //mediaqueries
-@mixin fablet {
-    @media (min-width: #{$fablet-width}) {
+@mixin phablet {
+    @media (min-width: #{$phablet-width}) {
         @content;
     }
 }
@@ -947,16 +947,16 @@ Stuff - DESKTOP
 \*------------------------------------*/
 
 
-$m-fablet: "(min-width: #{$fablet-width})";
+$m-phablet: "(min-width: #{$phablet-width})";
 $m-tablet: "(min-width: #{$tablet-width})";
-$m-fablet-tablet: "(min-width: #{$fablet-width}) and (max-width: #{$tablet-width - 1px})";
-$m-fablet-desktop: "(min-width: #{$fablet-width}) and (max-width: #{$desktop-width - 1px})";
+$m-phablet-tablet: "(min-width: #{$phablet-width}) and (max-width: #{$tablet-width - 1px})";
+$m-phablet-desktop: "(min-width: #{$phablet-width}) and (max-width: #{$desktop-width - 1px})";
 $m-tablet-desktop: "(min-width: #{$tablet-width}) and (max-width: #{$desktop-width - 1px})";
 $m-desktop: "(min-width: #{$desktop-width}) and (min-height: 600px)";
 
 
-// FABLET < x =< TABLET
-@media #{$m-fablet-desktop} {
+// phablet < x =< TABLET
+@media #{$m-phablet-desktop} {
 
     .X-bigSection {
         padding: $safeArea*5 0;
@@ -1452,7 +1452,7 @@ $m-desktop: "(min-width: #{$desktop-width}) and (min-height: 600px)";
     @include transition($speed);
     width: 125px;
 
-    @include fablet {
+    @include phablet {
         width: 150px;
     }
 }
@@ -1465,7 +1465,7 @@ $m-desktop: "(min-width: #{$desktop-width}) and (min-height: 600px)";
     left: -2px;
     @include transition($speed);
 
-    @include fablet {
+    @include phablet {
         width: 150px;
     }
 
