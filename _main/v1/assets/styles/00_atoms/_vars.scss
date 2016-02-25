@@ -1,0 +1,89 @@
+/*------------------------------------*\
+#VARIABLES AND MIXINS
+\*------------------------------------*/
+
+$type0: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+$type1: 'Courier New', Courier, 'Lucida Sans Typewriter', 'Lucida Typewriter', monospace;
+// $type1: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+$safeArea: 12px;
+$borderWidth: 2px;
+$marginTopPage: $safeArea*4+4px;
+
+$black: #000;
+$white: #fff;
+$gray: #838383;
+
+$border: $borderWidth solid;
+
+$speed: 250ms;
+
+$phablet-width: 410px;
+$tablet-width: 650px;
+$desktop-width: 850px;
+
+
+//transition
+@mixin transition($speed) {
+    transition: all $speed ease-in-out;
+}
+
+@mixin squeeze {
+    letter-spacing: 2pt;
+    font-weight: 400;
+}
+
+@mixin centerxy {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@mixin centerx {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+
+}
+
+@mixin flexbox {
+    display: flex;
+
+    & > * {
+        flex-grow: 0;
+        flex-shrink: 1;
+        flex-basis: auto;
+        // this is to prevent bugs on IE9 10 11
+    }
+}
+
+@mixin flexrow {
+    flex-direction: row;
+    // flex-wrap: wrap;
+}
+
+@mixin flexcol {
+    flex-direction: column;
+    // flex-wrap: nowrap;
+}
+
+
+//mediaqueries
+@mixin phablet {
+    @media (min-width: #{$phablet-width}) {
+        @content;
+    }
+}
+
+@mixin tablet {
+    @media (min-width: #{$tablet-width}) {
+        @content;
+    }
+}
+
+@mixin desktop {
+    @media (min-width: #{$desktop-width}) and (min-height:600px) {
+        @content;
+    }
+}

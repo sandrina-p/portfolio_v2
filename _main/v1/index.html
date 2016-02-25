@@ -35,7 +35,7 @@
     <link rel="apple-touch-icon" sizes="152x152" href="icon152.png">
 
     <!--source-->
-    <link rel="stylesheet" href="styles/index.min.css">
+    <link rel="stylesheet" href="assets/styles/02_templates/all.min.css">
     <!-- google analytics  -->
     <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -71,7 +71,7 @@
     </header>
 
     <!-- NAV TOP -->
-    <div class="navegacao-topo">
+    <!-- <nav class="navegacao-topo">
         <div class="nav-safearea"></div>
         <div class="the-square"></div>
 
@@ -101,42 +101,47 @@
                 </ul>
             </nav>
         </article>
-    </div>
+    </nav> -->
 
     <!-- MAIN -->
     <main>
         <!-- NAV-PRESENTATION -->
         <nav class="presentation">
-            <div class="image-gif" onmouseover="PlaySound('mySound')" onmouseout="StopSound('mySound')">
-                <audio id='mySound' src='data/index/glitch.ogg'></audio>
-                <img src="data/index/icon.gif" alt="profile">
+            <div class="image-gif">
+                <!-- <div class="image-gif" onmouseover="PlaySound('mySound')" onmouseout="StopSound('mySound')">
+                <audio id='mySound' src='assets/media/sound/glitch.ogg'></audio> -->
+                <!-- <img src="assets/media/images/myself.gif" alt="profile"> -->
+                <img class="b-lazy"
+                    src=data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==
+                    data-src="assets/media/images/myself.gif"
+                    alt="TODO"/>
             </div>
 
-            <article class="theory-trigger">
+            <div class="theory-trigger">
                 <div class="tt-square square1">
                     <div class="tt-title">
                         <h3><span>Theory</span></h3>
                     </div>
                 </div>
-            </article>
+            </div>
 
-            <article class="practice-trigger">
+            <div class="practice-trigger">
                 <div class="pt-square square2">
                     <div class="pt-title">
                         <h3><span>Practice</span></h3>
                     </div>
                 </div>
-            </article>
+            </div>
 
-            <article class="background-trigger">
+            <div class="background-trigger">
                 <div class="bt-square square3">
                     <div class="bt-title">
                         <h3><span>Background</span></h3>
                     </div>
                 </div>
-            </article>
+            </div>
 
-            <article class="mobile-welcome">
+            <div class="mobile-welcome">
                 <h3 id="typewriter-mob">
                     <!-- Hey there cybertaute.<br>
                     If you are here, <br>
@@ -147,7 +152,7 @@
                     the black square <br>
                     is your best friend -->
                 </h3>
-            </article>
+            </div>
 
         </nav>
 
@@ -178,7 +183,10 @@
                 <!-- 8. CAROLINA MACHADO -->
                 <li class="layer" data-depth="0.3">
                     <article class="p-project">
-                        <img src="data/practice/project_carolina.png" alt="project carolina machado"/>
+                        <img class="b-lazy"
+                            src=data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==
+                            data-src="assets/media/images/practice/project_carolina.png"
+                            alt="TODO"/>
                         <div class="p-line"></div>
                         <h4>Carolina Machado</h4>
                         <p class="san-bold"><span>Fashion Designer</span></p>
@@ -192,7 +200,10 @@
                 <!-- 7. PISTOL SHRIMP -->
                 <li class="layer" data-depth="0.2">
                     <article class="p-project">
-                        <img src="data/practice/project_pistolshrimp.png" alt="project pistolshrimp"/>
+                        <img class="b-lazy"
+                            src=data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==
+                            data-src="assets/media/images/practice/project_pistolshrimp.png"
+                            alt="TODO"/>
                         <div class="p-line"></div>
                         <h4>Pistol Shrimp</h4>
                         <p class="san-bold"><span>Record Label For Cybertauts</span></p>
@@ -206,7 +217,10 @@
                 <!-- 6. MOON -->
                 <li class="layer" data-depth="1">
                     <article class="p-project" id="practice-project-moon">
-                        <img src="data/practice/project_moon.png" alt="project moon movie"/>
+                        <img class="b-lazy"
+                            src=data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==
+                            data-src="assets/media/images/practice/project_moon.png"
+                            alt="TODO"/>
                         <div class="p-line"></div>
                         <h4>Moon</h4>
                         <p class="san-bold"><span>A Duncan Jones's film</span></p>
@@ -220,7 +234,10 @@
                 <!-- 5. PROFANO -->
                 <li class="layer" data-depth="0.2">
                     <article class="p-project">
-                        <img src="data/practice/project_profano.png" alt="project o profano"/>
+                        <img class="b-lazy"
+                            src=data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==
+                            data-src="assets/media/images/practice/project_profano.png"
+                            alt="TODO"/>
                         <div class="p-line"></div>
                         <h4>O Profano</h4>
                         <p class="san-bold"><span>Digital newspaper - just an ideia</span></p>
@@ -231,24 +248,13 @@
                     </article>
                 </li>
 
-                <!-- 4. GALERIA -->
-                <li class="layer" data-depth="0.2">
-                    <article class="p-project">
-                        <img src="data/practice/project_galeria.png" alt="gallery redesign"/>
-                        <div class="p-line"></div>
-                        <h4>Galeria dos Leões</h4>
-                        <p class="san-bold">FBAUP Gallery - redesign </p>
-                        <a class="button-rectangle" href="//www.googledrive.com/host/0Bx3MPS7bjIpfemRmSkxrQnFZRjA" >
-                            <div class="button-hover-fill"></div>
-                            <p>launch website </p>
-                        </a>
-                    </article>
-                </li>
-
                 <!-- 3. PORTFOLIO -->
                 <li class="layer" data-depth="0.15">
                     <article class="p-project">
-                        <img src="data/practice/project_portfolio.png" alt="old portfolio"/>
+                        <img class="b-lazy"
+                            src=data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==
+                            data-src="assets/media/images/practice/project_portfolio.png"
+                            alt="TODO"/>
                         <div class="p-line"></div>
                         <h4><span>Portfolio</span></h4>
                         <p class="san-bold">My first website </p>
@@ -262,7 +268,10 @@
                 <!-- 2. METRO -->
                 <li class="layer" data-depth="0.3">
                     <article class="p-project" id="p-project-metro">
-                        <img src="data/practice/project_metro.png" alt="mobile app lisbon metro"/>
+                        <img class="b-lazy"
+                            src=data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==
+                            data-src="assets/media/images/practice/project_metro.png"
+                            alt="TODO"/>
                         <div class="p-line"></div>
                         <h4>App Lisbon Metro</h4>
                         <p class="san-bold">Concept of a app for Lisbon's subway</p>
@@ -276,7 +285,10 @@
                 <!-- 1. DET -->
                 <li class="layer" data-depth="0.2">
                     <article class="p-project" id="p-project-det">
-                        <img src="data/practice/project_det.png" alt="dutch experimental typography"/>
+                        <img class="b-lazy"
+                            src=data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==
+                            data-src="assets/media/images/practice/project_det.png"
+                            alt="dutch experimental typography"/>
                         <div class="p-line"></div>
                         <h4>Dutch Experimental Typography</h4>
                         <p class="san-bold"><span>Digital catalogue of 70's - 90's Netherlands typography.</span></p>
@@ -320,8 +332,8 @@
         <!-- THEORY -->
         <section class="section-theory scene" id="anchor-theory">
 
-            <div class="t-development layer" data-depth="0.3">
-                <article class="X-article-vertical-content">
+            <article class="t-development layer" data-depth="0.3">
+                <div class="X-article-vertical-content">
                     <h5>Web Development</h5>
                     <p class="topic">
                         html5<br>
@@ -329,11 +341,11 @@
                         javascript<br>
                         jQuery
                     </p>
-                </article>
-            </div>
+                </div>
+            </article>
 
-            <div class="t-uxui layer" data-depth="0.2">
-                <article class="X-article-vertical-content">
+            <article class="t-uxui layer" data-depth="0.2">
+                <div class="X-article-vertical-content">
                     <h5>UX UI Design</h5>
                     <p class="topic">
                         app / web design<br>
@@ -341,22 +353,22 @@
                         rich animation effects<br>
                         interactive design
                     </p>
-                </article>
-            </div>
+                </div>
+            </article>
 
-            <div class="t-hobbies layer" data-depth="0.17">
-                <article class="X-article-vertical-content">
+            <article class="t-hobbies layer" data-depth="0.17">
+                <div class="X-article-vertical-content">
                     <h5>Hobbies</h5>
                     <p class="topic">
                         Codeschool<br>
                         Millennium<br>
                         Ubisoft Games
                     </p>
-                </article>
-            </div>
+                </div>
+            </article>
 
-            <div class="t-assets layer" data-depth="0.23">
-                <article class="X-article-vertical-content">
+            <article class="t-assets layer" data-depth="0.23">
+                <div class="X-article-vertical-content">
                     <h5>Assets</h5>
                     <p class="topic">
                         Innovation<br>
@@ -364,41 +376,41 @@
                         Effort<br>
                         Perfectionism
                     </p>
-                </article>
-            </div>
+                </div>
+            </article>
 
-            <div class="t-tools layer" data-depth="0.4">
-                <article class="X-article-vertical-content">
+            <article class="t-tools layer" data-depth="0.4">
+                <div class="X-article-vertical-content">
                     <div class="tool">
                         <p class="inline"> Photoshop </p>
-                        <img src="data/theory/photoshop.svg " alt="photoshop">
+                        <img src="assets/media/images/theory/photoshop.svg " alt="photoshop">
                     </div>
                     <div class="tool">
                         <p class="inline"> Illustrator </p>
-                        <img src="data/theory/illustrator.svg " alt="illustrator">
+                        <img src="assets/media/images/theory/illustrator.svg " alt="illustrator">
                     </div>
                     <div class="tool">
                         <p class="inline"> InDesign </p>
-                        <img src="data/theory/indesign.svg " alt="indesign">
+                        <img src="assets/media/images/theory/indesign.svg " alt="indesign">
                     </div>
                     <div class="tool">
                         <p class="inline"> After Effects </p>
-                        <img src="data/theory/after.svg " alt="after effects">
+                        <img src="assets/media/images/theory/after.svg " alt="after effects">
                     </div>
                     <div class="tool">
                         <p class="inline"> Sketch </p>
-                        <img src="data/theory/sketch.svg " alt="sketch">
+                        <img src="assets/media/images/theory/sketch.svg " alt="sketch">
                     </div>
                     <div class="tool">
                         <p class="inline"> Principle </p>
-                        <img src="data/theory/principle.svg " alt="principle">
+                        <img src="assets/media/images/theory/principle.svg " alt="principle">
                     </div>
                     <div class="tool">
                         <p class="inline"> Blender </p>
-                        <img src="data/theory/blender.svg " alt="blender">
+                        <img src="assets/media/images/theory/blender.svg " alt="blender">
                     </div>
-                </article>
-            </div>
+                </div>
+            </article>
 
             <div class="bottom-fadeout" id="fadeout-theory"></div>
 
@@ -610,15 +622,14 @@
 
                 </article>
 
-                <article class="b-description layer" data-depth="0.4">
-                    <!-- <p>
-                    I consider myself a self-taught person with potential in web design. Being updated in the digital world helps me innovate the technical and creative aspect in every project that I do. To produce a cohesive and functional website, as also to create an well thought user experience (UX) are some fundamental aspects in creating a good relationship between the client and the final product.
-                </p> -->
-            </article>
+            <!-- <article class="b-description layer" data-depth="0.4">
+                    <p>I consider myself a self-taught person with potential in web design. Being updated in the digital world helps me innovate the technical and creative aspect in every project that I do. To produce a cohesive and functional website, as also to create an well thought user experience (UX) are some fundamental aspects in creating a good relationship between the client and the final product.</p>
+            </article> -->
 
             <div class="bottom-fadeout" id="fadeout-background"></div>
 
         </section>
+
         <!-- mobile -->
         <div class="button-expand-section" id="expand-background">
             <div class="button-hover-fill"></div>
@@ -627,12 +638,12 @@
 
         <!-- BOTTOM mobile -->
         <footer class="mobile-bottom">
-            <h3> That's it for now<br><br>
+            <p> That's it for now<br><br>
                 Comeback in a desktop<br>
                 for a better experience<br><br>
                 Until there talk about me<br>
                 with human beings around you
-            </h3>
+            </p>
         </footer>
     </main>
 
@@ -647,17 +658,29 @@
     </div>
 
 
-    <!-- LIBRARIES -->
-    <script src="scripts/libraries/jquery.min.js"></script>
-    <script src="scripts/libraries/glitch.min.js"></script>
-    <script src="scripts/libraries/typewriter.min.js"></script>
-
     <!-- SCRIPTS -->
-    <script src="scripts/index.min.js"></script>
-    <script  type="text/javascript" src="scripts/index_typewriter.min.js"></script>
 
-    <!-- PARALLAX -->
-    <script src="scripts/libraries/jquery.parallax.min.js"></script>
+    <script src="assets/plugins/jquery/jquery.min.js"></script> <!--jquery-->
+
+    <script src="assets/scripts/01_templates/index.min.js"></script> <!--custom-->
+
+    <script src="assets/plugins/blazy/blazy.min.js"></script> <!--blazy images-->
+    <script type="text/javascript">
+    	/*BE LAZY*/
+    	;(function() {
+    		var bLazy = new Blazy({
+                container: '.section-practice, .practice-content',
+    		});
+    	})();
+    </script>
+
+
+    <script src="assets/plugins/others/typewriter.min.js"></script> <!--typewriter-->
+    <script src="assets/scripts/00_organisms/index_typewriter.min.js"></script> <!--jquery custom-->
+
+    <script src="assets/plugins/others/glitch.min.js"></script> <!--glitch (w/custom)-->
+
+    <script src="assets/plugins/jquery/jquery.parallax.min.js"></script> <!--parallax (w/custom)-->
     <script>
         if (!matchMedia('screen and (min-width: 850px) and (min-height: 600px)').matches) {
         }else {
