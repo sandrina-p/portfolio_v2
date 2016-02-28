@@ -32,9 +32,9 @@ $(document).ready(function() {
 
    // smooth scroll
    $('a[href*=#]').click(function(event){
-      $('main').animate({
+      $('*').animate({
            scrollTop: $( $.attr(this, 'href') ).offset().top
-      }, 500);
+      }, 1000);
 
       $('.nav-subTitles').removeClass('js-nav-subTitles-full-open');
 
@@ -155,111 +155,183 @@ $(document).ready(function() {
       //--------- DESKTOP STUFF --------- //
 
       ///------------------ glitch text
-      $(function(){
-        $('span').glitch();
-      });
+    //   $(function(){
+    //     $('span').glitch();
+    //   });
 
-      //------------------ HEADER - CLICK TO GO OUT
-      $('.header-click-area, .header-title').on('click', function(){
-         $('.section-practice, .section-background, .section-theory').removeClass('js-bigSection-visible');
-         $('.n-subTitles-container > ul').removeClass('align-title-practice align-title-theory align-title-background');
-         $('.n-subTitles-container > ul').addClass('align-title-nothing');
-      });
+    //   //------------------ HEADER - CLICK TO GO OUT
+    //   $('.header-click-area, .header-title').on('click', function(){
+    //      $('.section-practice, .section-background, .section-theory').removeClass('js-bigSection-visible');
+    //      $('.n-subTitles-container > ul').removeClass('align-title-practice align-title-theory align-title-background');
+    //      $('.n-subTitles-container > ul').addClass('align-title-nothing');
+    //   });
+      //
+      //
+    //   //------------------ NAVIGATION BAR - HOVER
+    //   $('.the-square, .nav-subTitles, .nav-safearea').on({
+    //      mouseenter: function() {
+    //         $(this).parent().find('.nav-subTitles').addClass('js-nav-subTitles-full-open');
+    //      }, mouseleave: function() {
+    //         $('.nav-subTitles').removeClass('js-nav-subTitles-full-open');
+    //      }
+    //   });
+      //
+    //   //------------------ NAVIGATION BAR - CLICK
+      //
+    //   var alignTitle = {};
+    //   var openSection = {};
+      //
+    //   function selectSection (){
+    //      $('.nav-subTitles').removeClass('js-nav-subTitles-full-open');
+    //      $('.n-subTitles-container > ul').removeClass('align-title-theory');
+    //      $('.n-subTitles-container > ul').removeClass('align-title-practice');
+    //      $('.n-subTitles-container > ul').removeClass('align-title-background');
+      //
+    //      $('.n-subTitles-container > ul').addClass(alignTitle);
+      //
+    //      $('.section-practice, .section-theory, .section-background').removeClass('js-bigSection-visible');
+      //
+    //      $(openSection).addClass('js-bigSection-visible');
+    //   }
+      //
+    //   // //Sub-title practice
+    //   $('.n-subTitles-container').find('li:nth-child(1)').on('click', function() {
+    //      alignTitle = 'align-title-practice';
+    //      openSection = '.section-practice';
+    //      selectSection();
+    //   });
+      //
+    //   // //Sub-title Theory
+    //   $('.n-subTitles-container').find('li:nth-child(2)').on('click', function() {
+    //      alignTitle = 'align-title-theory';
+    //      openSection = '.section-theory';
+    //      selectSection();
+    //   });
+      //
+    //   // //Sub-title Background
+    //   $('.n-subTitles-container').find('li:nth-child(3)').on('click', function() {
+    //      alignTitle = 'align-title-background';
+    //      openSection = '.section-background';
+    //      selectSection();
+    //   });
 
 
-      //------------------ NAVIGATION BAR - HOVER
-      $('.the-square, .nav-subTitles, .nav-safearea').on({
-         mouseenter: function() {
-            $(this).parent().find('.nav-subTitles').addClass('js-nav-subTitles-full-open');
-         }, mouseleave: function() {
-            $('.nav-subTitles').removeClass('js-nav-subTitles-full-open');
-         }
-      });
-
-      //------------------ NAVIGATION BAR - CLICK
-
-      var alignTitle = {};
-      var openSection = {};
-
-      function selectSection (){
-         $('.nav-subTitles').removeClass('js-nav-subTitles-full-open');
-         $('.n-subTitles-container > ul').removeClass('align-title-theory');
-         $('.n-subTitles-container > ul').removeClass('align-title-practice');
-         $('.n-subTitles-container > ul').removeClass('align-title-background');
-
-         $('.n-subTitles-container > ul').addClass(alignTitle);
-
-         $('.section-practice, .section-theory, .section-background').removeClass('js-bigSection-visible');
-
-         $(openSection).addClass('js-bigSection-visible');
-      }
-
-      // //Sub-title practice
-      $('.n-subTitles-container').find('li:nth-child(1)').on('click', function() {
-         alignTitle = 'align-title-practice';
-         openSection = '.section-practice';
-         selectSection();
-      });
-
-      // //Sub-title Theory
-      $('.n-subTitles-container').find('li:nth-child(2)').on('click', function() {
-         alignTitle = 'align-title-theory';
-         openSection = '.section-theory';
-         selectSection();
-      });
-
-      // //Sub-title Background
-      $('.n-subTitles-container').find('li:nth-child(3)').on('click', function() {
-         alignTitle = 'align-title-background';
-         openSection = '.section-background';
-         selectSection();
-      });
-
-
-      //------------------ PRESENTATION - CLICK
-      $('.practice-trigger').on('click', function(){
-         $('.section-practice').addClass('js-bigSection-visible');
-         $('.n-subTitles-container > ul').removeClass('align-title-nothing align-title-background align-title-theory');
-         $('.n-subTitles-container > ul').addClass('align-title-practice');
-      });
-
-      $('.theory-trigger').on('click', function(){
-         $('.section-theory').addClass('js-bigSection-visible');
-         $('.n-subTitles-container > ul').removeClass('align-title-nothing align-title-practice align-title-background');
-         $('.n-subTitles-container > ul').addClass('align-title-theory');
-      });
-
-      $('.background-trigger').on('click', function(){
-         $('.section-background').addClass('js-bigSection-visible');
-         $('.n-subTitles-container > ul').removeClass('align-title-nothing align-title-practice align-title-theory');
-         $('.n-subTitles-container > ul').addClass('align-title-background');
-      });
+    //   //------------------ PRESENTATION - CLICK
+    //   $('.practice-trigger').on('click', function(){
+    //      $('.section-practice').addClass('js-bigSection-visible');
+    //      $('.n-subTitles-container > ul').removeClass('align-title-nothing align-title-background align-title-theory');
+    //      $('.n-subTitles-container > ul').addClass('align-title-practice');
+    //   });
+      //
+    //   $('.theory-trigger').on('click', function(){
+    //      $('.section-theory').addClass('js-bigSection-visible');
+    //      $('.n-subTitles-container > ul').removeClass('align-title-nothing align-title-practice align-title-background');
+    //      $('.n-subTitles-container > ul').addClass('align-title-theory');
+    //   });
+      //
+    //   $('.background-trigger').on('click', function(){
+    //      $('.section-background').addClass('js-bigSection-visible');
+    //      $('.n-subTitles-container > ul').removeClass('align-title-nothing align-title-practice align-title-theory');
+    //      $('.n-subTitles-container > ul').addClass('align-title-background');
+    //   });
 
 
       //------------------ BUTTON - HOVER / CLICK
-      $('.button-rectangle, .widget-resources, .widget-invert').on({
-         mouseenter: function() {
-            $(this).find('.button-hover-fill').parent().find('p').css({'color':'white'}); // change color only p for hover-fill
-            $(this).find('.button-hover-fill').addClass('js-button-hover-fill-yes');
-            // $(this).css({'cursor':'not-allowed'});
+    //   $('.button-rectangle, .widget-resources, .widget-invert').on({
+    //      mouseenter: function() {
+    //         $(this).find('.button-hover-fill').parent().find('p').css({'color':'white'}); // change color only p for hover-fill
+    //         $(this).find('.button-hover-fill').addClass('js-button-hover-fill-yes');
+    //         // $(this).css({'cursor':'not-allowed'});
+      //
+    //         // for red button
+    //         var div = $(this).find('.button-hover-no');
+    //           div.animate({width: '10px', opacity: '1'}, "0");
+    //           div.animate({opacity: '0'}, "0");
+    //           div.animate({opacity: '1'}, "fast");
+    //           div.animate({opacity: '0'}, "0");
+    //           div.animate({opacity: '1'}, "fast");
+      //
+      //
+    //      }, mouseleave: function() {
+    //         $(this).find('p').css({'color':''});
+    //         $(this).find('.button-hover-fill').removeClass('js-button-hover-fill-yes');
+      //
+    //         var div = $(this).find('.button-hover-no');
+    //           div.animate({width: '0px', opacity: '1'}, "0");
+    //      }
+    //   });
 
-            // for red button
-            var div = $(this).find('.button-hover-no');
-              div.animate({width: '10px', opacity: '1'}, "0");
-              div.animate({opacity: '0'}, "0");
-              div.animate({opacity: '1'}, "fast");
-              div.animate({opacity: '0'}, "0");
-              div.animate({opacity: '1'}, "fast");
+        //------------------ NAVIGATION
+
+        $(document).on({
+            mouseenter: function () {
+                $('.navigation-square').addClass('js-nav-practice').removeClass('js-nav-theory js-nav-background');
+            },
+        }, '.js-nav-mini .nav-li-practice .li-square');
+
+        $(document).on({
+            mouseenter: function () {
+                $('.navigation-square').addClass('js-nav-theory').removeClass('js-nav-practice js-nav-background');
+            },
+        }, '.js-nav-mini .nav-li-theory .li-square');
+
+        $(document).on({
+            mouseenter: function () {
+                $('.navigation-square').addClass('js-nav-background').removeClass('js-nav-practice js-nav-theory');
+            },
+        }, '.js-nav-mini .nav-li-background .li-square');
 
 
-         }, mouseleave: function() {
-            $(this).find('p').css({'color':''});
-            $(this).find('.button-hover-fill').removeClass('js-button-hover-fill-yes');
+        // The function actually applying the offset
+        function offsetAnchor() {
+            if(location.hash.length !== 0) {
+                window.scrollTo(window.scrollX, window.scrollY - 100);
+            }
+        }
 
-            var div = $(this).find('.button-hover-no');
-              div.animate({width: '0px', opacity: '1'}, "0");
-         }
-      });
+        // This will capture hash changes while on the page
+        $(window).on("hashchange", function () {
+            offsetAnchor();
+        });
+
+        // This is here so that when you enter the page with a hash,
+        // it can provide the offset in that case too. Having a timeout
+        // seems necessary to allow the browser to jump to the anchor first.
+        window.setTimeout(function() {
+            offsetAnchor();
+        }, 1); // The delay of 1 is arbitrary and may not always work right (although it did in my testing).
+
+        $(document).scroll(function () {
+
+            // console.log($(this).scrollTop());
+
+            var a_begin = $(this).scrollTop();
+            var a_begin_scroll = 100;
+            var a_offset = 400;
+            var a_theory = $("#theory").offset().top;
+            var a_background = $("#background").offset().top;
+
+            if (a_begin > a_begin_scroll) {
+                $('.navigation-square').addClass('js-nav-mini js-nav-practice');
+            } else {
+                $('.navigation-square').removeClass('js-nav-mini js-nav-practice');
+            }
+
+            if($(this).scrollTop() + a_offset > a_theory)
+            {
+              $('.navigation-square').addClass('js-nav-theory').removeClass('js-nav-practice');
+            } else {
+               $('.navigation-square').removeClass('js-nav-theory');
+            }
+
+            if($(this).scrollTop() + a_offset > a_background)
+            {
+              $('.navigation-square').addClass('js-nav-background').removeClass('js-nav-practice, js-nav-theory');
+            } else {
+               $('.navigation-square').removeClass('js-nav-background');
+            }
+        });
+
 
       //------------------ CLOSE WELCOME
       $('.h-close').on('click', function(){
@@ -392,12 +464,12 @@ $(document).ready(function() {
 
 
       // CALL FUNCTIONS OF GLITCH SQUARE
-      $(function() {
-          setTimeout(square1, intRand1);
-          setTimeout(square2, intRand2);
-          setTimeout(square3, intRand3);
-          setTimeout(invertglitch, intRand4);
-      });
+    //   $(function() {
+    //       setTimeout(square1, intRand1);
+    //       setTimeout(square2, intRand2);
+    //       setTimeout(square3, intRand3);
+    //       setTimeout(invertglitch, intRand4);
+    //   });
    };
 
 });

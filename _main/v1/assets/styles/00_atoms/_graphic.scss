@@ -1,58 +1,4 @@
-$black:#000;
-$white: #fff;
-$gray: #919191;
-$myColor: #19babf;
-$marginM: 12px;
-
-$type1: 'Courier New', Courier, 'Lucida Sans Typewriter', 'Lucida Typewriter', monospace;
-$type0: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-
-$trans0: all 250ms ease-out;
-$trans1: all 500ms ease-out;
-$speed: 250ms;
-
-$textXXL: xx-large;
-$textXL: x-large;
-$textL: large;
-$textM: medium;
-$textS: small;
-$textXS: x-small;
-
-
-$fablet-width: 410px;
-$tablet-width: 650px;
-$desktop-width: 850px;
-
-@mixin transition($speed) {
-   transition: all $speed ease-in-out;
-}
-
-@mixin squeeze {
-   letter-spacing: 2pt;
-   font-weight: 400;
-}
-
-@mixin fablet {
-   @media (min-width: #{$fablet-width}) {
-      @content;
-   }
-}
-
-@mixin tablet {
-   @media (min-width: #{$tablet-width}) {
-      @content;
-   }
-}
-
-@mixin desktop {
-   @media (min-width: #{$desktop-width}) {
-      @content;
-   }
-}
-
-
 body {
-   font-family: $type0;
    font-family: $type0;
 }
 
@@ -75,7 +21,7 @@ h2 { //SUB-TITLE
    font-weight: bold;
    margin-top: 6px;
 
-   @include fablet {
+   @include phablet {
       font-size: $textS;
    }
 }
@@ -92,7 +38,7 @@ h3 { //SECTION-TITLES
       @include squeeze;
    }
 
-   @include fablet {
+   @include phablet {
       font-size: $textM;
    }
 }
@@ -126,7 +72,7 @@ p { //TEXTO CORRIDO
    line-height: 1.3;
    font-weight: 600;
 
-   @include fablet {
+   @include phablet {
       font-size: $textM;
       font-weight: 400;
    }
@@ -165,7 +111,7 @@ p.san-bold { //TEXTO SAN-SERIF BOLD
 }
 
 span {
-    color: $black;
+    color: $clr-form;
 }
 .typewriter {
    font-family: $type1;
@@ -183,22 +129,64 @@ span {
 }
 
 a {
-   font-size: $textS;
-   text-transform: lowercase;
+   // font-size: $textS;
+   // text-transform: lowercase;
    text-decoration: none;
-   font-weight: 600;
+   // font-weight: 600;
+    cursor: pointer;
 
-   @include fablet {
-      font-size: $textM;
-      font-weight: 400;
+   @include phablet {
+    //   font-size: $textM;
+    //   font-weight: 400;
    }
 }
 
-a.typewriter {
+a.link {
+    font-size: $textS;
+    text-transform: lowercase;
+    text-decoration: none;
+    font-weight: 600;
+
+    @include phablet {
+       font-size: $textM;
+       font-weight: 400;
+    }
+}
+
+a.link-typewriter {
    @extend p;
    @include transition($speed/2);
    &:hover {
       font-weight: 600;
       letter-spacing: 0.3pt;
    }
+}
+
+a.link-under {
+    position: relative;
+    text-transform: none;
+    font-size: inherit;
+    text-decoration: underline;
+    cursor: alias;
+
+    &:after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 2px;
+        background: $myColor;
+        bottom: 1px;
+        left: 0;
+        @include transition($speed);
+    }
+
+    &:hover {
+        &:after {
+            width: 100%;
+        }
+    }
+}
+
+i {
+    font-style: italic;
 }
