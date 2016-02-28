@@ -187,7 +187,7 @@ body {
 #HEADER
 \*------------------------------------*/
 
-header {
+.header {
     position: absolute;
     top: 0;
     left: 0;
@@ -1222,7 +1222,7 @@ $m-desktop: "(min-width: #{$desktop-width}) and (min-height: 600px)";
         }
     }
 
-    header {
+    .header {
         position: fixed;
         background-color: $clr-space;
         // z-index: 9;
@@ -1325,6 +1325,7 @@ $m-desktop: "(min-width: #{$desktop-width}) and (min-height: 600px)";
 
     // footer
     .thank-you-for-reading-this {
+        display: none; // activaded by js
         position: fixed;
         height: $footerHeight;
         bottom: 0; left: 0;
@@ -1633,6 +1634,15 @@ $m-desktop: "(min-width: #{$desktop-width}) and (min-height: 600px)";
     }
 }
 
+
+.human-hidden {
+	position: absolute;
+	visibility: hidden;
+	width: 0;
+	height: 0;
+	left: -9999999px;
+	top: -9999999px;
+}
 
 /*------------------------------------*\
 #CLASSES JQUERY MANIPULATION

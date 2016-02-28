@@ -313,8 +313,10 @@ $(document).ready(function() {
 
             if (a_begin > a_begin_scroll) {
                 $('.navigation-square').addClass('js-nav-mini js-nav-practice');
+                $('.thank-you-for-reading-this').show();
             } else {
                 $('.navigation-square').removeClass('js-nav-mini js-nav-practice');
+                $('.thank-you-for-reading-this').hide();
             }
 
             if($(this).scrollTop() + a_offset > a_theory)

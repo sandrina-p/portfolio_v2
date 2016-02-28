@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>sandrina.p</title>
+    <title>sandrina-p</title>
 
     <!--description-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -54,25 +54,27 @@
 </head>
 
 <body>
-    <div class="loading-container">
+    <div role="loading-screen" class="loading-container">
         <div class="loading-square">
             <div class="loading-border"></div>
             <div class="loading-border-cover"></div>
-            <h2>Loading...</h2>
+            <p>Loading...</p>
             <br>
             <p class="san">I hope you have a decent browser</p>
         </div>
     </div>
 
     <!-- HEADER -->
-    <header>
-        <div class="header-click-area"></div>
+    <div role="header" class="header">
+        <?php
+        // <div class="header-click-area"></div>
+        ?>
 
-        <article class="header-title">
+        <div class="header-title">
             <h1>Sandrina Pereira</h1>
-            <h2>Front End Developer<br>UX UI Designer</h2>
-        </article>
-    </header>
+            <h2>Front End Developer <br>UX UI Designer</h2>
+        </div>
+    </div>
 
     <?php
     // <!-- NAV TOP -->
@@ -111,12 +113,14 @@
     <!-- MAIN -->
     <main>
         <!-- NAV-PRESENTATION -->
-        <nav class="navigation-square">
-                <ul class="nav-ul">
+        <nav role="navigation" class="navigation-square">
+            <h3 class="human-hidden">Navigation</h3>
+
+            <ul class="nav-ul">
                     <li class="nav-li-practice">
                         <div class="li-square square2">
                             <div class="li-title">
-                                <a href="#practice"><span>Practice</span></a>
+                                <h4><a href="#practice"><span>Practice</span></a></h4>
                             </div>
                         </div>
                     </li>
@@ -124,7 +128,7 @@
                     <li class="nav-li-theory">
                         <div class="li-square square1">
                             <div class="li-title">
-                                <a href="#theory"><span>Theory</span></a>
+                                <h4><a href="#theory"><span>Theory</span></a></h4>
                             </div>
                         </div>
                     </li>
@@ -132,7 +136,7 @@
                     <li class="nav-li-background">
                         <div class="li-square square3">
                             <div class="li-title">
-                                <a href="#background"><span>Background</span></a>
+                                <h4><a href="#background"><span>Background</span></a></h4>
                             </div>
                         </div>
                     </li>
@@ -150,7 +154,7 @@
             </div>
 
             <div class="mobile-welcome">
-                <h3 id="typewriter-mob">
+                <p id="typewriter-mob">
                     <?php
                     // Hey there cybertaute.<br>
                     // If you are here, <br>
@@ -161,12 +165,12 @@
                     // the black square <br>
                     ?>
 
-                </h3>
+                </p>
             </div>
         </nav>
 
         <!-- WELCOME-DESKTOP -->
-        <div class="help-trigger">
+        <div role="presentation" class="help-trigger">
             <div class="h-welcome">
                  <p class="typewriter"><span id="typewriter-desk">
                     <?php
@@ -180,7 +184,6 @@
                     // <br> so please, don't be<br>
                     // mad if you get lost.
                     ?>
-
                 </span></p>
             </div>
             <div class="h-close">
@@ -188,32 +191,49 @@
             </div>
         </div>
 
-
-        <div class="">
-
-
         <!-- PRACTICE -->
         <section class="section-practice" id="practice">
+            <h3 class="human-hidden">Practice - Projects</h3>
 
             <div class="practice-content scene">
+                <!-- 9. LEARNING HEALTH -->
+                <div role="parallax-effect" class="layer" data-depth="0.4">
+                    <article class="p-project">
+                        <img class="b-lazy"
+                            src=data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==
+                            data-src="assets/media/images/practice/project_lhealth.png"
+                            alt="Learning Health" title="Learning Health"/>
+                        <div class="p-line-web"></div>
+                        <h4 class="p-title">Learning Health</h4>
+                        <div class="p-container-info">
+                            <p class="p-field">Web Design & Web Development</p>
+                            <p class="p-data">Jan 2016</p>
+                        </div>
+                        <p class="p-caption">Do you know that kind of 90's website with big painful Forms and Tables without any sense of design? Well, I was asked to redesign and rebuild some of those pages from scratch. It was really funny to have a deeper knowledge about <strong>Form Validations (Front End)</strong> and <strong>Responsive Tables</strong>. I did the Design, HTML5, CSS3 and Javascript part. It was a great opportunity to start learning <strong/>Ajax</strong> with the Back End team. A big thanks to <a target='_blank' class="link-under" href="#">Raul Tavares</a>.</p>
+                        <a target="_blank" class="button-rectangle" href="#">
+                            <span class="button-hover-fill"></span>
+                            <p>online soon</p>
+                        </a>
+                    </article>
+                </div>
+
                 <!-- 8. CAROLINA MACHADO -->
-                <div class="layer" data-depth="0.3">
+                <div role="parallax-effect" class="layer" data-depth="0.3">
                     <article class="p-project">
                         <img class="b-lazy"
                             src=data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==
                             data-src="assets/media/images/practice/project_carolina.png"
-                            alt="TODO"/>
+                            alt="Carolina Machado"/>
                         <div class="p-line-web"></div>
-                        <h4 class="p-title laxyer">Carolina Machado</h4>
+                        <h4 class="p-title">Carolina Machado</h4>
                         <div class="p-container-info">
                             <p class="p-field">Web Design & Development</p>
-                            <p  class="p-data">08 Oct 2016</p>
+                            <p class="p-data">08 Oct 2015</p>
                         </div>
-                        <p class="p-caption" data-depth="0.3">This was born Against The Clock. <i>My partner in crime</i> asked me to build a website that could show her Fashion Design stuff before Lisbon Fashion Week <a target="_blank" class="link-under" href="//xx.co">Moda Lisboa - The Timers</a>  in which she participated. She asked me for it 3 months before the event. <i>"Something simple and minimal"</i>, she said. I did it in the night before the event. I designed it, coded it responsive and put it online in 6 hours. It was crazy. But I loved it.
+                        <p class="p-caption">This was born Against The Clock. <i>My partner in crime</i> asked me to build a website that could show her Fashion Design stuff before Lisbon Fashion Week <a target="_blank" class="link-under" href="//xx.co">Moda Lisboa - The Timers</a>  in which she participated. She asked me for it 3 months before the event. <i>"Something simple and minimal"</i>, she said. I did it in the night before the event. I designed it, coded it responsive and put it online in 6 hours. It was crazy. But I loved it.
                         <small>Prologue: Of course I spend the next days fixing minor bugs. No one noticed it x)</small>
                         </p>
-                        <!-- <p class="san-bold"><span>Fashion Designer</span></p> -->
-                        <a class="button-rectangle" href="//www.carolina-machado.com">
+                        <a target="_blank" class="button-rectangle" href="//www.carolina-machado.com">
                             <span class="button-hover-fill"></span>
                             <p>launch website</p>
                         </a>
@@ -221,84 +241,107 @@
                 </div>
 
                 <!-- 7. PISTOL SHRIMP -->
-                <div class="layer" data-depth="0.2">
+                <div role="parallax-effect" class="layer" data-depth="0.2">
                     <article class="p-project">
                         <img class="b-lazy"
                             src=data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==
                             data-src="assets/media/images/practice/project_pistolshrimp.png"
-                            alt="TODO"/>
+                            alt="Pistol Shrimp" title="Pistol Shrimp"/>
                         <div class="p-line-web"></div>
-                        <h4>Pistol Shrimp</h4>
-                        <p class="san-bold"><span>Record Label For Cybertauts</span></p>
-                        <a class="button-rectangle" href="//www.pistolshrimp.net">
+                        <h4 class="p-title">Pistol Shrimp</h4>
+                        <div class="p-container-info">
+                            <p class="p-field">Web Design & Development</p>
+                            <p class="p-data">Apr - Jun 2015</p>
+                        </div>
+                        <p class="p-caption">Final Degree project in Communication Design. Website of an online record label that distributes music for free. In each release the record label creates an interactive experience, enhancing the download, so there is more to it than just a click. The website presents itself with a black and white visual by focusing on the user experience. My part was focused on coding <strong>HTML5, CSS3 and JQuery</strong>. This was a group project made with <a target='_blank' class="link-under" href="#">Fuscos</a>, <a target='_blank' class="link-under" href="#">BLEID</a> and <a target='_blank' class="link-under" href="#">Margarida Botelho</a></p>
+                        <a target="_blank" class="button-rectangle" href="//www.pistolshrimp.net">
                             <div class="button-hover-fill"></div>
-                            <p>launch website </p>
+                            <p>launch website</p>
                         </a>
                     </article>
                 </div>
 
                 <!-- 6. MOON -->
-                <div class="layer" data-depth="0.4">
+                <div role="parallax-effect" class="layer" data-depth="0.4">
                     <article class="p-project">
                         <img class="b-lazy"
                             src=data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==
                             data-src="assets/media/images/practice/project_moon.png"
                             alt="TODO"/>
                         <div class="p-line-web"></div>
-                        <h4>Moon</h4>
-                        <p class="san-bold"><span>A Duncan Jones's film</span></p>
-                        <a class="button-rectangle" href="//www.googledrive.com/host/0Bx3MPS7bjIpfREZDci1FTXN0U0k/">
+                        <h4 class="p-title">Moon</h4>
+                        <div class="p-container-info">
+                            <p class="p-field">Web Design & Development</p>
+                            <p class="p-data">Feb - Mar 2015</p>
+                        </div>
+                        <p class="p-caption">Hope you know the movie <a target='_blank' class="link-under" href="#"><i>Moon</i> (2001) by Duncan Jones</a>. I did the website to try new stuff I was learning about Javascript and JQuery. The main focus of the website was not about how the film was made but the story and experience that the character lives along the narration. For this, the <strong>user’s interaction</strong> was fundamental on creating the website.</p>
+                        <a target="_blank" class="button-rectangle" href="//www.googledrive.com/host/0Bx3MPS7bjIpfREZDci1FTXN0U0k/">
                             <div class="button-hover-fill"></div>
-                            <p>launch website </p>
+                            <p>launch website</p>
                         </a>
                     </article>
                 </div>
 
                 <!-- 5. PROFANO -->
-                <div class="layer" data-depth="0.2">
+                <div role="parallax-effect" class="layer" data-depth="0.2">
                     <article class="p-project">
                         <img class="b-lazy"
                             src=data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==
                             data-src="assets/media/images/practice/project_profano.png"
                             alt="TODO"/>
                         <div class="p-line-web"></div>
-                        <h4>O Profano</h4>
-                        <p class="san-bold"><span>Digital newspaper - just an ideia</span></p>
-                        <a class="button-rectangle" href="//www.o-profano.tumblr.com" >
+                        <h4 class="p-title">Profano</h4>
+                        <div class="p-container-info">
+                            <p class="p-field">Tumblr Design & Development</p>
+                            <p class="p-data">Mar 2015</p>
+                        </div>
+                        <p class="p-caption">I was asked to create the newspaper’s website for the FBAUL. Unfortunately the project (the journalistic part of it) did not go through, so the website stood under construction. In this project I saw an opportunity to have a first contact with <strong>Tumblr API</strong> and to improve my knowledge in JQuery.</p>
+                        <a target="_blank" class="button-rectangle" href="//www.o-profano.tumblr.com" >
                             <div class="button-hover-fill"></div>
-                            <p>launch website </p>
+                            <p>launch website</p>
                         </a>
                     </article>
                 </div>
 
+                <!-- 4. GALERIA DOS LEÕES -->
+                    <!-- not good enough anymore -->
+
                 <!-- 3. PORTFOLIO -->
-                <div class="layer" data-depth="0.15">
+                <div role="parallax-effect" class="layer" data-depth="0.15">
                     <article class="p-project">
                         <img class="b-lazy"
                             src=data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==
                             data-src="assets/media/images/practice/project_portfolio.png"
                             alt="TODO"/>
                         <div class="p-line-web"></div>
-                        <h4><span>Portfolio</span></h4>
-                        <p class="san-bold">My first website </p>
-                        <a class="button-rectangle" href="//www.googledrive.com/host/0Bx3MPS7bjIpfRG5qeWw2anhRSDQ" >
+                        <h4 class="p-title">First Portfolio</h4>
+                        <div class="p-container-info">
+                            <p class="p-field">Web Design & Development</p>
+                            <p class="p-data">Nov - Dec 2014</p>
+                        </div>
+                        <p class="p-caption">This was the first website that I built from scratch. There I show some of my best works that I had at the time. Back then I already had some skills on HTML5 and CSS3. I had my <strong>first approach with SASS</strong> and developing knowledges about Javascript and jQuery. Since then I'm always using SCSS.</p>
+                        <a target="_blank" class="button-rectangle" href="//www.googledrive.com/host/0Bx3MPS7bjIpfRG5qeWw2anhRSDQ" >
                             <div class="button-hover-fidll"></div>
-                            <p>launch website </p>
+                            <p>launch website</p>
                         </a>
                     </article>
                 </div>
 
                 <!-- 2. METRO -->
-                <div class="layer" data-depth="0.3">
+                <div role="parallax-effect" class="layer" data-depth="0.3">
                     <article class="p-project">
                         <img class="b-lazy"
                             src=data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==
                             data-src="assets/media/images/practice/project_metro.png"
                             alt="TODO"/>
                         <div class="p-line-phone"></div>
-                        <h4>App Lisbon Metro</h4>
-                        <p class="san-bold">Concept of a app for Lisbon's subway</p>
-                        <a class="button-rectangle" href="//www.behance.net/gallery/18543767/App-Metro-Lisboa" >
+                        <h4 class="p-title">App Lisbon Metro</h4>
+                        <div class="p-container-info">
+                            <p class="p-field">App Design, Concept Art</p>
+                            <p class="p-data">May - Jun 2015</p>
+                        </div>
+                        <p class="p-caption">Mockup of a mobile app that works as a Carris pass, where is possible to buy tickets, check schedules, maps and also contains a travelling archive. Prototype developed in Illustrator, Photoshop and Marvel. This was an individual project.</p>
+                        <a target="_blank" class="button-rectangle" href="//www.behance.net/gallery/18543767/App-Metro-Lisboa" >
                             <div class="button-hover-fill"></div>
                             <p>see more</p>
                         </a>
@@ -306,16 +349,20 @@
                 </div>
 
                 <!-- 1. DET -->
-                <div class="layer" data-depth="0.2">
+                <div role="parallax-effect" class="layer" data-depth="0.2">
                     <article class="p-project">
                         <img class="b-lazy"
                             src=data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==
                             data-src="assets/media/images/practice/project_det.png"
                             alt="dutch experimental typography"/>
                         <div class="p-line-tablet"></div>
-                        <h4>Dutch Experimental Typography</h4>
-                        <p class="san-bold"><span>Digital catalogue of 70's - 90's Netherlands typography.</span></p>
-                        <a class="button-rectangle" href="//www.behance.net/gallery/26687261/Digital-Magazine-Dutch-experimental-typography" >
+                        <h4 class="p-title">Dutch Experimental Typography</h4>
+                        <div class="p-container-info">
+                            <p class="p-field">App Design, Digital Magazine</p>
+                            <p class="p-data">Mar - Apr 2014</p>
+                        </div>
+                        <p class="p-caption"><i>"Dutch Experimental Typography”</i> is a digital catalogue of typography, developed from the 70’s throughout the 90’s in the Netherlands. This app includes an interactive cover that the user can play with. It was developed using <strong>Mag+</strong> Software with InDesign. This was a group project made with <a target='_blank' class="link-under" href="#">Margarida Botelho</a>.</p>
+                        <a target="_blank" class="button-rectangle" href="//www.behance.net/gallery/26687261/Digital-Magazine-Dutch-experimental-typography" >
                             <div class="button-hover-fill"></div>
                             <p>see more</p>
                         </a>
@@ -341,19 +388,19 @@
             // </aside>
             ?>
 
-
             <div class="bottom-fadeout" id="fadeout-practice"></div>
 
         </section>
 
         <!-- mobile -->
-        <div class="button-expand-section" id="expand-practice">
+        <div role="expand-section-mobile" class="button-expand-section" id="expand-practice">
             <div class="button-hover-fill"></div>
             <p> show more projects </p>
         </div>
 
         <!-- THEORY -->
         <section class="section-theory scene" id="theory">
+            <h3 class="human-hidden">Theory - Knowledge</h3>
 
             <article class="t-development layer" data-depth="0.3">
                 <div class="X-article-vertical-content">
@@ -439,13 +486,15 @@
 
         </section>
         <!-- mobile -->
-        <div class="button-expand-section" id="expand-theory">
+        <div role="expand-section-mobile" class="button-expand-section" id="expand-theory">
             <div class="button-hover-fill"></div>
             <p> show more fields </p>
         </div>
 
         <!-- BACKGROUND -->
         <section class="section-background scene" id="background">
+
+            <h3 class="human-hidden">Background - Curriculum and Contact</h3>
 
             <article class="b-profile layer" data-depth="0.3">
                 <table class="table-std">
@@ -631,7 +680,7 @@
         </section>
 
         <!-- mobile -->
-        <div class="button-expand-section" id="expand-background">
+        <div role="expand-section-mobile" class="button-expand-section" id="expand-background">
             <div class="button-hover-fill"></div>
             <p> show more history </p>
         </div>
@@ -639,11 +688,12 @@
         </div>
         <!-- BOTTOM mobile -->
         <footer class="thank-you-for-reading-this">
+            <h6 class="human-hidden">Some Final Words</h6>
             <p> That's it for now.<br>
                 Thank you for reading this, <br>
                 or at least, scrolling.<br>
                 <br>
-                Don't be shy and talk about me with human beings around you
+                Don't be shy, so go talk about me with human beings around you
             </p>
         </footer>
     </main>
