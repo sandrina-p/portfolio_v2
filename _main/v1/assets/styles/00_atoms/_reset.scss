@@ -6,17 +6,17 @@ a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,c
 * {
     padding: 0;
     margin: 0;
-    color: $black;
+    color: $clr-form;
     box-sizing: border-box;
 }
 
-*::-webkit-scrollbar {
-    display: none;
-}
+// *::-webkit-scrollbar {
+//     display: none;
+// }
 
 body {
     cursor: crosshair;
     width: 100vw;
-    max-width: 100vw;
-    background-color: $white;
+    // max-width: 100vw;
+    background-color: $clr-space;
 }

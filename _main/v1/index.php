@@ -35,7 +35,11 @@
     <link rel="apple-touch-icon" sizes="152x152" href="icon152.png">
 
     <!--source-->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:,300,600,700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Mono:400,300,500' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="assets/styles/02_templates/all.min.css">
+
+
     <!-- google analytics  -->
     <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -70,105 +74,113 @@
         </article>
     </header>
 
-    <!-- NAV TOP -->
-    <!-- <nav class="navegacao-topo">
-        <div class="nav-safearea"></div>
-        <div class="the-square"></div>
-
-        <article class="nav-subTitles">
-            <nav class="n-subTitles-container">
-                <ul class="nav-subTitles-mobile">
-                    <li>
-                        <a href="#anchor-practice"><h3>Practice</h3></a>
-                    </li>
-                    <li>
-                        <a href="#anchor-theory"><h3>Theory</h3></a>
-                    </li>
-                    <li>
-                        <a href="#anchor-background"><h3>Background</h3></a>
-                    </li>
-                </ul>
-                <ul class="nav-subTitles-desktop">
-                    <li>
-                        <h3><span>Practice</span></h3>
-                    </li>
-                    <li>
-                        <h3><span>Theory</span></h3>
-                    </li>
-                    <li>
-                        <h3><span>Background</span></h3>
-                    </li>
-                </ul>
-            </nav>
-        </article>
-    </nav> -->
-
+    <?php
+    // <!-- NAV TOP -->
+    // <nav class="navegacao-topo">
+    //     <div class="nav-safearea"></div>
+    //     <div class="the-square"></div>
+    //
+    //     <article class="nav-subTitles">
+    //         <nav class="n-subTitles-container">
+    //             <ul class="nav-subTitles-mobile">
+    //                 <li>
+    //                     <a href="#anchor-practice"><h3>Practice</h3></a>
+    //                 </li>
+    //                 <li>
+    //                     <a href="#anchor-theory"><h3>Theory</h3></a>
+    //                 </li>
+    //                 <li>
+    //                     <a href="#anchor-background"><h3>Background</h3></a>
+    //                 </li>
+    //             </ul>
+    //             <ul class="nav-subTitles-desktop">
+    //                 <li>
+    //                     <h3><span>Practice</span></h3>
+    //                 </li>
+    //                 <li>
+    //                     <h3><span>Theory</span></h3>
+    //                 </li>
+    //                 <li>
+    //                     <h3><span>Background</span></h3>
+    //                 </li>
+    //             </ul>
+    //         </nav>
+    //     </article>
+    // </nav>
+    ?>
     <!-- MAIN -->
     <main>
         <!-- NAV-PRESENTATION -->
-        <nav class="presentation">
+        <nav class="navigation-square">
+                <ul class="nav-ul">
+                    <li class="nav-li-practice">
+                        <div class="li-square square2">
+                            <div class="li-title">
+                                <a href="#practice"><span>Practice</span></a>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="nav-li-theory">
+                        <div class="li-square square1">
+                            <div class="li-title">
+                                <a href="#theory"><span>Theory</span></a>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="nav-li-background">
+                        <div class="li-square square3">
+                            <div class="li-title">
+                                <a href="#background"><span>Background</span></a>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
             <div class="image-gif">
-                <!-- <div class="image-gif" onmouseover="PlaySound('mySound')" onmouseout="StopSound('mySound')">
-                <audio id='mySound' src='assets/media/sound/glitch.ogg'></audio> -->
-                <!-- <img src="assets/media/images/myself.gif" alt="profile"> -->
+                <?php
+                // <div class="image-gif" onmouseover="PlaySound('mySound')" onmouseout="StopSound('mySound')">
+                // <audio id='mySound' src='assets/media/sound/glitch.ogg'></audio>
+                // <img src="assets/media/images/myself.gif" alt="profile">
+                ?>
                 <img class="b-lazy"
                     src=data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==
                     data-src="assets/media/images/myself.gif"
                     alt="TODO"/>
             </div>
 
-            <div class="theory-trigger">
-                <div class="tt-square square1">
-                    <div class="tt-title">
-                        <h3><span>Theory</span></h3>
-                    </div>
-                </div>
-            </div>
-
-            <div class="practice-trigger">
-                <div class="pt-square square2">
-                    <div class="pt-title">
-                        <h3><span>Practice</span></h3>
-                    </div>
-                </div>
-            </div>
-
-            <div class="background-trigger">
-                <div class="bt-square square3">
-                    <div class="bt-title">
-                        <h3><span>Background</span></h3>
-                    </div>
-                </div>
-            </div>
-
             <div class="mobile-welcome">
                 <h3 id="typewriter-mob">
-                    <!-- Hey there cybertaute.<br>
-                    If you are here, <br>
-                    you are a lucky person.<br><br>
-                    You didn’t find me.<br>
-                    I found you.<br><br>
-                    Anything you need,<br>
-                    the black square <br>
-                    is your best friend -->
+                    <?php
+                    // Hey there cybertaute.<br>
+                    // If you are here, <br>
+                    // you are a lucky person.<br><br>
+                    // You didn’t find me.<br>
+                    // I found you.<br><br>
+                    // Anything you need,<br>
+                    // the black square <br>
+                    ?>
+
                 </h3>
             </div>
-
         </nav>
 
         <!-- WELCOME-DESKTOP -->
         <div class="help-trigger">
             <div class="h-welcome">
                  <p class="typewriter"><span id="typewriter-desk">
-                     <!-- Hey there cybertaute.<br>
-                    If you are here, you<br>
-                    are a lucky person.<br><br>
-                    You didn’t find me.<br>
-                    I found you.<br><br>
-                    I'm still under<br>
-                    construction,
-                    <br> so please, don't be<br>
-                    mad if you get lost. -->
+                    <?php
+                    // Hey there cybertaute.<br>
+                    // If you are here, you<br>
+                    // are a lucky person.<br><br>
+                    // You didn’t find me.<br>
+                    // I found you.<br><br>
+                    // I'm still under<br>
+                    // construction,
+                    // <br> so please, don't be<br>
+                    // mad if you get lost.
+                    ?>
+
                 </span></p>
             </div>
             <div class="h-close">
@@ -176,35 +188,46 @@
             </div>
         </div>
 
-        <!-- PRACTICE -->
-        <section class="section-practice" id="anchor-practice">
 
-            <ol class="practice-content scene">
+        <div class="">
+
+
+        <!-- PRACTICE -->
+        <section class="section-practice" id="practice">
+
+            <div class="practice-content scene">
                 <!-- 8. CAROLINA MACHADO -->
-                <li class="layer" data-depth="0.3">
+                <div class="layer" data-depth="0.3">
                     <article class="p-project">
                         <img class="b-lazy"
                             src=data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==
                             data-src="assets/media/images/practice/project_carolina.png"
                             alt="TODO"/>
-                        <div class="p-line"></div>
-                        <h4>Carolina Machado</h4>
-                        <p class="san-bold"><span>Fashion Designer</span></p>
+                        <div class="p-line-web"></div>
+                        <h4 class="p-title laxyer">Carolina Machado</h4>
+                        <div class="p-container-info">
+                            <p class="p-field">Web Design & Development</p>
+                            <p  class="p-data">08 Oct 2016</p>
+                        </div>
+                        <p class="p-caption" data-depth="0.3">This was born Against The Clock. <i>My partner in crime</i> asked me to build a website that could show her Fashion Design stuff before Lisbon Fashion Week <a target="_blank" class="link-under" href="//xx.co">Moda Lisboa - The Timers</a>  in which she participated. She asked me for it 3 months before the event. <i>"Something simple and minimal"</i>, she said. I did it in the night before the event. I designed it, coded it responsive and put it online in 6 hours. It was crazy. But I loved it.
+                        <small>Prologue: Of course I spend the next days fixing minor bugs. No one noticed it x)</small>
+                        </p>
+                        <!-- <p class="san-bold"><span>Fashion Designer</span></p> -->
                         <a class="button-rectangle" href="//www.carolina-machado.com">
-                            <div class="button-hover-fill"></div>
-                            <p>launch website </p>
+                            <span class="button-hover-fill"></span>
+                            <p>launch website</p>
                         </a>
                     </article>
-                </li>
+                </div>
 
                 <!-- 7. PISTOL SHRIMP -->
-                <li class="layer" data-depth="0.2">
+                <div class="layer" data-depth="0.2">
                     <article class="p-project">
                         <img class="b-lazy"
                             src=data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==
                             data-src="assets/media/images/practice/project_pistolshrimp.png"
                             alt="TODO"/>
-                        <div class="p-line"></div>
+                        <div class="p-line-web"></div>
                         <h4>Pistol Shrimp</h4>
                         <p class="san-bold"><span>Record Label For Cybertauts</span></p>
                         <a class="button-rectangle" href="//www.pistolshrimp.net">
@@ -212,16 +235,16 @@
                             <p>launch website </p>
                         </a>
                     </article>
-                </li>
+                </div>
 
                 <!-- 6. MOON -->
-                <li class="layer" data-depth="1">
-                    <article class="p-project" id="practice-project-moon">
+                <div class="layer" data-depth="0.4">
+                    <article class="p-project">
                         <img class="b-lazy"
                             src=data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==
                             data-src="assets/media/images/practice/project_moon.png"
                             alt="TODO"/>
-                        <div class="p-line"></div>
+                        <div class="p-line-web"></div>
                         <h4>Moon</h4>
                         <p class="san-bold"><span>A Duncan Jones's film</span></p>
                         <a class="button-rectangle" href="//www.googledrive.com/host/0Bx3MPS7bjIpfREZDci1FTXN0U0k/">
@@ -229,16 +252,16 @@
                             <p>launch website </p>
                         </a>
                     </article>
-                </li>
+                </div>
 
                 <!-- 5. PROFANO -->
-                <li class="layer" data-depth="0.2">
+                <div class="layer" data-depth="0.2">
                     <article class="p-project">
                         <img class="b-lazy"
                             src=data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==
                             data-src="assets/media/images/practice/project_profano.png"
                             alt="TODO"/>
-                        <div class="p-line"></div>
+                        <div class="p-line-web"></div>
                         <h4>O Profano</h4>
                         <p class="san-bold"><span>Digital newspaper - just an ideia</span></p>
                         <a class="button-rectangle" href="//www.o-profano.tumblr.com" >
@@ -246,16 +269,16 @@
                             <p>launch website </p>
                         </a>
                     </article>
-                </li>
+                </div>
 
                 <!-- 3. PORTFOLIO -->
-                <li class="layer" data-depth="0.15">
+                <div class="layer" data-depth="0.15">
                     <article class="p-project">
                         <img class="b-lazy"
                             src=data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==
                             data-src="assets/media/images/practice/project_portfolio.png"
                             alt="TODO"/>
-                        <div class="p-line"></div>
+                        <div class="p-line-web"></div>
                         <h4><span>Portfolio</span></h4>
                         <p class="san-bold">My first website </p>
                         <a class="button-rectangle" href="//www.googledrive.com/host/0Bx3MPS7bjIpfRG5qeWw2anhRSDQ" >
@@ -263,16 +286,16 @@
                             <p>launch website </p>
                         </a>
                     </article>
-                </li>
+                </div>
 
                 <!-- 2. METRO -->
-                <li class="layer" data-depth="0.3">
-                    <article class="p-project" id="p-project-metro">
+                <div class="layer" data-depth="0.3">
+                    <article class="p-project">
                         <img class="b-lazy"
                             src=data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==
                             data-src="assets/media/images/practice/project_metro.png"
                             alt="TODO"/>
-                        <div class="p-line"></div>
+                        <div class="p-line-phone"></div>
                         <h4>App Lisbon Metro</h4>
                         <p class="san-bold">Concept of a app for Lisbon's subway</p>
                         <a class="button-rectangle" href="//www.behance.net/gallery/18543767/App-Metro-Lisboa" >
@@ -280,16 +303,16 @@
                             <p>see more</p>
                         </a>
                     </article>
-                </li>
+                </div>
 
                 <!-- 1. DET -->
-                <li class="layer" data-depth="0.2">
-                    <article class="p-project" id="p-project-det">
+                <div class="layer" data-depth="0.2">
+                    <article class="p-project">
                         <img class="b-lazy"
                             src=data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==
                             data-src="assets/media/images/practice/project_det.png"
                             alt="dutch experimental typography"/>
-                        <div class="p-line"></div>
+                        <div class="p-line-tablet"></div>
                         <h4>Dutch Experimental Typography</h4>
                         <p class="san-bold"><span>Digital catalogue of 70's - 90's Netherlands typography.</span></p>
                         <a class="button-rectangle" href="//www.behance.net/gallery/26687261/Digital-Magazine-Dutch-experimental-typography" >
@@ -297,13 +320,13 @@
                             <p>see more</p>
                         </a>
                     </article>
-                </li>
+                </div>
             </ol>
 
-            <script>
-            // <!-- <aside class="project-index"> -->
+            <?php
+            // <aside class="project-index">
             //
-            //     <!-- <div id="index-thumb"></div>
+            //     <div id="index-thumb"></div>
             //
             //     <ol reversed>
             //         <!-- 7. PISTOL SHRIMP --><li><a href="#practice-project-pistolshrimp">Pistol Shrimp</a></li>
@@ -315,8 +338,8 @@
             //         <!-- 1. DET --><li><a href="#practice-project-metro">App Metro</a></li>
             //     </ol>
             //
-            // <!-- </aside> -->
-            </script>
+            // </aside>
+            ?>
 
 
             <div class="bottom-fadeout" id="fadeout-practice"></div>
@@ -330,7 +353,7 @@
         </div>
 
         <!-- THEORY -->
-        <section class="section-theory scene" id="anchor-theory">
+        <section class="section-theory scene" id="theory">
 
             <article class="t-development layer" data-depth="0.3">
                 <div class="X-article-vertical-content">
@@ -422,211 +445,188 @@
         </div>
 
         <!-- BACKGROUND -->
-        <section class="section-background scene" id="anchor-background">
+        <section class="section-background scene" id="background">
 
-            <article class="b-contact layer" data-depth="0.4">
-                <table>
-                    <tr>
-                        <td class="top-left">
-                            <h5>Contact</h5>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <p class="san">Phone</p>
-                        </td>
-                        <td>
-                            <p>(+351) 91 79 0 70 75</p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><p class="san">E-MAIL</p></td>
-                        <td><a class="typewriter" alt="gmail" href="mailto:sandrin4pereir4@gmail.com?subject=You%20are%20awesome!">sandrin4pereir4@gmail.com</a></td>
-                    </tr>
-                    <tr>
-                        <td><p class="san">behance</p></td>
-                        <td><a class="typewriter" alt="behance" href="//www.behance.com/sandrin4p">/sandrin4p</a></td>
-                    </tr>
-                    <tr>
-                        <td><p class="san">facebook</p></td>
-                        <td><a class="typewriter" alt="facebook" href="//www.facebook.com/sandrin4p">/sandrin4p</a></td>
-                    </tr>
+            <article class="b-profile layer" data-depth="0.3">
+                <table class="table-std">
+                    <thead>
+                        <tr>
+                            <th><h5>Profile</h5></th><th><!--empty--></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Place Of Birth</td>
+                            <td>Genève, Switzerland</td>
+                        </tr>
+                        <tr>
+                            <td>Nacionality</td>
+                            <td>Portuguese</td>
+                        </tr>
+                        <tr>
+                            <td>Address</td>
+                            <td>Lisbon, Portugal</td>
+                        </tr>
+                    <?php
+                    // <tr>
+                    //     <td>Personality</td>
+                    //     <td>INTJ</td>
+                    // </tr>
+                    ?>
+                    </tbody>
                 </table>
             </article>
 
-            <article class="b-profile layer" data-depth="0.17">
-                <table>
-                    <tr>
-                        <td class="top-left">
-                            <h5>Profile</h5>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <p class="san">Place Of Birth</p>
-                        </td>
-                        <td>
-                            <p>Genève, Switzerland</p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><p class="san">Nacionality</p></td>
-                        <td><p>Portuguese</p></td>
-                    </tr>
-                    <tr>
-                        <td><p class="san">Address</p></td>
-                        <td><p>Lisbon, Portugal</p></td>
-                    </tr>
-                    <tr>
-                        <td><p class="san">Personality</p></td>
-                        <td><p>INTJ</p></td>
-                    </tr>
+            <article class="b-timeline layer" data-depth="0.2">
+                <table class="table-std">
+                    <thead>
+                        <tr>
+                            <th><h5>TimeLine</h5></th><th><!--empty--></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="time-section">
+                            <td>Nowadays</td> <td><!--empty--></td>
+                        </tr>
+                        <tr>
+                            <td>Front End Developer</td>
+                            <td>
+
+                                <a target="_blank" class="link-under" href="//zaask.pt" alt="Zaask"><strong>Zaask</strong></a>
+                                Start-up
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Postgraduate Studies</td>
+
+                            <td>
+                                <strong>Digital Experience Design</strong>
+                                Faculty of Fine Arts of University of Lisbon
+                            </td>
+                        </tr>
+
+                        <tr class="time-section">
+                            <td>Jan 2016</td> <td><!--empty--></td>
+                        </tr>
+                        <tr>
+                            <td>Front End Developer <br> and Web Designer</td>
+                            <td>
+                                <strong>Learning Health</strong>
+                                Freelancer Project
+                            </td>
+                        </tr>
+
+                        <tr class="time-section">
+                            <td>Aug - Sep 2015</td> <td><!--empty--></td>
+                        </tr>
+                        <tr>
+                            <td>UX UI Designer</td>
+                            <td>
+                                <strong>GetPure</strong>
+                                Start-up
+                            </td>
+                        </tr>
+
+                        <tr class="time-section">
+                            <td>Jul 2015</td> <td><!--empty--></td>
+                        </tr>
+                        <tr>
+                            <td>Online Course</td>
+                            <td>
+                                <strong>jQuery lvl 1/2<br>javascript lvl 2/4</strong>
+                                codeschool.com
+                            </td>
+                        </tr>
+
+                        <tr class="time-section">
+                            <td>May 2015</td> <td><!--empty--></td>
+                        </tr>
+                        <tr>
+                            <td>Contest</td>
+                            <td>
+                                <strong>Graphic Design Finalist</strong>
+                                Galp Create 2015
+                            </td>
+                        </tr>
+
+                        <tr class="time-section">
+                            <td>2014 - 15</td> <td><!--empty--></td>
+                        </tr>
+                        <tr>
+                            <td>Erasmus</td>
+                            <td>
+                                <strong>Comunication Design</strong>
+                                Faculty of Fine Arts of University of Porto
+                            </td>
+                        </tr>
+
+                        <tr class="time-section">
+                            <td>2012 - 15</td> <td><!--empty--></td>
+                        </tr>
+                        <tr>
+                            <td>Degree</td>
+                            <td>
+                                <strong>Comunication Design</strong>
+                                Faculty of Fine Arts of University of Lisbon
+                            </td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr class="time-section">
+                            <td>Soon<td><!--empty--></td>
+                        </tr>
+                        <tr>
+                            <td>Learning something new</td>
+                            <td>
+                                <strong>Your Idea</strong>
+                                Feel free to contact me. Maybe I'll have time for your project :)
+                            </td>
+                        </tr>
+                    </tfoot>
                 </table>
             </article>
 
-            <article class="b-timeline layer" data-depth="0.15">
-                <table class="table-fixed">
-                    <tr>
-                        <td class="top-left">
-                            <h5>TimeLine</h5>
-                        </td>
-                    </tr>
+            <?php
+            // <article class="b-description layer" data-depth="0.4">
+            //     <p>I consider myself a self-taught person with potential in web design. Being updated in the digital world helps me innovate the technical and creative aspect in every project that I do. To produce a cohesive and functional website, as also to create an well thought user experience (UX) are some fundamental aspects in creating a good relationship between the client and the final product.</p>
+            // </article>
+            ?>
+
+            <?php
+            // <div class="bottom-fadeout" id="fadeout-background"></div>
+            ?>
+
+            <article class="b-contact layer" data-depth="0.2">
+                <table class="table-std">
+                    <thead>
+                        <tr>
+                            <th><h5>Contact</h5></th><th><!--empty--></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        // <tr>
+                        //     <td>Phone</td>
+                        //     <td>(+351) 91 79 0 70 75</td>
+                        // </tr>
+                        ?>
+                        <tr>
+                            <td>e-mail</td>
+                            <td>
+                                <a class="link-under" alt="gmail" href="mailto:sandrin4pereir4@gmail.com?subject=You%20are%20awesome!">sandrin4pereir4@gmail.com</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Behance</td>
+                            <td><a target="_blank" class="link-under" alt="Behance" title="Behance" href="//behance.com/sandrin4p">/sandrin4p</a></td>
+                        </tr>
+                        <tr>
+                            <td>Facebook</td>
+                            <td><a target="_blank" class="link-under" alt="facebook" title="Behance" href="//facebook.com/sandrin4p">/sandrin4p</a></td>
+                        </tr>
+                    </tbody>
                 </table>
-
-                <div class="table-scroll">
-                    <table>
-                        <tr>
-                            <td class="top-left">
-                                <h5>TimeLine</h5>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td class="middle-left">
-                                <p class="san">
-                                    Nowadays<br>
-                                    Web Designer
-                                </p>
-                            </td>
-                            <td>
-                                <p class="san-bold">
-                                    <br>
-                                    <a  class="typewriter" href="//zaask.pt" alt="zaask">Zaask</a>
-                                </p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="middle-left "><!--soon class deleted-->
-                                <p class="san">
-                                    Postgraduate Studies
-                                </p>
-                            </td>
-                            <td> <!--soon class deleted-->
-
-                                <br>
-                                <p class="san-bold">
-                                    Digital Experience Design<br>
-                                </p>
-                                <p>
-                                    Faculty of Fine Arts
-                                    of University of Lisbon
-                                </p>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td class="middle-left">
-                                <p class="san">
-                                    Aug - Sep 2015<br>
-                                    UX UI Designer
-                                </p>
-                            </td>
-                            <td>
-                                <p class="san-bold">
-                                    <br>
-                                    GetPure
-                                </p>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td class="middle-left">
-                                <p class="san">
-                                    Jul 2015<br>
-                                    Online Course
-                                </p>
-                            </td>
-                            <td>
-                                <p class="san-bold">
-                                    <br>
-                                    jQuery lvl 1/2<br>
-                                    javascript lvl 2/4<br></p>
-                                    <p>
-                                        codeschool.com
-                                    </p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="middle-left">
-                                    <p class="san">
-                                        May 2015<br>
-                                        Contest
-                                    </p>
-                                </td>
-                                <td>
-                                    <br>
-                                    <p class="san-bold">Graphic Design Finalist</p>
-                                    <p>
-                                        Galp Create 2015
-                                    </p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="middle-left">
-                                    <p class="san">
-                                        2014 - 15<br>
-                                        Erasmus
-                                    </p>
-                                </td>
-                                <td>
-                                    <br>
-                                    <p class="san-bold">
-                                        Comunication Design<br>
-                                    </p>
-                                    <p>
-                                        Faculty of Fine Arts
-                                        of University of Porto
-                                    </p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="bottom-left">
-                                    <p class="san">
-                                        2012 - 15<br>
-                                        Degree
-                                    </p>
-                                </td>
-                                <td>
-                                    <br>
-                                    <p class="san-bold">
-                                        Comunication Design<br>
-                                    </p>
-                                    <p>
-                                        Faculty of Fine Arts <br>
-                                        of University of Lisbon
-                                    </p>
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
-
-                </article>
-
-            <!-- <article class="b-description layer" data-depth="0.4">
-                    <p>I consider myself a self-taught person with potential in web design. Being updated in the digital world helps me innovate the technical and creative aspect in every project that I do. To produce a cohesive and functional website, as also to create an well thought user experience (UX) are some fundamental aspects in creating a good relationship between the client and the final product.</p>
-            </article> -->
-
-            <div class="bottom-fadeout" id="fadeout-background"></div>
+            </article>
 
         </section>
 
@@ -636,13 +636,14 @@
             <p> show more history </p>
         </div>
 
+        </div>
         <!-- BOTTOM mobile -->
-        <footer class="mobile-bottom">
-            <p> That's it for now<br><br>
-                Comeback in a desktop<br>
-                for a better experience<br><br>
-                Until there talk about me<br>
-                with human beings around you
+        <footer class="thank-you-for-reading-this">
+            <p> That's it for now.<br>
+                Thank you for reading this, <br>
+                or at least, scrolling.<br>
+                <br>
+                Don't be shy and talk about me with human beings around you
             </p>
         </footer>
     </main>
@@ -660,7 +661,7 @@
 
     <!-- SCRIPTS -->
 
-    <script src="assets/plugins/jquery/jquery.min.js"></script> <!--jquery-->
+    <script src="assets/plugins/jquery/jquery.min.js"></script><!--jquery-->
 
     <script src="assets/scripts/01_templates/index.min.js"></script> <!--custom-->
 

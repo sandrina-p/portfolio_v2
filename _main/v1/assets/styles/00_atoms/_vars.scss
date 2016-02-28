@@ -2,26 +2,54 @@
 #VARIABLES AND MIXINS
 \*------------------------------------*/
 
-$type0: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-$type1: 'Courier New', Courier, 'Lucida Sans Typewriter', 'Lucida Typewriter', monospace;
-// $type1: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+$type0: 'Open Sans', sans-serif;
+$type1: 'Roboto Mono', monospace;
 
 $safeArea: 12px;
+$marginM: 12px;
 $borderWidth: 2px;
 $marginTopPage: $safeArea*4+4px;
 
-$black: #000;
-$white: #fff;
+
+// clr = color
+$clr-form: #000;
+$clr-form-lighter: lighten($clr-form, 80%);
+$clr-space: #fff;
 $gray: #838383;
+$clr-space-lvl1: darken($clr-space, 2%);
+$clr-space-lvl2: darken($clr-space, 4%);
+// $clr-space-lvl3: darken($clr-space, 6%);
+
+$myColor: #19babf;
+
 
 $border: $borderWidth solid;
+$border-clr-form-lighter: $borderWidth/2 solid $clr-form-lighter;
+
 
 $speed: 250ms;
+
+
+$footerHeight: 100px;
 
 $phablet-width: 410px;
 $tablet-width: 650px;
 $desktop-width: 850px;
 
+
+$textXXL: xx-large;
+$textXL: x-large;
+$textL: large;
+$textM: medium;
+$textS: small;
+$textXS: x-small;
+
+$lineHeightS: 1.2;
+$lineHeightM: 1.5;
+
+$fablet-width: 410px;
+$tablet-width: 650px;
+$desktop-width: 850px;
 
 //transition
 @mixin transition($speed) {
@@ -44,7 +72,12 @@ $desktop-width: 850px;
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
+}
 
+@mixin centery {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 @mixin flexbox {
