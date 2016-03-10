@@ -1,170 +1,192 @@
-body {
-   font-family: $type0;
-}
+/*------------------------------------*\
+### ORGANIZATION ###
+\*------------------------------------*/
+
+// A NEW EXPERIMENT
+// They say we shouldn't repeat code. When possible we should merge classes with same properties. So I'm trying a new method of writing typography. Can be not the best way, but there is no golden rules/best practices for this.
+
+//What I do here basically is grouping major properties that the site uses (different font, uppercase, bold letter-spacing, etc...). In this way I write less 25% +/- and i keep the styles more coerent
 
 
-h1 { //TITLE
-   font-size: $textL;
-   text-transform: uppercase;
-   letter-spacing: 1pt;
-   font-weight: bold;
-
-   @include tablet {
-      font-size: $textXL;
-   }
-}
-
-h2 { //SUB-TITLE
-   font-size: $textXS;
-   text-transform: uppercase;
-   letter-spacing: 0.5pt;
-   font-weight: bold;
-   margin-top: 6px;
-
-   @include phablet {
-      font-size: $textS;
-   }
-}
-
-// h3 { //SECTION-TITLES
-//    font-size: $textS;
-//    text-transform: uppercase;
-//    font-weight: bold;
-//    letter-spacing: 0.5pt;
-//    line-height: 1.3;
-//    @include transition($speed);
-//
-//    &:hover {
-//       @include squeeze;
-//    }
-//
-//    @include phablet {
-//       font-size: $textM;
-//    }
-// }
-//
-// h4 { //PROJECTS-TITLES
-//    font-size: $textL;
-//    text-transform: uppercase;
-//    letter-spacing: 1pt;
-//    font-weight: bold;
-//
-//    @include tablet {
-//       font-size: $textXXL;
-//    }
-// }
-//
-// h5 { //ARTICLES-TITLES
-//     font-size: $textL;
-//     text-transform: uppercase;
-//     letter-spacing: 1pt;
-//     font-weight: bold;
-//
-//     @include tablet {
-//        font-size: $textXL;
-//     }
-// }
+// ------ LIST of fonts All fonts start with .f-
+// .f-h1 page title
+// .f-h2 page subtitle
+// .f-txt-mono
+// .f-nav-item
+// .f-article-title
+// .f-italic{x}
+// .f-upcase{x}
+// .f-link-under
+// .f-link-under-mono
 
 
-p { //TEXTO CORRIDO
-   font-family: $type1;
-   font-size: $textS;
-   line-height: 1.3;
-   font-weight: 600;
+// ------ LIST of buttons
+// .btn-on //works
+// .btn-off //disabled
 
-   @include phablet {
-      font-size: $textM;
-      font-weight: 400;
-   }
-}
 
-p.topic { //TEXTO EM TOPIC NAS ARTICLES DAS SECTIONS
-   margin-top: $marginM;
-   max-height: $marginM*10;
-   line-height: 2;
-   overflow: hidden;
 
-}
+// First the basic font family and size - I didn't put it on _vars.scss because... well, It is all together in this way
+$font-sans: 'Open Sans', sans-serif;
+$font-mono: 'Roboto Mono', monospace;
 
-p.inline { // Tools + image
-   width: $marginM*12;
-   text-align: right;
-   padding-right: $marginM*2;
-   line-height: 200%;
-}
+$fontXXL: 2rem; //28px
+$fontXL: 1.5rem;
+$fontL: 1.2rem;
+$fontM: 1rem; //14px
+$fontS: 0.87rem;
+$fontXS: 0.8rem;
+$fontXXS: 0.7rem;
 
-p.san { //TEXTO SAN-SERIF
-   font-family: $type0;
-   text-transform: uppercase;
-   font-size: $textXS;
-   letter-spacing: 1px;
-   color: $gray;
-   font-weight: 400;
-}
 
-p.san-bold { //TEXTO SAN-SERIF BOLD
-   font-family: $type0;
-   font-size: $textXS;
-   text-transform: uppercase;
-   font-weight: bold;
-   letter-spacing: 1px;
-}
+$lineHeightS: 1.2;
+$lineHeightM: 1.5;
+$lineHeightL: 1.7;
 
-span {
+html {
+    font-size: 11px;
     color: $clr-form;
-}
-.typewriter {
-   font-family: $type1;
-   font-size: $textS;
-   font-weight: 400;
-   line-height: 1.7;
-}
+    font-family: $font-sans;
+    line-height: $lineHeightM;
 
-.txt-squeeze {
-   @include transition($speed);
-   &:hover {
-      letter-spacing: 2pt;
-      font-weight: 400;
-   }
-}
+    @media #{$m-tablet} {
+        font-size: 12px;
+    }
 
-a {
-   // font-size: $textS;
-   // text-transform: lowercase;
-   text-decoration: none;
-   // font-weight: 600;
-    cursor: pointer;
+    @media #{$m-desktop} {
+        font-size: 14px;
+    }
 
-   @include phablet {
-    //   font-size: $textM;
-    //   font-weight: 400;
-   }
+    @media #{$m-desktop-hd} {
+        font-size: 16px;
+    }
+
 }
 
-a.link {
-    font-size: $textS;
-    text-transform: lowercase;
-    text-decoration: none;
-    font-weight: 600;
 
-    @include phablet {
-       font-size: $textM;
-       font-weight: 400;
+//-------FONT MONO
+[class^="f-txt-mono"],
+.f-link-under-mono {
+    font-family: $font-mono;
+    line-height: 1.7;
+    font-weight: 300;
+}
+
+
+
+//-------UPPERCASE FONTS
+.f-h1,
+.f-h2,
+.f-article-title,
+[class^="f-upcase"] {
+    text-transform: uppercase;
+}
+
+
+//------FONT BOLD
+.f-h1,
+.f-h2,
+.f-article-title,
+.f-italicL,
+[class^="f-upcase"] {
+    font-weight: 800;
+}
+
+
+
+//-------LETTER SPACING 0.1REM
+.f-h1,
+.f-h2 {
+    letter-spacing: 0.1rem;
+}
+
+
+
+//-------UPCASE BOLD FONTS
+[class^="f-upcase"] {
+    font-size: $fontXS;
+    font-weight: 800;
+    line-height: $lineHeightM;
+}
+
+.f-upcase-space {
+    color: $clr-space;
+}
+
+.f-upcase-gray {
+    color: $clr-middle;
+}
+
+
+//-------ITALIC FONTS
+[class^="f-italic"] {
+    font-style: italic;
+    font-weight: 100;
+}
+
+
+
+//-------SMALLER PARAGRAPH
+.f-txt-monoS,
+.f-txt-sansS {
+    font-size: $fontS;
+}
+
+.f-txt-monoXS,
+.f-txt-sansXS {
+    font-size: $fontXS;
+}
+
+//-------BIGGER PARAGRAPH
+
+.f-italicL,
+.f-upcaseL {
+    font-size: $fontL;
+}
+
+
+
+//-------SPECIFIC PROPERTIES
+
+.f-h1 {
+    font-size: $fontXXL;
+}
+
+.f-h2 {
+    font-size: $fontS;
+}
+
+.f-article-title {
+    font-size: $fontXXL;
+}
+
+.f-nav-item {
+    @extend .f-article-title;
+    font-size: $fontXL;
+
+    &:hover {
+        font-weight: 100;
+        letter-spacing: 2;
     }
 }
 
-a.link-typewriter {
-   @extend p;
-   @include transition($speed/2);
-   &:hover {
-      font-weight: 600;
-      letter-spacing: 0.3pt;
-   }
+.f-txt-mono-space {
+    color: $clr-space;
 }
 
-a.link-under {
+
+
+//-------LINKS
+
+a {
+    color: inherit;
+    font-size: inherit;
+    text-decoration: none;
+}
+
+.f-link-under,
+.f-link-under-mono {
     position: relative;
-    text-transform: none;
     font-size: inherit;
     text-decoration: underline;
     cursor: alias;
@@ -177,7 +199,7 @@ a.link-under {
         background: $myColor;
         bottom: 1px;
         left: 0;
-        @include transition($speed);
+        transition: width $speed ease-in-out;
     }
 
     &:hover {
@@ -187,10 +209,98 @@ a.link-under {
     }
 }
 
-i {
+
+//------BUTTONS
+
+.btn-off,
+.btn-on {
+    position: relative;
+    display: inline-block;
+    border: $border;
+    border-color: $clr-form;
+    text-align: center;
+    padding: $safeArea/2 $safeArea;
+    font-family: $font-mono;
+    color: $clr-form;
+    z-index: 2;
+    transition: color $speed ease-in;
+
+    &:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 0;
+        height: 100%;
+        z-index: -1;
+        transition: width $speed ease-in;
+    }
+
+    &:hover {
+        &:before {
+            width: 100%;
+        }
+    }
+}
+
+
+// .btn that works
+.btn-on {
+    background: $clr-space;
+    cursor: alias;
+
+    &:before {
+        background: $clr-form;
+    }
+
+    &:hover {
+        color: $clr-space;
+    }
+}
+
+.btn-on-fill {
+    @extend .btn-on;
+    display: block;
+    padding: $safeArea*2;
+    background: $clr-form;
+    color: white;
+}
+
+// .btn disabled
+.btn-off {
+    background: none;
+    cursor: not-allowed !important;
+
+    &:before {
+        background: $clr-off;
+    }
+
+    &:hover {
+        &:before {
+            animation-name:btn-off;
+            animation-duration: 1500ms;
+            animation-iteration-count:1;
+            animation-timing-function:linear;
+            width: 5px;
+        }
+    }
+}
+
+
+@keyframes btn-off {
+    0% { width: 0; }
+    25% { width: 5px; }
+    50% { width: 0; }
+    75% { width: 5px; }
+}
+
+
+//-------HTML5
+
+i, em {
     font-style: italic;
 }
 
-strong {
+strong, b {
     font-weight: 600;
 }

@@ -1,0 +1,26 @@
+/*------------------------------------*\
+WIDGET - DESKTOP
+\*------------------------------------*/
+
+.widget-invert {
+    @extend .X-square;
+    padding: 0;
+    position: fixed;
+    bottom: $safeArea*2;
+    left: $safeArea*2;
+    background-color: $clr-space;
+    z-index: 1;
+    display: none;
+}
+
+.widget-resources {
+    @extend .X-square;
+    padding: 0;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    height: $safeArea*6;
+    width: $safeArea;
+    z-index: 2;
+    // display: none;
+}

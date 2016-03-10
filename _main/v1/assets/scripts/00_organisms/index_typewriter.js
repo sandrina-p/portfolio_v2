@@ -8,66 +8,66 @@ $( document ).ready(function() {
 
       "use strict";
 
-      function prompt(element, text) {
-         var span = document.createElement("span");
-         span.innerHTML = text;
-         element.appendChild(span);
-      }
-
-      function startmob() {
-         var realisticTypewriter = new RealisticTypewriter(),
-         typeWriterElement = document.getElementById("typewriter-mob");
-
-         setTimeout(function () {
-            realisticTypewriter.type("Hey there cybernaut.", typeWriterElement, function () {
-            prompt(typeWriterElement, "<br/>");
-
-               setTimeout(function () {
-                  realisticTypewriter.type("If you are here,", typeWriterElement, function () {
-                  prompt(typeWriterElement, "<br/>");
-                     setTimeout(function () {
-                        realisticTypewriter.type("you are a lucky person.", typeWriterElement, function () {
-                        prompt(typeWriterElement, "<br/>");
-
-                        setTimeout(function () {
-                           realisticTypewriter.type("You didn't find me.", typeWriterElement, function () {
-                           prompt(typeWriterElement, "<br/>");
-                           setTimeout(function () {
-                              realisticTypewriter.type("I found you.", typeWriterElement, function () {
-                              setTimeout(function () {
-                                 prompt(typeWriterElement, "<br/>");
-                                 prompt(typeWriterElement, "<br/>");
-                                 realisticTypewriter.type("Anything you need", typeWriterElement, function () {
-                                 prompt(typeWriterElement, "<br/>");
-                                 setTimeout(function () {
-                                    realisticTypewriter.type("the black square", typeWriterElement, function () {
-                                    prompt(typeWriterElement, "<br/>");
-                                    setTimeout(function () {
-                                       realisticTypewriter.type("is your best friend.", typeWriterElement, function () {
-                                       });
-                                    }, 50);
-                                    });
-                                 }, 50);
-                                 });
-                              }, 1000);
-                              });
-                           }, 200);
-                           });
-                        }, 500);
-                        });
-                     }, 100);
-                  });
-               }, 100);
-            });
-         }, 100);
-      }
-
-      var readyStateCheckInterval = setInterval(function () {
-         if (document.readyState === "complete") {
-            startmob();
-            clearInterval(readyStateCheckInterval);
-         }
-      }, 0);
+    //   function prompt(element, text) {
+    //      var span = document.createElement("span");
+    //      span.innerHTML = text;
+    //      element.appendChild(span);
+    //   }
+      //
+    //   function startmob() {
+    //      var realisticTypewriter = new RealisticTypewriter(),
+    //      typeWriterElement = document.getElementById("typewriter-mob");
+      //
+    //      setTimeout(function () {
+    //         realisticTypewriter.type("Hey there cybernaut.", typeWriterElement, function () {
+    //         prompt(typeWriterElement, "<br/>");
+      //
+    //            setTimeout(function () {
+    //               realisticTypewriter.type("If you are here,", typeWriterElement, function () {
+    //               prompt(typeWriterElement, "<br/>");
+    //                  setTimeout(function () {
+    //                     realisticTypewriter.type("you are a lucky person.", typeWriterElement, function () {
+    //                     prompt(typeWriterElement, "<br/>");
+      //
+    //                     setTimeout(function () {
+    //                        realisticTypewriter.type("You didn't find me.", typeWriterElement, function () {
+    //                        prompt(typeWriterElement, "<br/>");
+    //                        setTimeout(function () {
+    //                           realisticTypewriter.type("I found you.", typeWriterElement, function () {
+    //                           setTimeout(function () {
+    //                              prompt(typeWriterElement, "<br/>");
+    //                              prompt(typeWriterElement, "<br/>");
+    //                              realisticTypewriter.type("Anything you need", typeWriterElement, function () {
+    //                              prompt(typeWriterElement, "<br/>");
+    //                              setTimeout(function () {
+    //                                 realisticTypewriter.type("the black square", typeWriterElement, function () {
+    //                                 prompt(typeWriterElement, "<br/>");
+    //                                 setTimeout(function () {
+    //                                    realisticTypewriter.type("is your best friend.", typeWriterElement, function () {
+    //                                    });
+    //                                 }, 50);
+    //                                 });
+    //                              }, 50);
+    //                              });
+    //                           }, 1000);
+    //                           });
+    //                        }, 200);
+    //                        });
+    //                     }, 500);
+    //                     });
+    //                  }, 100);
+    //               });
+    //            }, 100);
+    //         });
+    //      }, 100);
+    //   }
+      //
+    //   var readyStateCheckInterval = setInterval(function () {
+    //      if (document.readyState === "complete") {
+    //         startmob();
+    //         clearInterval(readyStateCheckInterval);
+    //      }
+    //   }, 0);
 
    } else {
 
@@ -81,60 +81,12 @@ $( document ).ready(function() {
 
       function startdesk() {
          var realisticTypewriter = new RealisticTypewriter(),
-         typeWriterElement = document.getElementById("typewriter-desk");
-
+         typeWriterElement = document.getElementById("js-typewriter-presentation");
          setTimeout(function () {
             realisticTypewriter.type("Hey there cybernaut.", typeWriterElement, function () {
             prompt(typeWriterElement, "<br/>");
-
-               setTimeout(function () {
-                  realisticTypewriter.type("If you are here,", typeWriterElement, function () {
-                  prompt(typeWriterElement, "<br/>");
-                     setTimeout(function () {
-                        realisticTypewriter.type("you are a lucky person.", typeWriterElement, function () {
-                        prompt(typeWriterElement, "<br/>");
-
-                        setTimeout(function () {
-                           realisticTypewriter.type("You didn't find me.", typeWriterElement, function () {
-                           prompt(typeWriterElement, "<br/>");
-                           setTimeout(function () {
-                              realisticTypewriter.type("I found you.", typeWriterElement, function () {
-                              setTimeout(function () {
-                                 prompt(typeWriterElement, "<br/>");
-                                 prompt(typeWriterElement, "<br/>");
-                                 realisticTypewriter.type("I'm still under", typeWriterElement, function () {
-                                 prompt(typeWriterElement, "<br/>");
-                                 setTimeout(function () {
-                                    realisticTypewriter.type("construction, so", typeWriterElement, function () {
-                                    prompt(typeWriterElement, "<br/>");
-                                    setTimeout(function () {
-                                       realisticTypewriter.type("please don't be mad", typeWriterElement, function () {
-                                       prompt(typeWriterElement, "<br/>");
-                                       setTimeout(function () {
-                                          realisticTypewriter.type("if you get lost.", typeWriterElement, function () {
-                                          prompt(typeWriterElement, "<br/>");
-
-                                          setTimeout(function () {
-                                             $('.h-close').css({'display':'block'});
-                                          }, 1000);
-                                          });
-                                       }, 100);
-                                       });
-                                    }, 50);
-                                    });
-                                 }, 50);
-                                 });
-                              }, 1500);
-                              });
-                           }, 200);
-                           });
-                        }, 500);
-                        });
-                     }, 100);
-                  });
-               }, 100);
             });
-         }, 5000);
+        }, 1000);
       }
 
       var readyStateCheckInterval = setInterval(function () {
@@ -142,9 +94,7 @@ $( document ).ready(function() {
             startdesk();
             clearInterval(readyStateCheckInterval);
          }
-      }, 0);
+     }, 100);
    }
-// }, 2500);
-// }
 
 });
