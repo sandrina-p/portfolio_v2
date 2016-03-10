@@ -5,97 +5,10 @@
 
 \*------------------------------------*/
 
-.js-bigSection-visible {
-
-    // now
-    // top: 5px;
-    // border-top: $border;
-
-
-
-
-    // border-width: $borderWidth*2;
-    // box-shadow: 0px -5px 5px #cfcfcf;
-}
-
-.js-m-section-open {
-    max-height: initial;
-}
-
-.js-border {
-    border-top: $border;
-}
-
-.js-button-hover-fill-yes{
-    width: 100%;
-    background-color: $clr-form;
-}
-
-.js-nav-subTitles-visible {
-    border-width: 2px;
-    @include transition($speed);
-    width: 125px;
-
-    @include phablet {
-        width: 150px;
-    }
-}
-
-.js-nav-subTitles-full-open {
-    border-width: 2px;
-    max-height: 200px;
-    width: 125px;
-    z-index: 1;
-    left: -2px;
-    @include transition($speed);
-
-    @include phablet {
-        width: 150px;
-    }
-
-    .n-subTitles-container {
-        max-height: 150px;
-        ul {
-            margin-top: 0;
-
-            li {
-                padding: $safeArea 0;
-            }
-        }
-    }
-
-    @include desktop {
-        top: 0;
-        left: 0;
-        width: 200px;
-        height: 140px;
-        border-left-width: 0;
-        border-right-width: 0;
-        border-top: 2px solid black;
-
-        .n-subTitles-container {
-            height: 140px;
-
-            ul {
-                margin-top: 0;
-
-                li {
-                    padding: $safeArea 0;
-                }
-            }
-
-            .align-title-practice,
-            .align-title-theory,
-            .align-title-background {
-                padding-right: 4px;
-            }
-        }
-    }
-}
 
 .js-loading-finished {
     opacity: 0;
-    @include transition($speed*3);
+    transition: opacity $speed*2 ease-out;
 }
 
 .js-invert {

@@ -7,29 +7,6 @@
 
 $(document).ready(function() {
 
-   window.onload=function() {
-      setTimeout(function () {
-         $('.loading-container').addClass('js-loading-finished');
-         setTimeout(function () {
-            $('.loading-container').css({display:'none'});
-         }, 00);
-      }, 0);
-    //   }, 1000);
-    // }, 2500);
-   }
-
-   // CLICK ON BLACK SQUARE - OPEN MENU
-   $('.the-square').on('click', function() {
-
-      if ( $('.nav-subTitles').hasClass('js-nav-subTitles-full-open') ) {
-         $('.nav-subTitles').removeClass('js-nav-subTitles-full-open');
-
-      } else {
-         $('.nav-subTitles').addClass('js-nav-subTitles-full-open');
-      }
-
-   });
-
    // smooth scroll
    $('a[href*=#]').click(function(event){
       $('*').animate({
@@ -41,113 +18,84 @@ $(document).ready(function() {
       // event.preventDefault();
    });
 
-   //--------- MOBILE STUFF --------- //
+
+   // The function actually applying the offset
+   function offsetAnchor() {
+       if(location.hash.length !== 0) {
+           window.scrollTo(window.scrollX, window.scrollY - 100);
+       }
+   }
+
+   // This will capture hash changes while on the page
+   $(window).on("hashchange", function () {
+       offsetAnchor();
+   });
+
+   // This is here so that when you enter the page with a hash,
+   // it can provide the offset in that case too. Having a timeout
+   // seems necessary to allow the browser to jump to the anchor first.
+   window.setTimeout(function() {
+       offsetAnchor();
+   }, 1);
+
    if (!matchMedia('screen and (min-width: 850px) and (min-height: 600px)').matches) {
+       $('.navigation-square').addClass('js-nav-mini js-nav-mini-all');
+   } else {
 
-      // CHANGE TITLE WHEN SCROLL
-      var titlepractice = $("#anchor-practice").offset().top;
-      var titleTheory = $("#anchor-theory").offset().top;
-      var titleBackground = $("#anchor-background").offset().top;
+   }
 
-      // bug if one of the section are open solution: nested conditional
-      $('main').scroll(function(){
+   // SCROLL TO CHANGE NAV
+   $(document).scroll(function () {
+       var a_begin = $(this).scrollTop();
+       var a_begin_scroll = 100;
+       var a_offset = 400;
+       var a_theory = $("#theory").offset().top;
+       var a_background = $("#background").offset().top;
 
-         if( ( $(this).scrollTop() + 35) < titlepractice) {
-            // prevent scroll back
-            $('.nav-subTitles').removeClass('js-nav-subTitles-visible');
-            $('.n-subTitles-container ul').removeClass('align-title-practice');
-
-         } else if ( ($(this).scrollTop() + 50) < titleTheory ) {
-            $('.nav-subTitles').addClass('js-nav-subTitles-visible');
-            $('.n-subTitles-container ul').addClass('align-title-practice');
-            // prevent scroll back
-            $('.n-subTitles-container ul').removeClass('align-title-theory');
-            $('.nav-subTitles').removeClass('js-invert');
-
-         } else if ( ($(this).scrollTop() + 50) < titleBackground) {
-            $('.n-subTitles-container ul').addClass('align-title-theory');
-            $('.nav-subTitles').addClass('js-invert');
-            // prevent scroll back
-            $('.n-subTitles-container ul').removeClass('align-title-background');
-
-         } else {   //last one show Background
-            $('.n-subTitles-container ul').addClass('align-title-background');
-            // prevent scroll back
-            $('.nav-subTitles').removeClass('js-invert');
-         }
-      });
-
-      // toogleText show and hide contents
-      jQuery.fn.extend({
-         toggleText: function (a, b){
-            var that = this;
-            if (that.text() != a && that.text() != b){
-               that.text(a);
-            }
-            else
-            if (that.text() == a){
-               that.text(b);
-            }
-            else
-            if (that.text() == b){
-               that.text(a);
-            }
-            return this;
-         }
-      });
-
-      // EXPAND SECTION practice
-      $('#expand-practice').on('click', function() {
-         //$('.js-m-section-open').toggle();
-         $('.section-practice').toggleClass('js-m-section-open');
-         $('#fadeout-practice').toggle();
-         $(this).find('p').toggleText("hide projects", "show more projects");
-         $(this).toggleClass('js-invert');
-         return false;
-      });
-
-      // EXPAND SECTION THEORY
-      $('#expand-theory').on('click', function() {
-         $('.section-theory').toggleClass('js-m-section-open');
-         $('#fadeout-theory').toggle();
-         $(this).find('p').toggleText("hide fields", "show more fields");
-         $(this).toggleClass('js-invert');
-         return false;
-      });
-
-      // EXPAND SECTION BACKGROUND
-      $('#expand-background').on('click', function() {
-         $('.section-background').toggleClass('js-m-section-open');
-         $('#fadeout-background').toggle();
-         $(this).find('p').toggleText("hide history", "show more history");
-         $(this).toggleClass('js-invert');
-         return false;
-      });
-
-
-      //RANDOM CHANGE OPACITY GIF
-      function profileGif() {
-
-         var profileGif = function() {
-
-            var intRand = Math.round(Math.random() * (5000 - 1500)) + 500; // intervale glitchs
-
-            $('.presentation img').css({'opacity':'1'});
-
-            setTimeout(function () {
-               $('.presentation img').css({'opacity':'0'}).dequeue();
-            }, 250);
-
-            setTimeout(profileGif, intRand);
+       // if is smaller than desktop
+       if (!matchMedia('screen and (min-width: 850px) and (min-height: 500px)').matches) {
+           if (a_begin > a_begin_scroll) {
+               $('.final-words, .widget-invert').show();
+           } else {
+               $('.final-words, .widget-invert').hide();
+           }
+       } else {
+             if (a_begin > a_begin_scroll) {
+                 $('.navigation-square').addClass('js-nav-mini js-nav-practice');
+                 $('.final-words, .widget-invert').show();
+             } else {
+                 $('.navigation-square').removeClass('js-nav-mini js-nav-practice');
+                 $('.final-words, .widget-invert').hide();
+             }
          }
 
-         profileGif();
-      }
-      // CALL FUNCTIONS OF GLITCH OPACITY GIF
-      $(function() {
-         var intRand1 = Math.round(Math.random() * (5000 - 1500)) + 500; // generate new time
-         setTimeout(profileGif, intRand1);
-      });
+       if($(this).scrollTop() + a_offset > a_theory)
+       {
+         $('.navigation-square').addClass('js-nav-theory').removeClass('js-nav-practice');
+       } else {
+          $('.navigation-square').removeClass('js-nav-theory');
+       }
+
+       if($(this).scrollTop() + a_offset > a_background)
+       {
+         $('.navigation-square').addClass('js-nav-background').removeClass('js-nav-practice, js-nav-theory');
+       } else {
+          $('.navigation-square').removeClass('js-nav-background');
+       }
+   });
+
+   // CHANGE NAV ON MOUSEENTER
+   $(document).on({
+       mouseenter: function () {
+           var data = $(this).attr('data-nav');
+           $('.navigation-square').removeClass('js-nav-theory js-nav-background js-nav-practice').addClass('js-nav-'+data);
+       },
+   }, '.js-nav-mini .nav-li-square');
+
+
+   //--------- MOBILE STUFF --------- //
+   if (!matchMedia('screen and (min-width: 650px) and (min-height: 600px)').matches) {
+
 
 
    } else {
@@ -159,189 +107,6 @@ $(document).ready(function() {
     //     $('span').glitch();
     //   });
 
-    //   //------------------ HEADER - CLICK TO GO OUT
-    //   $('.header-click-area, .header-title').on('click', function(){
-    //      $('.section-practice, .section-background, .section-theory').removeClass('js-bigSection-visible');
-    //      $('.n-subTitles-container > ul').removeClass('align-title-practice align-title-theory align-title-background');
-    //      $('.n-subTitles-container > ul').addClass('align-title-nothing');
-    //   });
-      //
-      //
-    //   //------------------ NAVIGATION BAR - HOVER
-    //   $('.the-square, .nav-subTitles, .nav-safearea').on({
-    //      mouseenter: function() {
-    //         $(this).parent().find('.nav-subTitles').addClass('js-nav-subTitles-full-open');
-    //      }, mouseleave: function() {
-    //         $('.nav-subTitles').removeClass('js-nav-subTitles-full-open');
-    //      }
-    //   });
-      //
-    //   //------------------ NAVIGATION BAR - CLICK
-      //
-    //   var alignTitle = {};
-    //   var openSection = {};
-      //
-    //   function selectSection (){
-    //      $('.nav-subTitles').removeClass('js-nav-subTitles-full-open');
-    //      $('.n-subTitles-container > ul').removeClass('align-title-theory');
-    //      $('.n-subTitles-container > ul').removeClass('align-title-practice');
-    //      $('.n-subTitles-container > ul').removeClass('align-title-background');
-      //
-    //      $('.n-subTitles-container > ul').addClass(alignTitle);
-      //
-    //      $('.section-practice, .section-theory, .section-background').removeClass('js-bigSection-visible');
-      //
-    //      $(openSection).addClass('js-bigSection-visible');
-    //   }
-      //
-    //   // //Sub-title practice
-    //   $('.n-subTitles-container').find('li:nth-child(1)').on('click', function() {
-    //      alignTitle = 'align-title-practice';
-    //      openSection = '.section-practice';
-    //      selectSection();
-    //   });
-      //
-    //   // //Sub-title Theory
-    //   $('.n-subTitles-container').find('li:nth-child(2)').on('click', function() {
-    //      alignTitle = 'align-title-theory';
-    //      openSection = '.section-theory';
-    //      selectSection();
-    //   });
-      //
-    //   // //Sub-title Background
-    //   $('.n-subTitles-container').find('li:nth-child(3)').on('click', function() {
-    //      alignTitle = 'align-title-background';
-    //      openSection = '.section-background';
-    //      selectSection();
-    //   });
-
-
-    //   //------------------ PRESENTATION - CLICK
-    //   $('.practice-trigger').on('click', function(){
-    //      $('.section-practice').addClass('js-bigSection-visible');
-    //      $('.n-subTitles-container > ul').removeClass('align-title-nothing align-title-background align-title-theory');
-    //      $('.n-subTitles-container > ul').addClass('align-title-practice');
-    //   });
-      //
-    //   $('.theory-trigger').on('click', function(){
-    //      $('.section-theory').addClass('js-bigSection-visible');
-    //      $('.n-subTitles-container > ul').removeClass('align-title-nothing align-title-practice align-title-background');
-    //      $('.n-subTitles-container > ul').addClass('align-title-theory');
-    //   });
-      //
-    //   $('.background-trigger').on('click', function(){
-    //      $('.section-background').addClass('js-bigSection-visible');
-    //      $('.n-subTitles-container > ul').removeClass('align-title-nothing align-title-practice align-title-theory');
-    //      $('.n-subTitles-container > ul').addClass('align-title-background');
-    //   });
-
-
-      //------------------ BUTTON - HOVER / CLICK
-    //   $('.button-rectangle, .widget-resources, .widget-invert').on({
-    //      mouseenter: function() {
-    //         $(this).find('.button-hover-fill').parent().find('p').css({'color':'white'}); // change color only p for hover-fill
-    //         $(this).find('.button-hover-fill').addClass('js-button-hover-fill-yes');
-    //         // $(this).css({'cursor':'not-allowed'});
-      //
-    //         // for red button
-    //         var div = $(this).find('.button-hover-no');
-    //           div.animate({width: '10px', opacity: '1'}, "0");
-    //           div.animate({opacity: '0'}, "0");
-    //           div.animate({opacity: '1'}, "fast");
-    //           div.animate({opacity: '0'}, "0");
-    //           div.animate({opacity: '1'}, "fast");
-      //
-      //
-    //      }, mouseleave: function() {
-    //         $(this).find('p').css({'color':''});
-    //         $(this).find('.button-hover-fill').removeClass('js-button-hover-fill-yes');
-      //
-    //         var div = $(this).find('.button-hover-no');
-    //           div.animate({width: '0px', opacity: '1'}, "0");
-    //      }
-    //   });
-
-        //------------------ NAVIGATION
-
-        $(document).on({
-            mouseenter: function () {
-                $('.navigation-square').addClass('js-nav-practice').removeClass('js-nav-theory js-nav-background');
-            },
-        }, '.js-nav-mini .nav-li-practice .li-square');
-
-        $(document).on({
-            mouseenter: function () {
-                $('.navigation-square').addClass('js-nav-theory').removeClass('js-nav-practice js-nav-background');
-            },
-        }, '.js-nav-mini .nav-li-theory .li-square');
-
-        $(document).on({
-            mouseenter: function () {
-                $('.navigation-square').addClass('js-nav-background').removeClass('js-nav-practice js-nav-theory');
-            },
-        }, '.js-nav-mini .nav-li-background .li-square');
-
-
-        // The function actually applying the offset
-        function offsetAnchor() {
-            if(location.hash.length !== 0) {
-                window.scrollTo(window.scrollX, window.scrollY - 100);
-            }
-        }
-
-        // This will capture hash changes while on the page
-        $(window).on("hashchange", function () {
-            offsetAnchor();
-        });
-
-        // This is here so that when you enter the page with a hash,
-        // it can provide the offset in that case too. Having a timeout
-        // seems necessary to allow the browser to jump to the anchor first.
-        window.setTimeout(function() {
-            offsetAnchor();
-        }, 1); // The delay of 1 is arbitrary and may not always work right (although it did in my testing).
-
-        $(document).scroll(function () {
-
-            // console.log($(this).scrollTop());
-
-            var a_begin = $(this).scrollTop();
-            var a_begin_scroll = 100;
-            var a_offset = 400;
-            var a_theory = $("#theory").offset().top;
-            var a_background = $("#background").offset().top;
-
-            if (a_begin > a_begin_scroll) {
-                $('.navigation-square').addClass('js-nav-mini js-nav-practice');
-                $('.thank-you-for-reading-this').show();
-            } else {
-                $('.navigation-square').removeClass('js-nav-mini js-nav-practice');
-                $('.thank-you-for-reading-this').hide();
-            }
-
-            if($(this).scrollTop() + a_offset > a_theory)
-            {
-              $('.navigation-square').addClass('js-nav-theory').removeClass('js-nav-practice');
-            } else {
-               $('.navigation-square').removeClass('js-nav-theory');
-            }
-
-            if($(this).scrollTop() + a_offset > a_background)
-            {
-              $('.navigation-square').addClass('js-nav-background').removeClass('js-nav-practice, js-nav-theory');
-            } else {
-               $('.navigation-square').removeClass('js-nav-background');
-            }
-        });
-
-
-      //------------------ CLOSE WELCOME
-      $('.h-close').on('click', function(){
-         $(this).css({'display':'none'});
-         $('.h-welcome').slideUp('fast');
-      });
-
-      /////////
 
       // RANDOM CHANGE POSITION .SQUARE DIV
       // next level: put this 3 functions in one... hmmm codeschool will help me
@@ -352,7 +117,7 @@ $(document).ready(function() {
 
       function square1() {
 
-         var intSquare1 = function() {
+         var intsquare1 = function() {
 
             var intRand = Math.round(Math.random() * (14000 - 6500)) + 500; // intervale glitchs
 
@@ -366,25 +131,25 @@ $(document).ready(function() {
             var sFillchosen1b = sFill1a[Math.floor(Math.random() * sFill1a.length)]; //(change background color)
 
 
-            $('.square1').css({marginTop: sTop1a+'px', marginLeft: sLeft1a+'px', backgroundColor: sFillchosen1b});
+            $('.js-square1').css({marginTop: sTop1a+'px', marginLeft: sLeft1a+'px', backgroundColor: sFillchosen1b});
 
             setTimeout(function () {
-               $('.square1').css({marginTop: sTop1b+'px', marginLeft: sLeft1b+'px'}).dequeue();
+               $('.js-square1').css({marginTop: sTop1b+'px', marginLeft: sLeft1b+'px'}).dequeue();
             }, 50);
 
             setTimeout(function () {
-               $('.square1').css({marginTop:'', marginLeft:''}).dequeue();
+               $('.js-square1').css({marginTop:'', marginLeft:''}).dequeue();
             }, 200);
 
-            setTimeout(intSquare1, intRand);
+            setTimeout(intsquare1, intRand);
          }
 
-         intSquare1();
+         intsquare1();
       }
 
       function square2() {
 
-         var intSquare2 = function() {
+         var intsquare2 = function() {
 
             var intRand = Math.round(Math.random() * (9000 - 5000)) + 500; // intervale glitchs
 
@@ -398,25 +163,25 @@ $(document).ready(function() {
             var sFillchosen1b = sFill1a[Math.floor(Math.random() * sFill1a.length)]; //(change background color)
 
 
-            $('.square2').css({marginTop: sTop1a+'px', marginLeft: sLeft1a+'px', backgroundColor: sFillchosen1b});
+            $('.js-square2').css({marginTop: sTop1a+'px', marginLeft: sLeft1a+'px', backgroundColor: sFillchosen1b});
 
             setTimeout(function () {
-               $('.square2').css({marginTop: sTop1b+'px', marginLeft: sLeft1b+'px'}).dequeue();
+               $('.js-square2').css({marginTop: sTop1b+'px', marginLeft: sLeft1b+'px'}).dequeue();
             }, 50);
 
             setTimeout(function () {
-               $('.square2').css({marginTop:'0px', marginLeft:'0px'}).dequeue();
+               $('.js-square2').css({marginTop:'0px', marginLeft:'0px'}).dequeue();
             }, 200);
 
-            setTimeout(intSquare2, intRand);
+            setTimeout(intsquare2, intRand);
          }
 
-         intSquare2();
+         intsquare2();
       }
 
       function square3() {
 
-         var intSquare3 = function() {
+         var intsquare3 = function() {
 
             var intRand = Math.round(Math.random() * (12000 - 6000)) + 500; // intervale glitchs)
 
@@ -430,27 +195,27 @@ $(document).ready(function() {
             var sFillchosen1b = sFill1a[Math.floor(Math.random() * sFill1a.length)]; //(change background color)
 
 
-            $('.square3').css({marginTop: sTop1a+'px', marginLeft: sLeft1a+'px', backgroundColor: sFillchosen1b});
+            $('.js-square3').css({marginTop: sTop1a+'px', marginLeft: sLeft1a+'px', backgroundColor: sFillchosen1b});
 
             setTimeout(function () {
-               $('.square3').css({marginTop: sTop1b+'px', marginLeft: sLeft1b+'px'}).dequeue();
+               $('.js-square3').css({marginTop: sTop1b+'px', marginLeft: sLeft1b+'px'}).dequeue();
             }, 50);
 
             setTimeout(function () {
-               $('.square3').css({marginTop:'0px', marginLeft:'0px'}).dequeue();
+               $('.js-square3').css({marginTop:'0px', marginLeft:'0px'}).dequeue();
             }, 200);
 
-            setTimeout(intSquare3, intRand);
+            setTimeout(intsquare3, intRand);
          }
 
-         intSquare3();
+         intsquare3();
       }
 
       function invertglitch() {
 
             var intbgglitch = function() {
 
-               var intRand5 = Math.round(Math.random() * (30000 - 5000)) + 500; // intervale glitchs)
+               var intRand5 = Math.round(Math.random() * (35500 - 5000)) + 500; // intervale glitchs)
 
                $('body *').addClass('js-invert');
 
@@ -464,14 +229,13 @@ $(document).ready(function() {
             intbgglitch();
          }
 
-
-      // CALL FUNCTIONS OF GLITCH SQUARE
-    //   $(function() {
-    //       setTimeout(square1, intRand1);
-    //       setTimeout(square2, intRand2);
-    //       setTimeout(square3, intRand3);
-    //       setTimeout(invertglitch, intRand4);
-    //   });
+         // CALL FUNCTIONS OF GLITCH SQUARE
+          $(function() {
+              setTimeout(square1, intRand1);
+              setTimeout(square2, intRand2);
+              setTimeout(square3, intRand3);
+              setTimeout(invertglitch, intRand4);
+          });
    };
 
 });

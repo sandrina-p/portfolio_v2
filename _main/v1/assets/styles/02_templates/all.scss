@@ -1,138 +1,137 @@
-// * Created by: Sandrina Pereira
-// * sandrina-p.net
+// Created by: Sandrina Pereira
+// sandrina-p.net
+// * v1
 // * 14 nov 15
+// ** v2
+// ** 03 mar 16
 
 /*------------------------------------*\
 ### ORGANIZATION ###
+/*------------------------------------*\
 
-> VARIABLES
+> @imports
 
-> CLASS PATTERNS
 
-> HEADER
-> NAV
+> html5
 
-> MAIN
-. PRESENTATION
-. SECTIONS
-PRACTICE
-THEORY
-BACKGROUND
-. WIDGETS (NOT YET)
-> FOTTER (NOT YET)
+> header
 
-> MEDIA QUERIES MOBILE TABLET
+> Nav-presentation
 
-> CLASS TO JQUERY
+>> Nav-js-manipulation
 
+> Sections - (practice theory background, final-words)
+
+>> Practice Articles
+
+>> Practice Theory
+
+>> Practice Background
+
+>> Practice final-words
+
+> more @imports
+Notes:
+- classes started with .X- are patterns class
+
+- Mobile First with @medias next to each div/article/section
+--- I read this method is more easy to manage css and it keeps the mobile first approach.
+
+/*------------------------------------*\
+#IMPORTS
 \*------------------------------------*/
-
 @import "../00_atoms/_vars.scss";
 @import "../00_atoms/_reset.scss";
 @import "../00_atoms/_graphic.scss";
 
 
+/*------------------------------------*\
+#HTML5 - CSS LOADED
+\*------------------------------------*/
+
+.mobile-not-responsive,
+.header,
+.main,
+.widget-resources,
+.widget-invert {
+    display: block;
+}
+
 
 body {
-    // max-height: 100vh;
-    // overflow: hidden;
     background: $clr-space;
 }
 
-.loading-container {
+main {
+    position: relative;
+    min-height: 100vh;
+    width: 100vw;
+    overflow-x: hidden;
+}
+
+
+.mobile-not-responsive {
     position: absolute;
+    top: 0; left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 9;
+    background: $clr-space;
+    padding: $safeArea;
+
+    @media #{$m-tablet} {
+        display: none;
+    }
+
+    .f-upcaseL {
+        text-align: center;
+        margin-top: $safeArea;
+    }
+
+    .f-txt-mono {
+        max-width: 450px;
+    }
+
+    .btn-on-fill {
+        margin-top: $safeArea;
+    }
+}
+
+// mnr = mobile not responsive
+.mnr-header {
+    width: 100%;
+    text-align: right;
+    padding-bottom: $safeArea*2;
+}
+
+.mnr-link {
+    padding: $safeArea 0;
+}
+/*------------------------------------*\
+#HEADER
+\*------------------------------------*/
+
+.header {
+    position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
-    height: 100vh;
+    height: 100px;
+    z-index: 0;
     background-color: $clr-space;
-    display: none;
-    z-index: -3;
-    display: none;
-
-    .loading-square {
-        position: absolute;
-        top: calc(100px + 35vh - 125px);
-        left: calc(50vw - 125px);
-        width: 250px;
-        height: 250px;
-        padding: $safeArea;
-        padding-top: $safeArea/2;
-        @include flexbox;
-        @include flexcol;
-        justify-content: center;
-        text-align: center;
-        overflow: hidden;
-
-        h2 {
-            color: $clr-space;
-            line-height: 1.2;
-            animation-name:blink;
-            animation-duration: 2s;
-            animation-iteration-count:infinite;
-            animation-timing-function:linear;
-        }
-
-        p {
-            position: relative;
-        }
-    }
-
-    .loading-border {
-        width: 100%;
-        height: 100%;
-        background-color: $clr-form;
-        border: $border;
-        border-color: $clr-space;
-        border-width: $borderWidth*2;
-        position: absolute;
-        top: 0; left: 0;
-    }
-
-    .loading-border-cover {
-        width: $borderWidth*15;
-        height: $borderWidth*15;
-        background-color: $clr-form;
-        position: absolute;
-        top: 0; left: 0;
-        animation-name: loading;
-        animation-duration: 5s;
-        animation-iteration-count:infinite;
-        animation-timing-function: linear;
-    }
 }
 
-@keyframes loading {
-    0% { top: 0; left: 0; }
-    25% { top: 0; left: 245px; }
-    50% { top: 245px; left: 245px; }
-    75% { top: 245px; left: 0; }
-    100% { top: 0; left: 0; }
-
+.header-title {
+    padding: $safeArea;
+    width: 100%;
+    text-align: right;
 }
 
-@keyframes blink{
-    0%{
-        opacity: 1;
-    }
-
-    50%{
-        opacity: 0;
-    }
-
-    100%{
-        opacity: 1;
-    }
-}
 
 /*------------------------------------*\
-#PATTERNS CLASSES
+NAV-PRESENTATION
 \*------------------------------------*/
 
-
-// DIVS started with .X- are patterns divs.
-
-// black squares
 .X-square {
     position: relative;
     width: $safeArea*2;
@@ -143,350 +142,162 @@ body {
     cursor: pointer;
 }
 
-// titles with bottom line
-.X-sectionTitle {
-    position: absolute;
-    top: -$safeArea*2 + 2px;
-    left: $safeArea*2 -2px;
-    width: $safeArea*14;
-    border-bottom: $border;
-    color: $clr-form;
-    cursor: pointer;
-}
 
-// all big sections of the page (theory, bg, practice)
-.X-bigSection {
-    position: relative;
-    width: 100vw;
-    height: auto;
-    max-height: 600px;
-    padding: $safeArea*3 0;
-    border-bottom: $border;
-    overflow: hidden;
-    background-color: $clr-space;
-}
-
-// Theory article
-.X-theory-article {
-    display: flex;
-    justify-content: flex-end;
-    position: relative;
-    margin-top: 15vh;
-    border-top: $border;
-    color: $clr-form;
-}
-
-// Theory Article with vertical simple content
-.X-article-vertical-content {
-    position: relative;
-    margin-top: -26px;
-}
-
-
-/*------------------------------------*\
-#HEADER
-\*------------------------------------*/
-
-.header {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100px;
-    z-index: 0;
-    cursor: pointer;
-}
-
-.header-click-area {
-    position: absolute;
-    top: 0; left: 0;
-    width: 100vw;
-    height: 100px;
-    align-self: flex-start;
-    z-index: -1;
-}
-
-.header-title {
-    position: absolute;
-    right: $safeArea*2;
-    top: $safeArea*2;
-    width: 500px;
-    text-align: right;
-    cursor: pointer;
-    align-self: flex-end;
-}
-
-
-.nav-safearea {
-    position: absolute;
-    top: -24px;
-    left: $safeArea*2;
-    width: 200px;
-    height: $safeArea*2;
-}
-.navegacao-topo {
-    position: absolute;
-    left: $safeArea*2;
-    @include flexbox;
-    @include flexrow;
-    flex-wrap: wrap;
-    top: $safeArea*2;
-    z-index: 3;
-}
-
-.the-square { // square topo
-    @extend .X-square;
-    position: relative;
-    border: $border;
-    color: $clr-space;
-}
-
-.nav-subTitles { // area dos titulos
-    @extend .X-sectionTitle;
-    position: relative;
-    // border: 0;
-    width: 0;
-    // background-color: $clr-form;
-    max-height: $safeArea*2;
-    // border-color: $clr-space;
-    border-style: solid;
-    border-width: 0;
-    top: 0px; // alinhado com top .square
-    left: -2px;
-    z-index: -1;
-    overflow: hidden;
-    @include transition($speed);
-}
-
-.n-subTitles-container { // container visivel dos titulos
-    background-color: $clr-space;
-    max-height: $safeArea*2 - 3px;
-    overflow: hidden;
-    @include transition($speed);
-    margin-top: 1px;
-
-    ul { // lista dos titulos
-        //desk margin-top: 10px;
-        cursor: pointer;
-        @include transition($speed);
-        margin-top: 24px;
-        padding-right: $safeArea/3;
-        // background-color: rgba(255, 255, 255, 0.80);
-        //desk background-color: transparent;
-
-        li {
-            top: 0; left: 0;
-            position: relative;
-            text-align: right;
-            padding-top: $safeArea;
-
-            h3 {
-                // color: $clr-space;
-            }
-        }
-    }
-
-    .align-title-nothing {
-        margin-top: 24px;
-        height: $safeArea*2;
-    }
-    .align-title-practice {
-        margin-top: -11px;
-    }
-    .align-title-theory {
-        margin-top: -38px;
-
-    }
-    .align-title-background {
-        margin-top: -67px;
-    }
-}
-
-.nav-open {
-    max-height: 130px;
-}
-
-
-
-/*------------------------------------*\
-#MAIN
-\*------------------------------------*/
-main {
-    position: relative;
-    max-width: 100vw;
-    max-height: 100vh;
-    overflow-y: scroll;
-    overflow-x: hidden;
-}
-
-
-/*------------------------------------*\
-NAV-PRESENTATION
-\*------------------------------------*/
 .presentation {
-    position: relative;
-    width: 100vw;
-    height: auto;
-    margin: 0;
-    margin-top: 100px;
-    @include flexbox;
-    @include flexcol;
-    z-index: -1;
-}
+    @include centery;
+    position: fixed;
+    top: 40vh;
+    border-left: $border;
+    padding-left: 1vw;
+    margin-left: 1vw;
+    width: 270px;
 
-.mobile-welcome {
-    position: absolute;
-    top: 0;
-    // top: 50%;
-    // transform: translateY(-50%);
-    left: $safeArea*2;
-    width: calc(100vw - 24px - 129px); // 100vw - margin*2 - ( imagem/2 {125px} + border 2px *2 {4px} )
+    @media (min-width:850px) {
+        max-width: 20vw;
+    }
 }
 
 
 .navigation-square {
     @include centerxy;
-    top: 40vh;
     position: fixed;
-    width: 220px;
-    height: 220px;
+    top: 40vh;
+    width: 150px;
+    height: 150px;
     border: $border;
 
-    .image-gif {
-        position: relative;
-        width: 100%;
-        height: 100%;
+    @media #{$m-desktop} {
+        width: 250px;
+        height: 250px;
+    }
+}
 
-        &:after { //diagonal line
-            position: absolute;
-            content: '';
-            top: 50%;
-            left: 221%;
-            width: 1px;
-            height: 142%;
-            background: black;
-            transform: rotate(45deg);
-            transform-origin: 0% -121%;
-        }
+.nav-image-gif {
+    position: relative;
+    width: 100%;
+    height: 100%;
 
-        &:hover {
+    &:after { //diagonal line
+        position: absolute;
+        content: '';
+        top: 50%;
+        left: 221%;
+        width: 1px;
+        height: 142%;
+        background: black;
+        transform: rotate(45deg);
+        transform-origin: 0% -121%;
+    }
 
-            &:after {
-                opacity: 0;
-            }
+    &:hover {
 
-            img {
-                opacity: 1;
-            }
+        &:after {
+            opacity: 0;
         }
 
         img {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            opacity: 0;
+            opacity: 1;
         }
     }
 
-
-    .nav-ul {
-        position: absolute;
-        top: 0; left: 0;
+    img {
+        position: relative;
         width: 100%;
         height: 100%;
+        opacity: 0;
     }
+}
 
-    // elements each li
-    .li-square {
-        position: relative;
-        width: $safeArea*2;
-        height: $safeArea*2;
-        background-color: $clr-form;
-        border: $border;
-        color: $clr-form;
-        cursor: pointer;
-    }
+.nav-ul {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+}
 
-    // elements each li
-    .li-title {
-        position: absolute;
-        bottom: 100%;
-        left: 0;
-        width: $safeArea*14;
-        border-bottom: $border;
-        color: $clr-form;
-        cursor: pointer;
+// elements each li
+.nav-li-square {
+    position: relative;
+    width: $safeArea*2;
+    height: $safeArea*2;
+    background-color: $clr-form;
+    border: $border;
+    color: $clr-form;
+    cursor: pointer;
+}
 
+// elements each li
+.nav-li-title {
+    position: absolute;
+    bottom: 100%;
+    left: 0;
+    width: $safeArea*14;
+    border-bottom: $border;
+    cursor: pointer;
 
-        font-size: $textL;
-        text-transform: uppercase;
-        letter-spacing: 0.5pt;
-        font-weight: bold;
-        line-height: $lineHeightS;
+    @include transition($speed);
 
+    > * {
         @include transition($speed);
+    }
 
-        &:hover {
+    &:hover {
+        > * {
             letter-spacing: 2pt;
-            font-weight: 300;
-        }
-
-        @include tablet {
-           font-size: $textL;
+            font-weight: 100;
         }
     }
+}
 
-    .nav-li-practice {
-        position: absolute;
-        z-index: 2;
-        top: -$safeArea;
-        left: calc(100% - #{$safeArea} + #{$borderWidth/2});
+.nav-li-practice {
+    position: absolute;
+    z-index: 2;
+    top: -$safeArea;
+    left: calc(100% - #{$safeArea} + #{$borderWidth/2});
 
-        .li-title {
-            text-align: right;
+    .nav-li-title {
+        text-align: right;
+    }
+}
+
+.nav-li-theory {
+    position: absolute;
+    z-index: 2;
+    @include centery;
+    right: calc(100% - #{$safeArea/2} - #{$borderWidth*2});
+
+    .nav-li-title {
+        right: 0;
+        left: auto;
+    }
+}
+
+.nav-li-background {
+    position: absolute;
+    z-index: 2;
+    bottom: calc(#{-$safeArea} - #{$borderWidth/2});
+    right: -$borderWidth;
+
+    .nav-li-square {
+        width: $safeArea*8;
+    }
+    .nav-li-title {
+        left: -2px;
+        top: $safeArea*2 - 2px;
+        height: $safeArea*8;
+        padding-left: $safeArea/2;
+        border-bottom: 0;
+        border-left: $border;
+
+        > * { //text inside
+            position: absolute;
+            bottom: 0;
         }
     }
-
-    .nav-li-theory {
-        position: absolute;
-        z-index: 2;
-        @include centery;
-        right: calc(100% - #{$safeArea/2} - #{$borderWidth*2});
-
-        .li-title {
-            right: 0;
-            left: auto;
-        }
-    }
-
-    .nav-li-background {
-        position: absolute;
-        z-index: 2;
-        bottom: calc(#{-$safeArea} - #{$borderWidth/2});
-        right: -$borderWidth;
-
-        .li-square {
-            width: $safeArea*8;
-        }
-        .li-title {
-            left: -2px;
-            top: $safeArea*2 - 2px;
-            height: $safeArea*8;
-            padding-left: $safeArea/2;
-            border-bottom: 0;
-            border-left: $border;
-
-            > * { //text inside
-                position: absolute;
-                bottom: 0;
-            }
-        }
-    }
-
-
 }
 
 
+// AFTER SCROLL X PIXELS
 .navigation-square {
     transition: all $speed*2 ease-in;
 }
@@ -505,45 +316,53 @@ NAV-PRESENTATION
 }
 
 
-
 .js-nav-mini {
     // nav mini and close
     height: 100px;
     width: 100px;
-    top: 50vh;
-    left: calc(100vw - 120px); //170 +/- nav total width
+    left: calc(100vw - 100px); //170 +/- nav total width
     border-color: white;
 
+    @media #{$m-desktop} {
+        left: calc(100vw - 120px); //170 +/- nav total width
+    }
 
-    .image-gif {
+    .nav-image-gif {
         visibility: hidden;
     }
 
-    .li-title {
-        font-size: $textM;
+    .nav-li-title {
         width: 0;
         height: 0;
         overflow: hidden;
     }
 
     .nav-li-theory {
-        .li-title {
+        .nav-li-title {
             right: 0;
             left: auto;
         }
     }
 
     .nav-li-background {
-        .li-title {
+        .nav-li-title {
             height: 0;
         }
     }
+
+    .f-nav-item {
+        font-size: $fontL;
+    }
 }
 
-.js-nav-mini-all {
-    // nav with all open
 
-    .li-title {
+.js-nav-mini-all {
+    // nav with all open (for noscript browsers)
+    .f-nav-item {
+        font-size: $fontM;
+    }
+
+    .nav-li-title {
         width: $safeArea*9;
         height: auto;
         overflow: visible;
@@ -558,7 +377,7 @@ NAV-PRESENTATION
     }
 
     .nav-li-background {
-        .li-title {
+        .nav-li-title {
             height: $safeArea*6 !important;
         }
     }
@@ -568,7 +387,7 @@ NAV-PRESENTATION
     //nav focus practice
     .nav-li-practice {
         left: 30%;
-        .li-title {
+        .nav-li-title {
             width: $safeArea*9;
             height: auto;
         }
@@ -580,7 +399,7 @@ NAV-PRESENTATION
     .nav-li-theory {
         right: 0;
 
-        .li-title {
+        .nav-li-title {
             width: $safeArea*9;
             height: auto;
         }
@@ -590,1059 +409,464 @@ NAV-PRESENTATION
 .js-nav-background {
     //nav focus background
     .nav-li-background {
-        .li-title {
+        .nav-li-title {
             width: $safeArea*12;
             height: $safeArea*6 !important;
         }
     }
 }
 
-
-// all stuff just for desktop;
-.hearder-click-area,
-.nav-subTitles-desktop,
-.help-trigger,
-.theory-trigger, .practice-trigger, .background-trigger,
-.project-index,
-.table-fixed,
-.widget-invert,
-.widget-resources {
-    display: none;
-}
-
-/*------------------------------------*\
-BUTTONS
-\*------------------------------------*/
-
-.button-rectangle {
-    position: relative;
-    display: inline-block;
-    // margin-top: $safeArea;
-    background-color: $clr-space;
-    border: $border;
-    border-color: $clr-form;
-    cursor: pointer;
-    text-align: center;
-    padding: $safeArea/2 $safeArea;
-    font-family: $type1;
-    color: $clr-form;
-
-    @include transition($speed*2);
-
-    p {
-        position: relative;
-        z-index: 2;
-        color: $clr-form;
-    }
-
-    &:hover {
-        p {color: $clr-space;}
-
-        .square-hover-black {
-            width: $safeArea*10;
-        }
-
-        .button-hover-fill {
-            width: 100%;
-        }
-    }
-
-}
-
-.button-expand-section {
-    @extend .button-rectangle;
-    display: block;
-    margin: auto;
-    margin-top: -$safeArea - 8px;
-    margin-bottom: -$safeArea - 4px;
-    z-index: 2;
-    width: 60vw;
-    border-left: 10px solid $clr-form;
-    border-right: 10px solid $clr-form;
-}
-
-.button-hover-fill {
-    position: absolute;
-    top: 0; left: 0;
-    height: 100%;
-    width: 0px;
-    background: $clr-form;
-    @include transition($speed);
-    cursor: pointer;
-    // z-index: -1;
-}
-
-.button-hover-no {
-    @extend .button-hover-fill;
-    background-color: red;
-    cursor: not-allowed;
-    animation: notallowed 2s ease infinite;
-}
-
-
 /*----------------------------------------*\
-#SECTIONS THEORY, PRACTICE, BACKGROUND
+#SECTIONS - PRACTICE, THEORY, BACKGROUND, final-words
 \*----------------------------------------*/
 
+.X-section {
+    position: relative;
+    margin: 0;
+    background: $clr-space-lvl1;
+    z-index: 2;
+    width: 100vw;
+    max-width: 100vw;
+
+    @media #{$m-tablet} {
+        width: 75vw;
+        max-width: calc(100vw - 175px); //XXXpx = title page right side
+    }
+
+    @media #{$m-desktop} {
+        max-width: calc(100vw - 290px); //290px = title page right side
+    }
+}
+
 .section-practice {
-    @extend .X-bigSection;
-    padding-top: 0;
-    @include transition($speed);
-    margin-top: $safeArea*6;
+    @extend .X-section;
+    padding: $safeArea*2 0;
+    background: #E5E5E5;
+    border: 0 !important;
+    margin-top: 95vh;
 }
 
 .section-theory {
-    @extend .X-bigSection;
-    @include transition($speed);
-    margin: 0;
-    padding-bottom: 0;
-    filter: invert(100%);
-
+    @extend .X-section;
+    filter: invert(0%);
+    background: white;
+    border-right: $border;
+    border-top: $border;
+    display: block; // TODO CHECK IF IT HAS FLEXBOX
+    overflow: hidden;
 }
 
 .section-background {
-    @extend .X-bigSection;
-    @include transition($speed);
-    margin-bottom: 0;
-    padding-bottom: 0;
+    @extend .X-section;
+    border-right: $clr-form;
+    background: $clr-form;
+    margin-bottom: 150px;
+
+    @media #{$m-tablet} {
+        margin-bottom: $footerHeight; // space to show footer
+    }
+
 }
 
-
-.bottom-fadeout {
-    position: absolute;
-    bottom: -150px; left: 0;
-    width: 100vw;
+// footer
+.final-words {
+    @extend .X-section;
+    display: none; // activaded by js
+    position: fixed;
     height: 150px;
-    color: $clr-space;
-    opacity: .8;
-    box-shadow: 0px -80px 100px;
+    bottom: 0; left: 0;
+    background: $clr-space;
+    padding: $safeArea/2 $safeArea*2;
+    width: 100vw;
+    z-index: 0;
+
+    @media #{$m-tablet} {
+        width: 75vw;
+        height: $footerHeight;
+    }
+}
+
+.final-words-txt {
+    padding-left: 10vw;
+
+    @media #{$m-desktop} {
+        padding-left: 30vw;
+    }
 }
 
 
-///// practice stuff
 
-.practice-content {
-    position: relative;
-    width: 100%;
-    height: auto;
-
-    ol {
-        li {
-            margin-bottom: $safeArea*6;
-
-            &:last-child {
-                margin-bottom: 0;
-            }
-        }
+///// ------- section: practice
+.p-first-project {
+    @media #{$m-until-phablet} {
+        padding-top: 20vh;
     }
 }
 
 .p-project {
+    box-sizing: content-box; // padding is always dynamic; with is fixed like/image size;
     position: relative;
-    @include transition($speed*2);
-    width: auto;
     max-width: 100vw;
-    padding-left: 5vw;
-    margin-bottom: $safeArea*3;
+    margin-bottom: 15vw;
+    margin-left: 5vw;
+    width: 100%;
+    max-width: calc(100% - 5vw - 3vw); //100 - padding-left
 
-    img {
-        position: relative;
-        width: auto;
-        max-width: 130%; //dont show mobile part because u r on mobile x)
-        margin-left: -6px;
+    @media #{$m-phablet} {
+        margin-bottom: 20vh;
     }
 
-    .p-line-web,
-    .p-line-phone,
-    .p-line-tablet {
-        position: relative;
-        height: 2px;
-        color: $clr-form;
-        z-index: 2;
-        background-color: $clr-form;
-        margin-bottom: $safeArea;
+    @media #{$m-desktop} {
+        max-width: 625px; //text width
     }
 }
 
-///// theory stuff
+
+.p-image {
+    position: relative;
+    max-width: 100%;
+    min-height: 20vw;
+
+
+    @media #{$m-desktop} {
+        max-width: 130%;
+        min-height: 300px;
+    }
+}
+
+.p-line-web,
+.p-line-phone,
+.p-line-tablet {
+    position: relative;
+    height: 2px;
+    color: $clr-form;
+    z-index: 2;
+    background-color: $clr-form;
+    margin-top: -2.55vw;
+    margin-bottom: $safeArea*2;
+    margin-left: -25vw;
+
+    @media #{$m-until-tablet} {
+        display: none;
+    }
+
+    @media #{$m-desktop} {
+        margin-top: -24px;
+    }
+}
+
+.p-line-web {
+    width: calc(100% - 200px);
+
+    @media #{$m-desktop} {
+        width: calc(25vw + 396px);
+    }
+}
+
+.p-line-phone {
+    width: calc(100% - 65px);
+
+    @media #{$m-desktop} {
+        width: calc(25vw + 385px);
+    }
+}
+
+.p-line-tablet {
+    margin-top: -35px;
+    margin-bottom: $safeArea*3;
+    width: calc(100% - 85px);
+
+    @media #{$m-desktop} {
+        margin-top: -40px;
+        width: calc(25vw + 405px);
+    }
+}
+
+.p-container-info {
+    @include flexbox;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: baseline;
+    padding-bottom: $safeArea/3;
+    border-bottom: $border-clr-form-lighter;
+    margin: $safeArea 0 $safeArea $safeArea*3;
+}
+
+.p-description {
+    margin-bottom: $safeArea;
+}
+
+
+
+
+///// ------- section: theory
+
+// Theory article
+.X-theory-article {
+    @include flexbox;
+    flex-direction: column;
+    align-items: flex-end;
+    position: relative;
+    border-top: $border;
+    color: $clr-form;
+}
+
+.t-align { // Align title and text to left inside a box aligned to left
+    margin-top: -$fontXXL;
+}
+
+.t-li-topic {
+    line-height: 2;
+
+    &:first-child {
+        padding-top: $safeArea;
+    }
+}
 
 .t-development {
     @extend .X-theory-article;
-    width: 30vw;
     min-width: 280px;
-    margin-top: $safeArea*6;
-    max-width: 95vw;
+    margin-top: 15vh;
+    width: 100%;
+    max-width: 100%;
+    right: 30%;
+
+
+    @media #{$m-desktop} {
+        right: 50%;
+    }
 }
 
 .t-uxui {
     @extend .X-theory-article;
-    justify-content: flex-start;
     margin-top: $safeArea*6;
-    max-width: 100vw;
-    margin-left: 24vw;
+    width: 100%;
+    right: 25%;
+    margin-top: 10vh;
 }
 
 .t-assets {
-    @extend .X-theory-article;
-
     position: relative;
-    left: 30vw;
-    right: 0;
-    width: 70vw;
-    height: auto;
-    margin-top: $safeArea*6;
-    border: $border 0 0 $border;
-    @include flexbox;
-    @include flexcol;
-    justify-content: flex-end;
+    display: block;
+    border-bottom: $border;
+    border-right: $border;
+    height: 20vh;
+    width: 115px;
+    padding-left: 0;
+    left: 75%;
+    margin-top: -$safeArea*4;
+    // margin-bottom: $safeArea*20;
 
+    .t-align {
+        position: absolute;
+        top: 100%;
+    }
 
-    .X-article-vertical-content {
-        margin-bottom: 0;
+    &:before {
+        content: '';
+        background: black;
+        position: absolute;
+        width: 50vw;
+        height: 2px;
+        top: 0;
+        left: 115px;
     }
 }
 
 .t-hobbies {
     @extend .X-theory-article;
     position: relative;
-    border-right: $border;
-    width: 150px;
+    border-left: $border;
     text-align: right;
     height: auto;
     margin-top: $safeArea*5;
-    padding-right: $safeArea;
-
+    justify-content: flex-end;
+    width: 40%;
+    left: -10vw;
 }
+
 
 .t-tools {
     @extend .X-theory-article;
-    width: 500px;
-    border-top: 2px solid $clr-form;
-    border-left: 2px solid $clr-form;
-    justify-content: flex-start;
-    margin: $safeArea*4 0 $safeArea*4 75vw ;
+    justify-content: flex-end;
+    width: 200px;
+    height: 800px;
+    border-top: 0;
+    border-right: $border;
+    left: 5%;
+    margin-top: -30vh;
+    margin-bottom: $safeArea*5;
 
-    .X-article-vertical-content {
-        min-width: initial;
-        margin: 0;
-        margin-left: -150px;
+    .t-align {
+        margin-right: -$safeArea/2*7;
     }
 
-    .tool {
-        position: relative;
-        width: auto;
-        display: flex;
-        flex-direction: row;
-        margin-top: $safeArea;
-
-        p.inline {
-            width: 160px;
-        }
-
-        img {
-            width: 31px;
-            height: 30px;
-        }
+    @media #{$m-desktop} {
+        left: 30%;
     }
 }
 
-///// background stuff
+.t-tool {
+    position: relative;
+    width: auto;
+    @include flexbox;
+    flex-direction: row;
+    margin-top: $safeArea;
 
-// .b-profile, .b-contact, .b-timeline {
-//     position: relative;
-//     margin-top: $safeArea*3;
-//     max-width: 100%;
-//     // padding-right: $safeArea/2;
-// }
-
-.b-description {
-    display: none;
-    position: absolute;
-    top: 0;
-    margin: $safeArea;
-    width: 3800px;
-
-    p {
-        &:hover {
-            font-size: medium;
-        }
-    }
-
-    .p-description-click{
-        width: $safeArea*16;
-        right: $safeArea;
-    }
-}
-
-
-// ---- mobile bottom ------
-.mobile-bottom {
-    // desk display: none;
-    width: 100vw;
-    background-color: $clr-space;
-    padding: $safeArea*4 $safeArea;
-    text-align: center;
-    filter: invert(100%);
-}
-
-
-
-/*------------------------------------*\
-Stuff - DESKTOP
-\*------------------------------------*/
-.theory-trigger {
-    position: absolute;
-    top: 0; left: 0;
-    margin: (-$safeArea) 0 0 237px; // img+square/2 0 0 img-square/2
-
-    .tt-square {
-        @extend .X-square;
-    }
-    .tt-title {
-        @extend .X-sectionTitle;
+    .f-txt-mono {
+        display: inline-block;
+        width: 160px;
         text-align: right;
     }
 }
 
-.practice-trigger {
-    position: absolute;
-    top: 0; left: 0;
-    margin: 113px 0 0 (-$safeArea); // img/2+square/2 0 0 square/2
-
-    .pt-square {
-        @extend .X-square;
-    }
-    .pt-title {
-        @extend .X-sectionTitle;
-        text-align: left;
-        left: (-$safeArea*14);
-
-    }
-}
-
-.background-trigger {
-    position: absolute;
-    top: 0; left: 0;
-    margin: 238px 0 0 154px ; // img+square/2 0 0 img-square*2
-
-    .bt-square {
-        @extend .X-square;
-        width: $safeArea*8;
-    }
-    .bt-title {
-        @extend .X-sectionTitle;
-        left: -2px;
-        top: $safeArea*2 - 2px;
-        text-align: left;
-        padding: $safeArea*7 0 0 $safeArea/2;
-        border-bottom: 0;
-        border-left: $border;
-    }
-}
-
-.image-gif-behind {
-    position: absolute;
-    top: 5px; left: 5px;
-    // top: calc(40% - 125px);
-    // left: calc(50% - 125px);
-
-    img {
-        width: 100%;
-        height: 100%;
-    }
-}
-.widget-invert {
-    @extend .X-square;
-    position: fixed;
-    bottom: $safeArea*2;
-    left: $safeArea*2;
-    background-color: $clr-space;
-    z-index: 5;
-    display: none;
-}
-
-.widget-resources {
-    @extend .X-square;
-    position: fixed;
-    bottom: 0;
-    right: 0;
-    height: $safeArea*6;
-    width: $safeArea;
-    z-index: 5;
-    display: none;
+.t-tool-icon {
+    width: 31px;
+    height: 30px;
+    margin-left: $safeArea*2;
 }
 
 
-/*------------------------------------*\
-@MEDIA QUERIES
-\*------------------------------------*/
 
 
-$m-phablet: "(min-width: #{$phablet-width})";
-$m-tablet: "(min-width: #{$tablet-width})";
-$m-phablet-tablet: "(min-width: #{$phablet-width}) and (max-width: #{$tablet-width - 1px})";
-$m-phablet-desktop: "(min-width: #{$phablet-width}) and (max-width: #{$desktop-width - 1px})";
-$m-tablet-desktop: "(min-width: #{$tablet-width}) and (max-width: #{$desktop-width - 1px})";
-$m-desktop: "(min-width: #{$desktop-width}) and (min-height: 600px)";
 
-
-// phablet < x =< TABLET
-@media #{$m-phablet-desktop} {
-
-    .X-bigSection {
-        padding: $safeArea*5 0;
-    }
-
-    .section-background {
-        padding-bottom: 0;
-    }
-
-    // nav fixed
-    .n-subTitles-container { // container visivel dos titulos
-
-        .align-title-nothing {
-            margin-top: 22px;
-        }
-        .align-title-practice {
-            margin-top: -13px;
-        }
-        .align-title-theory {
-            margin-top: -44px;
-
-        }
-        .align-title-background {
-            margin-top: -77px;
-        }
-    }
-
-    // practice
-    .p-project {
-
-        img {
-            max-width: 100%;
-        }
-
-        .p-line-web {
-            width: 60.5vw;
-            max-width: 454px;
-            margin-top: -8.5vw;
-        }
-    }
-
-    //theory
-    .t-development {
-        min-width: 230px;
-    }
-
-    .t-uxui {
-        margin-left: 40vw;
-    }
-
-    .t-assets {
-        left: 45vw;
-    }
-
-    .t-tools {
-        margin-top: $safeArea*7;
-        margin-left: 85vw;
-        .tool {
-            margin-top: $safeArea*2;
-        }
-    }
-
-    //background
-    .b-contact {
-        table {
-            tr {
-                .top-left {
-                    width: 25vw;
-                }
-            }
-        }
-    }
-
-    .b-profile {
-        table {
-            tr {
-                .top-left {
-                    width: 50vw;
-                }
-            }
-        }
-    }
+///// ------- section: theory
+.b-profile,
+.b-contact,
+.b-timeline {
+    position: relative;
+    padding-top: 15vh;
+    left: -10vw;
 }
 
-
-// => TABLET
-@media #{$m-tablet} {
-
-    .t-development {
-        min-width: 100vw;
-        right: 50vw;
-    }
-}
-
-
-// img are full size
-@media (min-width:738px) {
-    .p-project {
-        padding-left: $safeArea*3;
-
-        .p-line-web,
-        .p-line-phone,
-        .p-line-tablet {
-            margin-top: -24px;
-            margin-bottom: $safeArea*2;
-            margin-left: -25vw;
-        }
-    }
-}
-
-
-// desktop or big tablet - prevent windows too >16/9
-@media #{$m-desktop} {
-    // all stuff just for mobile experience
-
-    .mobile-welcome,
-    .mobile-bottom,
-    .button-expand-section,
-    .nav-subTitles-mobile, {
-        display: none;
-    }
-
-    // all stuff just for desktop experience
-    .loading-container {
-        display: block;
-        z-index: 6;
-    }
-
-    .hearder-click-area,
-    .help-trigger,
-    .nav-subTitles-desktop,
-    .theory-trigger, .practice-trigger, .background-trigger,
-    .project-index,
-    .b-description,
-    .table-fixed,
-    .widget-invert,
-    .widget-resources {
-        display: block;
-    }
-
-    .X-bigSection {
-        // position: absolute;
-        position: relative;
-        // max-height: 100vh;
-        // height: calc(100vh - 100px);
-        min-height: 100vh;
-        max-height: none;
-        // top: 100vh;
-        top: auto;
-        background-color: $clr-space;
-        // overflow: hidden;
-        overflow: visible;
-        // padding: 0;
-        // border-bottom: 0;
-        border: 0;
-        border-right: $border;
-
-        &:first-of-type {
-            margin-top: calc(100vh - #{$footerHeight/2}); // 200px space for footer
-        }
-    }
-
-    .navegacao-topo {
-        top: $marginTopPage;
-        z-index: 1;
-    }
-
-    .nav-subTitles {
-        width: 200px;
-        background-color: $clr-space;
-        border-bottom: 2px solid $clr-form;
-        left: 0;
-        top: -22px;
-        z-index: 5;
-    }
-
-    .n-subTitles-container {
-        height: 24px;
-
-        ul li h3 {color: $clr-form;}
-
-        .align-title-practice {
-            padding-right: 0;
-        }
-        .align-title-theory {
-            margin-top: -42px;
-            padding-right: 0;
-        }
-        .align-title-background {
-            margin-top: -74px;
-            padding-right: 0;
-        }
-
-    }
-
-    .the-square {
-        color: $clr-form;
-    }
-
-    .help-trigger { // input enter
-        position: fixed;
-        display: block;
-        width: 202px;
-        background-color: rgba(#ffffff, 0.8);
-        box-shadow: 0px -5px 5px rgba(#ffffff, 0.78);
-        bottom: calc(#{$safeArea*4} - #{$borderWidth});
-        left: calc(#{$safeArea*4} - #{$borderWidth});
-        @include flexbox;
-        @include flexrow;
-        flex-wrap: wrap;
-        align-items: center;
-        // justify-content: flex-end;
-
-        .h-welcome {
-            width: $safeArea*2;
-            min-height:  $safeArea*2;
-            border: 0;
-            border-left: 2px solid;
-            border-bottom: 2px solid;
-            padding-left: $safeArea/2;
-            padding-bottom: $safeArea/2;
-        }
-
-        .h-close {
-            position: absolute;
-            cursor: pointer;
-            position: absolute;
-            bottom: -5px;
-            left: $safeArea*2 - 1px;
-            display: none;
-            @include transition($speed);
-        }
-    }
-
-    .header {
-        position: fixed;
-        background-color: $clr-space;
-        // z-index: 9;
-    }
-
-    main {
-        // z-index: 1;
-        min-height: 100vh;
-        height: auto;
-        // max-height: none;
-        max-height: none;
-        // height: calc(100vh - 100px);
-        // max-height: calc(100vh - 100px);
-        // margin-top: 100px;
-        margin-top: 0;
-        overflow: visible;
-        // background-color: $clr-space;
-    }
-
-
-
-
-    .presentation {
-        // position: absolute;
-        width: 250px;
-        height: 250px;
-        // @include centery;
-        position: fixed;
-        top: 50%;
-        left: calc(100vw - 250px);
-        transform: translateY(-50%);
-        // top: calc(35vh - 125px);
-        // left: calc(50vw - 125px);
-        margin: 0;
-        z-index: 0;
-        // transform: matrix3d(0.5,0,0.87,-0.0009,0.00,1,0.00,0,-0.87,0,0.5,0,0,0,0,1);
-        //
-        //
-        //
-        // // transform: matrix3d(0.5,0,0.87,0.00099,0.00,1,0.00,0,-0.87,0,0.5,0,0,0,0,1);
-        //
-        //
-        // -webkit-transform: matrix3d(0.64,0,-0.77,-0.0009,0.00,0.5,0.00,0.0009,0.77,0,0.64,0,0,0,0,1);
-        //
-        //
-        // -webkit-transform: matrix3d(0.64,0,0.77,-0.0009,0.00,1,0.00,0.0009,-0.77,0,0.64,0,0,-200,-100,1);
-        //
-        // -webkit-transform: matrix3d(0.64,0,0.77,0,0.00,1,0.00,0,-0.77,0,0.64,0,10,-100,-100,1);
-        //
-        // -webkit-transform: matrix3d(0.5,0,0.00,-0.001,0.00,1,0.00,0,0,0,1,0,0,0,-100,1);
-        //
-
-
-
-    }
-
-    .image-gif {
-        margin-right: 0;
-        align-self: flex-start;
-    }
-
-    //sections
-
-    .bottom-fadeout {
-        box-shadow: 0px -50px 70px;
-        display: none;
-    }
-
-    .section-theory,
-    .section-practice,
-    .section-background,
-    .thank-you-for-reading-this {
-        margin: 0;
-        width: 75vw;
-        max-width: calc(100vw - 290px); //290px = title page right side
-        background: $clr-space-lvl1;
-        z-index: 2;
-    }
-
-    .section-practice {
-        padding: $safeArea*2 0;
-        background: #E5E5E5;
-        border: 0 !important;
-    }
-
-    .section-theory {
-        filter: invert(0%);
-        background: white;
-        border-right: $border;
-        border-top: $border;
-        display: block; // TODO CHECK IF IT HAS FLEXBOX
-        overflow: hidden;
-    }
-
-    .section-background {
-        border-right: $clr-form;
-        background: $clr-form;
-        margin-bottom: $footerHeight; // space to show footer
-    }
-
-    // footer
-    .thank-you-for-reading-this {
-        display: none; // activaded by js
-        position: fixed;
-        height: $footerHeight;
-        bottom: 0; left: 0;
-        z-index: 1;
-        background: $clr-space;
-        padding: $safeArea/2 $safeArea*2;
-        p {
-            padding-left: 30vw;
-            color: $clr-form;
-            font-size: $textS;
-        }
-    }
-
-
-    //practice
-
-    .practice-content {
-        // height: calc(100vh - 100px);
-        // overflow: scroll;
-        padding: 0;
-        height: auto;
-        overflow: visible;
-    }
-
-    .p-project {
-        box-sizing: content-box; // padding is always dynamic; with is fixed like/image size;
-        padding-left: 15vw;
-        padding-right: 5vw;
-        margin-bottom: 15vh;
-        width: 100%;
-        max-width: 625px; //text with
-
-        img {
-            margin-left: 0; //fix this to mobile
-            min-height: 304px;
-        }
-
-        .p-line-web {
-            width: calc(25vw + 396px);
-        }
-
-        .p-line-phone {
-            width: calc(25vw + 385px);
-        }
-
-        .p-line-tablet {
-            margin-top: -40px;
-            margin-bottom: $safeArea*3;
-            width: calc(25vw + 405px);
-        }
-
-        .p-title {
-            width: $safeArea*40;
-            margin-bottom: $safeArea;
-        }
-
-
-        .p-container-info {
-            @include flexbox;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            align-items: baseline;
-            margin-left: $safeArea*3;
-            padding-bottom: $safeArea/3;
-            border-bottom: $border-clr-form-lighter;
-        }
-
-        .p-field {
-            font-family: $type0;
-            font-style: italic;
-            letter-spacing: 2px;
-        }
-
-        .p-data {
-            font-family: $type0;
-            text-transform: uppercase;
-            font-size: 9pt;
-            font-weight: 900;
-            padding-left: 100px;
-            text-align: right;
-        }
-
-        .p-caption {
-            font-family: $type1;
-            margin: $safeArea 0 $safeArea*2 $safeArea*3;
-            font-size: 14px; //TODO
-            font-weight: 300;
-            line-height: 1.5; //TODO
-        }
-
-    }
-
-
-    // theory stuff
-
-    .t-development {
-        margin-top: 15vh;
-        width: 100%;
-        max-width: 100%;
-        right: 80%;
-    }
-
-    .t-uxui {
-        justify-content: flex-end;
-        width: 100%;
-        right: 20%;
-        margin-top: 10vh;
-        margin-left: 0;
-
-        .X-article-vertical-content {
-            margin-right: -35px;
-        }
-    }
-
-    .t-assets {
-        // position: absolute;
-        position: relative;
-        // top: -15vh; left: 50vw;
-        border-top: 0;
-        border-bottom: $border;
-        height: 20vh;
-        width: 115px;
-        border-right: $border;
-        padding-left: 0;
-        left: 80%;
-        margin: 0;
-
-        &:before {
-            content: '';
-            background: black;
-            position: absolute;
+.b-profile {
+    .table-std {
+        th:first-child {
             width: 50vw;
-            height: 2px;
-            top: 0;
-            left: 115px;
-        }
-
-
-        .X-article-vertical-content {
-            margin-bottom: -174px;
-            margin-left: 7px;
-        }
-
-        // wtf just happend here :/
-        h5, p {
-            display: inline-block;
-        }
-
-        p {
-            min-height: 160px;
         }
     }
+}
 
-    .t-hobbies {
-        // position: absolute;
-        position: relative;
-        // bottom: -5vh; right: 30vw;
-        height: auto;
-        border-left: 0;
-        justify-content: flex-end;
-        width: 33%;
-    }
+.b-timeline {
+    .table-std {
+        th:first-child {
+            width: 40vw;
 
-    .t-tools {
-        // position: absolute;
-        position: relative;
-        // top: -15vh; right: 5vw;
-        margin: 0;
-        padding-left: $safeArea*3;
-        width: $safeArea*2 + 6px;
-        height: 500px;
-        border: 0;
-        border-left: $border;
-        align-items: flex-end;
-
-        left: 50%;
-        margin: 0;
-        padding: 0;
-        margin-top: -50vh;
-        height: 900px;
-        margin-bottom: $safeArea*5;
-
-        .X-article-vertical-content {
-            margin-left: -150px;
-        }
-    }
-
-
-    // background stuff
-
-    .b-profile,
-    .b-contact,
-    .b-timeline {
-        position: relative;
-        margin-top: 15vh;
-        left: -10vw;
-
-    }
-
-    .b-profile {
-        .table-std {
-            th:first-child {
-                width: 40vw;
+            @media #{$m-desktop} {
+                width: 35vw;
             }
         }
     }
+}
 
-    .b-timeline {
-        .table-std {
-            th:first-child {
-                width: 30vw;
-            }
-        }
+.b-contact {
+    left: 5vw; //1px is for the border-width
+    padding-bottom: 15vh;
+    padding-top: 0;
+    display: inline-block;
+
+    @media #{$m-desktop} {
+        left: calc(25vw - 1px);
     }
 
-    .b-contact {
-        left: calc(20vw - 1px); //1px is for the border-width
-        margin-top: -20px;
-        padding-bottom: 15vh;
+    .table-std {
+        th:first-child {
+            position: relative;
+            width: 100px;
+            border-left: $border;
+            height: 150px;
 
-        .table-std {
-            th:first-child {
-                position: relative;
+            @media #{$m-tablet} {
                 width: 200px;
-                border-left: $border;
-                height: 150px;
+            }
 
-                > * {
-                    position: absolute;
-                    bottom: 0;
-                    right: 0;
-                }
+            > * {
+                position: absolute;
+                bottom: 0;
+                right: 0;
             }
         }
     }
+}
 
 
 
-    .table-std { //std = standart
-        * {
-            color: $clr-form-lighter;
-            border-color: $clr-form-lighter;
-        }
+.table-std { //std = standart
 
-        th {
-            &:first-child {
-                border-bottom: $border;
-                width: auto;
-                text-align: right;
-                line-height: $lineHeightM;
-                color: $clr-space;
-            }
-        }
+    .f-article-title {
+        color: $clr-space;
+    }
 
-        tr {
-            td {
-                &:first-child {
-                    border-right: $border $clr-form-lighter;
-                    padding-right: $safeArea;
-                    padding-top: $safeArea;
-                    text-align: right;
-                    color: $gray;
-                    text-transform: uppercase;
-                    font-size: $textS;
-                    font-weight: 800;
-                }
-
-                &:last-child {
-                    line-height: $lineHeightM;
-                    padding-left: $safeArea;
-                    font-family: $type1;
-                    font-weight: 300;
-                    max-width: 300px;
-                }
-            }
-        }
-
-        .time-section {
-            td:first-child {
-                padding-top: $safeArea*2;
-                color: $clr-space;
-                border-color: $clr-form-lighter;
-            }
-        }
-
-        tfoot {
-            .time-section {
-                td:first-child {
-                    padding-top: $safeArea*4;
-                }
-            }
-
-            td:first-child {
-                border-right: 0;
-            }
-        }
-
-        strong {
-            display: block;
-            font-weight: 800;
-            text-transform: uppercase;
-            font-size: $textS;
-            font-family: $type0;
+    th {
+        &:first-child {
+            border-bottom: $border;
+            width: auto;
+            text-align: right;
+            line-height: $lineHeightM;
             color: $clr-space;
         }
     }
+
+    tr {
+        td {
+            color: $clr-form-lighter;
+
+            &:first-child {
+                border-right: $border $clr-space;
+                padding-right: $safeArea;
+                padding-top: $safeArea;
+                text-align: right;
+                color: $clr-middle;
+                text-transform: uppercase;
+            }
+
+            &:last-child {
+                line-height: $lineHeightM;
+                padding-left: $safeArea;
+                max-width: 300px;
+            }
+        }
+    }
+
+    .time-section {
+        td:first-child {
+            padding-top: $safeArea*2;
+            color: $clr-space;
+            border-color: $clr-space;
+        }
+    }
+
+    tfoot {
+        .time-section {
+            td:first-child {
+                padding-top: $safeArea*4;
+            }
+        }
+
+        td:first-child {
+            border-right: 0;
+        }
+    }
+
+    strong {
+        display: block;
+        font-family: $font-sans;
+    }
+
+    .link-under-mono {
+        color: $clr-space;
+    }
 }
 
 
-.human-hidden {
-	position: absolute;
-	visibility: hidden;
-	width: 0;
-	height: 0;
-	left: -9999999px;
-	top: -9999999px;
-}
+
+
+
+
+@import "../00_atoms/_widgets.scss";
+
+@import "../00_atoms/_helpers.scss";
+
 
 /*------------------------------------*\
 #CLASSES JQUERY MANIPULATION
