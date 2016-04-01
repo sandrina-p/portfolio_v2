@@ -36,6 +36,8 @@ Notes:
 /*------------------------------------*\
 #VARIABLES AND MIXINS
 \*------------------------------------*/
+@import url("_font-opensans.scss");
+@import url("_font-roboto.scss");
 a, abbr, acronym, address, applet, article, aside, audio, b, big, blockquote, body, canvas, caption, center, cite, code, dd, del, details, dfn, div, dl, dt, em, embed, fieldset, figcaption, figure, footer, form, h1, h2, h3, h4, h5, h6, header, hgroup, html, i, iframe, img, ins, kbd, label, legend, li, mark, menu, nav, object, ol, output, p, pre, q, ruby, s, samp, section, small, span, strike, strong, sub, summary, sup, table, tbody, td, tfoot, th, thead, time, tr, tt, u, ul, var, video {
   margin: 0;
   padding: 0;
@@ -337,14 +339,6 @@ strong, b {
 /*------------------------------------*\
 #HTML5 - CSS LOADED
 \*------------------------------------*/
-.mobile-not-responsive,
-.header,
-.main,
-.widget-resources,
-.widget-invert {
-  display: block;
-}
-
 body {
   background: #fff;
 }
@@ -365,10 +359,11 @@ main {
   z-index: 9;
   background: #fff;
   padding: 12px;
+  display: block !important;
 }
 @media (min-width: 650px) {
   .mobile-not-responsive {
-    display: none;
+    display: none !important;
   }
 }
 .mobile-not-responsive .f-upcaseL {
@@ -442,6 +437,11 @@ NAV-PRESENTATION
     max-width: 20vw;
   }
 }
+@media (max-width: 649px) {
+  .presentation {
+    display: none;
+  }
+}
 
 .navigation-square {
   position: absolute;
@@ -455,6 +455,11 @@ NAV-PRESENTATION
   width: 150px;
   height: 150px;
   border: 2px solid;
+}
+@media (max-width: 649px) {
+  .navigation-square {
+    display: none;
+  }
 }
 @media (min-width: 1100px) and (min-height: 600px) {
   .navigation-square {
@@ -580,6 +585,19 @@ NAV-PRESENTATION
   bottom: 0;
 }
 
+/*------------------------------------*\
+ABOVE THE FOALD LOAD
+\*------------------------------------*/
+.header,
+.main,
+.widget-resources,
+.widget-invert {
+  display: block !important;
+}
+
+/*-------------*\
+After scroll x pixels
+\*-------------*/
 .navigation-square {
   -webkit-transition: all 500ms ease-in;
           transition: all 500ms ease-in;
@@ -673,7 +691,7 @@ NAV-PRESENTATION
 #SECTIONS - PRACTICE, THEORY, BACKGROUND, final-words
 \*----------------------------------------*/
 .X-section, .section-practice, .section-theory, .section-background, .final-words {
-  position: relative;
+  position: relative !important;
   margin: 0;
   background: #fafafa;
   z-index: 2;
@@ -722,7 +740,6 @@ NAV-PRESENTATION
 
 .final-words {
   display: none;
-  position: fixed;
   height: 150px;
   bottom: 0;
   left: 0;
@@ -730,6 +747,7 @@ NAV-PRESENTATION
   padding: 6px 24px;
   width: 100vw;
   z-index: 0;
+  position: fixed !important;
 }
 @media (min-width: 650px) {
   .final-words {
@@ -1113,7 +1131,7 @@ NAV-PRESENTATION
 .table-std tr td:last-child {
   line-height: 1.5;
   padding-left: 12px;
-  max-width: 300px;
+  max-width: 250px;
 }
 .table-std .time-section td:first-child {
   padding-top: 24px;
