@@ -5,6 +5,9 @@
 // note: it is very important that u don't change .js- order in scss
 
 
+// @koala-prepend "../../plugins/jquery/jquery-2.1.4.min.js";
+
+
 $(document).ready(function() {
 
    // smooth scroll
@@ -238,6 +241,33 @@ $(document).ready(function() {
           });
    };
 
+
+   // // target touch or small devices
+   // if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || !matchMedia('screen and (min-width: 850px) and (min-height: 600px)').matches) {
+   //
+   // } else {
+   //     // parallax effect
+   //     $('.js-parallax-scene').parallax();
+   // }
+   //
+   // // loading screen shut down
+   // window.onload=function() {
+   //     console.log('xx');
+   //
+   //     setTimeout(function () {
+   //         $('.loading-container').addClass('js-loading-finished');
+   //     }, 150);
+   //     setTimeout(function () {
+   //         $('.loading-container').remove();
+   //     }, 750);
+   // }
+   //
+   // /*BE LAZY*/
+   // ;(function() {
+   //     var bLazy = new Blazy({
+   //         selector: '.js-blazy'
+   //     });
+   // })();
 });
 
 
@@ -263,3 +293,32 @@ function StopSound(soundobj) {
    thissound.currentTime = 0;
    $('.sound-tip').hide();
 }
+
+
+$(document).ready(function() {
+   // target touch or small devices
+   if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || !matchMedia('screen and (min-width: 850px) and (min-height: 600px)').matches) {
+
+   } else {
+       // parallax effect
+       $('.js-parallax-scene').parallax();
+   }
+
+   // loading screen shut down
+   // window.onload=function() {
+   //     console.log('xx');
+   //
+       setTimeout(function () {
+           $('.loading-container').addClass('js-loading-finished');
+       }, 1250);
+       setTimeout(function () {
+           $('.loading-container').remove();
+       }, 1750);
+   // }
+});
+
+
+// @koala-append "../../plugins/others/typewriter.min.js";
+// @koala-append "..//00_organisms/index_typewriter.min.js";
+// @koala-append "../../plugins/others/glitch.min.js";
+// @koala-append "../../plugins/jquery/jquery.parallax.js";

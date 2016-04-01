@@ -25,6 +25,8 @@
 // .btn-off //disabled
 
 
+@import url('_font-opensans.scss');
+@import url('_font-roboto.scss');
 
 // First the basic font family and size - I didn't put it on _vars.scss because... well, It is all together in this way
 $font-sans: 'Open Sans', sans-serif;
