@@ -1,0 +1,167 @@
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+h1 {
+  font-size: large;
+  text-transform: uppercase;
+  letter-spacing: 1pt;
+  font-weight: bold;
+}
+
+@media (min-width: 650px) {
+  h1 {
+    font-size: x-large;
+  }
+}
+
+h2 {
+  font-size: x-small;
+  text-transform: uppercase;
+  letter-spacing: 0.5pt;
+  font-weight: bold;
+  margin-top: 6px;
+}
+
+@media (min-width: 410px) {
+  h2 {
+    font-size: small;
+  }
+}
+
+h3 {
+  font-size: small;
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 0.5pt;
+  line-height: 1.3;
+  transition: all 250ms ease-in-out;
+}
+
+h3:hover {
+  letter-spacing: 2pt;
+  font-weight: 400;
+}
+
+@media (min-width: 410px) {
+  h3 {
+    font-size: medium;
+  }
+}
+
+h4 {
+  font-size: large;
+  text-transform: uppercase;
+  letter-spacing: 1pt;
+  font-weight: bold;
+}
+
+@media (min-width: 650px) {
+  h4 {
+    font-size: xx-large;
+  }
+}
+
+h5 {
+  font-size: large;
+  text-transform: uppercase;
+  letter-spacing: 1pt;
+  font-weight: bold;
+}
+
+@media (min-width: 650px) {
+  h5 {
+    font-size: x-large;
+  }
+}
+
+p, a.typewriter {
+  font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
+  font-size: small;
+  line-height: 1.3;
+  font-weight: 600;
+}
+
+@media (min-width: 410px) {
+  p, a.typewriter {
+    font-size: medium;
+    font-weight: 400;
+  }
+}
+
+p.topic, a.topic.typewriter {
+  margin-top: 12px;
+  max-height: 120px;
+  line-height: 2;
+  overflow: hidden;
+}
+
+p.inline, a.inline.typewriter {
+  width: 144px;
+  text-align: right;
+  padding-right: 24px;
+  line-height: 200%;
+}
+
+p.san, a.san.typewriter {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  text-transform: uppercase;
+  font-size: x-small;
+  letter-spacing: 1px;
+  color: #919191;
+  font-weight: 400;
+}
+
+p.san-bold, a.san-bold.typewriter {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: x-small;
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+span {
+  color: #000;
+}
+
+.typewriter {
+  font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
+  font-size: small;
+  font-weight: 400;
+  line-height: 1.7;
+}
+
+.txt-squeeze {
+  transition: all 250ms ease-in-out;
+}
+
+.txt-squeeze:hover {
+  letter-spacing: 2pt;
+  font-weight: 400;
+}
+
+a {
+  font-size: small;
+  text-transform: lowercase;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+@media (min-width: 410px) {
+  a {
+    font-size: medium;
+    font-weight: 400;
+  }
+}
+
+a.typewriter {
+  transition: all 125ms ease-in-out;
+}
+
+a.typewriter:hover {
+  font-weight: 600;
+  letter-spacing: 0.3pt;
+}
+
+/*# sourceMappingURL=graphic.css.map */
