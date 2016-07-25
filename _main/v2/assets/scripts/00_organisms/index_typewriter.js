@@ -4,7 +4,7 @@ $( document ).ready(function() {
 
 // window.onload=function() {
 //    setTimeout(function () {
-   if (!matchMedia('screen and (min-width: 850px) and (min-height: 600px)').matches) {
+   // if (!matchMedia('screen and (min-width: 850px) and (min-height: 600px)').matches) {
 
       "use strict";
 
@@ -69,7 +69,7 @@ $( document ).ready(function() {
     //      }
     //   }, 0);
 
-   } else {
+   // } else {
 
       "use strict";
 
@@ -95,6 +95,6 @@ $( document ).ready(function() {
             clearInterval(readyStateCheckInterval);
          }
      }, 100);
-   }
+   // }
 
 });

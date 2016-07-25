@@ -1,0 +1,99 @@
+/*------------------------------------*\
+#CLASSES TO JS MANIPULATION
+
+// note: it is very important that you don't change the order
+
+\*------------------------------------*/
+
+body {
+
+    #js-typewriter-presentation {
+        display: block;
+        min-height: 16px;
+    }
+
+
+    .js-trigger-menu {
+        @extend .X-square;
+        @include centerx;
+        background: $clr-space;
+        position: fixed;
+        bottom: 25vh;
+        z-index: 999;
+        animation-name: attention;
+        animation-duration: 3000ms;
+        animation-iteration-count: infinite;
+        animation-timing-function:steps();
+        @include transition($speed);
+
+        &:focus {
+            outline: none;
+        }
+
+        @media #{$m-phablet} {
+            bottom: 5vw;
+            animation-name: none;
+        }
+
+        @media #{$m-tablet} {
+            display: none;
+        }
+    }
+
+    @keyframes attention {
+        0% { margin-left: 3px; }
+        2% { margin-left: -3px; }
+        5% { margin-left: 3px; }
+        7% { margin-left: -3px; }
+        10% { margin-left: 0px; }
+        50% { margin-left: 0px; }
+        52% { margin-left: 5px; background: $clr-space;}
+        55% { margin-left: -5px; background: $clr-form; }
+        57% { margin-left: 5px; background: $clr-space; }
+        60% { margin-left: -5px; }
+        61% { margin-left: 0px; }
+        100% { margin-left: 0px; }
+    }
+
+
+    .js-menu-mobile-corner {
+        background: $clr-space;
+        animation-name: none;
+        top: auto;
+        bottom: 5vw;
+    }
+
+    .js-menu-mobile-open .js-trigger-menu {
+        @extend .js-menu-mobile-corner;
+        background: $clr-form;
+    }
+
+    .js-menu-mobile-open {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba($clr-space, 0.95);
+        z-index: 99;
+        @include transition($speed);
+        .navigation-square {
+            top: 40vh;
+            opacity: 1;
+        }
+    }
+
+    .js-loading-finished {
+        opacity: 0;
+        transition: opacity $speed*2 ease-out;
+    }
+
+    .js-invert {
+        filter: invert(100%) !important;
+
+        img {
+            filter: invert(0%) !important;
+        }
+    }
+
+}

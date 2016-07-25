@@ -1,0 +1,149 @@
+/*------------------------------------*\
+#VARIABLES AND MIXINS
+\*------------------------------------*/
+
+
+// clr = color
+$clr-form: #000;
+$clr-form-lighter: lighten($clr-form, 80%);
+$clr-space: #fff;
+$clr-middle: #838383;
+$clr-space-lvl1: darken($clr-space, 2%);
+$clr-space-lvl2: darken($clr-space, 4%);
+
+$clr-off: #ff0000;
+$myColor: #19babf;
+
+
+
+$safeArea: 12px;
+
+$borderWidth: 2px;
+$border: $borderWidth solid;
+$border-clr-form-lighter: $borderWidth/2 solid $clr-form-lighter;
+
+$speed: 250ms;
+
+$footerHeight: 125px;
+
+$mobile-width: 410px;
+$phablet-width: 500px;
+$tablet-width: 650px;
+$tabletL-width: 850px;
+$desktop-width: 1100px;
+$desktophd-width: 1500px;
+
+// $device-height: 300px;
+
+
+$m-until-phablet: "(max-width: #{$tablet-width - 1px})";
+$m-until-tablet: "(max-width: #{$tabletL-width - 1px})";
+$m-until-tabletL: "(max-width: #{$desktop-width - 1px})";
+
+
+$m-phablet: "(min-width: #{$phablet-width})";
+$m-tablet: "(min-width: #{$tablet-width})";
+$m-tabletL: "(min-width: #{$tabletL-width})";
+$m-phablet-tablet: "(min-width: #{$phablet-width}) and (max-width: #{$tablet-width - 1px})";
+$m-phablet-desktop: "(min-width: #{$phablet-width}) and (max-width: #{$desktop-width - 1px})";
+$m-tablet-desktop: "(min-width: #{$tablet-width}) and (max-width: #{$desktop-width - 1px})";
+$m-desktop: "(min-width: #{$desktop-width})";
+$m-desktop-hd: "(min-width: #{$desktophd-width})";
+
+//mediaqueries
+
+@mixin until-phablet {
+    @media (max-width: #{$tablet-width - 1px}) {
+        @content;
+    }
+}
+
+@mixin until-tablet {
+    @media (max-width: #{$tabletL-width - 1px}) {
+        @content;
+    }
+}
+
+@mixin until-tabletL {
+    @media (max-width: #{$desktop-width - 1px}) {
+        @content;
+    }
+}
+@mixin phablet {
+    @media (min-width: #{$phablet-width}) {
+        @content;
+    }
+}
+
+
+@mixin tablet {
+    @media (min-width: #{$tablet-width}) {
+        @content;
+    }
+}
+
+@mixin tabletL {
+    @media (min-width: #{$tabletL-width}) {
+        @content;
+    }
+}
+
+@mixin desktop {
+    @media (min-width: #{$desktop-width}) {
+        @content;
+    }
+}
+
+@mixin desktop-hd {
+    @media (min-width: #{$desktop-hd-width}) {
+        @content;
+    }
+}
+
+//transition
+@mixin transition($speed) {
+    transition: all $speed ease-in-out;
+}
+
+@mixin squeeze {
+    letter-spacing: 2pt;
+    font-weight: 400;
+}
+
+@mixin centerxy {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@mixin centerx {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+@mixin centery {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+@mixin flexbox {
+    display: flex;
+
+    & > * {
+        flex-grow: 0;
+        flex-shrink: 1;
+        flex-basis: auto;
+        // this is to prevent bugs on IE9 10 11
+    }
+}
+
+@mixin flexrow {
+    flex-direction: row;
+}
+
+@mixin flexcol {
+    flex-direction: column;
+}
