@@ -1,12 +1,29 @@
 // * Created by: Sandrina Pereira
 // * sandrina-p.net
-// * 14 nov 15
+// * 14 fev 15
 
-// note: it is very important that u don't change .js- order in scss
+/// -----------------------
+/// -----------------------
+// HEY YOUR LITTLE SMART GUY !!!
+/// -----------------------
+/// -----------------------
+// IF FOR SOME REASON, YOU REACHED THIS FILE,
+// PLEASE, BE AWARE THIS ISN'T OPTIMIZED, CLEAN
+// OR EVEN ORGANIZED. D:
+// IF YOU ARE THINKING ABOUT CONTACT ME FOR SOME REASON,
+// DON'T JUDGE THIS CODE. NOT THIS ONE.
+// THIS IS ALREADY ABSOLETE FOR ME.
+// I JUST DIDN'T HAVE TIME TO IMPROVE THIS.
+/// -----------------------
+/// -----------------------
+/// -----------------------
+// Well... have fun and feel free to use any code you want
+// just don't forget to let me know :)
+/// -----------------------
+/// -----------------------
 
 
 // @koala-prepend "../../plugins/jquery/jquery-2.1.4.min.js";
-
 
 $(document).ready(function() {
 
@@ -41,26 +58,26 @@ $(document).ready(function() {
        offsetAnchor();
    }, 1);
 
-   if (!matchMedia('screen and (min-width: 850px) and (min-height: 600px)').matches) {
-       $('.navigation-square').addClass('js-nav-mini js-nav-mini-all');
-   } else {
-
-   }
+   // if (!matchMedia('screen and (min-width: 850px) and (min-height: 600px)').matches) {
+   //     $('.navigation-square').addClass('js-nav-mini js-nav-mini-all');
+   // };
 
    // SCROLL TO CHANGE NAV
    $(document).scroll(function () {
        var a_begin = $(this).scrollTop();
        var a_begin_scroll = 100;
-       var a_offset = 400;
+       var a_offset = 450;
        var a_theory = $("#theory").offset().top;
        var a_background = $("#background").offset().top;
 
        // if is smaller than desktop
        if (!matchMedia('screen and (min-width: 850px) and (min-height: 500px)').matches) {
            if (a_begin > a_begin_scroll) {
-               $('.final-words, .widget-invert').show();
+               $('.final-words').show();
+               $('.js-trigger-menu').addClass('js-menu-mobile-corner');
            } else {
-               $('.final-words, .widget-invert').hide();
+               $('.final-words').hide();
+               $('.js-trigger-menu').removeClass('js-menu-mobile-corner');
            }
        } else {
              if (a_begin > a_begin_scroll) {
@@ -241,58 +258,20 @@ $(document).ready(function() {
           });
    };
 
-
-   // // target touch or small devices
-   // if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || !matchMedia('screen and (min-width: 850px) and (min-height: 600px)').matches) {
-   //
-   // } else {
-   //     // parallax effect
-   //     $('.js-parallax-scene').parallax();
-   // }
-   //
-   // // loading screen shut down
-   // window.onload=function() {
-   //     console.log('xx');
-   //
-   //     setTimeout(function () {
-   //         $('.loading-container').addClass('js-loading-finished');
-   //     }, 150);
-   //     setTimeout(function () {
-   //         $('.loading-container').remove();
-   //     }, 750);
-   // }
-   //
-   // /*BE LAZY*/
-   // ;(function() {
-   //     var bLazy = new Blazy({
-   //         selector: '.js-blazy'
-   //     });
-   // })();
 });
 
 
 // ACTIVE SOUND WAKE UP ON HOVER  -- ATTENTION OUT OF JQUERY DOCUMENT.READY
 var click = 0;
 
-function PlaySound(soundobj) {
-   click += 1;
-   var thissound=document.getElementById(soundobj);
+$('.js-trigger-menu').on('click', function(){
+    $('.menu-mobile').toggleClass('js-menu-mobile-open');
+});
 
-   thissound.play();
 
-   if (click == 1) {
-      $('.sound-tip').show();
-   } else {
-      //nothing
-   }
-}
-
-function StopSound(soundobj) {
-   var thissound=document.getElementById(soundobj);
-   thissound.pause();
-   thissound.currentTime = 0;
-   $('.sound-tip').hide();
-}
+$('.nav-li-title').on('click', function(){
+    $('.menu-mobile').removeClass('js-menu-mobile-open');
+});
 
 
 $(document).ready(function() {
@@ -307,18 +286,18 @@ $(document).ready(function() {
    // loading screen shut down
    // window.onload=function() {
    //     console.log('xx');
-   //
-       setTimeout(function () {
-           $('.loading-container').addClass('js-loading-finished');
-       }, 1250);
-       setTimeout(function () {
-           $('.loading-container').remove();
-       }, 1750);
+
+   setTimeout(function () {
+       $('.loading-container').addClass('js-loading-finished');
+   }, 1250);
+   setTimeout(function () {
+       $('.loading-container').remove();
+   }, 1750);
    // }
 });
 
 
 // @koala-append "../../plugins/others/typewriter.min.js";
-// @koala-append "..//00_organisms/index_typewriter.min.js";
+// @koala-append "..//00_organisms/index_typewriter.js";
 // @koala-append "../../plugins/others/glitch.min.js";
 // @koala-append "../../plugins/jquery/jquery.parallax.js";
