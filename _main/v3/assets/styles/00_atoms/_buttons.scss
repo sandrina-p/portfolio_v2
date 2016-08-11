@@ -1,0 +1,109 @@
+// -------- BUTTONS AND SIMILAR -------- //
+
+a, button {
+    &:focus {
+        animation-name: flash;
+        animation-duration: 250ms;
+    }
+}
+
+a, button {
+    &:focus a, //links inside
+    &:focus .fa, //links with font-awesome
+    &:focus .glyphicon /*links with bootstrap*/ {
+        animation-name: flash;
+        animation-duration: 250ms;
+    }
+}
+
+@keyframes flash {
+    50%   {color: transparent;}
+}
+
+button {
+    font-family: $font-mono;
+    background: none;
+    border: none;
+    outline: 0;
+    cursor: pointer;
+
+    &:focus {
+        opacity: 1;
+        text-shadow: 0 1px 1px $clrPrimarySoft;
+    }
+}
+
+
+.btnNav {
+    // @extend %btn;
+    font-size: $fontM;
+    font-weight: 600;
+    color: $clrGrayDark;
+    padding: $safeArea/2*3 $safeArea;
+    opacity: 0.8;
+
+    &:hover {
+        opacity: 1;
+    }
+
+    &--jsActive {
+        color: $clrPrimary;
+    }
+}
+
+.btnB {
+    font-size: $fontM;
+    background: $clrDark;
+    color: $clrLight;
+    padding: 0 $safeArea/5;
+    line-height: $lineHeightM;
+
+    &:hover {
+        animation: glitch 2s steps(100) infinite;
+    }
+}
+
+@keyframes glitch {
+  0% {text-shadow: 1px 0 0 red, -1px 0 0 blue;}
+  4% {text-shadow: 1px 0 0 red, -1px 0 0 blue;}
+  5% {text-shadow: -1px 0 0 red, 1px 0 0 blue;}
+  10% {text-shadow: -1px 0 0 red, 1px 0 0 blue;}
+  15% {text-shadow: 0.5px 0 0 red, -0.5px 0 0 lime;}
+  20% {text-shadow: -1px 0 0 red, 1px 0 0 lime;}
+  25% {text-shadow: 0.7px 0 0 blue, -0.7px 0 0 lime;}
+  30% {text-shadow: 0.7px 0 0 blue, -0.7px 0 0 lime;}
+  35% {text-shadow: -1px 0 0 blue, 1px 0 0 lime;}
+  40% {text-shadow: -1px 0 0 blue, 1px 0 0 lime;}
+  41% {text-shadow: 50px 0 0 blue, -50px 0 0 lime;}
+  42% {text-shadow: 0 0 0 blue, 0 0 0 lime;}
+  43% {text-shadow: 0.5px 0 0 red, -0.5px 0 0 lime;}
+  46% {text-shadow: 0.5px 0 0 red, -0.5px 0 0 lime;}
+  47% {text-shadow: -1px 0 0 red, 1px 0 0 lime;}
+  50% {text-shadow: -1px 0 0 red, 1px 0 0 lime;}
+  51% {text-shadow: 1px 0 0 red, -1px 0 0 blue;}
+  55% {text-shadow: 1px 0 0 red, -1px 0 0 blue;}
+  56% {text-shadow: -1px 0 0 red, 1px 0 0 blue;}
+  60% {text-shadow: -1px 0 0 red, 1px 0 0 blue;}
+  61% {text-shadow: 30px 0 0 red, -30px 0 0 lime;}
+  62% {text-shadow: 0 0 0 red, 0 0 0 lime;}
+  63% {text-shadow: 0.5px 0 0 red, -0.5px 0 0 blue;}
+  66% {text-shadow: 0.5px 0 0 red, -0.5px 0 0 blue;}
+  67% {text-shadow: -1px 0 0 red, 1px 0 0 blue;}
+  70% {text-shadow: -1px 0 0 red, 1px 0 0 blue;}
+  71% {text-shadow: 70px 0 0 red, -70px 0 0 blue;}
+  72% {text-shadow: 0 0 0 red, 0 0 0 blue;}
+  73% {text-shadow: 1px 0 0 red, -1px 0 0 blue;}
+  76% {text-shadow: 1px 0 0 red, -1px 0 0 blue;}
+  80% {text-shadow: -1px 0 0 red, 1px 0 0 blue;}
+  81% {text-shadow: 0.5px 0 0 red, -0.5px 0 0 lime;}
+  85% {text-shadow: 0.5px 0 0 red, -0.5px 0 0 lime;}
+  86% {text-shadow: -1px 0 0 red, 1px 0 0 lime;}
+  90% {text-shadow: -1px 0 0 red, 1px 0 0 lime;}
+  91% {text-shadow: 60px 0 0 lime, -60px 0 0 blue;}
+  92% {text-shadow: 0 0 0 lime, 0 0 0 blue;}
+  92% {text-shadow: 0.7px 0 0 blue, -0.7px 0 0 lime;}
+  95% {text-shadow: 0.7px 0 0 blue, -0.7px 0 0 lime;}
+  96% {text-shadow: -1px 0 0 blue, 1px 0 0 lime;}
+  99% {text-shadow: -1px 0 0 blue, 1px 0 0 lime;}
+  100% {text-shadow: -1px 0 0 blue, 1px 0 0 lime;}
+}

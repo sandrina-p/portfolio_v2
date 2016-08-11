@@ -1,0 +1,632 @@
+/*------------------------------------*\
+    ### VISITOR.SCSS ###
+
+    css used on pages visited most
+    for visitors (public pages)
+
+    created by Sandrina Pereira
+    * v0 27 may 2016
+
+    >> TABLE OF CONTENTS
+    > a template.scss must import:
+        - _pages.scss - each page used by the template
+        - any component used by the pages (atom, molecule or organism);
+        NOTE: don't @import components on the pages to prevent duplicated imports.
+        > # internal imports
+        > # plugins imports
+\*------------------------------------*/
+/*------------------------------------*\
+#IMPORTS
+\*------------------------------------*/
+/*------------------------------------*\
+    #VARIABLES
+\*------------------------------------*/
+/*------------------------------------*\
+    @mixins / &placeholder / functions
+
+    > @function calculate rem
+    > @media queries
+    > @position centerxy
+    > flexbox vs floats
+    > calc
+    > %retina2x
+    > others
+\*------------------------------------*/
+/*------------------------------------*\
+    #MEDIA QUERIES
+\*------------------------------------*/
+/*------------------------------------*\
+    #POSITION
+\*------------------------------------*/
+/*------------------------------------*\
+    #FLEXBOX & CLEARFIX
+\*------------------------------------*/
+.chatPart {
+  *zoom: 1;
+}
+.chatPart:before, .chatPart:after {
+  content: "";
+  display: table;
+}
+.chatPart:after {
+  clear: both;
+}
+.chatPart > * {
+  float: left;
+}
+
+/*------------------------------------*\
+    #CALC
+\*------------------------------------*/
+/*------------------------------------*\
+    #IMG RETINA
+\*------------------------------------*/
+/*------------------------------------*\
+    #OTHERS
+\*------------------------------------*/
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section, main {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+  padding: 0;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/*CUSTOM*/
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  box-sizing: border-box;
+}
+body * {
+  box-sizing: inherit;
+}
+
+main {
+  position: relative;
+  width: 100%;
+}
+
+/*------------------------------------*\
+### TYPOGRAPHY   ###
+\*------------------------------------*/
+html {
+  font-size: 0.875rem;
+  line-height: 1.5;
+  font-family: "Roboto Mono", sans-serif;
+}
+html * {
+  line-height: inherit;
+}
+@media (min-width: 68.75rem) and (min-height: 31.25rem) {
+  html {
+    font-size: 1rem;
+  }
+}
+@media (min-width: 100rem) and (min-height: 31.25rem) {
+  html {
+    font-size: 1.25rem;
+  }
+}
+
+p, .p {
+  font-size: inherit;
+}
+
+a {
+  color: inherit;
+  font-size: inherit;
+  text-decoration: none;
+}
+a:focus {
+  outline: 0;
+  box-shadow: 0 0 0 1px;
+}
+
+i, em {
+  font-style: italic;
+}
+
+strong, b {
+  font-weight: 600;
+}
+
+/*------------------------------------*\
+HELPERS
+\*------------------------------------*/
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+.cf {
+  *zoom: 1;
+}
+.cf:before,
+.cf :after {
+  content: "";
+  display: table;
+}
+.cf:after {
+  clear: both;
+}
+
+.nowrap {
+  white-space: nowrap;
+}
+
+a:focus, button:focus {
+  -webkit-animation-name: flash;
+          animation-name: flash;
+  -webkit-animation-duration: 250ms;
+          animation-duration: 250ms;
+}
+
+a:focus a, a:focus .fa, a:focus .glyphicon, button:focus a, button:focus .fa, button:focus .glyphicon {
+  -webkit-animation-name: flash;
+          animation-name: flash;
+  -webkit-animation-duration: 250ms;
+          animation-duration: 250ms;
+}
+
+@-webkit-keyframes flash {
+  50% {
+    color: transparent;
+  }
+}
+
+@keyframes flash {
+  50% {
+    color: transparent;
+  }
+}
+button {
+  font-family: "Roboto Mono", sans-serif;
+  background: none;
+  border: none;
+  outline: 0;
+  cursor: pointer;
+}
+button:focus {
+  opacity: 1;
+  text-shadow: 0 1px 1px #00e8e8;
+}
+
+.btnNav {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #525252;
+  padding: 1.5rem 1rem;
+  opacity: 0.8;
+}
+.btnNav:hover {
+  opacity: 1;
+}
+.btnNav--jsActive {
+  color: #008080;
+}
+
+.btnB {
+  font-size: 1rem;
+  background: #121212;
+  color: white;
+  padding: 0 0.2rem;
+  line-height: 1.5;
+}
+.btnB:hover {
+  -webkit-animation: glitch 2s steps(100) infinite;
+          animation: glitch 2s steps(100) infinite;
+}
+
+@-webkit-keyframes glitch {
+  0% {
+    text-shadow: 1px 0 0 red, -1px 0 0 blue;
+  }
+  4% {
+    text-shadow: 1px 0 0 red, -1px 0 0 blue;
+  }
+  5% {
+    text-shadow: -1px 0 0 red, 1px 0 0 blue;
+  }
+  10% {
+    text-shadow: -1px 0 0 red, 1px 0 0 blue;
+  }
+  15% {
+    text-shadow: 0.5px 0 0 red, -0.5px 0 0 lime;
+  }
+  20% {
+    text-shadow: -1px 0 0 red, 1px 0 0 lime;
+  }
+  25% {
+    text-shadow: 0.7px 0 0 blue, -0.7px 0 0 lime;
+  }
+  30% {
+    text-shadow: 0.7px 0 0 blue, -0.7px 0 0 lime;
+  }
+  35% {
+    text-shadow: -1px 0 0 blue, 1px 0 0 lime;
+  }
+  40% {
+    text-shadow: -1px 0 0 blue, 1px 0 0 lime;
+  }
+  41% {
+    text-shadow: 50px 0 0 blue, -50px 0 0 lime;
+  }
+  42% {
+    text-shadow: 0 0 0 blue, 0 0 0 lime;
+  }
+  43% {
+    text-shadow: 0.5px 0 0 red, -0.5px 0 0 lime;
+  }
+  46% {
+    text-shadow: 0.5px 0 0 red, -0.5px 0 0 lime;
+  }
+  47% {
+    text-shadow: -1px 0 0 red, 1px 0 0 lime;
+  }
+  50% {
+    text-shadow: -1px 0 0 red, 1px 0 0 lime;
+  }
+  51% {
+    text-shadow: 1px 0 0 red, -1px 0 0 blue;
+  }
+  55% {
+    text-shadow: 1px 0 0 red, -1px 0 0 blue;
+  }
+  56% {
+    text-shadow: -1px 0 0 red, 1px 0 0 blue;
+  }
+  60% {
+    text-shadow: -1px 0 0 red, 1px 0 0 blue;
+  }
+  61% {
+    text-shadow: 30px 0 0 red, -30px 0 0 lime;
+  }
+  62% {
+    text-shadow: 0 0 0 red, 0 0 0 lime;
+  }
+  63% {
+    text-shadow: 0.5px 0 0 red, -0.5px 0 0 blue;
+  }
+  66% {
+    text-shadow: 0.5px 0 0 red, -0.5px 0 0 blue;
+  }
+  67% {
+    text-shadow: -1px 0 0 red, 1px 0 0 blue;
+  }
+  70% {
+    text-shadow: -1px 0 0 red, 1px 0 0 blue;
+  }
+  71% {
+    text-shadow: 70px 0 0 red, -70px 0 0 blue;
+  }
+  72% {
+    text-shadow: 0 0 0 red, 0 0 0 blue;
+  }
+  73% {
+    text-shadow: 1px 0 0 red, -1px 0 0 blue;
+  }
+  76% {
+    text-shadow: 1px 0 0 red, -1px 0 0 blue;
+  }
+  80% {
+    text-shadow: -1px 0 0 red, 1px 0 0 blue;
+  }
+  81% {
+    text-shadow: 0.5px 0 0 red, -0.5px 0 0 lime;
+  }
+  85% {
+    text-shadow: 0.5px 0 0 red, -0.5px 0 0 lime;
+  }
+  86% {
+    text-shadow: -1px 0 0 red, 1px 0 0 lime;
+  }
+  90% {
+    text-shadow: -1px 0 0 red, 1px 0 0 lime;
+  }
+  91% {
+    text-shadow: 60px 0 0 lime, -60px 0 0 blue;
+  }
+  92% {
+    text-shadow: 0 0 0 lime, 0 0 0 blue;
+  }
+  92% {
+    text-shadow: 0.7px 0 0 blue, -0.7px 0 0 lime;
+  }
+  95% {
+    text-shadow: 0.7px 0 0 blue, -0.7px 0 0 lime;
+  }
+  96% {
+    text-shadow: -1px 0 0 blue, 1px 0 0 lime;
+  }
+  99% {
+    text-shadow: -1px 0 0 blue, 1px 0 0 lime;
+  }
+  100% {
+    text-shadow: -1px 0 0 blue, 1px 0 0 lime;
+  }
+}
+
+@keyframes glitch {
+  0% {
+    text-shadow: 1px 0 0 red, -1px 0 0 blue;
+  }
+  4% {
+    text-shadow: 1px 0 0 red, -1px 0 0 blue;
+  }
+  5% {
+    text-shadow: -1px 0 0 red, 1px 0 0 blue;
+  }
+  10% {
+    text-shadow: -1px 0 0 red, 1px 0 0 blue;
+  }
+  15% {
+    text-shadow: 0.5px 0 0 red, -0.5px 0 0 lime;
+  }
+  20% {
+    text-shadow: -1px 0 0 red, 1px 0 0 lime;
+  }
+  25% {
+    text-shadow: 0.7px 0 0 blue, -0.7px 0 0 lime;
+  }
+  30% {
+    text-shadow: 0.7px 0 0 blue, -0.7px 0 0 lime;
+  }
+  35% {
+    text-shadow: -1px 0 0 blue, 1px 0 0 lime;
+  }
+  40% {
+    text-shadow: -1px 0 0 blue, 1px 0 0 lime;
+  }
+  41% {
+    text-shadow: 50px 0 0 blue, -50px 0 0 lime;
+  }
+  42% {
+    text-shadow: 0 0 0 blue, 0 0 0 lime;
+  }
+  43% {
+    text-shadow: 0.5px 0 0 red, -0.5px 0 0 lime;
+  }
+  46% {
+    text-shadow: 0.5px 0 0 red, -0.5px 0 0 lime;
+  }
+  47% {
+    text-shadow: -1px 0 0 red, 1px 0 0 lime;
+  }
+  50% {
+    text-shadow: -1px 0 0 red, 1px 0 0 lime;
+  }
+  51% {
+    text-shadow: 1px 0 0 red, -1px 0 0 blue;
+  }
+  55% {
+    text-shadow: 1px 0 0 red, -1px 0 0 blue;
+  }
+  56% {
+    text-shadow: -1px 0 0 red, 1px 0 0 blue;
+  }
+  60% {
+    text-shadow: -1px 0 0 red, 1px 0 0 blue;
+  }
+  61% {
+    text-shadow: 30px 0 0 red, -30px 0 0 lime;
+  }
+  62% {
+    text-shadow: 0 0 0 red, 0 0 0 lime;
+  }
+  63% {
+    text-shadow: 0.5px 0 0 red, -0.5px 0 0 blue;
+  }
+  66% {
+    text-shadow: 0.5px 0 0 red, -0.5px 0 0 blue;
+  }
+  67% {
+    text-shadow: -1px 0 0 red, 1px 0 0 blue;
+  }
+  70% {
+    text-shadow: -1px 0 0 red, 1px 0 0 blue;
+  }
+  71% {
+    text-shadow: 70px 0 0 red, -70px 0 0 blue;
+  }
+  72% {
+    text-shadow: 0 0 0 red, 0 0 0 blue;
+  }
+  73% {
+    text-shadow: 1px 0 0 red, -1px 0 0 blue;
+  }
+  76% {
+    text-shadow: 1px 0 0 red, -1px 0 0 blue;
+  }
+  80% {
+    text-shadow: -1px 0 0 red, 1px 0 0 blue;
+  }
+  81% {
+    text-shadow: 0.5px 0 0 red, -0.5px 0 0 lime;
+  }
+  85% {
+    text-shadow: 0.5px 0 0 red, -0.5px 0 0 lime;
+  }
+  86% {
+    text-shadow: -1px 0 0 red, 1px 0 0 lime;
+  }
+  90% {
+    text-shadow: -1px 0 0 red, 1px 0 0 lime;
+  }
+  91% {
+    text-shadow: 60px 0 0 lime, -60px 0 0 blue;
+  }
+  92% {
+    text-shadow: 0 0 0 lime, 0 0 0 blue;
+  }
+  92% {
+    text-shadow: 0.7px 0 0 blue, -0.7px 0 0 lime;
+  }
+  95% {
+    text-shadow: 0.7px 0 0 blue, -0.7px 0 0 lime;
+  }
+  96% {
+    text-shadow: -1px 0 0 blue, 1px 0 0 lime;
+  }
+  99% {
+    text-shadow: -1px 0 0 blue, 1px 0 0 lime;
+  }
+  100% {
+    text-shadow: -1px 0 0 blue, 1px 0 0 lime;
+  }
+}
+.chat {
+  padding: 50vh 0 150px;
+  width: 600px;
+  min-height: 200vh;
+  margin: auto;
+}
+.chatSection:not(:first-of-type) .chatPart:first-of-type .chatPart-human, .chatSection:not(:first-of-type) .chatPart:first-of-type .chatPart-bot {
+  padding-top: 2rem;
+}
+.chatPart {
+  position: relative;
+  width: 600px;
+}
+.chatPart:first-of-type .chatPart-human, .chatPart:first-of-type .chatPart-bot {
+  padding-top: 0;
+}
+.chatPart:first-of-type .chatPart-human {
+  font-size: 1.4rem;
+}
+.chatPart:last-of-type .chatPart-human, .chatPart:last-of-type .chatPart-bot {
+  padding-bottom: 0;
+}
+.chatPart-human {
+  width: 30%;
+  padding: 1rem;
+  border-right: 1px solid black;
+  text-align: right;
+  font-weight: 600;
+}
+.chatPart-bot {
+  width: 70%;
+  padding: 1rem;
+  border-left: 1px solid black;
+  margin-left: -1px;
+  color: #c5c5c5;
+}
+.chatPart-bot p:hover,
+.chatPart-bot strong {
+  font-weight: inherit;
+  color: black;
+}
+.chatPart-option {
+  display: inline-block;
+  width: 49%;
+  padding-top: 1rem;
+  padding-right: 1rem;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.chatPart--jsLast .chatPart-bot {
+  color: black;
+}
+
+.runAway {
+  z-index: 2;
+  position: relative;
+  height: 200vh;
+  width: 100%;
+  background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.5), #121212);
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.5), #121212);
+  pointer-events: none;
+}
+
+.quickAndDirty {
+  z-index: 2;
+  position: relative;
+  height: 200vh;
+  width: 100%;
+  background: #121212;
+  color: white;
+  padding: 40vw;
+  text-align: center;
+}
+
+.navSections {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  text-align: center;
+  padding: 0 1rem;
+  border-bottom: 1px dashed #c5c5c5;
+  background: rgba(255, 255, 255, 0.5);
+}
+
+/*------------------------------------*\
+#OTHERS - PLUGINS, JS, IE
+\*------------------------------------*/
+/*------------------------------------*\
+#CLASSES TO JS MANIPULATION
+// note: it is very important that you don't change the classes order
+\*------------------------------------*/
+.ie img[src*=".svg"] {
+  width: 100%;
+}
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+  .ie img[src*=".svg"] {
+    width: 100%;
+  }
+}
