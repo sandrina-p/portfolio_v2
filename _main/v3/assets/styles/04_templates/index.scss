@@ -1,0 +1,50 @@
+/*------------------------------------*\
+    ### VISITOR.SCSS ###
+
+    css used on pages visited most
+    for visitors (public pages)
+
+    created by Sandrina Pereira
+    * v0 27 may 2016
+
+    >> TABLE OF CONTENTS
+    > a template.scss must import:
+        - _pages.scss - each page used by the template
+        - any component used by the pages (atom, molecule or organism);
+        NOTE: don't @import components on the pages to prevent duplicated imports.
+        > # internal imports
+        > # plugins imports
+\*------------------------------------*/
+
+
+/*------------------------------------*\
+#IMPORTS
+\*------------------------------------*/
+@import "../00_atoms/scss";
+@import "../00_atoms/reset";
+@import "../00_atoms/typography";
+@import "../00_atoms/helpers";
+@import "../00_atoms/buttons";
+
+@import "../01_organisms/chat";
+// etc..
+
+
+.navSections {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    text-align: center;
+    padding: 0 $safeArea;
+    border-bottom: 1px dashed $clrGrayLight;
+    background: rgba($clrLight, 0.5);
+}
+
+
+
+/*------------------------------------*\
+#OTHERS - PLUGINS, JS, IE
+\*------------------------------------*/
+@import "../00_atoms/js_manipulation";
+@import "../00_atoms/ie";
+// etc..

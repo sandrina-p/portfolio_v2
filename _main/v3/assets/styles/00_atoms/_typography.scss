@@ -1,0 +1,69 @@
+/*------------------------------------*\
+### TYPOGRAPHY   ###
+\*------------------------------------*/
+
+// @import "_font-open-sans";
+
+// ------ FONT SIZE LIST
+// $font-sans: 'Open Sans', sans-serif;
+$font-mono: 'Roboto Mono', sans-serif;
+$font-sans: 'Roboto', sans-serif;
+$font5XL: rem(48);
+$fontXXXXL: rem(42);
+$fontXXXL: rem(38);
+$fontXXL: rem(32);
+$fontXL: rem(28);
+$fontLx: rem(20);
+$fontL: rem(18);
+$fontM: rem(16);
+$fontS: rem(14);
+$fontXS: rem(12);
+$fontXXS: rem(10);
+
+$lineHeightS: 1.2;
+$lineHeightM: 1.5;
+$lineHeightL: 1.7;
+
+html {
+    font-size: $fontS;
+    line-height: $lineHeightM;
+    font-family: $font-mono;
+
+    * {
+        line-height: inherit;
+    }
+
+    @include media(laptop) {
+        font-size: $fontM;
+    }
+
+    @include media(desktop) {
+        font-size: $fontLx;
+    }
+}
+
+
+p, .p {
+    font-size: inherit;
+}
+
+a {
+    color: inherit;
+    font-size: inherit;
+    text-decoration: none;
+
+    &:focus {
+        outline: 0;
+        box-shadow: $boxShadow;
+    }
+}
+
+
+//-------HTML5
+i, em {
+    font-style: italic;
+}
+
+strong, b {
+    font-weight: 600;
+}

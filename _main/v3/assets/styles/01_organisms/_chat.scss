@@ -1,0 +1,119 @@
+.chat {
+    padding: 50vh 0 150px;
+    width: 600px;
+    min-height: 200vh;
+    margin: auto;
+    // @include centerxy;
+    // last, last2, remove find class gray colors
+    &Section {
+        // basically all of this to tell that
+        // each all .chatPart of each .chatSection except 1st-of-type
+        // will have its children (human and bot) with padding
+        // to have some space between sections
+        &:not(:first-of-type) {
+            .chatPart {
+                &:first-of-type {
+                    .chatPart {
+                        &-human,
+                        &-bot {
+                            padding-top: $safeArea*2;
+                        }
+                    }
+                }
+            }
+        }
+
+        // &:target {
+        //     .chatPart:first-of-type {
+        //         .chatPart-human {
+        //             color: red;
+        //         }
+        //     }
+        // }
+    }
+
+    &Part {
+        position: relative;
+        width: 600px;
+        @extend %cf;
+
+        &:first-of-type {
+            .chatPart {
+                &-human,
+                &-bot {
+                    padding-top: 0;
+                }
+                &-human {
+                    font-size: 1.4rem;
+                }
+            }
+        }
+
+        &:last-of-type {
+            .chatPart {
+                &-human,
+                &-bot {
+                    padding-bottom: 0;
+                }
+            }
+        }
+
+        &-human {
+            width: 30%;
+            padding: $safeArea;
+            border-right: 1px solid black;
+            text-align: right;
+            font-weight: 600;
+        }
+
+        &-bot {
+            width: 70%;
+            padding: $safeArea;
+            border-left: 1px solid black;
+            margin-left: -1px;
+            color: $clrGrayLight;
+
+            p:hover,
+            strong {
+                font-weight: inherit;
+                color: black;
+            }
+        }
+
+        &-option {
+            display: inline-block;
+            width: 49%;
+            padding-top: $safeArea;
+            padding-right: $safeArea;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        &--jsLast {
+            .chatPart-bot {
+                color: black;
+            }
+        }
+    }
+}
+
+
+.runAway {
+    z-index: 2;
+    position: relative;
+    height: 200vh;
+    width: 100%;
+    background: linear-gradient(to bottom, rgba($clrLight,0.5), $clrDark);
+    pointer-events: none;
+}
+
+.quickAndDirty {
+    z-index: 2;
+    position: relative;
+    height: 200vh;
+    width: 100%;
+    background: $clrDark;
+    color: white;
+    padding: 40vw;
+    text-align: center;
+}
