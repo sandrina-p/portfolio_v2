@@ -7,20 +7,32 @@
 
     &-hey {
         font-size: $font6XL;
+        transition: all $speed*4;
+        opacity: 1;
+        display: none;
+
+        &.jsLoading {
+            margin-top: $safeArea*4;
+            opacity: 0;
+        }
     }
 
     &-intro {
         font-size: $fontLx;
         padding: $safeArea*2 0;
+        // transition: all 0;
+        transition: all $speed*4;
+        opacity: 1;
+        display: none;
+
+        &.jsLoading {
+            margin-top: -$safeArea*2;
+            opacity: 0;
+        }
 
         &.jsFixed {
             padding-bottom: $safeArea*4;
         }
-    }
-
-    &-opt {
-        display: inline-block;
-        width: 100%/3;
     }
 }
 

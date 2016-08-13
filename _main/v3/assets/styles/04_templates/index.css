@@ -261,6 +261,7 @@ button:focus {
 }
 .btnNav:hover {
   opacity: 1;
+  color: white;
   -webkit-animation: glitch 2s steps(100) infinite;
           animation: glitch 2s steps(100) infinite;
 }
@@ -687,17 +688,29 @@ button:focus {
 }
 .hiThere-hey {
   font-size: 3.5rem;
+  -webkit-transition: all 1000ms;
+          transition: all 1000ms;
+  opacity: 1;
+  display: none;
+}
+.hiThere-hey.jsLoading {
+  margin-top: 4rem;
+  opacity: 0;
 }
 .hiThere-intro {
   font-size: 1.25rem;
   padding: 2rem 0;
+  -webkit-transition: all 1000ms;
+          transition: all 1000ms;
+  opacity: 1;
+  display: none;
+}
+.hiThere-intro.jsLoading {
+  margin-top: -2rem;
+  opacity: 0;
 }
 .hiThere-intro.jsFixed {
   padding-bottom: 4rem;
-}
-.hiThere-opt {
-  display: inline-block;
-  width: 100%/3;
 }
 
 .chat {
@@ -947,6 +960,7 @@ button:focus {
 }
 
 .navSections {
+  margin: auto;
   position: relative;
   z-index: 11;
   width: 100%;
@@ -954,10 +968,29 @@ button:focus {
   padding: 0 1rem;
   border-bottom: 1px dashed #c5c5c5;
   background: white;
+  height: 2rem;
+  -webkit-transition: width 1000ms;
+          transition: width 1000ms;
+  overflow: hidden;
+}
+.navSections.jsLoading {
+  border: 0;
+  width: 0;
 }
 .navSections.jsFixed {
   position: fixed;
   top: 0;
+}
+.navSections-btn {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 8rem;
+  -webkit-transition: margin 500ms;
+          transition: margin 500ms;
+}
+.navSections-btn.jsLoading {
+  margin-bottom: -3rem;
 }
 
 .runAway {

@@ -31,6 +31,7 @@
 
 
 .navSections {
+    margin: auto;
     position: relative;
     z-index: 11;
     width: 100%;
@@ -38,11 +39,38 @@
     padding: 0 $safeArea;
     border-bottom: 1px dashed $clrGrayLight;
     background: rgba($clrLight, 1);
-    // height: $safeArea*2;
+    height: $safeArea*2;
+    transition: width $speed*4;
+    overflow: hidden;
+
+    &.jsLoading {
+        border: 0;
+        width: 0;
+    }
 
     &.jsFixed {
         position: fixed;
         top: 0;
+    }
+
+    &-btn {
+        display: inline-block;
+        overflow: hidden;
+        white-space: nowrap;
+        width: $safeArea*8;
+        transition: margin $speed*2;
+
+        &.jsLoading {
+            // width: 0;
+            margin-bottom: -$safeArea*3;
+            // &:nth-of-type(1) {
+            //     margin-right: -$safeArea*8;
+            // }
+            //
+            // &:nth-of-type(3) {
+            //     margin-left: -$safeArea*8;
+            // }
+        }
     }
 }
 
