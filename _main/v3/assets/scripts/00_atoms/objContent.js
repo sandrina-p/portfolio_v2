@@ -1,87 +1,116 @@
+var linkCodepen = "<a href='#' class='link' target='_blank'>Codepen</a>",
+    linkStackOverflow = "<a href='#' class='link' target='_blank'>Stackoverflow</a>",
+    btnNox = "<button class='btnB js-checkNox'>Check it out!</button>";
+
 chatContent = {
     intro: {
+        hey: "Hey there!",
         hi: "I would like to introduce you to someone. She's a frontend developer with a great passion for interaction design. Where do you like to start?",
-        back: "Welcome back! I don't know your name yet. Mine is 004040 (I'm just a bot remember?)",
-        meet1: "So,",
-        meetx: "input[name=visitorName]",
-        meet2: "you already know Sandrina, what do you want to review about her this time?"
+        back: "Welcome back! I don't know your name yet. Mine is 008080 (I'm just a bot remember?)",
+        meet0: "So,",
+        meet1: "input[name=visitorName] ? input[name=visitorName] || person",
+        meet2: "you already know who Sandrina is. Is there anything you would like to review about her, or do you want to find out some new stuff?"
     },
     background: {
-        intro: "So right now she's a <strong>frontend developer</strong> in a startup: Zaask, and just finished a <strong>post-graduation degree on Digital Experience Design</strong> at FBAUL.",
-        "before that": "Before that she was <strong>UX/UI Designer</strong> at Pure and has a <strong>degree in Communication Design</strong> at FBAUL and during that time she did <strong>Erasmus</strong> in oPorto.",
-        "future": "When she has free time she might accept some freelancer projects. Maybe she can <strong>help in yours next idea.</strong>",
-        "tell me more": "Hmm... I'm not allowed to share more info about her. Don't be shy and go say hello",
-        "anything else": "Go check some of her projects or what she's applying on them."
+        intro: "Right now she's a <strong>frontend developer</strong> in at startup: Zaask. Plus, she just finished a post-graduation degree on <strong>Digital Experience Design</strong> at FBAUL.",
+        "before that": "She was <strong>UX/UI Designer</strong> at Pure. What got her there was her <strong>degree in Communication Design</strong> at FBAUL. Well, and maybe the fact that she did <strong>Erasmus</strong> in oPorto, where she learned a lot",
+        "future": "Of course she is a workaholic, so whenever she has some free time she might accept freelancer projects. Maybe she can <strong>help you to bring your next big idea to life.</strong>",
+        "tell me more": "Hmm... I'm not allowed to share more info about her. But by all means, don't be shy and go say hello - she is very nice, specially if you are a bot like me",
+        "anything else": "Go check some of her projects and find out how many cool things she can do."
     },
     theory: {
-        intro: "Basically she breaths HTML5, SCSS and Javascript / JQuery. What makes her learning web development is her constant exploration through interactive stuff. She loves to create micro interactions that nobody cares, but once done, everyone enjoy it.",
-        "learning": "She didn't learn it. She is learning it. Everyday. Sharing solutions on Stackoverflow, learning on Codeschool, and creating experiments on Codepen. On design side she loves Sketch, has a great relationship with Adobe Tools and likes Blender.",
-        "micro inter-what" : "In one sentence: She loves to explore new concepts, meaningful transitions that connects users like you who interact with stuff like me.",
-        "hobbies" : "Hmm... she is a gamer too! Maybe she's playing right now. Recently she was a part of the creation of a video game's concept as a motion designer. Do you wanna watch it?",
-        "other technologies" : "She also crossed paths with Angular 2, Ionic 2 and PHP. But right now she is focusing on improve her javascript skills.",
-        "workplace" : "Well... she likes to work alone. In team, only if your ambition is high as hers. From creative to technique she can hold any role. More important than that, she believes that each of these roles must work together to archive the best results."
+        intro: "Basically she breaths <strong>HTML5, SCSS</strong> and <strong>Javascript / JQuery</strong>. She is really into <strong>interactive stuff</strong> and that’s what makes her good at web development: a passion for the work and 24hours of <strong>daily exploration</strong>. She loves to create micro interactions that nobody seems to care about until they see them. Then, of course, they are mind blown",
+        "learning": "She didn't learn it. She is learning it. Everyday. Sharing solutions on <strong>"+linkStackOverflow+"</strong>, learning on Codeschool, and creating experiments on <strong>"+linkCodepen+".</strong> On design side she loves <strong>Sketch</strong>, has a great relationship with <strong>Adobe Tools</strong> and likes <strong>Blender</strong>.",
+        "micro inter-what" : "In one sentence: She loves to explore new concepts, meaningful transitions that <strong>connect users like you who interact with stuff like me.</strong>",
+        "besides www" : "Hmm... she is a <strong>gamer</strong> too! Maybe she's playing right now. Recently she was a part of the creation of a video game's concept as a motion designer."+btnNox,
+        "other techs" : "She also crossed paths with <strong>Angular 2</strong>, <strong>Ionic 2<strong> and <strong>PHP</strong>. But right now she is focusing on improving her javascript skills.",
+        "workplace" : "Well... she likes to work alone. Unless your ambitions are as high as hers, then it’s a match made in heaven. From <strong>creative to technique she can hold any role</strong>. More important than that, she believes that each of these roles must work together to achieve the best results."
     },
     practice: {
-        intro: "Most of these projects were developed during academic studies. What connects them is the constant searching for a unique experience. A visual pleasure that engages the user through a nice user experience.",
-        rnex: {
+        intro: "Most of these projects were developed during academic studies. What connects them is the <strong>constant searching for a unique experience</strong>. A visual pleasure that engages the user through a nice interactive experience.",
+        'rede expressos': {
             title: "rede expressos",
-            sub: "Creative and Programmer",
-            img: "/image/TODO.png",
-            description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+            sub: "web and app",
+            role: "creative and front-end",
+            img: ["assets/media/img/projects/rnex01.png", "/image/TODO.png"],
+            capt: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
             more: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-            links: {link: "//TODO", app: "//todo"}
+            links: [
+                ["//app.html", "check app prototype", "mobile"],
+                ["//www.html", "check homepage", "desktop"]
+            ]
         },
-        "carolina machado": {
+        'learning health': {
+            title: "Learning Health",
+            sub: "website",
+            role: "creative and front-end",
+            img: ["assets/media/img/projects/rnex01.png", "/image/TODO.png"],
+            capt: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+            more: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+            links: [["#", "available soon", "cogs"]],
+        },
+        'carolina machado': {
             title: "Carolina Machado",
-            sub: "Programmer",
-            img: "/image/TODO.png",
-            description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+            sub: "website",
+            role: "Programmer",
+            img: ["assets/media/img/projects/rnex01.png", "/image/TODO.png"],
+            capt: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
             more: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-            links: {link: "//TODO"}
+            links: [["//carolina-machado.com", "check the website", "desktop"]],
         },
-        ps: {
+        'pistol shrimp': {
             title: "Pistol Shrimp",
-            sub: "Creative and Programmer",
-            img: "/image/TODO.png",
-            description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+            sub: "website",
+            role: "Creative and Programmer",
+            img: ["assets/media/img/projects/rnex01.png", "/image/TODO.png"],
+            capt: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
             more: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-            links: {link: "//TODO"}
+            links: [["practice/pistolshrimp.html", "check the website", "desktop"]],
         },
-        moon: {
+        'moon': {
             title: "Moon",
-            sub: "Creative and Programmer",
-            img: "/image/TODO.png",
-            description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+            sub: "website",
+            role: "Creative and Programmer",
+            img: ["assets/media/img/projects/rnex01.png", "/image/TODO.png"],
+            capt: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
             more: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-            links: {link: "//TODO"}
+            links: [["/practice/moon/", "check the website", "desktop"]],
         },
-        portfolio15: {
+        'portfolio 15': {
             title: "Portfolio '15",
-            sub: "Creative and Programmer",
-            img: "/image/TODO.png",
-            description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+            sub: "website",
+            role: "Creative and Programmer",
+            img: ["assets/media/img/projects/rnex01.png", "/image/TODO.png"],
+            capt: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
             more: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-            links: {link: "//TODO"}
+            links: [["practice/portfolio15", "check the website", "desktop"]],
         },
-        "n o x": {
+        'n o x': {
             title: "N O X",
-            sub: "motion graphics",
-            img: "/image/TODO.png",
-            description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+            sub: "video",
+            role: "motion graphics",
+            img: ["assets/media/img/projects/rnex01.png", "/image/TODO.png"],
+            capt: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
             more: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-            links: {}
+            links: [["", "", ""]],
         },
     },
+
     behavior: {
-        project: "It seem her project kept you interested in this conversation. Go on, don't be shy.",
-        emptyB: "Do you know that she loves learning online and did some awesome projects?", // THEORY || PRACTIC
-        emptyT: "Besides this, her timeline is nice too as well her projects", // BACKGROUND || PRACTICE
-        emptyP: "Go check how she did this projects and what she's up to now!" // THEORY || BACKGROUND
-    },
-    "008080": {
-        intro: "holy holy, you've been digging like crazy. I don't have much more to tell you about her. But I can talk about me. And you.",
-        me: "so i'm 434Kb, such of them x of html, z of (s)css, y of js. I have 99/100 on Google Page Speeds (1point for Google Analytics, yh that's how she will know all about our conversation) Do u wanna know anything specific about my components? [css, html, js]",
-        you: "[idioma, pais, cidade, browser, os, net]. once again. I'm not the only one who knows it, Google knows it too and much more.",
-        end: "It was nice to talk with you, thank you! But now do me a favor and go get a life, yes? Don't forget to share me and talk about Sandrina in your path <3"
-    }
+       returnFocus: "It seem her project kept you interested in this conversation. Go on, don't be shy.",
+       returnOnFly : "Hey there, where have you been?", //
+       //isto é qd já nao ha mais links da secção emptyX (Background, Theory ou Practice)
+       emptyB: "Do you know she loves to learn online and that she developed some awesome work?", // THEORY || PRACTICE
+       emptyT: "Besides, her timeline is nice too, and so are her projects", // BACKGROUND || PRACTICE
+       emptyP: "Go check how she did all of these awesome projects and what she's up to now!", // THEORY || BACKGROUND
+       missingB: "[suggesting to check background part]",
+       missingT: "[suggesting to check theory part]",
+       missingP: "[suggesting to check practice part]"
+   },
+   "008080": {
+       intro: "holy holy, you've been digging like crazy. I don't have much more to tell you about her. But I can talk about me. And you.",
+       me: "so i'm 434Kb, x% of html, z% of (s)css, y% of js. I have 99/100 on Google Page Speeds (1 point for Google Analytics, that's how she will know all about our conversation) Do you want to know anything specific about my components? [css, html, js]",
+       you: "[localidade, browser, os, pc and net //@NOTE netType -> js loading settings//]. once again. I'm not the only one who knows it, Google knows it too. I mean, Google probably knows the color of the underwear you are wearing right now, but I like to keep private things private.",
+       end: "It was nice to talk to you, thank you! But now do me a favor and go get a life, yes? It’s not healthy to talk to a bot all day. By the way, don't forget to share me and talk about Sandrina while you’re out there <3" //SHOW SHARE BUTTONS EVERYWHERE
+   }
 };

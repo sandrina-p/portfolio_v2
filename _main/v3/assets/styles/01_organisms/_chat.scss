@@ -1,32 +1,50 @@
+.hiThere {
+    width: 90%;
+    max-width: 500px;
+    margin: auto;
+    text-align: center;
+    padding-top: 20vh;
+
+    &-hey {
+        font-size: $font6XL;
+    }
+
+    &-intro {
+        font-size: $fontLx;
+        padding: $safeArea*2 0;
+
+        &.jsFixed {
+            padding-bottom: $safeArea*4;
+        }
+    }
+
+    &-opt {
+        display: inline-block;
+        width: 100%/3;
+    }
+}
+
 .chat {
     padding: 50vh 0 150px;
-    width: 600px;
+    width: 700px;
     min-height: 200vh;
     margin: auto;
-    // @include centerxy;
-    // last, last2, remove find class gray colors
+
     &Section {
+        padding: $safeArea*2 0;
         // basically all of this to tell that
         // each all .chatPart of each .chatSection except 1st-of-type
         // will have its children (human and bot) with padding
         // to have some space between sections
-        &:not(:first-of-type) {
-            .chatPart {
-                &:first-of-type {
-                    .chatPart {
-                        &-human,
-                        &-bot {
-                            padding-top: $safeArea*2;
-                        }
-                    }
-                }
-            }
-        }
-
-        // &:target {
-        //     .chatPart:first-of-type {
-        //         .chatPart-human {
-        //             color: red;
+        // &:not(:first-of-type) {
+        //     .chatPart {
+        //         &:first-of-type {
+        //             .chatPart {
+        //                 &-human,
+        //                 &-bot {
+        //                     padding-top: $safeArea*2;
+        //                 }
+        //             }
         //         }
         //     }
         // }
@@ -34,17 +52,19 @@
 
     &Part {
         position: relative;
-        width: 600px;
+        width: 100%;
         @extend %cf;
 
+        //define paddings first and last item
         &:first-of-type {
             .chatPart {
                 &-human,
                 &-bot {
                     padding-top: 0;
                 }
-                &-human {
-                    font-size: 1.4rem;
+
+                &-title {
+                    font-size: $fontXL;
                 }
             }
         }
@@ -58,62 +78,289 @@
             }
         }
 
+        // human part with titles
         &-human {
             width: 30%;
             padding: $safeArea;
             border-right: 1px solid black;
-            text-align: right;
-            font-weight: 600;
+            overflow: hidden;
+            display: none;
         }
 
+        &-title,
+        &-subtitle {
+            text-align: right;
+            font-weight: 600;
+            transition: margin $speed;
+            margin-right: 0;
+            font-family: $font-sans;
+            font-size: $fontLx;
+
+            &.jsLoading {
+                margin-right: -100%;
+            }
+        }
+
+        &-subtitle {
+            font-size: $fontL;
+            font-weight: 400;
+        }
+
+
+        //bot part with text and options
         &-bot {
             width: 70%;
             padding: $safeArea;
             border-left: 1px solid black;
             margin-left: -1px;
-            color: $clrGrayLight;
+            overflow: hidden;
+            display: none;
+        }
 
-            p:hover,
+        &-text {
+            color: $clrGrayLight;
+            opacity: 1;
+            transition: opacity $speed;
+
+            &:hover {
+                color: black;
+            }
+
             strong {
                 font-weight: inherit;
                 color: black;
             }
+
+            &.jsLoading {
+                opacity: 0;
+            }
         }
 
+        // btns
         &-option {
             display: inline-block;
             width: 49%;
             padding-top: $safeArea;
             padding-right: $safeArea;
             overflow: hidden;
-            white-space: nowrap;
+
+            &:nth-child(2) {
+                position: relative;
+                z-index: 2;
+            }
+        }
+
+        .btnB {
+            margin-left: 0;
+            transition: margin $speed*2;
+
+            &.jsLoading {
+                margin-left: -100%;
+            }
         }
 
         &--jsLast {
-            .chatPart-bot {
+            .chatPart-text {
                 color: black;
+            }
+        }
+
+
+        &--project {
+            .chatPart-bot {
+                overflow: visible;
+                padding: $safeArea 0 $safeArea*2;
+            }
+
+            .chatPart {
+                &-human {
+                    padding: 0;
+                    margin-top: 32px;
+                    text-align: right;
+                }
+
+                &-title {
+                    color: $clrLight;
+                    background: $clrDark;
+                    padding: 0 $safeArea/3 0 $safeArea;
+                    display: inline-block;
+                    font-size: 1.5rem !important; //TODO
+                }
+
+                &-subtitle {
+                    background: $clrLight;
+                    z-index: 3;
+                    position: relative;
+                    padding: 0 $safeArea/3;
+                    margin-top: $safeArea/3;
+                }
+
+                &-option {
+                    padding-top: $safeArea*2;
+                    padding-left: $safeArea;
+                }
+            }
+        }
+
+        &-project {
+            color: $clrLight;
+
+            margin-left: -5px;
+        }
+
+        &-fs {
+            background: black;
+            padding: $safeArea;
+            margin-left: 0;
+
+            display: none;
+
+            img {
+                width: 100%;
+                opacity: 0;
+            }
+
+
+            &.jsGlitchIn {
+                img {
+                    opacity: 1;
+                }
+            }
+        }
+
+        &-role {
+            font-size: $fontLx;
+            padding-top: $safeArea;
+
+            background: white;
+            color: black;
+            padding: 10px 15px;
+            margin: -12px 44px 0 -36px;
+
+
+            display: none;
+            margin-left: 150%;
+            width: 100%;
+
+            transition: margin $speed*2;
+
+            &.jsGlitchIn {
+                display: block;
+                margin-left: -44px;
+            }
+        }
+
+        &-capt,
+        &-more {
+            font-family: $font-sans;
+            font-size: $fontM;
+            font-weight: 100;
+            letter-spacing: 1px;
+            line-height: 1.7;
+            // padding: $safeArea/2 0;
+
+            display: none;
+
+            br {font-size: 1.7rem;}
+
+            background: $clrDark;
+            padding: 15px;
+            margin: -9px 13px -5px 5px;
+            z-index: -1;
+            position: relative;
+        }
+
+        &-capt {
+            padding: $safeArea*2 $safeArea;
+        }
+
+        &-more {
+            margin: -12px 2px -12px -152px;
+            background: $clrGrayDarker;
+            z-index: 0;
+            transition: all $speed*2;
+            display: block;
+            max-height: 500px;
+            overflow: hidden;
+
+            &.jsLoading {
+                max-height: 0;
+                padding: 0;
+                margin: -2px 302px 0 50px;
+            }
+        }
+
+
+        &-details {
+            padding-top: $safeArea;
+
+            background: #008080;
+            padding: 5px 15px;
+            text-align: right;
+            position: relative;
+
+
+            margin-left: 400px;
+            margin-right: 100px;
+            display: none;
+            transition: margin $speed;
+
+            &.jsGlitchIn {
+                margin: -8px -10px 0px 52px;
+            }
+
+        }
+
+        &-www {
+            display: inline-block;
+            width: 100%;
+            text-align: right;
+        }
+
+        .btnDetails {
+            position: absolute;
+            left: -24px;
+            padding: 0 $safeArea/3;
+
+            background: white;
+            color: black;
+            margin-top: -12px;
+
+            display: none;
+            left: 250px;
+            transition: left $speed;
+
+            &:hover {
+                animation: 250ms animateBorderThree ease infinite;
+
+            }
+
+            &.jsGlitchIn {
+                left: -24px;
+            }
+        }
+
+        //trigger by btn www
+        &-checkItOut {
+            font-size: $fontS;
+            font-family: $font-mono;
+            display: inline-block;
+            color: $clrDark;
+            padding-right: $safeArea/2;
+
+            &.jsActive {
+                color: $clrLight;
+                animation: glitch 2s steps(100) infinite;
             }
         }
     }
 }
 
 
-.runAway {
-    z-index: 2;
-    position: relative;
-    height: 200vh;
-    width: 100%;
-    background: linear-gradient(to bottom, rgba($clrLight,0.5), $clrDark);
-    pointer-events: none;
-}
 
-.quickAndDirty {
-    z-index: 2;
-    position: relative;
-    height: 200vh;
-    width: 100%;
-    background: $clrDark;
-    color: white;
-    padding: 40vw;
-    text-align: center;
+.js-loadingRetro {
+    position: absolute;
+    bottom: 0;
+    padding-left: $safeArea;
+    animation: glitch 2s steps(100) infinite;
 }
