@@ -22,37 +22,41 @@ a, button {
 
 button {
     font-family: $font-mono;
+    font-size: $fontM;
     background: none;
     border: none;
     outline: 0;
     cursor: pointer;
 
     &:focus {
+        border: none;
         opacity: 1;
-        text-shadow: 0 1px 1px $clrPrimarySoft;
+        // text-shadow: 0 1px 1px $clrPrimaryLight;
+        animation-name: flash;
+        animation-duration: 250ms;
     }
 }
 
 
 .btnNav {
     // @extend %btn;
-    font-size: $fontM;
     font-weight: 600;
     color: $clrGrayDark;
-    padding: $safeArea/2*3 $safeArea;
-    opacity: 0.8;
+    padding: $safeArea/5 $safeArea;
+    color: $clrPrimary;
 
     &:hover {
         opacity: 1;
+        animation: glitch 2s steps(100) infinite;
     }
 
-    &--jsActive {
-        color: $clrPrimary;
+    &.jsActive {
+        background: $clrDark;
+        color: $clrLight;
     }
 }
 
 .btnB {
-    font-size: $fontM;
     background: $clrDark;
     color: $clrLight;
     padding: 0 $safeArea/5;
@@ -63,18 +67,69 @@ button {
     }
 }
 
+  @keyframes animateBorderThree {
+    25% {
+        // background: linear-gradient(to bottom, $clrLight 50%, $clrDark 50%);
+        // background-size: auto 2px;
+        outline-color: white;
+        box-shadow: 0 0 0 1px black;
+    }
+    75% {
+        outline: 1px dashed black;
+        box-shadow: 0 0 0 1px white;
+
+    }
+  }
+
+
+.btnOut1,
+.btnOut2, {
+    display: inline-block;
+    padding: 0 $safeArea/2;
+    line-height: rem(10);
+
+    &:hover {
+        color: $clrPrimarySoft;
+    }
+
+    &:last-child {
+        padding-right: 0;
+    }
+}
+
+.btnOut1 {
+    font-size: $fontLx;
+    animation: glitch1 2s steps(100) infinite;
+    animation-delay: 4s;
+}
+
+.btnOut2 {
+    animation: glitch2 2s steps(100) infinite;
+    animation-delay: 2s;
+}
+
+
+.link {
+    border-bottom: 1px dotted $clrDark;
+
+    &:hover {
+        color: $clrPrimary;
+        border-bottom: 1px dashed $clrPrimary;
+    }
+}
+
 @keyframes glitch {
   0% {text-shadow: 1px 0 0 red, -1px 0 0 blue;}
   4% {text-shadow: 1px 0 0 red, -1px 0 0 blue;}
   5% {text-shadow: -1px 0 0 red, 1px 0 0 blue;}
   10% {text-shadow: -1px 0 0 red, 1px 0 0 blue;}
+  41% {text-shadow: 50px 0 0 blue, -50px 0 0 lime;}
   15% {text-shadow: 0.5px 0 0 red, -0.5px 0 0 lime;}
   20% {text-shadow: -1px 0 0 red, 1px 0 0 lime;}
   25% {text-shadow: 0.7px 0 0 blue, -0.7px 0 0 lime;}
   30% {text-shadow: 0.7px 0 0 blue, -0.7px 0 0 lime;}
   35% {text-shadow: -1px 0 0 blue, 1px 0 0 lime;}
   40% {text-shadow: -1px 0 0 blue, 1px 0 0 lime;}
-  41% {text-shadow: 50px 0 0 blue, -50px 0 0 lime;}
   42% {text-shadow: 0 0 0 blue, 0 0 0 lime;}
   43% {text-shadow: 0.5px 0 0 red, -0.5px 0 0 lime;}
   46% {text-shadow: 0.5px 0 0 red, -0.5px 0 0 lime;}
@@ -106,4 +161,22 @@ button {
   96% {text-shadow: -1px 0 0 blue, 1px 0 0 lime;}
   99% {text-shadow: -1px 0 0 blue, 1px 0 0 lime;}
   100% {text-shadow: -1px 0 0 blue, 1px 0 0 lime;}
+}
+
+@keyframes glitch1 {
+    60% {text-shadow: -1px 0 0 red, 1px 0 0 blue;}
+    61% {text-shadow: 30px 0 0 red, -30px 0 0 lime;}
+    62% {text-shadow: 0 0 0 red, 0 0 0 lime; color: yellow}
+    63% {text-shadow: 0.5px 0 0 red, -0.5px 0 0 blue;}
+    66% {text-shadow: 0.5px 0 0 red, -0.5px 0 0 blue;}
+    67% {text-shadow: -1px 0 0 red, 1px 0 0 blue;}
+}
+
+@keyframes glitch2 {
+    15% {text-shadow: 0.5px 0 0 red, -0.5px 0 0 lime;}
+    20% {text-shadow: -1px 0 0 red, 1px 0 0 lime;}
+    25% {text-shadow: 0.7px 0 0 blue, -0.7px 0 0 lime;}
+    30% {text-shadow: 0.7px 0 0 blue, -0.7px 0 0 lime;}
+    35% {text-shadow: -1px 0 0 blue, 1px 0 0 lime;}
+    40% {text-shadow: -1px 0 0 blue, 1px 0 0 lime;}
 }
