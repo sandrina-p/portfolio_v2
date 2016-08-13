@@ -39,18 +39,24 @@
 
     <div class="hiThere">
         <!-- <p class="hiThere-oh">oh!...</p> -->
-        <p class="hiThere-hey">Hi there</p>
-        <p class="hiThere-intro">
+        <p class="hiThere-hey jsLoading">Hey there</p>
+        <p class="hiThere-intro jsLoading">
             I would like to introduce you to someone.
             <br>She's a frontend developer with a great passion for interaction design.
             <br><br>Where do you like to start?
         </p>
     </div>
-    <nav class="navSections">
+    <nav class="navSections jsLoading">
         <h2 class="sr-only">Chat navigation</h2>
-        <button type="button" name="button" class="btnNav js-chatOpt">background</button>
-        <button type="button" name="button" class="btnNav js-chatOpt">theory</button>
-        <button type="button" name="button" class="btnNav js-chatOpt">practice</button>
+        <div class="navSections-btn jsLoading">
+            <button type="button" name="button" class="btnNav js-chatOpt">background</button>
+        </div>
+        <div class="navSections-btn jsLoading">
+            <button type="button" name="button" class="btnNav js-chatOpt">theory</button>
+        </div>
+        <div class="navSections-btn jsLoading">
+            <button type="button" name="button" class="btnNav js-chatOpt">practice</button>
+        </div>
     </nav>
 
     <div class="chat" id="chat"></div>

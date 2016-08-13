@@ -47,6 +47,7 @@ button {
 
     &:hover {
         opacity: 1;
+        color: white;
         animation: glitch 2s steps(100) infinite;
     }
 
