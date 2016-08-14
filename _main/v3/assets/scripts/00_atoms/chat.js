@@ -66,8 +66,10 @@ var chatOptClick = function() {
         section,
         $currentPart,
         text,
+        outsidePractice,
         intervalLoadingDots,
         navSectionTop;
+        //TODO document all these variables.
 
 
     // ------ define section or part ------ //
@@ -84,7 +86,7 @@ var chatOptClick = function() {
             if (section == "practice" && title != "practice") {
                 buildProject(section, title)
             } else {
-                buildPart(section, title);
+                buildSentece(section, title);
             }
         } else {
             $('.js-chatOpt').removeClass('jsActive');
@@ -187,15 +189,12 @@ var chatOptClick = function() {
 
                 // var value = objSection[key];
                 // console.log(key, value);
-            } else {
-                console.log('quase acabando.');
             }
         }
 
         if (chatOptions.length == 0) {
             console.log('acabou links. chama [behavior].');
         }
-
         return chatOptions;
     }
 
@@ -243,7 +242,7 @@ var chatOptClick = function() {
     }
 
 
-    // ------ loading / showing of the part ------ //
+    // ------ components of a part ------ //
     function scrollSafe($currentPart) {
         //scroll to fit perfectly
         var wHeight =  window.innerHeight;
@@ -254,7 +253,7 @@ var chatOptClick = function() {
 
         if (tooClose) {
             $('body').animate({
-                scrollTop: pScroll + pHeight - wHeight/2
+                scrollTop: pScroll + pHeight - wHeight/4*1
             }, 500);
         }
     }
@@ -312,8 +311,8 @@ var chatOptClick = function() {
     function showingPartCommon($part, diffPartCallBack ) {
         var loadingTimeXtext = $part.find(chatPClass+"human").text().length;
 
-        //if isn't 1st part guide on previous part (currentPart)
-        //otherwise guide on parent
+        // if is 1st part (begin of a section) guide on parent
+        // otherwise guide on previous part (currentPart where the user clicked);
         if($part.is(':first-child') ) {
             scrollSafe($part.parent());
         } else {
@@ -338,7 +337,7 @@ var chatOptClick = function() {
                     // focus this new part
                     replaceLastPart($part);
 
-                    diffPartCallBack($part, chatPClass); //a talk or a project
+                    diffPartCallBack($part, chatPClass); //a part or a project
 
                 }, loadingTimeXtext);
             }, 1000);
@@ -420,19 +419,24 @@ var chatOptClick = function() {
             // fancy loading
             $newPart = $('#'+section+'-intro');
             showingPartCommon($newPart, showingPartTalk);
+
+
+            // var projectsCat =   "<div class='chatPart-option' id='"+categ"'>"
+            //                         +"<ul></ul>"
+            //                     +"</div>";
+        } else {
+            $section = $('#'+section);
+
+            //scroll to fit perfectly
+            var wHeight =  window.innerHeight;
+            $('body').animate({
+                scrollTop: $section.offset().top - wHeight/4*1
+            }, 500);
         }
-
-        $section = $('#'+section);
-
-        // //scroll to fit perfectly
-        // var wHeight =  window.innerHeight;
-        // $('body').animate({
-        //     scrollTop: $section.offset().top - wHeight/2
-        // }, 500);
     }
 
-    // ------ build a new part ------ //
-    function buildPart(section, title) {
+    // ------ build a new sentence ------ //
+    function buildSentece(section, title) {
 
         //get text and remove it from chatContent.
         var id = title.split(' ').join('-');
@@ -467,12 +471,21 @@ var chatOptClick = function() {
 
         // create project
         var ElChatPart = getElProject(id, title, sub, img, role, capt, more, links),
-            ElChatOptions = getOptions(section, title),
             ElLinks = getLinks(links);
 
+        // if (outsidePractice) {
+        //     var ElChatOptions = "";
+        //     outsidePractice = false
+        // } else {
+        //     var ElChatOptions = getOptions(section, title);
+        // }
+
+        // ElChatOptions = getProjects();
+
         ElChatPart.find('.chatPart-www').append(ElLinks);
-        ElChatPart.find(botClass).append(ElChatOptions);
-        $currentPart.after(ElChatPart);
+
+        // ElChatPart.find(botClass).append(ElChatOptions);
+        // $currentPart.after(ElChatPart);
 
         $newPart = $currentPart.next();
         showingPartCommon($newPart, showingPartProject);
@@ -507,12 +520,12 @@ var chatOptClick = function() {
     //show n o x project isolated
     $(document).on('click', '.js-checkNox', function(){
         $currentPart = $(this).closest('.chatPart');
+        outsidePractice = true;
         buildProject('practice', 'n o x', $currentPart);
         $(this).remove();
 
         //TODO change options links
     });
-
 
 
     // public function
