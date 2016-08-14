@@ -1,9 +1,7 @@
 // @koala-prepend "../../plugins/jquery/jquery-2.1.4.min.js";
-
+// @koala-prepend "../00_atoms/customFunctions.js";
 // @koala-prepend "../00_atoms/objContent.js";
 // @koala-prepend "../00_atoms/chat.js";
-
-
 
 $(document).ready(function(){
 
