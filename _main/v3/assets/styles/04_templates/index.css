@@ -714,7 +714,7 @@ button:focus {
 }
 
 .chat {
-  padding: 50vh 0 150px;
+  padding: 25vh 0 150px;
   width: 700px;
   min-height: 200vh;
   margin: auto;
@@ -949,6 +949,30 @@ button:focus {
   color: white;
   -webkit-animation: glitch 2s steps(100) infinite;
           animation: glitch 2s steps(100) infinite;
+}
+
+.liIndex-ul {
+  width: 100%;
+}
+.liIndex-liCateg {
+  display: inline-block;
+  margin-top: 0.5rem;
+}
+.liIndex-categ {
+  display: block;
+  font-family: "Roboto", sans-serif;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-top: 0.5rem;
+}
+.liIndex-liProj {
+  display: inline-block;
+  margin-bottom: 0.5rem;
+}
+.liIndex-sub {
+  padding-left: 0.5rem;
+  margin-right: 0.5rem;
+  border-bottom: 1px solid black;
 }
 
 .js-loadingRetro {

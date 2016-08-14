@@ -68,7 +68,9 @@ var chatOptClick = function() {
         text,
         outsidePractice,
         intervalLoadingDots,
-        navSectionTop;
+        navSectionTop,
+        isIntroPractice,
+        noScroll;
         //TODO document all these variables.
 
 
@@ -89,6 +91,7 @@ var chatOptClick = function() {
                 buildSentece(section, title);
             }
         } else {
+            section = title;
             $('.js-chatOpt').removeClass('jsActive');
             option.addClass('jsActive');
             buildSection(title);
@@ -287,7 +290,7 @@ var chatOptClick = function() {
     }
 
     function scrollFinal($part) {
-        var safeArea = 60,
+        var safeArea = 80,
             pHeight = $part.height(),
             pScroll = $part.offset().top,
             wHeight = window.innerHeight,
@@ -308,12 +311,13 @@ var chatOptClick = function() {
     }
 
 
-    function showingPartCommon($part, diffPartCallBack ) {
+    function showingPartCommon($part, diffPartCallBack) {
         var loadingTimeXtext = $part.find(chatPClass+"human").text().length;
-
         // if is 1st part (begin of a section) guide on parent
         // otherwise guide on previous part (currentPart where the user clicked);
-        if($part.is(':first-child') ) {
+        if (noScroll) {
+            // keep going no scroll
+        } else if ($part.is(':first-child') ) {
             scrollSafe($part.parent());
         } else {
             scrollSafe($part.prev());
@@ -334,8 +338,6 @@ var chatOptClick = function() {
                 // 4. show text
                 setTimeout(function () {
                     $('.js-loadingRetro').remove();
-                    // focus this new part
-                    replaceLastPart($part);
 
                     diffPartCallBack($part, chatPClass); //a part or a project
 
@@ -345,8 +347,18 @@ var chatOptClick = function() {
     }
 
     function showingPartTalk($part) {
+        replaceLastPart($part);
         finishLoading($part.find(chatPClass+"text"));
         showingOptions($part);
+    }
+
+    function showingPractice($part){
+        // showingPartTalk($part);
+        // setTimeout(function () {
+            finishLoading($part.find(chatPClass+"text"));
+            buildProject(section, chatContent[section]['firstProject']);
+            delete chatContent[section]['firstProject'];
+        // }, 800);
     }
 
     function showingPartProject($part) {
@@ -372,7 +384,14 @@ var chatOptClick = function() {
                             setTimeout(function () {
                                 $part.find(chatPClass+"capt").slideDown();
 
-                                showingOptions($part);
+                                scrollFinal($part);
+
+                                if (isIntroPractice) {
+                                    isIntroPractice = false;
+                                    setTimeout(function () {
+                                        buildIndexPart( $("#"+section) );
+                                    }, 500);
+                                }
 
                             }, 100);
                         }, 450);
@@ -387,18 +406,52 @@ var chatOptClick = function() {
         // 6. show 1st btn
         setTimeout(function () {
             finishLoading($part.find(chatPClass+"option:nth-last-of-type(2) .btnB"));
-            scrollFinal($part);
+            if(noScroll) {
+                noScroll = false;
+            } else {
+                scrollFinal($part);
+            }
             // 6. show 2nd btn
             setTimeout(function () {
                 finishLoading( $part.find(chatPClass+"option:last-of-type .btnB") );
-                setTimeout(function () {
-                }, 10);
             }, 300);
         }, 400);
     }
 
 
+    function getProjectsIndex(section) {
+        var objSection = chatContent[section];
+        var objI = 0;
+        var chatOptions = [];
+        var $liIndexUl = $("<ul class='liIndex-ul'></ul>");
+
+        for (var key in objSection) {
+            if(objSection.hasOwnProperty(key)) {
+
+                var categ = objSection[key]['categ'];
+
+                //if category doesn't exist, build it
+                if( $liIndexUl.find('.'+categ).length == 0 && key != 'clicked') {
+                    var newCat = "<li class='liIndex-liCateg "+categ+"'>"
+                                    +"<span class='liIndex-categ'>"+categ+"</span>"
+                                    +"<ul class='liIndex-dl'></ul>"
+                                +"</li>";
+                    $liIndexUl.append(newCat);
+                }
+
+                var li = "<li class='liIndex-liProj'><button type='button' name='button' class='btnB js-chatOpt'>"+key+"</button>"
+                            +"<span class='liIndex-sub'>"+objSection[key]['sub']+"</span>"
+                        +"</li>";
+
+                $liIndexUl.find('.'+categ).find('ul').append(li);
+            }
+        }
+
+        return $liIndexUl;
+    }
+
     // ------ build a new section ------ //
+
     function buildSection(section) {
         var $section = $('#'+section);
 
@@ -407,26 +460,29 @@ var chatOptClick = function() {
             text = chatContent[section]["intro"];
             delete chatContent[section]["intro"];
 
-            //build section, part and options (buttons);
+            //build section, part and options
             var ElChatSection = getElSection(section),
                 ElChatPart = getElPart(section+"-intro", title, text),
                 ElChatOptions = getOptions(title);
 
+
             ElChatSection.append(ElChatPart);
-            ElChatSection.find(botClass).append(ElChatOptions);
+            if (section != "practice") {
+                ElChatSection.find(botClass).append(ElChatOptions);
+            }
             $chatId.append(ElChatSection);
 
-            // fancy loading
+
             $newPart = $('#'+section+'-intro');
-            showingPartCommon($newPart, showingPartTalk);
 
+            if (section == "practice") {
+                isIntroPractice = true;
+                showingPartCommon($newPart, showingPractice);
+            } else {
+                showingPartCommon($newPart, showingPartTalk);
+            }
 
-            // var projectsCat =   "<div class='chatPart-option' id='"+categ"'>"
-            //                         +"<ul></ul>"
-            //                     +"</div>";
         } else {
-            $section = $('#'+section);
-
             //scroll to fit perfectly
             var wHeight =  window.innerHeight;
             $('body').animate({
@@ -484,11 +540,29 @@ var chatOptClick = function() {
 
         ElChatPart.find('.chatPart-www').append(ElLinks);
 
+        // option.closest('.chatPart');
         // ElChatPart.find(botClass).append(ElChatOptions);
-        // $currentPart.after(ElChatPart);
+        $section = $('#'+section);
 
-        $newPart = $currentPart.next();
+        if($section.children().length == 1) {
+            $section.append(ElChatPart);
+        } else {
+            $section.children(':last-child').before(ElChatPart);
+        }
+
+        $newPart = ElChatPart;
         showingPartCommon($newPart, showingPartProject);
+    }
+
+    function buildIndexPart($section) {
+        noScroll = true;
+        ElChatPart = getElPart(section+"-index", "", "");
+        var $projectsUl = getProjectsIndex(section);
+
+        $section.append(ElChatPart);
+        ElChatPart.find(botClass).append($projectsUl);
+        $newPart = $('#'+section+'-index');
+        showingPartCommon($newPart, showingPartTalk);
     }
 
 

@@ -28,7 +28,9 @@ chatContent = {
     },
     practice: {
         intro: "Most of these projects she did both design and code parts. What connects them is the <strong>constant searching for a unique experience</strong>. A visual pleasure that engages the user through a nice interactive experience. Let me start with her most recent project:",
+        firstProject: "rede expressos",
         'rede expressos': {
+            categ: "www",
             title: "rede expressos",
             sub: "web and app concept redesign",
             role: "creative and front-end",
