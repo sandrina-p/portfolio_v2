@@ -29,34 +29,34 @@ $.fn.extend({
 });
 
 
-var heyThere = function() {
-    function init() {
-        setTimeout(function () {
-            $('.hiThere-hey, .hiThere-intro').show();
-        }, 1000);
-        setTimeout(function () {
-            $('.hiThere-hey').removeClass('jsLoading');
-            setTimeout(function () {
-                $('.hiThere-intro').removeClass('jsLoading');
-                setTimeout(function () {
-                    $('.navSections').removeClass('jsLoading');
-                    setTimeout(function () {
-                        $('.navSections-btn:nth-of-type(2)').removeClass('jsLoading');
-                        setTimeout(function () {
-                            $('.navSections-btn:nth-of-type(1)').removeClass('jsLoading');
-                            setTimeout(function () {
-                                $('.navSections-btn:nth-of-type(3)').removeClass('jsLoading');
-                            }, 100);
-                        }, 100);
-                    }, 1600);
-                }, 100);
-            }, 300);
-        }, 1100);
-    }
-    return {
-        init
-    }
-}();
+// var heyThere = function() {
+//     function init() {
+//         setTimeout(function () {
+//             $('.hiThere-hey, .hiThere-intro').show();
+//         }, 1000);
+//         setTimeout(function () {
+//             $('.hiThere-hey').removeClass('jsLoading');
+//             setTimeout(function () {
+//                 $('.hiThere-intro').removeClass('jsLoading');
+//                 setTimeout(function () {
+//                     $('.navSections').removeClass('jsLoading');
+//                     setTimeout(function () {
+//                         $('.navSections-btn:nth-of-type(2)').removeClass('jsLoading');
+//                         setTimeout(function () {
+//                             $('.navSections-btn:nth-of-type(1)').removeClass('jsLoading');
+//                             setTimeout(function () {
+//                                 $('.navSections-btn:nth-of-type(3)').removeClass('jsLoading');
+//                             }, 100);
+//                         }, 100);
+//                     }, 800);
+//                 }, 800);
+//             }, 300);
+//         }, 1100);
+//     }
+//     return {
+//         init
+//     }
+// }();
 
 
 var chatOptClick = function() {
@@ -68,6 +68,7 @@ var chatOptClick = function() {
         text,
         intervalLoadingDots,
         navSectionTop;
+
 
     // ------ define section or part ------ //
     function init(option) {
@@ -125,8 +126,6 @@ var chatOptClick = function() {
             if($(this).scrollTop() > navSectionTop) {
                 $navSections.addClass('jsFixed');
                 $hiThere.addClass('jsFixed');
-            // } else if ($(this).scrollTop() < 150) {
-            //     $('.btnNav').removeClass('jsActive');
             } else {
                 $navSections.removeClass('jsFixed');
                 $hiThere.removeClass('jsFixed');
@@ -134,6 +133,7 @@ var chatOptClick = function() {
             }
         });
     }
+
 
     // ------ DOM strucure element ------ //
     function getElSection(trigger) {
@@ -243,7 +243,22 @@ var chatOptClick = function() {
     }
 
 
-    // ------ loading of the part ------ //
+    // ------ loading / showing of the part ------ //
+    function scrollSafe($currentPart) {
+        //scroll to fit perfectly
+        var wHeight =  window.innerHeight;
+        var wScroll = $(window).scrollTop();
+        var pHeight =  $currentPart.height();
+        var pScroll = $currentPart.offset().top;
+        var tooClose = pScroll - wScroll + pHeight > wHeight/2;
+
+        if (tooClose) {
+            $('body').animate({
+                scrollTop: pScroll + pHeight - wHeight/2
+            }, 500);
+        }
+    }
+
     function replaceLastPart(part) {
         $('.chatPart--jsLast').removeClass('chatPart--jsLast');
         if (part) {
@@ -272,9 +287,38 @@ var chatOptClick = function() {
         $element.addClass('jsGlitchIn');
     }
 
+    function scrollFinal($part) {
+        var safeArea = 60,
+            pHeight = $part.height(),
+            pScroll = $part.offset().top,
+            wHeight = window.innerHeight,
+            wScroll = $(window).scrollTop(),
+            diff = pScroll - wScroll,
+            visibleOnScreen = diff + pHeight,
+            wArea = wHeight - safeArea;
+
+        if (visibleOnScreen < wArea) {
+            console.log('está okay para ler i think');
+        } else {
+            console.log('too close');
+            var diff2 = visibleOnScreen - wArea;
+            $('body').animate({
+                scrollTop: wScroll + diff2
+            }, 500);
+        }
+    }
+
 
     function showingPartCommon($part, diffPartCallBack ) {
         var loadingTimeXtext = $part.find(chatPClass+"human").text().length;
+
+        //if isn't 1st part guide on previous part (currentPart)
+        //otherwise guide on parent
+        if($part.is(':first-child') ) {
+            scrollSafe($part.parent());
+        } else {
+            scrollSafe($part.prev());
+        }
 
         // 1.show line title
         $part.find(chatPClass+"human").slideDown();
@@ -341,14 +385,19 @@ var chatOptClick = function() {
     }
 
     function showingOptions($part) {
+        // 6. show 1st btn
         setTimeout(function () {
             finishLoading($part.find(chatPClass+"option:nth-last-of-type(2) .btnB"));
-            // 6. show second btn
+            scrollFinal($part);
+            // 6. show 2nd btn
             setTimeout(function () {
                 finishLoading( $part.find(chatPClass+"option:last-of-type .btnB") );
+                setTimeout(function () {
+                }, 10);
             }, 300);
         }, 400);
     }
+
 
     // ------ build a new section ------ //
     function buildSection(section) {
@@ -375,11 +424,11 @@ var chatOptClick = function() {
 
         $section = $('#'+section);
 
-        //scroll to fit perfectly
-        var wHeight =  window.innerHeight;
-        $('body').animate({
-            scrollTop: $section.offset().top - wHeight/2
-        }, 500);
+        // //scroll to fit perfectly
+        // var wHeight =  window.innerHeight;
+        // $('body').animate({
+        //     scrollTop: $section.offset().top - wHeight/2
+        // }, 500);
     }
 
     // ------ build a new part ------ //
@@ -399,19 +448,6 @@ var chatOptClick = function() {
 
         $newPart = $currentPart.next();
         showingPartCommon($newPart, showingPartTalk);
-
-        // var scrolled = $(window).scrollTop();
-        // var wHeight = window.innerHeight;
-        // var aboveFold = scrolled + wHeight;
-        // var newContentEnd = $currentPart.next().offset().top + currentPartHeight;
-        //
-        // //if is too low, scroll a little to see its response
-        // //TODO add condition if response is bigger than screen, scroll until its beginning
-        // if (newContentEnd > aboveFold - 100 /*100 == nav height and some breathing */) {
-        //     $('body').animate({
-        //         scrollTop: aboveFold - wHeight + currentPartHeight + 40
-        //     }, 500);
-        // }
     }
 
     // ------ build a new project ------ //
@@ -444,18 +480,22 @@ var chatOptClick = function() {
 
 
 
-    //hover CTA btn on each project
-    $(document).on('mouseenter', '.js-linkswww', function(){
-        var cta = $(this).attr('title'),
-            $checkItOut = $(this).siblings('.js-checkItOut');
-        $checkItOut.text(cta);
-        $checkItOut.addClass('jsActive');
-    })
-    .on('mouseleave', '.js-linkswww', function(){
-        var $checkItOut = $(this).siblings('.js-checkItOut');
-        $checkItOut.text('');
-        $checkItOut.removeClass('jsActive');
-    });
+    // ------ interactivity clicks and hovers stuff ------ //
+
+    //hover CTA btn on each project to show its cta text
+    $(document)
+        .on('mouseenter', '.js-linkswww', function(){
+            var cta = $(this).attr('title'),
+                $checkItOut = $(this).siblings('.js-checkItOut');
+            $checkItOut.text(cta);
+            $checkItOut.addClass('jsActive');
+        })
+        .on('mouseleave', '.js-linkswww', function(){
+            var $checkItOut = $(this).siblings('.js-checkItOut');
+            $checkItOut.text('');
+            $checkItOut.removeClass('jsActive');
+        });
+
 
     //show / hide more info each project
     $(document).on('click', '.btnDetails', function(){
@@ -464,16 +504,20 @@ var chatOptClick = function() {
         $(this).toggleText("_more info", "_less info");
     });
 
+    //show n o x project isolated
     $(document).on('click', '.js-checkNox', function(){
-        buildProject('practice', 'n o x', $currentPart = $(this).closest('.chatPart'));
+        $currentPart = $(this).closest('.chatPart');
+        buildProject('practice', 'n o x', $currentPart);
+        $(this).remove();
+
+        //TODO change options links
     });
+
 
 
     // public function
     return {
         init
-        // section: buildSection,
-        // part: buildPart
     }
 
 }();
@@ -481,7 +525,7 @@ var chatOptClick = function() {
 
 $(document).ready(function(){
 
-    heyThere.init();
+    // heyThere.init();
 
     $(document).on('click', '.js-chatOpt', function(){
         chatOptClick.init($(this));

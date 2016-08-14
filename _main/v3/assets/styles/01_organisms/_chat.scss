@@ -372,7 +372,7 @@
 
 .js-loadingRetro {
     position: absolute;
-    bottom: 0;
+    top: $safeArea;
     padding-left: $safeArea;
     animation: glitch 2s steps(100) infinite;
 }
