@@ -961,6 +961,7 @@ button:focus {
 .liIndex-categ {
   display: block;
   font-family: "Roboto", sans-serif;
+  font-size: 0.875rem;
   font-weight: 600;
   text-transform: uppercase;
   margin-top: 0.5rem;

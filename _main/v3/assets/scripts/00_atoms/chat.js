@@ -1,87 +1,58 @@
-Object.size = function(obj) {
-    var size = 0, key;
-    for (key in obj) {
-        if (obj.hasOwnProperty(key)) size++;
+
+var heyThere = function() {
+    function init() {
+        setTimeout(function () {
+            $('.hiThere-hey, .hiThere-intro').show();
+        }, 1000);
+        setTimeout(function () {
+            $('.hiThere-hey').removeClass('jsLoading');
+            setTimeout(function () {
+                $('.hiThere-intro').removeClass('jsLoading');
+                setTimeout(function () {
+                    $('.navSections').removeClass('jsLoading');
+                    setTimeout(function () {
+                        $('.navSections-btn:nth-of-type(2)').removeClass('jsLoading');
+                        setTimeout(function () {
+                            $('.navSections-btn:nth-of-type(1)').removeClass('jsLoading');
+                            setTimeout(function () {
+                                $('.navSections-btn:nth-of-type(3)').removeClass('jsLoading');
+                            }, 100);
+                        }, 100);
+                    }, 800);
+                }, 800);
+            }, 300);
+        }, 1100);
     }
-    return size;
-};
-
-
-Object.notClicked = function(obj, arrayName) {
-    var size = 0, key;
-    var array = obj[arrayName];
-    if (!array) {
-        return Object.size(obj);
+    return {
+        init
     }
-
-    for (key in obj) {
-        if (obj.hasOwnProperty(key)) {
-            if (array.indexOf(key) < 0 ) size++;
-        }
-    }
-    return size;
-};
-
-$.fn.extend({
-    toggleText: function(a, b) {
-        $.trim(this.html()) == a ? this.html(b) : this.html(a);
-    }
-});
-
-
-// var heyThere = function() {
-//     function init() {
-//         setTimeout(function () {
-//             $('.hiThere-hey, .hiThere-intro').show();
-//         }, 1000);
-//         setTimeout(function () {
-//             $('.hiThere-hey').removeClass('jsLoading');
-//             setTimeout(function () {
-//                 $('.hiThere-intro').removeClass('jsLoading');
-//                 setTimeout(function () {
-//                     $('.navSections').removeClass('jsLoading');
-//                     setTimeout(function () {
-//                         $('.navSections-btn:nth-of-type(2)').removeClass('jsLoading');
-//                         setTimeout(function () {
-//                             $('.navSections-btn:nth-of-type(1)').removeClass('jsLoading');
-//                             setTimeout(function () {
-//                                 $('.navSections-btn:nth-of-type(3)').removeClass('jsLoading');
-//                             }, 100);
-//                         }, 100);
-//                     }, 800);
-//                 }, 800);
-//             }, 300);
-//         }, 1100);
-//     }
-//     return {
-//         init
-//     }
-// }();
-
+}();
 
 var chatOptClick = function() {
     var $chatId = $('#chat'),
+        $navSections = $(".navSections"),
+        $hiThere = $('.hiThere-intro'),
         botClass = '.chatPart-bot',
         chatPClass = '.chatPart-',
-        section,
-        $currentPart,
-        text,
-        outsidePractice,
-        intervalLoadingDots,
-        navSectionTop,
-        isIntroPractice,
-        noScroll;
-        //TODO document all these variables.
+        section, //string - section of the clicked button, ex: 'background';
+        $currentPart, //jquery - id of the clicked button parent chatPart ex: $('#chatpart-intro');
+        text, // string - simple text of the bot;
+        title, // string - title of the new part ex: 'before that'
+
+        outsidePractice, //bollean - project triggered outside practice section
+        intervalLoadingDots, //function - setInteral controller
+        navSectionTop, //number - nav offsetTop to trigger fixed class
+        isIntroPractice, //bollean - if 1st project, show index
+        noScroll; // bollean - scroll when buil new part. true when shows indexPractice
 
 
-    // ------ define section or part ------ //
+    // ------ define if is section or part ------ //
     function init(option) {
         section = option.closest('.chatSection').attr('id');
         $currentPart = option.closest('.chatPart');
-        title = option.text(),
-        $navSections = $(".navSections");
+        title = option.text();
 
-        fixChatNav(); //calling it here prevent to fix the nav without clicking anywhere;
+        fixChatNav(); //calling it here prevent to fix the nav position without first click on it;
 
         if (section) {
             animateClickedOption(option);
@@ -96,36 +67,37 @@ var chatOptClick = function() {
             option.addClass('jsActive');
             buildSection(title);
         }
-
     }
 
+    //when the user clicks on a chat button, it runs away.
     function animateClickedOption(option) {
         var parent = option.parent();
         var siblings = parent.siblings('.chatPart-option');
 
+        // TODO remove this animate, add a class pellleaseee.
         parent.animate({'margin-left':'-49%'});
         option.animate({'margin-left':'-100%'});
+
         if (siblings.length > 0) {
             //siblings.children().removeClass('btnB');
             setTimeout(function () {
                 parent.remove();
             }, 500);
 
-        } else {
+        } else {  //is is the last one, remove the parent.
             parent.slideUp();
             setTimeout(function () {
                 parent.remove();
             }, 250);
-            // parent.animate({'padding-top':'0'});
         }
     }
 
+    //navbar controller position
     function fixChatNav() {
-        //prevent navSectionTop value being higher than original trigger
+        //prevent navSectionTop value be higher than the original trigger.
         if(!$navSections.hasClass('jsFixed') ) {
             navSectionTop = $(".navSections").offset().top;
         }
-        $hiThere = $('.hiThere-intro');
 
         $(document).scroll(function(){
             if($(this).scrollTop() > navSectionTop) {
@@ -166,41 +138,6 @@ var chatOptClick = function() {
         return chatPart;
     }
 
-    function getOptions(section) {
-        var objSection = chatContent[section];
-        var objI = 0;
-        var chatOptions = [];
-        // var objLength = Object.notClicked(objSection, 'clicked');
-
-        for (var key in objSection) {
-            if(objSection.hasOwnProperty(key)) {
-
-                var clicked;  //to prevent show the same button twice
-                //if clicked doesn't exist, build it.
-                if(!objSection['clicked']) {
-                    objSection['clicked'] = [];
-                }
-
-                clicked = objSection['clicked'];
-
-                //if key isn't on clicked && only first 2 keys && key isn' clicked itself
-                if (clicked.indexOf(key) < 0 && chatOptions.length < 2 && key !== "clicked") {
-                    chatBtn = getElBtn(key);
-                    chatOptions.push(chatBtn);
-                    objSection['clicked'].push(key);
-                }
-
-                // var value = objSection[key];
-                // console.log(key, value);
-            }
-        }
-
-        if (chatOptions.length == 0) {
-            console.log('acabou links. chama [behavior].');
-        }
-        return chatOptions;
-    }
-
     function getElProject(id, title, sub, img, role, capt, more) {
         var chatProj =  $("<div class='chatPart chatPart--project chatPart--jsLast' id='"+id+"'>"
                             +"<div class='chatPart-human'>"
@@ -221,9 +158,7 @@ var chatOptClick = function() {
                                         +"<button type='button' name='more' class='btnDetails'>_more info</button>"
                                         +"<div class='chatPart-www'>"
                                             +"<span class='chatPart-checkItOut js-checkItOut'></span>"
-                                            //TODO links
-                                            //+"<a href='"+links[0][0]+"' target='_blank' class='btnOut"+[1]+"' title='"+links[0][1]+"'><i class='fa fa-"+links[0][2]+"'></i></a>"
-                                            //+"<a href='"+links[1][0]+"' target='_blank' class='btnOut"+[2]+"' title='"+links[1][1]+"'><i class='fa fa-"+links[1][2]+"'></i></a>"
+                                            //getProjectLinks();
                                         +"</div>"
                                     +"</div>"
                                 +"</div>"
@@ -234,7 +169,82 @@ var chatOptClick = function() {
         return chatProj;
     }
 
-    function getLinks(links) {
+    // get available options to the user.
+    function getOptions(section) {
+        var objSection = chatContent[section];
+        var objI = 0;
+        var chatOptions = [];
+
+        for (var key in objSection) {
+            if(objSection.hasOwnProperty(key)) {
+
+                //clicked is to prevent showing the same button twice.
+                var clicked;
+                //if clicked doesn't exist, build it.
+                if(!objSection['clicked']) {
+                    objSection['clicked'] = [];
+                }
+                clicked = objSection['clicked'];
+
+                //if key isn't on clicked && only first 2 keys && key isn' clicked obj itself
+                if (clicked.indexOf(key) < 0 && chatOptions.length < 2 && key !== "clicked") {
+                    chatBtn = getElBtn(key);
+                    chatOptions.push(chatBtn);
+                    objSection['clicked'].push(key);
+                }
+            }
+        }
+
+        if (chatOptions.length == 0) {
+            //TODO aia aiaiaiaiaia
+            console.log('acabou links. chama [behavior].');
+        }
+        return chatOptions;
+    }
+
+    // that beautiful index when the user clicks "practice"
+    function getProjectsIndex(section) {
+        var objSection = chatContent[section];
+        var objI = 0;
+        var chatOptions = [];
+        var $liIndexUl = $("<ul class='liIndex-ul'></ul>");
+
+        for (var key in objSection) {
+            if(objSection.hasOwnProperty(key)) {
+
+                var categ = objSection[key]['categ'];
+                if(categ) {
+                    var catC = getPartIdName(categ);
+                }
+
+                //if category doesn't exist, build it
+                if( $liIndexUl.find('.'+catC).length == 0 && key != 'clicked') {
+                    var newCat = "<li class='liIndex-liCateg "+catC+"'>"
+                                    +"<span class='liIndex-categ'>"+categ+"</span>"
+                                    +"<ul class='liIndex-dl'></ul>"
+                                +"</li>";
+                    $liIndexUl.append(newCat);
+                }
+
+                var li = "<li class='liIndex-liProj'>"
+                            +"<button type='button' name='button' class='btnB js-chatOpt'>"+key+"</button>"
+                            +"<span class='liIndex-sub'>"+objSection[key]['sub']+"</span>"
+                        +"</li>";
+
+                $liIndexUl.find('.'+catC).find('ul').append(li);
+            }
+        }
+
+        return $liIndexUl;
+    }
+
+
+    function getPartIdName(string) {
+        var id = string.split(' ').join('-');
+        return id;
+    }
+
+    function getProjectLinks(links) {
         var elLinks = "";
         for (i = 0; i < links.length; i++) {
             (links[i][1] == "available soon")
@@ -244,8 +254,10 @@ var chatOptClick = function() {
         return elLinks;
     }
 
-
-    // ------ components of a part ------ //
+    // ------ SHOWING A PART COMPONENTS ------ //
+    //scroll has 2 phases:
+    // 1. scrollSafe() - make sure newPart is 1/4 of the window height.
+    // 2. scrollFinal() - if newPart is outside of the window view, scroll it until its end is visible.
     function scrollSafe($currentPart) {
         //scroll to fit perfectly
         var wHeight =  window.innerHeight;
@@ -261,10 +273,22 @@ var chatOptClick = function() {
         }
     }
 
-    function replaceLastPart(part) {
-        $('.chatPart--jsLast').removeClass('chatPart--jsLast');
-        if (part) {
-            part.addClass('chatPart--jsLast');
+    function scrollFinal($part) {
+        var safeArea = 120,
+            pHeight = $part.height(),
+            pScroll = $part.offset().top,
+            wHeight = window.innerHeight,
+            wScroll = $(window).scrollTop(),
+            diff = pScroll - wScroll,
+            visibleOnScreen = diff + pHeight, //part position + its height
+            wArea = wHeight - safeArea; // safe area of the window.
+
+        //if new part is away of the above the fold, scroll it to a safer area.
+        if (visibleOnScreen > wArea) {
+            var diff2 = visibleOnScreen - wArea;
+            $('body').animate({
+                scrollTop: wScroll + diff2
+            }, 500);
         }
     }
 
@@ -281,6 +305,13 @@ var chatOptClick = function() {
         }, 100);
     }
 
+    function replaceLastPart(part) {
+        $('.chatPart--jsLast').removeClass('chatPart--jsLast');
+        if (part) {
+            part.addClass('chatPart--jsLast');
+        }
+    }
+
     function finishLoading($element) {
         $element.removeClass('jsLoading');
     }
@@ -289,30 +320,11 @@ var chatOptClick = function() {
         $element.addClass('jsGlitchIn');
     }
 
-    function scrollFinal($part) {
-        var safeArea = 80,
-            pHeight = $part.height(),
-            pScroll = $part.offset().top,
-            wHeight = window.innerHeight,
-            wScroll = $(window).scrollTop(),
-            diff = pScroll - wScroll,
-            visibleOnScreen = diff + pHeight,
-            wArea = wHeight - safeArea;
 
-        if (visibleOnScreen < wArea) {
-            console.log('está okay para ler i think');
-        } else {
-            console.log('too close');
-            var diff2 = visibleOnScreen - wArea;
-            $('body').animate({
-                scrollTop: wScroll + diff2
-            }, 500);
-        }
-    }
-
-
+    // ------ SHOWING A PART PROCESS - HEY TO TIMEOUTS! ------ //
     function showingPartCommon($part, diffPartCallBack) {
         var loadingTimeXtext = $part.find(chatPClass+"human").text().length;
+
         // if is 1st part (begin of a section) guide on parent
         // otherwise guide on previous part (currentPart where the user clicked);
         if (noScroll) {
@@ -353,12 +365,9 @@ var chatOptClick = function() {
     }
 
     function showingPractice($part){
-        // showingPartTalk($part);
-        // setTimeout(function () {
-            finishLoading($part.find(chatPClass+"text"));
-            buildProject(section, chatContent[section]['firstProject']);
-            delete chatContent[section]['firstProject'];
-        // }, 800);
+        finishLoading($part.find(chatPClass+"text"));
+        buildProject(section, chatContent[section]['firstProject']);
+        delete chatContent[section]['firstProject'];
     }
 
     function showingPartProject($part) {
@@ -419,39 +428,10 @@ var chatOptClick = function() {
     }
 
 
-    function getProjectsIndex(section) {
-        var objSection = chatContent[section];
-        var objI = 0;
-        var chatOptions = [];
-        var $liIndexUl = $("<ul class='liIndex-ul'></ul>");
+    // ------ TYPES OF PART BUILD ------ //
 
-        for (var key in objSection) {
-            if(objSection.hasOwnProperty(key)) {
 
-                var categ = objSection[key]['categ'];
-
-                //if category doesn't exist, build it
-                if( $liIndexUl.find('.'+categ).length == 0 && key != 'clicked') {
-                    var newCat = "<li class='liIndex-liCateg "+categ+"'>"
-                                    +"<span class='liIndex-categ'>"+categ+"</span>"
-                                    +"<ul class='liIndex-dl'></ul>"
-                                +"</li>";
-                    $liIndexUl.append(newCat);
-                }
-
-                var li = "<li class='liIndex-liProj'><button type='button' name='button' class='btnB js-chatOpt'>"+key+"</button>"
-                            +"<span class='liIndex-sub'>"+objSection[key]['sub']+"</span>"
-                        +"</li>";
-
-                $liIndexUl.find('.'+categ).find('ul').append(li);
-            }
-        }
-
-        return $liIndexUl;
-    }
-
-    // ------ build a new section ------ //
-
+    // ------ section ------ //
     function buildSection(section) {
         var $section = $('#'+section);
 
@@ -466,15 +446,14 @@ var chatOptClick = function() {
                 ElChatOptions = getOptions(title);
 
 
+            //FIXME find a way to not write "practice" here...
             ElChatSection.append(ElChatPart);
             if (section != "practice") {
                 ElChatSection.find(botClass).append(ElChatOptions);
             }
             $chatId.append(ElChatSection);
 
-
             $newPart = $('#'+section+'-intro');
-
             if (section == "practice") {
                 isIntroPractice = true;
                 showingPartCommon($newPart, showingPractice);
@@ -491,18 +470,19 @@ var chatOptClick = function() {
         }
     }
 
-    // ------ build a new sentence ------ //
+    // ------ sentence ------ //
     function buildSentece(section, title) {
 
         //get text and remove it from chatContent.
-        var id = title.split(' ').join('-');
-            text = chatContent[section][title];
+        var id = getPartIdName(title);
+        text = chatContent[section][title];
 
         delete chatContent[section][title];
 
         //build part
         var ElChatPart = getElPart(id, title, text),
             ElChatOptions = getOptions(section);
+
         ElChatPart.find(botClass).append(ElChatOptions);
         $currentPart.after(ElChatPart);
 
@@ -510,11 +490,11 @@ var chatOptClick = function() {
         showingPartCommon($newPart, showingPartTalk);
     }
 
-    // ------ build a new project ------ //
+    // ------ project ------ //
     function buildProject(section, project) {
         //get all info needed about project and delete it.
-        var id = project.split(' ').join('-'),
-            objProj = chatContent[section][project],
+        var id = getPartIdName(project);
+        var objProj = chatContent[section][project],
             title = objProj["title"],
             sub = objProj["sub"],
             role = objProj["role"],
@@ -527,23 +507,13 @@ var chatOptClick = function() {
 
         // create project
         var ElChatPart = getElProject(id, title, sub, img, role, capt, more, links),
-            ElLinks = getLinks(links);
-
-        // if (outsidePractice) {
-        //     var ElChatOptions = "";
-        //     outsidePractice = false
-        // } else {
-        //     var ElChatOptions = getOptions(section, title);
-        // }
-
-        // ElChatOptions = getProjects();
+            ElLinks = getProjectLinks(links);
 
         ElChatPart.find('.chatPart-www').append(ElLinks);
 
-        // option.closest('.chatPart');
-        // ElChatPart.find(botClass).append(ElChatOptions);
+        //if is the first project, there is no index yet, so append it.
+        //otherwise, append it before index.
         $section = $('#'+section);
-
         if($section.children().length == 1) {
             $section.append(ElChatPart);
         } else {
@@ -554,10 +524,12 @@ var chatOptClick = function() {
         showingPartCommon($newPart, showingPartProject);
     }
 
+    // ------ index ------ //
     function buildIndexPart($section) {
         noScroll = true;
-        ElChatPart = getElPart(section+"-index", "", "");
-        var $projectsUl = getProjectsIndex(section);
+
+        var ElChatPart = getElPart(section+"-index", "", ""),
+            $projectsUl = getProjectsIndex(section);
 
         $section.append(ElChatPart);
         ElChatPart.find(botClass).append($projectsUl);
@@ -567,7 +539,7 @@ var chatOptClick = function() {
 
 
 
-    // ------ interactivity clicks and hovers stuff ------ //
+    // ------ CHAT INTERACTIVITY ------ //
 
     //hover CTA btn on each project to show its cta text
     $(document)
@@ -597,8 +569,6 @@ var chatOptClick = function() {
         outsidePractice = true;
         buildProject('practice', 'n o x', $currentPart);
         $(this).remove();
-
-        //TODO change options links
     });
 
 
@@ -612,7 +582,7 @@ var chatOptClick = function() {
 
 $(document).ready(function(){
 
-    // heyThere.init();
+    heyThere.init();
 
     $(document).on('click', '.js-chatOpt', function(){
         chatOptClick.init($(this));

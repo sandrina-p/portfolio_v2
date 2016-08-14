@@ -30,7 +30,7 @@ chatContent = {
         intro: "Most of these projects she did both design and code parts. What connects them is the <strong>constant searching for a unique experience</strong>. A visual pleasure that engages the user through a nice interactive experience. Let me start with her most recent project:",
         firstProject: "rede expressos",
         'rede expressos': {
-            categ: "www",
+            categ: "other www projects",
             title: "rede expressos",
             sub: "web and app concept redesign",
             role: "creative and front-end",
@@ -43,7 +43,7 @@ chatContent = {
             ]
         },
         'carolina machado': {
-            categ: "www",
+            categ: "other www projects",
             title: "Carolina Machado",
             sub: "fashion website",
             role: "Programmer",
@@ -53,7 +53,7 @@ chatContent = {
             links: [["//carolina-machado.com", "check the website", "desktop"]],
         },
         'learning health': {
-            categ: "www",
+            categ: "other www projects",
             title: "Learning Health",
             sub: "health website",
             role: "creative and front-end",
@@ -63,7 +63,7 @@ chatContent = {
             links: [["#", "available soon", "cogs"]],
         },
         'portfolio 15': {
-            categ: "www",
+            categ: "other www projects",
             title: "Portfolio '15",
             sub: "Her previous portfolio",
             role: "Creative and Programmer",
@@ -73,7 +73,7 @@ chatContent = {
             links: [["practice/portfolio15", "check the website", "desktop"]],
         },
         'pistol shrimp': {
-            categ: "www",
+            categ: "other www projects",
             title: "Pistol Shrimp",
             sub: "net label website",
             role: "Creative and Programmer",
@@ -83,7 +83,7 @@ chatContent = {
             links: [["practice/pistolshrimp.html", "check the website", "desktop"]],
         },
         'moon': {
-            categ: "www",
+            categ: "other www projects",
             title: "Moon",
             sub: "Movie website",
             role: "Creative and Programmer",
@@ -93,7 +93,7 @@ chatContent = {
             links: [["/practice/moon/", "check the website", "desktop"]],
         },
         'DET': {
-            categ: "exploring",
+            categ: "opening other doors",
             title: "DET Dutch Experimental Typography",
             sub: "Digital Magazine",
             role: "Creative and Developer",
@@ -103,7 +103,7 @@ chatContent = {
             links: [["//behance.com/sandrin4p/det", "check it on behance", "behance"]],
         },
         'N O X': {
-            categ: "exploring",
+            categ: "opening other doors",
             title: "N O X",
             sub: "video game concept video",
             role: "Motion Graphics",
@@ -113,7 +113,7 @@ chatContent = {
             links: [["//vimeo.com/nox", "check it on vimeo", "vimeo"]],
         },
         '141205': {
-            categ: "exploring",
+            categ: "opening other doors",
             title: "141205",
             sub: "blender animation",
             role: "Creative and Programmer",
