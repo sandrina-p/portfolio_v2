@@ -1,0 +1,94 @@
+/*------------------------------------*\
+    ### VISITOR.SCSS ###
+
+    css used on pages visited most
+    for visitors (public pages)
+
+    created by Sandrina Pereira
+    * v0 27 may 2016
+
+    >> TABLE OF CONTENTS
+    > a template.scss must import:
+        - _pages.scss - each page used by the template
+        - any component used by the pages (atom, molecule or organism);
+        NOTE: don't @import components on the pages to prevent duplicated imports.
+        > # internal imports
+        > # plugins imports
+\*------------------------------------*/
+
+
+/*------------------------------------*\
+#IMPORTS
+\*------------------------------------*/
+@import "../00_atoms/scss";
+@import "../00_atoms/reset";
+@import "../00_atoms/typography";
+@import "../00_atoms/helpers";
+@import "../00_atoms/buttons";
+
+@import "../01_organisms/chat";
+// etc..
+
+
+.navSections {
+    margin: auto;
+    position: relative;
+    z-index: 11;
+    width: 100%;
+    text-align: center;
+    padding: 0;
+    border-bottom: 1px dashed $clrGrayLight;
+    background: rgba($clrLight, 1);
+    height: $safeArea*2;
+    transition: width $speed*4;
+    overflow: hidden;
+
+    &.jsLoading {
+        border: 0;
+        width: 0;
+    }
+
+    &.jsFixed {
+        position: fixed;
+        top: 0;
+    }
+
+    &-btn {
+        display: inline-block;
+        overflow: hidden;
+        white-space: nowrap;
+        transition: margin $speed*2;
+
+        &.jsLoading {
+            margin-bottom: -$safeArea*3;
+        }
+    }
+}
+
+@include media(phablet) {
+    .navSections {
+
+        &-btn {
+            width: $safeArea*8;
+        }
+    }
+}
+
+.runAway {
+    z-index: 11;
+    position: relative;
+    height: 200vh;
+    width: 100%;
+    background: linear-gradient(to bottom, rgba($clrLight,0.5), $clrDark);
+    pointer-events: none;
+    padding: 100vw 10vw;
+    text-align: center;
+}
+
+
+/*------------------------------------*\
+#OTHERS - PLUGINS, JS, IE
+\*------------------------------------*/
+@import "../00_atoms/js_manipulation";
+@import "../00_atoms/ie";
+// etc..
