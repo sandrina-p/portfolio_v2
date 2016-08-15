@@ -212,23 +212,13 @@ HELPERS
 }
 
 a:focus, button:focus {
-  -webkit-animation-name: flash;
-          animation-name: flash;
-  -webkit-animation-duration: 250ms;
-          animation-duration: 250ms;
+  animation-name: flash;
+  animation-duration: 250ms;
 }
 
 a:focus a, a:focus .fa, a:focus .glyphicon, button:focus a, button:focus .fa, button:focus .glyphicon {
-  -webkit-animation-name: flash;
-          animation-name: flash;
-  -webkit-animation-duration: 250ms;
-          animation-duration: 250ms;
-}
-
-@-webkit-keyframes flash {
-  50% {
-    color: transparent;
-  }
+  animation-name: flash;
+  animation-duration: 250ms;
 }
 
 @keyframes flash {
@@ -247,10 +237,8 @@ button {
 button:focus {
   border: none;
   opacity: 1;
-  -webkit-animation-name: flash;
-          animation-name: flash;
-  -webkit-animation-duration: 250ms;
-          animation-duration: 250ms;
+  animation-name: flash;
+  animation-duration: 250ms;
 }
 
 .btnNav {
@@ -262,8 +250,7 @@ button:focus {
 .btnNav:hover {
   opacity: 1;
   color: white;
-  -webkit-animation: glitch 2s steps(100) infinite;
-          animation: glitch 2s steps(100) infinite;
+  animation: glitch 2s steps(100) infinite;
 }
 .btnNav.jsActive {
   background: #121212;
@@ -282,19 +269,7 @@ button:focus {
   line-height: 1.5;
 }
 .btnB:hover {
-  -webkit-animation: glitch 2s steps(100) infinite;
-          animation: glitch 2s steps(100) infinite;
-}
-
-@-webkit-keyframes animateBorderThree {
-  25% {
-    outline-color: white;
-    box-shadow: 0 0 0 1px black;
-  }
-  75% {
-    outline: 1px dashed black;
-    box-shadow: 0 0 0 1px white;
-  }
+  animation: glitch 2s steps(100) infinite;
 }
 
 @keyframes animateBorderThree {
@@ -324,17 +299,13 @@ button:focus {
 
 .btnOut1 {
   font-size: 1.25rem;
-  -webkit-animation: glitch1 2s steps(100) infinite;
-          animation: glitch1 2s steps(100) infinite;
-  -webkit-animation-delay: 4s;
-          animation-delay: 4s;
+  animation: glitch1 2s steps(100) infinite;
+  animation-delay: 4s;
 }
 
 .btnOut2 {
-  -webkit-animation: glitch2 2s steps(100) infinite;
-          animation: glitch2 2s steps(100) infinite;
-  -webkit-animation-delay: 2s;
-          animation-delay: 2s;
+  animation: glitch2 2s steps(100) infinite;
+  animation-delay: 2s;
 }
 
 .link {
@@ -343,135 +314,6 @@ button:focus {
 .link:hover {
   color: #008080;
   border-bottom: 1px dashed #008080;
-}
-
-@-webkit-keyframes glitch {
-  0% {
-    text-shadow: 1px 0 0 red, -1px 0 0 blue;
-  }
-  4% {
-    text-shadow: 1px 0 0 red, -1px 0 0 blue;
-  }
-  5% {
-    text-shadow: -1px 0 0 red, 1px 0 0 blue;
-  }
-  10% {
-    text-shadow: -1px 0 0 red, 1px 0 0 blue;
-  }
-  41% {
-    text-shadow: 50px 0 0 blue, -50px 0 0 lime;
-  }
-  15% {
-    text-shadow: 0.5px 0 0 red, -0.5px 0 0 lime;
-  }
-  20% {
-    text-shadow: -1px 0 0 red, 1px 0 0 lime;
-  }
-  25% {
-    text-shadow: 0.7px 0 0 blue, -0.7px 0 0 lime;
-  }
-  30% {
-    text-shadow: 0.7px 0 0 blue, -0.7px 0 0 lime;
-  }
-  35% {
-    text-shadow: -1px 0 0 blue, 1px 0 0 lime;
-  }
-  40% {
-    text-shadow: -1px 0 0 blue, 1px 0 0 lime;
-  }
-  42% {
-    text-shadow: 0 0 0 blue, 0 0 0 lime;
-  }
-  43% {
-    text-shadow: 0.5px 0 0 red, -0.5px 0 0 lime;
-  }
-  46% {
-    text-shadow: 0.5px 0 0 red, -0.5px 0 0 lime;
-  }
-  47% {
-    text-shadow: -1px 0 0 red, 1px 0 0 lime;
-  }
-  50% {
-    text-shadow: -1px 0 0 red, 1px 0 0 lime;
-  }
-  51% {
-    text-shadow: 1px 0 0 red, -1px 0 0 blue;
-  }
-  55% {
-    text-shadow: 1px 0 0 red, -1px 0 0 blue;
-  }
-  56% {
-    text-shadow: -1px 0 0 red, 1px 0 0 blue;
-  }
-  60% {
-    text-shadow: -1px 0 0 red, 1px 0 0 blue;
-  }
-  61% {
-    text-shadow: 30px 0 0 red, -30px 0 0 lime;
-  }
-  62% {
-    text-shadow: 0 0 0 red, 0 0 0 lime;
-  }
-  63% {
-    text-shadow: 0.5px 0 0 red, -0.5px 0 0 blue;
-  }
-  66% {
-    text-shadow: 0.5px 0 0 red, -0.5px 0 0 blue;
-  }
-  67% {
-    text-shadow: -1px 0 0 red, 1px 0 0 blue;
-  }
-  70% {
-    text-shadow: -1px 0 0 red, 1px 0 0 blue;
-  }
-  71% {
-    text-shadow: 70px 0 0 red, -70px 0 0 blue;
-  }
-  72% {
-    text-shadow: 0 0 0 red, 0 0 0 blue;
-  }
-  73% {
-    text-shadow: 1px 0 0 red, -1px 0 0 blue;
-  }
-  76% {
-    text-shadow: 1px 0 0 red, -1px 0 0 blue;
-  }
-  80% {
-    text-shadow: -1px 0 0 red, 1px 0 0 blue;
-  }
-  81% {
-    text-shadow: 0.5px 0 0 red, -0.5px 0 0 lime;
-  }
-  85% {
-    text-shadow: 0.5px 0 0 red, -0.5px 0 0 lime;
-  }
-  86% {
-    text-shadow: -1px 0 0 red, 1px 0 0 lime;
-  }
-  90% {
-    text-shadow: -1px 0 0 red, 1px 0 0 lime;
-  }
-  91% {
-    text-shadow: 60px 0 0 lime, -60px 0 0 blue;
-  }
-  92% {
-    text-shadow: 0 0 0 lime, 0 0 0 blue;
-  }
-  92% {
-    text-shadow: 0.7px 0 0 blue, -0.7px 0 0 lime;
-  }
-  95% {
-    text-shadow: 0.7px 0 0 blue, -0.7px 0 0 lime;
-  }
-  96% {
-    text-shadow: -1px 0 0 blue, 1px 0 0 lime;
-  }
-  99% {
-    text-shadow: -1px 0 0 blue, 1px 0 0 lime;
-  }
-  100% {
-    text-shadow: -1px 0 0 blue, 1px 0 0 lime;
-  }
 }
 
 @keyframes glitch {
@@ -602,27 +444,6 @@ button:focus {
     text-shadow: -1px 0 0 blue, 1px 0 0 lime;
   }
 }
-@-webkit-keyframes glitch1 {
-  60% {
-    text-shadow: -1px 0 0 red, 1px 0 0 blue;
-  }
-  61% {
-    text-shadow: 30px 0 0 red, -30px 0 0 lime;
-  }
-  62% {
-    text-shadow: 0 0 0 red, 0 0 0 lime;
-    color: yellow;
-  }
-  63% {
-    text-shadow: 0.5px 0 0 red, -0.5px 0 0 blue;
-  }
-  66% {
-    text-shadow: 0.5px 0 0 red, -0.5px 0 0 blue;
-  }
-  67% {
-    text-shadow: -1px 0 0 red, 1px 0 0 blue;
-  }
-}
 @keyframes glitch1 {
   60% {
     text-shadow: -1px 0 0 red, 1px 0 0 blue;
@@ -642,26 +463,6 @@ button:focus {
   }
   67% {
     text-shadow: -1px 0 0 red, 1px 0 0 blue;
-  }
-}
-@-webkit-keyframes glitch2 {
-  15% {
-    text-shadow: 0.5px 0 0 red, -0.5px 0 0 lime;
-  }
-  20% {
-    text-shadow: -1px 0 0 red, 1px 0 0 lime;
-  }
-  25% {
-    text-shadow: 0.7px 0 0 blue, -0.7px 0 0 lime;
-  }
-  30% {
-    text-shadow: 0.7px 0 0 blue, -0.7px 0 0 lime;
-  }
-  35% {
-    text-shadow: -1px 0 0 blue, 1px 0 0 lime;
-  }
-  40% {
-    text-shadow: -1px 0 0 blue, 1px 0 0 lime;
   }
 }
 @keyframes glitch2 {
@@ -693,8 +494,7 @@ button:focus {
 }
 .hiThere-hey {
   font-size: 3.5rem;
-  -webkit-transition: all 1000ms;
-          transition: all 1000ms;
+  transition: all 1000ms;
   opacity: 1;
   display: none;
 }
@@ -705,8 +505,7 @@ button:focus {
 .hiThere-intro {
   font-size: 1.25rem;
   padding: 2rem 0;
-  -webkit-transition: all 1000ms;
-          transition: all 1000ms;
+  transition: all 1000ms;
   opacity: 1;
   display: none;
 }
@@ -755,8 +554,7 @@ button:focus {
 .chatPart-title, .chatPart-subtitle {
   text-align: right;
   font-weight: 600;
-  -webkit-transition: margin 250ms;
-          transition: margin 250ms;
+  transition: margin 250ms;
   margin-right: 0;
   font-family: "Roboto", sans-serif;
   font-size: 1.25rem;
@@ -779,8 +577,7 @@ button:focus {
 .chatPart-text, .chatPart-redirect {
   color: #c5c5c5;
   opacity: 1;
-  -webkit-transition: opacity 250ms;
-          transition: opacity 250ms;
+  transition: opacity 250ms;
 }
 .chatPart-text:hover, .chatPart-redirect:hover {
   color: black;
@@ -811,8 +608,7 @@ button:focus {
 }
 .chatPart .btnB {
   margin-left: 0;
-  -webkit-transition: margin 500ms;
-          transition: margin 500ms;
+  transition: margin 500ms;
 }
 .chatPart .btnB.jsLoading {
   margin-left: -100%;
@@ -874,8 +670,7 @@ button:focus {
   display: none;
   margin-left: 150%;
   width: 100%;
-  -webkit-transition: margin 500ms;
-          transition: margin 500ms;
+  transition: margin 500ms;
 }
 .chatPart-role.jsGlitchIn {
   display: block;
@@ -902,8 +697,7 @@ button:focus {
   padding-top: 1rem;
   background: #2c2c2c;
   z-index: 0;
-  -webkit-transition: all 500ms;
-          transition: all 500ms;
+  transition: all 500ms;
   display: block;
   max-height: 500px;
   overflow: hidden;
@@ -922,8 +716,7 @@ button:focus {
   margin-left: 400px;
   margin-right: 100px;
   display: none;
-  -webkit-transition: margin 250ms;
-          transition: margin 250ms;
+  transition: margin 250ms;
 }
 .chatPart-details.jsGlitchIn {
   margin: -8px -10px 0px 52px;
@@ -942,12 +735,10 @@ button:focus {
   margin-top: -12px;
   display: none;
   left: 250px;
-  -webkit-transition: left 250ms;
-          transition: left 250ms;
+  transition: left 250ms;
 }
 .chatPart .btnDetails:hover {
-  -webkit-animation: 250ms animateBorderThree ease infinite;
-          animation: 250ms animateBorderThree ease infinite;
+  animation: 250ms animateBorderThree ease infinite;
 }
 .chatPart .btnDetails.jsGlitchIn {
   left: -24px;
@@ -961,8 +752,7 @@ button:focus {
 }
 .chatPart-checkItOut.jsActive {
   color: white;
-  -webkit-animation: glitch 2s steps(100) infinite;
-          animation: glitch 2s steps(100) infinite;
+  animation: glitch 2s steps(100) infinite;
 }
 
 @media (min-width: 34.375rem) {
@@ -1104,8 +894,7 @@ button:focus {
   position: absolute;
   top: 1rem;
   padding-left: 1rem;
-  -webkit-animation: glitch 2s steps(100) infinite;
-          animation: glitch 2s steps(100) infinite;
+  animation: glitch 2s steps(100) infinite;
 }
 
 .navSections {
@@ -1118,8 +907,7 @@ button:focus {
   border-bottom: 1px dashed #c5c5c5;
   background: white;
   height: 2rem;
-  -webkit-transition: width 1000ms;
-          transition: width 1000ms;
+  transition: width 1000ms;
   overflow: hidden;
 }
 .navSections.jsLoading {
@@ -1134,8 +922,7 @@ button:focus {
   display: inline-block;
   overflow: hidden;
   white-space: nowrap;
-  -webkit-transition: margin 500ms;
-          transition: margin 500ms;
+  transition: margin 500ms;
 }
 .navSections-btn.jsLoading {
   margin-bottom: -3rem;
@@ -1151,7 +938,6 @@ button:focus {
   position: relative;
   height: 200vh;
   width: 100%;
-  background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.5), #121212);
   background: linear-gradient(to bottom, rgba(255, 255, 255, 0.5), #121212);
   pointer-events: none;
   padding: 100vw 10vw;
