@@ -1,0 +1,320 @@
+/*------------------------------------*\
+### ORGANIZATION ###
+\*------------------------------------*/
+
+// A NEW EXPERIMENT
+// They say we shouldn't repeat code. When possible we should merge classes with same properties. So I'm trying a new method of writing typography. Can be not the best way, but there is no golden rules/best practices for this.
+
+//What I do here basically is grouping major properties that the site uses (different font, uppercase, bold letter-spacing, etc...). In this way I write less 25% +/- and i keep the styles more coerent
+
+
+// ------ LIST of fonts All fonts start with .f-
+// .f-h1 page title
+// .f-h2 page subtitle
+// .f-txt-mono
+// .f-nav-item
+// .f-article-title
+// .f-italic{x}
+// .f-upcase{x}
+// .f-link-under
+// .f-link-under-mono
+
+
+// ------ LIST of buttons
+// .btn-on //works
+// .btn-off //disabled
+
+
+@import url('_font-opensans.scss');
+@import url('_font-roboto.scss');
+
+// First the basic font family and size - I didn't put it on _vars.scss because... well, It is all together in this way
+$font-sans: 'Open Sans', sans-serif;
+$font-mono: 'Roboto Mono', monospace;
+
+$fontXXL: 2rem; //28px
+$fontXL: 1.5rem;
+$fontL: 1.2rem;
+$fontM: 1rem; //14px
+$fontS: 0.87rem;
+$fontXS: 0.8rem;
+$fontXXS: 0.7rem;
+
+
+$lineHeightS: 1.2;
+$lineHeightM: 1.5;
+$lineHeightL: 1.7;
+
+html {
+    font-size: 14px;
+    color: $clr-form;
+    font-family: $font-sans;
+    line-height: $lineHeightM;
+
+    @media #{$m-tablet} {
+        font-size: 15px;
+    }
+
+    @media #{$m-desktop} {
+        font-size: 16px;
+    }
+
+    @media #{$m-desktop-hd} {
+        font-size: 18px;
+    }
+
+}
+
+
+//-------FONT MONO
+[class^="f-txt-mono"],
+.f-link-under-mono {
+    font-family: $font-mono;
+    line-height: 1.7;
+    font-weight: 300;
+}
+
+
+
+//-------UPPERCASE FONTS
+.f-h1,
+.f-h2,
+.f-article-title,
+[class^="f-upcase"] {
+    text-transform: uppercase;
+}
+
+
+//------FONT BOLD
+.f-h1,
+.f-h2,
+.f-article-title,
+.f-italicL,
+[class^="f-upcase"] {
+    font-weight: 800;
+}
+
+
+
+//-------LETTER SPACING 0.1REM
+.f-h1,
+.f-h2 {
+    letter-spacing: 0.1rem;
+}
+
+
+
+//-------UPCASE BOLD FONTS
+[class^="f-upcase"] {
+    font-size: $fontXS;
+    font-weight: 800;
+    line-height: $lineHeightM;
+    letter-spacing: 1px;
+}
+
+.f-upcase-space {
+    color: $clr-space;
+}
+
+.f-upcase-gray {
+    color: $clr-middle;
+}
+
+
+//-------ITALIC FONTS
+[class^="f-italic"] {
+    font-style: italic;
+    font-weight: 100;
+}
+
+
+
+//-------SMALLER PARAGRAPH
+.f-txt-monoS,
+.f-txt-sansS {
+    font-size: $fontS;
+}
+
+.f-txt-monoXS,
+.f-txt-sansXS {
+    font-size: $fontXS;
+}
+
+//-------MEDIUM PARAGRAPH
+// .f-txt-monoM,
+// .f-txt-sansM {
+//     font-size: 0.7rem;
+// }
+
+
+//-------BIGGER PARAGRAPH
+
+.f-italicL,
+.f-upcaseL {
+    font-size: $fontL;
+}
+
+
+
+//-------SPECIFIC PROPERTIES
+
+.f-h1 {
+    font-size: $fontXXL;
+}
+
+.f-h2 {
+    font-size: $fontS;
+}
+
+.f-article-title {
+    font-size: $fontXXL;
+}
+
+.f-nav-item {
+    @extend .f-article-title;
+    font-size: $fontXL;
+
+    &:hover {
+        font-weight: 100;
+        letter-spacing: 2;
+    }
+}
+
+.f-txt-mono-space {
+    color: $clr-space;
+}
+
+
+
+//-------LINKS
+
+a {
+    color: inherit;
+    font-size: inherit;
+    text-decoration: none;
+}
+
+.f-link-under,
+.f-link-under-mono {
+    position: relative;
+    font-size: inherit;
+    text-decoration: underline;
+    cursor: alias;
+
+    &:after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 2px;
+        background: $myColor;
+        bottom: 1px;
+        left: 0;
+        transition: width $speed ease-in-out;
+    }
+
+    &:hover {
+        &:after {
+            width: 100%;
+        }
+    }
+}
+
+
+//------BUTTONS
+
+.btn-off,
+.btn-on {
+    position: relative;
+    display: inline-block;
+    border: $border;
+    border-color: $clr-form;
+    text-align: center;
+    padding: $safeArea/2 $safeArea;
+    font-family: $font-mono;
+    color: $clr-form;
+    z-index: 2;
+    transition: color $speed ease-in;
+
+    &:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 0;
+        height: 100%;
+        z-index: -1;
+        transition: width $speed ease-in;
+    }
+
+    &:hover {
+        &:before {
+            width: 100%;
+        }
+    }
+}
+
+
+// .btn that works
+.btn-on {
+    background: $clr-space;
+    cursor: alias;
+
+    &:before {
+        background: $clr-form;
+    }
+
+    &:hover {
+        color: $clr-space;
+    }
+}
+
+.btn-on-fill {
+    @extend .btn-on;
+    display: block;
+    padding: $safeArea*2;
+    background: $clr-form;
+    color: white;
+}
+
+// .btn disabled
+.btn-off {
+    background: none;
+    cursor: not-allowed !important;
+
+    &:before {
+        background: $clr-off;
+    }
+
+    &:hover {
+        &:before {
+            animation-name:btn-off;
+            animation-duration: 1500ms;
+            animation-iteration-count:1;
+            animation-timing-function:linear;
+            width: 5px;
+        }
+    }
+}
+
+
+@keyframes btn-off {
+    0% { width: 0; }
+    25% { width: 5px; }
+    50% { width: 0; }
+    75% { width: 5px; }
+}
+
+
+//-------HTML5
+
+i, em {
+    font-style: italic;
+}
+
+strong, b {
+    font-weight: 600;
+}
+
+small {
+    font-size: 0.8rem;
+}

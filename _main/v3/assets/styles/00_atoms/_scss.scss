@@ -1,0 +1,335 @@
+
+/*------------------------------------*\
+    #VARIABLES
+\*------------------------------------*/
+
+$clrPrimary: #008080;
+$clrPrimarySoft: #00e8e8;
+
+// $clrPrimaryLightest: lighten($clrPrimary, 53%);
+// $clrPrimaryLighter: lighten($clrPrimary, 45%);
+// $clrPrimaryLight: transparentize($clrPrimary, .3);
+$clrPrimaryDark: #004040; //darken($clrPrimary, 15%);
+// $clrPrimaryDarker: darken($clrPrimary, 25%);
+
+// $clrSecondary: #922A8C;
+// $clrSecondarySoft: #9D3F97;
+//
+// $clrSecondaryLight: lighten($clrSecondary, 15%);
+// $clrSecondaryLighter: lighten($clrSecondary, 30%);
+// $clrSecondaryDark: darken($clrSecondary, 15%);
+//
+// $grdPrimary: linear-gradient(to bottom, $clrPrimary -100%, $clrPrimaryDark);
+// $grdBoth: linear-gradient(to top, $clrPrimary -100%, $clrSecondary);
+// $grdBothSoft: linear-gradient(to top, $clrPrimarySoft -100%, $clrSecondarySoft);
+
+
+$clrDark: #121212;
+$clrGrayDarker: lighten($clrDark, 10%);
+$clrGrayDark: lighten($clrDark, 25%);
+$clrGray: lighten($clrDark, 50%);
+$clrGrayLight: lighten($clrDark, 70%);
+$clrGrayLighter: lighten($clrDark, 85%);
+$clrLight: lighten($clrDark, 100%);
+
+$clr-error: #ED332A;
+
+$borderWidth: 1px;
+$borderradius: 0;
+$border: $borderWidth solid;
+$boxShadow: 0 0 0 1px;
+
+@function rem($px) {
+    // 1rem --> 16px
+    // xrem --> $px
+    $rem: $px * 1rem / 16 ;
+    @return $rem;
+}
+
+$safeArea: rem(16);
+$speed: 250ms;
+
+
+
+/*------------------------------------*\
+    @mixins / &placeholder / functions
+
+    > @function calculate rem
+    > @media queries
+    > @position centerxy
+    > flexbox vs floats
+    > calc
+    > %retina2x
+    > others
+\*------------------------------------*/
+
+
+
+/*------------------------------------*\
+    #MEDIA QUERIES
+\*------------------------------------*/
+
+$mobile-width: rem(450);
+$phablet-width: rem(550);
+$tablet-width: rem(750);
+$laptop-width: rem(1100);
+$desktop-width: rem(1600);
+$mediaHeight: rem(400);
+
+@mixin media($media) {
+
+    @if $media == untilPhablet {
+        @media (max-width: #{$phablet-width - rem(1)}) {
+            @content;
+        }
+    }
+
+    @if $media == mobileUntilPhablet {
+        @media (min-width: $mobile-width) and (max-width: #{$phablet-width - rem(1)}) {
+            @content;
+        }
+    }
+
+    @if $media == untilLaptop {
+        @media (max-width: #{$laptop-width - rem(1)}) {
+            @content;
+        }
+    }
+
+    @if $media == untilDesktop {
+        @media (max-width: #{$desktop-width - rem(1)}) {
+            @content;
+        }
+    }
+
+    @if $media == PhabletandSinceLaptop {
+        @media  (min-width: $phablet-width) and (max-width: #{$tablet-width - rem(1)}),
+                (min-width: $laptop-width){
+            @content;
+        }
+    }
+
+    @if $media == mobile {
+        @media (min-width: $mobile-width) {
+            @content;
+        }
+    }
+
+    @if $media == phablet {
+        @media (min-width: $phablet-width) {
+            @content;
+        }
+    }
+
+    @if $media == tablet {
+        @media (min-width: $tablet-width) and (min-height: $mediaHeight) {
+            @content;
+        }
+    }
+
+    @if $media == laptop {
+        @media (min-width: $laptop-width) and (min-height: $mediaHeight) {
+            @content;
+        }
+    }
+
+    @if $media == desktop {
+        @media (min-width: $desktop-width) and (min-height: $mediaHeight) {
+            @content;
+        }
+    }
+
+    @if $media == onlyPhablet {
+        @media (min-width: $phablet-width) and (max-width: #{$tablet-width - rem(1)}) {
+            @content;
+        }
+    }
+
+    @if $media == onlyTablet {
+        @media (min-width: $tablet-width) and (max-width: #{$laptop-width - rem(1)}) {
+            @content;
+        }
+    }
+}
+
+
+/*------------------------------------*\
+    #POSITION
+\*------------------------------------*/
+@mixin centerxy {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@mixin centerx {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+@mixin centery {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+
+
+/*------------------------------------*\
+    #FLEXBOX & CLEARFIX
+\*------------------------------------*/
+
+@mixin cf {
+    *zoom: 1;
+
+	&:before,
+	&:after {
+	    content: "";
+	    display: table;
+	}
+
+	&:after {
+	    clear: both;
+	}
+
+    > * {
+        float: left;
+    }
+}
+
+%cf {
+    @include cf;
+}
+
+
+@mixin flexbox($noFlex:null) {
+
+    .flexbox & {
+        display: flex;
+
+        & > * {
+            // this is to prevent bugs on IE 10 11
+            flex-grow: 0;
+            flex-shrink: 1;
+            flex-basis: auto;
+        }
+    }
+
+    @if ($noFlex) {
+        .no-flexbox & {
+            @include cf;
+        }
+    }
+}
+
+
+%flexbox {
+    @include flexbox;
+}
+
+
+%flexbox-noFlex {
+    @include flexbox(true);
+}
+
+
+@mixin flexboxProp {
+    .flexbox & {
+        @content;
+    }
+}
+
+@mixin noFlex {
+    .no-flexbox & {
+        @content;
+    }
+}
+
+@include media(phablet) {
+    %flexbox-pha {
+        @include flexbox;
+    }
+
+    %flexbox-noFlex-pha {
+        @include flexbox(true);
+    }
+}
+
+@include media(tablet) {
+    %flexbox-tab {
+        @include flexbox;
+    }
+
+    %flexbox-noFlex-tab {
+        @include flexbox(true);
+    }
+
+    %cf-tab {
+        @include cf;
+    }
+}
+
+@include media(laptop) {
+    %flexbox-lap {
+        @include flexbox;
+    }
+}
+
+
+// .test {
+//     @include noFlex {
+//         padding: 10px;
+//     };
+// }
+//output css
+// .no-flexbox .test {
+//     padding: 10px;
+// }
+
+
+/*------------------------------------*\
+    #CALC
+\*------------------------------------*/
+
+@mixin calc($prop, $valBackup, $valCal) {
+    #{$prop}: $valBackup; // poor browsers
+    #{$prop}: calc(#{$valCal});
+}
+// @include calc(width, 100%, 100% - #{$safeArea}/2);
+
+
+
+/*------------------------------------*\
+    #IMG RETINA
+\*------------------------------------*/
+@mixin bgImg2x($file, $type) {
+  background-image: url($file + '.' + $type);
+
+  @media (-webkit-min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi) {
+        & {
+            background-image: url($file + '@2x.' + $type);
+        }
+  }
+}
+// ex: @include bgImg2x('../../media/images/passenger-back', jpg);
+
+
+
+/*------------------------------------*\
+    #OTHERS
+\*------------------------------------*/
+%BlockFullFixed { //modalBg or NavBarBg
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+%DialogBg { //modal
+    background: $clrDark;
+    opacity: 0.6;
+}
