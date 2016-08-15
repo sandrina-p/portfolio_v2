@@ -41,17 +41,17 @@
 /*------------------------------------*\
     #FLEXBOX & CLEARFIX
 \*------------------------------------*/
-.chatPart {
+.chatPart, .cv-section {
   *zoom: 1;
 }
-.chatPart:before, .chatPart:after {
+.chatPart:before, .cv-section:before, .chatPart:after, .cv-section:after {
   content: "";
   display: table;
 }
-.chatPart:after {
+.chatPart:after, .cv-section:after {
   clear: both;
 }
-.chatPart > * {
+.chatPart > *, .cv-section > * {
   float: left;
 }
 
@@ -148,12 +148,12 @@ html {
 html * {
   line-height: inherit;
 }
-@media (min-width: 68.75rem) and (min-height: 31.25rem) {
+@media (min-width: 68.75rem) and (min-height: 25rem) {
   html {
     font-size: 1rem;
   }
 }
-@media (min-width: 100rem) and (min-height: 31.25rem) {
+@media (min-width: 100rem) and (min-height: 25rem) {
   html {
     font-size: 1.25rem;
   }
@@ -256,7 +256,7 @@ button:focus {
 .btnNav {
   font-weight: 600;
   color: #525252;
-  padding: 0.2rem 1rem;
+  padding: 0.2rem 0.5rem;
   color: #008080;
 }
 .btnNav:hover {
@@ -270,6 +270,11 @@ button:focus {
   color: white;
 }
 
+@media (min-width: 28.125rem) {
+  .btnNav {
+    padding: 0.2rem 1rem;
+  }
+}
 .btnB {
   background: #121212;
   color: white;
@@ -681,7 +686,7 @@ button:focus {
 }
 .hiThere {
   width: 90%;
-  max-width: 500px;
+  max-width: 32rem;
   margin: auto;
   text-align: center;
   padding-top: 20vh;
@@ -714,10 +719,15 @@ button:focus {
 }
 
 .chat {
-  padding: 25vh 0 150px;
-  width: 700px;
+  padding: 30vh 0 150px;
+  width: 95%;
   min-height: 200vh;
   margin: auto;
+}
+@media (min-width: 68.75rem) and (min-height: 25rem) {
+  .chat {
+    width: 70%;
+  }
 }
 .chatSection {
   padding: 2rem 0;
@@ -736,9 +746,9 @@ button:focus {
   padding-bottom: 0;
 }
 .chatPart-human {
-  width: 30%;
+  width: 100%;
   padding: 1rem;
-  border-right: 1px solid black;
+  border-right: 1px solid #121212;
   overflow: hidden;
   display: none;
 }
@@ -759,39 +769,45 @@ button:focus {
   font-weight: 400;
 }
 .chatPart-bot {
-  width: 70%;
-  padding: 1rem;
-  border-left: 1px solid black;
-  margin-left: -1px;
+  width: 100%;
+  padding: 0.5rem;
+  border-left: 1px solid #121212;
+  border-right: 1px solid #121212;
   overflow: hidden;
   display: none;
 }
-.chatPart-text {
+.chatPart-text, .chatPart-redirect {
   color: #c5c5c5;
   opacity: 1;
   -webkit-transition: opacity 250ms;
           transition: opacity 250ms;
 }
-.chatPart-text:hover {
+.chatPart-text:hover, .chatPart-redirect:hover {
   color: black;
 }
-.chatPart-text strong {
+.chatPart-text strong, .chatPart-redirect strong {
   font-weight: inherit;
   color: black;
 }
-.chatPart-text.jsLoading {
+.chatPart-text.jsLoading, .chatPart-redirect.jsLoading {
   opacity: 0;
+}
+.chatPart-redirect {
+  padding-top: 1rem;
 }
 .chatPart-option {
   display: inline-block;
   width: 49%;
   padding-top: 1rem;
-  padding-right: 1rem;
+  padding-right: 0.5rem;
   overflow: hidden;
 }
 .chatPart-option:nth-child(2) {
   position: relative;
   z-index: 2;
+}
+.chatPart-option:last-child {
+  padding-right: 0;
 }
 .chatPart .btnB {
   margin-left: 0;
@@ -863,7 +879,7 @@ button:focus {
 }
 .chatPart-role.jsGlitchIn {
   display: block;
-  margin-left: -44px;
+  margin-left: 7px;
 }
 .chatPart-capt, .chatPart-more {
   font-family: "Roboto", sans-serif;
@@ -873,7 +889,7 @@ button:focus {
   line-height: 1.7;
   display: none;
   background: #121212;
-  padding: 15px;
+  padding: 2rem 1rem;
   margin: -9px 13px -5px 5px;
   z-index: -1;
   position: relative;
@@ -881,11 +897,9 @@ button:focus {
 .chatPart-capt br, .chatPart-more br {
   font-size: 1.7rem;
 }
-.chatPart-capt {
-  padding: 2rem 1rem;
-}
 .chatPart-more {
-  margin: -12px 2px -12px -152px;
+  margin: -12px 2px -12px -2px;
+  padding-top: 1rem;
   background: #2c2c2c;
   z-index: 0;
   -webkit-transition: all 500ms;
@@ -951,6 +965,30 @@ button:focus {
           animation: glitch 2s steps(100) infinite;
 }
 
+@media (min-width: 34.375rem) {
+  .chatPart-human {
+    width: 30%;
+  }
+  .chatPart-bot {
+    width: 70%;
+    padding: 1rem;
+    margin-left: -1px;
+    border-rigth: 0;
+  }
+  .chatPart-option {
+    padding-right: 1rem;
+  }
+  .chatPart-role {
+    margin: -12px 44px 0 -36px;
+  }
+  .chatPart-role.jsGlitchIn {
+    display: block;
+    margin-left: -44px;
+  }
+  .chatPart-more {
+    margin: -12px 2px -12px -152px;
+  }
+}
 .liIndex-ul {
   width: 100%;
 }
@@ -958,7 +996,7 @@ button:focus {
   display: inline-block;
   margin-top: 0.5rem;
 }
-.liIndex-categ {
+.liIndex-categ, .cv-liTitle {
   display: block;
   font-family: "Roboto", sans-serif;
   font-size: 0.875rem;
@@ -976,6 +1014,92 @@ button:focus {
   border-bottom: 1px solid black;
 }
 
+.cv {
+  z-index: 11;
+  position: relative;
+  width: 100%;
+  background: #121212;
+  color: white;
+  padding: 100vh 5vh 5vh;
+  width: 100%;
+}
+.cv-header {
+  position: relative;
+  margin: auto;
+  text-align: center;
+}
+.cv-ascii {
+  display: inline-block;
+  text-align: center;
+  width: 300px;
+  font-size: 0.625rem;
+}
+.cv-section {
+  text-align: center;
+}
+.cv-article {
+  display: inline-block;
+  width: 33%;
+  padding: 2rem;
+  text-align: left;
+}
+.cv-article-in {
+  background: white;
+  color: #121212;
+}
+.cv-title {
+  font-size: 1.75rem;
+  padding: 1rem 1rem 0.25rem;
+  font-family: "Roboto", sans-serif;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid white;
+  background: black;
+  color: white;
+}
+.cv-dl {
+  padding: 0 1rem;
+}
+.cv-dt {
+  font-weight: 400;
+}
+.cv-dd {
+  font-weight: 300;
+  font-size: 0.875rem;
+  margin-bottom: 1rem;
+}
+.cv-liTitle {
+  padding: 0 1rem;
+}
+.cv .liIndex-ul {
+  padding: 0 1rem;
+}
+.cv .liIndex-liCateg, .cv .liIndex-categ, .cv .cv-liTitle {
+  margin-top: 0;
+}
+.cv .liIndex-liCateg {
+  margin-bottom: 1rem;
+}
+.cv .liIndex-sub {
+  margin-left: -0.75rem;
+}
+.cv-ul {
+  padding: 0 1rem 1rem;
+}
+.cv-li {
+  font-weight: 300;
+}
+.cv-bot {
+  width: 100%;
+  background: #121212;
+  padding: 1rem;
+  text-align: center;
+}
+.cv-bot > * {
+  background: white;
+  color: #121212;
+}
+
 .js-loadingRetro {
   position: absolute;
   top: 1rem;
@@ -990,7 +1114,7 @@ button:focus {
   z-index: 11;
   width: 100%;
   text-align: center;
-  padding: 0 1rem;
+  padding: 0;
   border-bottom: 1px dashed #c5c5c5;
   background: white;
   height: 2rem;
@@ -1010,7 +1134,6 @@ button:focus {
   display: inline-block;
   overflow: hidden;
   white-space: nowrap;
-  width: 8rem;
   -webkit-transition: margin 500ms;
           transition: margin 500ms;
 }
@@ -1018,6 +1141,11 @@ button:focus {
   margin-bottom: -3rem;
 }
 
+@media (min-width: 34.375rem) {
+  .navSections-btn {
+    width: 8rem;
+  }
+}
 .runAway {
   z-index: 11;
   position: relative;
@@ -1027,17 +1155,6 @@ button:focus {
   background: linear-gradient(to bottom, rgba(255, 255, 255, 0.5), #121212);
   pointer-events: none;
   padding: 100vw 10vw;
-  text-align: center;
-}
-
-.quickAndDirty {
-  z-index: 11;
-  position: relative;
-  height: 200vh;
-  width: 100%;
-  background: #121212;
-  color: white;
-  padding: 40vw 10vw;
   text-align: center;
 }
 
