@@ -1,0 +1,36 @@
+.heyThere {
+    width: 90%;
+    max-width: $safeArea*32;
+    margin: auto;
+    text-align: center;
+    padding-top: 20vh;
+
+    &-hey {
+        font-size: $font6XL;
+        transition: all $speed*4;
+        opacity: 1;
+        display: none; //slideDown()
+
+        &.jsLoading {
+            margin-top: $safeArea*4;
+            opacity: 0;
+        }
+    }
+
+    &-intro {
+        font-size: $fontLx;
+        padding: $safeArea*2 0;
+        transition: all $speed*4;
+        opacity: 1;
+        display: none; //slideDown()
+
+        &.jsLoading {
+            margin-top: -$safeArea*2;
+            opacity: 0;
+        }
+
+        &.jsFixed {
+            padding-bottom: $safeArea*4;
+        }
+    }
+}

@@ -72,7 +72,7 @@ $speed: 250ms;
 $mobile-width: rem(450);
 $phablet-width: rem(550);
 $tablet-width: rem(750);
-$laptop-width: rem(1100);
+$laptop-width: rem(1000);
 $desktop-width: rem(1600);
 $mediaHeight: rem(400);
 
@@ -244,6 +244,16 @@ $mediaHeight: rem(400);
 @mixin noFlex {
     .no-flexbox & {
         @content;
+    }
+}
+
+@include media(mobile) {
+    %flexbox-mob {
+        @include flexbox;
+    }
+
+    %flexbox-noFlex-mob {
+        @include flexbox(true);
     }
 }
 

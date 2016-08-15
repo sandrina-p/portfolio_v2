@@ -26,64 +26,12 @@
 @import "../00_atoms/helpers";
 @import "../00_atoms/buttons";
 
+@import "../01_organisms/heythere";
+@import "../01_organisms/nav-sections";
 @import "../01_organisms/chat";
+@import "../01_organisms/void";
+@import "../01_organisms/under";
 // etc..
-
-
-.navSections {
-    margin: auto;
-    position: relative;
-    z-index: 11;
-    width: 100%;
-    text-align: center;
-    padding: 0;
-    border-bottom: 1px dashed $clrGrayLight;
-    background: rgba($clrLight, 1);
-    height: $safeArea*2;
-    transition: width $speed*4;
-    overflow: hidden;
-
-    &.jsLoading {
-        border: 0;
-        width: 0;
-    }
-
-    &.jsFixed {
-        position: fixed;
-        top: 0;
-    }
-
-    &-btn {
-        display: inline-block;
-        overflow: hidden;
-        white-space: nowrap;
-        transition: margin $speed*2;
-
-        &.jsLoading {
-            margin-bottom: -$safeArea*3;
-        }
-    }
-}
-
-@include media(phablet) {
-    .navSections {
-
-        &-btn {
-            width: $safeArea*8;
-        }
-    }
-}
-
-.runAway {
-    z-index: 11;
-    position: relative;
-    height: 200vh;
-    width: 100%;
-    background: linear-gradient(to bottom, rgba($clrLight,0.5), $clrDark);
-    pointer-events: none;
-    padding: 100vw 10vw;
-    text-align: center;
-}
 
 
 /*------------------------------------*\
