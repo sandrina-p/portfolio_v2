@@ -39,7 +39,13 @@ var chatOptClick = function() {
         text, // string - simple text of the bot;
         title, // string - title of the new part ex: 'before that'
 
+        mediaQHeight = 550, // doesn't need expl., does it?
+
+        initProj, //string - used when calls a project without starting the chat.
+
+        outsider, //bollean - chat triggered outside.
         outsidePractice, //bollean - project triggered outside practice section
+
         intervalLoadingDots, //function - setInteral controller
         navSectionTop, //number - nav offsetTop to trigger fixed class
         isIntroPractice, //bollean - if 1st project, show index
@@ -54,25 +60,54 @@ var chatOptClick = function() {
 
         fixChatNav(); //calling it here prevent to fix the nav position without first click on it;
 
-        if (section) {
+        // doesn't have section and its title is one of the mainSections.
+        if (section && mainSections.indexOf(title) < 0) {
             animateClickedOption(option);
             if (section == "practice" && title != "practice") {
-                buildProject(section, title)
+                buildProject(section, title);
+                navActiveBtn(section);
             } else {
                 buildSentece(section, title);
             }
         } else {
+            if (section && mainSections.indexOf(title) > -1) {
+                animateClickedOption(option);
+            }
             section = title;
-            $('.js-chatOpt').removeClass('jsActive');
-            option.addClass('jsActive');
+            navActiveBtn(section);
             buildSection(title);
         }
+    }
+
+    // ------ cv part ------ //
+    function outsider(trigger) {
+        section = trigger.data('section'),
+        title = trigger.data('title');
+        initProj = trigger.data('initproject');
+
+        buildSection(section);
+        fixChatNav();
+        navActiveBtn(section);
+
+        var wHeight =  window.innerHeight;
+        $('body').animate({
+            scrollTop: $('#'+section).offset().top - wHeight/4*1
+        }, 500);
+    }
+
+
+    // ------ general stuff ----- //
+
+    function navActiveBtn(section) {
+        $('.js-chatOpt').removeClass('jsActive');
+        $("[name="+section+"]").addClass('jsActive');
     }
 
     //when the user clicks on a chat button, it runs away.
     function animateClickedOption(option) {
         var parent = option.parent();
-        var siblings = parent.siblings('.chatPart-option');
+            liIndex = option.closest('.liIndex-liCateg');
+            siblings = parent.siblings('.chatPart-option, .liIndex-liProj');
 
         // TODO remove this animate, add a class pellleaseee.
         parent.animate({'margin-left':'-49%'});
@@ -86,8 +121,10 @@ var chatOptClick = function() {
 
         } else {  //is is the last one, remove the parent.
             parent.slideUp();
+            liIndex.slideUp();
             setTimeout(function () {
                 parent.remove();
+                liIndex.remove();
             }, 250);
         }
     }
@@ -131,14 +168,15 @@ var chatOptClick = function() {
                             +"</div>"
                             +"<div class='chatPart-bot'>"
                                 +"<p class='chatPart-text jsLoading'>"+text+"</p>"
-                                // options
+                                // options FIXME
                             +"</div>"
                         +"</div>");
 
         return chatPart;
     }
 
-    function getElProject(id, title, sub, img, role, capt, more) {
+    function getElProject(id, title, sub, img, role, capt, more, links) {
+        var ElLinks = getProjectLinks(links);
         var chatProj =  $("<div class='chatPart chatPart--project chatPart--jsLast' id='"+id+"'>"
                             +"<div class='chatPart-human'>"
                                 +"<h3 class='chatPart-title'>"+title+"</h3>"
@@ -158,7 +196,7 @@ var chatOptClick = function() {
                                         +"<button type='button' name='more' class='btnDetails'>_more info</button>"
                                         +"<div class='chatPart-www'>"
                                             +"<span class='chatPart-checkItOut js-checkItOut'></span>"
-                                            //getProjectLinks();
+                                            +ElLinks
                                         +"</div>"
                                     +"</div>"
                                 +"</div>"
@@ -196,8 +234,34 @@ var chatOptClick = function() {
         }
 
         if (chatOptions.length == 0) {
-            //TODO aia aiaiaiaiaia
-            console.log('acabou links. chama [behavior].');
+            ///// function getBehaviour(section); return chatOptions;
+            var chatBtn,
+                sentence,
+                chatBehaviour = chatContent['behaviour'],
+                indexOfSection = mainSections.indexOf(section);
+
+            if(indexOfSection > -1) {
+                mainSections.splice(indexOfSection, 1);
+                for (var i = 0; i < mainSections.length; i++) {
+                    chatBtn = getElBtn(mainSections[i]);
+                    chatOptions.push(chatBtn);
+                }
+
+                if(mainSections.length == 2) {
+                    var sentence = chatBehaviour["empty"+section];
+                } else if (mainSections.length == 1) {
+                    var sentence = chatBehaviour["missing"+mainSections[0]];
+                } else {
+                    console.log('lets 008080 start the fun');
+                }
+
+                chatOptions.unshift("<p class='chatPart-redirect'>"+sentence+"</p>");
+
+            }
+            //////
+
+
+            // console.log('acabou links. gchama [behavior].');
         }
         return chatOptions;
     }
@@ -218,7 +282,7 @@ var chatOptClick = function() {
                 }
 
                 //if category doesn't exist, build it
-                if( $liIndexUl.find('.'+catC).length == 0 && key != 'clicked') {
+                if( $liIndexUl.find('.'+catC).length == 0) {
                     var newCat = "<li class='liIndex-liCateg "+catC+"'>"
                                     +"<span class='liIndex-categ'>"+categ+"</span>"
                                     +"<ul class='liIndex-dl'></ul>"
@@ -226,12 +290,15 @@ var chatOptClick = function() {
                     $liIndexUl.append(newCat);
                 }
 
-                var li = "<li class='liIndex-liProj'>"
-                            +"<button type='button' name='button' class='btnB js-chatOpt'>"+key+"</button>"
-                            +"<span class='liIndex-sub'>"+objSection[key]['sub']+"</span>"
-                        +"</li>";
+                if (key != 'clicked') {
+                    var li = "<li class='liIndex-liProj'>"
+                                +"<button type='button' name='button' class='btnB js-chatOpt'>"+key+"</button>"
+                                +"<span class='liIndex-sub'>"+objSection[key]['sub']+"</span>"
+                            +"</li>";
 
-                $liIndexUl.find('.'+catC).find('ul').append(li);
+                    $liIndexUl.find('.'+catC).find('ul').append(li);
+                }
+
             }
         }
 
@@ -274,22 +341,25 @@ var chatOptClick = function() {
     }
 
     function scrollFinal($part) {
-        var safeArea = 120,
-            pHeight = $part.height(),
-            pScroll = $part.offset().top,
-            wHeight = window.innerHeight,
-            wScroll = $(window).scrollTop(),
-            diff = pScroll - wScroll,
-            visibleOnScreen = diff + pHeight, //part position + its height
-            wArea = wHeight - safeArea; // safe area of the window.
+        if( screen.height > mediaQHeight) {
+            var safeArea = 120,
+                pHeight = $part.height(),
+                pScroll = $part.offset().top,
+                wHeight = window.innerHeight,
+                wScroll = $(window).scrollTop(),
+                diff = pScroll - wScroll,
+                visibleOnScreen = diff + pHeight, //part position + its height
+                wArea = wHeight - safeArea; // safe area of the window.
 
-        //if new part is away of the above the fold, scroll it to a safer area.
-        if (visibleOnScreen > wArea) {
-            var diff2 = visibleOnScreen - wArea;
-            $('body').animate({
-                scrollTop: wScroll + diff2
-            }, 500);
+            //if new part is away of the above the fold, scroll it to a safer area.
+            if (visibleOnScreen > wArea) {
+                var diff2 = visibleOnScreen - wArea;
+                $('body').animate({
+                    scrollTop: wScroll + diff2
+                }, 500);
+            }
         }
+
     }
 
     function loadingDots($elAfter) {
@@ -316,6 +386,7 @@ var chatOptClick = function() {
         $element.removeClass('jsLoading');
     }
 
+    //FIXME remove glitin... consistence pleasseeee
     function glitchIn($element) {
         $element.addClass('jsGlitchIn');
     }
@@ -366,7 +437,12 @@ var chatOptClick = function() {
 
     function showingPractice($part){
         finishLoading($part.find(chatPClass+"text"));
-        buildProject(section, chatContent[section]['firstProject']);
+
+        if (initProj) {
+            buildProject(section, initProj);
+        } else {
+            buildProject(section, chatContent[section]['firstProject']);
+        }
         delete chatContent[section]['firstProject'];
     }
 
@@ -493,8 +569,8 @@ var chatOptClick = function() {
     // ------ project ------ //
     function buildProject(section, project) {
         //get all info needed about project and delete it.
-        var id = getPartIdName(project);
         var objProj = chatContent[section][project],
+            id = getPartIdName(objProj["title"]),
             title = objProj["title"],
             sub = objProj["sub"],
             role = objProj["role"],
@@ -506,10 +582,7 @@ var chatOptClick = function() {
         delete chatContent[section][project];
 
         // create project
-        var ElChatPart = getElProject(id, title, sub, img, role, capt, more, links),
-            ElLinks = getProjectLinks(links);
-
-        ElChatPart.find('.chatPart-www').append(ElLinks);
+        var ElChatPart = getElProject(id, title, sub, img, role, capt, more, links);
 
         //if is the first project, there is no index yet, so append it.
         //otherwise, append it before index.
@@ -574,7 +647,8 @@ var chatOptClick = function() {
 
     // public function
     return {
-        init
+        init,
+        outsider
     }
 
 }();
@@ -582,9 +656,13 @@ var chatOptClick = function() {
 
 $(document).ready(function(){
 
-    heyThere.init();
+    // heyThere.init();
 
     $(document).on('click', '.js-chatOpt', function(){
         chatOptClick.init($(this));
+    });
+
+    $(document).on('click', '.js-chatStart', function(){
+        chatOptClick.outsider($(this));
     });
 });

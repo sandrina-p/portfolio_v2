@@ -1,6 +1,6 @@
 .hiThere {
     width: 90%;
-    max-width: 500px;
+    max-width: $safeArea*32;
     margin: auto;
     text-align: center;
     padding-top: 20vh;
@@ -9,7 +9,7 @@
         font-size: $font6XL;
         transition: all $speed*4;
         opacity: 1;
-        display: none;
+        display: none; //slideDown()
 
         &.jsLoading {
             margin-top: $safeArea*4;
@@ -20,10 +20,9 @@
     &-intro {
         font-size: $fontLx;
         padding: $safeArea*2 0;
-        // transition: all 0;
         transition: all $speed*4;
         opacity: 1;
-        display: none;
+        display: none; //slideDown()
 
         &.jsLoading {
             margin-top: -$safeArea*2;
@@ -37,10 +36,15 @@
 }
 
 .chat {
-    padding: 25vh 0 150px;
-    width: 700px;
+    padding: 30vh 0 150px;
+    width: 95%;
     min-height: 200vh;
     margin: auto;
+
+    @include media(laptop) {
+        width: 70%;
+    }
+
 
     &Section {
         padding: $safeArea*2 0;
@@ -92,9 +96,9 @@
 
         // human part with titles
         &-human {
-            width: 30%;
+            width: 100%;
             padding: $safeArea;
-            border-right: 1px solid black;
+            border-right: 1px solid $clrDark;
             overflow: hidden;
             display: none;
         }
@@ -121,15 +125,18 @@
 
         //bot part with text and options
         &-bot {
-            width: 70%;
-            padding: $safeArea;
-            border-left: 1px solid black;
-            margin-left: -1px;
+            width: 100%;
+            padding: $safeArea/2;
+            border-left: 1px solid $clrDark;
+            border-right: 1px solid $clrDark;
             overflow: hidden;
             display: none;
         }
 
-        &-text {
+
+
+        &-text,
+        &-redirect {
             color: $clrGrayLight;
             opacity: 1;
             transition: opacity $speed;
@@ -148,17 +155,25 @@
             }
         }
 
+        &-redirect {
+            padding-top: $safeArea;
+        }
+
         // btns
         &-option {
             display: inline-block;
             width: 49%;
             padding-top: $safeArea;
-            padding-right: $safeArea;
+            padding-right: $safeArea/2;
             overflow: hidden;
 
             &:nth-child(2) {
                 position: relative;
                 z-index: 2;
+            }
+
+            &:last-child {
+                padding-right: 0;
             }
         }
 
@@ -249,7 +264,6 @@
             padding: 10px 15px;
             margin: -12px 44px 0 -36px;
 
-
             display: none;
             margin-left: 150%;
             width: 100%;
@@ -258,7 +272,7 @@
 
             &.jsGlitchIn {
                 display: block;
-                margin-left: -44px;
+                margin-left: 7px;
             }
         }
 
@@ -276,18 +290,15 @@
             br {font-size: 1.7rem;}
 
             background: $clrDark;
-            padding: 15px;
+            padding: $safeArea*2 $safeArea;
             margin: -9px 13px -5px 5px;
             z-index: -1;
             position: relative;
         }
 
-        &-capt {
-            padding: $safeArea*2 $safeArea;
-        }
-
         &-more {
-            margin: -12px 2px -12px -152px;
+            margin: -12px 2px -12px -2px;
+            padding-top: $safeArea;
             background: $clrGrayDarker;
             z-index: 0;
             transition: all $speed*2;
@@ -369,8 +380,44 @@
 }
 
 
+@include media(phablet) {
+    .chat {
+        &Part {
+            &-human {
+                width: 30%;
+            }
+            &-bot {
+                width: 70%;
+                padding: $safeArea;
+                margin-left: -1px;
+                border-rigth: 0;
+            }
+
+            &-option {
+                padding-right: $safeArea;
+            }
+
+            &-role {
+                margin: -12px 44px 0 -36px;
+
+                &.jsGlitchIn {
+                    display: block;
+                    margin-left: -44px;
+                }
+            }
+
+            &-more {
+                margin: -12px 2px -12px -152px;
+            }
+
+        }
+    }
+
+}
+
+
 .liIndex {
-    &-ul { //ul
+    &-ul {
         width: 100%;
     }
 
@@ -397,6 +444,119 @@
         padding-left: $safeArea/2;
         margin-right: $safeArea/2;
         border-bottom: 1px solid black;
+    }
+
+}
+
+.cv {
+    z-index: 11;
+    position: relative;
+    width: 100%;
+    background: $clrDark;
+    color: white;
+    padding: 100vh 5vh 5vh;
+    width: 100%;
+
+    &-header {
+        position: relative;
+        margin: auto;
+        text-align: center;
+    }
+
+    &-ascii {
+        display: inline-block;
+        text-align: center;
+        width: 300px;
+        font-size: $fontXXS;
+    }
+
+    &-section {
+        @extend %cf;
+        text-align: center;
+        // @include flexbox;
+        // align-items: stretch;
+    }
+
+    &-article {
+        display: inline-block;
+        width: 33%;
+        padding: $safeArea*2;
+        text-align: left;
+
+        &-in {
+            background: $clrLight;
+            color: $clrDark;
+        }
+    }
+
+    &-title {
+        font-size: $fontXL;
+        padding: $safeArea $safeArea $safeArea/4;
+        font-family: $font-sans;
+        font-weight: 600;
+        margin-bottom: $safeArea;
+        border-bottom: 2px solid $clrLight;
+        background: black;
+        color: $clrLight;
+    }
+
+    &-dl {
+        padding: 0 $safeArea;
+    }
+
+    &-dt {
+        font-weight: 400;
+    }
+
+    &-dd {
+        font-weight: 300;
+        font-size: $fontS;
+        margin-bottom: $safeArea;
+    }
+
+    &-liTitle {
+        padding: 0 $safeArea;
+        @extend .liIndex-categ;
+    }
+
+    .liIndex {
+        &-ul {
+            padding: 0 $safeArea;
+        }
+
+        &-liCateg,
+        &-categ {
+            margin-top: 0;
+        }
+
+        &-liCateg {
+            margin-bottom: $safeArea;
+        }
+
+        &-sub {
+            margin-left: -$safeArea/4*3; //FIXME a strange bug on cv section doesn't connect btn with span.
+        }
+    }
+
+
+    &-ul {
+        padding: 0 $safeArea $safeArea;
+    }
+
+    &-li {
+        font-weight: 300;
+    }
+
+    &-bot {
+        width: 100%;
+        background: $clrDark;
+        padding: $safeArea;
+        text-align: center;
+
+        > * {
+            background: $clrLight;
+            color: $clrDark;
+        }
     }
 
 }

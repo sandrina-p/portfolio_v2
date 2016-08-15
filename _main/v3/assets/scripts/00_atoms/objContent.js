@@ -1,6 +1,7 @@
 var linkCodepen = "<a href='#' class='link' target='_blank'>Codepen</a>",
     linkStackOverflow = "<a href='#' class='link' target='_blank'>Stackoverflow</a>",
-    btnNox = "<button class='btnB js-checkNox'>Check it out!</button>";
+    btnNox = "<button class='btnB js-checkNox'>Check it out!</button>",
+    mainSections = ['background','theory','practice'];
 
 chatContent = {
     intro: {
@@ -20,7 +21,7 @@ chatContent = {
     },
     theory: {
         intro: "Basically she breaths <strong>HTML5, SCSS</strong> and <strong>Javascript / JQuery</strong>. She is really into <strong>interactive stuff</strong> and that’s what makes her good at web development: a passion for the work and 24hours of <strong>daily exploration</strong>. She loves to create micro interactions that nobody seems to care about until they see them. Then, of course, they are mind blown",
-        "other techs" : "She also crossed paths with <strong>Angular 2</strong>, <strong>Ionic 2<strong> and <strong>PHP</strong>. But right now she is focusing on improving her javascript skills.",
+        "other techs" : "She also crossed paths with <strong>PHP</strong>, <strong>Angular 2</strong> and <strong>Ionic 2</strong>. But right now she is focusing on improving her javascript skills.",
         "micro inter-what" : "In one sentence: She loves to explore new concepts, meaningful transitions that <strong>connect users like you who interact with stuff like me.</strong>",
         "learning": "She didn't learn it. She is learning it. Everyday. Sharing solutions on <strong>"+linkStackOverflow+"</strong>, learning on Codeschool, and creating experiments on <strong>"+linkCodepen+".</strong> On design side she loves <strong>Sketch</strong>, has a great relationship with <strong>Adobe Tools</strong> and likes <strong>Blender</strong>.",
         "besides www" : "Hmm... she is a <strong>gamer</strong> too! Maybe she's playing right now. Recently she was a part of the creation of a video game's concept as a motion designer."+btnNox,
@@ -92,16 +93,6 @@ chatContent = {
             more: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
             links: [["/practice/moon/", "check the website", "desktop"]],
         },
-        'DET': {
-            categ: "opening other doors",
-            title: "DET Dutch Experimental Typography",
-            sub: "Digital Magazine",
-            role: "Creative and Developer",
-            img: ["assets/media/img/projects/rnex01.png", "/image/TODO.png"],
-            capt: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-            more: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-            links: [["//behance.com/sandrin4p/det", "check it on behance", "behance"]],
-        },
         'N O X': {
             categ: "opening other doors",
             title: "N O X",
@@ -111,6 +102,16 @@ chatContent = {
             capt: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
             more: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
             links: [["//vimeo.com/nox", "check it on vimeo", "vimeo"]],
+        },
+        'DET': {
+            categ: "opening other doors",
+            title: "DET Dutch Experimental Typography",
+            sub: "Digital Magazine",
+            role: "Creative and Developer",
+            img: ["assets/media/img/projects/rnex01.png", "/image/TODO.png"],
+            capt: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+            more: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+            links: [["//behance.com/sandrin4p/det", "check it on behance", "behance"]],
         },
         '141205': {
             categ: "opening other doors",
@@ -124,16 +125,16 @@ chatContent = {
         },
     },
 
-    behavior: {
+    behaviour: {
        returnFocus: "It seem her project kept you interested in this conversation. Go on, don't be shy.",
        returnOnFly : "Hey there, where have you been?", //
        //isto é qd já nao ha mais links da secção emptyX (Background, Theory ou Practice)
-       emptyB: "Do you know she loves to learn online and that she developed some awesome work?", // THEORY || PRACTICE
-       emptyT: "Besides, her timeline is nice too, and so are her projects", // BACKGROUND || PRACTICE
-       emptyP: "Go check how she did all of these awesome projects and what she's up to now!", // THEORY || BACKGROUND
-       missingB: "[suggesting to check background part]",
-       missingT: "[suggesting to check theory part]",
-       missingP: "[suggesting to check practice part]"
+       emptybackground: "Do you know she loves to learn online and that she developed some awesome work?", // THEORY || PRACTICE
+       emptytheory: "Besides, her timeline is nice too, and so are her projects", // BACKGROUND || PRACTICE
+       emptypractice: "Go check how she did all of these awesome projects and what she's up to now!", // THEORY || BACKGROUND
+       missingbackground: "[suggesting to check background part]",
+       missingtheory: "[suggesting to check theory part]",
+       missingpractice: "[suggesting to check practice part]"
    },
    "008080": {
        intro: "holy holy, you've been digging like crazy. I don't have much more to tell you about her. But I can talk about me. And you.",

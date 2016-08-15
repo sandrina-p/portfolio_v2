@@ -42,7 +42,7 @@ button {
     // @extend %btn;
     font-weight: 600;
     color: $clrGrayDark;
-    padding: $safeArea/5 $safeArea;
+    padding: $safeArea/5 $safeArea/2;
     color: $clrPrimary;
 
     &:hover {
@@ -54,6 +54,12 @@ button {
     &.jsActive {
         background: $clrDark;
         color: $clrLight;
+    }
+}
+
+@include media(mobile) {
+    .btnNav {
+        padding: $safeArea/5 $safeArea;
     }
 }
 
