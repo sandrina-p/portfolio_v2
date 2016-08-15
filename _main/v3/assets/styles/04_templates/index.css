@@ -41,20 +41,40 @@
 /*------------------------------------*\
     #FLEXBOX & CLEARFIX
 \*------------------------------------*/
-.chatPart, .cv-section {
+.chatPart, .under-section {
   *zoom: 1;
 }
-.chatPart:before, .cv-section:before, .chatPart:after, .cv-section:after {
+.chatPart:before, .under-section:before, .chatPart:after, .under-section:after {
   content: "";
   display: table;
 }
-.chatPart:after, .cv-section:after {
+.chatPart:after, .under-section:after {
   clear: both;
 }
-.chatPart > *, .cv-section > * {
+.chatPart > *, .under-section > * {
   float: left;
 }
 
+@media (min-width: 28.125rem) {
+  .flexbox .under-section {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  .flexbox .under-section > * {
+    -webkit-box-flex: 0;
+    -webkit-flex-grow: 0;
+        -ms-flex-positive: 0;
+            flex-grow: 0;
+    -webkit-flex-shrink: 1;
+        -ms-flex-negative: 1;
+            flex-shrink: 1;
+    -webkit-flex-basis: auto;
+        -ms-flex-preferred-size: auto;
+            flex-basis: auto;
+  }
+}
 /*------------------------------------*\
     #CALC
 \*------------------------------------*/
@@ -148,7 +168,7 @@ html {
 html * {
   line-height: inherit;
 }
-@media (min-width: 68.75rem) and (min-height: 25rem) {
+@media (min-width: 62.5rem) and (min-height: 25rem) {
   html {
     font-size: 1rem;
   }
@@ -212,13 +232,23 @@ HELPERS
 }
 
 a:focus, button:focus {
-  animation-name: flash;
-  animation-duration: 250ms;
+  -webkit-animation-name: flash;
+          animation-name: flash;
+  -webkit-animation-duration: 250ms;
+          animation-duration: 250ms;
 }
 
 a:focus a, a:focus .fa, a:focus .glyphicon, button:focus a, button:focus .fa, button:focus .glyphicon {
-  animation-name: flash;
-  animation-duration: 250ms;
+  -webkit-animation-name: flash;
+          animation-name: flash;
+  -webkit-animation-duration: 250ms;
+          animation-duration: 250ms;
+}
+
+@-webkit-keyframes flash {
+  50% {
+    color: transparent;
+  }
 }
 
 @keyframes flash {
@@ -237,8 +267,10 @@ button {
 button:focus {
   border: none;
   opacity: 1;
-  animation-name: flash;
-  animation-duration: 250ms;
+  -webkit-animation-name: flash;
+          animation-name: flash;
+  -webkit-animation-duration: 250ms;
+          animation-duration: 250ms;
 }
 
 .btnNav {
@@ -250,7 +282,8 @@ button:focus {
 .btnNav:hover {
   opacity: 1;
   color: white;
-  animation: glitch 2s steps(100) infinite;
+  -webkit-animation: glitch 2s steps(100) infinite;
+          animation: glitch 2s steps(100) infinite;
 }
 .btnNav.jsActive {
   background: #121212;
@@ -269,7 +302,19 @@ button:focus {
   line-height: 1.5;
 }
 .btnB:hover {
-  animation: glitch 2s steps(100) infinite;
+  -webkit-animation: glitch 2s steps(100) infinite;
+          animation: glitch 2s steps(100) infinite;
+}
+
+@-webkit-keyframes animateBorderThree {
+  25% {
+    outline-color: white;
+    box-shadow: 0 0 0 1px black;
+  }
+  75% {
+    outline: 1px dashed black;
+    box-shadow: 0 0 0 1px white;
+  }
 }
 
 @keyframes animateBorderThree {
@@ -299,13 +344,17 @@ button:focus {
 
 .btnOut1 {
   font-size: 1.25rem;
-  animation: glitch1 2s steps(100) infinite;
-  animation-delay: 4s;
+  -webkit-animation: glitch1 2s steps(100) infinite;
+          animation: glitch1 2s steps(100) infinite;
+  -webkit-animation-delay: 4s;
+          animation-delay: 4s;
 }
 
 .btnOut2 {
-  animation: glitch2 2s steps(100) infinite;
-  animation-delay: 2s;
+  -webkit-animation: glitch2 2s steps(100) infinite;
+          animation: glitch2 2s steps(100) infinite;
+  -webkit-animation-delay: 2s;
+          animation-delay: 2s;
 }
 
 .link {
@@ -314,6 +363,135 @@ button:focus {
 .link:hover {
   color: #008080;
   border-bottom: 1px dashed #008080;
+}
+
+@-webkit-keyframes glitch {
+  0% {
+    text-shadow: 1px 0 0 red, -1px 0 0 blue;
+  }
+  4% {
+    text-shadow: 1px 0 0 red, -1px 0 0 blue;
+  }
+  5% {
+    text-shadow: -1px 0 0 red, 1px 0 0 blue;
+  }
+  10% {
+    text-shadow: -1px 0 0 red, 1px 0 0 blue;
+  }
+  41% {
+    text-shadow: 50px 0 0 blue, -50px 0 0 lime;
+  }
+  15% {
+    text-shadow: 0.5px 0 0 red, -0.5px 0 0 lime;
+  }
+  20% {
+    text-shadow: -1px 0 0 red, 1px 0 0 lime;
+  }
+  25% {
+    text-shadow: 0.7px 0 0 blue, -0.7px 0 0 lime;
+  }
+  30% {
+    text-shadow: 0.7px 0 0 blue, -0.7px 0 0 lime;
+  }
+  35% {
+    text-shadow: -1px 0 0 blue, 1px 0 0 lime;
+  }
+  40% {
+    text-shadow: -1px 0 0 blue, 1px 0 0 lime;
+  }
+  42% {
+    text-shadow: 0 0 0 blue, 0 0 0 lime;
+  }
+  43% {
+    text-shadow: 0.5px 0 0 red, -0.5px 0 0 lime;
+  }
+  46% {
+    text-shadow: 0.5px 0 0 red, -0.5px 0 0 lime;
+  }
+  47% {
+    text-shadow: -1px 0 0 red, 1px 0 0 lime;
+  }
+  50% {
+    text-shadow: -1px 0 0 red, 1px 0 0 lime;
+  }
+  51% {
+    text-shadow: 1px 0 0 red, -1px 0 0 blue;
+  }
+  55% {
+    text-shadow: 1px 0 0 red, -1px 0 0 blue;
+  }
+  56% {
+    text-shadow: -1px 0 0 red, 1px 0 0 blue;
+  }
+  60% {
+    text-shadow: -1px 0 0 red, 1px 0 0 blue;
+  }
+  61% {
+    text-shadow: 30px 0 0 red, -30px 0 0 lime;
+  }
+  62% {
+    text-shadow: 0 0 0 red, 0 0 0 lime;
+  }
+  63% {
+    text-shadow: 0.5px 0 0 red, -0.5px 0 0 blue;
+  }
+  66% {
+    text-shadow: 0.5px 0 0 red, -0.5px 0 0 blue;
+  }
+  67% {
+    text-shadow: -1px 0 0 red, 1px 0 0 blue;
+  }
+  70% {
+    text-shadow: -1px 0 0 red, 1px 0 0 blue;
+  }
+  71% {
+    text-shadow: 70px 0 0 red, -70px 0 0 blue;
+  }
+  72% {
+    text-shadow: 0 0 0 red, 0 0 0 blue;
+  }
+  73% {
+    text-shadow: 1px 0 0 red, -1px 0 0 blue;
+  }
+  76% {
+    text-shadow: 1px 0 0 red, -1px 0 0 blue;
+  }
+  80% {
+    text-shadow: -1px 0 0 red, 1px 0 0 blue;
+  }
+  81% {
+    text-shadow: 0.5px 0 0 red, -0.5px 0 0 lime;
+  }
+  85% {
+    text-shadow: 0.5px 0 0 red, -0.5px 0 0 lime;
+  }
+  86% {
+    text-shadow: -1px 0 0 red, 1px 0 0 lime;
+  }
+  90% {
+    text-shadow: -1px 0 0 red, 1px 0 0 lime;
+  }
+  91% {
+    text-shadow: 60px 0 0 lime, -60px 0 0 blue;
+  }
+  92% {
+    text-shadow: 0 0 0 lime, 0 0 0 blue;
+  }
+  92% {
+    text-shadow: 0.7px 0 0 blue, -0.7px 0 0 lime;
+  }
+  95% {
+    text-shadow: 0.7px 0 0 blue, -0.7px 0 0 lime;
+  }
+  96% {
+    text-shadow: -1px 0 0 blue, 1px 0 0 lime;
+  }
+  99% {
+    text-shadow: -1px 0 0 blue, 1px 0 0 lime;
+  }
+  100% {
+    text-shadow: -1px 0 0 blue, 1px 0 0 lime;
+  }
 }
 
 @keyframes glitch {
@@ -444,6 +622,27 @@ button:focus {
     text-shadow: -1px 0 0 blue, 1px 0 0 lime;
   }
 }
+@-webkit-keyframes glitch1 {
+  60% {
+    text-shadow: -1px 0 0 red, 1px 0 0 blue;
+  }
+  61% {
+    text-shadow: 30px 0 0 red, -30px 0 0 lime;
+  }
+  62% {
+    text-shadow: 0 0 0 red, 0 0 0 lime;
+    color: yellow;
+  }
+  63% {
+    text-shadow: 0.5px 0 0 red, -0.5px 0 0 blue;
+  }
+  66% {
+    text-shadow: 0.5px 0 0 red, -0.5px 0 0 blue;
+  }
+  67% {
+    text-shadow: -1px 0 0 red, 1px 0 0 blue;
+  }
+}
 @keyframes glitch1 {
   60% {
     text-shadow: -1px 0 0 red, 1px 0 0 blue;
@@ -463,6 +662,26 @@ button:focus {
   }
   67% {
     text-shadow: -1px 0 0 red, 1px 0 0 blue;
+  }
+}
+@-webkit-keyframes glitch2 {
+  15% {
+    text-shadow: 0.5px 0 0 red, -0.5px 0 0 lime;
+  }
+  20% {
+    text-shadow: -1px 0 0 red, 1px 0 0 lime;
+  }
+  25% {
+    text-shadow: 0.7px 0 0 blue, -0.7px 0 0 lime;
+  }
+  30% {
+    text-shadow: 0.7px 0 0 blue, -0.7px 0 0 lime;
+  }
+  35% {
+    text-shadow: -1px 0 0 blue, 1px 0 0 lime;
+  }
+  40% {
+    text-shadow: -1px 0 0 blue, 1px 0 0 lime;
   }
 }
 @keyframes glitch2 {
@@ -485,48 +704,83 @@ button:focus {
     text-shadow: -1px 0 0 blue, 1px 0 0 lime;
   }
 }
-.hiThere {
+.heyThere {
   width: 90%;
   max-width: 32rem;
   margin: auto;
   text-align: center;
   padding-top: 20vh;
 }
-.hiThere-hey {
+.heyThere-hey {
   font-size: 3.5rem;
-  transition: all 1000ms;
+  -webkit-transition: all 1000ms;
+          transition: all 1000ms;
   opacity: 1;
   display: none;
 }
-.hiThere-hey.jsLoading {
+.heyThere-hey.jsLoading {
   margin-top: 4rem;
   opacity: 0;
 }
-.hiThere-intro {
+.heyThere-intro {
   font-size: 1.25rem;
   padding: 2rem 0;
-  transition: all 1000ms;
+  -webkit-transition: all 1000ms;
+          transition: all 1000ms;
   opacity: 1;
   display: none;
 }
-.hiThere-intro.jsLoading {
+.heyThere-intro.jsLoading {
   margin-top: -2rem;
   opacity: 0;
 }
-.hiThere-intro.jsFixed {
+.heyThere-intro.jsFixed {
   padding-bottom: 4rem;
 }
 
+.navSections {
+  margin: auto;
+  position: relative;
+  z-index: 11;
+  width: 100%;
+  text-align: center;
+  padding: 0;
+  border-bottom: 1px dashed #c5c5c5;
+  background: white;
+  height: 2rem;
+  -webkit-transition: width 1000ms;
+          transition: width 1000ms;
+  overflow: hidden;
+}
+.navSections.jsLoading {
+  border: 0;
+  width: 0;
+}
+.navSections.jsFixed {
+  position: fixed;
+  top: 0;
+}
+.navSections-btn {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  -webkit-transition: margin 500ms;
+          transition: margin 500ms;
+}
+.navSections-btn.jsLoading {
+  margin-bottom: -3rem;
+}
+
+@media (min-width: 34.375rem) {
+  .navSections-btn {
+    width: 8rem;
+  }
+}
 .chat {
   padding: 30vh 0 150px;
   width: 95%;
   min-height: 200vh;
   margin: auto;
-}
-@media (min-width: 68.75rem) and (min-height: 25rem) {
-  .chat {
-    width: 70%;
-  }
 }
 .chatSection {
   padding: 2rem 0;
@@ -554,7 +808,8 @@ button:focus {
 .chatPart-title, .chatPart-subtitle {
   text-align: right;
   font-weight: 600;
-  transition: margin 250ms;
+  -webkit-transition: margin 250ms;
+          transition: margin 250ms;
   margin-right: 0;
   font-family: "Roboto", sans-serif;
   font-size: 1.25rem;
@@ -577,7 +832,8 @@ button:focus {
 .chatPart-text, .chatPart-redirect {
   color: #c5c5c5;
   opacity: 1;
-  transition: opacity 250ms;
+  -webkit-transition: opacity 250ms;
+          transition: opacity 250ms;
 }
 .chatPart-text:hover, .chatPart-redirect:hover {
   color: black;
@@ -608,7 +864,8 @@ button:focus {
 }
 .chatPart .btnB {
   margin-left: 0;
-  transition: margin 500ms;
+  -webkit-transition: margin 500ms;
+          transition: margin 500ms;
 }
 .chatPart .btnB.jsLoading {
   margin-left: -100%;
@@ -670,7 +927,8 @@ button:focus {
   display: none;
   margin-left: 150%;
   width: 100%;
-  transition: margin 500ms;
+  -webkit-transition: margin 500ms;
+          transition: margin 500ms;
 }
 .chatPart-role.jsGlitchIn {
   display: block;
@@ -697,7 +955,8 @@ button:focus {
   padding-top: 1rem;
   background: #2c2c2c;
   z-index: 0;
-  transition: all 500ms;
+  -webkit-transition: all 500ms;
+          transition: all 500ms;
   display: block;
   max-height: 500px;
   overflow: hidden;
@@ -716,7 +975,8 @@ button:focus {
   margin-left: 400px;
   margin-right: 100px;
   display: none;
-  transition: margin 250ms;
+  -webkit-transition: margin 250ms;
+          transition: margin 250ms;
 }
 .chatPart-details.jsGlitchIn {
   margin: -8px -10px 0px 52px;
@@ -735,10 +995,12 @@ button:focus {
   margin-top: -12px;
   display: none;
   left: 250px;
-  transition: left 250ms;
+  -webkit-transition: left 250ms;
+          transition: left 250ms;
 }
 .chatPart .btnDetails:hover {
-  animation: 250ms animateBorderThree ease infinite;
+  -webkit-animation: 250ms animateBorderThree ease infinite;
+          animation: 250ms animateBorderThree ease infinite;
 }
 .chatPart .btnDetails.jsGlitchIn {
   left: -24px;
@@ -752,7 +1014,8 @@ button:focus {
 }
 .chatPart-checkItOut.jsActive {
   color: white;
-  animation: glitch 2s steps(100) infinite;
+  -webkit-animation: glitch 2s steps(100) infinite;
+          animation: glitch 2s steps(100) infinite;
 }
 
 @media (min-width: 34.375rem) {
@@ -769,7 +1032,7 @@ button:focus {
     padding-right: 1rem;
   }
   .chatPart-role {
-    margin: -12px 44px 0 -36px;
+    margin: -12px -344px 0 836px;
   }
   .chatPart-role.jsGlitchIn {
     display: block;
@@ -779,6 +1042,12 @@ button:focus {
     margin: -12px 2px -12px -152px;
   }
 }
+@media (min-width: 62.5rem) and (min-height: 25rem) {
+  .chat {
+    width: 70%;
+    max-width: 60rem;
+  }
+}
 .liIndex-ul {
   width: 100%;
 }
@@ -786,7 +1055,7 @@ button:focus {
   display: inline-block;
   margin-top: 0.5rem;
 }
-.liIndex-categ, .cv-liTitle {
+.liIndex-categ, .under-liTitle {
   display: block;
   font-family: "Roboto", sans-serif;
   font-size: 0.875rem;
@@ -803,41 +1072,77 @@ button:focus {
   margin-right: 0.5rem;
   border-bottom: 1px solid black;
 }
+.liIndex--padding {
+  padding: 0 1rem;
+}
+.liIndex--padding .liIndex-liCateg, .liIndex--padding .liIndex-categ, .liIndex--padding .under-liTitle {
+  margin-top: 0;
+}
+.liIndex--padding .liIndex-liCateg {
+  margin-bottom: 1rem;
+}
+.liIndex--padding .liIndex-sub {
+  margin-left: -0.75rem;
+}
 
-.cv {
+.js-loadingRetro {
+  position: absolute;
+  top: 1rem;
+  padding-left: 1rem;
+}
+
+.void {
+  z-index: 11;
+  position: relative;
+  height: 200vh;
+  width: 100%;
+  background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.5), #121212);
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.5), #121212);
+  pointer-events: none;
+  padding: 100vw 10vw;
+  text-align: center;
+}
+
+.under {
   z-index: 11;
   position: relative;
   width: 100%;
   background: #121212;
   color: white;
-  padding: 100vh 5vh 5vh;
+  padding: 200vh 0 6rem;
   width: 100%;
 }
-.cv-header {
+.under-header {
   position: relative;
   margin: auto;
   text-align: center;
 }
-.cv-ascii {
+.under-ascii {
+  position: relative;
   display: inline-block;
   text-align: center;
-  width: 300px;
-  font-size: 0.625rem;
+  width: 100%;
+  font-size: 5.4px;
+  line-height: 1.2;
+  height: 320px;
+  overflow: hidden;
 }
-.cv-section {
+.under-section {
   text-align: center;
 }
-.cv-article {
+.under-article {
   display: inline-block;
-  width: 33%;
-  padding: 2rem;
+  width: 100%;
+  padding: 0.5rem;
   text-align: left;
 }
-.cv-article-in {
+.under-article-in {
   background: white;
   color: #121212;
+  position: relative;
+  height: 100%;
 }
-.cv-title {
+.under-title {
   font-size: 1.75rem;
   padding: 1rem 1rem 0.25rem;
   font-family: "Roboto", sans-serif;
@@ -847,101 +1152,589 @@ button:focus {
   background: black;
   color: white;
 }
-.cv-dl {
+.under-doting {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  color: white;
+  width: 3rem;
+  height: 2rem;
+  text-align: right;
+}
+.under-doting:hover {
+  -webkit-animation: glitch 2s steps(70) infinite;
+          animation: glitch 2s steps(70) infinite;
+}
+.under-doting:hover:after {
+  -webkit-animation: doting 500ms steps(3) infinite;
+          animation: doting 500ms steps(3) infinite;
+  color: #00e8e8;
+}
+.under-doting:after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: 0.5rem;
+  -webkit-animation: doting 5s steps(3) infinite;
+          animation: doting 5s steps(3) infinite;
+}
+.under-article:nth-of-type(1) .under-doting:after {
+  -webkit-animation-delay: 2s;
+          animation-delay: 2s;
+}
+.under-article:nth-of-type(2) .under-doting:after {
+  -webkit-animation-delay: 0s;
+          animation-delay: 0s;
+}
+.under-article:nth-of-type(3) .under-doting:after {
+  -webkit-animation-delay: 4s;
+          animation-delay: 4s;
+}
+.under-dl {
   padding: 0 1rem;
 }
-.cv-dt {
+.under-dt {
   font-weight: 400;
 }
-.cv-dd {
+.under-dd {
   font-weight: 300;
   font-size: 0.875rem;
   margin-bottom: 1rem;
 }
-.cv-liTitle {
+.under-liTitle {
   padding: 0 1rem;
 }
-.cv .liIndex-ul {
-  padding: 0 1rem;
-}
-.cv .liIndex-liCateg, .cv .liIndex-categ, .cv .cv-liTitle {
-  margin-top: 0;
-}
-.cv .liIndex-liCateg {
-  margin-bottom: 1rem;
-}
-.cv .liIndex-sub {
-  margin-left: -0.75rem;
-}
-.cv-ul {
+.under-ul {
   padding: 0 1rem 1rem;
 }
-.cv-li {
+.under-li {
   font-weight: 300;
 }
-.cv-bot {
+.under-bot {
   width: 100%;
   background: #121212;
   padding: 1rem;
   text-align: center;
 }
-.cv-bot > * {
+.under-bot > * {
   background: white;
   color: #121212;
 }
-
-.js-loadingRetro {
+.under-nav {
   position: absolute;
-  top: 1rem;
-  padding-left: 1rem;
-  animation: glitch 2s steps(100) infinite;
-}
-
-.navSections {
-  margin: auto;
-  position: relative;
-  z-index: 11;
+  bottom: 0;
+  left: 0;
   width: 100%;
+  background: black;
   text-align: center;
-  padding: 0;
-  border-bottom: 1px dashed #c5c5c5;
-  background: white;
-  height: 2rem;
-  transition: width 1000ms;
-  overflow: hidden;
+  padding: 1rem;
+  font-size: 0.875rem;
 }
-.navSections.jsLoading {
-  border: 0;
-  width: 0;
-}
-.navSections.jsFixed {
+.under-nav.jsFixed {
   position: fixed;
-  top: 0;
 }
-.navSections-btn {
-  display: inline-block;
-  overflow: hidden;
+.under-nav a {
+  position: relative;
+  background: inherit;
+}
+.under-nav a:hover .under-nav-hover-1,
+.under-nav a:hover .under-nav-hover-3 {
+  opacity: 1;
+}
+.under-nav-hover-1, .under-nav-hover-3 {
+  position: absolute;
   white-space: nowrap;
-  transition: margin 500ms;
+  font-size: 0.75rem;
+  font-weight: 100;
+  opacity: 0;
+  padding: 0 0.33333rem;
+  margin-top: 0.2rem;
 }
-.navSections-btn.jsLoading {
-  margin-bottom: -3rem;
+.under-nav-hover-1 {
+  right: 100%;
+}
+.under-nav-hover-3 {
+  left: 100%;
 }
 
-@media (min-width: 34.375rem) {
-  .navSections-btn {
-    width: 8rem;
+@-webkit-keyframes doting {
+  0% {
+    content: ".";
+  }
+  5% {
+    content: ". .";
+  }
+  10% {
+    content: ". . .";
+  }
+  15% {
+    content: ". .";
+  }
+  20% {
+    content: ".";
+  }
+  25% {
+    content: "";
   }
 }
-.runAway {
-  z-index: 11;
+
+@keyframes doting {
+  0% {
+    content: ".";
+  }
+  5% {
+    content: ". .";
+  }
+  10% {
+    content: ". . .";
+  }
+  15% {
+    content: ". .";
+  }
+  20% {
+    content: ".";
+  }
+  25% {
+    content: "";
+  }
+}
+@media (min-width: 28.125rem) {
+  .under-section {
+    -webkit-flex-wrap: wrap;
+        -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+  }
+  .under-article {
+    padding: 1rem;
+    width: 50%;
+  }
+  .under-article:last-of-type {
+    width: 100%;
+  }
+  .under-bot {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+  }
+}
+@media (min-width: 46.875rem) and (min-height: 25rem) {
+  .under {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  .under-article {
+    padding: 1rem 2rem;
+  }
+}
+@media (min-width: 62.5rem) and (min-height: 25rem) {
+  .under-article, .under-article:last-of-type {
+    padding: 1rem;
+    width: 33.333%;
+    max-width: 30rem;
+  }
+}
+@media (min-width: 100rem) and (min-height: 25rem) {
+  .under-article, .under-article:last-of-type {
+    padding: 2rem;
+  }
+}
+.mee {
+  position: absolute;
+  opacity: 0;
+  position: absolute;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+      -ms-transform: translateX(-50%);
+          transform: translateX(-50%);
+  -webkit-animation: myself 1s steps(5) infinite;
+          animation: myself 1s steps(5) infinite;
+}
+
+.myself0 {
+  -webkit-animation-delay: 0ms;
+          animation-delay: 0ms;
+}
+
+.myself1 {
+  -webkit-animation-delay: 125ms;
+          animation-delay: 125ms;
+}
+
+.myself2 {
+  -webkit-animation-delay: 250ms;
+          animation-delay: 250ms;
+}
+
+.myself3 {
+  -webkit-animation-delay: 375ms;
+          animation-delay: 375ms;
+}
+
+.myself4 {
+  -webkit-animation-delay: 500ms;
+          animation-delay: 500ms;
+}
+
+.myself5 {
+  -webkit-animation-delay: 625ms;
+          animation-delay: 625ms;
+}
+
+.myself6 {
+  -webkit-animation-delay: 750ms;
+          animation-delay: 750ms;
+}
+
+.myself7 {
+  -webkit-animation-delay: 875ms;
+          animation-delay: 875ms;
+}
+
+@-webkit-keyframes myself {
+  0% {
+    opacity: 0;
+  }
+  87.4% {
+    opacity: 0;
+  }
+  87.5% {
+    opacity: 1;
+  }
+  99.9% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes myself {
+  0% {
+    opacity: 0;
+  }
+  87.4% {
+    opacity: 0;
+  }
+  87.5% {
+    opacity: 1;
+  }
+  99.9% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+.glitch {
   position: relative;
-  height: 200vh;
+  margin: 0 auto;
+  width: 300px;
+  background: #121212;
+  display: inline-block;
+}
+.glitch span {
+  color: black;
+}
+.glitch:before, .glitch:after {
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+          animation-timing-function: linear;
+  -webkit-animation-direction: alternate-reverse;
+          animation-direction: alternate-reverse;
+  overflow: hidden;
+  background: #121212;
+  top: 0;
   width: 100%;
-  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.5), #121212);
-  pointer-events: none;
-  padding: 100vw 10vw;
-  text-align: center;
+  clip: rect(0, 900px, 0, 0);
+  content: attr(data-text);
+  position: absolute;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+      -ms-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+.glitch:after {
+  content: attr(data-sub);
+  -webkit-animation-name: glitch-animation;
+          animation-name: glitch-animation;
+  -webkit-animation-duration: 4s;
+          animation-duration: 4s;
+  text-shadow: -1px 0 yellow;
+}
+.glitch:before {
+  -webkit-animation-name: glitch-animation-2;
+          animation-name: glitch-animation-2;
+  -webkit-animation-duration: 6s;
+          animation-duration: 6s;
+  text-shadow: 1px 0 #00e8e8;
+}
+
+@-webkit-keyframes glitch-animation {
+  0% {
+    clip: rect(45px, 9999px, 97px, 0);
+  }
+  5% {
+    clip: rect(58px, 9999px, 60px, 0);
+  }
+  10% {
+    clip: rect(85px, 9999px, 66px, 0);
+  }
+  15.0% {
+    clip: rect(26px, 9999px, 63px, 0);
+  }
+  20% {
+    clip: rect(32px, 9999px, 93px, 0);
+  }
+  25% {
+    clip: rect(34px, 9999px, 63px, 0);
+  }
+  30.0% {
+    clip: rect(98px, 9999px, 94px, 0);
+  }
+  35% {
+    clip: rect(15px, 9999px, 89px, 0);
+  }
+  40% {
+    clip: rect(86px, 9999px, 30px, 0);
+  }
+  45% {
+    clip: rect(68px, 9999px, 62px, 0);
+  }
+  50% {
+    clip: rect(92px, 9999px, 49px, 0);
+  }
+  55.0% {
+    clip: rect(28px, 9999px, 66px, 0);
+  }
+  60.0% {
+    clip: rect(94px, 9999px, 33px, 0);
+  }
+  65% {
+    clip: rect(69px, 9999px, 40px, 0);
+  }
+  70% {
+    clip: rect(1px, 9999px, 23px, 0);
+  }
+  75% {
+    clip: rect(79px, 9999px, 2px, 0);
+  }
+  80% {
+    clip: rect(2px, 9999px, 77px, 0);
+  }
+  85.0% {
+    clip: rect(31px, 9999px, 32px, 0);
+  }
+  90% {
+    clip: rect(53px, 9999px, 3px, 0);
+  }
+  95% {
+    clip: rect(89px, 9999px, 15px, 0);
+  }
+  100% {
+    clip: rect(88px, 9999px, 2px, 0);
+  }
+}
+
+@keyframes glitch-animation {
+  0% {
+    clip: rect(45px, 9999px, 97px, 0);
+  }
+  5% {
+    clip: rect(58px, 9999px, 60px, 0);
+  }
+  10% {
+    clip: rect(85px, 9999px, 66px, 0);
+  }
+  15.0% {
+    clip: rect(26px, 9999px, 63px, 0);
+  }
+  20% {
+    clip: rect(32px, 9999px, 93px, 0);
+  }
+  25% {
+    clip: rect(34px, 9999px, 63px, 0);
+  }
+  30.0% {
+    clip: rect(98px, 9999px, 94px, 0);
+  }
+  35% {
+    clip: rect(15px, 9999px, 89px, 0);
+  }
+  40% {
+    clip: rect(86px, 9999px, 30px, 0);
+  }
+  45% {
+    clip: rect(68px, 9999px, 62px, 0);
+  }
+  50% {
+    clip: rect(92px, 9999px, 49px, 0);
+  }
+  55.0% {
+    clip: rect(28px, 9999px, 66px, 0);
+  }
+  60.0% {
+    clip: rect(94px, 9999px, 33px, 0);
+  }
+  65% {
+    clip: rect(69px, 9999px, 40px, 0);
+  }
+  70% {
+    clip: rect(1px, 9999px, 23px, 0);
+  }
+  75% {
+    clip: rect(79px, 9999px, 2px, 0);
+  }
+  80% {
+    clip: rect(2px, 9999px, 77px, 0);
+  }
+  85.0% {
+    clip: rect(31px, 9999px, 32px, 0);
+  }
+  90% {
+    clip: rect(53px, 9999px, 3px, 0);
+  }
+  95% {
+    clip: rect(89px, 9999px, 15px, 0);
+  }
+  100% {
+    clip: rect(88px, 9999px, 2px, 0);
+  }
+}
+@-webkit-keyframes glitch-animation-2 {
+  0% {
+    clip: rect(41px, 9999px, 53px, 0);
+  }
+  5% {
+    clip: rect(83px, 9999px, 26px, 0);
+  }
+  10% {
+    clip: rect(31px, 9999px, 56px, 0);
+  }
+  15.0% {
+    clip: rect(14px, 9999px, 15px, 0);
+  }
+  20% {
+    clip: rect(23px, 9999px, 6px, 0);
+  }
+  25% {
+    clip: rect(22px, 9999px, 13px, 0);
+  }
+  30.0% {
+    clip: rect(73px, 9999px, 17px, 0);
+  }
+  35% {
+    clip: rect(24px, 9999px, 12px, 0);
+  }
+  40% {
+    clip: rect(53px, 9999px, 68px, 0);
+  }
+  45% {
+    clip: rect(37px, 9999px, 48px, 0);
+  }
+  50% {
+    clip: rect(75px, 9999px, 80px, 0);
+  }
+  55.0% {
+    clip: rect(85px, 9999px, 74px, 0);
+  }
+  60.0% {
+    clip: rect(98px, 9999px, 23px, 0);
+  }
+  65% {
+    clip: rect(51px, 9999px, 79px, 0);
+  }
+  70% {
+    clip: rect(24px, 9999px, 83px, 0);
+  }
+  75% {
+    clip: rect(32px, 9999px, 54px, 0);
+  }
+  80% {
+    clip: rect(100px, 9999px, 22px, 0);
+  }
+  85.0% {
+    clip: rect(33px, 9999px, 45px, 0);
+  }
+  90% {
+    clip: rect(60px, 9999px, 49px, 0);
+  }
+  95% {
+    clip: rect(5px, 9999px, 5px, 0);
+  }
+  100% {
+    clip: rect(16px, 9999px, 68px, 0);
+  }
+}
+@keyframes glitch-animation-2 {
+  0% {
+    clip: rect(41px, 9999px, 53px, 0);
+  }
+  5% {
+    clip: rect(83px, 9999px, 26px, 0);
+  }
+  10% {
+    clip: rect(31px, 9999px, 56px, 0);
+  }
+  15.0% {
+    clip: rect(14px, 9999px, 15px, 0);
+  }
+  20% {
+    clip: rect(23px, 9999px, 6px, 0);
+  }
+  25% {
+    clip: rect(22px, 9999px, 13px, 0);
+  }
+  30.0% {
+    clip: rect(73px, 9999px, 17px, 0);
+  }
+  35% {
+    clip: rect(24px, 9999px, 12px, 0);
+  }
+  40% {
+    clip: rect(53px, 9999px, 68px, 0);
+  }
+  45% {
+    clip: rect(37px, 9999px, 48px, 0);
+  }
+  50% {
+    clip: rect(75px, 9999px, 80px, 0);
+  }
+  55.0% {
+    clip: rect(85px, 9999px, 74px, 0);
+  }
+  60.0% {
+    clip: rect(98px, 9999px, 23px, 0);
+  }
+  65% {
+    clip: rect(51px, 9999px, 79px, 0);
+  }
+  70% {
+    clip: rect(24px, 9999px, 83px, 0);
+  }
+  75% {
+    clip: rect(32px, 9999px, 54px, 0);
+  }
+  80% {
+    clip: rect(100px, 9999px, 22px, 0);
+  }
+  85.0% {
+    clip: rect(33px, 9999px, 45px, 0);
+  }
+  90% {
+    clip: rect(60px, 9999px, 49px, 0);
+  }
+  95% {
+    clip: rect(5px, 9999px, 5px, 0);
+  }
+  100% {
+    clip: rect(16px, 9999px, 68px, 0);
+  }
+}
+.jsGlitching {
+  -webkit-animation: glitch 2s steps(100) infinite;
+          animation: glitch 2s steps(100) infinite;
 }
 
 /*------------------------------------*\

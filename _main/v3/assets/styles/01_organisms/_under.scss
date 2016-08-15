@@ -1,0 +1,336 @@
+.under {
+    z-index: 11;
+    position: relative;
+    width: 100%;
+    background: $clrDark;
+    color: white;
+    padding: 200vh 0 $safeArea*6;
+    width: 100%;
+
+    &-header {
+        position: relative;
+        margin: auto;
+        text-align: center;
+    }
+
+    &-ascii {
+        position: relative;
+        display: inline-block;
+        text-align: center;
+        width: 100%;
+        font-size: 5.4px;
+        line-height: 1.2;
+        height: 320px;
+        overflow: hidden;
+    }
+
+    &-section {
+        @extend %cf;
+        text-align: center;
+    }
+
+    &-article {
+        display: inline-block;
+        width: 100%;
+        padding: $safeArea/2;
+        text-align: left;
+
+        &-in {
+            background: $clrLight;
+            color: $clrDark;
+            position: relative;
+            height: 100%;
+        }
+    }
+
+    &-title {
+        font-size: $fontXL;
+        padding: $safeArea $safeArea $safeArea/4;
+        font-family: $font-sans;
+        font-weight: 600;
+        margin-bottom: $safeArea;
+        border-bottom: 2px solid $clrLight;
+        background: black;
+        color: $clrLight;
+    }
+
+    &-doting {
+        position: absolute;
+        top: $safeArea;
+        right: $safeArea;
+        color: white;
+        width: $safeArea*3;
+        height: $safeArea*2;
+        text-align: right;
+
+        &:hover {
+            animation: glitch 2s steps(70) infinite;
+
+            &:after {
+                animation: doting 500ms steps(3) infinite;
+                color: $clrPrimarySoft;
+            }
+        }
+
+        &:after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            left: 0;
+            top: $safeArea/2;
+            animation: doting 5s steps(3) infinite;
+
+            .under-article:nth-of-type(1) & {
+                animation-delay: 2s;
+            }
+            .under-article:nth-of-type(2) & {
+                animation-delay: 0s;
+            }
+            .under-article:nth-of-type(3) & {
+                animation-delay: 4s;
+            }
+        }
+    }
+
+
+    &-dl {
+        padding: 0 $safeArea;
+    }
+
+    &-dt {
+        font-weight: 400;
+    }
+
+    &-dd {
+        font-weight: 300;
+        font-size: $fontS;
+        margin-bottom: $safeArea;
+    }
+
+    &-liTitle {
+        padding: 0 $safeArea;
+        @extend .liIndex-categ;
+    }
+
+    &-ul {
+        padding: 0 $safeArea $safeArea;
+    }
+
+    &-li {
+        font-weight: 300;
+    }
+
+    &-bot {
+        width: 100%;
+        background: $clrDark;
+        padding: $safeArea;
+        text-align: center;
+
+        > * {
+            background: $clrLight;
+            color: $clrDark;
+        }
+    }
+
+    &-nav {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background: black;
+        text-align: center;
+        padding: $safeArea;
+        font-size: $fontS;
+
+        &.jsFixed {
+            position: fixed;
+        }
+
+        a {
+            position: relative;
+            background: inherit;
+
+            &:hover {
+                .under-nav-hover-1,
+                .under-nav-hover-3 {
+                    opacity: 1;
+                }
+            }
+        }
+
+        &-hover-1,
+        &-hover-3 {
+            position: absolute;
+            white-space: nowrap;
+            font-size: $fontXS;
+            font-weight: 100;
+            opacity: 0;
+            padding: 0 $safeArea/3;
+            margin-top: $safeArea/5;
+        }
+
+        &-hover-1 {
+            right: 100%;
+        }
+
+        &-hover-3 {
+            left: 100%;
+        }
+    }
+
+}
+
+@keyframes doting {
+    0% {content: ".";}
+    5% {content: ". .";}
+    10% {content: ". . .";}
+    15% {content: ". .";}
+    20% {content: ".";}
+    25% {content: "";}
+}
+
+
+@include media(mobile) {
+    .under {
+        &-section {
+            @extend %flexbox-mob;
+            flex-wrap: wrap;
+        }
+
+        &-article {
+            padding: $safeArea;
+            width: 50%;
+
+            &:last-of-type {
+                width: 100%;
+            }
+        }
+
+        &-bot {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
+    }
+}
+
+@include media(tablet) {
+    .under {
+        padding-left: $safeArea;
+        padding-right: $safeArea;
+        &-article {
+            padding: $safeArea $safeArea*2;
+        }
+    }
+}
+
+@include media(laptop) {
+    .under {
+        &-article,
+        &-article:last-of-type {
+            padding: $safeArea;
+            width: 33.333%;
+            max-width: $safeArea*30;
+        }
+    }
+}
+
+@include media(desktop) {
+    .under {
+        &-article,
+        &-article:last-of-type {
+            padding: $safeArea*2;
+        }
+    }
+}
+
+.mee {
+    position: absolute;
+    opacity: 0;
+    @include centerx;
+    animation: myself 1s steps(5) infinite; //REVIEW
+}
+
+$myselfs: 7;
+@for $i from 0 through $myselfs {
+    .myself#{$i} {
+        animation-delay: $i*125ms;
+    }
+}
+
+// .myself1 {
+//     opacity: 1;
+// }
+
+@keyframes myself {
+    0% {opacity: 0;}
+    87.4% {opacity: 0;}
+    87.5% {opacity: 1;}
+    99.9% {opacity: 1;}
+    100% {opacity: 0;}
+}
+
+.glitch {
+  position: relative;
+  margin: 0 auto;
+  width: 300px;
+  background: $clrDark;
+  display: inline-block;
+
+  span {color: black;}
+
+  &:before,
+  &:after {
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    animation-direction: alternate-reverse;
+    overflow: hidden;
+    background: $clrDark;
+    top: 0;
+    width: 100%;
+    clip: rect(0, 900px, 0, 0);
+    content: attr(data-text);
+    @include centerx;
+  }
+
+  &:after {
+    content: attr(data-sub);
+    animation-name: glitch-animation; //REVIEW
+    animation-duration: 4s;
+    text-shadow: -1px 0 yellow;
+  }
+
+  &:before {
+    animation-name: glitch-animation-2;  //REVIEW
+    animation-duration: 6s;
+    text-shadow: 1px 0 $clrPrimarySoft;
+  }
+}
+
+
+@mixin rect($top, $bottom) {
+  clip: rect($top, 9999px, $bottom, 0);
+}
+
+@keyframes glitch-animation {
+    $steps:20;
+    @for $i from 0 through $steps{
+        #{percentage($i*(1/$steps))}{
+            @include rect(random(100) + px,random(100) + px);
+        }
+    }
+}
+
+@keyframes glitch-animation-2 {
+    $steps:20;
+    @for $i from 0 through $steps{
+        #{percentage($i*(1/$steps))}{
+            @include rect(random(100) + px,random(100) + px);
+        }
+    }
+}
+
+
+.jsGlitching {
+    animation: glitch 2s steps(100) infinite;
+}

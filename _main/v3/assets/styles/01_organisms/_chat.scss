@@ -1,50 +1,8 @@
-.hiThere {
-    width: 90%;
-    max-width: $safeArea*32;
-    margin: auto;
-    text-align: center;
-    padding-top: 20vh;
-
-    &-hey {
-        font-size: $font6XL;
-        transition: all $speed*4;
-        opacity: 1;
-        display: none; //slideDown()
-
-        &.jsLoading {
-            margin-top: $safeArea*4;
-            opacity: 0;
-        }
-    }
-
-    &-intro {
-        font-size: $fontLx;
-        padding: $safeArea*2 0;
-        transition: all $speed*4;
-        opacity: 1;
-        display: none; //slideDown()
-
-        &.jsLoading {
-            margin-top: -$safeArea*2;
-            opacity: 0;
-        }
-
-        &.jsFixed {
-            padding-bottom: $safeArea*4;
-        }
-    }
-}
-
 .chat {
     padding: 30vh 0 150px;
     width: 95%;
     min-height: 200vh;
     margin: auto;
-
-    @include media(laptop) {
-        width: 70%;
-    }
-
 
     &Section {
         padding: $safeArea*2 0;
@@ -176,7 +134,7 @@
                 padding-right: 0;
             }
         }
-
+        //BTNB shouln't be here FIXME
         .btnB {
             margin-left: 0;
             transition: margin $speed*2;
@@ -193,6 +151,7 @@
         }
 
 
+        //PROJECT FIXME improve animation class
         &--project {
             .chatPart-bot {
                 overflow: visible;
@@ -379,7 +338,6 @@
     }
 }
 
-
 @include media(phablet) {
     .chat {
         &Part {
@@ -398,7 +356,7 @@
             }
 
             &-role {
-                margin: -12px 44px 0 -36px;
+                margin: -12px -344px 0 836px;
 
                 &.jsGlitchIn {
                     display: block;
@@ -413,6 +371,13 @@
         }
     }
 
+}
+
+@include media(laptop) {
+    .chat {
+        width: 70%;
+        max-width: $safeArea*60;
+    }
 }
 
 
@@ -446,125 +411,31 @@
         border-bottom: 1px solid black;
     }
 
-}
-
-.cv {
-    z-index: 11;
-    position: relative;
-    width: 100%;
-    background: $clrDark;
-    color: white;
-    padding: 100vh 5vh 5vh;
-    width: 100%;
-
-    &-header {
-        position: relative;
-        margin: auto;
-        text-align: center;
-    }
-
-    &-ascii {
-        display: inline-block;
-        text-align: center;
-        width: 300px;
-        font-size: $fontXXS;
-    }
-
-    &-section {
-        @extend %cf;
-        text-align: center;
-        // @include flexbox;
-        // align-items: stretch;
-    }
-
-    &-article {
-        display: inline-block;
-        width: 33%;
-        padding: $safeArea*2;
-        text-align: left;
-
-        &-in {
-            background: $clrLight;
-            color: $clrDark;
-        }
-    }
-
-    &-title {
-        font-size: $fontXL;
-        padding: $safeArea $safeArea $safeArea/4;
-        font-family: $font-sans;
-        font-weight: 600;
-        margin-bottom: $safeArea;
-        border-bottom: 2px solid $clrLight;
-        background: black;
-        color: $clrLight;
-    }
-
-    &-dl {
+    &--padding {
         padding: 0 $safeArea;
-    }
 
-    &-dt {
-        font-weight: 400;
-    }
+        .liIndex {
+            &-liCateg,
+            &-categ {
+                margin-top: 0;
+            }
 
-    &-dd {
-        font-weight: 300;
-        font-size: $fontS;
-        margin-bottom: $safeArea;
-    }
+            &-liCateg {
+                margin-bottom: $safeArea;
+            }
 
-    &-liTitle {
-        padding: 0 $safeArea;
-        @extend .liIndex-categ;
-    }
-
-    .liIndex {
-        &-ul {
-            padding: 0 $safeArea;
-        }
-
-        &-liCateg,
-        &-categ {
-            margin-top: 0;
-        }
-
-        &-liCateg {
-            margin-bottom: $safeArea;
-        }
-
-        &-sub {
-            margin-left: -$safeArea/4*3; //FIXME a strange bug on cv section doesn't connect btn with span.
-        }
-    }
-
-
-    &-ul {
-        padding: 0 $safeArea $safeArea;
-    }
-
-    &-li {
-        font-weight: 300;
-    }
-
-    &-bot {
-        width: 100%;
-        background: $clrDark;
-        padding: $safeArea;
-        text-align: center;
-
-        > * {
-            background: $clrLight;
-            color: $clrDark;
+            &-sub {
+                margin-left: -$safeArea/4*3; //FIXME a strange bug on cv section doesn't connect btn with span.
+            }
         }
     }
 
 }
 
-
+// dots . . .
 .js-loadingRetro {
     position: absolute;
     top: $safeArea;
     padding-left: $safeArea;
-    animation: glitch 2s steps(100) infinite;
+    // animation: glitch 2s steps(100) infinite;
 }

@@ -1,6 +1,6 @@
 var linkCodepen = "<a href='#' class='link' target='_blank'>Codepen</a>",
     linkStackOverflow = "<a href='#' class='link' target='_blank'>Stackoverflow</a>",
-    btnNox = "<button class='btnB js-checkNox'>Check it out!</button>",
+    btnNox = "<button class='btnB js-chatStart' data-initproject='N O X'>Check it out!</button>",
     mainSections = ['background','theory','practice'];
 
 chatContent = {
@@ -28,11 +28,11 @@ chatContent = {
         "workplace" : "Well... she likes to work alone. Unless your ambitions are as high as hers, then it’s a match made in heaven. From <strong>creative to technique she can hold any role</strong>. More important than that, she believes that each of these roles must work together to achieve the best results."
     },
     practice: {
-        intro: "Most of these projects she did both design and code parts. What connects them is the <strong>constant searching for a unique experience</strong>. A visual pleasure that engages the user through a nice interactive experience. Let me start with her most recent project:",
+        intro: "Most of these projects she did both design and code parts. What connects them is the <strong>constant searching for a unique experience</strong>. A visual pleasure that engages the user through a nice interactive experience. Let me start with something cool:",
         firstProject: "rede expressos",
         'rede expressos': {
             categ: "other www projects",
-            title: "rede expressos",
+            title: "Rede Expressos",
             sub: "web and app concept redesign",
             role: "creative and front-end",
             img: ["assets/media/img/projects/rnex01.png", "/image/TODO.png"],
@@ -65,7 +65,7 @@ chatContent = {
         },
         'portfolio 15': {
             categ: "other www projects",
-            title: "Portfolio '15",
+            title: "Portfolio 15",
             sub: "Her previous portfolio",
             role: "Creative and Programmer",
             img: ["assets/media/img/projects/rnex01.png", "/image/TODO.png"],

@@ -1,0 +1,43 @@
+.navSections {
+    margin: auto;
+    position: relative;
+    z-index: 11;
+    width: 100%;
+    text-align: center;
+    padding: 0;
+    border-bottom: 1px dashed $clrGrayLight;
+    background: rgba($clrLight, 1);
+    height: $safeArea*2;
+    transition: width $speed*4;
+    overflow: hidden;
+
+    &.jsLoading {
+        border: 0;
+        width: 0;
+    }
+
+    &.jsFixed {
+        position: fixed;
+        top: 0;
+    }
+
+    &-btn {
+        display: inline-block;
+        overflow: hidden;
+        white-space: nowrap;
+        transition: margin $speed*2;
+
+        &.jsLoading {
+            margin-bottom: -$safeArea*3;
+        }
+    }
+}
+
+@include media(phablet) {
+    .navSections {
+
+        &-btn {
+            width: $safeArea*8;
+        }
+    }
+}
