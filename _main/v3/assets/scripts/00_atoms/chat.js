@@ -182,6 +182,7 @@ var chatApp = function() {
     }
 
     function getElPart(id, title, text) {
+        // var options = functionOption(section);
         var chatPart =  $("<div class='chatPart chatPart--jsLast' id='"+id+"'>"
                             +"<div class='chatPart-human'>"
                                 +"<p class='chatPart-title jsLoading'>"+title+"</p>"
@@ -196,6 +197,7 @@ var chatApp = function() {
     }
 
     function getElProject(id, title, sub, img, role, capt, more, links) {
+        var elImgs = getProjectImgs(img);
         var ElLinks = getProjectLinks(links);
         var chatProj =  $("<div class='chatPart chatPart--project chatPart--jsLast' id='"+id+"'>"
                             +"<div class='chatPart-human'>"
@@ -206,7 +208,7 @@ var chatApp = function() {
                                 +"<div class='chatPart-project'>"
                                     // TODO Glidder glitch + slider
                                     +"<div class='chatPart-fs'>"
-                                        +"<img src='"+img[0]+"'>"
+                                        +elImgs
                                     +"</div>"
                                     +"<h5 class='chatPart-role'>"+role+"</h5>"
                                     +"<p class='chatPart-capt'>"+capt+"</p>"
@@ -220,7 +222,6 @@ var chatApp = function() {
                                         +"</div>"
                                     +"</div>"
                                 +"</div>"
-                                // options
                             +"</div>"
                         +"</div>");
 
@@ -341,6 +342,24 @@ var chatApp = function() {
         return elLinks;
     }
 
+    function getProjectImgs(imgArray) {
+        var elImgs = "";
+        var desktop = window.innerWidth >= 940;
+        for (var i = 0; i < imgArray.length; i++) {
+            if(desktop) {
+                var newImg;
+                var imgRet = imgArray[i].split('.');
+                imgRet.splice(1, 0, "@2x");
+                imgRet.splice(2, 0, ".");
+                var newImg = imgRet.join("");
+                elImgs += "<img src='"+newImg+"'>";
+            } else {
+                elImgs += "<img src='"+imgArray[i]+"'>";
+            }
+
+        }
+        return elImgs;
+    }
 
 
     // ------ SHOWING A PART COMPONENTS ------ //
@@ -612,6 +631,8 @@ var chatApp = function() {
 
         $newPart = ElChatPart;
         showingCommon($newPart, showingProject);
+
+        initProj = false;
     }
 
     // ------ index ------ //
@@ -665,9 +686,9 @@ var chatApp = function() {
 $(document).ready(function(){
 
 
-    heyThere.init();
+    // heyThere.init();
 
-    
+
     $(document).on('click', '.js-chatOpt', function(){
         chatApp.init($(this));
     });

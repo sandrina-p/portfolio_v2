@@ -195,15 +195,25 @@
         }
 
         &-fs {
-            background: black;
+            background: $clrDark;
             padding: $safeArea;
             margin-left: 0;
-
             display: none;
+            position: relative;
 
             img {
                 width: 100%;
                 opacity: 0;
+
+                // &-first-of-type {
+                //     z-index: 2;
+                // }
+                &:not(:first-of-type) {
+                    position: absolute;
+                    left: $safeArea;
+                    top: $safeArea;
+                    width: calc(100% - #{$safeArea*2});
+                }
             }
 
 
@@ -215,6 +225,7 @@
         }
 
         &-role {
+            position: relative;
             font-size: $fontLx;
             padding-top: $safeArea;
 
@@ -438,4 +449,37 @@
     top: $safeArea;
     padding-left: $safeArea;
     // animation: glitch 2s steps(100) infinite;
+}
+
+
+
+$glidderLength: 4;
+$glidderTime: 10;
+
+.chatPart-fs img {
+    animation: glidder #{$glidderTime}s steps(9) infinite;
+}
+
+
+@for $i from 1 through $glidderLength {
+    .chatPart-fs img:nth-of-type(#{$i}) {
+        animation-delay: -$i*($glidderTime/$glidderLength)*1000ms;
+    }
+}
+
+// .myself1 {
+//     opacity: 1;
+// }
+
+@keyframes glidder {
+    0% {z-index: -1;}
+    71% {z-index: -1; left: $safeArea; top: $safeArea;}
+    71.5% {z-index: 2; top: -$safeArea;}
+    71.5% {z-index: 2; left: $safeArea*2; top: $safeArea;}
+    72.5% {z-index: 2; left: -$safeArea;}
+    73.5% {z-index: -1; left: $safeArea;}
+    76% {z-index: 2;}
+    80% {z-index: 2;}
+    90% {z-index: 2;}
+    100% {z-index: 2;}
 }

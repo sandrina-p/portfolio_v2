@@ -26,9 +26,7 @@
     <link rel="icon" type="image/png" href="assets/media/brand/favicon180.png" sizes="180x180"> -->
 
     <style media="screen">
-        .header
-        .main
-        .footer {
+        body {
             display: none;
         }
     </style>
@@ -46,20 +44,28 @@
             <br><br>Where do you like to start?
         </p>
     </div>
-    <nav class="navSections jsLoading"> <!--jsLoading-->
+    <nav class="navSections"> <!--jsLoading-->
         <h2 class="sr-only">chat navigation</h2>
-        <div class="navSections-btn jsLoading"> <!--jsLoading-->
+        <div class="navSections-btn"> <!--jsLoading-->
             <button type="button" name="background" class="btnNav js-chatOpt">background</button>
         </div>
-        <div class="navSections-btn jsLoading"> <!--jsLoading-->
+        <div class="navSections-btn"> <!--jsLoading-->
             <button type="button" name="theory" class="btnNav js-chatOpt">theory</button>
         </div>
-        <div class="navSections-btn jsLoading"> <!--jsLoading-->
+        <div class="navSections-btn"> <!--jsLoading-->
             <button type="button" name="practice" class="btnNav js-chatOpt">practice</button>
         </div>
     </nav>
 
-    <div class="chat" id="chat"></div>
+    <div class="chat" id="chat">
+
+        <div class="chatPart-fs jsGlitchIn" style="display: block;">
+            <img src="assets/media/img/projects/rnex0.png">
+             <img src="assets/media/img/projects/rnex1.png">
+            <img src="assets/media/img/projects/rnex2.png">
+            <img src="assets/media/img/projects/rnexx.png">
+        </div>
+    </div>
 
     <div class="void">
         [upside down]
@@ -276,6 +282,12 @@
     </script>
 
     <script async src="assets/scripts/03_templates/index.min.js" charset="utf-8"></script>
+
+    <style media="screen">
+        body {
+            display: block;
+        }
+    </style>
 </body>
 
 </html>
