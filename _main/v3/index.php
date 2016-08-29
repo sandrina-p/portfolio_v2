@@ -26,7 +26,9 @@
     <link rel="icon" type="image/png" href="assets/media/brand/favicon180.png" sizes="180x180"> -->
 
     <style media="screen">
-        body {
+        .chat,
+        .void,
+        .under {
             display: none;
         }
     </style>
@@ -37,8 +39,8 @@
     <h2 class="sr-only">interaction designer and frontend developer</h2>
     <div class="heyThere">
         <!-- <p class="heyThere-oh">oh!...</p> -->
-        <p class="heyThere-hey jsLoading">Hey there</p> <!--jsLoading-->
-        <p class="heyThere-intro jsLoading">  <!--jsLoading-->
+        <p class="heyThere-hey">Hey there</p> <!--jsLoading-->
+        <p class="heyThere-intro">  <!--jsLoading-->
             I would like to introduce you to someone.
             <br>She's a frontend developer with a great passion for interaction design.
             <br><br>Where do you like to start?
@@ -55,16 +57,14 @@
         <div class="navSections-btn"> <!--jsLoading-->
             <button type="button" name="practice" class="btnNav js-chatOpt">practice</button>
         </div>
+        <div class="navSections-about">
+            <button type="button" name="about" class="btnNav js-aboutTrigger">
+                <span>0</span><span>0</span><span>8</span><span>0</span><span>8</span><span>0</span>
+            </button>
+        </div>
     </nav>
 
     <div class="chat" id="chat">
-
-        <div class="chatPart-fs jsGlitchIn" style="display: block;">
-            <img src="assets/media/img/projects/rnex0.png">
-             <img src="assets/media/img/projects/rnex1.png">
-            <img src="assets/media/img/projects/rnex2.png">
-            <img src="assets/media/img/projects/rnexx.png">
-        </div>
     </div>
 
     <div class="void">

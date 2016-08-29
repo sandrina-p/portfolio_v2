@@ -1,0 +1,39 @@
+{
+  "name": "008080",
+  "version": "1.0.0",
+  "description": "sandrina's bot",
+  "main": "index.php",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@bitbucket.org/sandrina-p/personal-sandrina-p"
+  },
+  "author": "Sandrina Pereira",
+  "license": "ISC",
+  "devDependencies": {
+   "babel-polyfill": "^6.13.0",
+   "babel-preset-es2015": "^6.14.0",
+   "babel-preset-es2015-script": "^1.0.0",
+   "browser-sync": "^2.14.0",
+   "chalk": "^1.1.3",
+   "gulp": "^3.9.1",
+   "gulp-autoprefixer": "^3.1.1",
+   "gulp-babel": "^6.1.2",
+   "gulp-cached": "^1.1.0",
+   "gulp-changed": "^1.3.2",
+   "gulp-clean-css": "^2.0.12",
+   "gulp-connect-php": "0.0.8",
+   "gulp-if": "^2.0.1",
+   "gulp-import-css": "^0.1.2",
+   "gulp-include": "^2.3.1",
+   "gulp-rename": "^1.2.2",
+   "gulp-sass": "^2.3.2",
+   "gulp-sass-multi-inheritance": "^1.0.2",
+   "gulp-strip-debug": "^1.1.0",
+   "gulp-uglify": "^2.0.0",
+   "gulp-util": "^3.0.7",
+   "yargs": "^5.0.0"
+ }
+}

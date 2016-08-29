@@ -31,6 +31,27 @@
             margin-bottom: -$safeArea*3;
         }
     }
+
+    &-about {
+        position: absolute;
+        right: $safeArea;
+        top: 0;
+
+        .btnNav {
+            color: $clrGrayDarker;
+            font-weight: 300;
+        }
+    }
+}
+
+.js-aboutTrigger {
+    * {
+        opacity: 0;
+    }
+}
+
+.js-aboutVisible {
+    opacity: 0.5;
 }
 
 @include media(phablet) {
