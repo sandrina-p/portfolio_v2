@@ -31,7 +31,6 @@
 @import "../01_organisms/chat";
 @import "../01_organisms/void";
 @import "../01_organisms/under";
-// etc..
 
 
 /*------------------------------------*\
@@ -40,3 +39,9 @@
 @import "../00_atoms/js_manipulation";
 @import "../00_atoms/ie";
 // etc..
+
+.chat,
+.void,
+.under {
+    display: block !important;
+}
