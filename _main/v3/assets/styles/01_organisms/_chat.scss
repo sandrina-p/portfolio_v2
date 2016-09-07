@@ -6,22 +6,6 @@
 
     &Section {
         padding: $safeArea*2 0;
-        // basically all of this to tell that
-        // each all .chatPart of each .chatSection except 1st-of-type
-        // will have its children (human and bot) with padding
-        // to have some space between sections
-        // &:not(:first-of-type) {
-        //     .chatPart {
-        //         &:first-of-type {
-        //             .chatPart {
-        //                 &-human,
-        //                 &-bot {
-        //                     padding-top: $safeArea*2;
-        //                 }
-        //             }
-        //         }
-        //     }
-        // }
     }
 
     &Part {
@@ -67,7 +51,7 @@
             font-weight: 600;
             transition: margin $speed;
             margin-right: 0;
-            font-family: $font-sans;
+            font-family: $font-mono;
             font-size: $fontLx;
 
             &.jsLoading {
@@ -248,7 +232,7 @@
 
         &-capt,
         &-more {
-            font-family: $font-sans;
+            // font-family: $font-sans;
             font-size: $fontM;
             font-weight: 100;
             letter-spacing: 1px;
@@ -359,7 +343,7 @@
                 width: 70%;
                 padding: $safeArea;
                 margin-left: -1px;
-                border-rigth: 0;
+                border-right: 0;
             }
 
             &-option {
@@ -404,7 +388,7 @@
 
     &-categ {
         display: block;
-        font-family: $font-sans;
+        font-family: $font-mono;
         font-size: $fontS;
         font-weight: 600;
         text-transform: uppercase;
@@ -420,6 +404,8 @@
         padding-left: $safeArea/2;
         margin-right: $safeArea/2;
         border-bottom: 1px solid black;
+        display: inline-block;
+        height: rem(24);
     }
 
     &--padding {
@@ -435,9 +421,15 @@
                 margin-bottom: $safeArea;
             }
 
-            &-sub {
-                margin-left: -$safeArea/4*3; //FIXME a strange bug on cv section doesn't connect btn with span.
+            &-liProj {
+                button {
+                    margin-right: -$safeArea/2;
+                }
             }
+            //
+            // &-sub {
+            //     margin-left: -$safeArea/4*3; //FIXME a strange bug on cv section doesn't connect btn with span.
+            // }
         }
     }
 
@@ -472,14 +464,16 @@ $glidderTime: 10;
 // }
 
 @keyframes glidder {
-    0% {z-index: -1;}
-    71% {z-index: -1; left: $safeArea; top: $safeArea;}
-    71.5% {z-index: 2; top: -$safeArea;}
-    71.5% {z-index: 2; left: $safeArea*2; top: $safeArea;}
-    72.5% {z-index: 2; left: -$safeArea;}
-    73.5% {z-index: -1; left: $safeArea;}
-    76% {z-index: 2;}
-    80% {z-index: 2;}
-    90% {z-index: 2;}
-    100% {z-index: 2;}
+    0% {z-index: 2;}
+    06% {z-index: 2;}
+    10% {z-index: 2;}
+    20% {z-index: 2;}
+    30% {z-index: 2;}
+    31% {z-index: -1; left: $safeArea; top: $safeArea;}
+    31.5% {z-index: 2; top: -$safeArea;}
+    31.5% {z-index: 2; left: $safeArea*2; top: $safeArea;}
+    32.5% {z-index: 2; left: -$safeArea;}
+    33.5% {z-index: -1; left: $safeArea*3/2;}
+    34% {z-index: -1; left: $safeArea; top: $safeArea;}
+    100%  {z-index: 0;}
 }

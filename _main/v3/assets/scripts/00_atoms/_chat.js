@@ -656,7 +656,7 @@ var chatApp = function() {
 $(document).ready(function(){
 
 
-    // heyThere.init();
+//    heyThere.init();
 
     $(document).on('click', '.js-chatOpt', function(){
         chatApp.init($(this));
@@ -673,8 +673,6 @@ $(document).ready(function(){
         .on('mouseleave', '.js-underDotingTrigger', function(){
             $(this).closest('.js-underDotingTarget').removeClass('jsGlitching');
     });
-
-
 
     $(document).on('click', '.js-chatOpt', function(){
         var $trigger = $('.js-aboutTrigger'),

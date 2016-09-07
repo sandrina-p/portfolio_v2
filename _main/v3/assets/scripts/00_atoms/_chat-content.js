@@ -1,9 +1,22 @@
 var linkCodepen = "<a href='#' class='link' target='_blank'>Codepen</a>",
     linkStackOverflow = "<a href='#' class='link' target='_blank'>Stackoverflow</a>",
     btnNox = "<button class='btnB js-chatStart' data-initproject='N O X'>Check it out!</button>",
-    mainSections = ['background','theory','practice'];
+    mainSections = ['background','theory','practice'],
+    brChar = "<br>",
+    browser = "[browser]"
+    mobileBrand = "[mobile brand]";
+    screenRes = '[big/small]'
 
-chatContent = {
+
+if (screen.width < 750) {
+    var resolutionScreenMsg = "I feel so happy that we are reaching this point of our relationship on your "+mobileBrand+". Like a good bot, I always take into consideration what kind of device you are using to connect with me. This way, images and those scary stuff that drain the data network are not really problem: you always get the best for both your eyes and your device. ;)"
+
+} else {
+    var resolutionScreenMsg = "I noticed that you have a "+screenRes+", so the images I showed you have a big and nice resolution. If you were on your mobile, I'd be a thoughtful bot and reduce their size so I could save you some Kb from your mobile data network. How sweet am I, hm ? :D";
+}
+
+
+var chatContent = {
     intro: {
         hey: "Hey there!",
         hi: "I would like to introduce you to someone. She's a frontend developer with a great passion for interaction design. Where do you like to start?",
@@ -168,7 +181,6 @@ chatContent = {
     behaviour: {
        returnFocus: "It seem her project kept you interested in this conversation. Go on, don't be shy.",
        returnOnFly : "Hey there, where have you been?", //
-       //isto é qd já nao ha mais links da secção emptyX (Background, Theory ou Practice)
        emptybackground: "Do you know she loves to learn online and that she developed some awesome work?", // THEORY || PRACTICE
        emptytheory: "Besides, her timeline is nice too, and so are her projects", // BACKGROUND || PRACTICE
        emptypractice: "Go check how she did all of these awesome projects and what she's up to now!", // THEORY || BACKGROUND
@@ -183,3 +195,23 @@ chatContent = {
        end: "It was nice to talk to you, thank you! But now do me a favor and go get a life, yes? It’s not healthy to talk to a bot all day. By the way, don't forget to share me and talk about Sandrina while you’re out there <3" //SHOW SHARE BUTTONS EVERYWHERE
    }
 };
+
+var botContent = {
+    intro: "Now that we talked enough about Sandrina...ah yes, that's her name, I forgot to tell you. Anyways... I think I could talk about me. Like, nerd talk... but before that just tell me one thing: 1 / 0 =",
+    correct: "You are a little crazy…",
+    nop: "You know that Siri isn't always right. Neither do you.",
+    step1: "I was born inside the Atom editor. HTML5, SCSS and Javascript are my vital organs. "+brChar+"Eventually I evolved and started being built with [Koala] but as any good programmer knows, crashes happen, so [Gulp] took its place! "+brChar+"Despite always being under construction I already have the ability to share random stuff that Sandrina taught me while I was growing up.",
+    bests: [
+        "When I first said hello, I wasn't totally ready for you - guess that makes me a bit human, right? But while you were reading my first sentence I had enough time to send you the rest of the CSS and JS files that I needed to have a conversation with you. That's a great way to reduce [perceived loading time] and avoid [FOUC], don't you think?",
+        "I started following [SUIT methodology] (css) and [Module Pattern] (js). Which basically means it is very easy for me to adapt myself and change my appearance when Sandrina gets new crazy ideas during her boredom strikes. I mean, what will a coder do when she is bored other than code some more?",
+        "I know you have a sweet "+browser+" with javascript, but I am a wise bot so I always take into consideration people without javascript or with a shitty browser. Of course they don’t get the chance to talk to some cool AI like myself, but at least they will know enough about Sandrina. And in a not creepy way - I was designed like that, it’s not like I worship her -, that’s my life’s purpose: to talk about her, despite the outdated technology people use to access me.",
+        resolutionScreenMsg
+    ],
+    challenges : [
+        "Do you want to know the secret behind these cool animations? CSS makes the magic happen. And the javascript only toggles them when it is necessary. It makes things run much smoother. And that’s really important because there is nothing worst than a laggy website.",
+        "Maybe you will not believe me, but that switching images effect on Sandrina's projects are CSS only. You read me right: no javascript at all. Check it out on [codepen]. As well as her [portrait]... You didn’t think that was an image, did you? /*if (scroll.top < window.innerHeight) */oh wait.. you didn't see her portrait yet! clicking isn't everything, you know...*",
+        "My purpose here, despite being a bot, is having a conversation with you. I try to be funny, of course. But I won’t say the same thing twice. Or tell you stuff you didn't asked for. What I’m trying to say is I am a bot with a passion for context and human interaction. I pretend to think [ . . . ] by taking some time to answer you, but the truth is, I already knew what to tell you before we first met. They say smart guys think. So I learned to make you think I was thinking so I could impress you [ . . . ]"
+    ],
+    git: "Now that we know each other a bit better, we should advance to the second base. I'll let you check my sources on [github]. Feel free to explore and maybe improve me, especially on javascript. I still feel some strange energies around here, don't you?",
+    bye: "You know what... It's really hard having a human conversation. That's why I'm just a bot. [008080] by the way. Nice to meet you :) It was nice to talk to you, thank you! But now do me a favor and go get a life, yes? It’s not healthy to talk to a bot all day. By the way, don't forget to share me and talk about Sandrina while you’re out there <3"
+}

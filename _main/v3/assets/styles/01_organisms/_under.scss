@@ -22,6 +22,7 @@
         line-height: 1.2;
         height: 320px;
         overflow: hidden;
+        font-family: $font-mono;
     }
 
     &-section {
@@ -46,8 +47,8 @@
     &-title {
         font-size: $fontXL;
         padding: $safeArea $safeArea $safeArea/4;
-        font-family: $font-sans;
-        font-weight: 600;
+        font-family: $font-mono;
+        font-weight: 300;
         margin-bottom: $safeArea;
         border-bottom: 2px solid $clrLight;
         background: black;
@@ -109,6 +110,7 @@
 
     &-liTitle {
         padding: 0 $safeArea;
+        font-weight: 600;
         @extend .liIndex-categ;
     }
 

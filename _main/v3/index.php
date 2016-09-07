@@ -20,7 +20,7 @@
     <meta name='copyright' content='xxxx'>
     <meta name='language' content='PT'>
 
-    <link href="https://fonts.googleapis.com/css?family=Roboto:100,200,300,700|Roboto+Mono:100,300,400" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,200,300,700|Roboto+Mono:100,300,400,700" rel="stylesheet">
     <!-- <link rel="icon" type="image/png" href="assets/media/brand/favicon16.png" sizes="16x16">
     <link rel="icon" type="image/png" href="assets/media/brand/favicon32.png" sizes="32x32">
     <link rel="icon" type="image/png" href="assets/media/brand/favicon180.png" sizes="180x180"> -->
@@ -63,6 +63,8 @@
             </button>
         </div>
     </nav>
+
+
 
     <div class="chat" id="chat">
     </div>
@@ -257,6 +259,28 @@
         </nav>
     </div>
 
+    <div class="bot">
+        <div class="bot-inner">
+            <div class="bot-text">
+                Now that we talked enough about Sandrina...ah yes, that's her name, I forgot to tell you. Anyways, I think I could talk about me. Like, nerd talk... but before that just tell me one thing:
+                <br><br>
+                <br><br>
+                1 + '2'
+                <br><br>
+                <br><br>
+                You are a little crazy…
+                <br><br>I was born inside the Atom editor.
+                <br><br>HTML5, SCSS and javascript are my vital organs.
+                <br><br>Eventually I evolved and started being built with [Koala] but as any good programmer knows, crashes happen and "Dry and not wet", so [Gulp] took its place!
+                <br><br>Despite always being under construction I already have the ability to share some stuff that Sandrina taught me while I was growing up.
+            </div>
+            <div class="bot-options">
+                <button type="button" name="bests" class="">[btn1]</button>
+                <button type="button" name="challenges" class="">[btn2]</button>
+            </div>
+        </div>
+
+    </div>
 
 
     <!-- SCRIPTS AND STYLES -->

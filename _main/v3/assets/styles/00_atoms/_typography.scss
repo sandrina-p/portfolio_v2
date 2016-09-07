@@ -5,16 +5,16 @@
 // @import "_font-open-sans";
 
 // ------ FONT SIZE LIST
-// $font-sans: 'Open Sans', sans-serif;
-$font-mono: 'Roboto Mono', sans-serif;
-$font-sans: 'Roboto', sans-serif;
+// $font-sans: 'Ubuntu', sans-serif;
+$font-mono: 'Roboto Mono', monospace;
+$font-sans: 'Ubuntu', sans-serif;
 $font6XL: rem(56);
 $font5XL: rem(48);
 $fontXXXXL: rem(42);
 $fontXXXL: rem(38);
 $fontXXL: rem(32);
 $fontXL: rem(28);
-$fontLx: rem(20);
+$fontLx: rem(21);
 $fontL: rem(18);
 $fontM: rem(16);
 $fontS: rem(14);
@@ -27,16 +27,17 @@ $lineHeightM: 1.5;
 $lineHeightL: 1.7;
 
 html {
-    font-size: $fontS;
+    font-size: $fontM;
     line-height: $lineHeightM;
-    font-family: $font-mono;
+    font-family: $font-sans;
+    font-weight: 300;
 
     * {
         line-height: inherit;
     }
 
     @include media(laptop) {
-        font-size: $fontM;
+        font-size: $fontL;
     }
 
     @include media(desktop) {
