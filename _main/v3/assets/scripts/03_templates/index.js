@@ -1,7 +1,8 @@
 // =include ../../plugins/jquery/jquery-2.1.4.min.js
 // =include ../../plugins/modernizr/modernizr-flexbox.js
-// =include ../00_atoms/_customFunctions.js
-// =include ../00_atoms/_chatContent.js
+// =include ../00_atoms/_custom-functions.js
+// =include ../00_atoms/_chat-content.js
+// =include ../00_atoms/_hey-there.js
 // =include ../00_atoms/_chat.js
 
 $(document).ready(function(){

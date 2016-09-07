@@ -29,7 +29,8 @@ var gulp = require('gulp'),
 var reload = browserSync.reload;
 
 var folderScripts = 'assets/scripts',
-    folderStyles = 'assets/styles';
+    folderStyles = 'assets/styles',
+    srcScss = [ folderStyles+'/**/*.scss', '!'+folderStyles+'/**/_*.scss'];
 
 
 
@@ -77,10 +78,7 @@ gulp.task('scripts', function(){
 // sass, rename .min, autoprefixer, cleanCSS minimize
 gulp.task('scss', function(){
     console.log('start task scss');
-    gulp.src([
-            folderStyles+'/**/*.scss',
-            '!'+folderStyles+'/**/_*.scss'
-        ])
+    gulp.src(srcScss)
         .pipe(sass.sync().on('error', sass.logError))
         .pipe(rename({ suffix: '.min' }))
         .pipe(autoprefixer({
@@ -103,7 +101,7 @@ gulp.task('scss', function(){
 // watch for partials when they are changed to change their parent.
 gulp.task('scssPartials', function() {
     return gulp.src('assets/**/*.scss')
-        .pipe(gulpif(global.isWatching, cached('scss'))) //filter out unchanged scss files, only works when watching
+        .pipe(gulpif(global.isWatching, cached(srcScss))) //filter out unchanged scss files, only works when watching
         .pipe(sassInheritance({dir: 'assets'}).on('error', gutil.log)); //find files that depend on the files that have changed
 });
 
