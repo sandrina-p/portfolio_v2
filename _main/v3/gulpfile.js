@@ -34,6 +34,13 @@ var folderScripts = 'assets/scripts',
 
 
 
+function logEnv() {
+    var chWarn = chalk.bold.red,
+        chGood = chalk.bold.green,
+        envv = argv.production ? chGood('production') : chWarn('development');
+    console.log('environment: ' + envv);
+}
+
 // ------------ tasks ------------- //
 
 //////////////////
@@ -68,7 +75,7 @@ gulp.task('scripts', function(){
         //end TODO find a way to not duplicate this *1
 
     var envv = argv.production ? 'production' : 'development';
-    console.log('environment: ' + envv);
+    logEnv();
 });
 
 
@@ -91,7 +98,7 @@ gulp.task('scss', function(){
         .pipe(gulp.dest(folderStyles))
         .pipe(browserSync.stream()); //TODO-SYNC
     var envv = argv.production ? 'production' : 'development';
-    console.log('environment: ' + envv);
+    logEnv();
 });
 
 
@@ -168,6 +175,8 @@ gulp.task('min-this', function(){
         var miniffied = argv.scss ? argv.scss : argv.scssfolder;
         console.log(argv.scss + " minified");
     }
+
+    logEnv();
 });
 
 

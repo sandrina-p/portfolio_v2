@@ -75,17 +75,3 @@ if you need to use a grid % on something
 //     @include grid8Prop(padding-right, 1);
 // }
 // --> padding-right: 12.5%; padding-right: 12.5vw
-
-
-// this helps you to understand the grid
-.grid {
-    display: block;
-    display: none; //debug off;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background: repeating-linear-gradient(to right, rgba(0,0,0,0.15) 12.5%, 14%, rgba(3, 0, 0, 0) 25%);
-    z-index: -1;
-}

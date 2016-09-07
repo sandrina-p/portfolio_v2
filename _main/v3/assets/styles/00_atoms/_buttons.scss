@@ -39,9 +39,7 @@ button {
 
 
 .btnNav {
-    // @extend %btn;
-    font-weight: 600;
-    color: $clrGrayDark;
+    font-weight: 500;
     padding: $safeArea/5 $safeArea/2;
     color: $clrPrimary;
 
@@ -64,6 +62,7 @@ button {
 }
 
 .btnB {
+    font-family: $font-mono;
     background: $clrDark;
     color: $clrLight;
     padding: 0 $safeArea/5;

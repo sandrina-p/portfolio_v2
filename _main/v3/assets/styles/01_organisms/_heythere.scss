@@ -9,6 +9,7 @@
         font-size: $font6XL;
         transition: all $speed*4;
         opacity: 1;
+        font-weight: 500;
         display: none; //slideDown()
 
         &.jsLoading {
