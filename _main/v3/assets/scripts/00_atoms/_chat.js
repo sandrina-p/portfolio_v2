@@ -655,7 +655,6 @@ var chatApp = function() {
 
 $(document).ready(function(){
 
-
     heyThere.init();
 
     $(document).on('click', '.js-chatOpt', function(){
