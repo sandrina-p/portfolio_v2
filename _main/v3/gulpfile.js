@@ -12,6 +12,7 @@ var gulp = require('gulp'),
 
     browserSync = require('browser-sync'), // i'm not sure how this and connect-php works ...
     php = require('gulp-connect-php'), // ... but you can read more about it here -> http://stackoverflow.com/a/37040763/4737729
+    php2html = require("gulp-php2html"),
 
     //scss stuff
     sass = require('gulp-sass'),
@@ -181,10 +182,20 @@ gulp.task('min-this', function(){
 
 
 /////////////////////
-// task min-all //
+// task min-all    //
 /////////////////////
 gulp.task('min-all', ['scripts', 'scss'] );
 
+
+
+////////////////////
+// task gen-html  //
+////////////////////
+gulp.task('gen-html', function(){
+    gulp.src("index.php")
+    .pipe(php2html())
+    .pipe(gulp.dest("html/"));
+});
 
 
 ///////////////////////////
@@ -205,7 +216,7 @@ gulp.task('browser-sync',['php'], function() {
     //watch for all scss, even on plugins folder
     gulp.watch("assets/**/*.scss", ['scss']);
     //watch all php and phtml files to refresh the page
-    gulp.watch(["*.html", "*.php"]).on('change', browserSync.reload);
+    gulp.watch(["*.phtml", "*.php"]).on('change', browserSync.reload);
 });
 
 ///////////////////
@@ -224,7 +235,7 @@ gulp.task('watch', ['setWatch', 'scssPartials', 'browser-sync'], function(){
             folderScripts+'/**/*.js',
             '!'+folderScripts+'/**/*.min.js'
         ], { usePolling: true }, ['scripts']);
-    gulp.watch(['**/*.php', '**/*.html'], { usePolling: true }, [reload]); //TODO-SYNC
+    gulp.watch(['**/*.php', '**/*.phtml'], { usePolling: true }, [reload]); //TODO-SYNC
 });
 
 
