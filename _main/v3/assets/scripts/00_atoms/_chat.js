@@ -656,7 +656,7 @@ var chatApp = function() {
 $(document).ready(function(){
 
 
-    // heyThere.init();
+    heyThere.init();
 
     $(document).on('click', '.js-chatOpt', function(){
         chatApp.init($(this));
