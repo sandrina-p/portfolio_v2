@@ -31,7 +31,6 @@ button {
     &:focus {
         border: none;
         opacity: 1;
-        // text-shadow: 0 1px 1px $clrPrimaryLight;
         animation-name: flash;
         animation-duration: 250ms;
     }
@@ -61,10 +60,8 @@ button {
     }
 }
 
-.btnB {
+%btnX {
     font-family: $font-mono;
-    background: $clrDark;
-    color: $clrLight;
     padding: 0 $safeArea/5;
     line-height: $lineHeightM;
 
@@ -73,7 +70,19 @@ button {
     }
 }
 
-  @keyframes animateBorderThree {
+.btnB {
+    @extend %btnX;
+    font-family: $font-mono;
+    color: $clrPrimary;
+}
+
+.btnP {
+    @extend %btnX;
+    background: $clrDark;
+    color: $clrLight;
+}
+
+@keyframes animateBorderThree {
     25% {
         outline-color: white;
         box-shadow: 0 0 0 1px black;
@@ -83,9 +92,10 @@ button {
         box-shadow: 0 0 0 1px white;
 
     }
-  }
+}
 
 
+//FIXME
 .btnOut1,
 .btnOut2, {
     display: inline-block;

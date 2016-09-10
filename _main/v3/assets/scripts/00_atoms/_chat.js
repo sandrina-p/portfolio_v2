@@ -285,7 +285,7 @@ var chatApp = function() {
                 }
 
                 var li = "<li class='liIndex-liProj'>"
-                            +"<button type='button' name='button' class='btnB js-chatOpt'>"+key+"</button>"
+                            +"<button type='button' name='button' class='btnP js-chatOpt'>"+key+"</button>"
                             +"<span class='liIndex-sub'>"+objSection[key]['sub']+"</span>"
                         +"</li>";
 
@@ -656,7 +656,7 @@ var chatApp = function() {
 $(document).ready(function(){
 
 
-//    heyThere.init();
+    //heyThere.init();
 
     $(document).on('click', '.js-chatOpt', function(){
         chatApp.init($(this));

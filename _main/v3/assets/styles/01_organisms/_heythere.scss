@@ -1,6 +1,6 @@
 .heyThere {
-    width: 90%;
-    max-width: $safeArea*32;
+    width: $safeArea*35;
+    max-width: 90%;
     margin: auto;
     text-align: center;
     padding-top: 20vh;
@@ -19,7 +19,7 @@
     }
 
     &-intro {
-        font-size: $fontLx;
+        font-size: $fontXL;
         padding: $safeArea*2 0;
         transition: all $speed*4;
         opacity: 1;
