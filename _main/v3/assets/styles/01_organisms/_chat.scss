@@ -22,7 +22,11 @@
                 }
 
                 &-title {
-                    font-size: $fontXL;
+                    background: $clrDark;
+                    padding: $safeArea/5 $safeArea;
+                    color: $clrLight;
+                    //font-weight: $fBold;
+                    margin-right: -$safeArea;
                 }
             }
         }
@@ -42,17 +46,17 @@
             padding: $safeArea;
             border-right: 1px solid $clrDark;
             overflow: hidden;
+            text-align: right;
             display: none;
         }
 
         &-title,
         &-subtitle {
-            text-align: right;
-            font-weight: 600;
+            display: inline-block;
             transition: margin $speed;
             margin-right: 0;
             font-family: $font-mono;
-            font-size: $fontLx;
+            font-size: $fontM;
 
             &.jsLoading {
                 margin-right: -100%;
@@ -60,8 +64,7 @@
         }
 
         &-subtitle {
-            font-size: $fontL;
-            font-weight: 400;
+            font-weight: $fMed;
         }
 
 
@@ -76,10 +79,10 @@
         }
 
 
-
         &-text,
         &-redirect {
-            color: $clrGrayLight;
+            font-size: $fontL;
+            //color: $clrGrayLight;
             opacity: 1;
             transition: opacity $speed;
 
@@ -154,7 +157,7 @@
                     background: $clrDark;
                     padding: 0 $safeArea/3 0 $safeArea;
                     display: inline-block;
-                    font-size: 1.5rem !important; //TODO
+                    // font-size: 1.5rem !important; //TODO
                 }
 
                 &-subtitle {
@@ -189,9 +192,6 @@
                 width: 100%;
                 opacity: 0;
 
-                // &-first-of-type {
-                //     z-index: 2;
-                // }
                 &:not(:first-of-type) {
                     position: absolute;
                     left: $safeArea;
@@ -232,12 +232,10 @@
 
         &-capt,
         &-more {
-            // font-family: $font-sans;
             font-size: $fontM;
             font-weight: 100;
             letter-spacing: 1px;
             line-height: 1.7;
-            // padding: $safeArea/2 0;
 
             display: none;
 
@@ -275,7 +273,6 @@
             padding: 5px 15px;
             text-align: right;
             position: relative;
-
 
             margin-left: 400px;
             margin-right: 100px;
@@ -341,6 +338,7 @@
             }
             &-bot {
                 width: 70%;
+                max-width: rem(520);
                 padding: $safeArea;
                 margin-left: -1px;
                 border-right: 0;
@@ -390,7 +388,7 @@
         display: block;
         font-family: $font-mono;
         font-size: $fontS;
-        font-weight: 600;
+        font-weight: $fBold;
         text-transform: uppercase;
         margin-top: $safeArea/2;
     }
@@ -426,10 +424,6 @@
                     margin-right: -$safeArea/2;
                 }
             }
-            //
-            // &-sub {
-            //     margin-left: -$safeArea/4*3; //FIXME a strange bug on cv section doesn't connect btn with span.
-            // }
         }
     }
 

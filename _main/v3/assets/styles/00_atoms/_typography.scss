@@ -8,12 +8,12 @@
 // $font-sans: 'Ubuntu', sans-serif;
 $font-mono: 'Roboto Mono', monospace;
 $font-sans: 'Ubuntu', sans-serif;
-$font6XL: rem(56);
+$font6XL: rem(64);
 $font5XL: rem(48);
 $fontXXXXL: rem(42);
 $fontXXXL: rem(38);
 $fontXXL: rem(32);
-$fontXL: rem(28);
+$fontXL: rem(26);
 $fontLx: rem(21);
 $fontL: rem(18);
 $fontM: rem(16);
@@ -25,6 +25,10 @@ $fontXXXXS: rem(5);
 $lineHeightS: 1.2;
 $lineHeightM: 1.5;
 $lineHeightL: 1.7;
+
+$fBold: 600;
+$fMed: 300;
+$fThin: 100;
 
 html {
     font-size: $fontM;
