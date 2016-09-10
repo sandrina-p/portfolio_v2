@@ -72,8 +72,9 @@ button {
 
 .btnB {
     @extend %btnX;
-    font-family: $font-mono;
-    color: $clrPrimary;
+    // color: $clrPrimary;
+    background: $clrDark;
+    color: $clrLight;
 }
 
 .btnP {

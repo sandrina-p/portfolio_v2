@@ -3,18 +3,16 @@ var linkCodepen = "<a href='#' class='link' target='_blank'>Codepen</a>",
     btnNox = "<button class='btnB js-chatStart' data-initproject='N O X'>Check it out!</button>",
     mainSections = ['background','theory','practice'],
     brChar = "<br>",
-    browser = "[browser]"
-    mobileBrand = "[mobile brand]";
-    screenRes = '[big/small]'
-
+    browser = "[browser]",
+    mobileBrand = "[mobile brand]",
+    screenRes = '[big/small]',
+    portraitMsg = "[TODO if (scroll.top < window.innerHeight) */oh wait.. you didn't see her portrait yet! clicking isn't everything, you know...]";
 
 if (screen.width < 750) {
     var resolutionScreenMsg = "I feel so happy that we are reaching this point of our relationship on your "+mobileBrand+". Like a good bot, I always take into consideration what kind of device you are using to connect with me. This way, images and those scary stuff that drain the data network are not really problem: you always get the best for both your eyes and your device. ;)"
-
 } else {
     var resolutionScreenMsg = "I noticed that you have a "+screenRes+", so the images I showed you have a big and nice resolution. If you were on your mobile, I'd be a thoughtful bot and reduce their size so I could save you some Kb from your mobile data network. How sweet am I, hm ? :D";
 }
-
 
 var chatContent = {
     intro: {
@@ -188,17 +186,17 @@ var chatContent = {
        missingtheory: "[suggesting to check theory part]",
        missingpractice: "[suggesting to check practice part]"
    },
-   "008080": {
-       intro: "holy holy, you've been digging like crazy. I don't have much more to tell you about her. But I can talk about me. And you.",
-       me: "so i'm 434Kb, x% of html, z% of (s)css, y% of js. I have 99/100 on Google Page Speeds (1 point for Google Analytics, that's how she will know all about our conversation) Do you want to know anything specific about my components? [css, html, js]",
-       you: "[localidade, browser, os, pc and net //@NOTE netType -> js loading settings//]. once again. I'm not the only one who knows it, Google knows it too. I mean, Google probably knows the color of the underwear you are wearing right now, but I like to keep private things private.",
-       end: "It was nice to talk to you, thank you! But now do me a favor and go get a life, yes? It’s not healthy to talk to a bot all day. By the way, don't forget to share me and talk about Sandrina while you’re out there <3" //SHOW SHARE BUTTONS EVERYWHERE
-   }
+   // "008080": {
+   //     intro: "holy holy, you've been digging like crazy. I don't have much more to tell you about her. But I can talk about me. And you.",
+   //     me: "so i'm 434Kb, x% of html, z% of (s)css, y% of js. I have 99/100 on Google Page Speeds (1 point for Google Analytics, that's how she will know all about our conversation) Do you want to know anything specific about my components? [css, html, js]",
+   //     you: "[localidade, browser, os, pc and net //@NOTE netType -> js loading settings//]. once again. I'm not the only one who knows it, Google knows it too. I mean, Google probably knows the color of the underwear you are wearing right now, but I like to keep private things private.",
+   //     end: "It was nice to talk to you, thank you! But now do me a favor and go get a life, yes? It’s not healthy to talk to a bot all day. By the way, don't forget to share me and talk about Sandrina while you’re out there <3" //SHOW SHARE BUTTONS EVERYWHERE
+   // }
 };
 
 var botContent = {
-    intro: "Now that we talked enough about Sandrina...ah yes, that's her name, I forgot to tell you. Anyways... I think I could talk about me. Like, nerd talk... but before that just tell me one thing: 1 / 0 =",
-    correct: "You are a little crazy…",
+    intro: "Now that we talked enough about Sandrina...ah yes, that's her name, I forgot to tell you. Anyways... I think I could talk about me. Like, nerd talk... but before that just tell me one thing: 1 divided by 0 equal to...",
+    yhp: "You are a little crazy…",
     nop: "You know that Siri isn't always right. Neither do you.",
     step1: "I was born inside the Atom editor."+brChar+"HTML5, SCSS and Javascript are my vital organs."+brChar+"Eventually I evolved and started being built with [Koala] but as any good programmer knows, crashes happen, so [Gulp] took its place! "+brChar+"Despite always being under construction I already have the ability to share random stuff that Sandrina taught me while I was growing up.",
     bests: [
@@ -209,7 +207,7 @@ var botContent = {
     ],
     challenges : [
         "Do you want to know the secret behind these cool animations?"+brChar+"CSS makes the magic happen."+brChar+"And the javascript only toggles them when it is necessary."+brChar+"It makes things run much smoother."+brChar+"And that’s really important because there is nothing worst than a laggy website.",
-        "Maybe you will not believe me, but that switching images effect on Sandrina's projects are CSS only."+brChar+"You read me right:"+brChar+"no javascript"+brChar+"at all. Check it out on [codepen]."+brChar+"As well as her [portrait]..."+brChar+"You didn’t think that was an image, did you?"+brChar+"/*if (scroll.top < window.innerHeight) */oh wait.. you didn't see her portrait yet! clicking isn't everything, you know...*",
+        "Maybe you will not believe me, but that switching images effect on Sandrina's projects are CSS only."+brChar+"You read me right:"+brChar+"no javascript"+brChar+"at all. Check it out on [codepen]."+brChar+"As well as her [portrait]..."+brChar+"You didn’t think that was an image, did you?"+brChar+""+portraitMsg,
         "My purpose here, despite being a bot, is having a conversation with you."+brChar+"I try to be funny, of course."+brChar+"But I won’t say the same thing twice."+brChar+"Or tell you stuff you didn't asked for."+brChar+"What I’m trying to say is I am a bot with a passion for context and human interaction."+brChar+"I pretend to think [ . . . ] by taking some time to answer you, but the truth is, I already knew what to tell you before we first met. They say smart guys think. So I learned to make you think I was thinking so I could impress you [ . . . ]"
     ],
     git: "Now that we know each other a bit better, we should advance to the second base."+brChar+"I'll let you check my sources on [github]."+brChar+"Feel free to explore and maybe improve me, especially on javascript."+brChar+"I still feel some strange energies around here, don't you?",

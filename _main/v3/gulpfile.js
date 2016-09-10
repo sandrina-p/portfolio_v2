@@ -205,7 +205,7 @@ gulp.task('browser-sync',['php'], function() {
     //watch for all scss, even on plugins folder
     gulp.watch("assets/**/*.scss", ['scss']);
     //watch all php and phtml files to refresh the page
-    gulp.watch(["*.php", "*.phtml"]).on('change', browserSync.reload);
+    gulp.watch(["*.html", "*.php"]).on('change', browserSync.reload);
 });
 
 ///////////////////
@@ -224,13 +224,7 @@ gulp.task('watch', ['setWatch', 'scssPartials', 'browser-sync'], function(){
             folderScripts+'/**/*.js',
             '!'+folderScripts+'/**/*.min.js'
         ], { usePolling: true }, ['scripts']);
-    gulp.watch(['**/*.php', '**/*.phtml'], { usePolling: true }, [reload]); //TODO-SYNC
-
-    //TODO-SYNC, start block
-    // gulp.watch([
-    //         folderStyles+'/**/*.scss'
-    //     ], ['scss']);
-    //TODO-SYNC, end block
+    gulp.watch(['**/*.php', '**/*.html'], { usePolling: true }, [reload]); //TODO-SYNC
 });
 
 
