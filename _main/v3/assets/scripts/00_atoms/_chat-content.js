@@ -2,7 +2,7 @@ var linkCodepen = "<a href='#' class='link' target='_blank'>Codepen</a>",
     linkStackOverflow = "<a href='#' class='link' target='_blank'>Stackoverflow</a>",
     btnNox = "<button class='btnB js-chatStart' data-initproject='N O X'>Check it out!</button>",
     mainSections = ['background','theory','practice'],
-    brChar = "<br>",
+    brk = "<br>",
     browser = "[TODO browser]",
     mobileBrand = "[TODO mobile brand]",
     portraitMsg = "[TODO if (scroll.top < window.innerHeight) */oh wait.. you didn't see her portrait yet! clicking isn't everything, you know...]";
@@ -25,22 +25,22 @@ var chatContent = {
         meet2: "You already know who Sandrina is. Is there anything you would like to review about her, or do you want to find out some new stuff?"
     },
     background: {
-        intro: "Right now she's a <strong>frontend developer</strong> in a startup: Zaask."+brChar+"Plus, she just finished a post-graduation degree on <strong>Digital Experience Design</strong> at FBAUL.",
-        "before that": "She was <strong>UX/UI Designer</strong> at Pure."+brChar+"What got her there was her <strong>degree in Communication Design</strong> at FBAUL."+brChar+"Well, and maybe the fact that she did <strong>Erasmus</strong> in Oporto, where she learned a lot",
-        "future": "Of course she is a workaholic, so whenever she has some free time she might accept freelancer projects."+brChar+"Maybe she can <strong>help you to bring your next big idea to life.</strong>",
-        "tell me more": "Hmm... I'm not allowed to share more info about her."+brChar+"But by all means, don't be shy and go say hello."+brChar+"She is very nice, specially if you are a bot like me"
+        intro: "Right now she's a <strong>frontend developer</strong> in a startup: Zaask."+brk+"Plus, she just finished a post-graduation degree on <strong>Digital Experience Design</strong> at FBAUL.",
+        "before that": "She was <strong>UX/UI Designer</strong> at Pure."+brk+"What got her there was her <strong>degree in Communication Design</strong> at FBAUL."+brk+"Well, and maybe the fact that she did <strong>Erasmus</strong> in Oporto, where she learned a lot",
+        "future": "Of course she is a workaholic, so whenever she has some free time she might accept freelancer projects."+brk+"Maybe she can <strong>help you to bring your next big idea to life.</strong>",
+        "tell me more": "Hmm... I'm not allowed to share more info about her."+brk+"But by all means, don't be shy and go say hello."+brk+"She is very nice, specially if you are a bot like me"
         // "anything else": "Go check some of her projects and find out how many cool things she can do."
     },
     theory: {
-        intro: "Basically she breaths <strong>HTML5, SCSS</strong> and <strong>Javascript / JQuery</strong>."+brChar+"She is really into <strong>interactive stuff</strong> and that’s what makes her good at web development: a passion for the work and 24hours of <strong>daily exploration</strong>."+brChar+"She loves to create micro interactions that nobody seems to care about until they see them."+brChar+"Then, of course, they are mind blown",
-        "other techs" : "She also crossed paths with <strong>PHP</strong>, <strong>Angular 2</strong> and <strong>Ionic 2</strong>."+brChar+"But right now she is focusing on improving her javascript skills.",
+        intro: "Basically she breaths <strong>HTML5, SCSS</strong> and <strong>Javascript / JQuery</strong>."+brk+"She is really into <strong>interactive stuff</strong> and that’s what makes her good at web development: a passion for the work and 24hours of <strong>daily exploration</strong>."+brk+"She loves to create micro interactions that nobody seems to care about until they see them."+brk+"Then, of course, they are mind blown",
+        "other techs" : "She also crossed paths with <strong>PHP</strong>, <strong>Angular 2</strong> and <strong>Ionic 2</strong>."+brk+"But right now she is focusing on improving her javascript skills.",
         "micro inter-what" : "In one sentence: She loves to explore new concepts, meaningful transitions that <strong>connect users like you who interact with stuff like me.</strong>",
-        "learning": "She didn't learn it."+brChar+"She is learning it."+brChar+"Everyday."+brChar+"Sharing solutions on <strong>"+linkStackOverflow+"</strong>, learning on Codeschool, and creating experiments on <strong>"+linkCodepen+".</strong>"+brChar+"On design side she loves <strong>Sketch</strong>, has a great relationship with <strong>Adobe Tools</strong> and likes <strong>Blender</strong>.",
-        "besides www" : "Hmm... she is a <strong>gamer</strong> too!"+brChar+"Maybe she's playing right now."+brChar+"Recently she was a part of the creation of a video game's concept as a motion designer. "+btnNox,
-        "workplace" : "Well... she likes to work alone."+brChar+"Unless your ambitions are as high as hers, then it’s a match made in heaven."+brChar+"From <strong>creative to technique she can hold any role</strong>."+brChar+"More important than that, she believes that each of these roles must work together to achieve the best results."
+        "learning": "She didn't learn it."+brk+"She is learning it."+brk+"Everyday."+brk+"Sharing solutions on <strong>"+linkStackOverflow+"</strong>, learning on Codeschool, and creating experiments on <strong>"+linkCodepen+".</strong>"+brk+"On design side she loves <strong>Sketch</strong>, has a great relationship with <strong>Adobe Tools</strong> and likes <strong>Blender</strong>.",
+        "besides www" : "Hmm... she is a <strong>gamer</strong> too!"+brk+"Maybe she's playing right now."+brk+"Recently she was a part of the creation of a video game's concept as a motion designer. "+btnNox,
+        "workplace" : "Well... she likes to work alone."+brk+"Unless your ambitions are as high as hers, then it’s a match made in heaven."+brk+"From <strong>creative to technique she can hold any role</strong>."+brk+"More important than that, she believes that each of these roles must work together to achieve the best results."
     },
     practice: {
-        intro: "Most of these projects she did both design and code parts."+brChar+"What connects them is the <strong>constant searching for a unique experience</strong>."+brChar+"A visual pleasure that engages the user through a nice interactive experience."+brChar+"Let me start with something cool:",
+        intro: "Most of these projects she did both design and code parts."+brk+"What connects them is the <strong>constant searching for a unique experience</strong>."+brk+"A visual pleasure that engages the user through a nice interactive experience."+brk+"Let me start with something cool:",
         firstProject: "rede expressos",
         'rede expressos': {
             categ: "www projects",
@@ -195,25 +195,79 @@ var chatContent = {
    // }
 };
 
+
+
+
+
+//bot links
+function genLink(link, name) {
+    return "<a href='"+link+"' target='_blank' class='linkBot'>"+name+"</a>"
+}
+
+var googleIt = genLink('http://lmgtfy.com/?q=one+divided+by+zero', 'Google it');
+    linkKoala = genLink('//koala-app.com/', 'Koala'),
+    linkGulp = genLink('http://gulpjs.com/', 'Gulp'),
+    linkSUIT = genLink('#linkTODO', 'SUIT methodology'),
+    linkMP = genLink('#TlinkODO', 'Module Pattern'),
+    linkLT = genLink('#TlinkODO', 'perceived loading time'),
+    linkFOUC = genLink('#linkTODO', 'FOUC'),
+    linkGit = genLink('#linkTODO', 'Bitbucket'),
+    myEmail = genLink('mailto:sandrin4pereir4@gmail.com?subject=Hey%20there!', 'sandrin4pereir4@gmail.com');
+
+
+var botTextAbout = "I was born inside the Atom editor."
+                +brk+"^100 HTML5, SCSS and Javascript are my vital organs."
+                +brk+"^500 Eventually I evolved and started being built with "+linkKoala+" but as any good programmer knows, crashes happen, so "+linkGulp+" took its place!"
+                +brk+"^250 Despite always being under construction I already have the ability to share some stuff that Sandrina taught me while I was growing up."+publicCmd;
+
+var publicCmd = "What you can know about me:"
+                +brk+"best practices"
+                +brk+"challenges"
+                +brk+"resources"
+                +brk+"exit"
+                +brk+"...";
+
+var botOptHelp = "Maybe you should "+googleIt+" and then come back. What do you think?";
+
 var botContent = {
-    intro: "Now that we talked enough about Sandrina, ^1000 "+brChar+"Ah yes, that's her name, I forgot to tell you. Anyways... ^1500"+brChar+"I think I could talk about me. Like, nerd talk... but before that just tell me one thing:"+brChar+"1 divided by 0 equal to:",
+    intro: "Now that we talked enough about Sandrina, ^100 "+brk+"Ah yes, that's her name, I forgot to tell you. Anyways... ^150"+brk+"I think I could talk about me. Like, nerd talk... but before that just tell me one thing:"+brk+"1 divided by 0 equal to:",
     options: {
-        infinity: "You are a little crazy… we all are",
-        'undefined': "Hum... i can accept that answer but it isn't my favorite.",
-        zero: "You know that Siri isn't always right. Neither do you."+brChar+". Google it and then come back.",
+        // STRUCTURE:
+        // "posible human, inputs sent, separated by, comma" : ["bot answer", "context of the next input", "input placeholder"]
+        "infinity, hell": ["You are a little crazy… we all are. ^1000 "+brk+""+botTextAbout, "commands", "tell me what's next"],
+        "undefined": ["Not it's not. It has a name. At least on javascript language.", "options", "go ask it to some console"],
+        "1/0, 1 divided by 0, one divived by zero": ["◉_◉ Don't try to turn the game against me."+brk+"I'm a bot, not a console.", "options", "go ask it to some console"],
+        "zero, 0": ["You know that Siri isn't always right. ^1000"+brk+"Neither do you.^500"+brk+""+botOptHelp, "options", 'I still believe in you'],
+        "help": [botOptHelp, "options", "I still believe in you"],
     },
-    about: "I was born inside the Atom editor."+brChar+"HTML5, SCSS and Javascript are my vital organs."+brChar+"Eventually I evolved and started being built with [Koala] but as any good programmer knows, crashes happen, so [Gulp] took its place! "+brChar+"Despite always being under construction I already have the ability to share random stuff that Sandrina taught me while I was growing up.",
-    bests: [
-        "When I first said hello, I wasn't totally ready for you"+brChar+" - guess that makes me a bit human, right?"+brChar+"But while you were reading my first sentence I had enough time to send you the rest of the CSS and JS files that I needed to have a conversation with you."+brChar+"That's a great way to reduce [perceived loading time] and avoid [FOUC], don't you think?",
-        "I started following [SUIT methodology] (css) and [Module Pattern] (js)."+brChar+"Which basically means it is very easy for me to adapt myself and change my appearance when Sandrina gets new crazy ideas during her boredom strikes."+brChar+"I mean, what will a coder do when she is bored other than code some more?",
-        "I know you have a sweet "+browser+" with javascript, but I am a wise bot so I always take into consideration people without javascript or with a shitty browser."+brChar+"Of course they don’t get the chance to talk to some cool AI like myself, but at least they will know enough about Sandrina."+brChar+"And in a not creepy way - I was designed like that, it’s not like I worship her -, that’s my life’s purpose:"+brChar+"to talk about her, despite the outdated technology people use to access me.",
-        resolutionScreenMsg
-    ],
-    challenges : [
-        "Do you want to know the secret behind these cool animations?"+brChar+"CSS makes the magic happen."+brChar+"And the javascript only toggles them when it is necessary."+brChar+"It makes things run much smoother."+brChar+"And that’s really important because there is nothing worst than a laggy website.",
-        "Maybe you will not believe me, but that switching images effect on Sandrina's projects are CSS only."+brChar+"You read me right:"+brChar+"no javascript"+brChar+"at all. Check it out on [codepen]."+brChar+"As well as her [portrait]..."+brChar+"You didn’t think that was an image, did you?"+brChar+""+portraitMsg,
-        "My purpose here, despite being a bot, is having a conversation with you."+brChar+"I try to be funny, of course."+brChar+"But I won’t say the same thing twice."+brChar+"Or tell you stuff you didn't asked for."+brChar+"What I’m trying to say is I am a bot with a passion for context and human interaction."+brChar+"I pretend to think [ . . . ] by taking some time to answer you, but the truth is, I already knew what to tell you before we first met. They say smart guys think. So I learned to make you think I was thinking so I could impress you [ . . . ]"
-    ],
-    git: "Now that we know each other a bit better, we should advance to the second base."+brChar+"I'll let you check my sources on [github]."+brChar+"Feel free to explore and maybe improve me, especially on javascript."+brChar+"I still feel some strange energies around here, don't you?",
-    bye: "You know what... It's really hard having a human conversation."+brChar+"That's why I'm just a bot."+brChar+"[008080] by the way."+brChar+"Nice to meet you :) It was nice to talk to you, thank you!"+brChar+"But now do me a favor and go get a life, yes?"+brChar+"It’s not healthy to talk to a bot all day."+brChar+"By the way, don't forget to share me and talk about Sandrina while you’re out there <3"
+    commands: {
+        "best practices": [
+            ["When I first said hello, I wasn't totally ready for you"+brk+" I guess that makes me a bit human, right?"+brk+"But while you were reading my first sentence I had enough time to send you the rest of the CSS and JS files that I needed to have a conversation with you."+brk+"That's a great way to reduce "+linkLT+" and avoid "+linkFOUC+", don't you think?", "commands", ""],
+            ["I started following "+linkSUIT+" (css) and "+linkMP+" (js)."+brk+"Which basically means it is very easy for me to adapt myself and change my appearance when Sandrina gets new crazy ideas during her boredom strikes."+brk+"I mean, what will a coder do when she is bored other than code some more?", "commands", ""],
+            ["I know you have a sweet "+browser+" with javascript, but I am a wise bot so I always take into consideration people without javascript or with a shitty browser."+brk+"Of course they don’t get the chance to talk to some cool AI like myself, but at least they will know enough about Sandrina."/*+brk+"And in a not creepy way - I was designed like that, it’s not like I worship her -, that’s my life’s purpose: to talk about her, despite the outdated technology people use to access me."*/, "commands", ""],
+            [resolutionScreenMsg, "commands", ""],
+        ],
+        challenges: [
+            ["Do you want to know the secret behind these cool animations?"+brk+"CSS makes the magic happen."+brk+"And the javascript only toggles them when it is necessary."+brk+"It makes things run much smoother."+brk+"And that’s really important because there is nothing worst than a laggy website.", "commands", ""],
+            ["Maybe you will not believe me, but that switching images effect on Sandrina's projects are CSS only."+brk+"You read me right:"+brk+"no javascript"+brk+"at all. Check it out on [codepen]."+brk+"As well as her [portrait]..."+brk+"You didn’t think that was an image, did you?"+brk+""+portraitMsg, "commands", ""],
+            ["My purpose here, despite being a bot, is having a conversation with you."+brk+"I try to be funny, of course."+brk+"But I won’t say the same thing twice."+brk+"Or tell you stuff you didn't asked for."+brk+"What I’m trying to say is I am a bot with a passion for context and human interaction."+brk+"I pretend to think [. . .] by taking some time to answer you, but the truth is, I already knew what to tell you before we first met. They say smart guys think. So I learned to make you think I was thinking so I could impress you [. . .]", "commands", ""],
+        ],
+        keepSection: [["If you want to know more ", " just press <i>ENTER</i> again."], ["best practices", "challenges"]],
+        allSaid: [["I don't have anything else to tell you about ", ""+brk+""+publicCmd], ["best practices", "challenges"]],
+    },
+    vocabulary: {
+        git: ["Now that we know each other a bit better, we should advance to the second base."+brk+"I'll let you check my sources on "+linkGit+"."+brk+"Feel free to explore and maybe improve me, especially on javascript."+brk+"I still feel some strange energies around here, don't you?", "commands", ""],
+        "..., bye, cya, shut down, exit, close": ["You know what... It's really hard having a human conversation."+brk+"That's why I'm just a bot."+brk+"[008080] by the way."+brk+"Nice to meet you :) It was nice to talk to you, thank you!"+brk+"But now do me a favor and go get a life, yes?"+brk+"It’s not healthy to talk to a bot all day."+brk+"By the way, don't forget to share me and talk about Sandrina while you’re out there <3", "commands", ""],
+        resources: ["still under construction","commands","don't push me that way okay? :/"],
+        exit: ["still under construction","commands","refresh the page, it does the same :3"],
+    },
+    HeLp: ["I'm not sure what you meant. What about talking directly with Sandrina at "+myEmail+""+brk+"She's smarter than me ¯\_(ツ)_/¯", "commands", "try again"],
+    EmpTy: [
+        ['._.', "commands", "don't be shy"],
+        ['" "', "commands", "i'm feeling you"],
+        ['?', "commands", "silence is good"],
+        ['...', "commands", "oh well"],
+        ["(ง'̀-'́)ง", "commands", "hi?"],
+        ['◉_◉', "commands", "are you bored?"]
+    ]
 }

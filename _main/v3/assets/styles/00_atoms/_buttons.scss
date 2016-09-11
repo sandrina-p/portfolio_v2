@@ -136,12 +136,26 @@ button {
 
 .link {
     border-bottom: 1px dotted $clrDark;
+    cursor: alias;
 
     &:hover {
         color: $clrPrimary;
-        border-bottom: 1px dashed $clrPrimary;
+        border-color: $clrPrimary;
     }
 }
+
+.linkBot {
+    font-weight: $fBold;
+    color: $clrLight;
+    border-bottom: 1px dotted $clrPrimarySoft;
+    cursor: alias;
+
+    &:hover {
+        color: $clrPrimarySoft;
+        border-color: $clrLight;
+    }
+}
+
 
 @keyframes glitch {
   0% {text-shadow: 1px 0 0 red, -1px 0 0 blue;}

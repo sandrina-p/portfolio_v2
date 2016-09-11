@@ -9,10 +9,10 @@ var gulp = require('gulp'),
     cached = require('gulp-cached'), // DELETE used on scss - but i didn't understand what's the advantage on it.
     stripDebug = require('gulp-strip-debug'), //bye bye console.logs
     chalk = require('chalk'), //because after all i'm a designer and i need some colors on terminal x)
+    php2html = require("gulp-php2html"),
 
     browserSync = require('browser-sync'), // i'm not sure how this and connect-php works ...
     php = require('gulp-connect-php'), // ... but you can read more about it here -> http://stackoverflow.com/a/37040763/4737729
-    php2html = require("gulp-php2html"),
 
     //scss stuff
     sass = require('gulp-sass'),
@@ -56,11 +56,12 @@ gulp.task('scripts', function(){
         ])
         //TODO find a way to not duplicate this *1
         .pipe(include())
-            .on('error', console.log)
         .pipe(babel({
             presets: ["es2015-script"],
             compact: false //use uglify
         }))
+
+        // .on('error', console.log)
         .pipe(gulpif(argv.production, stripDebug()))
         .pipe(gulpif(argv.production,
             uglify({
@@ -74,8 +75,6 @@ gulp.task('scripts', function(){
         .pipe(gulpif(global.isWatching, cached('cachedPlace')))
         .pipe(gulp.dest( function(file) { return file.base; } ));
         //end TODO find a way to not duplicate this *1
-
-    var envv = argv.production ? 'production' : 'development';
     logEnv();
 });
 
@@ -98,7 +97,6 @@ gulp.task('scss', function(){
         .pipe(gulpif(global.isWatching, cached('cachedPlace')))
         .pipe(gulp.dest(folderStyles))
         .pipe(browserSync.stream()); //TODO-SYNC
-    var envv = argv.production ? 'production' : 'development';
     logEnv();
 });
 
@@ -181,9 +179,9 @@ gulp.task('min-this', function(){
 });
 
 
-/////////////////////
-// task min-all    //
-/////////////////////
+///////////////////
+// task min-all  //
+///////////////////
 gulp.task('min-all', ['scripts', 'scss'] );
 
 
@@ -210,12 +208,11 @@ gulp.task('browser-sync',['php'], function() {
         proxy: '127.0.0.1:8888',
         port: 8888,
         open: true,
-        notify: false
+        notify: false,
+        open: false
     });
 
-    //watch for all scss, even on plugins folder
-    gulp.watch("assets/**/*.scss", ['scss']);
-    //watch all php and phtml files to refresh the page
+    gulp.watch(folderStyles+"/**/*.scss", ['scss']);
     gulp.watch(["*.phtml", "*.php"]).on('change', browserSync.reload);
 });
 
@@ -229,7 +226,7 @@ gulp.task('setWatch', function() {
 
 ////////////////
 // task watch //
-////////////////                                   //TODO-SYNC
+////////////////
 gulp.task('watch', ['setWatch', 'scssPartials', 'browser-sync'], function(){
     gulp.watch([
             folderScripts+'/**/*.js',
