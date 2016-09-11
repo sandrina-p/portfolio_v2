@@ -72,15 +72,25 @@ button {
 
 .btnB {
     @extend %btnX;
-    // color: $clrPrimary;
     background: $clrDark;
     color: $clrLight;
+    transition: margin $speed*2;
+
+    &.jsLoading {
+        margin-left: -100%;
+    }
 }
 
 .btnP {
     @extend %btnX;
     background: $clrDark;
     color: $clrLight;
+}
+
+.btnBot {
+    @extend %btnX;
+    background: black;
+    color: $clrPrimarySoft;
 }
 
 @keyframes animateBorderThree {

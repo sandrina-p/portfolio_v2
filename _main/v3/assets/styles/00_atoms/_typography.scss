@@ -26,15 +26,18 @@ $lineHeightS: 1.2;
 $lineHeightM: 1.5;
 $lineHeightL: 1.7;
 
-$fBold: 600;
-$fMed: 300;
 $fThin: 100;
+$fReg: 300;
+$fMed: 400;
+$fBold: 700;
 
 html {
     font-size: $fontM;
     line-height: $lineHeightM;
     font-family: $font-sans;
-    font-weight: 300;
+    font-weight: $fMed;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 
     * {
         line-height: inherit;
