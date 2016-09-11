@@ -36,14 +36,14 @@ var chatContent = {
         "other techs" : "She also crossed paths with <strong>PHP</strong>, <strong>Angular 2</strong> and <strong>Ionic 2</strong>."+brChar+"But right now she is focusing on improving her javascript skills.",
         "micro inter-what" : "In one sentence: She loves to explore new concepts, meaningful transitions that <strong>connect users like you who interact with stuff like me.</strong>",
         "learning": "She didn't learn it."+brChar+"She is learning it."+brChar+"Everyday."+brChar+"Sharing solutions on <strong>"+linkStackOverflow+"</strong>, learning on Codeschool, and creating experiments on <strong>"+linkCodepen+".</strong>"+brChar+"On design side she loves <strong>Sketch</strong>, has a great relationship with <strong>Adobe Tools</strong> and likes <strong>Blender</strong>.",
-        "besides www" : "Hmm... she is a <strong>gamer</strong> too!"+brChar+"Maybe she's playing right now."+brChar+"Recently she was a part of the creation of a video game's concept as a motion designer."+btnNox,
+        "besides www" : "Hmm... she is a <strong>gamer</strong> too!"+brChar+"Maybe she's playing right now."+brChar+"Recently she was a part of the creation of a video game's concept as a motion designer. "+btnNox,
         "workplace" : "Well... she likes to work alone."+brChar+"Unless your ambitions are as high as hers, then it’s a match made in heaven."+brChar+"From <strong>creative to technique she can hold any role</strong>."+brChar+"More important than that, she believes that each of these roles must work together to achieve the best results."
     },
     practice: {
         intro: "Most of these projects she did both design and code parts."+brChar+"What connects them is the <strong>constant searching for a unique experience</strong>."+brChar+"A visual pleasure that engages the user through a nice interactive experience."+brChar+"Let me start with something cool:",
         firstProject: "rede expressos",
         'rede expressos': {
-            categ: "other www projects",
+            categ: "www projects",
             title: "Rede Expressos",
             sub: "web and app concept redesign",
             role: "creative and front-end",
@@ -61,7 +61,7 @@ var chatContent = {
             ]
         },
         'carolina machado': {
-            categ: "other www projects",
+            categ: "www projects",
             title: "Carolina Machado",
             sub: "fashion website",
             role: "Tumblr theme developer",
@@ -78,7 +78,7 @@ var chatContent = {
             links: [["//carolina-machado.com", "check the website", "desktop"]],
         },
         'portfolio 15': {
-            categ: "other www projects",
+            categ: "www projects",
             title: "Portfolio 15",
             sub: "Her previous portfolio",
             role: "Creative and Programmer",
@@ -94,7 +94,7 @@ var chatContent = {
             links: [["practice/portfolio15", "check the website", "desktop"]],
         },
         'pistol shrimp': {
-            categ: "other www projects",
+            categ: "www projects",
             title: "Pistol Shrimp",
             sub: "net label website",
             role: "Creative and Programmer",
@@ -109,7 +109,7 @@ var chatContent = {
             links: [["practice/pistolshrimp.html", "check the website", "desktop"]],
         },
         'moon': {
-            categ: "other www projects",
+            categ: "www projects",
             title: "Moon",
             sub: "Movie website",
             role: "Creative and Programmer",
@@ -196,10 +196,13 @@ var chatContent = {
 };
 
 var botContent = {
-    intro: "Now that we talked enough about Sandrina...ah yes, that's her name, I forgot to tell you. Anyways... I think I could talk about me. Like, nerd talk... but before that just tell me one thing: 1 divided by 0 equal to...",
-    yhp: "You are a little crazy…",
-    nop: "You know that Siri isn't always right. Neither do you.",
-    step1: "I was born inside the Atom editor."+brChar+"HTML5, SCSS and Javascript are my vital organs."+brChar+"Eventually I evolved and started being built with [Koala] but as any good programmer knows, crashes happen, so [Gulp] took its place! "+brChar+"Despite always being under construction I already have the ability to share random stuff that Sandrina taught me while I was growing up.",
+    intro: "Now that we talked enough about Sandrina, ^1000 "+brChar+"Ah yes, that's her name, I forgot to tell you. Anyways... ^1500"+brChar+"I think I could talk about me. Like, nerd talk... but before that just tell me one thing:"+brChar+"1 divided by 0 equal to:",
+    options: {
+        infinity: "You are a little crazy… we all are",
+        'undefined': "Hum... i can accept that answer but it isn't my favorite.",
+        zero: "You know that Siri isn't always right. Neither do you."+brChar+". Google it and then come back.",
+    },
+    about: "I was born inside the Atom editor."+brChar+"HTML5, SCSS and Javascript are my vital organs."+brChar+"Eventually I evolved and started being built with [Koala] but as any good programmer knows, crashes happen, so [Gulp] took its place! "+brChar+"Despite always being under construction I already have the ability to share random stuff that Sandrina taught me while I was growing up.",
     bests: [
         "When I first said hello, I wasn't totally ready for you"+brChar+" - guess that makes me a bit human, right?"+brChar+"But while you were reading my first sentence I had enough time to send you the rest of the CSS and JS files that I needed to have a conversation with you."+brChar+"That's a great way to reduce [perceived loading time] and avoid [FOUC], don't you think?",
         "I started following [SUIT methodology] (css) and [Module Pattern] (js)."+brChar+"Which basically means it is very easy for me to adapt myself and change my appearance when Sandrina gets new crazy ideas during her boredom strikes."+brChar+"I mean, what will a coder do when she is bored other than code some more?",

@@ -1,15 +1,5 @@
 <!DOCTYPE html>
-<!--[if lt IE 8]>
-    <html class="ie ie7 ie8">
-<![endif]-->
-
-<!--[if IE 9]>
-    <html class="ie ie9">
-<![endif]-->
-
-<!--!(IE)]><!-->
-    <html>
-<!--<![endif]-->
+<html>
 <head>
     <meta charset="utf-8">
     <title>008080</title>
@@ -34,31 +24,35 @@
     </style>
 </head>
 
+<?php
+    $loading = '';
+    //$loading = 'jsLoading';
+?>
 <body>
-    <h1 class="sr-only">Sandrina Pereira's bot</h1>
+    <h1 class="sr-only">I SAW THIS TOO! ._. <BR><BR>Sandrina Pereira's bot</h1>
     <h2 class="sr-only">interaction designer and frontend developer</h2>
     <div class="heyThere">
         <!-- <p class="heyThere-oh">oh!...</p> -->
-        <p class="heyThere-hey">Hey there</p> <!--jsLoading-->
-        <p class="heyThere-intro">  <!--jsLoading-->
+        <p class="heyThere-hey <?php echo $loading ?>">Hey there</p>
+        <p class="heyThere-intro <?php echo $loading ?>">
             I would like to introduce you to someone.
             <br>She's a frontend developer with a great passion for interaction design.
             <br><br>Where do you like to start?
         </p>
     </div>
-    <nav class="navSections"> <!--jsLoading-->
+    <nav class="navSections <?php echo $loading ?>">
         <h2 class="sr-only">chat navigation</h2>
-        <div class="navSections-btn"> <!--jsLoading-->
+        <div class="navSections-btn <?php echo $loading ?>">
             <button type="button" name="background" class="btnNav js-chatOpt">background</button>
         </div>
-        <div class="navSections-btn"> <!--jsLoading-->
+        <div class="navSections-btn <?php echo $loading ?>">
             <button type="button" name="theory" class="btnNav js-chatOpt">theory</button>
         </div>
-        <div class="navSections-btn"> <!--jsLoading-->
+        <div class="navSections-btn <?php echo $loading ?>">
             <button type="button" name="practice" class="btnNav js-chatOpt">practice</button>
         </div>
         <div class="navSections-about">
-            <button type="button" name="about" class="btnNav js-aboutTrigger">
+            <button type="button" name="about" class="btnNav js-botTrigger">
                 <span>0</span><span>0</span><span>8</span><span>0</span><span>8</span><span>0</span>
             </button>
         </div>
@@ -101,27 +95,10 @@
         </nav>
     </div>
 
-    <div class="bot">
+    <div class="bot" id="bot">
         <div class="bot-inner">
-            <div class="bot-text">
-                Now that we talked enough about Sandrina...ah yes, that's her name, I forgot to tell you. Anyways, I think I could talk about me. Like, nerd talk... but before that just tell me one thing:
-                <br><br>
-                <br><br>
-                1 + '2'
-                <br><br>
-                <br><br>
-                You are a little crazy…
-                <br><br>I was born inside the Atom editor.
-                <br><br>HTML5, SCSS and javascript are my vital organs.
-                <br><br>Eventually I evolved and started being built with [Koala] but as any good programmer knows, crashes happen and "Dry and not wet", so [Gulp] took its place!
-                <br><br>Despite always being under construction I already have the ability to share some stuff that Sandrina taught me while I was growing up.
-            </div>
-            <div class="bot-options">
-                <button type="button" name="bests" class="">[btn1]</button>
-                <button type="button" name="challenges" class="">[btn2]</button>
-            </div>
+            <div class="bot-text"></div>
         </div>
-
     </div>
 
 

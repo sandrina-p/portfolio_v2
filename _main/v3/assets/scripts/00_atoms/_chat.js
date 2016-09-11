@@ -368,6 +368,7 @@ var chatApp = function() {
 
     }
 
+    //FIXME this MUST be only css
     function loadingDots($elAfter) {
         $elAfter.after('<span class="js-loadingRetro"></span>');
 
@@ -396,7 +397,6 @@ var chatApp = function() {
     function glitchIn($element) {
         $element.addClass('jsGlitchIn');
     }
-
 
 
     // ------ SHOWING A PART PROCESS - HEY TO TIMEOUTS! ------ //
@@ -653,9 +653,98 @@ var chatApp = function() {
 }();
 
 
+var botSection = function() {
+    var $trigger = $('.js-botTrigger')
+        visibleClass = 'js-aboutVisible';
+        triggerActive = 'jsLoading',
+        $bot = $('#bot'),
+        $botText = $bot.find('.bot-text'),
+        clickOn = {},
+        firstTrigger = true;
+
+    function showBotIntro() {
+        var options = "",
+            objBotOpt = botContent.options;
+
+        $('.typed-cursor').remove();
+
+        $botText.append('<input type="text" placeholder="type here (ESC para fechar)" class="bot-input"></input>');
+        // for (var key in objBotOpt) {
+        //     if(objBotOpt.hasOwnProperty(key)) {
+        //         options += "<div class='chatPart-option'><button type='button' name='"+key+"' class='btnB js-botOpt jsLoading'>"+key+"</button></div>";
+        //     }
+        // }
+        //
+        // $botText.append('<div class="bot-options"></div>');
+        // $botText.find('.bot-options').append(options);
+        //
+        // setTimeout(function () {
+        //     $botText.find(".chatPart-option:nth-last-of-type(2) .btnB").removeClass(triggerActive);
+        //     setTimeout(function () {
+        //         $botText.find(".chatPart-option:last-of-type .btnB").removeClass(triggerActive);
+        //     }, 300);
+        // }, 400);
+    }
+
+    //showing the 008080 characters
+    $(document).on('click', '.js-chatOpt', function(){
+        var section = $(this).closest('.chatSection').attr('id'),
+            $childrens = $trigger.children().not('.'+visibleClass),
+            i = Math.floor( (Math.random() * $childrens.length));
+
+        if (section != undefined) {
+            if(!clickOn[section]) {
+                clickOn[section] = 0;
+            }
+
+            if(clickOn[section] < 2) {
+                $childrens.eq(i).addClass(visibleClass);
+                clickOn[section] ++;
+            }
+
+            $childrens = $trigger.children().not('.'+visibleClass);
+            if ($childrens.length == 0) {
+                $trigger.removeClass(triggerActive);
+            }
+        }
+    });
+
+    //showing 008080 section
+    $(document).on('click', '.js-botTrigger', function(){
+        if(!$(this).hasClass(triggerActive)) {
+            $bot.addClass(triggerActive);
+
+            if(firstTrigger) {
+                var msg = botContent.intro;
+                $botText.append('<p></p>').find('p').typed({
+                    strings: [msg],
+                    contentType: 'html',
+                    typeSpeed: -10,
+                    startDelay: 250,
+                    callback: function() {
+                        showBotIntro();
+                    },
+                });
+                firstTrigger = false;
+            }
+        }
+    });
+
+    $(document).on('click', '.js-botOpt', function(){
+        console.log('epah tou cansada');
+    });
+
+    //close 008080 section
+    $(document).keyup(function(e) {
+        if (e.keyCode == 27) { // escape key maps
+            $bot.removeClass(triggerActive);
+        }
+    });
+}();
+
 $(document).ready(function(){
 
-    heyThere.init();
+    //heyThere.init();
 
     $(document).on('click', '.js-chatOpt', function(){
         chatApp.init($(this));
@@ -665,24 +754,9 @@ $(document).ready(function(){
         chatApp.outsider($(this));
     });
 
-    $(document)
-        .on('mouseenter', '.js-underDotingTrigger', function(){
-            $(this).closest('.js-underDotingTarget').addClass('jsGlitching');
-        })
-        .on('mouseleave', '.js-underDotingTrigger', function(){
-            $(this).closest('.js-underDotingTarget').removeClass('jsGlitching');
-    });
-
-    $(document).on('click', '.js-chatOpt', function(){
-        var $trigger = $('.js-aboutTrigger'),
-            $childrens = $trigger.children().not('.js-aboutVisible'),
-            i = Math.floor( (Math.random() * $childrens.length));
-
-        // console.log(i, $childrens[i]);
-        $childrens.eq(i).addClass('js-aboutVisible');
-    });
 
 
+    //NAV BEING FIXED
     var $underNav = $('.under-nav');
     var underNavFixed = false;
     var $void = $('.void');
@@ -696,5 +770,14 @@ $(document).ready(function(){
                underNavFixed = true;
            }
        }
+    });
+
+    // doting on under section
+    $(document)
+        .on('mouseenter', '.js-underDotingTrigger', function(){
+            $(this).closest('.js-underDotingTarget').addClass('jsGlitching');
+        })
+        .on('mouseleave', '.js-underDotingTrigger', function(){
+            $(this).closest('.js-underDotingTarget').removeClass('jsGlitching');
     });
 });

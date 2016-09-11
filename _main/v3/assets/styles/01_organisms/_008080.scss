@@ -5,7 +5,13 @@
     height: 100vh;
     background: rgba(255, 255, 255, 0.5);
     z-index: 99;
-    display: none;
+    max-height: 0px;
+    overflow: hidden;
+    transition: max-height $speed*2 ease-in;
+
+    &.jsLoading {
+        max-height: 100vh;
+    }
 
     &-inner {
         @include centerxy;
@@ -17,11 +23,6 @@
         background: $clrPrimary;
         border: 1px solid $clrPrimaryDark;
         color: $clrGrayLighter;
-        // @extend %flexbox;
-        // @include flexboxProp {
-        //     flex-direction: column;
-        //     justify-content: space-between;
-        // }
     }
 
     &-text {
@@ -30,21 +31,43 @@
         height: 100%;
         overflow: auto;
         padding: $safeArea;
-        padding-bottom: $safeArea*4;
-    }
-
-    &-options {
-        max-width: $safeArea*40;
-        @include centerx;
-        bottom: 0;
-        height: $safeArea*3;
-        background: $clrPrimary;
-        width: 100%;
-        padding: $safeArea 0;
-        // text-align: center;
-
-        > * {
-            margin: 0 $safeArea;
+        padding-bottom: $safeArea*2;
+        @extend %flexbox;
+        @include flexboxProp {
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: baseline;
         }
     }
+
+    &-input {
+        background: none;
+        border: none;
+        color: $clrPrimarySoft;
+        font-size: $fontM;
+        display: inline;
+
+        &:focus {
+            width: 100%;
+            outline: none;
+            // border-bottom: 1px solid black;
+        }
+
+    }
+
+    // &-options {
+    //     max-width: $safeArea*40;
+    //     @include centerx;
+    //     bottom: 0;
+    //     height: $safeArea*4;
+    //     background: $clrPrimary;
+    //     width: 100%;
+    //     padding: $safeArea 0;
+    //
+    //     .chatPart-option {
+    //         margin: 0 $safeArea;
+    //         padding-top: 0;
+    //         width: auto;
+    //     }
+    // }
 }

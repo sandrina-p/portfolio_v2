@@ -194,7 +194,7 @@ gulp.task('min-all', ['scripts', 'scss'] );
 gulp.task('gen-html', function(){
     gulp.src("index.php")
     .pipe(php2html())
-    .pipe(gulp.dest("html/"));
+    .pipe(gulp.dest(""));
 });
 
 
@@ -235,7 +235,8 @@ gulp.task('watch', ['setWatch', 'scssPartials', 'browser-sync'], function(){
             folderScripts+'/**/*.js',
             '!'+folderScripts+'/**/*.min.js'
         ], { usePolling: true }, ['scripts']);
-    gulp.watch(['**/*.php', '**/*.phtml'], { usePolling: true }, [reload]); //TODO-SYNC
+    //gulp.watch(['**/*.php', '**/*.phtml'], { usePolling: true }, [reload]); //TODO-SYNC
+    gulp.watch(['index.php'], ['gen-html']);
 });
 
 
@@ -269,6 +270,9 @@ gulp.task('tasks', function(){
 
             +"\n"+chTitle('$ gulp min-all')+"\n"
             	+"     run scripts and styles tasks. use '--production' to also minify them.\n"
+            +"\n"+chTitle('$ gulp gen-html')+"\n"
+            	+"     compile index.php to index.html. because bitbucket doesn't like php.\n"
+
         );
 });
 

@@ -4,7 +4,7 @@
     width: 100%;
     background: $clrDark;
     color: white;
-    padding: 200vh 0 $safeArea*6;
+    padding: 50vh 0 $safeArea*6;
     width: 100%;
 
     &-header {
@@ -79,16 +79,16 @@
             width: 100%;
             left: 0;
             top: $safeArea/2;
-            animation: doting 5s steps(3) infinite;
+            animation: doting 2s steps(3) infinite;
 
             .under-article:nth-of-type(1) & {
-                animation-delay: 2s;
+                animation-delay: 1s;
             }
             .under-article:nth-of-type(2) & {
                 animation-delay: 0s;
             }
             .under-article:nth-of-type(3) & {
-                animation-delay: 4s;
+                animation-delay: 0.5s;
             }
         }
     }
@@ -182,13 +182,22 @@
 
 }
 
+// @keyframes doting {
+//     0% {content: ".";}
+//     5% {content: ". .";}
+//     10% {content: ". . .";}
+//     15% {content: ". .";}
+//     20% {content: ".";}
+//     25% {content: "";}
+// }
+
 @keyframes doting {
     0% {content: ".";}
-    5% {content: ". .";}
-    10% {content: ". . .";}
-    15% {content: ". .";}
-    20% {content: ".";}
-    25% {content: "";}
+    10% {content: ". .";}
+    20% {content: ". . .";}
+    30% {content: ". .";}
+    40% {content: ".";}
+    50% {content: "";}
 }
 
 
@@ -230,7 +239,7 @@
     .under {
         &-article,
         &-article:last-of-type {
-            padding: $safeArea;
+            padding: 1vw;
             width: 33.333%;
             max-width: $safeArea*30;
         }
