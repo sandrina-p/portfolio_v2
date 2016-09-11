@@ -3,11 +3,11 @@
     position: fixed;
     width: 100vw;
     height: 100vh;
-    background: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.9);
     z-index: 99;
     max-height: 0px;
     overflow: hidden;
-    transition: max-height $speed*2 ease-in;
+    transition: max-height $speed ease-out;
 
     &.jsLoading {
         max-height: 100vh;
@@ -17,40 +17,68 @@
         @include centerxy;
         width: 100%;
         width: 100vw;
+        height: $safeArea*35;
         max-height: 90vh;
-        height: $safeArea*25;
         overflow: auto;
         background: $clrPrimary;
         border: 1px solid $clrPrimaryDark;
         color: $clrGrayLighter;
+        // @extend %flexbox;
+        // @include flexboxProp {
+        //     flex-direction: column;
+        //     justify-content: flex-end;
+        // }
     }
 
     &-text {
+        position: relative;
+        width: 100%;
         max-width: $safeArea*40;
-        margin: auto;
-        height: 100%;
+        margin: 0 auto;
+        max-height: 100%;
         overflow: auto;
         padding: $safeArea;
         padding-bottom: $safeArea*2;
-        @extend %flexbox;
-        @include flexboxProp {
-            flex-direction: column;
-            justify-content: flex-end;
-            align-items: baseline;
+        font-family: $font-mono;
+        font-size: $fontS;
+    }
+
+    $sentClr: $clrPrimarySoft;
+    $placeholderClr: $clrPrimaryDark;
+
+    &-answer {
+        &:before {
+            content: "_";
+            position: absolute;
+            color: $sentClr;
+            left: 0;
         }
+    }
+    &-sent {
+        min-height: $safeArea;
+        color: $sentClr;
+        margin-left: -$safeArea;
     }
 
     &-input {
         background: none;
         border: none;
-        color: $clrPrimarySoft;
+        color: $sentClr;
         font-size: $fontM;
         display: inline;
+        font-family: $font-mono;
+        width: 100%;
+
+        &::-webkit-input-placeholder,
+        &:-moz-placeholder,
+        &::-moz-placeholder,
+        &:-ms-input-placeholder { /* Internet Explorer 10-11 */
+           color: $clrPrimaryDark;
+        }
 
         &:focus {
             width: 100%;
             outline: none;
-            // border-bottom: 1px solid black;
         }
 
     }

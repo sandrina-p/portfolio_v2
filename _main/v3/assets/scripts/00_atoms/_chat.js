@@ -11,7 +11,7 @@ var chatApp = function() {
         $currentPart, //jquery - id of the clicked button parent chatPart ex: $('#chatpart-intro');
         text, // string - simple text of the bot;
         title, // string - title of the new part ex: 'before that'
-        id, // string - it's build with getPartIdName() -> ex : 'rede-expressos'
+        id, // string - it's build with stringToSlug() -> ex : 'rede-expressos'
 
         //some numbers to better crontrol auto scroll
         mediaQHeight = 550, // a trigger to prevent some stuff on small devices
@@ -32,7 +32,7 @@ var chatApp = function() {
         section = option.closest('.chatSection').attr('id');
         $currentPart = option.closest('.chatPart');
         title = option.text();
-        id = getPartIdName(title);
+        id = stringToSlug(title);
 
         fixChatNav(); //calling it here prevent to fix the nav position without first click on it;
 
@@ -66,7 +66,7 @@ var chatApp = function() {
             title = initProj;
             section = 'practice';
         }
-        id = getPartIdName(title);
+        id = stringToSlug(title);
 
         thatBtn = $('#'+section).find("button:contains("+initProj+")");
         animateClickedOption(thatBtn);
@@ -272,7 +272,7 @@ var chatApp = function() {
 
                 var categ = objSection[key]['categ'];
                 if(categ) {
-                    var catC = getPartIdName(categ);
+                    var catC = stringToSlug(categ);
                 }
 
                 //if category doesn't exist, build it
@@ -296,7 +296,7 @@ var chatApp = function() {
         return $liIndexUl;
     }
 
-    function getPartIdName(string) {
+    function stringToSlug(string) {
         var id = string.split(' ').join('-');
         id = id.toLowerCase();
         return id;
@@ -653,37 +653,40 @@ var chatApp = function() {
 }();
 
 
+
+
+
 var botSection = function() {
-    var $trigger = $('.js-botTrigger')
-        visibleClass = 'js-aboutVisible';
+    var $trigger = $('.js-botTrigger'),
+        visibleClass = 'js-aboutVisible',
         triggerActive = 'jsLoading',
+        botInputId = "botInput",
+        botAnswerClass = "bot-answer",
+        botSentClass = "bot-sent",
         $bot = $('#bot'),
         $botText = $bot.find('.bot-text'),
         clickOn = {},
-        firstTrigger = true;
+        intervalBotScroll,
+        firstTrigger = true,
+        keepSectionFlag = false,
+        sentText, //text written on input
+        context; //input context of the conversation
+
+
+
+    // get ready 008080 //
+    //////////////////////
+    function showInput(name, placeholder) {
+        return '<input type="text" name="'+name+'" placeholder="'+placeholder+'" class="bot-input" id="'+botInputId+'"></input>';
+    }
 
     function showBotIntro() {
         var options = "",
             objBotOpt = botContent.options;
 
         $('.typed-cursor').remove();
-
-        $botText.append('<input type="text" placeholder="type here (ESC para fechar)" class="bot-input"></input>');
-        // for (var key in objBotOpt) {
-        //     if(objBotOpt.hasOwnProperty(key)) {
-        //         options += "<div class='chatPart-option'><button type='button' name='"+key+"' class='btnB js-botOpt jsLoading'>"+key+"</button></div>";
-        //     }
-        // }
-        //
-        // $botText.append('<div class="bot-options"></div>');
-        // $botText.find('.bot-options').append(options);
-        //
-        // setTimeout(function () {
-        //     $botText.find(".chatPart-option:nth-last-of-type(2) .btnB").removeClass(triggerActive);
-        //     setTimeout(function () {
-        //         $botText.find(".chatPart-option:last-of-type .btnB").removeClass(triggerActive);
-        //     }, 300);
-        // }, 400);
+        // $botText.append(showInput('commands', 'write your answer'));
+        $botText.append(showInput('options', 'write your answer'));
     }
 
     //showing the 008080 characters
@@ -719,8 +722,8 @@ var botSection = function() {
                 $botText.append('<p></p>').find('p').typed({
                     strings: [msg],
                     contentType: 'html',
-                    typeSpeed: -10,
-                    startDelay: 250,
+                    typeSpeed: -200,
+                    startDelay: 500,
                     callback: function() {
                         showBotIntro();
                     },
@@ -730,13 +733,163 @@ var botSection = function() {
         }
     });
 
-    $(document).on('click', '.js-botOpt', function(){
-        console.log('epah tou cansada');
+
+    // talking with 008080 //
+    /////////////////////////
+    function hitEnter() {
+        sentText = $('#'+botInputId).val().toLowerCase();
+        context = $('#'+botInputId).attr('name');
+        $('#'+botInputId).remove();
+        appendSent();
+        getBotAnswer();
+    }
+
+    function appendSent() {
+        var sentEmpty = "";
+        if (sentText == "") {
+            sentEmpty = "js-sentEmpty";
+        }
+        $botText.append("<p class='"+botSentClass+" "+sentEmpty+"'>"+sentText+"</p>");
+    }
+
+
+    function getBotAnswer() {
+        var objContext = botContent[context];
+        var botAnswer = [];
+
+        switch (context) {
+            case 'options':
+                //search for sentText on objContext
+                for (var key in objContext) {
+                    if(objContext.hasOwnProperty(key)) {
+                        var subKeys = key.split(/,\s?/);
+                        if (subKeys.indexOf(sentText) > -1) {
+                            botAnswer = objContext[key];
+                        }
+                    }
+                }
+
+                if(botAnswer.length == 0) { botAnswer = objContext.help;}
+                appendBotAnswer(botAnswer);
+                break;
+
+            case 'commands':
+                if (sentText == "") {
+                    if(objContext.keepSection.indexOf(context) > -1) {
+                        sentText = $botText.find('.bot-sent').not('.js-sentEmpty').last().text();
+                    } else {
+                        var iR = Math.floor(Math.random() * botContent.EmpTy.length);
+                        appendBotAnswer(botContent.EmpTy[iR]);
+                        return;
+                    }
+                }
+                for (var key in objContext) {
+                    if(objContext.hasOwnProperty(key)) {
+                        var subKeys = key.split(/,\s?/);
+                        if (subKeys.indexOf(sentText) > -1) {
+
+                            var contextLength = objContext[key].length;
+                            if (contextLength) {
+                                var iR = Math.floor(Math.random() * contextLength);
+                                botAnswer = objContext[key][iR];
+                                objContext[key].splice([iR], 1); //prevent for showing the same think twice.
+                            } else {
+                                botAnswer = [objContext.allSaid[0][0] + sentText + objContext.allSaid[0][1], context, ""];
+                            }
+                            break;
+                        }
+                    }
+                }
+
+                (botAnswer == undefined || botAnswer.length == 0)
+                    ? searchVocabulary()
+                    : appendBotAnswer(botAnswer, objContext);
+                break;
+
+            default:
+                appendBotAnswer(botContent.HeLp);
+        }
+    }
+
+    function searchVocabulary() {
+        var objContext = botContent.vocabulary;
+        var botAnswer = [];
+
+        for (var key in objContext) {
+            if(objContext.hasOwnProperty(key)) {
+                var subKeys = key.split(/,\s?/);
+                if (subKeys.indexOf(sentText) > -1) {
+                    botAnswer = objContext[key];
+                }
+            }
+        }
+
+        if(botAnswer.length == 0) { botAnswer = botContent.HeLp;}
+        appendBotAnswer(botAnswer);
+    }
+
+    function appendBotAnswer(answer, objContext) {
+        if(typeof keepSectionClass !== 'undefined' && keepSectionClass != "") {
+            //remove previous keepSection messages
+            $botText.find('.'+keepSectionClass).remove();
+        }
+
+        if (!keepSectionFlag) {
+            $botText.append("<p class='"+botAnswerClass+"'>"+answer[0]+"</p>");
+            keepSectionClass = "";
+            afterAppendBotAnswer(answer, objContext);
+        } else {
+            keepSectionClass = "jskeepSection";
+            $botText.append("<p class='"+botAnswerClass+" "+keepSectionClass+"'></p>").find('p:last-of-type').typed({
+                strings: [answer[0]],
+                contentType: 'html',
+                typeSpeed: -50,
+                startDelay: 1000,
+                callback: function() {
+                    afterAppendBotAnswer(answer, objContext);
+                },
+            });
+        }
+    }
+
+    function afterAppendBotAnswer(answer, objContext) {
+        $('.typed-cursor').remove();
+        $botText.find('input').remove();
+        $botText.append(showInput(answer[1], answer[2]));
+        $botText.find('input').last().focus();
+
+        $botText.animate({
+            scrollTop: $('.bot-text').prop('scrollHeight')
+        }, 0);
+
+        //shows keepStion message
+        if (objContext != undefined //if context exists
+        && objContext.keepSection[1].indexOf(sentText) > -1 // it's a section with more stuff (array)
+        && objContext[sentText].length > 0) { // it still has stuff to show
+            botAnswer = [objContext.keepSection[0][0] + sentText + objContext.keepSection[0][1], context, ""];
+            $botText.find('input').remove();
+            keepSectionFlag = true;
+            appendBotAnswer(botAnswer);
+        } else {
+            keepSectionFlag = false;
+        }
+    }
+
+    //input behavior
+    $(document).on('keyup', '#'+botInputId, function(e) {
+        if(e.keyCode == 13) { //ENTER
+            hitEnter($(this));
+        }
     });
+
+    //force to always focus on input
+    $(document).on('click', '#bot', function(){
+        $('#'+botInputId).focus();
+    })
 
     //close 008080 section
     $(document).keyup(function(e) {
-        if (e.keyCode == 27) { // escape key maps
+        if (e.keyCode == 27) { // ESC
             $bot.removeClass(triggerActive);
         }
     });

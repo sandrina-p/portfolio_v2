@@ -60,8 +60,7 @@
 
 
 
-    <div class="chat" id="chat">
-    </div>
+    <div class="chat" id="chat"></div>
 
     <div class="void">
         [upside down]
