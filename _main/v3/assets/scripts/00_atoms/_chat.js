@@ -687,6 +687,7 @@ var botSection = function() {
         $('.typed-cursor').remove();
         // $botText.append(showInput('commands', 'write your answer'));
         $botText.append(showInput('options', 'write your answer'));
+        $botText.find('input').last().focus();
     }
 
     //showing the 008080 characters
