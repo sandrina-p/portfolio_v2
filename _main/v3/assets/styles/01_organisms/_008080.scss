@@ -30,28 +30,28 @@
         // }
     }
 
+    $sentClr: $clrPrimarySoft;
+    $placeholderClr: $clrPrimaryDark;
+    $textPadding: 20vw;
     &-text {
         position: relative;
         width: 100%;
-        max-width: $safeArea*40;
         margin: 0 auto;
         max-height: 100%;
         overflow: auto;
-        padding: $safeArea;
-        padding-bottom: $safeArea*2;
+        padding: $safeArea $textPadding $safeArea*2;
         font-family: $font-mono;
         font-size: $fontS;
     }
 
-    $sentClr: $clrPrimarySoft;
-    $placeholderClr: $clrPrimaryDark;
+
 
     &-answer {
         &:before {
             content: "_";
             position: absolute;
             color: $sentClr;
-            left: 0;
+            left: calc(#{$textPadding} - #{$safeArea/2});
         }
     }
     &-sent {
@@ -82,20 +82,40 @@
         }
 
     }
+}
 
-    // &-options {
-    //     max-width: $safeArea*40;
-    //     @include centerx;
-    //     bottom: 0;
-    //     height: $safeArea*4;
-    //     background: $clrPrimary;
-    //     width: 100%;
-    //     padding: $safeArea 0;
-    //
-    //     .chatPart-option {
-    //         margin: 0 $safeArea;
-    //         padding-top: 0;
-    //         width: auto;
-    //     }
-    // }
+.jsBotThinking {
+    &:before {
+        color: white;
+        content: "0 * . _ ;";
+        height: 10px;
+        display: block;
+        animation: botThinking 700ms infinite;
+    }
+}
+
+// * : ~ . _
+//   0% {content: ". 0 . _ . _ . _";}
+//  20% {content: "_ . 0 . _ . _ .";}
+//  40% {content: ". _ . 8 . _ . _";}
+//  60% {content: "_ . _ . 0 . _ .";}
+//  80% {content: ". _ . _ . 8 . _";}
+// 100% {content: "_ . _ . _ . 0 .";}
+
+// @keyframes botThinking {
+//     0% {content: ". 0 . _ . _ . _";}
+//    20% {content: ". _ 0 _ . _ . _";}
+//    40% {content: ". _ . 8 . _ . _";}
+//    60% {content: ". _ . _ 0 _ . _";}
+//    80% {content: ". _ . _ . 8 . _";}
+//   100% {content: ". _ . _ . _ 0 _";}
+// }
+
+@keyframes botThinking {
+    0% {content: "..";}
+   20% {content: "8";}
+   40% {content: "0";}
+   60% {content: "_";}
+   80% {content: "8";}
+  100% {content: "0";}
 }

@@ -200,8 +200,9 @@ var chatContent = {
 
 
 //bot links
-function genLink(link, name) {
-    return "<a href='"+link+"' target='_blank' class='linkBot'>"+name+"</a>"
+function genLink(link, name, target) {
+    (typeof target !== 'undefined') ? target = "" : target = "target='_blank'";
+    return "<a href='"+link+"' "+target+" class='linkBot'>"+name+"</a>"
 }
 
 var googleIt = genLink('http://lmgtfy.com/?q=one+divided+by+zero', 'Google it');
@@ -212,33 +213,41 @@ var googleIt = genLink('http://lmgtfy.com/?q=one+divided+by+zero', 'Google it');
     linkLT = genLink('#TlinkODO', 'perceived loading time'),
     linkFOUC = genLink('#linkTODO', 'FOUC'),
     linkGit = genLink('#linkTODO', 'Bitbucket'),
-    myEmail = genLink('mailto:sandrin4pereir4@gmail.com?subject=Hey%20there!', 'sandrin4pereir4@gmail.com');
+    linkHer = genLink('http://www.imdb.com/title/tt1798709/', "Her"),
+    myEmail = genLink('mailto:sandrin4pereir4@gmail.com?subject=Hey%20there!', 'sandrin4pereir4@gmail.com', "noTarget");
 
-
-var botTextAbout = "I was born inside the Atom editor."
-                +brk+"^100 HTML5, SCSS and Javascript are my vital organs."
-                +brk+"^500 Eventually I evolved and started being built with "+linkKoala+" but as any good programmer knows, crashes happen, so "+linkGulp+" took its place!"
-                +brk+"^250 Despite always being under construction I already have the ability to share some stuff that Sandrina taught me while I was growing up."+publicCmd;
 
 var publicCmd = "What you can know about me:"
-                +brk+"best practices"
-                +brk+"challenges"
-                +brk+"resources"
-                +brk+"exit"
-                +brk+"...";
+                +brk+"<b>best practices</<b>"
+                +brk+"<b>challenges</<b>"
+                +brk+"<b>resources</<b>"
+                +brk+"<b>exit</<b>"
+                +brk+"<b>...</b>";
+
+var botTextAbout = brk+"I was born inside the Atom editor."
+                +brk+"^100 HTML5, SCSS and Javascript are my vital organs."
+                +brk+"^500 Eventually I evolved and started being built with "+linkKoala+" but as any good programmer knows, crashes happen, so "+linkGulp+" took its place!"
+                +brk+"^250 Despite always being under construction I already have the ability to share some stuff that Sandrina taught me while I was growing up."
+                +brk+""+publicCmd;
 
 var botOptHelp = "Maybe you should "+googleIt+" and then come back. What do you think?";
 
+
 var botContent = {
-    intro: "Now that we talked enough about Sandrina, ^100 "+brk+"Ah yes, that's her name, I forgot to tell you. Anyways... ^150"+brk+"I think I could talk about me. Like, nerd talk... but before that just tell me one thing:"+brk+"1 divided by 0 equal to:",
+    // intro: ["dubbing", "options", "your answer here", "typedJS"],
+    intro: ["Now that we talked enough about Sandrina,"
+        +brk+"^100Ah yes, that's her name, I forgot to tell you. Anyways..."
+        +brk+"^150I think I could talk about me. Like, nerd talk... but before that just tell me one thing:"
+        +brk+"1 divided by 0 equal to:", "options", "your answer here", "typedJS"],
     options: {
         // STRUCTURE:
         // "posible human, inputs sent, separated by, comma" : ["bot answer", "context of the next input", "input placeholder"]
-        "infinity, hell": ["You are a little crazy… we all are. ^1000 "+brk+""+botTextAbout, "commands", "tell me what's next"],
-        "undefined": ["Not it's not. It has a name. At least on javascript language.", "options", "go ask it to some console"],
-        "1/0, 1 divided by 0, one divived by zero": ["◉_◉ Don't try to turn the game against me."+brk+"I'm a bot, not a console.", "options", "go ask it to some console"],
-        "zero, 0": ["You know that Siri isn't always right. ^1000"+brk+"Neither do you.^500"+brk+""+botOptHelp, "options", 'I still believe in you'],
-        "help": [botOptHelp, "options", "I still believe in you"],
+        "infinity, universe, cosmos": ["You are a little crazy… we all are. ^1000 "+brk+""+botTextAbout, "commands", "tell me what's next", "typedJS"],
+        "undefined, null": ["Not it's not. It has another name. At least on javascript language.", "options", "go ask it to some console", "typedJS"],
+        "1/0, 1 divided by 0, one divived by zero": ["◉_◉ Don't try to turn the game against me."+brk+"I'm a bot, not a console.", "options", "go ask it to other console", "typedJS"],
+        "zero, 0": ["You know that Siri isn't always right. ^1000"+brk+"Neither do you.^500"+brk+""+botOptHelp, "options", 'I still believe in you', "typedJS"],
+        "exit, esc": ["Really? We didn't even start you already want to leave.. Press ESC and go get a life", "options", "I still believe in you", "typedJS"],
+        "help": [botOptHelp, "options", "I still believe in you", "typedJS"],
     },
     commands: {
         "best practices": [
@@ -252,16 +261,18 @@ var botContent = {
             ["Maybe you will not believe me, but that switching images effect on Sandrina's projects are CSS only."+brk+"You read me right:"+brk+"no javascript"+brk+"at all. Check it out on [codepen]."+brk+"As well as her [portrait]..."+brk+"You didn’t think that was an image, did you?"+brk+""+portraitMsg, "commands", ""],
             ["My purpose here, despite being a bot, is having a conversation with you."+brk+"I try to be funny, of course."+brk+"But I won’t say the same thing twice."+brk+"Or tell you stuff you didn't asked for."+brk+"What I’m trying to say is I am a bot with a passion for context and human interaction."+brk+"I pretend to think [. . .] by taking some time to answer you, but the truth is, I already knew what to tell you before we first met. They say smart guys think. So I learned to make you think I was thinking so I could impress you [. . .]", "commands", ""],
         ],
-        keepSection: [["If you want to know more ", " just press <i>ENTER</i> again."], ["best practices", "challenges"]],
-        allSaid: [["I don't have anything else to tell you about ", ""+brk+""+publicCmd], ["best practices", "challenges"]],
+        keepSection: [["If you want to know more about Sandrina's [*param*] just press <i>ENTER</i> again.", "commands", "", "typedJS", "keepSectionJS"], ["best practices", "challenges"]],
+        allSaid: [["I don't have anything else to tell you about [*param*] "+brk+""+publicCmd, "commands", "", "typedJS"], ["best practices", "challenges"]],
     },
     vocabulary: {
         git: ["Now that we know each other a bit better, we should advance to the second base."+brk+"I'll let you check my sources on "+linkGit+"."+brk+"Feel free to explore and maybe improve me, especially on javascript."+brk+"I still feel some strange energies around here, don't you?", "commands", ""],
-        "..., bye, cya, shut down, exit, close": ["You know what... It's really hard having a human conversation."+brk+"That's why I'm just a bot."+brk+"[008080] by the way."+brk+"Nice to meet you :) It was nice to talk to you, thank you!"+brk+"But now do me a favor and go get a life, yes?"+brk+"It’s not healthy to talk to a bot all day."+brk+"By the way, don't forget to share me and talk about Sandrina while you’re out there <3", "commands", ""],
-        resources: ["still under construction","commands","don't push me that way okay? :/"],
-        exit: ["still under construction","commands","refresh the page, it does the same :3"],
+        "hey, hey there, hello, hi": ["Hey there! This can be the begining of "+linkHer+" *.*", "commands", ""],
+        "..., bye, cya, shut down, exit, close": ["You know what... It's really hard having a human conversation."+brk+"That's why I'm just a bot."+brk+"<b>008080</b> by the way."+brk+"Nice to meet you :) It was nice to talk to you, thank you!"+brk+"But now do me a favor and go get a life, yes?"+brk+"It’s not healthy to talk to a bot all day."+brk+"By the way, don't forget to share me and talk about Sandrina while you’re out there <3", "commands", ""],
+        "restart, reset, clear": ["are you sure about that? all our memories - at least mine - will be erased. If so, press ESC twice.","commands","TODO :/"],
+        "resources, resources": ["still under construction","commands","don't push me that way okay? :/"],
     },
-    HeLp: ["I'm not sure what you meant. What about talking directly with Sandrina at "+myEmail+""+brk+"She's smarter than me ¯\_(ツ)_/¯", "commands", "try again"],
+    help: ["We all get lost sometimes"+brk+""+publicCmd, "[*params*]", "try again"],
+    LosT: ["I'm not sure what you meant. What about talking directly with Sandrina at "+myEmail+""+brk+"She's smarter than me ¯\\_(ツ)_/¯", "commands", "try again", "typedJS"],
     EmpTy: [
         ['._.', "commands", "don't be shy"],
         ['" "', "commands", "i'm feeling you"],

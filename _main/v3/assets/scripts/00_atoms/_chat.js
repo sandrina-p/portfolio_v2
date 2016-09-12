@@ -663,31 +663,28 @@ var botSection = function() {
         botInputId = "botInput",
         botAnswerClass = "bot-answer",
         botSentClass = "bot-sent",
+        jsSentEmptyClass = "js-sentEmpty",
         $bot = $('#bot'),
         $botText = $bot.find('.bot-text'),
         clickOn = {},
         intervalBotScroll,
         firstTrigger = true,
-        keepSectionFlag = false,
+        botAnswerTyped = false,
         sentText, //text written on input
         context; //input context of the conversation
 
 
 
+    // helpful functions //
+    ///////////////////////
+    // function getRandomIndex(val) {
+    //     return Math.floor(Math.random() * arr);
+    // }
+
     // get ready 008080 //
     //////////////////////
     function showInput(name, placeholder) {
         return '<input type="text" name="'+name+'" placeholder="'+placeholder+'" class="bot-input" id="'+botInputId+'"></input>';
-    }
-
-    function showBotIntro() {
-        var options = "",
-            objBotOpt = botContent.options;
-
-        $('.typed-cursor').remove();
-        // $botText.append(showInput('commands', 'write your answer'));
-        $botText.append(showInput('options', 'write your answer'));
-        $botText.find('input').last().focus();
     }
 
     //showing the 008080 characters
@@ -717,18 +714,8 @@ var botSection = function() {
     $(document).on('click', '.js-botTrigger', function(){
         if(!$(this).hasClass(triggerActive)) {
             $bot.addClass(triggerActive);
-
             if(firstTrigger) {
-                var msg = botContent.intro;
-                $botText.append('<p></p>').find('p').typed({
-                    strings: [msg],
-                    contentType: 'html',
-                    typeSpeed: -200,
-                    startDelay: 500,
-                    callback: function() {
-                        showBotIntro();
-                    },
-                });
+                appendBotAnswer(botContent.intro);
                 firstTrigger = false;
             }
         }
@@ -747,12 +734,22 @@ var botSection = function() {
 
     function appendSent() {
         var sentEmpty = "";
-        if (sentText == "") {
-            sentEmpty = "js-sentEmpty";
-        }
+        sentText == "" ? sentEmpty = jsSentEmptyClass : "";
         $botText.append("<p class='"+botSentClass+" "+sentEmpty+"'>"+sentText+"</p>");
+        $botText.find('input').remove();
     }
 
+    function objSearchSubKeys(objContext) {
+        for (var key in objContext) {
+            if(objContext.hasOwnProperty(key)) {
+                var subKeys = key.split(/,\s?/);
+                if (subKeys.indexOf(sentText) > -1) {
+                    return key;
+                    break;
+                }
+            }
+        }
+    }
 
     function getBotAnswer() {
         var objContext = botContent[context];
@@ -760,55 +757,47 @@ var botSection = function() {
 
         switch (context) {
             case 'options':
-                //search for sentText on objContext
-                for (var key in objContext) {
-                    if(objContext.hasOwnProperty(key)) {
-                        var subKeys = key.split(/,\s?/);
-                        if (subKeys.indexOf(sentText) > -1) {
-                            botAnswer = objContext[key];
-                        }
-                    }
-                }
-
-                if(botAnswer.length == 0) { botAnswer = objContext.help;}
+                botAnswer = objContext[objSearchSubKeys(objContext)] || objContext.help;
                 appendBotAnswer(botAnswer);
+                // NOTE: very strange bug here.
+                // if botContent.options["undefined"] it doesnt work..
+                // this key has to have 2 options (ex: botContent.options["undefined, null, other"] )
                 break;
-
             case 'commands':
+                //if sent Empty, check if it's to continue previous command or go to .EmpTy.
                 if (sentText == "") {
-                    if(objContext.keepSection.indexOf(context) > -1) {
-                        sentText = $botText.find('.bot-sent').not('.js-sentEmpty').last().text();
+                    var lastSection = $botText.find('.bot-sent').not('.'+jsSentEmptyClass).last().text();
+                    if(objContext.keepSection[1].indexOf(lastSection) > -1) {
+                        sentText = lastSection;
                     } else {
                         var iR = Math.floor(Math.random() * botContent.EmpTy.length);
                         appendBotAnswer(botContent.EmpTy[iR]);
+                        break;
                         return;
                     }
                 }
-                for (var key in objContext) {
-                    if(objContext.hasOwnProperty(key)) {
-                        var subKeys = key.split(/,\s?/);
-                        if (subKeys.indexOf(sentText) > -1) {
 
-                            var contextLength = objContext[key].length;
-                            if (contextLength) {
-                                var iR = Math.floor(Math.random() * contextLength);
-                                botAnswer = objContext[key][iR];
-                                objContext[key].splice([iR], 1); //prevent for showing the same think twice.
-                            } else {
-                                botAnswer = [objContext.allSaid[0][0] + sentText + objContext.allSaid[0][1], context, ""];
-                            }
-                            break;
-                        }
+                var key = objSearchSubKeys(objContext);
+                if(key) {
+                    var contextLength = objContext[key].length;
+                    if (contextLength) {
+                        var iR = Math.floor(Math.random() * contextLength);
+                        botAnswer = objContext[key][iR];
+                        objContext[key].splice([iR], 1); //prevent for showing the same thing twice.
+                    } else {
+                        objContext.allSaid[0][0] = replaceSentText(objContext.allSaid[0][0]);
+                        botAnswer = objContext.allSaid[0];
+                        var iSection = objContext.keepSection[1].indexOf(sentText);
+                        objContext.keepSection[1].splice(iSection,1); //prevent for showing the same thing again;
                     }
+                    appendBotAnswer(botAnswer, objContext);
+                } else {
+                    searchVocabulary();
                 }
-
-                (botAnswer == undefined || botAnswer.length == 0)
-                    ? searchVocabulary()
-                    : appendBotAnswer(botAnswer, objContext);
                 break;
 
             default:
-                appendBotAnswer(botContent.HeLp);
+                appendBotAnswer(botContent.LosT);
         }
     }
 
@@ -816,46 +805,58 @@ var botSection = function() {
         var objContext = botContent.vocabulary;
         var botAnswer = [];
 
-        for (var key in objContext) {
-            if(objContext.hasOwnProperty(key)) {
-                var subKeys = key.split(/,\s?/);
-                if (subKeys.indexOf(sentText) > -1) {
-                    botAnswer = objContext[key];
-                }
-            }
-        }
-
-        if(botAnswer.length == 0) { botAnswer = botContent.HeLp;}
+        //BEFORE: - just to remember how dumb i was...
+        // objSearchSubKeys(objContext)
+        // for (var key in objContext) {
+        //     if(objContext.hasOwnProperty(key)) {
+        //         var subKeys = key.split(/,\s?/);
+        //         if (subKeys.indexOf(sentText) > -1) {
+        //             botAnswer = objContext[key];
+        //         }
+        //     }
+        // }
+        //
+        // if(botAnswer.length == 0) { botContent.LosT;}
+        // appendBotAnswer(botAnswer);
+        //
+        // AFTER: - and how i'm so fucking a genius now
+        botAnswer = objContext[objSearchSubKeys(objContext)] || botContent.LosT;
         appendBotAnswer(botAnswer);
     }
 
     function appendBotAnswer(answer, objContext) {
+        botAnswerTyped = answer.indexOf('typedJS') > -1;
+        keepSectionFlag = answer.indexOf('keepSectionJS') > -1;
+
+        //remove previous keepSection messages
         if(typeof keepSectionClass !== 'undefined' && keepSectionClass != "") {
-            //remove previous keepSection messages
             $botText.find('.'+keepSectionClass).remove();
         }
 
-        if (!keepSectionFlag) {
-            $botText.append("<p class='"+botAnswerClass+"'>"+answer[0]+"</p>");
-            keepSectionClass = "";
-            afterAppendBotAnswer(answer, objContext);
-        } else {
-            keepSectionClass = "jskeepSection";
-            $botText.append("<p class='"+botAnswerClass+" "+keepSectionClass+"'></p>").find('p:last-of-type').typed({
-                strings: [answer[0]],
-                contentType: 'html',
-                typeSpeed: -50,
-                startDelay: 1000,
-                callback: function() {
-                    afterAppendBotAnswer(answer, objContext);
-                },
-            });
-        }
+        $botText.append("<span class='jsBotThinking'></span>");
+        setTimeout(function () {
+            $('.jsBotThinking').remove();
+            if (botAnswerTyped) {
+                keepSectionClass = "jskeepSection" && keepSectionFlag;
+                $botText.append("<p class='"+botAnswerClass+" "+keepSectionClass+"'></p>").find('p:last-of-type').typed({
+                    strings: [answer[0]],
+                    contentType: 'html',
+                    typeSpeed: -450,
+                    startDelay: 0,
+                    callback: function() {
+                        afterAppendBotAnswer(answer, objContext);
+                    },
+                });
+            } else {
+                $botText.append("<p class='"+botAnswerClass+"'>"+answer[0]+"</p>");
+                keepSectionClass = "";
+                afterAppendBotAnswer(answer, objContext);
+            }
+        }, answer[0].length*3);
     }
 
     function afterAppendBotAnswer(answer, objContext) {
         $('.typed-cursor').remove();
-        $botText.find('input').remove();
         $botText.append(showInput(answer[1], answer[2]));
         $botText.find('input').last().focus();
 
@@ -863,20 +864,21 @@ var botSection = function() {
             scrollTop: $('.bot-text').prop('scrollHeight')
         }, 0);
 
-        //shows keepStion message
+        //check if it has to show keepStion message
         if (objContext != undefined //if context exists
         && objContext.keepSection[1].indexOf(sentText) > -1 // it's a section with more stuff (array)
         && objContext[sentText].length > 0) { // it still has stuff to show
-            botAnswer = [objContext.keepSection[0][0] + sentText + objContext.keepSection[0][1], context, ""];
             $botText.find('input').remove();
-            keepSectionFlag = true;
+            objContext.keepSection[0][0] = replaceSentText(objContext.keepSection[0][0]);
+            botAnswer = objContext.keepSection[0];
             appendBotAnswer(botAnswer);
-        } else {
-            keepSectionFlag = false;
         }
     }
 
-    //input behavior
+    function replaceSentText(string) {
+        return string.replace("[*param*]", sentText);
+    }
+    //input behavior (ENTER)
     $(document).on('keyup', '#'+botInputId, function(e) {
         if(e.keyCode == 13) { //ENTER
             hitEnter($(this));
