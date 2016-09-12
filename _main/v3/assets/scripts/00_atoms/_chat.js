@@ -833,6 +833,13 @@ var botSection = function() {
             $botText.find('.'+keepSectionClass).remove();
         }
 
+        intervalBotScroll = setInterval(function () {
+            console.log('autoScroll');
+            $botText.animate({
+                scrollTop: $('.bot-text').prop('scrollHeight')
+            }, 0);
+        }, 200);
+
         $botText.append("<span class='jsBotThinking'></span>");
         setTimeout(function () {
             $('.jsBotThinking').remove();
@@ -859,10 +866,15 @@ var botSection = function() {
         $('.typed-cursor').remove();
         $botText.append(showInput(answer[1], answer[2]));
         $botText.find('input').last().focus();
+        // autoScrollBottom = setInterval(function () {
+        //  $('.js-loadingRetro').text( dotdotdot(cursor++, 3, '.') );
+        // }, 100);
 
-        $botText.animate({
-            scrollTop: $('.bot-text').prop('scrollHeight')
-        }, 0);
+        // $botText.animate({
+        //     scrollTop: $('.bot-text').prop('scrollHeight')
+        // }, 0);
+
+        clearInterval(intervalBotScroll);
 
         //check if it has to show keepStion message
         if (objContext != undefined //if context exists
