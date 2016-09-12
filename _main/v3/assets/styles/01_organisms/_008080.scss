@@ -87,8 +87,8 @@ $textPadding: 20vw;
 
 .jsBotThinking {
     position: absolute;
-    left: calc(#{$textPadding} - #{$safeArea});
-    bottom: $safeArea*2;
+    left: calc(#{$textPadding} - #{$safeArea/2});
+    bottom: $safeArea*1;
     &:before {
         color: white;
         content: "0 * . _ ;";
