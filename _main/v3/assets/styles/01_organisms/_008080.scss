@@ -1,3 +1,7 @@
+$sentClr: $clrPrimarySoft;
+$placeholderClr: $clrPrimaryDark;
+$textPadding: 20vw;
+
 .bot {
     @include centerxy;
     position: fixed;
@@ -30,9 +34,6 @@
         // }
     }
 
-    $sentClr: $clrPrimarySoft;
-    $placeholderClr: $clrPrimaryDark;
-    $textPadding: 20vw;
     &-text {
         position: relative;
         width: 100%;
@@ -85,10 +86,12 @@
 }
 
 .jsBotThinking {
+    position: absolute;
+    left: calc(#{$textPadding} - #{$safeArea});
+    bottom: $safeArea*2;
     &:before {
         color: white;
         content: "0 * . _ ;";
-        height: 10px;
         display: block;
         animation: botThinking 700ms infinite;
     }
