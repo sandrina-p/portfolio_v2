@@ -27,11 +27,11 @@ $textPadding: 20vw;
         background: $clrPrimary;
         border: 1px solid $clrPrimaryDark;
         color: $clrGrayLighter;
-        // @extend %flexbox;
-        // @include flexboxProp {
-        //     flex-direction: column;
-        //     justify-content: flex-end;
-        // }
+        @extend %flexbox;
+        @include flexboxProp {
+            flex-direction: column;
+            justify-content: flex-end;
+        }
     }
 
     &-text {
