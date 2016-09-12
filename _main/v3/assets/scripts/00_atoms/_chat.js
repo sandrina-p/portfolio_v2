@@ -852,7 +852,7 @@ var botSection = function() {
                 keepSectionClass = "";
                 afterAppendBotAnswer(answer, objContext);
             }
-        }, answer[0].length*3);
+        }, answer[0].length*1.33);
     }
 
     function afterAppendBotAnswer(answer, objContext) {
