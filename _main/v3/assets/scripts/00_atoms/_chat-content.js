@@ -79,8 +79,8 @@ var chatContent = {
         },
         'portfolio 15': {
             categ: "www projects",
-            title: "Portfolio 15",
-            sub: "Her previous portfolio",
+            title: "Portfolio15",
+            sub: "her previous site",
             role: "Creative and Programmer",
             img: [
                 "assets/media/img/projects/sp0.png",
@@ -128,7 +128,7 @@ var chatContent = {
         'N O X': {
             categ: "opening other doors",
             title: "N O X",
-            sub: "video game concept video",
+            sub: "video game concept",
             role: "Motion Graphics",
             img: [
                 "assets/media/img/projects/nox0.png",
@@ -161,7 +161,7 @@ var chatContent = {
         '141205': {
             categ: "opening other doors",
             title: "141205",
-            sub: "blender animation",
+            sub: "3D animation",
             role: "Creative and Programmer",
             img: [
                 "assets/media/img/projects/blend0.png",

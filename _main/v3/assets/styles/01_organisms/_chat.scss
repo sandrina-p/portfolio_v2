@@ -394,6 +394,11 @@
     &-liProj {
         display: inline-block;
         margin-top: $safeArea/2;
+
+        .btnP {
+            // color: red;
+            font-size: $fontS;
+        }
     }
 
     &-sub {
@@ -401,7 +406,7 @@
         margin-right: $safeArea/2;
         border-bottom: 1px solid black;
         display: inline-block;
-        height: rem(18);
+        height: rem(17);
         font-size: $fontXS;
     }
 
@@ -423,6 +428,9 @@
                     margin-right: -$safeArea/2;
                     font-size: $fontS;
                 }
+            }
+            &-sub {
+                height: rem(18);
             }
         }
     }
