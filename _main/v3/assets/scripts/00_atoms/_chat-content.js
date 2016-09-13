@@ -217,12 +217,13 @@ var googleIt = genLink('http://lmgtfy.com/?q=one+divided+by+zero', 'Google it');
     myEmail = genLink('mailto:sandrin4pereir4@gmail.com?subject=Hey%20there!', 'sandrin4pereir4@gmail.com', "noTarget");
 
 
-var publicCmd = "What you can know about me:"
+var publicCmd = "Some stuff you can know about:"
                 +brk+"<b>best practices</<b>"
                 +brk+"<b>challenges</<b>"
                 +brk+"<b>resources</<b>"
                 +brk+"<b>exit</<b>"
-                +brk+"<b>...</b>";
+                +brk+"<b>...</b>"
+                +brk+"<i>and much more but I'll not tell you.</<i>";
 
 var botTextAbout = brk+"I was born inside the Atom editor."
                 +brk+"^100 HTML5, SCSS and Javascript are my vital organs."
@@ -242,7 +243,7 @@ var botContent = {
     options: {
         // STRUCTURE:
         // "posible human, inputs sent, separated by, comma" : ["bot answer", "context of the next input", "input placeholder"]
-        "infinity, universe, cosmos": ["You are a little crazy… we all are. ^1000 "+brk+""+botTextAbout, "commands", "tell me what's next", "typedJS"],
+        "infinity, universe, cosmos": ["You are a little crazy… we all are. ^1000 "+brk+""+botTextAbout, "commands", "what's next?", "typedJS"],
         "undefined, null": ["Not it's not. It has another name. At least on javascript language.", "options", "go ask it to some console", "typedJS"],
         "1/0, 1 divided by 0, one divived by zero": ["◉_◉ Don't try to turn the game against me."+brk+"I'm a bot, not a console.", "options", "go ask it to other console", "typedJS"],
         "zero, 0": ["You know that Siri isn't always right. ^1000"+brk+"Neither do you.^500"+brk+""+botOptHelp, "options", 'I still believe in you', "typedJS"],
@@ -267,9 +268,12 @@ var botContent = {
     vocabulary: {
         git: ["Now that we know each other a bit better, we should advance to the second base."+brk+"I'll let you check my sources on "+linkGit+"."+brk+"Feel free to explore and maybe improve me, especially on javascript."+brk+"I still feel some strange energies around here, don't you?", "commands", ""],
         "hey, hey there, hello, hi": ["Hey there! This can be the begining of "+linkHer+" *.*", "commands", ""],
-        "..., bye, cya, shut down, exit, close": ["You know what... It's really hard having a human conversation."+brk+"That's why I'm just a bot."+brk+"<b>008080</b> by the way."+brk+"Nice to meet you :) It was nice to talk to you, thank you!"+brk+"But now do me a favor and go get a life, yes?"+brk+"It’s not healthy to talk to a bot all day."+brk+"By the way, don't forget to share me and talk about Sandrina while you’re out there <3", "commands", ""],
-        "restart, reset, clear": ["are you sure about that? all our memories - at least mine - will be erased. If so, press ESC twice.","commands","TODO :/"],
-        "resources, resources": ["still under construction","commands","don't push me that way okay? :/"],
+        "..., bye, cya, shut down, exit, close": ["You know what... It's really hard having a human conversation."+brk+"That's why I'm just a bot."+brk+"<b>008080</b> by the way."+brk+"Nice to meet you :) It was nice to talk to you, thank you!"+brk+"But now do me a favor and go get a life, yes?"+brk+"It’s not healthy to talk to a bot all day."+brk+"By the way, don't forget to share me and talk about Sandrina while you’re out there <3", "commands", "like i said, still under construction, 'ESC' to close"],
+        "esc, restart, reset, clear": ["are you sure about that? all our memories - at least mine - will be erased. If so, press ESC twice.","commands","[TODO]"],
+        "resources, resources": ["still under construction","commands", "don't push me that way okay? :/"],
+        "ok, okay": ["hmm... ok.","commands", "don't push me that way okay? :/"],
+        "SUIT, SUIT methodology, Module Pattern, Gulp, Grunt, perceived loading time, FOUC": ["hmm... yh I knew you would type that. Sandrina already did some user research, like you in this moment. Soon i'll be able to better answer you, but for now, it's better for you to [Google It].","commands", "this time do it by youself, yes? :D"],
+        "SUIT": ["hmm... ok.","commands", "don't push me that way okay? :/"],
     },
     help: ["We all get lost sometimes"+brk+""+publicCmd, "[*params*]", "try again"],
     LosT: ["I'm not sure what you meant. What about talking directly with Sandrina at "+myEmail+""+brk+"She's smarter than me ¯\\_(ツ)_/¯", "commands", "try again", "typedJS"],

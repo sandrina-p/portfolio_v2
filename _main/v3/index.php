@@ -25,8 +25,8 @@
 </head>
 
 <?php
-    $loading = '';
-    //$loading = 'jsLoading';
+    //$loading = '';
+    $loading = 'jsLoading';
 ?>
 <body>
     <h1 class="sr-only">I SAW THIS TOO! ._. <BR><BR>Sandrina Pereira's bot</h1>
@@ -52,7 +52,7 @@
             <button type="button" name="practice" class="btnNav js-chatOpt">practice</button>
         </div>
         <div class="navSections-about">
-            <button type="button" name="about" class="btnNav js-botTrigger">
+            <button type="button" name="about" class="btnNav js-botTrigger jsLoading">
                 <span>0</span><span>0</span><span>8</span><span>0</span><span>8</span><span>0</span>
             </button>
         </div>
