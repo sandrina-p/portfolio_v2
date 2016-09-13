@@ -654,8 +654,6 @@ var chatApp = function() {
 
 
 
-
-
 var botSection = function() {
     var $trigger = $('.js-botTrigger'),
         visibleClass = 'js-aboutVisible',
@@ -689,24 +687,23 @@ var botSection = function() {
 
     //showing the 008080 characters
     $(document).on('click', '.js-chatOpt', function(){
-        var section = $(this).closest('.chatSection').attr('id'),
+        var section = $(this).closest('.chatSection').attr('id') || $(this).attr('name'),
             $childrens = $trigger.children().not('.'+visibleClass),
             i = Math.floor( (Math.random() * $childrens.length));
 
-        if (section != undefined) {
-            if(!clickOn[section]) {
-                clickOn[section] = 0;
-            }
+        if(!clickOn[section]) {
+            clickOn[section] = 0;
+        }
 
-            if(clickOn[section] < 2) {
-                $childrens.eq(i).addClass(visibleClass);
-                clickOn[section] ++;
-            }
+        if(clickOn[section] < 2) {
+            $childrens.eq(i).addClass(visibleClass);
+            clickOn[section] ++;
+        }
 
-            $childrens = $trigger.children().not('.'+visibleClass);
-            if ($childrens.length == 0) {
-                $trigger.removeClass(triggerActive);
-            }
+        $childrens = $trigger.children().not('.'+visibleClass);
+        if ($childrens.length == 0) {
+            $trigger.children().removeClass(visibleClass);
+            $trigger.removeClass(triggerActive);
         }
     });
 
@@ -866,15 +863,11 @@ var botSection = function() {
         $('.typed-cursor').remove();
         $botText.append(showInput(answer[1], answer[2]));
         $botText.find('input').last().focus();
-        // autoScrollBottom = setInterval(function () {
-        //  $('.js-loadingRetro').text( dotdotdot(cursor++, 3, '.') );
-        // }, 100);
 
-        // $botText.animate({
-        //     scrollTop: $('.bot-text').prop('scrollHeight')
-        // }, 0);
-
-        clearInterval(intervalBotScroll);
+        setTimeout(function () {
+            console.log('stop autoscroll');
+            clearInterval(intervalBotScroll);
+        }, 250);
 
         //check if it has to show keepStion message
         if (objContext != undefined //if context exists
@@ -912,7 +905,7 @@ var botSection = function() {
 
 $(document).ready(function(){
 
-    //heyThere.init();
+    heyThere.init();
 
     $(document).on('click', '.js-chatOpt', function(){
         chatApp.init($(this));

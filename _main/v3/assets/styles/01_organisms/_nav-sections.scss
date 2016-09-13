@@ -62,10 +62,11 @@
             color: $clrDark;
             animation: none;
         }
-    }
 
-    *.js-aboutVisible {
-        opacity: 0.5;
+        *.js-aboutVisible {
+            opacity: 0.5;
+            // animation: glitch 500ms steps(50) 1;
+        }
     }
 }
 
