@@ -3,7 +3,7 @@
     position: relative;
     width: 100%;
     background: $clrDark;
-    color: white;
+    color: $clrLight;
     padding: 50vh 0 $safeArea*6;
     width: 100%;
 
@@ -51,7 +51,7 @@
         font-weight: 300;
         margin-bottom: $safeArea;
         border-bottom: 2px solid $clrLight;
-        background: black;
+        background: $clrDark;
         color: $clrLight;
     }
 
@@ -59,7 +59,7 @@
         position: absolute;
         top: $safeArea;
         right: $safeArea;
-        color: white;
+        color: $clrLight;
         width: $safeArea*3;
         height: $safeArea*2;
         text-align: right;
@@ -139,7 +139,7 @@
         bottom: 0;
         left: 0;
         width: 100%;
-        background: black;
+        background: $clrDark;
         text-align: center;
         padding: $safeArea;
         font-size: $fontS;
@@ -279,7 +279,7 @@ $myselfs: 7;
   background: $clrDark;
   display: inline-block;
 
-  span {color: black;}
+  span {color: $clrDark;}
 
   &:before,
   &:after {

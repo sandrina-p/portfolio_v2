@@ -5,32 +5,18 @@
 
 $clrPrimary: #008080;
 $clrPrimarySoft: #00e8e8;
-
-// $clrPrimaryLightest: lighten($clrPrimary, 53%);
-// $clrPrimaryLighter: lighten($clrPrimary, 45%);
-// $clrPrimaryLight: transparentize($clrPrimary, .3);
 $clrPrimaryDark: #004040; //darken($clrPrimary, 15%);
-// $clrPrimaryDarker: darken($clrPrimary, 25%);
-
-// $clrSecondary: #922A8C;
-// $clrSecondarySoft: #9D3F97;
-//
-// $clrSecondaryLight: lighten($clrSecondary, 15%);
-// $clrSecondaryLighter: lighten($clrSecondary, 30%);
-// $clrSecondaryDark: darken($clrSecondary, 15%);
-//
-// $grdPrimary: linear-gradient(to bottom, $clrPrimary -100%, $clrPrimaryDark);
-// $grdBoth: linear-gradient(to top, $clrPrimary -100%, $clrSecondary);
-// $grdBothSoft: linear-gradient(to top, $clrPrimarySoft -100%, $clrSecondarySoft);
 
 
+$clrBlack: #000000;
 $clrDark: #121212;
 $clrGrayDarker: lighten($clrDark, 10%);
 $clrGrayDark: lighten($clrDark, 25%);
 $clrGray: lighten($clrDark, 50%);
 $clrGrayLight: lighten($clrDark, 70%);
 $clrGrayLighter: lighten($clrDark, 85%);
-$clrLight: lighten($clrDark, 100%);
+$clrLight: lighten($clrDark, 88%);
+$clrWhite: #ffffff;
 
 $clr-error: #ED332A;
 

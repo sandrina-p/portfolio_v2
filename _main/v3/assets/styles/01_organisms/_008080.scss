@@ -1,36 +1,46 @@
-$sentClr: $clrPrimarySoft;
-$placeholderClr: $clrPrimaryDark;
+$sentClr: $clrLight;
+$placeholderClr: $clrGrayLight;
 $textPadding: 20vw;
 
 .bot {
     @include centerxy;
     position: fixed;
     width: 100vw;
-    height: 100vh;
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba($clrLight, 0.9);
     z-index: 99;
-    max-height: 0px;
-    overflow: hidden;
+    // overflow: hidden;
     transition: max-height $speed ease-out;
+    max-height: 0;
 
     &.jsLoading {
         max-height: 100vh;
     }
+    &-trigger {
+        padding-left: $safeArea;
+    }
 
     &-inner {
-        @include centerxy;
+        position: relative;
+        //@include centerxy;
         width: 100%;
         width: 100vw;
-        height: $safeArea*35;
+        height: 0;
         max-height: 90vh;
         overflow: auto;
-        background: $clrPrimary;
-        border: 1px solid $clrPrimaryDark;
-        color: $clrGrayLighter;
+        background: $clrDark;
+        animation: bgBreath 3s ease-in-out infinite;
+        color: $clrPrimarySoft;
+        transition: height $speed ease-out;
         @extend %flexbox;
         @include flexboxProp {
             flex-direction: column;
             justify-content: flex-end;
+        }
+
+
+
+        &.jsLoading {
+            height: $safeArea*35;
         }
     }
 
@@ -38,15 +48,13 @@ $textPadding: 20vw;
         position: relative;
         width: 100%;
         margin: 0 auto;
+        height: auto;
         max-height: 100%;
         overflow: auto;
         padding: $safeArea $textPadding $safeArea*2;
         font-family: $font-mono;
         font-size: $fontS;
-        //cursor: $clrDark;
     }
-
-
 
     &-answer {
         &:before {
@@ -71,11 +79,17 @@ $textPadding: 20vw;
         font-family: $font-mono;
         width: 100%;
 
-        &::-webkit-input-placeholder,
-        &:-moz-placeholder,
-        &::-moz-placeholder,
+        &::-webkit-input-placeholder {
+             color: $placeholderClr;
+        }
+        &:-moz-placeholder {
+            color: $placeholderClr;
+        }
+        &::-moz-placeholder {
+            color: $placeholderClr;
+        }
         &:-ms-input-placeholder { /* Internet Explorer 10-11 */
-           color: $clrPrimaryDark;
+           color: $placeholderClr;
         }
 
         &:focus {
@@ -91,11 +105,17 @@ $textPadding: 20vw;
     left: calc(#{$textPadding} - #{$safeArea/2});
     bottom: $safeArea*1;
     &:before {
-        color: white;
+        color: $clrLight;
         content: "0 * . _ ;";
         display: block;
         animation: botThinking 700ms infinite;
     }
+}
+
+@keyframes bgBreath {
+    0% {background: $clrBlack;}
+    50% {background: $clrDark;}
+    100% {background: $clrBlack;}
 }
 
 // * : ~ . _
@@ -123,3 +143,52 @@ $textPadding: 20vw;
    80% {content: "8";}
   100% {content: "0";}
 }
+
+
+.js-botTrigger {
+    pointer-events: all;
+    * {
+        opacity: 1;
+        color: $clrPrimary;
+        animation: glitch 1s steps(100) 1;
+        font-weight: $fBold;
+    }
+
+    &.jsLoading {
+        pointer-events: none;
+        * {
+            opacity: 0;
+            color: $clrDark;
+            animation: none;
+        }
+
+        *.js-aboutVisible {
+            opacity: 0.5;
+            // animation: glitch 500ms steps(50) 1;
+        }
+    }
+}
+
+//typed.js
+.typed-cursor{
+    display: none;
+    // opacity: 1;
+    // -webkit-animation: blink 0.7s infinite;
+    // -moz-animation: blink 0.7s infinite;
+    // animation: blink 0.7s infinite;
+}
+// @keyframes blink{
+//     0% { opacity:1; }
+//     50% { opacity:0; }
+//     100% { opacity:1; }
+// }
+// @-webkit-keyframes blink{
+//     0% { opacity:1; }
+//     50% { opacity:0; }
+//     100% { opacity:1; }
+// }
+// @-moz-keyframes blink{
+//     0% { opacity:1; }
+//     50% { opacity:0; }
+//     100% { opacity:1; }
+// }

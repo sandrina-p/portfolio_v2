@@ -90,12 +90,12 @@
             transition: opacity $speed;
 
             &:hover {
-                color: black;
+                color: $clrDark;
             }
 
             strong {
                 font-weight: inherit;
-                color: black;
+                color: $clrDark;
             }
 
             &.jsLoading {
@@ -131,7 +131,7 @@
 
         &--jsLast {
             .chatPart-text {
-                color: black;
+                color: $clrDark;
             }
         }
 
@@ -211,8 +211,8 @@
             font-size: $fontLx;
             padding-top: $safeArea;
 
-            background: white;
-            color: black;
+            background: $clrLight;
+            color: $clrDark;
             padding: 10px 15px;
             margin: -12px 44px 0 -36px;
 
@@ -294,8 +294,8 @@
             left: -24px;
             padding: 0 $safeArea/3;
 
-            background: white;
-            color: black;
+            background: $clrLight;
+            color: $clrDark;
             margin-top: -12px;
 
             display: none;
@@ -404,7 +404,7 @@
     &-sub {
         padding-left: $safeArea/2;
         margin-right: $safeArea/2;
-        border-bottom: 1px solid black;
+        border-bottom: 1px solid $clrDark;
         display: inline-block;
         height: rem(17);
         font-size: $fontXS;

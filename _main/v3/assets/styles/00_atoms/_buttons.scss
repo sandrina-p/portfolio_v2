@@ -44,7 +44,7 @@ button {
 
     &:hover {
         opacity: 1;
-        color: white;
+        color: $clrLight;
         animation: glitch 2s steps(100) infinite;
     }
 
@@ -89,18 +89,18 @@ button {
 
 .btnBot {
     @extend %btnX;
-    background: black;
+    background: $clrDark;
     color: $clrPrimarySoft;
 }
 
 @keyframes animateBorderThree {
     25% {
-        outline-color: white;
-        box-shadow: 0 0 0 1px black;
+        outline-color: $clrLight;
+        box-shadow: 0 0 0 1px $clrDark;
     }
     75% {
-        outline: 1px dashed black;
-        box-shadow: 0 0 0 1px white;
+        outline: 1px dashed $clrDark;
+        box-shadow: 0 0 0 1px $clrLight;
 
     }
 }
