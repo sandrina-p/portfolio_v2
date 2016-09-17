@@ -45,31 +45,6 @@
 }
 
 
-
-.js-botTrigger {
-    pointer-events: all;
-    * {
-        opacity: 1;
-        color: $clrPrimary;
-        animation: glitch 2s steps(100) 2;
-        font-weight: $fBold;
-    }
-
-    &.jsLoading {
-        pointer-events: none;
-        * {
-            opacity: 0;
-            color: $clrDark;
-            animation: none;
-        }
-
-        *.js-aboutVisible {
-            opacity: 0.5;
-            // animation: glitch 500ms steps(50) 1;
-        }
-    }
-}
-
 @include media(phablet) {
     .navSections {
 
@@ -78,29 +53,3 @@
         }
     }
 }
-
-
-
-//typed.js
-.typed-cursor{
-    display: none;
-    // opacity: 1;
-    // -webkit-animation: blink 0.7s infinite;
-    // -moz-animation: blink 0.7s infinite;
-    // animation: blink 0.7s infinite;
-}
-// @keyframes blink{
-//     0% { opacity:1; }
-//     50% { opacity:0; }
-//     100% { opacity:1; }
-// }
-// @-webkit-keyframes blink{
-//     0% { opacity:1; }
-//     50% { opacity:0; }
-//     100% { opacity:1; }
-// }
-// @-moz-keyframes blink{
-//     0% { opacity:1; }
-//     50% { opacity:0; }
-//     100% { opacity:1; }
-// }
