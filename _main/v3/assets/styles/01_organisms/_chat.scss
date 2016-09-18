@@ -8,16 +8,44 @@
 
     &-nav {
         position: relative;
+
+        .chatSection {
+            &:not(.jsOnNav),
+            &:not(.jsOnNav):nth-of-type(1):nth-last-of-type(2), // [sec] sec
+            &:not(.jsOnNav):nth-of-type(1):nth-last-of-type(3), // [sec] sec sec
+            &:not(.jsOnNav):nth-of-type(2):nth-last-of-type(2) { // sec [sec] sec
+                padding-bottom: $safeArea*10;
+            }
+        }
     }
 
     &Section {
         padding: $safeArea*2 0;
-        transition: padding 500ms, transform 500ms;
+        transition: all 500ms;
 
+        //show button when page is ready
+        &.jsLoading {
+            .chatPart:first-of-type {
+                .chatPart {
+                    &-human {
+                        padding-top: $safeArea*2;
+                    }
+                }
+            }
+        }
+
+        //remove properties after jsLoading to get ready to jsOnNav.
+        &.jsLoading2 {
+            height: 30px;
+            overflow: hidden;
+        }
+
+        //when user didn't clicked it yet
         &.jsOnNav {
             position: absolute;
             bottom: 0; left: 0;
             padding: 0;
+            z-index: 3;
 
             .chatPart:first-of-type {
                 .chatPart {
@@ -33,19 +61,14 @@
             }
         }
 
-        &.jsLoading2 {
-            height: 30px;
-            overflow: hidden;
+        &:not(.jsOnNav):last-of-type {
+            padding-bottom: $safeArea*10;
         }
 
-        &.jsLoading {
-            .chatPart:first-of-type {
-                .chatPart {
-                    &-human {
-                        padding-top: $safeArea*2;
-                    }
-                }
-            }
+        &:not(.jsOnNav):nth-of-type(1):nth-last-of-type(2), // [sec] sec
+        &:not(.jsOnNav):nth-of-type(1):nth-last-of-type(3), // [sec] sec sec
+        &:not(.jsOnNav):nth-of-type(2):nth-last-of-type(2) { // sec [sec] sec
+            padding-bottom: $safeArea*2;
         }
     }
 
@@ -89,7 +112,7 @@
         &-human {
             width: 100%;
             padding: $safeArea;
-            border-right: 1px solid $clrDark;
+            // border-right: 1px solid $clrDark; //TODO-BORDER
             overflow: hidden;
             text-align: right;
             display: none;
@@ -119,8 +142,8 @@
         &-bot {
             width: 100%;
             padding: $safeArea/2;
-            border-left: 1px solid $clrDark;
-            border-right: 1px solid $clrDark;
+            // border-left: 1px solid $clrDark; //TODO-BORDER
+            // border-right: 1px solid $clrDark; //TODO-BORDER
             overflow: hidden;
             display: none;
         }
@@ -131,6 +154,7 @@
             font-weight: $fReg;
             font-size: $fontL;
             opacity: 1;
+            padding-top: $safeArea/2;
             transition: opacity $speed;
 
             &:hover {
@@ -167,10 +191,6 @@
             &:last-child {
                 padding-right: 0;
             }
-        }
-        //BTNB shouln't be here FIXME
-        .btnB {
-            margin-left: 0;
         }
 
         &--jsLast {
@@ -504,10 +524,6 @@ $glidderTime: 10;
         animation-delay: -$i*($glidderTime/$glidderLength)*1000ms;
     }
 }
-
-// .myself1 {
-//     opacity: 1;
-// }
 
 @keyframes glidder {
     0% {z-index: 2;}

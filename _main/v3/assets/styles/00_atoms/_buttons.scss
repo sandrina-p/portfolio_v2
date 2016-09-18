@@ -5,6 +5,10 @@ a, button {
         animation-name: flash;
         animation-duration: 250ms;
     }
+
+    &:disabled {
+        cursor: auto;
+    }
 }
 
 a, button {
