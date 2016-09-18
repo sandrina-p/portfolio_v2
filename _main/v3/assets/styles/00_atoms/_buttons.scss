@@ -37,29 +37,6 @@ button {
 }
 
 
-.btnNav {
-    font-weight: 500;
-    padding: $safeArea/5 $safeArea/2;
-    color: $clrPrimary;
-
-    &:hover {
-        opacity: 1;
-        color: $clrLight;
-        animation: glitch 2s steps(100) infinite;
-    }
-
-    &.jsActive {
-        background: $clrDark;
-        color: $clrLight;
-    }
-}
-
-@include media(mobile) {
-    .btnNav {
-        padding: $safeArea/5 $safeArea;
-    }
-}
-
 %btnX {
     font-family: $font-mono;
     padding: 0 $safeArea/5;

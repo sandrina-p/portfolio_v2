@@ -275,6 +275,7 @@ var botContent = {
         "ok, okay": ["hmm... ok.","commands", "don't push me that way okay? :/"],
         "SUIT, SUIT methodology, Module Pattern, Gulp, Grunt, perceived loading time, FOUC": ["hmm... yh I knew you would type that. Sandrina already did some user research, like you in this moment. Soon i'll be able to better answer you, but for now, it's better for you to [Google It].","commands", "this time do it by youself, yes? :D"],
         "SUIT": ["hmm... ok.","commands", "don't push me that way okay? :/"],
+
     },
     help: ["We all get lost sometimes"+brk+""+publicCmd, "[*params*]", "try again"],
     LosT: ["I'm not sure what you meant. What about talking directly with Sandrina at "+myEmail+""+brk+"She's smarter than me ¯\\_(ツ)_/¯", "commands", "try again", "typedJS"],

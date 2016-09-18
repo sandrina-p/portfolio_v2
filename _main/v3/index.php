@@ -37,22 +37,55 @@
         </div>
     </div>
 
-    <nav class="navSections <?php echo $loading ?>">
-        <h2 class="sr-only">chat navigation</h2>
-        <div class="navSections-btn <?php echo $loading ?>">
-            <button type="button" name="background" class="btnNav js-chatOpt">background</button>
-        </div>
-        <div class="navSections-btn <?php echo $loading ?>">
-            <button type="button" name="theory" class="btnNav js-chatOpt">theory</button>
-        </div>
-        <div class="navSections-btn <?php echo $loading ?>">
-            <button type="button" name="practice" class="btnNav js-chatOpt">practice</button>
-        </div>
-    </nav>
+    <div class="chat" id="chat">
+        <div class="chat-nav" id="chat-nav">
+            <div class="chatSection jsOnNav jsLoading jsLoading2" id="background">
+                <div class="chatPart" id="background-intro">
+                    <div class="chatPart-human">
+                        <button type="button" name="intro" class="chatPart-title">
+                            background
+                        </button>
+                    </div>
+                </div>
+            </div>
 
+            <div class="chatSection jsOnNav jsLoading jsLoading2" id="theory">
+                <div class="chatPart" id="theory-intro">
+                    <div class="chatPart-human">
+                        <button type="button" name="intro" class="chatPart-title">
+                            theory
+                        </button>
+                    </div>
+                </div>
+            </div>
 
+            <div class="chatSection jsOnNav jsLoading jsLoading2" id="practice">
+                <div class="chatPart" id="practice-intro">
+                    <div class="chatPart-human">
+                        <button type="button" name="intro" class="chatPart-title">
+                            practice
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-    <div class="chat" id="chat"></div>
+        <?php
+        /*
+        <!-- <nav class="navSections <?php echo $loading ?>">
+            <h2 class="sr-only">chat navigation</h2>
+            <div class="navSections-btn <?php echo $loading ?>">
+                <button type="button" name="background" class="btnNav js-chatOpt">background</button>
+            </div>
+            <div class="navSections-btn <?php echo $loading ?>">
+                <button type="button" name="theory" class="btnNav js-chatOpt">theory</button>
+            </div>
+            <div class="navSections-btn <?php echo $loading ?>">
+                <button type="button" name="practice" class="btnNav js-chatOpt">practice</button>
+            </div>
+        </nav> -->
+        */ ?>
+    </div>
 
     <div class="void">
         [upside down]
