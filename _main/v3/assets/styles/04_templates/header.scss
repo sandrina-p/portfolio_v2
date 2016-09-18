@@ -1,0 +1,13 @@
+@import "../00_atoms/scss";
+@import "../00_atoms/reset";
+@import "../00_atoms/helpers";
+
+@import "../01_organisms/heythere";
+
+.navSections,
+.chat,
+.void,
+.bot,
+.under {
+    display: none;
+}

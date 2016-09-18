@@ -55,18 +55,31 @@ table {
     margin: 0;
 }
 
-body {
-    box-sizing: border-box;
-
-    * {
-        box-sizing: inherit;
-    }
-}
-
-main {
-    position: relative;
-    width: 100%;
-}
 
 b, strong {font-weight: 600;}
 i {font-style: italic;}
+
+
+html {
+    background: $clrLight;
+    font-size: $fontM;
+    line-height: $lineHeightM;
+    font-family: $font-sans;
+    font-weight: $fMed;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+	box-sizing: border-box;
+
+    @include media(laptop) {
+        font-size: $fontL;
+    }
+
+    @include media(desktop) {
+        font-size: $fontLx;
+    }
+
+	* {
+		box-sizing: inherit;
+		line-height: inherit;
+	}
+}

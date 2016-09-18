@@ -1,15 +1,16 @@
 .navSections {
-    margin: auto;
     position: relative;
+    margin: auto;
     z-index: 11;
     width: 100%;
     text-align: center;
     padding: 0;
-    border-bottom: 1px dashed $clrGrayLight;
-    background: rgba($clrLight, 1);
+    // border-bottom: 1px dashed $clrGrayLight;
+    // background: rgba($clrLight, 1);
     height: $safeArea*2;
     transition: width $speed*4;
     overflow: hidden;
+    // display: block;
 
     &.jsLoading {
         border: 0;

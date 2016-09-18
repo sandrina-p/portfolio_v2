@@ -8,20 +8,24 @@ $textPadding: 20vw;
     width: 100vw;
     background: rgba($clrLight, 0.9);
     z-index: 99;
-    // overflow: hidden;
-    transition: max-height $speed ease-out;
-    max-height: 0;
+    transition: height $speed ease-out;
+    height: 0;
+    @extend %flexbox;
+    @include flexboxProp {
+        flex-direction: column;
+        align-items: flex-start;
+    }
 
     &.jsLoading {
-        max-height: 100vh;
+        height: 100vh;
     }
+
     &-trigger {
         padding-left: $safeArea;
     }
 
     &-inner {
         position: relative;
-        //@include centerxy;
         width: 100%;
         width: 100vw;
         height: 0;

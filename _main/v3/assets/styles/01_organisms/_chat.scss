@@ -3,6 +3,7 @@
     width: 95%;
     min-height: 200vh;
     margin: auto;
+    display: block;
 
     &Section {
         padding: $safeArea*2 0;
