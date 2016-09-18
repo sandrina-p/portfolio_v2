@@ -34,7 +34,7 @@ var chatApp = function() {
         title = option.text();
         id = stringToSlug(title);
 
-        fixChatNav(); //calling it here prevent to fix the nav position without first click on it;
+        //fixChatNav(); //calling it here prevent to fix the nav position without first click on it;
 
         // doesn't have section and its title is one of the mainSections.
         if (section && mainSections.indexOf(title) < 0) {
@@ -76,7 +76,7 @@ var chatApp = function() {
             ? bodyScrollTop($("#"+id).offset().top - wHeight/4*1)
             : buildSection(section);
 
-        fixChatNav();
+        // fixChatNav();
         navActiveBtn(section);
     }
 
@@ -113,24 +113,24 @@ var chatApp = function() {
         }
     }
 
-    //navbar controller position
-    function fixChatNav() {
-        //prevent navSectionTop value be higher than the original trigger.
-        if(!$navSections.hasClass('jsFixed') ) {
-            navSectionTop = $(".navSections").offset().top;
-        }
-
-        $(document).scroll(function(){
-            if($(this).scrollTop() > navSectionTop) {
-                $navSections.addClass('jsFixed');
-                $heyThere.addClass('jsFixed');
-            } else {
-                $navSections.removeClass('jsFixed');
-                $heyThere.removeClass('jsFixed');
-                replaceLastPart();
-            }
-        });
-    }
+    // //navbar controller position
+    // function fixChatNav() {
+    //     //prevent navSectionTop value be higher than the original trigger.
+    //     if(!$navSections.hasClass('jsFixed') ) {
+    //         navSectionTop = $(".navSections").offset().top;
+    //     }
+    //
+    //     $(document).scroll(function(){
+    //         if($(this).scrollTop() > navSectionTop) {
+    //             $navSections.addClass('jsFixed');
+    //             $heyThere.addClass('jsFixed');
+    //         } else {
+    //             $navSections.removeClass('jsFixed');
+    //             $heyThere.removeClass('jsFixed');
+    //             replaceLastPart();
+    //         }
+    //     });
+    // }
 
     function bodyScrollTop(value) {
         $('body').animate({
@@ -643,6 +643,77 @@ var chatApp = function() {
         $more.toggleClass('jsLoading');
         $(this).toggleText("_more info", "_less info");
     });
+
+
+
+    // --------- NAV INIT ------------ //
+
+    var $nav = $('#chat-nav');
+
+    function navTranslate($thisId) {
+        var navWidth = 230,
+            $thisId = $thisId || null;
+
+        $nav.children().each(function() {
+            if($thisId && $(this).attr('id') == $thisId) {
+                return;
+            }
+            $(this).css({'transform': 'translate('+navWidth+'px, 0)'});
+            navWidth += $(this).width();
+        });
+    }
+
+    function navLoading() {
+        var delayInit = 250;
+        var delay = delayInit;
+
+        $nav.children().each(function() {
+            var $children = $(this);
+
+            setTimeout(function () {
+                $children.removeClass('jsLoading');
+
+                setTimeout(function () {
+                    $children.removeClass('jsLoading2');
+                }, delayInit);
+
+            }, delay);
+            delay += delayInit;
+        });
+    }
+
+    $(document).ready(function(){
+        navTranslate();
+        var $heyThereIntro = $('.heyThere-intro');
+
+        // navLoading();
+
+        (function showNav() {
+            if($heyThereIntro.css('opacity') == "1") {
+                navLoading();
+            } else {
+                setTimeout(function () {
+                    showNav()
+                }, 1000);
+            }
+        })();
+    });
+
+    $(document).on('click', '.chatSection.jsOnNav', function(){
+        $thisId = $(this).attr('id');
+
+        navTranslate($thisId);
+
+        $(this).css({'transform': 'translate(0, 0)'});
+        $(this).removeClass('jsOnNav');
+        $(this).one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', function(e) {
+            $(this).insertBefore('#chat-nav');
+        });
+
+        $nav.children().length == 0
+            ? $nav.remove()
+            : "";
+    })
 
     // public function
     return {

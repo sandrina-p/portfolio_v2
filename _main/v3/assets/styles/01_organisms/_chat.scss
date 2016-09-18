@@ -1,12 +1,52 @@
 .chat {
-    padding: 30vh 0 150px;
+    // padding: 30vh 0 150px;
     width: 95%;
-    min-height: 200vh;
+    // min-height: 200vh;
     margin: auto;
     display: block;
+    position: relative;
+
+    &-nav {
+        position: relative;
+    }
 
     &Section {
         padding: $safeArea*2 0;
+        transition: padding 500ms, transform 500ms;
+
+        &.jsOnNav {
+            position: absolute;
+            bottom: 0; left: 0;
+            padding: 0;
+
+            .chatPart:first-of-type {
+                .chatPart {
+                    &-title {
+                        font-size: $fontL;
+                    }
+
+                    &-human {
+                        width: auto;
+                        transition: width 0s 2s, padding 250ms;
+                    }
+                }
+            }
+        }
+
+        &.jsLoading2 {
+            height: 30px;
+            overflow: hidden;
+        }
+
+        &.jsLoading {
+            .chatPart:first-of-type {
+                .chatPart {
+                    &-human {
+                        padding-top: $safeArea*2;
+                    }
+                }
+            }
+        }
     }
 
     &Part {
@@ -14,7 +54,7 @@
         width: 100%;
         @extend %cf;
 
-        //define paddings first and last item
+        //each section
         &:first-of-type {
             .chatPart {
                 &-human,
@@ -24,11 +64,14 @@
 
                 &-title {
                     font-size: $fontXL;
-                    // background: $clrDark;
-                    // padding: $safeArea/5 $safeArea;
-                    // color: $clrLight;
                     font-weight: $fBold;
-                    // margin-right: -$safeArea;
+                    transition: font 500ms 250ms;
+                }
+
+                &-human {
+                    display: block;
+                    border-right: none;
+                    transition: padding 250ms;
                 }
             }
         }
