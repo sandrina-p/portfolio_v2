@@ -35,23 +35,20 @@ var chatApp = function() {
         id = stringToSlug(title);
 
         //fixChatNav(); //calling it here prevent to fix the nav position without first click on it;
+        option.attr('disabled', 'disabled');
 
         // doesn't have section and its title is one of the mainSections.
-        if (section && mainSections.indexOf(title) < 0) {
+        if (mainSections.indexOf(title) < 0) {
             animateClickedOption(option);
 
             if (section == "practice" && title != "practice") {
                 buildProject(section, title);
-                navActiveBtn(section);
+                // navActiveBtn(section);
             } else {
                 buildSentence(section, title);
             }
         } else {
-            if (section && mainSections.indexOf(title) > -1) {
-                animateClickedOption(option);
-            }
-            section = title;
-            navActiveBtn(section);
+            // navActiveBtn(section);
             buildSection(title);
         }
     }
@@ -77,15 +74,15 @@ var chatApp = function() {
             : buildSection(section);
 
         // fixChatNav();
-        navActiveBtn(section);
+        // navActiveBtn(section);
     }
 
 
     // ------ GENERAL STUFF ----- //
-    function navActiveBtn(section) {
-        $('.js-chatOpt').removeClass('jsActive');
-        $("[name="+section+"]").addClass('jsActive');
-    }
+    // function navActiveBtn(section) {
+    //     $('.js-chatOpt').removeClass('jsActive');
+    //     $("[name="+section+"]").addClass('jsActive');
+    // }
 
     //when the user clicks on a chat button, it runs away.
     function animateClickedOption(option) {
@@ -512,46 +509,100 @@ var chatApp = function() {
     // ------ TYPES OF PART BUILD ------ //
     // ------ section ------ //
     function buildSection(section) {
-        var $section = $('#'+section);
+        var $section = $('#'+section),
+            $sectionIntro = $("#"+section+"-intro");
+            ElChatPart;
 
-        if($section.length != 1) {
-            //get intro text and remove it from chatContent.
-            text = chatContent[section]["intro"];
-            delete chatContent[section]["intro"];
+        text = chatContent[section]["intro"];
+        delete chatContent[section]["intro"];
 
-            if (section == 'practice' && title == initProj) {
-                title = 'practice';
-            }
+        var ElChatPart =  $("<div class='chatPart-bot'>"
+                                +"<p class='chatPart-text jsLoading'>"+text+"</p>"
+                                // options FIXME
+                        +"</div>");
+        var ElChatOptions = getOptions(title);
+        $sectionIntro.append(ElChatPart);
+        $sectionIntro.find(botClass).append(ElChatOptions);
 
-            //build section, part and options
-            var ElChatSection = getElSection(section),
-                ElChatPart = getElPart(section+"-intro", title, text),
-                ElChatOptions = getOptions(title);
+        // showingCommon($sectionIntro, showingPractice);
 
+        showingCommonNew($sectionIntro, showingSentence);
+        function showingCommonNew($part, diffPartCallBack) {
+            var loadingTimeXtext = $part.find(chatPClass+"bot").text().length;
 
-            //FIXME find a way to not write "practice" here...
-            ElChatSection.append(ElChatPart);
-            if (section != "practice") {
-                ElChatSection.find(botClass).append(ElChatOptions);
-            }
-            $chatId.append(ElChatSection);
-
-            $newPart = $('#'+section+'-intro');
-            if (section == "practice") {
-                isIntroPractice = true;
-                showingCommon($newPart, showingPractice);
+            // if is 1st part (begin of a section) guide on parent
+            // otherwise guide on previous part (currentPart where the user clicked);
+            if (noScroll) {
+                // keep going no scroll
+            } else if ($part.is(':first-child') ) {
+                scrollSafe($part.parent());
             } else {
-                showingCommon($newPart, showingSentence);
+                scrollSafe($part.prev());
             }
 
-        } else {
-            //scroll to fit perfectly
-            if(initProj) {
-                buildProject(section, initProj);
-            } else {
-                bodyScrollTop($section.offset().top - wHeight/4*1)
-            }
+            // // 1.show line title
+            // $part.find(chatPClass+"human").slideDown();
+
+            // 2.show title and loading dots
+            setTimeout(function () {
+                $part.find(chatPClass+"title").removeClass('jsLoading');
+                loadingDots($part.find(chatPClass+"human"));
+                // 3. hide loading dots and show bigger line
+                setTimeout(function () {
+                    $('.js-loadingRetro').slideUp();
+                    clearInterval(intervalLoadingDots);
+                    $part.find(chatPClass+"bot").slideDown();
+                    // 4. show text
+                    setTimeout(function () {
+                        $('.js-loadingRetro').remove();
+
+                        diffPartCallBack($part, chatPClass); //a part or a project
+
+                    }, loadingTimeXtext);
+                }, 1000);
+            }, 250);
         }
+
+
+
+        // if($section.length != 1) {
+        //     //get intro text and remove it from chatContent.
+        //     text = chatContent[section]["intro"];
+        //     delete chatContent[section]["intro"];
+        //
+        //     if (section == 'practice' && title == initProj) {
+        //         title = 'practice';
+        //     }
+        //
+        //     //build section, part and options
+        //     var ElChatSection = getElSection(section),
+        //         ElChatPart = getElPart(section+"-intro", title, text),
+        //         ElChatOptions = getOptions(title);
+        //
+        //
+        //     //FIXME find a way to not write "practice" here...
+        //     ElChatSection.append(ElChatPart);
+        //     if (section != "practice") {
+        //         ElChatSection.find(botClass).append(ElChatOptions);
+        //     }
+        //     $chatId.append(ElChatSection);
+        //
+        //     $newPart = $('#'+section+'-intro');
+        //     if (section == "practice") {
+        //         isIntroPractice = true;
+        //         showingCommon($newPart, showingPractice);
+        //     } else {
+        //         showingCommon($newPart, showingSentence);
+        //     }
+        //
+        // } else {
+        //     //scroll to fit perfectly
+        //     if(initProj) {
+        //         buildProject(section, initProj);
+        //     } else {
+        //         bodyScrollTop($section.offset().top - wHeight/4*1)
+        //     }
+        // }
     }
 
     // ------ talk ------ //
@@ -694,7 +745,7 @@ var chatApp = function() {
             } else {
                 setTimeout(function () {
                     showNav()
-                }, 1000);
+                }, 500);
             }
         })();
     });
@@ -707,12 +758,12 @@ var chatApp = function() {
         $(this).css({'transform': 'translate(0, 0)'});
         $(this).removeClass('jsOnNav');
         $(this).one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', function(e) {
-            $(this).insertBefore('#chat-nav');
-        });
+        $(this).insertBefore('#chat-nav');
 
-        $nav.children().length == 0
-            ? $nav.remove()
-            : "";
+            // $nav.children().length == 0
+            //     ? $nav.remove()
+            //     : "";
+        });
     })
 
     // public function

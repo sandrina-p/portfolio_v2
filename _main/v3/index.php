@@ -39,35 +39,29 @@
 
     <div class="chat" id="chat">
         <div class="chat-nav" id="chat-nav">
-            <div class="chatSection jsOnNav jsLoading jsLoading2" id="background">
+            <article class="chatSection jsOnNav jsLoading jsLoading2" id="background">
                 <div class="chatPart" id="background-intro">
                     <div class="chatPart-human">
-                        <button type="button" name="intro" class="chatPart-title">
-                            background
-                        </button>
+                        <button type="button" name="background" class="chatPart-title js-chatOpt">background</button>
                     </div>
                 </div>
-            </div>
+            </article>
 
-            <div class="chatSection jsOnNav jsLoading jsLoading2" id="theory">
+            <article class="chatSection jsOnNav jsLoading jsLoading2" id="theory">
                 <div class="chatPart" id="theory-intro">
                     <div class="chatPart-human">
-                        <button type="button" name="intro" class="chatPart-title">
-                            theory
-                        </button>
+                        <button type="button" name="theory" class="chatPart-title js-chatOpt">theory</button>
                     </div>
                 </div>
-            </div>
+            </article>
 
-            <div class="chatSection jsOnNav jsLoading jsLoading2" id="practice">
+            <article class="chatSection jsOnNav jsLoading jsLoading2" id="practice">
                 <div class="chatPart" id="practice-intro">
                     <div class="chatPart-human">
-                        <button type="button" name="intro" class="chatPart-title">
-                            practice
-                        </button>
+                        <button type="button" name="practice" class="chatPart-title js-chatOpt">practice</button>
                     </div>
                 </div>
-            </div>
+            </article>
         </div>
 
         <?php

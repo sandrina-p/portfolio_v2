@@ -180,12 +180,12 @@ var chatContent = {
     behaviour: {
        returnFocus: "It seem her project kept you interested in this conversation. Go on, don't be shy.",
        returnOnFly : "Hey there, where have you been?", //
-       emptybackground: "Do you know she loves to learn online and that she developed some awesome work?", // THEORY || PRACTICE
-       emptytheory: "Besides, her timeline is nice too, and so are her projects", // BACKGROUND || PRACTICE
-       emptypractice: "Go check how she did all of these awesome projects and what she's up to now!", // THEORY || BACKGROUND
-       missingbackground: "[suggesting to check background part]",
-       missingtheory: "[suggesting to check theory part]",
-       missingpractice: "[suggesting to check practice part]"
+       emptybackground: " TODO2 Do you know she loves to learn online and that she developed some awesome work?", // THEORY || PRACTICE
+       emptytheory: " TODO2 Besides, her timeline is nice too, and so are her projects", // BACKGROUND || PRACTICE
+       emptypractice: " TODO2 Go check how she did all of these awesome projects and what she's up to now!", // THEORY || BACKGROUND
+       missingbackground: "[suggesting to check background part] TODO",
+       missingtheory: "[suggesting to check theory part] TODO",
+       missingpractice: "[suggesting to check practice part] TODO"
    },
    // "008080": {
    //     intro: "holy holy, you've been digging like crazy. I don't have much more to tell you about her. But I can talk about me. And you.",

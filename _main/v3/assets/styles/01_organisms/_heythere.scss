@@ -17,7 +17,6 @@
         padding: 0 $safeArea*3;
         border-bottom: 1px solid black;
         color: $clrLight;
-        // width: ;
         animation: heyLine 1750ms ease-out;
 
         &:before {
@@ -33,7 +32,8 @@
     &-intro {
         font-size: $fontXL;
         width: 55%;
-        padding-left: $safeArea*2;
+        max-width: $safeArea*35;
+        padding-left: $safeArea*3;
         padding-bottom: $safeArea*5;
         overflow: hidden;
         margin-top: $safeArea*9;
