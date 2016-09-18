@@ -37,6 +37,32 @@ $speed: 250ms;
 
 
 
+$font-mono: 'Roboto Mono', monospace;
+$font-sans: 'Ubuntu', sans-serif;
+$font6XL: rem(84);
+$font5XL: rem(48);
+$fontXXXXL: rem(42);
+$fontXXXL: rem(38);
+$fontXXL: rem(32);
+$fontXL: rem(26);
+$fontLx: rem(21);
+$fontL: rem(18);
+$fontM: rem(16);
+$fontS: rem(14);
+$fontXS: rem(12);
+$fontXXS: rem(10);
+$fontXXXXS: rem(5);
+
+$lineHeightS: 1.2;
+$lineHeightM: 1.5;
+$lineHeightL: 1.7;
+
+$fThin: 100;
+$fReg: 300;
+$fMed: 400;
+$fBold: 700;
+
+
 /*------------------------------------*\
     @mixins / &placeholder / functions
 
@@ -314,15 +340,15 @@ $mediaHeight: rem(400);
 /*------------------------------------*\
     #OTHERS
 \*------------------------------------*/
-%BlockFullFixed { //modalBg or NavBarBg
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-}
-
-%DialogBg { //modal
-    background: $clrDark;
-    opacity: 0.6;
-}
+// %BlockFullFixed { //modalBg or NavBarBg
+//     position: fixed;
+//     top: 0;
+//     left: 0;
+//     width: 100%;
+//     height: 100%;
+// }
+//
+// %DialogBg { //modal
+//     background: $clrDark;
+//     opacity: 0.6;
+// }

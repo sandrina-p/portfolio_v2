@@ -1,59 +1,7 @@
 /*------------------------------------*\
 ### TYPOGRAPHY   ###
 \*------------------------------------*/
-
-// @import "_font-open-sans";
-
 // ------ FONT SIZE LIST
-// $font-sans: 'Ubuntu', sans-serif;
-$font-mono: 'Roboto Mono', monospace;
-$font-sans: 'Ubuntu', sans-serif;
-$font6XL: rem(64);
-$font5XL: rem(48);
-$fontXXXXL: rem(42);
-$fontXXXL: rem(38);
-$fontXXL: rem(32);
-$fontXL: rem(26);
-$fontLx: rem(21);
-$fontL: rem(18);
-$fontM: rem(16);
-$fontS: rem(14);
-$fontXS: rem(12);
-$fontXXS: rem(10);
-$fontXXXXS: rem(5);
-
-$lineHeightS: 1.2;
-$lineHeightM: 1.5;
-$lineHeightL: 1.7;
-
-$fThin: 100;
-$fReg: 300;
-$fMed: 400;
-$fBold: 700;
-
-html {
-    background: $clrLight;
-    font-size: $fontM;
-    line-height: $lineHeightM;
-    font-family: $font-sans;
-    font-weight: $fMed;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-
-    * {
-        line-height: inherit;
-    }
-
-    @include media(laptop) {
-        font-size: $fontL;
-    }
-
-    @include media(desktop) {
-        font-size: $fontLx;
-    }
-}
-
-
 p, .p {
     font-size: inherit;
 }
@@ -67,14 +15,4 @@ a {
         outline: 0;
         box-shadow: $boxShadow;
     }
-}
-
-
-//-------HTML5
-i, em {
-    font-style: italic;
-}
-
-strong, b {
-    font-weight: 600;
 }

@@ -245,8 +245,9 @@ var botContent = {
         // "posible human, inputs sent, separated by, comma" : ["bot answer", "context of the next input", "input placeholder"]
         "infinity, universe, cosmos": ["You are a little crazy… we all are. ^1000 "+brk+""+botTextAbout, "commands", "what's next?", "typedJS"],
         "undefined, null": ["Not it's not. It has another name. At least on javascript language.", "options", "go ask it to some console", "typedJS"],
-        "1/0, 1 divided by 0, one divived by zero": ["◉_◉ Don't try to turn the game against me."+brk+"I'm a bot, not a console.", "options", "go ask it to other console", "typedJS"],
+        "1/0, 1 divided by 0, one divided by zero": ["◉_◉ Don't try to turn the game against me."+brk+"I'm a bot, not a console.", "options", "go ask it to other console", "typedJS"],
         "zero, 0": ["You know that Siri isn't always right. ^1000"+brk+"Neither do you.^500"+brk+""+botOptHelp, "options", 'I still believe in you', "typedJS"],
+        "maggie": ["Hey maggie", "options", 'I still believe in you', "typedJS"],
         "exit, esc": ["Really? We didn't even start you already want to leave.. Press ESC and go get a life", "options", "I still believe in you", "typedJS"],
         "help": [botOptHelp, "options", "I still believe in you", "typedJS"],
     },

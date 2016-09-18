@@ -1,37 +1,96 @@
+%textHeyThere {
+    font-size: $font6XL;
+    font-weight: $fBold;
+    line-height: 1.1;
+    letter-spacing: 3px;
+}
+
 .heyThere {
-    width: $safeArea*35;
-    max-width: 90%;
+    width: 100%;
     margin: auto;
-    text-align: center;
-    padding-top: 20vh;
+    padding-top: 10vh;
+    @extend %cf;
 
     &-hey {
-        font-size: $font6XL;
-        transition: all $speed*4;
-        opacity: 1;
-        font-weight: 500;
-        display: none; //slideDown()
+        @extend %textHeyThere;
+        display: inline-block;
+        padding: 0 $safeArea*3;
+        border-bottom: 1px solid black;
+        color: $clrLight;
+        // width: ;
+        animation: heyLine 1750ms ease-out;
 
-        &.jsLoading {
-            margin-top: $safeArea*4;
-            opacity: 0;
+        &:before {
+            content: 'Hey there';
+            width: $safeArea;
+            position: absolute;
+            @extend %textHeyThere;
+            color: $clrDark;
+            animation: heyThere 2250ms steps(11);
         }
     }
 
     &-intro {
         font-size: $fontXL;
-        padding: $safeArea*2 0;
-        transition: all $speed*4;
+        width: 55%;
+        padding-left: $safeArea*2;
+        overflow: hidden;
+        margin-top: $safeArea*9;
+        max-height: 300px;
         opacity: 1;
-        display: none; //slideDown()
+        animation: heyIntro 2500ms ease-in;
+    }
 
-        &.jsLoading {
-            margin-top: -$safeArea*2;
-            opacity: 0;
-        }
+    &-br {
+        display: block;
+        height: $safeArea/2*3;
+    }
+}
 
-        &.jsFixed {
-            padding-bottom: $safeArea*4;
-        }
+@keyframes heyLine {
+    0% {
+        max-width: 0;
+        padding: 0;
+    }
+    70% {
+        max-width: 0;
+        padding: 0;
+    }
+    100% {
+        max-width: 400px;
+        padding: 0 $safeArea*3;
+    }
+}
+
+@keyframes heyThere {
+    0% {content: "";}
+    75% {content: "";}
+    77% {content: "H";}
+    80% {content: "He";}
+    83% {content: "Hey";}
+    85% {content: "Hey ";}
+    87% {content: "Hey t";}
+    90% {content: "Hey th";}
+    93% {content: "Hey the";}
+    95% {content: "Hey ther";}
+    97% {content: "Hey there";}
+    100% {content: "Hey there";}
+}
+
+@keyframes heyIntro {
+    0% {
+        margin-top: $safeArea*15;
+        max-height: 0;
+        opacity: 0;
+    }
+    70% {
+        margin-top: $safeArea*13;
+        max-height: 0;
+        opacity: 0;
+    }
+    100% {
+        margin-top: $safeArea*9;
+        max-height: $safeArea*20;
+        opacity: 1;
     }
 }

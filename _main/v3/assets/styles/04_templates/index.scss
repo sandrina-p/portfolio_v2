@@ -21,12 +21,9 @@
 #IMPORTS
 \*------------------------------------*/
 @import "../00_atoms/scss";
-@import "../00_atoms/reset";
 @import "../00_atoms/typography";
-@import "../00_atoms/helpers";
 @import "../00_atoms/buttons";
 
-@import "../01_organisms/heythere";
 @import "../01_organisms/nav-sections";
 @import "../01_organisms/chat";
 @import "../01_organisms/void";
@@ -40,8 +37,8 @@
 // @import "../00_atoms/js_manipulation";
 // etc..
 
-.chat,
-.void,
-.under {
-    display: block !important;
-}
+// .chat,
+// .void,
+// .under {
+//     display: block !important;
+// }
