@@ -702,7 +702,7 @@ var chatApp = function() {
     var $nav = $('#chat-nav');
 
     function navTranslate($thisId) {
-        var navWidth = 230,
+        var navWidth = 16*2, //padding;
             $thisId = $thisId || null;
 
         $nav.children().each(function() {

@@ -18,10 +18,11 @@
         border-bottom: 1px solid black;
         color: $clrLight;
         animation: heyLine 1750ms ease-out;
+        width: 30%;
 
         &:before {
-            content: 'Hey there';
-            width: $safeArea;
+            content: 'Hey \a there';
+            white-space: pre;
             position: absolute;
             @extend %textHeyThere;
             color: $clrDark;
@@ -31,7 +32,7 @@
 
     &-intro {
         font-size: $fontXL;
-        width: 55%;
+        width: 70%;
         max-width: $safeArea*35;
         padding-left: $safeArea*3;
         padding-bottom: $safeArea*5;
@@ -70,12 +71,12 @@
     80% {content: "He";}
     83% {content: "Hey";}
     85% {content: "Hey ";}
-    87% {content: "Hey t";}
-    90% {content: "Hey th";}
-    93% {content: "Hey the";}
-    95% {content: "Hey ther";}
-    97% {content: "Hey there";}
-    100% {content: "Hey there";}
+    87% {content: "Hey \a t";}
+    90% {content: "Hey \a th";}
+    93% {content: "Hey \a the";}
+    95% {content: "Hey \a ther";}
+    97% {content: "Hey \a there";}
+    100% {content: "Hey \a there";}
 }
 
 @keyframes heyIntro {

@@ -1,6 +1,6 @@
 .chat {
     // padding: 30vh 0 150px;
-    width: 95%;
+    width: 100%;
     // min-height: 200vh;
     margin: auto;
     display: block;
@@ -8,6 +8,7 @@
 
     &-nav {
         position: relative;
+        padding-left: 30%;
 
         .chatSection {
             &:not(.jsOnNav),
@@ -43,7 +44,7 @@
         //when user didn't clicked it yet
         &.jsOnNav {
             position: absolute;
-            bottom: 0; left: 0;
+            bottom: 0;
             padding: 0;
             z-index: 3;
 
@@ -401,7 +402,7 @@
             &-bot {
                 width: 70%;
                 max-width: rem(520);
-                padding: $safeArea;
+                padding: $safeArea $safeArea $safeArea $safeArea*3;
                 margin-left: -1px;
                 border-right: 0;
             }
@@ -428,12 +429,12 @@
 
 }
 
-@include media(laptop) {
-    .chat {
-        width: 70%;
-        max-width: $safeArea*60;
-    }
-}
+// @include media(laptop) {
+//     .chat {
+//         // width: 70%;
+//         // max-width: $safeArea*60;
+//     }
+// }
 
 
 .liIndex {
