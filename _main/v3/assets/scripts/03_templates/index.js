@@ -3,7 +3,7 @@
 // =include ../../plugins/typedjs-master/dist/typed.min.js
 // =include ../00_atoms/_custom-functions.js
 // =include ../00_atoms/_chat-content.js
-// =include ../00_atoms/_hey-there.js
+// =in//clude ../00_atoms/_hey-there.js
 // =include ../00_atoms/_chat.js
 
 $(document).ready(function(){

@@ -121,7 +121,8 @@ var chatApp = function() {
 
     function getElPart(id, title, text) {
         // var options = functionOption(section);
-        var chatPart =  $("<div class='chatPart chatPart--jsLast' id='"+id+"'>"
+                                //chatPart--jsLast
+        var chatPart =  $("<div class='chatPart' id='"+id+"'>"
                             +"<div class='chatPart-human'>"
                                 +"<p class='chatPart-title jsLoading'>"+title+"</p>"
                             +"</div>"
@@ -136,8 +137,8 @@ var chatApp = function() {
 
     function getElProject(id, title, sub, img, role, capt, more, links) {
         var elImgs = getProjectImgs(img);
-        var ElLinks = getProjectLinks(links);
-        var chatProj =  $("<div class='chatPart chatPart--project chatPart--jsLast' id='"+id+"'>"
+        var ElLinks = getProjectLinks(links);           //chatPart--jsLast
+        var chatProj =  $("<div class='chatPart chatPart--project' id='"+id+"'>"
                             +"<div class='chatPart-human'>"
                                 +"<h3 class='chatPart-title'>"+title+"</h3>"
                                 +"<h4 class='chatPart-subtitle'>"+sub+"</h4>"
@@ -348,12 +349,12 @@ var chatApp = function() {
 
     // ------ SHOWING A PART PROCESS - HEY TO TIMEOUTS! ------ //
     function showingCommon($part, diffPartCallBack) {
-        var loadingTimeXtext = $part.find(chatPClass+"human").text().length;
+        var loadingTimeXtext = (section == "practice") ? 0 : $part.find(chatPClass+"human").text().length;
 
         // if is 1st part (begin of a section) guide on parent
         // otherwise guide on previous part (currentPart where the user clicked);
         if (noScroll) {
-            // keep going no scroll
+            // keep going, no scroll
         } else if ($part.is(':first-child') ) {
             scrollSafe($part.parent());
         } else {
@@ -379,7 +380,7 @@ var chatApp = function() {
                     diffPartCallBack($part, chatPClass); //a part or a project
 
                 }, loadingTimeXtext);
-            }, 1000);
+            }, 500);
         }, 250);
     }
 
@@ -427,15 +428,16 @@ var chatApp = function() {
                                     setTimeout(function () {
                                         buildIndexPart( $("#"+section) );
                                     }, 500);
+                                } else {
+                                    listenScrollProject();
                                 }
 
                             }, 100);
                         }, 450);
-                    }, 250);
-
-                }, 250);
-            }, 250);
-        }, 250);
+                    }, 350);
+                }, 150);
+            }, 50);
+        }, 0);
     }
 
     function showingOptions($part) {
@@ -527,6 +529,7 @@ var chatApp = function() {
             $section.children(':last-child').before(ElChatPart);
         }
 
+        noScroll = true;
         $newPart = ElChatPart;
         showingCommon($newPart, showingProject);
 
@@ -543,11 +546,13 @@ var chatApp = function() {
         $section.append(ElChatPart);
         ElChatPart.find(botClass).append($projectsUl);
         ElChatPart.find(botClass).append('<div class="ifCondition">'
-                                            +'<button type="button" name="button" class="btnB js-practiceIndex">'+chatContent.practice.clickMsg+'</button>'
-                                            +'<span class="chat-Part">'+chatContent.practice.scrollMsg+'</span>'
+                                            +'<button type="button" name="button" class="btnB js-practiceIndex">'+chatContent.behaviour.clickMsg+'</button>'
+                                            +'<span class="chat-Part">'+chatContent.behaviour.scrollMsg+'</span>'
                                         +'</div>');
         $newPart = $('#'+section+'-index');
         showingCommon($newPart, showingSentence);
+
+        listenScrollProject();
     }
 
 
@@ -577,8 +582,12 @@ var chatApp = function() {
     });
 
 
+
+    // ------ PRACTICE SCROLL ------ //
+
     $(document).on('click', '.js-practiceIndex', function(){
         $xthis = $(this);
+        listenNewProject = false;
         $('#practice-index').find('.liIndex-ul').slideDown();
         $('.ifCondition').slideUp();
         setTimeout(function () {
@@ -586,12 +595,55 @@ var chatApp = function() {
         }, 250);
     });
 
+    $(document).on('click', '.js-chatOpt', function(){
+        listenNewProject = false;
+    });
+
+
+    var $lastProj,
+        pHeight,
+        pScroll,
+        listenNewProject = false;
+
+    function listenScrollProject() {
+        setTimeout(function () {
+            $lastProj = $('#practice').children(":nth-last-of-type(2)"),
+            listenNewProject = true,
+            pHeight =  $lastProj.height(),
+            pScroll = $lastProj.offset().top;
+        }, 250);
+    }
+
+    $(window).scroll(function() {
+        var wScroll = $(window).scrollTop();
+        var tooClose = pScroll - wScroll + pHeight > wHeight/4;
+        var tooAway = pScroll - wScroll + pHeight < 0;
+
+        // too close of above the fold
+        if (!tooClose && listenNewProject && !tooAway) {
+            listenNewProject = false;
+            setTimeout(function () {
+                wScroll = $(window).scrollTop();
+                tooAway = pScroll - wScroll + pHeight < 0;
+                if(!tooAway) {
+                    var projectRandom = Object.random(chatContent[section]);
+                    projectRandom ? buildProject(section, projectRandom) : $('.ifCondition').slideUp();
+                }
+            }, 500);
+        } else {
+            console.log('not yet');
+        }
+    });
+
+
+
+
     // --------- NAV INIT ------------ //
 
     var $nav = $('#chat-nav');
 
     function navTranslate($thisId) {
-        var navWidth = 8*7, //padding;
+        var navWidth = 16, //padding;
             $thisId = $thisId || null;
 
         $nav.children().each(function() {
@@ -626,8 +678,6 @@ var chatApp = function() {
         navTranslate();
         var $heyThereIntro = $('.heyThere-intro');
 
-        // navLoading();
-
         (function showNav() {
             if($heyThereIntro.css('opacity') == "1") {
                 navLoading();
@@ -653,7 +703,7 @@ var chatApp = function() {
             //     ? $nav.remove()
             //     : "";
         });
-    })
+    });
 
     // public function
     return {
@@ -915,9 +965,6 @@ var botSection = function() {
 }();
 
 $(document).ready(function(){
-
-    // heyThere.init();
-
     $(document).on('click', '.js-chatOpt', function(){
         chatApp.init($(this));
     });
@@ -928,7 +975,7 @@ $(document).ready(function(){
 
 
 
-    //NAV BEING FIXED
+    //NAV BOTTOM BEING FIXED
     var $underNav = $('.under-nav');
     var underNavFixed = false;
     var $void = $('.void');

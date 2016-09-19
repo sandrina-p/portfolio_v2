@@ -34,12 +34,17 @@
                 .chatPart {
                     &-title {
                         font-size: $fontL;
+
+                        &:hover {
+                            color: $clrLight;
+                            animation: glitch 2s steps(100) infinite;
+                        }
                     }
 
                     &-human {
                         width: auto;
                         padding: 0;
-                        padding-right: $safeArea*2;
+                        padding-left: $safeArea*2;
                         transition: width 0s 2s, padding 250ms;
                     }
                 }
@@ -457,7 +462,7 @@
     span {
         display: inline-block;
         margin-top: $safeArea/3;
-        padding: $safeArea/3 $safeArea;
+        padding: $safeArea/3 $safeArea*3;
         border-top: 1px solid $clrGray;
         color: $clrPrimary;
         font-style: italic;
