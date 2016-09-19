@@ -8,7 +8,6 @@
 
     &-nav {
         position: relative;
-        padding-left: 30%;
 
         .chatSection {
             &:not(.jsOnNav),
@@ -44,7 +43,7 @@
         //when user didn't clicked it yet
         &.jsOnNav {
             position: absolute;
-            bottom: 0;
+            bottom: 0; left: 30%;
             padding: 0;
             z-index: 3;
 
@@ -56,6 +55,8 @@
 
                     &-human {
                         width: auto;
+                        padding: 0;
+                        padding-right: $safeArea*2;
                         transition: width 0s 2s, padding 250ms;
                     }
                 }
@@ -97,6 +98,10 @@
                     border-right: none;
                     transition: padding 250ms;
                 }
+
+                &-text {
+                    padding-top: $safeArea/2;
+                }
             }
         }
 
@@ -112,8 +117,7 @@
         // human part with titles
         &-human {
             width: 100%;
-            padding: $safeArea;
-            // border-right: 1px solid $clrDark; //TODO-BORDER
+            padding: $safeArea 0 $safeArea $safeArea;
             overflow: hidden;
             text-align: right;
             display: none;
@@ -155,7 +159,6 @@
             font-weight: $fReg;
             font-size: $fontL;
             opacity: 1;
-            padding-top: $safeArea/2;
             transition: opacity $speed;
 
             &:hover {
@@ -429,6 +432,38 @@
 
 }
 
+
+#practice-index {
+    .chatPart {
+        &-bot {
+            padding: 0;
+        }
+    }
+
+    .liIndex-ul {
+        display: none;
+    }
+}
+
+.ifCondition {
+    text-align: center;
+    padding-top: $safeArea;
+
+    > * {
+        font-size: $fontS;
+        line-height: $lineHeightM;
+    }
+
+    span {
+        display: inline-block;
+        margin-top: $safeArea/3;
+        padding: $safeArea/3 $safeArea;
+        border-top: 1px solid $clrGray;
+        color: $clrPrimary;
+        font-style: italic;
+        font-family: $font-mono;
+    }
+}
 // @include media(laptop) {
 //     .chat {
 //         // width: 70%;
