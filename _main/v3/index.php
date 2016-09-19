@@ -63,23 +63,8 @@
                 </div>
             </article>
         </div>
-
-        <?php
-        /*
-        <!-- <nav class="navSections <?php echo $loading ?>">
-            <h2 class="sr-only">chat navigation</h2>
-            <div class="navSections-btn <?php echo $loading ?>">
-                <button type="button" name="background" class="btnNav js-chatOpt">background</button>
-            </div>
-            <div class="navSections-btn <?php echo $loading ?>">
-                <button type="button" name="theory" class="btnNav js-chatOpt">theory</button>
-            </div>
-            <div class="navSections-btn <?php echo $loading ?>">
-                <button type="button" name="practice" class="btnNav js-chatOpt">practice</button>
-            </div>
-        </nav> -->
-        */ ?>
     </div>
+
 
     <div class="void">
         [upside down]

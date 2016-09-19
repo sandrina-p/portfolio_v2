@@ -15,6 +15,7 @@ if (screen.width < 750) {
         resolutionScreenMsg = "I noticed that you have a "+screenRes+", so the images I showed you have a big and nice resolution. If you were on your mobile, I'd be a thoughtful bot and reduce their size so I could save you some Kb from your mobile data network. How sweet am I, hm ? :D";
 }
 
+
 var chatContent = {
     intro: {
         hey: "Hey there!",
@@ -40,6 +41,8 @@ var chatContent = {
         "workplace" : "Well... she likes to work alone."+brk+"Unless your ambitions are as high as hers, then it’s a match made in heaven."+brk+"From <strong>creative to technique she can hold any role</strong>."+brk+"More important than that, she believes that each of these roles must work together to achieve the best results."
     },
     practice: {
+        clickMsg: "click to show projects index",
+        scrollMsg: "or scroll down and let me show you",
         intro: "Most of these projects she did both design and code parts."+brk+"What connects them is the <strong>constant searching for a unique experience</strong>."+brk+"A visual pleasure that engages the user through a nice interactive experience."+brk+"Let me start with something cool:",
         firstProject: "rede expressos",
         'rede expressos': {
@@ -181,11 +184,11 @@ var chatContent = {
        returnFocus: "It seem her project kept you interested in this conversation. Go on, don't be shy.",
        returnOnFly : "Hey there, where have you been?", //
        emptybackground: " TODO2 Do you know she loves to learn online and that she developed some awesome work?", // THEORY || PRACTICE
-       emptytheory: " TODO2 Besides, her timeline is nice too, and so are her projects", // BACKGROUND || PRACTICE
-       emptypractice: " TODO2 Go check how she did all of these awesome projects and what she's up to now!", // THEORY || BACKGROUND
-       missingbackground: "[suggesting to check background part] TODO",
-       missingtheory: "[suggesting to check theory part] TODO",
-       missingpractice: "[suggesting to check practice part] TODO"
+       emptytheory: "Besides, her timeline is nice too, and so are her projects", // BACKGROUND || PRACTICE
+       emptypractice: "Go check how she did all of these awesome projects and what she's up to now!", // THEORY || BACKGROUND
+       missingbackground: "[suggesting to check background part]",
+       missingtheory: "[suggesting to check theory part]",
+       missingpractice: "[suggesting to check practice part]"
    },
    // "008080": {
    //     intro: "holy holy, you've been digging like crazy. I don't have much more to tell you about her. But I can talk about me. And you.",
