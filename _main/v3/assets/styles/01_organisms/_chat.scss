@@ -23,23 +23,6 @@
         padding: $safeArea*2 0;
         transition: all 500ms;
 
-        //show button when page is ready
-        &.jsLoading {
-            .chatPart:first-of-type {
-                .chatPart {
-                    &-human {
-                        padding-top: $safeArea*2;
-                    }
-                }
-            }
-        }
-
-        //remove properties after jsLoading to get ready to jsOnNav.
-        &.jsLoading2 {
-            height: 30px;
-            overflow: hidden;
-        }
-
         //when user didn't clicked it yet
         &.jsOnNav {
             position: absolute;
@@ -71,6 +54,23 @@
         &:not(.jsOnNav):nth-of-type(1):nth-last-of-type(3), // [sec] sec sec
         &:not(.jsOnNav):nth-of-type(2):nth-last-of-type(2) { // sec [sec] sec
             padding-bottom: $safeArea*2;
+        }
+
+        //show button when page is ready
+        &.jsLoading {
+            .chatPart:first-of-type {
+                .chatPart {
+                    &-human {
+                        padding-top: $safeArea*2;
+                    }
+                }
+            }
+        }
+
+        //remove properties after jsLoading to get ready to jsOnNav.
+        &.jsLoading2 {
+            height: 30px;
+            overflow: hidden;
         }
     }
 
