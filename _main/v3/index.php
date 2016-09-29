@@ -27,6 +27,7 @@
     <h2 class="sr-only">interaction designer, frontend developer, creative developer</h2>
     <div class="heyThere">
         <h2 class="heyThere-hey">Hey <br>there</h2>
+        <?php /*
         <div class="heyThere-intro">
             <p>
                 I would like to introduce you to someone.
@@ -63,9 +64,29 @@
                 </div>
             </article>
         </div>
+        */ ?>
+    </div>
+
+    <div class="projNav">
+        <div class="projNav-pivot">
+            <div class="projNav-left">
+                <button type="button" name="button">141205</button>
+                <button type="button" name="button">moon</button>
+                <button type="button" name="button" class="js-active">rede expressos</button>
+            </div>
+            <div class="projNav-right">
+                <button type="button" name="button">N O X</button>
+                <button type="button" name="button">carolina machado</button>
+                <button type="button" name="button">portfolio 15</button>
+                <button type="button" name="button">DET</button>
+                <button type="button" name="button">141205</button>
+                <button type="button" name="button">moon</button>
+            </div>
+        </div>
     </div>
 
 
+    <?php /*
     <div class="void">
         [upside down]
     </div>
@@ -80,8 +101,9 @@
             </span>
         </header>
 
-        <?php include 'index-parts/under-section.php';?>
 
+
+        <?php include 'index-parts/under-section.php';?>
         <nav class="under-nav">
             <h2 class="sr-only">contacts</h2>
             <a href="//codepen.io/sandrina-p/" target="_blank" title="sandrina's codepen" class="btnB">
@@ -106,21 +128,21 @@
             <div class="bot-text"></div>
         </div>
     </div>
+    */ ?>
 
 
     <!-- SCRIPTS AND STYLES -->
     <noscript>
         <link rel="stylesheet" href="assets/styles/04_templates/index.min.css">
     </noscript>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <!--[if lt IE 9 || IE9]>
         <link rel="stylesheet" href="assets/styles/04_templates/index.min.css">
     <![endif]-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <script>
         var cb = function() {
             var l = document.createElement('link'); l.rel = 'stylesheet';
             l.href = 'assets/styles/04_templates/index.min.css';
-            // var h = document.getElementsByTagName('head')[0]; h.parentNode.appendChild(l, h);
             document.getElementsByTagName('head')[0].appendChild(l);
         };
 
@@ -130,7 +152,7 @@
         if (raf) raf(cb);
         else window.addEventListener('load', cb);
     </script>
-    <script async src="assets/scripts/03_templates/index.min.js" charset="utf-8"></script>
+    <script src="assets/scripts/03_templates/index.min.js" charset="utf-8"></script>
 </body>
 
 </html>
