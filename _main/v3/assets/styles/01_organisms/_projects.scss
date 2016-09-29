@@ -1,0 +1,50 @@
+%projNavSides {
+    position: absolute;
+    max-width: none;
+    white-space: nowrap;
+    background: $clrBlack;
+    padding: $safeArea 0;
+    height: 80px;
+}
+
+.projNav {
+    width: 100%;
+    padding: $safeArea 0;
+
+    &-pivot {
+        position: absolute;
+        width: 2px;
+        height: 10px;
+        background: red;
+        left: 30vw;
+        padding-top: 5px;
+    }
+
+    &-left {
+        @extend %projNavSides;
+        right: 0;
+        z-index: 2;
+    }
+
+    &-right {
+        @extend %projNavSides;
+        left: 0;
+    }
+
+    button {
+        color: $clrPrimarySoft;
+        font-size: $fontS;
+        height: 50px;
+        vertical-align: bottom;
+        padding-top: $safeArea/3;
+
+        margin-left: 120px;
+        margin-left: 7vw;
+    }
+
+    .js-active {
+        color: $clrWhite;
+        font-size: $fontLx;
+        padding-top: 0;
+    }
+}
