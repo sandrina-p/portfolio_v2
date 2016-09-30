@@ -559,7 +559,7 @@ var chatApp = function() {
 
     // ------ CHAT INTERACTIVITY ------ //
 
-    //hover CTA btn on each project to show its cta text
+    // hover CTA btn on each project to show its cta text
     $(document)
         .on('mouseenter', '.js-linkswww', function(){
             var cta = $(this).attr('title'),
@@ -641,13 +641,12 @@ var chatApp = function() {
     // --------- NAV INIT ------------ //
 
     var $nav = $('#chat-nav');
-
-    function navTranslate($thisId) {
+    function navTranslate(thisId) {
         var navWidth = 16, //padding;
-            $thisId = $thisId || null;
+            thisId = thisId || null;
 
         $nav.children().each(function() {
-            if($thisId && $(this).attr('id') == $thisId) {
+            if(thisId && $(this).attr('id') == thisId) {
                 return;
             }
             $(this).css({'transform': 'translate('+navWidth+'px, 0)'});
@@ -656,63 +655,62 @@ var chatApp = function() {
     }
 
     function navLoading() {
-        var delayInit = 250;
-        var delay = delayInit;
+        var delayInit = 250,
+            delay = delayInit,
+            $children;
 
         $nav.children().each(function() {
-            var $children = $(this);
+            $children = $(this);
 
-            setTimeout(function () {
+            // setTimeout(function () {
                 $children.removeClass('jsLoading');
 
                 setTimeout(function () {
                     $children.removeClass('jsLoading2');
                 }, delayInit);
 
-            }, delay);
-            delay += delayInit;
+            // }, delay);
+            // delay += delayInit;
         });
     }
 
     $(document).ready(function(){
-        navTranslate();
-        var $heyThereIntro = $('.heyThere-intro');
 
-        (function showNav() {
-            if($heyThereIntro.css('opacity') == "1") {
-                navLoading();
-            } else {
-                setTimeout(function () {
-                    showNav()
-                }, 500);
-            }
-        })();
+        $(function navInit() {
+            var $heyThereIntro = $('.heyThere-intro');
+
+            setTimeout(function () {
+                navTranslate();
+            }, 200);
+
+            (function showNav() {
+                if($heyThereIntro.css('opacity') == "1") {
+                    navLoading();
+                } else {
+                    setTimeout(function () {
+                        showNav();
+                    }, 500);
+                }
+            })();
+        });
     });
 
     $(document).on('click', '.chatSection.jsOnNav', function(){
-        $thisId = $(this).attr('id');
-
-        navTranslate($thisId);
+        navTranslate( $(this).attr('id') );
 
         $(this).css({'transform': 'translate(0, 0)'});
         $(this).removeClass('jsOnNav');
         $(this).one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', function(e) {
-        $(this).insertBefore('#chat-nav');
-
-            // $nav.children().length == 0
-            //     ? $nav.remove()
-            //     : "";
+            $(this).insertBefore('#chat-nav');
         });
     });
 
-    // public function
     return {
         init,
         outsider
     }
 
 }();
-
 
 
 var botSection = function() {
@@ -748,26 +746,26 @@ var botSection = function() {
     }
 
     //showing the 008080 characters
-    $(document).on('click', '.js-chatOpt', function(){
-        var section = $(this).closest('.chatSection').attr('id') || $(this).attr('name'),
-            $childrens = $trigger.children().not('.'+visibleClass),
-            i = Math.floor( (Math.random() * $childrens.length));
-
-        if(!clickOn[section]) {
-            clickOn[section] = 0;
-        }
-
-        if(clickOn[section] < 2) {
-            $childrens.eq(i).addClass(visibleClass);
-            clickOn[section] ++;
-        }
-
-        $childrens = $trigger.children().not('.'+visibleClass);
-        if ($childrens.length == 0) {
-            $trigger.children().removeClass(visibleClass);
-            $trigger.removeClass(triggerActive);
-        }
-    });
+    // $(document).on('click', '.js-chatOpt', function(){
+    //     var section = $(this).closest('.chatSection').attr('id') || $(this).attr('name'),
+    //         $childrens = $trigger.children().not('.'+visibleClass),
+    //         i = Math.floor( (Math.random() * $childrens.length));
+    //
+    //     if(!clickOn[section]) {
+    //         clickOn[section] = 0;
+    //     }
+    //
+    //     if(clickOn[section] < 2) {
+    //         $childrens.eq(i).addClass(visibleClass);
+    //         clickOn[section] ++;
+    //     }
+    //
+    //     $childrens = $trigger.children().not('.'+visibleClass);
+    //     if ($childrens.length == 0) {
+    //         $trigger.children().removeClass(visibleClass);
+    //         $trigger.removeClass(triggerActive);
+    //     }
+    // });
 
     //showing 008080 section
     $(document).on('click', '.js-botTrigger', function(){
@@ -964,39 +962,40 @@ var botSection = function() {
     });
 }();
 
+
 $(document).ready(function(){
     $(document).on('click', '.js-chatOpt', function(){
         chatApp.init($(this));
     });
 
-    $(document).on('click', '.js-chatStart', function(){
-        chatApp.outsider($(this));
-    });
+    // $(document).on('click', '.js-chatStart', function(){
+    //     chatApp.outsider($(this));
+    // });
+
+    // //NAV BOTTOM BEING FIXED
+    // var $underNav = $('.under-nav');
+    // var underNavFixed = false;
+    // var $void = $('.void');
+    // $(window).scroll(function() {
+    //    if ( $(document).height() <= ($(window).height() + $(window).scrollTop()) ) {
+    //        if(underNavFixed) {
+    //            $underNav.removeClass('jsFixed');
+    //            underNavFixed = false;
+    //        } else {
+    //            $underNav.addClass('jsFixed');
+    //            underNavFixed = true;
+    //        }
+    //    }
+    // });
+    //
+    // // doting on under section
+    // $(document)
+    //     .on('mouseenter', '.js-underDotingTrigger', function(){
+    //         $(this).closest('.js-underDotingTarget').addClass('jsGlitching');
+    //     })
+    //     .on('mouseleave', '.js-underDotingTrigger', function(){
+    //         $(this).closest('.js-underDotingTarget').removeClass('jsGlitching');
+    // });
 
 
-
-    //NAV BOTTOM BEING FIXED
-    var $underNav = $('.under-nav');
-    var underNavFixed = false;
-    var $void = $('.void');
-    $(window).scroll(function() {
-       if ( $(document).height() <= ($(window).height() + $(window).scrollTop()) ) {
-           if(underNavFixed) {
-               $underNav.removeClass('jsFixed');
-               underNavFixed = false;
-           } else {
-               $underNav.addClass('jsFixed');
-               underNavFixed = true;
-           }
-       }
-    });
-
-    // doting on under section
-    $(document)
-        .on('mouseenter', '.js-underDotingTrigger', function(){
-            $(this).closest('.js-underDotingTarget').addClass('jsGlitching');
-        })
-        .on('mouseleave', '.js-underDotingTrigger', function(){
-            $(this).closest('.js-underDotingTarget').removeClass('jsGlitching');
-    });
 });
