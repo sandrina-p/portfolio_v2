@@ -42,7 +42,7 @@ var chatContent = {
     },
     practice: {
         intro: "Most of these projects she did both design and code parts."+brk+"What connects them is the <strong>constant searching for a unique experience</strong>."+brk+"A visual pleasure that engages the user through a nice interactive experience."+brk+"Let me start with something cool:",
-        firstProject: "rede expressos",
+        projects: ['rede expressos', 'carolina machado', 'portfolio 15', 'pistol shrimp', 'moon', 'N O X', 'DET', '141205'],
         'rede expressos': {
             categ: "www projects",
             title: "Rede Expressos",
@@ -60,6 +60,23 @@ var chatContent = {
                 ["//app.html", "check app prototype", "mobile"],
                 ["//www.html", "check homepage", "desktop"]
             ]
+        },
+        'N O X': {
+            categ: "opening other doors",
+            title: "N O X",
+            sub: "video game concept",
+            role: "Motion Graphics",
+            img: [
+                "assets/media/img/projects/nox0.png",
+                "assets/media/img/projects/nox1.png",
+                "assets/media/img/projects/nox2.png",
+                "assets/media/img/projects/nox3.png",
+                "assets/media/img/projects/nox4.png",
+                "assets/media/img/projects/noxx.png",
+            ],
+            capt: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+            more: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+            links: [["//vimeo.com/nox", "check it on vimeo", "vimeo"]],
         },
         'carolina machado': {
             categ: "www projects",
@@ -125,23 +142,6 @@ var chatContent = {
             capt: "It was in this website she started discovering the beauty about javascript and jQuery.",
             more: "Hope you know the movie Moon (2001) by Duncan Jones. The main focus of the website was not about how the film was made but the story and experience that the character lives along the narration. For this, the user’s interaction was fundamental on creating the website.",
             links: [["/practice/moon/", "check the website", "desktop"]],
-        },
-        'N O X': {
-            categ: "opening other doors",
-            title: "N O X",
-            sub: "video game concept",
-            role: "Motion Graphics",
-            img: [
-                "assets/media/img/projects/nox0.png",
-                "assets/media/img/projects/nox1.png",
-                "assets/media/img/projects/nox2.png",
-                "assets/media/img/projects/nox3.png",
-                "assets/media/img/projects/nox4.png",
-                "assets/media/img/projects/noxx.png",
-            ],
-            capt: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-            more: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-            links: [["//vimeo.com/nox", "check it on vimeo", "vimeo"]],
         },
         'DET': {
             categ: "opening other doors",

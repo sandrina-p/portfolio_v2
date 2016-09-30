@@ -27,7 +27,7 @@
     <h2 class="sr-only">interaction designer, frontend developer, creative developer</h2>
     <div class="heyThere">
         <h2 class="heyThere-hey">Hey <br>there</h2>
-        <?php /*
+
         <div class="heyThere-intro">
             <p>
                 I would like to introduce you to someone.
@@ -64,24 +64,34 @@
                 </div>
             </article>
         </div>
-        */ ?>
     </div>
 
     <div class="projNav">
         <div class="projNav-pivot">
             <div class="projNav-left">
-                <button type="button" name="button">141205</button>
+                <button type="button" name="button">N O X</button>
+                <button type="button" name="button">carolina machado</button>
+                <button type="button" name="button">portfolio 15</button>
+                <button type="button" name="button">pistol shrimp</button>
                 <button type="button" name="button">moon</button>
+                <button type="button" name="button">DET</button>
+                <button type="button" name="button">141205</button>
                 <button type="button" name="button" class="js-active">rede expressos</button>
             </div>
             <div class="projNav-right">
                 <button type="button" name="button">N O X</button>
                 <button type="button" name="button">carolina machado</button>
                 <button type="button" name="button">portfolio 15</button>
+                <button type="button" name="button">pistol shrimp</button>
+                <button type="button" name="button">moon</button>
                 <button type="button" name="button">DET</button>
                 <button type="button" name="button">141205</button>
-                <button type="button" name="button">moon</button>
+                <button type="button" name="button">rede expressos</button>
             </div>
+        </div>
+
+        <div class="bot-nav">
+            press [<] and [>] to navigate through the projects
         </div>
     </div>
 

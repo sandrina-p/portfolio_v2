@@ -7,7 +7,22 @@
     height: 80px;
 }
 
+$navSpeed: 250ms;
+
+
+.bot-nav {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding-top: 100px;
+    padding-bottom: 15px;
+    color: gray;
+    background: $clrBlack;
+    transition: opacity 150ms ease;
+}
+
 .projNav {
+    margin-top: 333px;
     width: 100%;
     padding: $safeArea 0;
 
@@ -16,14 +31,15 @@
         width: 2px;
         height: 10px;
         background: red;
-        left: 30vw;
+        left: 0;
         padding-top: 5px;
+        transition: translateX(0px);
+        transition: transform $navSpeed ease;
     }
 
     &-left {
         @extend %projNavSides;
         right: 0;
-        z-index: 2;
     }
 
     &-right {
@@ -40,6 +56,8 @@
 
         margin-left: 120px;
         margin-left: 7vw;
+
+        transition: color $navSpeed ease, font $navSpeed ease, padding $navSpeed ease;
     }
 
     .js-active {
