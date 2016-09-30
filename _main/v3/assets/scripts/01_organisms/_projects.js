@@ -1,13 +1,14 @@
 var Projects = function() {
     var activeClass = "js-active",
-
         arrProjects = chatContent.practice.projects,
+        direction,
+        $newActive, fPos, $projDir, isParentLeft, //arrowsNavProj variables
+        estimateFinalWidth, projActiveWidth, pivotPos, projActivePos, transX, //alignPivot variables
 
-        $newActive, fPos, $projDir, //arrowsNavProj variables
-        projActiveWidth, pivotPos, projActivePos, //alignPivot variables
         windowBotWidth = window.innerWidth*30/100;
+
         $pivot = $('.projNav-pivot'),
-        $projLeft = $('.projNav-left'),
+        $projLeft = $('.projNav-left'), //In case you, sandrina, forget it, it's needed -left and -right to smooth things out when a new button cames out
         $projRight = $('.projNav-right'),
         $projActive = $('button.'+activeClass);
 
@@ -18,30 +19,39 @@ var Projects = function() {
             $newActive = $projActive.prev();
             $siblingsAll = $projActive.prevAll();
 
-        } else if (direction == 'right') {
+        } else {
             fPos = 'first';
             $projDir = $projRight;
             $newActive = $projActive.next();
             $siblingsAll = $projActive.nextAll();
         }
 
-        $projActive.removeClass(activeClass);
+        isParentLeft = $projActive.closest('.projNav-left').length == 1;
 
         $newActive.length == 0 ? $newActive = $projDir.children(":"+fPos) : "";
 
-        if($siblingsAll.length <= 6) {
+        $projActive.removeClass(activeClass);
+
+        if ($siblingsAll.length <= 6) {
             addProjIndex(direction);
+        } else {
+            isParentLeft
+                ? $projLeft.children().first().remove()
+                : $projRight.children().last().remove();
         }
 
         setTimeout(function () {
+            estimateFinalWidth = !isParentLeft;  //calculate final +/- width before it happens - FIXME this is not the best solution, but it's the better i could get
             $newActive.addClass(activeClass);
             $projActive = $newActive;
-            alignPivot(); //FIXME find a way to prevent offset on function (width differences)
-            if($projActive.closest('.projNav-right').length == 1) {
-                setTimeout(function () {
-                    alignPivot($newActive);
-                }, 150);
-            }
+            alignPivot(null, direction);
+
+            setTimeout(function () {
+                if (estimateFinalWidth) {
+                    estimateFinalWidth = false;
+                    alignPivot();
+                }
+            }, 150);
         }, 150);
     }
 
@@ -50,29 +60,32 @@ var Projects = function() {
             projI = arrProjects.indexOf($newActive.text()),
             addProject = arrProjects[projI-1] || arrProjects[arrProjects.length-1];
 
-        // for (var i = 0, projI = 5; i < 6; i++, projI++) {
-        //     if (arrProjects[projI] == null) {
-        //         projI = 0;
-        //     }
-            addProjects += "<button>"+addProject+"</button>";
-        // }
+        addProjects += "<button>"+addProject+"</button>";
 
         if (direction == 'left') {
             $projLeft.prepend(addProjects);
         } else if (direction == 'right') {
             $projRight.append(addProjects);
         }
-        console.log('chega aqui?');
     }
 
     function alignPivot($newProject) {
-        $newProject = $newProject || $projActive;
+        $newProject = $newProject || $projActive,
         pivotX = $pivot.offset().left,
-        projActiveX = $newProject.offset().left,
-        projActiveWidth = $newProject.outerWidth(),
+        projActiveX = $newProject.offset().left;
+
+        if (estimateFinalWidth) {
+            projActiveWidth = 
+                direction == "right"
+                    ? $newProject.outerWidth() * 0.49
+                    : $newProject.outerWidth() * 1.49;
+        } else {
+            projActiveWidth = $newProject.outerWidth();
+        }
+
         transX = windowBotWidth + pivotX - projActiveX - projActiveWidth;
 
-        $pivot.css({'transform':'translateX('+ (windowBotWidth + pivotX - projActiveX - projActiveWidth) + 'px)'});
+        $pivot.css({'transform':'translateX('+ transX + 'px)'});
     }
 
     setTimeout(function () {
@@ -81,12 +94,14 @@ var Projects = function() {
 
     var timer = 0;
     $(document).keydown(function(e) {
-        if (e.keyCode == 37 || e.keyCode == 40) { // < v
-            arrowsNavProj('left');
-                timer ++;
-        } else if (e.keyCode == 38 || e.keyCode == 39) { // > ^
-            arrowsNavProj('right');
-                timer ++;
+        if (e.keyCode == 37) { // <
+            direction = "left";
+            arrowsNavProj(direction);
+            timer ++;
+        } else if (e.keyCode == 39) { // >
+            direction = "right";
+            arrowsNavProj(direction);
+            timer ++;
         }
 
         if (timer == 2) {

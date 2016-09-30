@@ -583,57 +583,57 @@ var chatApp = function() {
 
 
 
-    // ------ PRACTICE SCROLL ------ //
-
-    $(document).on('click', '.js-practiceIndex', function(){
-        $xthis = $(this);
-        listenNewProject = false;
-        $('#practice-index').find('.liIndex-ul').slideDown();
-        $('.ifCondition').slideUp();
-        setTimeout(function () {
-            $xthis.remove();
-        }, 250);
-    });
-
-    $(document).on('click', '.js-chatOpt', function(){
-        listenNewProject = false;
-    });
-
-
-    var $lastProj,
-        pHeight,
-        pScroll,
-        listenNewProject = false;
-
-    function listenScrollProject() {
-        setTimeout(function () {
-            $lastProj = $('#practice').children(":nth-last-of-type(2)"),
-            listenNewProject = true,
-            pHeight =  $lastProj.height(),
-            pScroll = $lastProj.offset().top;
-        }, 250);
-    }
-
-    $(window).scroll(function() {
-        var wScroll = $(window).scrollTop();
-        var tooClose = pScroll - wScroll + pHeight > wHeight/4;
-        var tooAway = pScroll - wScroll + pHeight < 0;
-
-        // too close of above the fold
-        if (!tooClose && listenNewProject && !tooAway) {
-            listenNewProject = false;
-            setTimeout(function () {
-                wScroll = $(window).scrollTop();
-                tooAway = pScroll - wScroll + pHeight < 0;
-                if(!tooAway) {
-                    var projectRandom = Object.random(chatContent[section]);
-                    projectRandom ? buildProject(section, projectRandom) : $('.ifCondition').slideUp();
-                }
-            }, 500);
-        } else {
-            console.log('not yet');
-        }
-    });
+    // // ------ PRACTICE SCROLL ------ //
+    //
+    // $(document).on('click', '.js-practiceIndex', function(){
+    //     $xthis = $(this);
+    //     listenNewProject = false;
+    //     $('#practice-index').find('.liIndex-ul').slideDown();
+    //     $('.ifCondition').slideUp();
+    //     setTimeout(function () {
+    //         $xthis.remove();
+    //     }, 250);
+    // });
+    //
+    // $(document).on('click', '.js-chatOpt', function(){
+    //     listenNewProject = false;
+    // });
+    //
+    //
+    // var $lastProj,
+    //     pHeight,
+    //     pScroll,
+    //     listenNewProject = false;
+    //
+    // function listenScrollProject() {
+    //     setTimeout(function () {
+    //         $lastProj = $('#practice').children(":nth-last-of-type(2)"),
+    //         listenNewProject = true,
+    //         pHeight =  $lastProj.height(),
+    //         pScroll = $lastProj.offset().top;
+    //     }, 250);
+    // }
+    //
+    // $(window).scroll(function() {
+    //     var wScroll = $(window).scrollTop();
+    //     var tooClose = pScroll - wScroll + pHeight > wHeight/4;
+    //     var tooAway = pScroll - wScroll + pHeight < 0;
+    //
+    //     // too close of above the fold
+    //     if (!tooClose && listenNewProject && !tooAway) {
+    //         listenNewProject = false;
+    //         setTimeout(function () {
+    //             wScroll = $(window).scrollTop();
+    //             tooAway = pScroll - wScroll + pHeight < 0;
+    //             if(!tooAway) {
+    //                 var projectRandom = Object.random(chatContent[section]);
+    //                 projectRandom ? buildProject(section, projectRandom) : $('.ifCondition').slideUp();
+    //             }
+    //         }, 500);
+    //     } else {
+    //         console.log('not yet');
+    //     }
+    // });
 
 
 
@@ -662,6 +662,7 @@ var chatApp = function() {
         $nav.children().each(function() {
             $children = $(this);
 
+            // FIXME - WTF IS GOING ON
             // setTimeout(function () {
                 $children.removeClass('jsLoading jsLoading2');
                 // }, delayInit);
