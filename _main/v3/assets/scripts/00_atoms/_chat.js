@@ -663,10 +663,7 @@ var chatApp = function() {
             $children = $(this);
 
             // setTimeout(function () {
-                $children.removeClass('jsLoading');
-
-                // setTimeout(function () {
-                    $children.removeClass('jsLoading2');
+                $children.removeClass('jsLoading jsLoading2');
                 // }, delayInit);
 
             // }, delay);
