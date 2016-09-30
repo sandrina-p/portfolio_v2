@@ -2,6 +2,7 @@ var Projects = function() {
     var activeClass = "js-active",
         arrProjects = chatContent.practice.projects,
         direction,
+        projLimit = 7,
         $newActive, fPos, $projDir, isParentLeft, //arrowsNavProj variables
         estimateFinalWidth, projActiveWidth, pivotPos, projActivePos, transX, //alignPivot variables
 
@@ -32,7 +33,7 @@ var Projects = function() {
 
         $projActive.removeClass(activeClass);
 
-        if ($siblingsAll.length <= 6) {
+        if ($siblingsAll.length <= projLimit) {
             addProjIndex(direction);
         } else {
             isParentLeft
@@ -74,8 +75,10 @@ var Projects = function() {
         pivotX = $pivot.offset().left,
         projActiveX = $newProject.offset().left;
 
+
         if (estimateFinalWidth) {
-            projActiveWidth = 
+            //is this a good identation? i think it's beautiful :3
+            projActiveWidth =
                 direction == "right"
                     ? $newProject.outerWidth() * 0.49
                     : $newProject.outerWidth() * 1.49;
