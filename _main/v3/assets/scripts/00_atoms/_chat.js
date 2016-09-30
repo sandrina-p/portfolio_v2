@@ -665,9 +665,9 @@ var chatApp = function() {
             // setTimeout(function () {
                 $children.removeClass('jsLoading');
 
-                setTimeout(function () {
+                // setTimeout(function () {
                     $children.removeClass('jsLoading2');
-                }, delayInit);
+                // }, delayInit);
 
             // }, delay);
             // delay += delayInit;
