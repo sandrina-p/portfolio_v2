@@ -56,6 +56,7 @@ var chatContent = {
             ],
             capt: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
             more: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+            date: "MMM'YY",
             links: [
                 ["//app.html", "check app prototype", "mobile"],
                 ["//www.html", "check homepage", "desktop"]
@@ -76,6 +77,7 @@ var chatContent = {
             ],
             capt: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
             more: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+            date: "MMM'YY",
             links: [["//vimeo.com/nox", "check it on vimeo", "vimeo"]],
         },
         'carolina machado': {
@@ -93,6 +95,7 @@ var chatContent = {
             ],
             capt: "A website build from scratch on Tumblr. Its navigation is all through Ajax.",
             more: "After 6 months, Carolina Machado presented her collection for the second time in ModaLisboa - Lisboa Fashion. So I decided to give an upgrade to this website as well as adding some CMS, to make the content dynamic (and of course more easier for her to update it). I chose Tumblr to rebuild the website, and now all the navigation is through Ajax. This way I could have almost full control over the Tumblr standart API and improve the User Experience.",
+            date: "MMM'YY",
             links: [["//carolina-machado.com", "check the website", "desktop"]],
         },
         'portfolio 15': {
@@ -109,6 +112,7 @@ var chatContent = {
             ],
             capt: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
             more: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+            date: "MMM'YY",
             links: [["practice/portfolio15", "check the website", "desktop"]],
         },
         'pistol shrimp': {
@@ -122,8 +126,9 @@ var chatContent = {
                 "assets/media/img/projects/ps2.png",
                 "assets/media/img/projects/ps3.png",
             ],
-            capt: "When you do everything but what teachers asked you to do, you end up with a crazy interactive website.",
+            capt: "When you do everything except what teachers asked you to do, you end up with a crazy interactive website.",
             more: "Final Degree project in Communication Design. Website of an online record label that distributes music for free. In each release the record label creates an interactive experience, enhancing the download, so there is more to it than just a click. The website presents itself with a black and white visual by focusing on the user experience. My part was focused on coding HTML5, CSS3 and JQuery. This was a group project made with Lusco, BLEID and Margarida Botelho.",
+            date: "MMM'YY",
             links: [["practice/pistolshrimp.html", "check the website", "desktop"]],
         },
         'moon': {
@@ -141,6 +146,7 @@ var chatContent = {
             ],
             capt: "It was in this website she started discovering the beauty about javascript and jQuery.",
             more: "Hope you know the movie Moon (2001) by Duncan Jones. The main focus of the website was not about how the film was made but the story and experience that the character lives along the narration. For this, the user’s interaction was fundamental on creating the website.",
+            date: "MMM'YY",
             links: [["/practice/moon/", "check the website", "desktop"]],
         },
         'DET': {
@@ -157,6 +163,7 @@ var chatContent = {
             ],
             capt: "'I heard there is tool that creates digital magazine with inDesign!', - 'Oh really? Let's try it out!'",
             more: "Dutch Experimental Typography” is a digital catalogue of typography, developed from the 70’s throughout the 90’s in the Netherlands. This app includes an interactive cover that the user can play with. It was developed using Mag+ Software with InDesign. This was a group project made with Margarida Botelho.",
+            date: "MMM'YY",
             links: [["//behance.com/sandrin4p/det", "check it on behance", "behance"]],
         },
         '141205': {
@@ -174,6 +181,7 @@ var chatContent = {
             ],
             capt: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
             more: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+            date: "MMM'YY",
             links: [["//vimeo.com/", "check it on vimeo", "vimeo"]],
         },
     },

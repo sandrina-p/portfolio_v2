@@ -2,67 +2,235 @@
     position: absolute;
     max-width: none;
     white-space: nowrap;
-    background: $clrBlack;
-    padding: $safeArea 0;
-    height: 80px;
+    height: $safeArea*3;
 }
 
 $navSpeed: 250ms;
 
 
+.proj {
+    position: relative;
+    width: 100%;
+    background: $clrDark;
+    color: $clrLight;
+    margin: $safeArea 0 $safeArea*2;
+    display: none;
+
+
+    &Nav {
+        position: relative;
+        height: $safeArea*3;
+        width: 100%;
+        padding-top: $safeArea;
+
+        &-pivot {
+            position: absolute;
+            width: 2px;
+            height: 10px;
+            background: red;
+            left: 0;
+            transition: translateX(0px);
+            transition: transform $navSpeed ease;
+        }
+
+        &-left {
+            @extend %projNavSides;
+            right: 0;
+        }
+
+        &-right {
+            @extend %projNavSides;
+            left: 0;
+        }
+
+        button {
+            color: $clrPrimarySoft;
+            font-size: $fontS;
+            height: $safeArea*2;
+            vertical-align: bottom;
+            padding-top: $safeArea/2;
+            @include fallback(margin-left, $safeArea*8, 7vw);
+
+            transition: color $navSpeed ease, font $navSpeed ease, padding $navSpeed ease;
+            pointer-events: none; //FIXME allow option to click
+            cursor: default;
+        }
+
+        .js-active {
+            color: $clrWhite;
+            font-size: $fontLx;
+            padding-top: 0;
+        }
+    }
+
+    &Cont {
+        position: relative;
+        @extend %cf;
+
+        &-left {
+            width: $botWidthLap;
+        }
+
+        &-subtitle {
+            font-family: $font-mono;
+            font-size: $fontS;
+            text-align: right;
+            margin-top: $safeArea/3;
+            margin-bottom: $safeArea*2;
+        }
+
+        &-media,
+        &-about {
+            padding-left: $safeArea;
+        }
+
+        &-media {
+            img {
+                max-width: 100%;
+            }
+        }
+
+        &-about {
+            font-size: $fontS;
+            color: $clrGray;
+            @extend %cf;
+
+            > :first-child {
+                float: left;
+            }
+
+            > :last-child {
+                float: right;
+                font-size: $fontXS;
+            }
+        }
+
+        &-right {
+            width: $humanWidthLap;
+            padding-left: $safeArea*2;
+        }
+
+        &-descript {
+            position: relative;
+            padding-top: $safeArea*3;
+            max-width: $chatBotWidth;
+            height: $safeArea*18;
+            overflow: auto;
+
+            &-fadeIn {
+                z-index: 2;
+                position: relative;
+                margin-bottom: -$safeArea*3;
+                display: block;
+                background: linear-gradient(to top, rgba(#ffffff, 0), $clrDark 80%);
+                height: $safeArea*3;
+            }
+
+            &-fadeOut {
+                z-index: 2;
+                position: relative;
+                margin-top: -$safeArea*2;
+                display: block;
+                background: linear-gradient(to bottom, rgba(#ffffff, 0), $clrDark 80%);
+                height: $safeArea*2;
+            }
+        }
+
+        &-intro {
+            font-size: $fontXL;
+            margin-bottom: $safeArea;
+        }
+
+        &-details {
+            margin: $safeArea 0;
+            color: $clrGrayLight;
+
+            //toggle details full css
+            transition: max-height 1s ease;
+            overflow: hidden;
+            max-height: 0px;
+        }
+
+        #toggleDetails {
+            display: none;
+
+            &:checked + label {
+                display: none;
+
+                & + .projCont-details {
+                    max-height: 1500px;
+                }
+            }
+        }
+
+        &-links {
+            width: 100%;
+            @extend %cf;
+            padding: $safeArea*2 0;
+            font-size: $fontS;
+
+            > :last-child:not(:first-child) {
+                margin-left: $safeArea*3;
+            }
+        }
+    }
+}
+
+.Glidder {
+    // background: $clrDark;
+    // padding: $safeArea;
+    margin-left: 0;
+    position: relative;
+
+    img {
+        width: 100%;
+        opacity: 1;
+
+        &:not(:first-of-type) {
+            position: absolute;
+            left: $safeArea;
+            top: $safeArea;
+            width: calc(100% - #{$safeArea*2});
+        }
+    }
+}
+
+
+$glidderLength: 4;
+$glidderTime: 10;
+
+.Glidder img {
+    animation: glidder #{$glidderTime}s steps(9) infinite;
+}
+
+
+@for $i from 1 through $glidderLength {
+    .Glidder img:nth-of-type(#{$i}) {
+        animation-delay: -$i*($glidderTime/$glidderLength)*1000ms;
+    }
+}
+
+@keyframes glidder {
+    0% {z-index: 2;}
+    06% {z-index: 2;}
+    10% {z-index: 2;}
+    20% {z-index: 2;}
+    30% {z-index: 2;}
+    31% {z-index: -1; left: $safeArea; top: $safeArea;}
+    31.5% {z-index: 2; top: -$safeArea;}
+    31.5% {z-index: 2; left: $safeArea*2; top: $safeArea;}
+    32.5% {z-index: 2; left: -$safeArea;}
+    33.5% {z-index: -1; left: $safeArea*3/2;}
+    34% {z-index: -1; left: $safeArea; top: $safeArea;}
+    100%  {z-index: 0;}
+}
+
 .bot-nav {
     display: block;
     width: 100%;
     text-align: center;
-    padding-top: 100px;
-    padding-bottom: 15px;
-    color: gray;
-    background: $clrBlack;
+    font-size: $fontS;
+    padding-bottom: $safeArea;
+    color: gray; //TODO
     transition: opacity 150ms ease;
-}
-
-.projNav {
-    margin-top: 333px;
-    width: 100%;
-    padding: $safeArea 0;
-
-    &-pivot {
-        position: absolute;
-        width: 2px;
-        height: 10px;
-        background: red;
-        left: 0;
-        padding-top: 5px;
-        transition: translateX(0px);
-        transition: transform $navSpeed ease;
-    }
-
-    &-left {
-        @extend %projNavSides;
-        right: 0;
-    }
-
-    &-right {
-        @extend %projNavSides;
-        left: 0;
-    }
-
-    button {
-        color: $clrPrimarySoft;
-        font-size: $fontS;
-        height: 50px;
-        vertical-align: bottom;
-        padding-top: $safeArea/3;
-
-        margin-left: 120px;
-        margin-left: 7vw;
-
-        transition: color $navSpeed ease, font $navSpeed ease, padding $navSpeed ease;
-    }
-
-    .js-active {
-        color: $clrWhite;
-        font-size: $fontLx;
-        padding-top: 0;
-    }
 }
