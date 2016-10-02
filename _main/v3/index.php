@@ -38,6 +38,7 @@
         </div>
     </div>
 
+
     <div class="chat" id="chat">
         <div class="chat-nav" id="chat-nav">
             <article class="chatSection jsOnNav jsLoading jsLoading2" id="background">
@@ -66,27 +67,68 @@
         </div>
     </div>
 
-    <div class="projNav">
-        <div class="projNav-pivot">
-            <div class="projNav-left">
-                <button type="button" name="button">N O X</button>
-                <button type="button" name="button">carolina machado</button>
-                <button type="button" name="button">portfolio 15</button>
-                <button type="button" name="button">pistol shrimp</button>
-                <button type="button" name="button">moon</button>
-                <button type="button" name="button">DET</button>
-                <button type="button" name="button">141205</button>
-                <button type="button" name="button" class="js-active">rede expressos</button>
+
+    <?php /* PROJECT MARKUP
+    <div class="proj">
+        <div class="projNav">
+            <div class="projNav-pivot">
+                <div class="projNav-left">
+                    <button type="button" name="button">N O X</button>
+                    <button type="button" name="button">carolina machado</button>
+                    <button type="button" name="button">portfolio 15</button>
+                    <button type="button" name="button">pistol shrimp</button>
+                    <button type="button" name="button">moon</button>
+                    <button type="button" name="button">DET</button>
+                    <button type="button" name="button">141205</button>
+                    <button type="button" name="button" class="js-active">rede expressos</button>
+                </div>
+                <div class="projNav-right">
+                    <button type="button" name="button">N O X</button>
+                    <button type="button" name="button">carolina machado</button>
+                    <button type="button" name="button">portfolio 15</button>
+                    <button type="button" name="button">pistol shrimp</button>
+                    <button type="button" name="button">moon</button>
+                    <button type="button" name="button">DET</button>
+                    <button type="button" name="button">141205</button>
+                    <button type="button" name="button">rede expressos</button>
+                </div>
             </div>
-            <div class="projNav-right">
-                <button type="button" name="button">N O X</button>
-                <button type="button" name="button">carolina machado</button>
-                <button type="button" name="button">portfolio 15</button>
-                <button type="button" name="button">pistol shrimp</button>
-                <button type="button" name="button">moon</button>
-                <button type="button" name="button">DET</button>
-                <button type="button" name="button">141205</button>
-                <button type="button" name="button">rede expressos</button>
+        </div>
+
+        <div class="projCont">
+            <div class="projCont-left">
+                <p class="projCont-subtitle">web and app concept redesign</p>
+
+                <div class="projCont-media">
+                    <div class="Glidder">
+                        <img src="assets/media/img/projects/rnex0.png" alt="" />
+                    </div>
+                </div>
+
+                <div class="projCont-about">
+                    <p class="projCont-role">creative and frontend</p>
+                    <p class="projCont-date">JUN'16</p>
+                </div>
+            </div>
+
+            <div class="projCont-right">
+                <span class="projCont-descript-fadeIn"></span>
+                <div class="projCont-descript">
+                    <p class="projCont-intro">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    <input type="checkbox" id="toggleDetails"/>
+                    <label for="toggleDetails" class="btnMore">_more info</label>
+                    <p class="projCont-details">Sed do eiusmod tempor incididunt ut labore et dol. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod Sed do eiusmod tempor incididunt ut labore et dol. <br>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut, tempor incididunt ut labore et dolore magna aliqua. Sed do eiusmod tempor incididunt ut labore et dol. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut.</p>
+                </div>
+                <span class="projCont-descript-fadeOut"></span>
+
+                <div class="projCont-links">
+                    <div class="projCont-links-option">
+                        <a href="#" target="_blank" class="btnCheck"><i class="fa fa-desktop"></i>check website</a>
+                    </div>
+                    <div class="projCont-links-option">
+                        <a href="#" target="_blank" class="btnCheck"><i class="fa fa-mobile"></i>check app prototype</a>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -94,7 +136,7 @@
             press [<] and [>] to navigate through the projects
         </div>
     </div>
-
+    */ ?>
 
     <?php /*
     <div class="void">

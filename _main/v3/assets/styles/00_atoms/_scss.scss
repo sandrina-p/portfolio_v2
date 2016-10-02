@@ -1,4 +1,3 @@
-
 /*------------------------------------*\
     #VARIABLES
 \*------------------------------------*/
@@ -7,18 +6,17 @@ $clrPrimary: #008080;
 $clrPrimarySoft: #00e8e8;
 $clrPrimaryDark: #004040; //darken($clrPrimary, 15%);
 
-
 $clrBlack: #000000;
 $clrDark: #121212;
 $clrGrayDarker: lighten($clrDark, 10%);
-$clrGrayDark: lighten($clrDark, 25%);
+// $clrGrayDark: lighten($clrDark, 25%);
 $clrGray: lighten($clrDark, 50%);
 $clrGrayLight: lighten($clrDark, 70%);
 $clrGrayLighter: lighten($clrDark, 85%);
 $clrLight: lighten($clrDark, 88%);
 $clrWhite: #ffffff;
 
-$clr-error: #ED332A;
+// $clr-error: #ED332A;
 
 $borderWidth: 1px;
 $borderradius: 0;
@@ -34,7 +32,6 @@ $boxShadow: 0 0 0 1px;
 
 $safeArea: rem(16);
 $speed: 250ms;
-
 
 
 $font-mono: 'Roboto Mono', monospace;
@@ -61,6 +58,20 @@ $fThin: 100;
 $fReg: 300;
 $fMed: 400;
 $fBold: 700;
+
+
+$humanWidthPhablet: 30%;
+$botWidthPhablet: 70%;
+
+$humanWidthTablet: 50%;
+$botWidthTablet: 50%;
+
+$botWidthLap: 30%;
+$humanWidthLap: 70%;
+
+$chatBotWidth: rem(520);
+
+
 
 
 /*------------------------------------*\
@@ -277,7 +288,6 @@ $mediaHeight: rem(400);
     }
 }
 
-
 // @include flexboxProp
 
 %flexbox-noFlex {
@@ -311,12 +321,21 @@ $mediaHeight: rem(400);
 /*------------------------------------*\
     #CALC
 \*------------------------------------*/
-
-@mixin calc($prop, $valBackup, $valCal) {
-    #{$prop}: $valBackup; // poor browsers
+@mixin calc($prop, $valFallBack, $valCal) {
+    #{$prop}: $valFallBack; // poor browsers
     #{$prop}: calc(#{$valCal});
 }
 // @include calc(width, 100%, 100% - #{$safeArea}/2);
+
+
+/*------------------------------------*\
+    #SUPPORT
+\*------------------------------------*/
+@mixin fallback($prop, $valFallBack, $val) {
+    #{$prop}: $valFallBack; // poor browsers
+    #{$prop}: $val;
+}
+// @include fallback(width, 100vw, 100%);
 
 
 
@@ -334,21 +353,3 @@ $mediaHeight: rem(400);
   }
 }
 // ex: @include bgImg2x('../../media/images/passenger-back', jpg);
-
-
-
-/*------------------------------------*\
-    #OTHERS
-\*------------------------------------*/
-// %BlockFullFixed { //modalBg or NavBarBg
-//     position: fixed;
-//     top: 0;
-//     left: 0;
-//     width: 100%;
-//     height: 100%;
-// }
-//
-// %DialogBg { //modal
-//     background: $clrDark;
-//     opacity: 0.6;
-// }

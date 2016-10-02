@@ -252,9 +252,7 @@ var chatApp = function() {
     }
 
     function stringToSlug(string) {
-        var id = string.split(' ').join('-');
-        id = id.toLowerCase();
-        return id;
+        return string.split(' ').join('-').toLowerCase();
     }
 
     function getProjectLinks(links) {
@@ -506,32 +504,36 @@ var chatApp = function() {
     // ------ project ------ //
     function buildProject(section, project) {
         //get all info needed about project and delete it.
-        var objProj = chatContent[section][project],
-            title = objProj["title"],
-            sub = objProj["sub"],
-            role = objProj["role"],
-            img = objProj["img"],
-            capt = objProj["capt"],
-            more = objProj["more"],
-            links = objProj["links"];
-
-        delete chatContent[section][project];
-        delete chatContent[section]['firstProject'];
-        // create project
-        var ElChatPart = getElProject(id, title, sub, img, role, capt, more, links);
-
-        //if is the first project, there is no index yet, so append it.
-        //otherwise, append it before index.
-        $section = $('#'+section);
-        if($section.children().length == 1) {
-            $section.append(ElChatPart);
-        } else {
-            $section.children(':last-child').before(ElChatPart);
-        }
-
-        noScroll = true;
-        $newPart = ElChatPart;
-        console.log('insert projects new here');
+        // var objProj = chatContent[section][project],
+        //     title = objProj["title"],
+        //     sub = objProj["sub"],
+        //     role = objProj["role"],
+        //     img = objProj["img"],
+        //     capt = objProj["capt"],
+        //     more = objProj["more"],
+        //     links = objProj["links"];
+        //
+        // delete chatContent[section][project];
+        // delete chatContent[section]['firstProject'];
+        // // create project
+        // var ElChatPart = getElProject(id, title, sub, img, role, capt, more, links);
+        //
+        // //if is the first project, there is no index yet, so append it.
+        // //otherwise, append it before index.
+        // $section = $('#'+section);
+        // if($section.children().length == 1) {
+        //     $section.append(ElChatPart);
+        // } else {
+        //     $section.children(':last-child').before(ElChatPart);
+        // }
+        //
+        // noScroll = false;
+        // $newPart = ElChatPart;
+        Projects.initProj();
+        setTimeout(function () {
+            scrollFinal($('#projects'));
+        }, 500);
+        // console.log('insert projects new here');
         // showingCommon($newPart, showingProject);
 
         initProj = false;

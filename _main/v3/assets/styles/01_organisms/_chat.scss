@@ -1,7 +1,5 @@
 .chat {
-    // padding: 30vh 0 150px;
     width: 100%;
-    // min-height: 200vh;
     margin: auto;
     display: block;
     position: relative;
@@ -152,8 +150,6 @@
         &-bot {
             width: 100%;
             padding: $safeArea/2;
-            // border-left: 1px solid $clrDark; //TODO-BORDER
-            // border-right: 1px solid $clrDark; //TODO-BORDER
             overflow: hidden;
             display: none;
         }
@@ -248,35 +244,7 @@
 
         &-project {
             color: $clrLight;
-
             margin-left: -5px;
-        }
-
-        &-fs {
-            background: $clrDark;
-            padding: $safeArea;
-            margin-left: 0;
-            display: none;
-            position: relative;
-
-            img {
-                width: 100%;
-                opacity: 0;
-
-                &:not(:first-of-type) {
-                    position: absolute;
-                    left: $safeArea;
-                    top: $safeArea;
-                    width: calc(100% - #{$safeArea*2});
-                }
-            }
-
-
-            &.jsGlitchIn {
-                img {
-                    opacity: 1;
-                }
-            }
         }
 
         &-role {
@@ -405,11 +373,11 @@
     .chat {
         &Part {
             &-human {
-                width: 30%;
+                width: $humanWidthPhablet;
             }
             &-bot {
-                width: 70%;
-                max-width: rem(520);
+                width: $botWidthPhablet;
+                max-width: $chatBotWidth;
                 padding: $safeArea $safeArea $safeArea $safeArea*3;
                 margin-left: -1px;
                 border-right: 0;
@@ -548,35 +516,4 @@
     top: $safeArea;
     padding-left: $safeArea;
     // animation: glitch 2s steps(100) infinite;
-}
-
-
-
-$glidderLength: 4;
-$glidderTime: 10;
-
-.chatPart-fs img {
-    animation: glidder #{$glidderTime}s steps(9) infinite;
-}
-
-
-@for $i from 1 through $glidderLength {
-    .chatPart-fs img:nth-of-type(#{$i}) {
-        animation-delay: -$i*($glidderTime/$glidderLength)*1000ms;
-    }
-}
-
-@keyframes glidder {
-    0% {z-index: 2;}
-    06% {z-index: 2;}
-    10% {z-index: 2;}
-    20% {z-index: 2;}
-    30% {z-index: 2;}
-    31% {z-index: -1; left: $safeArea; top: $safeArea;}
-    31.5% {z-index: 2; top: -$safeArea;}
-    31.5% {z-index: 2; left: $safeArea*2; top: $safeArea;}
-    32.5% {z-index: 2; left: -$safeArea;}
-    33.5% {z-index: -1; left: $safeArea*3/2;}
-    34% {z-index: -1; left: $safeArea; top: $safeArea;}
-    100%  {z-index: 0;}
 }

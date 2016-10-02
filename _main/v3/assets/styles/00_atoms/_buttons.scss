@@ -74,6 +74,31 @@ button {
     color: $clrPrimarySoft;
 }
 
+.btnMore {
+    @extend %btnX;
+    background: $clrPrimary;
+    color: $clrLight;
+    font-size: $fontS;
+    padding: $safeArea/5 $safeArea/2;
+}
+
+.btnCheck {
+    @extend %btnX;
+    background: $clrLight;
+    color: $clrPrimary;
+    padding: $safeArea/4 $safeArea/2;
+    display: inline-block;
+
+    .fa {
+        margin-right: $safeArea/2;
+
+        &.fa-mobile {
+            font-size: 1.3em;
+        }
+    }
+}
+
+
 @keyframes animateBorderThree {
     25% {
         outline-color: $clrLight;
