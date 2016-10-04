@@ -18,7 +18,7 @@
         border-bottom: 1px solid black;
         color: $clrLight;
         animation: heyLine 1750ms ease-out;
-        width: 30%;
+        width: $humanWidthLap;
 
         &:before {
             content: 'Hey \a there';
@@ -32,7 +32,7 @@
 
     &-intro {
         font-size: $fontXL;
-        width: 70%;
+        width: $botWidthLap;
         max-width: $safeArea*35;
         padding-left: $safeArea*3;
         padding-bottom: $safeArea*5;

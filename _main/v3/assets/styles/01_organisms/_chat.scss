@@ -1,6 +1,7 @@
 .chat {
     width: 100%;
     margin: auto;
+    padding-bottom: $safeArea*4;
     display: block;
     position: relative;
 
@@ -24,7 +25,7 @@
         //when user didn't clicked it yet
         &.jsOnNav {
             position: absolute;
-            bottom: 0; left: 30%;
+            bottom: 0; left: $humanWidthLap;
             padding: 0;
             z-index: 3;
 
@@ -50,7 +51,7 @@
         }
 
         &:not(.jsOnNav):last-of-type {
-            padding-bottom: $safeArea*10;
+            padding-bottom: $safeArea*5;
         }
 
         &:not(.jsOnNav):nth-of-type(1):nth-last-of-type(2), // [sec] sec
@@ -126,10 +127,9 @@
             display: none;
         }
 
-        &-title,
-        &-subtitle {
+        &-title {
             display: inline-block;
-            transition: margin $speed;
+            transition: margin $speed*2;
             margin-right: 0;
             font-family: $font-mono;
             font-size: $fontM;
@@ -138,11 +138,8 @@
 
             &.jsLoading {
                 margin-right: -100%;
+                transition: margin $speed*2;
             }
-        }
-
-        &-subtitle {
-            font-weight: $fMed;
         }
 
 
@@ -155,8 +152,7 @@
         }
 
 
-        &-text,
-        &-redirect {
+        &-text {
             font-weight: $fReg;
             font-size: $fontL;
             opacity: 1;
@@ -174,10 +170,6 @@
             &.jsLoading {
                 opacity: 0;
             }
-        }
-
-        &-redirect {
-            padding-top: $safeArea;
         }
 
         // btns
@@ -201,169 +193,6 @@
         &--jsLast {
             .chatPart-text {
                 color: $clrDark;
-            }
-        }
-
-
-        //PROJECT FIXME improve animation class
-        &--project {
-            .chatPart-bot {
-                overflow: visible;
-                padding: $safeArea 0 $safeArea*2;
-            }
-
-            .chatPart {
-                &-human {
-                    padding: 0;
-                    margin-top: 32px;
-                    text-align: right;
-                }
-
-                &-title {
-                    color: $clrLight;
-                    background: $clrDark;
-                    padding: 0 $safeArea/3 0 $safeArea;
-                    display: inline-block;
-                    // font-size: 1.5rem !important; //TODO
-                }
-
-                &-subtitle {
-                    background: $clrLight;
-                    z-index: 3;
-                    position: relative;
-                    padding: 0 $safeArea/3;
-                    margin-top: $safeArea/3;
-                }
-
-                &-option {
-                    padding-top: $safeArea*2;
-                    padding-left: $safeArea;
-                }
-            }
-        }
-
-        &-project {
-            color: $clrLight;
-            margin-left: -5px;
-        }
-
-        &-role {
-            position: relative;
-            font-size: $fontLx;
-            padding-top: $safeArea;
-
-            background: $clrLight;
-            color: $clrDark;
-            padding: 10px 15px;
-            margin: -12px 44px 0 -36px;
-
-            display: none;
-            margin-left: 150%;
-            width: 100%;
-
-            transition: margin $speed*2;
-
-            &.jsGlitchIn {
-                display: block;
-                margin-left: 7px;
-            }
-        }
-
-        &-capt,
-        &-more {
-            font-size: $fontM;
-            font-weight: 100;
-            letter-spacing: 1px;
-            line-height: 1.7;
-
-            display: none;
-
-            br {font-size: 1.7rem;}
-
-            background: $clrDark;
-            padding: $safeArea*2 $safeArea;
-            margin: -9px 13px -5px 5px;
-            z-index: -1;
-            position: relative;
-        }
-
-        &-more {
-            margin: -12px 2px -12px -2px;
-            padding-top: $safeArea;
-            background: $clrGrayDarker;
-            z-index: 0;
-            transition: all $speed*2;
-            display: block;
-            max-height: 500px;
-            overflow: hidden;
-
-            &.jsLoading {
-                max-height: 0;
-                padding: 0;
-                margin: -2px 302px 0 50px;
-            }
-        }
-
-
-        &-details {
-            padding-top: $safeArea;
-
-            background: #008080;
-            padding: 5px 15px;
-            text-align: right;
-            position: relative;
-
-            margin-left: 400px;
-            margin-right: 100px;
-            display: none;
-            transition: margin $speed;
-
-            &.jsGlitchIn {
-                margin: -8px -10px 0px 52px;
-            }
-
-        }
-
-        &-www {
-            display: inline-block;
-            width: 100%;
-            text-align: right;
-        }
-
-        .btnDetails {
-            position: absolute;
-            left: -24px;
-            padding: 0 $safeArea/3;
-
-            background: $clrLight;
-            color: $clrDark;
-            margin-top: -12px;
-
-            display: none;
-            left: 250px;
-            transition: left $speed;
-
-            &:hover {
-                animation: 250ms animateBorderThree ease infinite;
-
-            }
-
-            &.jsGlitchIn {
-                left: -24px;
-            }
-        }
-
-        //trigger by btn www
-        &-checkItOut {
-            font-size: $fontS;
-            font-family: $font-mono;
-            display: inline-block;
-            color: $clrDark;
-            padding-right: $safeArea/2;
-
-            &.jsActive {
-                color: $clrLight;
-                animation: glitch 2s steps(100) infinite;
             }
         }
     }
