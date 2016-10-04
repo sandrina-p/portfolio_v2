@@ -16,49 +16,80 @@ var Projects = function() {
         classProjLeft = ".projNav-left", //In case you, sandrina, forget it, it's needed -left and -right to smooth things out when a new button cames out
         classProjRight = ".projNav-right",
 
-        $pivot,
-        $projLeft,  //In case you, sandrina, forget it, it's needed -left and -right to smooth things out when a new button cames out
-        $projRight,
-        $projActive,
+        $pivot, $projLeft, $projRight, $projActive, // ???() variables
         $projSub, $projMedia, $projRole, $projDate, $projIntro, $projDetails, $projLinks, $projBotTip, // getProjPlaceholders variables
-        $newActive, fPos, $projDir, isParentLeft, //arrowsNavProj variables
+        $newActive, fPos, $projDir, addProjNumb, isParentLeft, //arrowsNavProj variables
         estimateFinalWidth, projActiveWidth, pivotPos, projActivePos, transX, //alignPivot variables
-        baffle0, baffle1, baffle2, baffle3,
+        baffle0, baffle1, baffle2, baffle3, baffle4, //baffle variables
 
-        windowBotWidth = window.innerWidth*30/100;
+        windowBotWidth = window.innerWidth*40/100;
 
-    function arrowsNavProj(direction) {
-        if (direction == 'left') {
+
+    function checkIsParentLeft() {
+        return $newActive.closest('.projNav-left').length == 1;
+    }
+
+    function updateVarsOnNav(condition) {
+        if (condition) {
+            $projDir = $projLeft,
             fPos = 'last';
-            $projDir = $projLeft;
-            $newActive = $projActive.prev();
-            $siblingsAll = $projActive.prevAll();
-
         } else {
+            $projDir = $projRight,
             fPos = 'first';
-            $projDir = $projRight;
-            $newActive = $projActive.next();
-            $siblingsAll = $projActive.nextAll();
         }
 
-        isParentLeft = $projActive.closest('.projNav-left').length == 1;
+        //check how many projects should we add to the nav
+        addProjNumb =
+            isParentLeft
+                ? projLimit - $projActive.prevAll().length
+                : projLimit - $projActive.nextAll().length;
 
-        $newActive.length == 0 ? $newActive = $projDir.children(":"+fPos) : "";
+    }
+
+    function arrowsNavProj(direction) {
+        $newActive = direction == 'left' ? $projActive.prev() : $projActive.next();
+        isParentLeft = checkIsParentLeft();
+
+        updateVarsOnNav(direction == 'left');
+
+        $newActive.length == 0
+            ? $newActive = $projDir.children(":"+fPos)
+            : "";
+
+        showNewProject();
+    }
+
+    function clickNavProj($btn) {
+        $newActive = $btn;
+        isParentLeft = checkIsParentLeft();
+
+        //FIXME
+        //this condition is not totally right...
+        //what if they are not in the same parent?
+        direction =
+            $newActive.prevAll($projActive).length
+                ? "right"
+                : "left";
+
+        updateVarsOnNav(isParentLeft);
+
+        showNewProject();
+    }
+
+    function showNewProject() {
 
         baffleProj();
         getProjectData($newActive.text());
 
         $projActive.removeClass(activeClass);
 
-        if ($siblingsAll.length <= projLimit) {
-            addProjIndex(direction);
+        if (addProjNumb > 0) {
+            addProjNav(addProjNumb);
         } else {
             isParentLeft
                 ? $projLeft.children().first().remove()
                 : $projRight.children().last().remove();
         }
-
-
 
         setTimeout(function () {
             estimateFinalWidth = !isParentLeft;  //calculate final +/- width before it happens - FIXME this is not the best solution, but it's the better i could get
@@ -75,21 +106,8 @@ var Projects = function() {
         }, 150);
     }
 
-    function addProjIndex(direction) {
-        var addProjects = "",
-            projI = arrProjects.indexOf($newActive.text()),
-            addProject = arrProjects[projI-1] || arrProjects[arrProjects.length-1];
-
-        addProjects += "<button>"+addProject+"</button>";
-
-        if (direction == 'left') {
-            $projLeft.prepend(addProjects);
-        } else if (direction == 'right') {
-            $projRight.append(addProjects);
-        }
-    }
-
     function alignPivot($newProject) {
+        console.log('pivot aligned');
         $newProject = $newProject || $projActive,
         pivotX = $pivot.offset().left,
         projActiveX = $newProject.offset().left;
@@ -109,9 +127,10 @@ var Projects = function() {
         $pivot.css({'transform':'translateX('+ (transX) + 'px)'});
     }
 
-    function getElProj() {
+
+    function buildProj() {
         var sub, role, date, title, more, botTip, elImgs, ElLinks
-            elProjNav = getProjNav('left');
+            elProjNav = buildProjNav('left');
             ElProj =  $("<div class='proj' id='projects'>"
                             +"<div class='projNav'>"
                                 +"<div class='projNav-pivot'>"
@@ -144,8 +163,8 @@ var Projects = function() {
                                     +"<span class='projCont-descript-fadeIn'></span>"
                                     +"<div class='projCont-descript'>"
                                         +"<p class='projCont-intro'>"+title+"</p>"
-                                        +"<input type='checkbox' id='toggleDetails'/>"
-                                        +"<label for='toggleDetails' class='btnMore'>_more info</label>"
+                                        // +"<input type='checkbox' id='toggleDetails'/>"
+                                        // +"<label for='toggleDetails' class='btnMore'>_more info</label>"
                                         +"<p class='projCont-details'>"+more+"</p>"
                                     +"</div>"
                                     +"<span class='projCont-descript-fadeOut'></span>"
@@ -162,7 +181,7 @@ var Projects = function() {
         return ElProj;
     }
 
-    function getProjNav() {
+    function buildProjNav() {
         var elProjNav = "";
 
         for (var i = 0, projName, nameSlug, projLength = arrProjects.length; i < projLength; i++) {
@@ -173,6 +192,34 @@ var Projects = function() {
 
         return elProjNav;
     }
+
+
+    function addProjNav(quantity) {
+        var addProjects = "",
+            projI =
+                isParentLeft
+                    ? arrProjects.indexOf($projLeft.children(":first").text())
+                    : arrProjects.indexOf($projRight.children(":last").text());
+
+        if (isParentLeft) {
+            for (var i = 1; i <= quantity; i++) {
+                projName = arrProjects[projI-i] || arrProjects[arrProjects.length-1];
+                addProjects += "<button>"+projName+"</button>";
+            }
+
+            $projLeft.prepend(addProjects);
+        } else {
+
+            for (var i = 1; i <= quantity; i++) {
+                projName = arrProjects[projI+i] || arrProjects[0];
+                addProjects += "<button>"+projName+"</button>";
+            }
+
+            $projRight.append(addProjects);
+
+        }
+    }
+
 
     function getProjectImgs(imgArray) {
         var $glidder = $("<div class='Glidder'></div>");
@@ -220,70 +267,71 @@ var Projects = function() {
         $projRight = $('.projNav-right');
     }
 
-    function initProj() {
-        var elProj = getElProj(),
-            i = Math.floor( (Math.random() * arrProjects.length)) - 1,
-            projName = arrProjects[i],
-            projSlug = projName.split(' ').join('-').toLowerCase();
-
-        $('#practice').append(elProj);
-        $('#projects').slideDown();
-
-        getProjPlaceholders(projName);
-        baffleProj();
-        getProjectData(projName);
-
-        $('button[name='+projSlug+']').first().addClass(activeClass);
-        $projActive = $('button.'+activeClass);
-        alignPivot();
-    }
 
     function baffleProj() {
-        var arrBuffle = [classProjSub, classProjIntro, classProjRole, classProjDate],
+        var arrBuffle = [classProjSub, classProjIntro, classProjRole, classProjDate, classProjDetails],
             arrBuffleLength = arrBuffle.length;
 
         baffleSub = baffle(arrBuffle[0]),
         baffleIntro = baffle(arrBuffle[1]),
         baffleRole = baffle(arrBuffle[2]),
-        baffleDate = baffle(arrBuffle[3]);
+        baffleDate = baffle(arrBuffle[3]),
+        baffleDet = baffle(arrBuffle[4]);
 
         //TODO is there any way to create a loop/for on these?
         baffleSub.start();
         baffleIntro.start();
         baffleRole.start();
         baffleDate.start();
+        baffleDet.start();
     }
 
     function getProjectData(projName) {
-            projSlug = projName.split(' ').join('-').toLowerCase(),
+        //FIXME no var declarated
+        var projSlug = projName.split(' ').join('-').toLowerCase(),
             projData = chatContent.practice[projName],
 
             elImgs = getProjectImgs(projData.img),
             elLinks = getProjectLinks(projData.links);
 
-            $projDetails.text(projData.more);
-            $projMedia.html(elImgs);
-            $projLinks.html(elLinks);
+        $projMedia.html(elImgs);
+        $projLinks.html(elLinks);
 
-            baffleSub.reveal(400, 200);
-            baffleIntro.reveal(400, 300);
-            baffleRole.reveal(400, 100);
-            baffleDate.reveal(400, 400);
-        // setTimeout(function () {
-            //TODO is there any way to create a loop/for on these?
-            baffleSub.text(currentText => projData.sub);
-            baffleIntro.text(currentText => projData.capt);
-            baffleRole.text(currentText => projData.role);
-            baffleDate.text(currentText => projData.date);
+        baffleSub.reveal(400, 150);
+        baffleIntro.reveal(400, 0);
+        baffleRole.reveal(400, 70);
+        baffleDate.reveal(400, 250);
+        baffleDet.reveal(400, 300);
 
-
-        // }, 1500);
+        //FIXME is there any way to create a loop/for on these?
+        baffleSub.text(currentText => projData.sub);
+        baffleIntro.text(currentText => projData.capt);
+        baffleRole.text(currentText => projData.role);
+        baffleDate.text(currentText => projData.date);
+        baffleDet.text(currentText => projData.more);
     }
 
-    //
-    // setTimeout(function () {
-    //     alignPivot();
-    // }, 500);
+
+    function initProj(section) {
+        var elProj = buildProj(),
+            i = Math.floor(Math.random() * (arrProjects.length - 1) + 1),
+            projName = arrProjects[i],
+            projSlug = projName.split(' ').join('-').toLowerCase();
+
+        $('#'+section).append(elProj);
+        $('#projects').slideDown();
+
+        getProjPlaceholders(projName);
+        baffleProj();
+        setTimeout(function () {
+            getProjectData(projName);
+
+            $('button[name='+projSlug+']').first().addClass(activeClass);
+            $projActive = $('button.'+activeClass);
+            alignPivot();
+        }, 400);
+    }
+
 
     var timer = 0;
     $(document).keydown(function(e) {
@@ -382,6 +430,11 @@ var Projects = function() {
         }
 
     });
+
+                            //TODO a class may help
+    $(document).on('click', '.projNav-pivot button', function() {
+        clickNavProj($(this));
+    })
 
     return {
         initProj,

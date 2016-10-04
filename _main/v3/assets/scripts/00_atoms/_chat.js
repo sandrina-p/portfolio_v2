@@ -36,7 +36,7 @@ var chatApp = function() {
 
         option.attr('disabled', 'disabled');
 
-        // doesn't have section and its title is one of the mainSections.
+        // doesn't have section and its title is on of the mainSections.
         if (mainSections.indexOf(title) < 0) {
             animateClickedOption(option);
 
@@ -67,7 +67,7 @@ var chatApp = function() {
         //if part exists, scroll to it, otherwise build its section.
         ($("#"+id).length > 0)
             ? bodyScrollTop($("#"+id).offset().top - wHeight/4*1)
-            : buildSection(section);
+            : buildSection();
 
     }
 
@@ -135,38 +135,6 @@ var chatApp = function() {
         return chatPart;
     }
 
-    function getElProject(id, title, sub, img, role, capt, more, links) {
-        var elImgs = getProjectImgs(img);
-        var ElLinks = getProjectLinks(links);           //chatPart--jsLast
-        var chatProj =  $("<div class='chatPart chatPart--project' id='"+id+"'>"
-                            +"<div class='chatPart-human'>"
-                                +"<h3 class='chatPart-title'>"+title+"</h3>"
-                                +"<h4 class='chatPart-subtitle'>"+sub+"</h4>"
-                            +"</div>"
-                            +"<div class='chatPart-bot'>"
-                                +"<div class='chatPart-project'>"
-                                    // TODO Glidder glitch + slider
-                                    +"<div class='chatPart-fs'>"
-                                        +elImgs
-                                    +"</div>"
-                                    +"<h5 class='chatPart-role'>"+role+"</h5>"
-                                    +"<p class='chatPart-capt'>"+capt+"</p>"
-                                    +"<p class='chatPart-more jsLoading'>"+more+"</p>"
-
-                                    +"<div class='chatPart-details'>"
-                                        +"<button type='button' name='more' class='btnDetails'>_more info</button>"
-                                        +"<div class='chatPart-www'>"
-                                            +"<span class='chatPart-checkItOut js-checkItOut'></span>"
-                                            +ElLinks
-                                        +"</div>"
-                                    +"</div>"
-                                +"</div>"
-                            +"</div>"
-                        +"</div>");
-
-        return chatProj;
-    }
-
     // get available options to the user.
     function getOptions(section) {
         var objSection = chatContent[section];
@@ -212,78 +180,9 @@ var chatApp = function() {
         return chatOptions;
     }
 
-    // that beautiful index when the user clicks "practice"
-    function getProjectsIndex(section) {
-        var objSection = chatContent[section];
-        var objI = 0;
-        var chatOptions = [];
-        var $liIndexUl = $("<ul class='liIndex-ul'></ul>");
-
-        delete objSection['firstProject'];
-        delete objSection['clicked'];
-
-        for (var key in objSection) {
-            if(objSection.hasOwnProperty(key)) {
-
-                var categ = objSection[key]['categ'];
-                if(categ) {
-                    var catC = stringToSlug(categ);
-                }
-
-                //if category doesn't exist, build it
-                if( $liIndexUl.find('.'+catC).length == 0) {
-                    var newCat = "<li class='liIndex-liCateg "+catC+"'>"
-                                    +"<span class='liIndex-categ'>"+categ+"</span>"
-                                    +"<ul class='liIndex-dl'></ul>"
-                                +"</li>";
-                    $liIndexUl.append(newCat);
-                }
-
-                var li = "<li class='liIndex-liProj'>"
-                            +"<button type='button' name='button' class='btnP js-chatOpt'>"+key+"</button>"
-                            +"<span class='liIndex-sub'>"+objSection[key]['sub']+"</span>"
-                        +"</li>";
-
-                $liIndexUl.find('.'+catC).find('ul').append(li);
-            }
-        }
-
-        return $liIndexUl;
-    }
-
     function stringToSlug(string) {
         return string.split(' ').join('-').toLowerCase();
     }
-
-    function getProjectLinks(links) {
-        var elLinks = "";
-        for (i = 0; i < links.length; i++) {
-            (links[i][1] == "available soon")
-                ? elLinks += "<i title='"+links[i][1]+" class='fa fa-"+links[i][2]+"'></i>"
-                : elLinks += "<a href='"+links[i][0]+"' target='_blank' class='btnOut"+[i+1]+" js-linkswww' title='"+links[i][1]+"'><i class='fa fa-"+links[i][2]+"'></i></a>";
-        }
-        return elLinks;
-    }
-
-    function getProjectImgs(imgArray) {
-        var elImgs = "";
-        var desktop = window.innerWidth >= 940;
-        for (var i = 0; i < imgArray.length; i++) {
-            if(desktop) {
-                var newImg;
-                var imgRet = imgArray[i].split('.');
-                imgRet.splice(1, 0, "@2x");
-                imgRet.splice(2, 0, ".");
-                var newImg = imgRet.join("");
-                elImgs += "<img src='"+newImg+"'>";
-            } else {
-                elImgs += "<img src='"+imgArray[i]+"'>";
-            }
-
-        }
-        return elImgs;
-    }
-
 
     // ------ SHOWING A PART COMPONENTS ------ //
     //scroll has 2 phases:
@@ -339,12 +238,6 @@ var chatApp = function() {
         $element.removeClass('jsLoading');
     }
 
-    //FIXME remove glitcin... consistence pleasseeee
-    function glitchIn($element) {
-        $element.addClass('jsGlitchIn');
-    }
-
-
     // ------ SHOWING A PART PROCESS - HEY TO TIMEOUTS! ------ //
     function showingCommon($part, diffPartCallBack) {
         var loadingTimeXtext = (section == "practice") ? 0 : $part.find(chatPClass+"human").text().length;
@@ -363,7 +256,7 @@ var chatApp = function() {
         $part.find(chatPClass+"human").slideDown();
 
         // 2.show title and loading dots
-        setTimeout(function () {
+        // setTimeout(function () {
             $part.find(chatPClass+"title").removeClass('jsLoading');
             loadingDots($part.find(chatPClass+"human"));
             // 3. hide loading dots and show bigger line
@@ -379,7 +272,7 @@ var chatApp = function() {
 
                 }, loadingTimeXtext);
             }, 500);
-        }, 250);
+        // }, 250);
     }
 
     function showingSentence($part) {
@@ -391,51 +284,7 @@ var chatApp = function() {
     function showingPractice($part){
         // replaceLastPart($part); //FIXME don't duplicate these 2 lines ^^^
         finishLoading($part.find(chatPClass+"text"));
-
-        showProject = initProj || chatContent[section].projects[0]; //TODO random project to start;
-        buildProject(section, showProject);
-    }
-
-    function showingProject($part) {
-        $part.find(chatPClass+"role").slideDown();
-        setTimeout(function () {
-
-            setTimeout(function () {
-                $part.find(".btnDetails").show();
-                glitchIn($part.find(chatPClass+"role"));
-
-                setTimeout(function () {
-                    $part.find(chatPClass+"details").show();
-
-                    glitchIn($part.find(".btnDetails"));
-
-                    setTimeout(function () {
-                        $part.find(chatPClass+"fs").slideDown();
-                        glitchIn($part.find(chatPClass+"details"));
-
-                        setTimeout(function () {
-                            glitchIn($part.find(chatPClass+"fs"));
-
-                            setTimeout(function () {
-                                $part.find(chatPClass+"capt").slideDown();
-
-                                scrollFinal($part);
-
-                                if (isIntroPractice) {
-                                    isIntroPractice = false;
-                                    setTimeout(function () {
-                                        buildIndexPart( $("#"+section) );
-                                    }, 500);
-                                } else {
-                                    listenScrollProject();
-                                }
-
-                            }, 100);
-                        }, 450);
-                    }, 350);
-                }, 150);
-            }, 50);
-        }, 0);
+        buildProject(section);
     }
 
     function showingOptions($part) {
@@ -502,143 +351,14 @@ var chatApp = function() {
     }
 
     // ------ project ------ //
-    function buildProject(section, project) {
-        //get all info needed about project and delete it.
-        // var objProj = chatContent[section][project],
-        //     title = objProj["title"],
-        //     sub = objProj["sub"],
-        //     role = objProj["role"],
-        //     img = objProj["img"],
-        //     capt = objProj["capt"],
-        //     more = objProj["more"],
-        //     links = objProj["links"];
-        //
-        // delete chatContent[section][project];
-        // delete chatContent[section]['firstProject'];
-        // // create project
-        // var ElChatPart = getElProject(id, title, sub, img, role, capt, more, links);
-        //
-        // //if is the first project, there is no index yet, so append it.
-        // //otherwise, append it before index.
-        // $section = $('#'+section);
-        // if($section.children().length == 1) {
-        //     $section.append(ElChatPart);
-        // } else {
-        //     $section.children(':last-child').before(ElChatPart);
-        // }
-        //
-        // noScroll = false;
-        // $newPart = ElChatPart;
-        Projects.initProj();
+    function buildProject(section) {
         setTimeout(function () {
-            scrollFinal($('#projects'));
-        }, 500);
-        // console.log('insert projects new here');
-        // showingCommon($newPart, showingProject);
-
-        initProj = false;
+            Projects.initProj(section);
+            setTimeout(function () {
+                scrollFinal($('#projects'));
+            }, 500);
+        }, 400);
     }
-
-    // ------ index ------ //
-    function buildIndexPart($section) {
-        noScroll = true;
-
-        var ElChatPart = getElPart(section+"-index", "", ""),
-            $projectsUl = getProjectsIndex(section);
-
-        $section.append(ElChatPart);
-        ElChatPart.find(botClass).append($projectsUl);
-        ElChatPart.find(botClass).append('<div class="ifCondition">'
-                                            +'<button type="button" name="button" class="btnB js-practiceIndex">'+chatContent.behaviour.clickMsg+'</button>'
-                                            +'<span class="chat-Part">'+chatContent.behaviour.scrollMsg+'</span>'
-                                        +'</div>');
-        $newPart = $('#'+section+'-index');
-        showingCommon($newPart, showingSentence);
-
-        listenScrollProject();
-    }
-
-
-
-    // ------ CHAT INTERACTIVITY ------ //
-
-    // hover CTA btn on each project to show its cta text
-    $(document)
-        .on('mouseenter', '.js-linkswww', function(){
-            var cta = $(this).attr('title'),
-                $checkItOut = $(this).siblings('.js-checkItOut');
-            $checkItOut.text(cta);
-            $checkItOut.addClass('jsActive');
-        })
-        .on('mouseleave', '.js-linkswww', function(){
-            var $checkItOut = $(this).siblings('.js-checkItOut');
-            $checkItOut.text('');
-            $checkItOut.removeClass('jsActive');
-        });
-
-
-    //show / hide more info each project
-    $(document).on('click', '.btnDetails', function(){
-        $more = $(this).closest('.chatPart').find('.chatPart-more');
-        $more.toggleClass('jsLoading');
-        $(this).toggleText("_more info", "_less info");
-    });
-
-
-
-    // // ------ PRACTICE SCROLL ------ //
-    //
-    // $(document).on('click', '.js-practiceIndex', function(){
-    //     $xthis = $(this);
-    //     listenNewProject = false;
-    //     $('#practice-index').find('.liIndex-ul').slideDown();
-    //     $('.ifCondition').slideUp();
-    //     setTimeout(function () {
-    //         $xthis.remove();
-    //     }, 250);
-    // });
-    //
-    // $(document).on('click', '.js-chatOpt', function(){
-    //     listenNewProject = false;
-    // });
-    //
-    //
-    // var $lastProj,
-    //     pHeight,
-    //     pScroll,
-    //     listenNewProject = false;
-    //
-    // function listenScrollProject() {
-    //     setTimeout(function () {
-    //         $lastProj = $('#practice').children(":nth-last-of-type(2)"),
-    //         listenNewProject = true,
-    //         pHeight =  $lastProj.height(),
-    //         pScroll = $lastProj.offset().top;
-    //     }, 250);
-    // }
-    //
-    // $(window).scroll(function() {
-    //     var wScroll = $(window).scrollTop();
-    //     var tooClose = pScroll - wScroll + pHeight > wHeight/4;
-    //     var tooAway = pScroll - wScroll + pHeight < 0;
-    //
-    //     // too close of above the fold
-    //     if (!tooClose && listenNewProject && !tooAway) {
-    //         listenNewProject = false;
-    //         setTimeout(function () {
-    //             wScroll = $(window).scrollTop();
-    //             tooAway = pScroll - wScroll + pHeight < 0;
-    //             if(!tooAway) {
-    //                 var projectRandom = Object.random(chatContent[section]);
-    //                 projectRandom ? buildProject(section, projectRandom) : $('.ifCondition').slideUp();
-    //             }
-    //         }, 500);
-    //     } else {
-    //         console.log('not yet');
-    //     }
-    // });
-
-
 
 
     // --------- NAV INIT ------------ //
@@ -968,35 +688,4 @@ $(document).ready(function(){
     $(document).on('click', '.js-chatOpt', function(){
         chatApp.init($(this));
     });
-
-    // $(document).on('click', '.js-chatStart', function(){
-    //     chatApp.outsider($(this));
-    // });
-
-    // //NAV BOTTOM BEING FIXED
-    // var $underNav = $('.under-nav');
-    // var underNavFixed = false;
-    // var $void = $('.void');
-    // $(window).scroll(function() {
-    //    if ( $(document).height() <= ($(window).height() + $(window).scrollTop()) ) {
-    //        if(underNavFixed) {
-    //            $underNav.removeClass('jsFixed');
-    //            underNavFixed = false;
-    //        } else {
-    //            $underNav.addClass('jsFixed');
-    //            underNavFixed = true;
-    //        }
-    //    }
-    // });
-    //
-    // // doting on under section
-    // $(document)
-    //     .on('mouseenter', '.js-underDotingTrigger', function(){
-    //         $(this).closest('.js-underDotingTarget').addClass('jsGlitching');
-    //     })
-    //     .on('mouseleave', '.js-underDotingTrigger', function(){
-    //         $(this).closest('.js-underDotingTarget').removeClass('jsGlitching');
-    // });
-
-
 });
