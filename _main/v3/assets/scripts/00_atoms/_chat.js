@@ -36,7 +36,7 @@ var chatApp = function() {
 
         option.attr('disabled', 'disabled');
 
-        // doesn't have section and its title is on of the mainSections.
+        // doesn't have section and its title is on of the mainSections
         if (mainSections.indexOf(title) < 0) {
             animateClickedOption(option);
 
@@ -52,20 +52,21 @@ var chatApp = function() {
     // ------ cv part ------ //
     function outsider(trigger) {
         section = trigger.data('section'),
-        title = trigger.data('title');
+        title = trigger.data('title'),
         initProj = trigger.data('initproject');
 
         if(initProj) {
             title = initProj;
             section = 'practice';
         }
+
         id = stringToSlug(title);
 
         thatBtn = $('#'+section).find("button:contains("+initProj+")");
         animateClickedOption(thatBtn);
 
         //if part exists, scroll to it, otherwise build its section.
-        ($("#"+id).length > 0)
+        $("#"+id).length > 0
             ? bodyScrollTop($("#"+id).offset().top - wHeight/4*1)
             : buildSection();
 
@@ -113,39 +114,33 @@ var chatApp = function() {
     }
 
     function getElBtn(text) {
-        var chatBtn =   "<div class='chatPart-option'>"
-                            +"<button type='button' name='button' class='btnB jsLoading js-chatOpt'>"+text+"</button>"
-                        +"</div>";
-        return chatBtn;
+        return "<div class='chatPart-option'>"
+                    +"<button type='button' name='button' class='btnB jsLoading js-chatOpt'>"+text+"</button>"
+                +"</div>";
     }
 
     function getElPart(id, title, text) {
-        // var options = functionOption(section);
-                                //chatPart--jsLast
-        var chatPart =  $("<div class='chatPart' id='"+id+"'>"
-                            +"<div class='chatPart-human'>"
-                                +"<p class='chatPart-title jsLoading'>"+title+"</p>"
-                            +"</div>"
-                            +"<div class='chatPart-bot'>"
-                                +"<p class='chatPart-text jsLoading'>"+text+"</p>"
-                                // options FIXME
-                            +"</div>"
-                        +"</div>");
-
-        return chatPart;
+        return  $("<div class='chatPart' id='"+id+"'>"
+                    +"<div class='chatPart-human'>"
+                        +"<p class='chatPart-title jsLoading'>"+title+"</p>"
+                    +"</div>"
+                    +"<div class='chatPart-bot'>"
+                        +"<p class='chatPart-text jsLoading'>"+text+"</p>"
+                        // options FIXME
+                    +"</div>"
+                +"</div>");
     }
 
     // get available options to the user.
     function getOptions(section) {
-        var objSection = chatContent[section];
-        var objI = 0;
-        var chatOptions = [];
+        var objSection = chatContent[section],
+            objI = 0,
+            chatOptions = [],
+            clicked; //prevent showing the same button twice.
 
         for (var key in objSection) {
             if(objSection.hasOwnProperty(key)) {
 
-                //clicked is to prevent showing the same button twice.
-                var clicked;
                 if(!objSection['clicked']) {
                     objSection['clicked'] = [];
                 }
@@ -162,20 +157,20 @@ var chatApp = function() {
 
         //if there is no more buttons to click in this section
         if (chatOptions.length == 0) {
-            var chatBehaviour = chatContent['behaviour'],
+            var //chatBehaviour = chatContent['behaviour'],
                 indexOfSection = mainSections.indexOf(section);
 
             mainSections.splice(indexOfSection, 1);
 
-            if (mainSections.length == 2) {
-                var sentence = chatBehaviour["empty"+section];
-            } else if (mainSections.length == 1) {
-                var sentence = chatBehaviour["missing"+mainSections[0]];
-            } else {
-                return chatOptions;
-            }
+            // if (mainSections.length == 2) {
+            //     // var sentence = chatBehaviour["empty"+section];
+            // } else if (mainSections.length == 1) {
+            //     // var sentence = chatBehaviour["missing"+mainSections[0]];
+            // } else {
+            //     return chatOptions;
+            // }
 
-            chatOptions.unshift("<p class='chatPart-redirect'>"+sentence+"</p>");
+            // chatOptions.unshift("<p class='chatPart-redirect'>"+sentence+"</p>");
         }
         return chatOptions;
     }
@@ -189,11 +184,10 @@ var chatApp = function() {
     // 1. scrollSafe() - make sure newPart is 1/4 of the window height.
     // 2. scrollFinal() - if newPart is outside of the window view, scroll it until its end is visible.
     function scrollSafe($currentPart) {
-        //scroll to fit perfectly
-        var wScroll = $(window).scrollTop();
-        var pHeight =  $currentPart.height();
-        var pScroll = $currentPart.offset().top;
-        var tooClose = pScroll - wScroll + pHeight > wHeight/2;
+        var wScroll = $(window).scrollTop(),
+            pHeight =  $currentPart.height(),
+            pScroll = $currentPart.offset().top,
+            tooClose = pScroll - wScroll + pHeight > wHeight/2;
 
         // too close of above the fold ||away from the view window
         if (tooClose || pScroll < wScroll) {
@@ -244,6 +238,7 @@ var chatApp = function() {
 
         // if is 1st part (begin of a section) guide on parent
         // otherwise guide on previous part (currentPart where the user clicked);
+        // FIXME this isn't needed anymore
         if (noScroll) {
             // keep going, no scroll
         } else if ($part.is(':first-child') ) {
@@ -364,6 +359,7 @@ var chatApp = function() {
     // --------- NAV INIT ------------ //
 
     var $nav = $('#chat-nav');
+
     function navTranslate(thisId) {
         var navWidth = 16, //padding;
             thisId = thisId || null;
@@ -378,21 +374,43 @@ var chatApp = function() {
     }
 
     function navLoading() {
-        var delayInit = 250,
-            delay = delayInit,
-            $children;
+        // var delayInit = 250,
+        //     delay = delayInit,
+        //     $children;
+
+        // $nav.children().each(function() {
+        //     $children = $(this);
+
+
+        var $children;
 
         $nav.children().each(function() {
-            $children = $(this);
+        $children = $(this);
 
-            // FIXME - WTF IS GOING ON
-            // setTimeout(function () {
-                $children.removeClass('jsLoading jsLoading2');
-                // }, delayInit);
+        // FIXME - WTF IS GOING ON
+        // setTimeout(function () {
+            $children.removeClass('jsLoading jsLoading2');
+            // }, delayInit);
 
-            // }, delay);
-            // delay += delayInit;
+        // }, delay);
+        // delay += delayInit;
         });
+
+        console.log(mainSections);
+
+            // var baffleBg = baffle("#background-intro button");
+            // var bafflePr = baffle("#practice-intro button");
+
+            // baffleBg
+            //     .start()
+            //     .text(currentText => mainSections[0])
+            //     .reveal(400, 450);
+
+            // bafflePr
+            //     .start()
+            //     .text(currentText => mainSections[2])
+            //     .reveal(400, 350);
+        // });
     }
 
     $(document).ready(function(){
@@ -400,13 +418,44 @@ var chatApp = function() {
         $(function navInit() {
             var $heyThereIntro = $('.heyThere-intro');
 
+            var baffleBg = baffle("#btn-bg");
+            var baffleTh = baffle("#btn-th");
+            var bafflePr = baffle("#btn-pr");
+
+            baffleBg
+                .start()
+                .text(currentText => mainSections[0])
+                .reveal(400, 3450);
+
+            baffleTh
+                .start()
+                .text(currentText => mainSections[1])
+                .reveal(400, 3050);
+
+            bafflePr
+                .start()
+                .text(currentText => mainSections[2])
+                .reveal(400, 3250);
+
+
             setTimeout(function () {
                 navTranslate();
             }, 200);
 
             (function showNav() {
                 if($heyThereIntro.css('opacity') == "1") {
-                    navLoading();
+
+                    setTimeout(function () {
+                        $('#theory').removeClass('jsLoading jsLoading2');
+                    }, 450);
+                    setTimeout(function () {
+                        $('#background').removeClass('jsLoading jsLoading2');
+                    }, 0);
+                    setTimeout(function () {
+                        $('#practice').removeClass('jsLoading jsLoading2');
+                    }, 250);
+
+                    // navLoading();
                 } else {
                     setTimeout(function () {
                         showNav();

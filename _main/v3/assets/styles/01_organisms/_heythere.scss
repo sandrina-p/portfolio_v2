@@ -17,8 +17,8 @@
         padding: 0 $safeArea*3;
         border-bottom: 1px solid black;
         color: $clrLight;
-        animation: heyLine 1750ms ease-out;
         width: $humanWidthLap;
+        animation: heyLine 1750ms ease-out;
 
         &:before {
             content: 'Hey \a there';
@@ -59,7 +59,7 @@
         padding: 0;
     }
     100% {
-        max-width: 400px;
+        max-width: $humanWidthLap;
         padding: 0 $safeArea*3;
     }
 }

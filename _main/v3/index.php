@@ -20,6 +20,8 @@
 
 <?php
     $loading = '';
+    $loadingNav = 'jsLoading jsLoading2';
+    // $loadingNav = '';
     //$loading = 'jsLoading';
 ?>
 <body>
@@ -41,26 +43,26 @@
 
     <div class="chat" id="chat">
         <div class="chat-nav" id="chat-nav">
-            <article class="chatSection jsOnNav jsLoading jsLoading2" id="background">
+            <article class="chatSection jsOnNav <?php echo $loadingNav ?>" id="background">
                 <div class="chatPart" id="background-intro">
                     <div class="chatPart-human">
-                        <button type="button" name="background" class="chatPart-title js-chatOpt">background</button>
+                        <button type="button" name="background" id="btn-bg" class="chatPart-title js-chatOpt"></button>
                     </div>
                 </div>
             </article>
 
-            <article class="chatSection jsOnNav jsLoading jsLoading2" id="theory">
+            <article class="chatSection jsOnNav <?php echo $loadingNav ?>" id="theory">
                 <div class="chatPart" id="theory-intro">
                     <div class="chatPart-human">
-                        <button type="button" name="theory" class="chatPart-title js-chatOpt">theory</button>
+                        <button type="button" name="theory" id="btn-th" class="chatPart-title js-chatOpt"></button>
                     </div>
                 </div>
             </article>
 
-            <article class="chatSection jsOnNav jsLoading jsLoading2" id="practice">
+            <article class="chatSection jsOnNav <?php echo $loadingNav ?>" id="practice">
                 <div class="chatPart" id="practice-intro">
                     <div class="chatPart-human">
-                        <button type="button" name="practice" class="chatPart-title js-chatOpt">practice</button>
+                        <button type="button" name="practice" id="btn-pr" class="chatPart-title js-chatOpt"></button>
                     </div>
                 </div>
             </article>
