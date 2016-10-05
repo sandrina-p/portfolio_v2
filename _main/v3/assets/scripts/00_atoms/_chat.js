@@ -11,67 +11,34 @@ var chatApp = function() {
         $currentPart, //jquery - id of the clicked button parent chatPart ex: $('#chatpart-intro');
         text, // string - simple text of the bot;
         title, // string - title of the new part ex: 'before that'
-        id, // string - it's build with stringToSlug() -> ex : 'rede-expressos'
+        id, // string - it's build with string.slugLower -> ex : 'rede-expressos'
 
         //some numbers to better crontrol auto scroll
         mediaQHeight = 550, // a trigger to prevent some stuff on small devices
         wHeight =  window.innerHeight, // doesn't need expl., does it?
         navSectionTop, //number - nav offsetTop to trigger fixed class
 
-        intervalLoadingDots, //function - setInteral controller
-
-        //some conditions that practice has //REVIEW review this. is too complex.
-        initProj, //string - used when calls a project without starting the chat.
-        isIntroPractice, //bollean - if 1st project, show index
-        noScroll; // bollean - scroll when buil new part. true when shows indexPractice
+        intervalLoadingDots; //function - setInteral controller
 
 
     // ------ TRIGGERS ----- //
     // ------ define if is section or part ------ //
     function init(option) {
-        section = option.closest('.chatSection').attr('id');
-        $currentPart = option.closest('.chatPart');
-        title = option.text();
-        id = stringToSlug(title);
+        section = option.closest('.chatSection').attr('id'),
+        $currentPart = option.closest('.chatPart'),
+        title = option.text(),
+        id = title.slugLower();
 
-        option.attr('disabled', 'disabled');
+        if (mainSections.indexOf(title) > -1) {
 
-        // doesn't have section and its title is on of the mainSections
-        if (mainSections.indexOf(title) < 0) {
-            animateClickedOption(option);
-
-            section == "practice" && title != "practice"
-                ? buildProject(section, title)
-                : buildSentence(section, title);
+            option.attr('disabled', 'disabled');
+            buildSection();
 
         } else {
-            buildSection(title);
+            animateClickedOption(option);
+            buildSentence();
         }
     }
-
-    // ------ cv part ------ //
-    function outsider(trigger) {
-        section = trigger.data('section'),
-        title = trigger.data('title'),
-        initProj = trigger.data('initproject');
-
-        if(initProj) {
-            title = initProj;
-            section = 'practice';
-        }
-
-        id = stringToSlug(title);
-
-        thatBtn = $('#'+section).find("button:contains("+initProj+")");
-        animateClickedOption(thatBtn);
-
-        //if part exists, scroll to it, otherwise build its section.
-        $("#"+id).length > 0
-            ? bodyScrollTop($("#"+id).offset().top - wHeight/4*1)
-            : buildSection();
-
-    }
-
 
     // ------ GENERAL STUFF ----- //
     //when the user clicks on a chat button, it runs away.
@@ -100,13 +67,11 @@ var chatApp = function() {
         }
     }
 
-
     function bodyScrollTop(value) {
         $('body').animate({
             scrollTop: value
         }, 500);
     }
-
 
     // ------ DOM STRUCTURE ELEMENTS ------ //
     function getElSection(trigger) {
@@ -119,7 +84,7 @@ var chatApp = function() {
                 +"</div>";
     }
 
-    function getElPart(id, title, text) {
+    function getElPart() {
         return  $("<div class='chatPart' id='"+id+"'>"
                     +"<div class='chatPart-human'>"
                         +"<p class='chatPart-title jsLoading'>"+title+"</p>"
@@ -131,7 +96,6 @@ var chatApp = function() {
                 +"</div>");
     }
 
-    // get available options to the user.
     function getOptions(section) {
         var objSection = chatContent[section],
             objI = 0,
@@ -155,28 +119,7 @@ var chatApp = function() {
             }
         }
 
-        //if there is no more buttons to click in this section
-        if (chatOptions.length == 0) {
-            var //chatBehaviour = chatContent['behaviour'],
-                indexOfSection = mainSections.indexOf(section);
-
-            mainSections.splice(indexOfSection, 1);
-
-            // if (mainSections.length == 2) {
-            //     // var sentence = chatBehaviour["empty"+section];
-            // } else if (mainSections.length == 1) {
-            //     // var sentence = chatBehaviour["missing"+mainSections[0]];
-            // } else {
-            //     return chatOptions;
-            // }
-
-            // chatOptions.unshift("<p class='chatPart-redirect'>"+sentence+"</p>");
-        }
         return chatOptions;
-    }
-
-    function stringToSlug(string) {
-        return string.split(' ').join('-').toLowerCase();
     }
 
     // ------ SHOWING A PART COMPONENTS ------ //
@@ -214,6 +157,7 @@ var chatApp = function() {
 
     }
 
+
     //FIXME this MUST be only css
     function loadingDots($elAfter) {
         $elAfter.after('<span class="js-loadingRetro"></span>');
@@ -238,59 +182,48 @@ var chatApp = function() {
 
         // if is 1st part (begin of a section) guide on parent
         // otherwise guide on previous part (currentPart where the user clicked);
-        // FIXME this isn't needed anymore
-        if (noScroll) {
-            // keep going, no scroll
-        } else if ($part.is(':first-child') ) {
-            scrollSafe($part.parent());
-        } else {
-            scrollSafe($part.prev());
-        }
+        $part.is(':first-child')
+            ? scrollSafe($part.parent())
+            : scrollSafe($part.prev());
+
 
         // 1.show line title
         $part.find(chatPClass+"human").slideDown();
 
         // 2.show title and loading dots
-        // setTimeout(function () {
-            $part.find(chatPClass+"title").removeClass('jsLoading');
-            loadingDots($part.find(chatPClass+"human"));
-            // 3. hide loading dots and show bigger line
+        $part.find(chatPClass+"title").removeClass('jsLoading');
+        loadingDots($part.find(chatPClass+"human"));
+        // 3. hide loading dots and show bigger line
+        setTimeout(function () {
+            $('.js-loadingRetro').slideUp();
+            clearInterval(intervalLoadingDots);
+            $part.find(chatPClass+"bot").slideDown();
+            // 4. show text
             setTimeout(function () {
-                $('.js-loadingRetro').slideUp();
-                clearInterval(intervalLoadingDots);
-                $part.find(chatPClass+"bot").slideDown();
-                // 4. show text
-                setTimeout(function () {
-                    $('.js-loadingRetro').remove();
+                $('.js-loadingRetro').remove();
 
-                    diffPartCallBack($part, chatPClass); //a part or a project
+                diffPartCallBack($part, chatPClass); //a part or a project
 
-                }, loadingTimeXtext);
-            }, 500);
-        // }, 250);
+            }, loadingTimeXtext);
+        }, 500);
     }
 
     function showingSentence($part) {
-        // replaceLastPart($part);
         finishLoading($part.find(chatPClass+"text"));
         showingOptions($part);
     }
 
     function showingPractice($part){
-        // replaceLastPart($part); //FIXME don't duplicate these 2 lines ^^^
         finishLoading($part.find(chatPClass+"text"));
-        buildProject(section);
+        buildProject($part);
     }
 
     function showingOptions($part) {
         // 6. show 1st btn
         setTimeout(function () {
             finishLoading($part.find(chatPClass+"option:nth-last-of-type(2) .btnB"));
-            if(noScroll) {
-                noScroll = false;
-            } else {
-                scrollFinal($part);
-            }
+            scrollFinal($part);
+            // FIXME better buttons target
             // 6. show 2nd btn
             setTimeout(function () {
                 finishLoading( $part.find(chatPClass+"option:last-of-type .btnB") );
@@ -302,15 +235,14 @@ var chatApp = function() {
 
     // ------ TYPES OF PART BUILD ------ //
     // ------ section ------ //
-    function buildSection(section) {
+    function buildSection() {
         var $section = $('#'+section),
-            $sectionIntro = $("#"+section+"-intro");
+            $sectionIntro = $("#"+section+"-intro"),
             ElChatPart;
 
         text = chatContent[section]["intro"];
         delete chatContent[section]["intro"];
 
-        //TODO
         var ElChatPart =    $("<div class='chatPart-bot'>"
                                 +"<p class='chatPart-text jsLoading'>"+text+"</p>"
                             +"</div>");
@@ -318,7 +250,6 @@ var chatApp = function() {
         $sectionIntro.append(ElChatPart);
 
         if (section == "practice") {
-            isIntroPractice = true;
             showingCommon($sectionIntro, showingPractice);
         } else {
             var ElChatOptions = getOptions(title);
@@ -328,14 +259,14 @@ var chatApp = function() {
     }
 
     // ------ talk ------ //
-    function buildSentence(section, title) {
+    function buildSentence() {
 
         //get text and remove it from chatContent.
         text = chatContent[section][title];
         delete chatContent[section][title];
 
         //build part
-        var ElChatPart = getElPart(id, title, text),
+        var ElChatPart = getElPart(),
             ElChatOptions = getOptions(section);
 
         ElChatPart.find(botClass).append(ElChatOptions);
@@ -346,13 +277,12 @@ var chatApp = function() {
     }
 
     // ------ project ------ //
-    function buildProject(section) {
+    function buildProject($part) {
         setTimeout(function () {
             Projects.initProj(section);
-            setTimeout(function () {
-                scrollFinal($('#projects'));
-            }, 500);
-        }, 400);
+            scrollSafe($('#projects'));
+            //TODO adjust until top of screen
+        }, 600);
     }
 
 
@@ -373,45 +303,6 @@ var chatApp = function() {
         });
     }
 
-    function navLoading() {
-        // var delayInit = 250,
-        //     delay = delayInit,
-        //     $children;
-
-        // $nav.children().each(function() {
-        //     $children = $(this);
-
-
-        var $children;
-
-        $nav.children().each(function() {
-        $children = $(this);
-
-        // FIXME - WTF IS GOING ON
-        // setTimeout(function () {
-            $children.removeClass('jsLoading jsLoading2');
-            // }, delayInit);
-
-        // }, delay);
-        // delay += delayInit;
-        });
-
-        console.log(mainSections);
-
-            // var baffleBg = baffle("#background-intro button");
-            // var bafflePr = baffle("#practice-intro button");
-
-            // baffleBg
-            //     .start()
-            //     .text(currentText => mainSections[0])
-            //     .reveal(400, 450);
-
-            // bafflePr
-            //     .start()
-            //     .text(currentText => mainSections[2])
-            //     .reveal(400, 350);
-        // });
-    }
 
     $(document).ready(function(){
 
@@ -424,38 +315,27 @@ var chatApp = function() {
 
             baffleBg
                 .start()
-                .text(currentText => mainSections[0])
-                .reveal(400, 3450);
+                .text(currentText => mainSections[0]);
 
             baffleTh
                 .start()
-                .text(currentText => mainSections[1])
-                .reveal(400, 3050);
+                .text(currentText => mainSections[1]);
 
             bafflePr
                 .start()
-                .text(currentText => mainSections[2])
-                .reveal(400, 3250);
+                .text(currentText => mainSections[2]);
 
 
             setTimeout(function () {
                 navTranslate();
-            }, 200);
+            }, 250);
 
             (function showNav() {
                 if($heyThereIntro.css('opacity') == "1") {
-
-                    setTimeout(function () {
-                        $('#theory').removeClass('jsLoading jsLoading2');
-                    }, 450);
-                    setTimeout(function () {
-                        $('#background').removeClass('jsLoading jsLoading2');
-                    }, 0);
-                    setTimeout(function () {
-                        $('#practice').removeClass('jsLoading jsLoading2');
-                    }, 250);
-
-                    // navLoading();
+                    $('#theory, #background, #practice').removeClass('jsLoading jsLoading2');
+                    baffleBg.reveal(400, 750);
+                    baffleTh.reveal(400, 250);
+                    bafflePr.reveal(400, 500);
                 } else {
                     setTimeout(function () {
                         showNav();
@@ -477,7 +357,7 @@ var chatApp = function() {
 
     return {
         init,
-        outsider
+        // outsider
     }
 
 }();

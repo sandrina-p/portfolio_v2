@@ -17,21 +17,9 @@ Object.random = function(obj) {
     return result;
 }
 
-Object.notClicked = function(obj, arrayName) {
-    var size = 0, key;
-    var array = obj[arrayName];
-    if (!array) {
-        return Object.size(obj);
-    }
-
-    for (key in obj) {
-        if (obj.hasOwnProperty(key)) {
-            if (array.indexOf(key) < 0 ) size++;
-        }
-    }
-    return size;
-};
-
+String.prototype.slugLower = function() {
+    return this.split(' ').join('-').toLowerCase();
+}
 
 $.fn.extend({
     toggleText: function(a, b) {
