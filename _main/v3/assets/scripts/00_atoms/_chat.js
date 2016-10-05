@@ -607,6 +607,7 @@ var botSection = function() {
     //close 008080 section
     $(document).keyup(function(e) {
         if (e.keyCode == 27) { // ESC
+            $botInner.removeClass(triggerActive);
             $bot.removeClass(triggerActive);
         }
     });
