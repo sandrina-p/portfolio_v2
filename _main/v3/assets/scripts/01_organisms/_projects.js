@@ -315,8 +315,7 @@ var Projects = function() {
     function initProj(section) {
         var elProj = buildProj(),
             i = Math.floor(Math.random() * (arrProjects.length - 1) + 1),
-            projName = arrProjects[i],
-            projSlug = projName.split(' ').join('-').toLowerCase();
+            projName = arrProjects[i];
 
         $('#'+section).append(elProj);
         $('#projects').slideDown();
@@ -326,7 +325,7 @@ var Projects = function() {
         setTimeout(function () {
             getProjectData(projName);
 
-            $('button[name='+projSlug+']').first().addClass(activeClass);
+            $('button[name='+projName.slugLower()+']').first().addClass(activeClass);
             $projActive = $('button.'+activeClass);
             alignPivot();
         }, 400);
