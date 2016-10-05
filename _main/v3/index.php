@@ -174,6 +174,9 @@
         </nav>
     </div>
 
+
+    */ ?>
+
     <div class="bot" id="bot">
         <button type="button" name="about" class="bot-trigger js-botTrigger">
             <span>0</span><span>0</span><span>8</span><span>0</span><span>8</span><span>0</span>
@@ -182,7 +185,6 @@
             <div class="bot-text"></div>
         </div>
     </div>
-    */ ?>
 
 
     <!-- SCRIPTS AND STYLES -->

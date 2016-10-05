@@ -21,6 +21,10 @@ String.prototype.slugLower = function() {
     return this.split(' ').join('-').toLowerCase();
 }
 
+String.slugLower = function(str) {
+    return str.split(' ').join('-').toLowerCase();
+}
+
 $.fn.extend({
     toggleText: function(a, b) {
         $.trim(this.html()) == a ? this.html(b) : this.html(a);
