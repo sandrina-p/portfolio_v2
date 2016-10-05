@@ -10,11 +10,12 @@ $textPadding: 20vw;
     z-index: 99;
     transition: height $speed ease-out;
     height: 0;
-    @extend %flexbox;
-    @include flexboxProp {
-        flex-direction: column;
-        align-items: flex-start;
-    }
+    display: block;
+    // @extend %flexbox;
+    // @include flexboxProp {
+    //     flex-direction: column;
+    //     align-items: flex-start;
+    // }
 
     &.jsLoading {
         height: 100vh;
@@ -26,6 +27,7 @@ $textPadding: 20vw;
 
     &-inner {
         position: relative;
+        @include centerxy;
         width: 100%;
         width: 100vw;
         height: 0;
@@ -35,11 +37,11 @@ $textPadding: 20vw;
         animation: bgBreath 3s ease-in-out infinite;
         color: $clrPrimarySoft;
         transition: height $speed ease-out;
-        @extend %flexbox;
-        @include flexboxProp {
-            flex-direction: column;
-            justify-content: flex-end;
-        }
+        // @extend %flexbox;
+        // @include flexboxProp {
+        //     flex-direction: column;
+        //     justify-content: flex-end;
+        // }
 
 
 
