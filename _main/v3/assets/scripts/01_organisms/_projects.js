@@ -175,7 +175,7 @@ var Projects = function() {
                                 +"</div>"
                             +"</div>"
 
-                            +"<div class='bot-nav'>press [<] and [>] to navigate through the projects</div>"
+                            +"<div class='bot-nav'>press <span>[<]</span> and <span>[>]</span> to navigate through the projects</div>"
                         +"</div>");
 
         return ElProj;
