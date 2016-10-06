@@ -236,9 +236,13 @@ $glidderTime: 10;
 .bot-nav {
     display: block;
     width: 100%;
-    text-align: center;
-    font-size: $fontS;
-    padding-bottom: $safeArea;
-    color: gray; //TODO
+    text-align: right;
+    font-size: $fontXS;
+    padding: 0 $botWidthLap $safeArea 0;
+    color: $clrGray;
     transition: opacity 150ms ease;
+
+    span {
+        color: $clrPrimarySoft;
+    }
 }
