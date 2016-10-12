@@ -5,11 +5,12 @@ var gulp = require('gulp'),
     argv = require('yargs').argv, // flags to command-line
     gulpif = require('gulp-if'), // execute some task conditions (ex dev vs prod)
     gutil = require('gulp-util'), // better error logs like pump
-    changed = require('gulp-changed'), // only compiles what was changed
-    cached = require('gulp-cached'), // DELETE used on scss - but i didn't understand what's the advantage on it.
+    changed = require('gulp-changed'), // NOTE: only compiles what was changed
+    cached = require('gulp-cached'), // NOTE: i'm not sure if this is working correctly
     stripDebug = require('gulp-strip-debug'), //bye bye console.logs
     chalk = require('chalk'), //because after all i'm a designer and i need some colors on terminal x)
-    php2html = require("gulp-php2html"),
+
+    php2html = require("gulp-php2html"), //turn php into static files to upload on github
 
     browserSync = require('browser-sync'), // i'm not sure how this and connect-php works ...
     php = require('gulp-connect-php'), // ... but you can read more about it here -> http://stackoverflow.com/a/37040763/4737729
@@ -44,9 +45,6 @@ function logEnv() {
 
 // ------------ tasks ------------- //
 
-//////////////////
-// task scripts //
-//////////////////
 gulp.task('scripts', function(){
     console.log('start task scripts');
     gulp.src([
@@ -79,9 +77,6 @@ gulp.task('scripts', function(){
 });
 
 
-////////////////
-// task scss  //
-////////////////
 // sass, rename .min, autoprefixer, cleanCSS minimize
 gulp.task('scss', function(){
     console.log('start task scss');
@@ -101,9 +96,6 @@ gulp.task('scss', function(){
 });
 
 
-////////////////////////
-// task scssPartials  //
-////////////////////////
 // watch for partials when they are changed to change their parent.
 gulp.task('scssPartials', function() {
     return gulp.src('assets/**/*.scss')
@@ -112,9 +104,6 @@ gulp.task('scssPartials', function() {
 });
 
 
-// ///////////////////
-// // task min-this //
-// ///////////////////
 // // minify a specific file or folder (js or scss)
 // gulp.task('min-this', function(){
 //     //command line: $ gulp min-this --js [path/to/file.js]
@@ -179,16 +168,10 @@ gulp.task('scssPartials', function() {
 // });
 
 
-///////////////////
-// task min-all  //
-///////////////////
 gulp.task('min-all', ['scripts', 'scss'] );
 
 
 
-////////////////////
-// task gen-html  //
-////////////////////
 gulp.task('gen-html', function(){
     gulp.src("index.php")
     .pipe(php2html())
@@ -196,9 +179,6 @@ gulp.task('gen-html', function(){
 });
 
 
-///////////////////////////
-// task php&browser-sync //
-///////////////////////////
 gulp.task('php', function() {
     php.server({ base: 'http://localhost:8888/git/s008080', port: 8888, keepalive: true});
 });
@@ -216,17 +196,11 @@ gulp.task('browser-sync',['php'], function() {
     gulp.watch(["*.phtml", "*.php"]).on('change', browserSync.reload);
 });
 
-///////////////////
-// task setWatch //
-///////////////////
-// apply some .pipe() only if global.isWatching == true
+
 gulp.task('setWatch', function() {
     global.isWatching = true;
 });
 
-////////////////
-// task watch //
-////////////////
 gulp.task('watch', ['setWatch', 'scssPartials', 'browser-sync'], function(){
     gulp.watch([
             folderScripts+'/**/*.js',
@@ -273,10 +247,6 @@ gulp.task('tasks', function(){
         );
 });
 
-//////////////////
-// task default //
-//////////////////
-// gulp.task('default', ['watch'] );
 gulp.task('default', function() {
         console.log('hello person. type "gulp tasks" to know what tasks are available');
 });
