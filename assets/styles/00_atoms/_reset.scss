@@ -70,6 +70,7 @@ html {
     -moz-osx-font-smoothing: grayscale;
 	box-sizing: border-box;
 	width: 100%;
+	max-width: 100%;
 	overflow-x: hidden;
 
     @include media(laptop) {

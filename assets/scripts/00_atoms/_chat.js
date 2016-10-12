@@ -1,3 +1,11 @@
+var genericVal = function() {
+    var untilTablet = window.innerWidth < 750;
+
+    return {
+        untilTablet
+    }
+}();
+
 var chatApp = function() {
     //general chat classes
     var $chatId = $('#chat'),
@@ -291,7 +299,7 @@ var chatApp = function() {
     var $nav = $('#chat-nav');
 
     function navTranslate(thisId) {
-        var navWidth = 16, //padding;
+        var navWidth = 16, //padding
             thisId = thisId || null;
 
         $nav.children().each(function() {
