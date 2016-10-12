@@ -112,71 +112,71 @@ gulp.task('scssPartials', function() {
 });
 
 
-///////////////////
-// task min-this //
-///////////////////
-// minify a specific file or folder (js or scss)
-gulp.task('min-this', function(){
-    //command line: $ gulp min-this --js [path/to/file.js]
-    //command line: $ gulp min-this --scss [path/to/file.scss]
-    //command line: $ gulp min-this --jsfolder [path/to/folder]
-    ////command line: $ gulp min-this --scssfolder [path/to/folder]
-
-    if ( !argv.js && !argv.scss && !argv.jsfolder && !argv.scssfolder) {
-        console.log("UPS! You didnt tell me what file should I minify. Use 'gulp min-this --js [path/to/file.js]' or 'gulp min-this --scss [path/to/file.scss]' ");
-        return false;
-    }
-
-    if (argv.js || argv.jsfolder) {
-        gulp.src([
-            argv.js ? argv.js
-            : argv.jsfolder+'/**/*.js',
-            '!'+argv.jsfolder+'/**/_*.js',
-            '!'+argv.jsfolder+'/**/*.min.js'
-            ])
-            //TODO find a way to not duplicate this *1
-            .pipe(include())
-                .on('error', console.log)
-            .pipe(babel({
-                "presets": ["es2015-script"],
-                compact: false //use uglify()
-            }))
-            .pipe(stripDebug())
-            .pipe(uglify({
-                compress: {
-                    // drop_console: true, //is better stripDebug()
-                    hoist_funs: false
-                }
-            }).on('error', gutil.log))
-            .pipe(rename({ suffix: '.min' }))
-            .pipe(gulp.dest( function(file) { return file.base; } ));
-            //end TODO find a way to not duplicate this *1
-        var miniffied = argv.js ? argv.js : argv.jsfolder;
-        console.log(miniffied + " minified");
-    }
-
-    if (argv.scss || argv.scssfolder) {
-        gulp.src([
-            argv.scss ? argv.scssfolder
-            : argv.scssfolder+'/**/*.scss',
-            '!'+argv.scssfolder+'/**/_*.scss',
-            ])
-            .pipe(sass.sync().on('error', sass.logError))
-            .pipe(rename({ suffix: '.min' }))
-            .pipe(autoprefixer({
-                browsers: ['last 2 version', 'safari 6', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'],
-                cascade: true
-            }))
-            .pipe(importCss())
-            .pipe(cleanCSS({compatibility: 'ie9'}))
-            .pipe(gulp.dest( function(file) { return file.base; } ));
-
-        var miniffied = argv.scss ? argv.scss : argv.scssfolder;
-        console.log(argv.scss + " minified");
-    }
-
-    logEnv();
-});
+// ///////////////////
+// // task min-this //
+// ///////////////////
+// // minify a specific file or folder (js or scss)
+// gulp.task('min-this', function(){
+//     //command line: $ gulp min-this --js [path/to/file.js]
+//     //command line: $ gulp min-this --scss [path/to/file.scss]
+//     //command line: $ gulp min-this --jsfolder [path/to/folder]
+//     ////command line: $ gulp min-this --scssfolder [path/to/folder]
+//
+//     if ( !argv.js && !argv.scss && !argv.jsfolder && !argv.scssfolder) {
+//         console.log("UPS! You didnt tell me what file should I minify. Use 'gulp min-this --js [path/to/file.js]' or 'gulp min-this --scss [path/to/file.scss]' ");
+//         return false;
+//     }
+//
+//     if (argv.js || argv.jsfolder) {
+//         gulp.src([
+//             argv.js ? argv.js
+//             : argv.jsfolder+'/**/*.js',
+//             '!'+argv.jsfolder+'/**/_*.js',
+//             '!'+argv.jsfolder+'/**/*.min.js'
+//             ])
+//             //TODO find a way to not duplicate this *1
+//             .pipe(include())
+//                 .on('error', console.log)
+//             .pipe(babel({
+//                 "presets": ["es2015-script"],
+//                 compact: false //use uglify()
+//             }))
+//             .pipe(stripDebug())
+//             .pipe(uglify({
+//                 compress: {
+//                     // drop_console: true, //is better stripDebug()
+//                     hoist_funs: false
+//                 }
+//             }).on('error', gutil.log))
+//             .pipe(rename({ suffix: '.min' }))
+//             .pipe(gulp.dest( function(file) { return file.base; } ));
+//             //end TODO find a way to not duplicate this *1
+//         var miniffied = argv.js ? argv.js : argv.jsfolder;
+//         console.log(miniffied + " minified");
+//     }
+//
+//     if (argv.scss || argv.scssfolder) {
+//         gulp.src([
+//             argv.scss ? argv.scssfolder
+//             : argv.scssfolder+'/**/*.scss',
+//             '!'+argv.scssfolder+'/**/_*.scss',
+//             ])
+//             .pipe(sass.sync().on('error', sass.logError))
+//             .pipe(rename({ suffix: '.min' }))
+//             .pipe(autoprefixer({
+//                 browsers: ['last 2 version', 'safari 6', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'],
+//                 cascade: true
+//             }))
+//             .pipe(importCss())
+//             .pipe(cleanCSS({compatibility: 'ie9'}))
+//             .pipe(gulp.dest( function(file) { return file.base; } ));
+//
+//         var miniffied = argv.scss ? argv.scss : argv.scssfolder;
+//         console.log(argv.scss + " minified");
+//     }
+//
+//     logEnv();
+// });
 
 
 ///////////////////
@@ -200,7 +200,7 @@ gulp.task('gen-html', function(){
 // task php&browser-sync //
 ///////////////////////////
 gulp.task('php', function() {
-    php.server({ base: 'http://localhost:8888/git/personal-sandrina-p/_main/v3/', port: 8888, keepalive: true});
+    php.server({ base: 'http://localhost:8888/git/s008080', port: 8888, keepalive: true});
 });
 
 gulp.task('browser-sync',['php'], function() {
@@ -232,7 +232,6 @@ gulp.task('watch', ['setWatch', 'scssPartials', 'browser-sync'], function(){
             folderScripts+'/**/*.js',
             '!'+folderScripts+'/**/*.min.js'
         ], { usePolling: true }, ['scripts']);
-    //gulp.watch(['**/*.php', '**/*.phtml'], { usePolling: true }, [reload]); //TODO-SYNC
     gulp.watch(['index.php'], ['gen-html']);
 });
 
@@ -245,6 +244,7 @@ gulp.task('tasks', function(){
             +chTitle('$ gulp watch')+"\n"
             	+"     watch .js (!*.min.js, !_*.js) modifications on assets/scripts and apply scripts task.  Use '--production' to also minify them.\n"
                 +"     watch .scss (!_*.scss) modifications on assets/styles and apply styles task. \n"
+                +"     also executes gulp gen-html \n"
 
             +"\n"+chTitle('$ gulp scripts')+"\n"
             	+"     create .min of all .js (!*.min.js, !_*.js) on assets/scripts \n"
@@ -253,17 +253,17 @@ gulp.task('tasks', function(){
             +"\n"+chTitle('$ gulp styles')+"\n"
             	+"     compile and minify all scss (!_*.scss) on assets/styles to .min.css \n"
 
-            +"\n"+chTitle('$ gulp min-this --js [path/to/file.js]')+"\n"
-            	+"     minify only a specific .js file. Useful for js on assets/plugins \n"
-
-            +"\n"+chTitle('$ gulp min-this --scss [path/to/file.scss]')+"\n"
-            	+"     compile only a specific .scss file. Useful for scss on assets/plugins \n"
-
-            +"\n"+chTitle('$ gulp min-this --jsscss [path/to/folder]')+"\n"
-            	+"     compile all .js files inside that specific folder. \n"
-
-            +"\n"+chTitle('$ gulp min-this --scssfolder [path/to/folder]')+"\n"
-            	+"     compile all .scss files inside that specific folder. \n"
+            // +"\n"+chTitle('$ gulp min-this --js [path/to/file.js]')+"\n"
+            // 	+"     minify only a specific .js file. Useful for js on assets/plugins \n"
+            //
+            // +"\n"+chTitle('$ gulp min-this --scss [path/to/file.scss]')+"\n"
+            // 	+"     compile only a specific .scss file. Useful for scss on assets/plugins \n"
+            //
+            // +"\n"+chTitle('$ gulp min-this --jsscss [path/to/folder]')+"\n"
+            // 	+"     compile all .js files inside that specific folder. \n"
+            //
+            // +"\n"+chTitle('$ gulp min-this --scssfolder [path/to/folder]')+"\n"
+            // 	+"     compile all .scss files inside that specific folder. \n"
 
             +"\n"+chTitle('$ gulp min-all')+"\n"
             	+"     run scripts and styles tasks. use '--production' to also minify them.\n"
