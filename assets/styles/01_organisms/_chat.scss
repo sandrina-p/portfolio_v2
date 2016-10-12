@@ -25,14 +25,15 @@
         //when user didn't clicked it yet
         &.jsOnNav {
             position: absolute;
-            bottom: 0; left: $humanWidthLap;
+            bottom: 0;
+            left: 0;
             padding: 0;
             z-index: 3;
 
             .chatPart:first-of-type {
                 .chatPart {
                     &-title {
-                        font-size: $fontL;
+                        font-size: $fontS;
 
                         &:hover {
                             color: $clrLight;
@@ -43,7 +44,7 @@
                     &-human {
                         width: auto;
                         padding: 0;
-                        padding-left: $safeArea*2;
+                        padding-left: $safeArea;
                         transition: width 0s 2s, padding 250ms, opacity 1s;
                     }
                 }
@@ -122,9 +123,8 @@
         // human part with titles
         &-human {
             width: 100%;
-            padding: $safeArea 0 $safeArea $safeArea;
+            padding: $safeArea*2 $safeArea 0 $safeArea;
             overflow: hidden;
-            text-align: right;
             display: none;
         }
 
@@ -147,7 +147,7 @@
         //bot part with text and options
         &-bot {
             width: 100%;
-            padding: $safeArea/2;
+            padding: 0;
             overflow: hidden;
             display: none;
         }
@@ -158,6 +158,7 @@
             font-size: $fontL;
             opacity: 1;
             transition: opacity $speed;
+            padding: 0 $safeArea 0 $safeArea*2;
 
             &:hover {
                 color: $clrDark;
@@ -179,6 +180,7 @@
             width: 49%;
             padding-top: $safeArea;
             padding-right: $safeArea/2;
+            padding-left: $safeArea;
             overflow: hidden;
 
             &:nth-child(2) {
@@ -267,12 +269,48 @@
         font-family: $font-mono;
     }
 }
-// @include media(laptop) {
-//     .chat {
-//         // width: 70%;
-//         // max-width: $safeArea*60;
-//     }
-// }
+
+@include media(tablet) {
+    .chat {
+        &Section {
+            &.jsOnNav {
+                left: $humanWidthLap;
+
+                .chatPart:first-of-type {
+                    .chatPart {
+                        &-title {
+                            font-size: $fontL;
+                        }
+
+                        &-human {
+                            padding-left: $safeArea*2;
+                        }
+                    }
+                }
+            }
+        }
+
+        &Part {
+            &-human {
+                padding: $safeArea 0 $safeArea $safeArea;
+                text-align: right;
+            }
+
+            &-bot {
+                padding: $safeArea/2;
+            }
+
+            &-text {
+                padding: 0;
+            }
+
+            &-option {
+                padding-left: $safeArea;
+            }
+
+        }
+    }
+}
 
 
 .liIndex {

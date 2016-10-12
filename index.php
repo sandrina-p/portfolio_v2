@@ -11,6 +11,7 @@
     <meta name='language' content='PT'>
 
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,200,300,700|Roboto+Mono:100,300,400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu:400,700" rel="stylesheet">
     <!-- <link rel="icon" type="image/png" href="assets/media/brand/favicon16.png" sizes="16x16">
     <link rel="icon" type="image/png" href="assets/media/brand/favicon32.png" sizes="32x32">
     <link rel="icon" type="image/png" href="assets/media/brand/favicon180.png" sizes="180x180"> -->
