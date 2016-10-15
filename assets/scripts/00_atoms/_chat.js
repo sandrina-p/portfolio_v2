@@ -60,7 +60,7 @@ var chatApp = function() {
         finishLoading($parent);
 
         setTimeout(function () {
-            $parent.slideUp("normal", function() {
+            $parent.slideUp("slow", function() {
                 $parent.remove();
             });
         }, 250);
@@ -311,11 +311,10 @@ var chatApp = function() {
     $(document).ready(function(){
 
         $(function navInit() {
-            var $heyThereIntro = $('.heyThere-intro');
-
-            var baffleBg = baffle("#btn-bg");
-            var baffleTh = baffle("#btn-th");
-            var bafflePr = baffle("#btn-pr");
+            var $heyThereIntro = $('.heyThere-intro'),
+                baffleBg = baffle("#btn-bg"),
+                baffleTh = baffle("#btn-th"),
+                bafflePr = baffle("#btn-pr");
 
             baffleBg
                 .start()
