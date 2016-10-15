@@ -7,6 +7,7 @@
 $HTFont: $font5XL;
 $HTFontTab: $font6XL;
 
+
 .heyThere {
     width: 100%;
     margin: auto;
@@ -28,8 +29,6 @@ $HTFontTab: $font6XL;
             @extend %textHeyThere;
             color: $clrDark;
             animation: heyThere 2250ms steps(11);
-            -moz-animation: heyThere 2250ms steps(11); /* for firefox */
-            -webkit-animation: heyThere 2250ms steps(11); /* for safari, chrome & opera */
         }
     }
 
@@ -38,7 +37,7 @@ $HTFontTab: $font6XL;
         max-width: $safeArea*35;
         padding-left: $safeArea;
         padding-right: $safeArea;
-        padding-bottom: $safeArea*3;
+        padding-bottom: $safeArea*2+$safeArea/2;
         margin-top: $safeArea*2;
         opacity: 1;
         animation: heyIntro 2500ms ease-in;
@@ -97,38 +96,6 @@ $HTFontTab: $font6XL;
     100% {content: "Hey \a there";}
 }
 
-@-moz-keyframes heyThere { /* animation for firefox */
-    0% {content: "";}
-    1% {content: "";}
-    75% {content: "";}
-    77% {content: "H";}
-    80% {content: "He";}
-    83% {content: "Hey";}
-    85% {content: "Hey ";}
-    87% {content: "Hey \a t";}
-    90% {content: "Hey \a th";}
-    93% {content: "Hey \a the";}
-    95% {content: "Hey \a ther";}
-    97% {content: "Hey \a there";}
-    100% {content: "Hey \a there";}
-}
-@-webkit-keyframes heyThere { /* animation for chrome, safari & opera */
-    0% {content: "";}
-    1% {content: "";}
-    75% {content: "";}
-    77% {content: "H";}
-    80% {content: "He";}
-    83% {content: "Hey";}
-    85% {content: "Hey ";}
-    87% {content: "Hey \a t";}
-    90% {content: "Hey \a th";}
-    93% {content: "Hey \a the";}
-    95% {content: "Hey \a ther";}
-    97% {content: "Hey \a there";}
-    100% {content: "Hey \a there";}
-}
-
-
 @keyframes heyLine {
     0% {
         max-width: 0;
@@ -143,7 +110,6 @@ $HTFontTab: $font6XL;
         padding-left: $safeArea*2;
     }
 }
-
 @keyframes heyLine-tablet {
     0% {
         max-width: 0;
@@ -159,8 +125,17 @@ $HTFontTab: $font6XL;
     }
 }
 
-
-
+@keyframes heyIntro {
+    0% {
+        opacity: 0;
+    }
+    80% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
 @keyframes heyIntro-tablet {
     0% {
         margin-top: $safeArea*15;
@@ -175,18 +150,6 @@ $HTFontTab: $font6XL;
     100% {
         margin-top: $safeArea*9;
         max-height: $safeArea*20;
-        opacity: 1;
-    }
-}
-
-@keyframes heyIntro {
-    0% {
-        opacity: 0;
-    }
-    80% {
-        opacity: 0;
-    }
-    100% {
         opacity: 1;
     }
 }

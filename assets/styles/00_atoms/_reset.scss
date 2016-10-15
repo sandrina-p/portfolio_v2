@@ -72,6 +72,7 @@ body {
 	max-width: 100%;
 	overflow-x: hidden;
 	background: $clrDark; //same color as #projects to prevent iOS swipe left/right edges
+	animation: fadein 3s; //prevent loading delay that shows black screen half black/white
 
 	> * {
 		background: $clrLight;
@@ -88,5 +89,17 @@ body {
 	* {
 		box-sizing: inherit;
 		line-height: inherit;
+	}
+}
+
+@keyframes fadein {
+	0% {
+		background: $clrLight;
+	}
+	80% {
+		background: $clrLight;
+	}
+	100% {
+		background: $clrDark;
 	}
 }
