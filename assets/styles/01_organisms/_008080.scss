@@ -1,6 +1,7 @@
 $sentClr: $clrLight;
 $placeholderClr: $clrGrayLight;
-$textPadding: 20vw;
+$textPaddingMob: $safeArea;
+$textPaddingTab: 20vw;
 
 .bot {
     @include centerxy;
@@ -11,11 +12,6 @@ $textPadding: 20vw;
     transition: height $speed ease-out;
     height: 0;
     display: block;
-    // @extend %flexbox;
-    // @include flexboxProp {
-    //     flex-direction: column;
-    //     align-items: flex-start;
-    // }
 
     &.jsLoading {
         height: 100vh;
@@ -57,7 +53,7 @@ $textPadding: 20vw;
         height: auto;
         max-height: 100%;
         overflow: auto;
-        padding: $safeArea $textPadding $safeArea*2;
+        padding: $safeArea $textPaddingMob $safeArea*2;
         font-family: $font-mono;
         font-size: $fontS;
     }
@@ -67,7 +63,7 @@ $textPadding: 20vw;
             content: "_";
             position: absolute;
             color: $sentClr;
-            left: calc(#{$textPadding} - #{$safeArea/2});
+            left: calc(#{$textPaddingMob} - #{$safeArea/2});
         }
     }
     &-sent {
@@ -102,13 +98,18 @@ $textPadding: 20vw;
             width: 100%;
             outline: none;
         }
+    }
 
+    @include media(tablet) {
+        &-text {
+            padding: $safeArea $textPaddingTab $safeArea*2;
+        }
     }
 }
 
 .jsBotThinking {
     position: absolute;
-    left: calc(#{$textPadding} - #{$safeArea/2});
+    left: calc(#{$textPaddingMob} - #{$safeArea/2});
     bottom: $safeArea*1;
     &:before {
         color: $clrLight;
@@ -123,23 +124,6 @@ $textPadding: 20vw;
     50% {background: $clrDark;}
     100% {background: $clrBlack;}
 }
-
-// * : ~ . _
-//   0% {content: ". 0 . _ . _ . _";}
-//  20% {content: "_ . 0 . _ . _ .";}
-//  40% {content: ". _ . 8 . _ . _";}
-//  60% {content: "_ . _ . 0 . _ .";}
-//  80% {content: ". _ . _ . 8 . _";}
-// 100% {content: "_ . _ . _ . 0 .";}
-
-// @keyframes botThinking {
-//     0% {content: ". 0 . _ . _ . _";}
-//    20% {content: ". _ 0 _ . _ . _";}
-//    40% {content: ". _ . 8 . _ . _";}
-//    60% {content: ". _ . _ 0 _ . _";}
-//    80% {content: ". _ . _ . 8 . _";}
-//   100% {content: ". _ . _ . _ 0 _";}
-// }
 
 @keyframes botThinking {
     0% {content: "..";}

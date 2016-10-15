@@ -193,6 +193,7 @@
     }
 }
 
+
 @include media(phablet) {
     .chat {
         &Section {
@@ -210,60 +211,9 @@
                 margin-left: -1px;
                 border-right: 0;
             }
-
-            &-option {
-                padding-right: $safeArea;
-            }
-
-            &-role {
-                margin: -12px -344px 0 836px;
-
-                &.jsGlitchIn {
-                    display: block;
-                    margin-left: -44px;
-                }
-            }
-
-            &-more {
-                margin: -12px 2px -12px -152px;
-            }
-
         }
     }
 
-}
-
-
-#practice-index {
-    .chatPart {
-        &-bot {
-            padding: 0;
-        }
-    }
-
-    .liIndex-ul {
-        display: none;
-    }
-}
-
-.ifCondition {
-    text-align: center;
-    padding-top: $safeArea;
-
-    > * {
-        font-size: $fontS;
-        line-height: $lineHeightM;
-    }
-
-    span {
-        display: inline-block;
-        margin-top: $safeArea/3;
-        padding: $safeArea/3 $safeArea*3;
-        border-top: 1px solid $clrGray;
-        color: $clrPrimary;
-        font-style: italic;
-        font-family: $font-mono;
-    }
 }
 
 @include media(tablet) {
@@ -316,6 +266,12 @@
                 display: inline-block;
                 width: 49%;
                 padding: 0;
+                // max-width: 0;
+
+                &.jsLoading {
+                    padding: 0;
+                    // max-width: 49%;
+                }
             }
 
         }
