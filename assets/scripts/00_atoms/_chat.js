@@ -6,6 +6,8 @@ var genericVal = function() {
     }
 }();
 
+
+
 var chatApp = function() {
     //general chat classes
     var $chatId = $('#chat'),
@@ -50,27 +52,28 @@ var chatApp = function() {
 
     // ------ GENERAL STUFF ----- //
     //when the user clicks on a chat button, it runs away.
-    function animateClickedOption(option) {
-        var parent = option.parent();
-            liIndex = option.closest('.liIndex-liCateg');
-            siblings = parent.siblings('.chatPart-option, .liIndex-liProj');
+    function animateClickedOption($option) {
+        var $parent = $option.parent();
+            $liIndex = $option.closest('.liIndex-liCateg');
+            $siblings = $parent.siblings('.chatPart-option, .liIndex-liProj');
 
-        // TODO remove this animate, add a class pellleaseee.
-        parent.animate({'margin-left':'-49%'});
-        option.animate({'margin-left':'-100%'});
+        finishLoading($parent);
 
-        if (siblings.length > 0) {
-            //siblings.children().removeClass('btnB');
+        if ($siblings.length > 0) {
             setTimeout(function () {
-                parent.remove();
-            }, 500);
+                $parent.slideUp();
+                setTimeout(function () {
+                    $parent.remove();
+                    $liIndex.remove();
+                }, 500);
+            }, 250);
 
         } else {  //is is the last one, remove the parent.
-            parent.slideUp();
-            liIndex.slideUp();
+            $parent.slideUp();
+            $liIndex.slideUp();
             setTimeout(function () {
-                parent.remove();
-                liIndex.remove();
+                $parent.remove();
+                $liIndex.remove();
             }, 250);
         }
     }
@@ -78,7 +81,7 @@ var chatApp = function() {
     function bodyScrollTop(value) {
         $('body').animate({
             scrollTop: value
-        }, 500);
+        }, 1000, 'swing');
     }
 
     // ------ DOM STRUCTURE ELEMENTS ------ //
@@ -87,7 +90,7 @@ var chatApp = function() {
     }
 
     function getElBtn(text) {
-        return "<div class='chatPart-option'>"
+        return "<div class='chatPart-option jsLoading'>"
                     +"<button type='button' name='button' class='btnB jsLoading js-chatOpt'>"+text+"</button>"
                 +"</div>";
     }
@@ -136,11 +139,12 @@ var chatApp = function() {
     // 2. scrollFinal() - if newPart is outside of the window view, scroll it until its end is visible.
     function scrollSafe($currentPart) {
         var wScroll = $(window).scrollTop(),
+            wHeight = window.innerHeight, //NOTE: i need to set this var again because strange bug on iphone that doesn't get the real value.
             pHeight =  $currentPart.height(),
             pScroll = $currentPart.offset().top,
             tooClose = pScroll - wScroll + pHeight > wHeight/2;
 
-        // too close of above the fold ||away from the view window
+        // too close of above the fold || away from the view window
         if (tooClose || pScroll < wScroll) {
             bodyScrollTop(pScroll + pHeight - wHeight/4*1);
         }
@@ -159,7 +163,9 @@ var chatApp = function() {
             //if new part is away of the above the fold, scroll it to a safer area.
             if (visibleOnScreen > wArea) {
                 var diff2 = visibleOnScreen - wArea;
-                bodyScrollTop(wScroll + diff2);
+                if (!genericVal.untilTablet) {
+                    bodyScrollTop(wScroll + diff2);
+                }
             }
         }
 
@@ -190,10 +196,11 @@ var chatApp = function() {
 
         // if is 1st part (begin of a section) guide on parent
         // otherwise guide on previous part (currentPart where the user clicked);
+
+
         $part.is(':first-child')
             ? scrollSafe($part.parent())
             : scrollSafe($part.prev());
-
 
         // 1.show line title
         $part.find(chatPClass+"human").slideDown();
@@ -231,6 +238,7 @@ var chatApp = function() {
         setTimeout(function () {
             finishLoading($part.find(chatPClass+"option:nth-last-of-type(2) .btnB"));
             scrollFinal($part);
+
             // FIXME better buttons target
             // 6. show 2nd btn
             setTimeout(function () {
@@ -299,7 +307,7 @@ var chatApp = function() {
     var $nav = $('#chat-nav');
 
     function navTranslate(thisId) {
-        var navWidth = 16, //padding
+        var navWidth = genericVal.untilTablet ? 0 : 16, //padding
             thisId = thisId || null;
 
         $nav.children().each(function() {
@@ -336,11 +344,11 @@ var chatApp = function() {
 
             setTimeout(function () {
                 navTranslate();
-            }, 250);
+            }, 500);
 
             (function showNav() {
                 if($heyThereIntro.css('opacity') == "1") {
-                    $('#theory, #background, #practice').removeClass('jsLoading jsLoading2');
+                    $('#theory, #background, #practice').removeClass('jsLoading');
                     baffleBg.reveal(400, 750);
                     baffleTh.reveal(400, 250);
                     bafflePr.reveal(400, 500);

@@ -103,74 +103,7 @@ gulp.task('scssPartials', function() {
         .pipe(sassInheritance({dir: 'assets'}).on('error', gutil.log)); //find files that depend on the files that have changed
 });
 
-
-// // minify a specific file or folder (js or scss)
-// gulp.task('min-this', function(){
-//     //command line: $ gulp min-this --js [path/to/file.js]
-//     //command line: $ gulp min-this --scss [path/to/file.scss]
-//     //command line: $ gulp min-this --jsfolder [path/to/folder]
-//     ////command line: $ gulp min-this --scssfolder [path/to/folder]
-//
-//     if ( !argv.js && !argv.scss && !argv.jsfolder && !argv.scssfolder) {
-//         console.log("UPS! You didnt tell me what file should I minify. Use 'gulp min-this --js [path/to/file.js]' or 'gulp min-this --scss [path/to/file.scss]' ");
-//         return false;
-//     }
-//
-//     if (argv.js || argv.jsfolder) {
-//         gulp.src([
-//             argv.js ? argv.js
-//             : argv.jsfolder+'/**/*.js',
-//             '!'+argv.jsfolder+'/**/_*.js',
-//             '!'+argv.jsfolder+'/**/*.min.js'
-//             ])
-//             //TODO find a way to not duplicate this *1
-//             .pipe(include())
-//                 .on('error', console.log)
-//             .pipe(babel({
-//                 "presets": ["es2015-script"],
-//                 compact: false //use uglify()
-//             }))
-//             .pipe(stripDebug())
-//             .pipe(uglify({
-//                 compress: {
-//                     // drop_console: true, //is better stripDebug()
-//                     hoist_funs: false
-//                 }
-//             }).on('error', gutil.log))
-//             .pipe(rename({ suffix: '.min' }))
-//             .pipe(gulp.dest( function(file) { return file.base; } ));
-//             //end TODO find a way to not duplicate this *1
-//         var miniffied = argv.js ? argv.js : argv.jsfolder;
-//         console.log(miniffied + " minified");
-//     }
-//
-//     if (argv.scss || argv.scssfolder) {
-//         gulp.src([
-//             argv.scss ? argv.scssfolder
-//             : argv.scssfolder+'/**/*.scss',
-//             '!'+argv.scssfolder+'/**/_*.scss',
-//             ])
-//             .pipe(sass.sync().on('error', sass.logError))
-//             .pipe(rename({ suffix: '.min' }))
-//             .pipe(autoprefixer({
-//                 browsers: ['last 2 version', 'safari 6', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'],
-//                 cascade: true
-//             }))
-//             .pipe(importCss())
-//             .pipe(cleanCSS({compatibility: 'ie9'}))
-//             .pipe(gulp.dest( function(file) { return file.base; } ));
-//
-//         var miniffied = argv.scss ? argv.scss : argv.scssfolder;
-//         console.log(argv.scss + " minified");
-//     }
-//
-//     logEnv();
-// });
-
-
 gulp.task('min-all', ['scripts', 'scss'] );
-
-
 
 gulp.task('gen-html', function(){
     gulp.src("index.php")
@@ -187,9 +120,9 @@ gulp.task('browser-sync',['php'], function() {
     browserSync({
         proxy: '127.0.0.1:8888',
         port: 8888,
-        open: true,
         notify: false,
-        open: false
+        open: false,
+        ghostMode: false
     });
 
     gulp.watch(folderStyles+"/**/*.scss", ['scss']);

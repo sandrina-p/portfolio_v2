@@ -16,7 +16,7 @@ $HTFontTab: $font6XL;
     &-hey {
         @extend %textHeyThere;
         font-size: $HTFont;
-        padding: 0 0 0 $safeArea*2;
+        padding-left: $safeArea*2;
         border-bottom: 1px solid black;
         color: $clrLight;
         animation: heyLine 1750ms ease-out;
@@ -28,6 +28,8 @@ $HTFontTab: $font6XL;
             @extend %textHeyThere;
             color: $clrDark;
             animation: heyThere 2250ms steps(11);
+            -moz-animation: heyThere 2250ms steps(11); /* for firefox */
+            -webkit-animation: heyThere 2250ms steps(11); /* for safari, chrome & opera */
         }
     }
 
@@ -36,7 +38,7 @@ $HTFontTab: $font6XL;
         max-width: $safeArea*35;
         padding-left: $safeArea;
         padding-right: $safeArea;
-        padding-bottom: $safeArea*2;
+        padding-bottom: $safeArea*3;
         margin-top: $safeArea*2;
         opacity: 1;
         animation: heyIntro 2500ms ease-in;
@@ -49,8 +51,70 @@ $HTFontTab: $font6XL;
 }
 
 
+@include media(tablet) {
+    .heyThere {
+        padding-top: 10vh;
+
+        &-hey {
+            display: inline-block;
+            font-size: $HTFontTab;
+            padding: 0 $safeArea*3;
+            width: $humanWidthLap;
+            animation: heyLine-tablet 1750ms ease-out;
+        }
+
+        &-intro {
+            font-size: $fontXL;
+            width: $botWidthLap;
+            margin-top: $safeArea*9;
+            padding-left: $safeArea*3;
+            padding-bottom: $safeArea*5;
+            overflow: hidden;
+            max-height: 300px;
+            animation: heyIntro-tablet 2500ms ease-in;
+        }
+
+        &-br {
+            height: $safeArea/2*3;
+        }
+    }
+}
+
+
 @keyframes heyThere {
     0% {content: "";}
+    1% {content: "";}
+    75% {content: "";}
+    77% {content: "H";}
+    80% {content: "He";}
+    83% {content: "Hey";}
+    85% {content: "Hey ";}
+    87% {content: "Hey \a t";}
+    90% {content: "Hey \a th";}
+    93% {content: "Hey \a the";}
+    95% {content: "Hey \a ther";}
+    97% {content: "Hey \a there";}
+    100% {content: "Hey \a there";}
+}
+
+@-moz-keyframes heyThere { /* animation for firefox */
+    0% {content: "";}
+    1% {content: "";}
+    75% {content: "";}
+    77% {content: "H";}
+    80% {content: "He";}
+    83% {content: "Hey";}
+    85% {content: "Hey ";}
+    87% {content: "Hey \a t";}
+    90% {content: "Hey \a th";}
+    93% {content: "Hey \a the";}
+    95% {content: "Hey \a ther";}
+    97% {content: "Hey \a there";}
+    100% {content: "Hey \a there";}
+}
+@-webkit-keyframes heyThere { /* animation for chrome, safari & opera */
+    0% {content: "";}
+    1% {content: "";}
     75% {content: "";}
     77% {content: "H";}
     80% {content: "He";}
@@ -68,15 +132,50 @@ $HTFontTab: $font6XL;
 @keyframes heyLine {
     0% {
         max-width: 0;
-        padding: 0;
+        padding-left: 0;
     }
     60% {
+        max-width: 0;
+        padding-left: 0;
+    }
+    100% {
+        max-width: 100%;
+        padding-left: $safeArea*2;
+    }
+}
+
+@keyframes heyLine-tablet {
+    0% {
+        max-width: 0;
+        padding: 0;
+    }
+    70% {
         max-width: 0;
         padding: 0;
     }
     100% {
-        max-width: 100%;
-        padding: 0 0 0 $safeArea*2;
+        max-width: $humanWidthLap;
+        padding: 0 0 0 $safeArea*3;
+    }
+}
+
+
+
+@keyframes heyIntro-tablet {
+    0% {
+        margin-top: $safeArea*15;
+        max-height: 0;
+        opacity: 0;
+    }
+    70% {
+        margin-top: $safeArea*13;
+        max-height: 0;
+        opacity: 0;
+    }
+    100% {
+        margin-top: $safeArea*9;
+        max-height: $safeArea*20;
+        opacity: 1;
     }
 }
 
@@ -90,66 +189,4 @@ $HTFontTab: $font6XL;
     100% {
         opacity: 1;
     }
-}
-
-
-@include media(tablet) {
-    .heyThere {
-        padding-top: 10vh;
-
-        &-hey {
-            display: inline-block;
-            font-size: $HTFontTab;
-            padding: 0 $safeArea*3;
-            width: $humanWidthLap;
-        }
-
-        &-intro {
-            font-size: $fontXL;
-            width: $botWidthLap;
-            margin-top: $safeArea*9;
-            padding-left: $safeArea*3;
-            padding-bottom: $safeArea*5;
-            overflow: hidden;
-            max-height: 300px;
-        }
-
-        &-br {
-            height: $safeArea/2*3;
-        }
-    }
-
-    @keyframes heyLine {
-        0% {
-            max-width: 0;
-            padding: 0;
-        }
-        70% {
-            max-width: 0;
-            padding: 0;
-        }
-        100% {
-            max-width: $humanWidthLap;
-            padding: 0 0 0 $safeArea*3;
-        }
-    }
-
-    @keyframes heyIntro {
-        0% {
-            margin-top: $safeArea*15;
-            max-height: 0;
-            opacity: 0;
-        }
-        70% {
-            margin-top: $safeArea*13;
-            max-height: 0;
-            opacity: 0;
-        }
-        100% {
-            margin-top: $safeArea*9;
-            max-height: $safeArea*20;
-            opacity: 1;
-        }
-    }
-
 }

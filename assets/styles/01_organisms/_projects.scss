@@ -7,7 +7,6 @@
 
 $navSpeed: 250ms;
 
-
 .proj {
     position: relative;
     width: 100%;
@@ -15,13 +14,15 @@ $navSpeed: 250ms;
     color: $clrLight;
     margin: $safeArea 0 $safeArea*2;
     display: none;
-
+    overflow: auto;
 
     &Nav {
         position: relative;
-        height: $safeArea*3;
+        height: $safeArea*3+$safeArea/2;
         width: 100%;
-        padding-top: $safeArea;
+        max-width: 100%;
+        overflow: hidden;
+        padding-top: $safeArea+$safeArea/2;
 
         &-pivot {
             position: absolute;
@@ -43,7 +44,7 @@ $navSpeed: 250ms;
             left: 0;
         }
 
-        button {
+        &-btn {
             color: $clrPrimarySoft;
             font-size: $fontS;
             height: $safeArea*2;
@@ -66,11 +67,10 @@ $navSpeed: 250ms;
 
     &Cont {
         position: relative;
-        @extend %cf;
+
 
         &-left {
-            width: $humanWidthLap;
-            text-align: right;
+            width: $humanWidthMob;
         }
 
         &-subtitle {
@@ -78,12 +78,11 @@ $navSpeed: 250ms;
             font-size: $fontS;
             margin-top: $safeArea/3;
             margin-bottom: $safeArea*2;
+            padding-left: $safeArea*2;
         }
 
         &-media,
         &-about {
-            padding-left: $safeArea;
-            display: inline-block;
             width: 100%;
             max-width: rem(400);
         }
@@ -95,6 +94,7 @@ $navSpeed: 250ms;
         }
 
         &-about {
+            display: none;
             font-size: $fontS;
             color: $clrGray;
             @extend %cf;
@@ -110,84 +110,131 @@ $navSpeed: 250ms;
         }
 
         &-right {
-            width: $botWidthLap;
-            padding-left: $safeArea*3;
+            width: $botWidthMob;
         }
 
         &-descript {
             position: relative;
-            padding-top: $safeArea*3;
             max-width: $chatBotWidth;
-            height: $safeArea*18;
-            overflow: auto;
-
-            // -ms-overflow-style: none;  // IE 10+
-            // overflow: -moz-scrollbars-none;  // Firefox
-
-            &::-webkit-scrollbar {
-                display: none;  // Safari and Chrome
-            }
 
             &-fadeIn {
-                z-index: 2;
-                position: relative;
-                margin-bottom: -$safeArea*3;
-                display: block;
-                background: linear-gradient(to top, rgba($clrDark, 0), $clrDark 80%);
-                height: $safeArea*3;
+                display: none;
             }
 
             &-fadeOut {
-                z-index: 2;
-                position: relative;
-                margin-top: -$safeArea*2;
-                display: block;
-                background: linear-gradient(to bottom, rgba($clrDark, 0), $clrDark 80%);
-                height: $safeArea*2;
+                display: none;
             }
         }
 
         &-intro {
-            font-size: $fontXL;
-            margin-bottom: $safeArea;
+            font-size: $fontLx;
+            padding: $safeArea $safeArea $safeArea/2;
         }
 
         &-details {
-            margin: $safeArea*2 0 $safeArea;
-            padding-left: $safeArea;
-            border-left: 1px solid $clrBlack;
+            padding: $safeArea/2 $safeArea*2 $safeArea*2;
             color: $clrGrayLight;
-
-            //toggle details full css
-            // transition: max-height 1s ease;
-            // overflow: hidden;
-            // max-height: 0px;
         }
-
-        // #toggleDetails {
-        //     display: none;
-        //
-        //     &:checked + label { //the label is on getElProj(), _projects.js
-        //         display: none;
-        //
-        //         & + .projCont-details {
-        //             max-height: 1500px;
-        //         }
-        //     }
-        // }
 
         &-links {
             width: 100%;
-            @extend %cf;
-            padding: $safeArea*2 0;
+            padding: $safeArea 0;
             font-size: $fontS;
 
-            > :last-child:not(:first-child) {
-                margin-left: $safeArea*3;
+            &-option {
+                text-align: center;
+
+                &:not(:last-of-type) {
+                    margin-bottom: $safeArea;
+                }
+            }
+        }
+    }
+
+    @include media(tablet) {
+
+        &Nav {
+            padding-top: $safeArea;
+        }
+
+        &Cont {
+            @extend %cf-tab;
+
+            &-left {
+                width: $humanWidthLap;
+                text-align: right;
+            }
+
+            &-subtitle {
+                padding-left: 0;
+            }
+
+            &-media,
+            &-about {
+                padding-left: $safeArea;
+                display: inline-block;
+            }
+
+            &-right {
+                width: $botWidthLap;
+                padding-left: $safeArea*3;
+            }
+
+            &-descript {
+                height: $safeArea*18;
+                overflow: auto;
+                padding-top: $safeArea*3;
+
+                &::-webkit-scrollbar {
+                    display: none;  // Safari and Chrome
+                }
+
+                &-fadeIn {
+                    z-index: 2;
+                    position: relative;
+                    margin-bottom: -$safeArea*3;
+                    display: block;
+                    background: linear-gradient(to top, rgba($clrDark, 0), $clrDark 80%);
+                    height: $safeArea*3;
+                }
+
+                &-fadeOut {
+                    z-index: 2;
+                    position: relative;
+                    margin-top: -$safeArea*2;
+                    display: block;
+                    background: linear-gradient(to bottom, rgba($clrDark, 0), $clrDark 80%);
+                    height: $safeArea*2;
+                }
+            }
+
+            &-intro {
+                font-size: $fontXL;
+                padding: 0;
+                margin-bottom: $safeArea;
+            }
+
+            &-details {
+                margin: $safeArea*2 0 $safeArea;
+                padding-left: $safeArea;
+                border-left: 1px solid $clrBlack;
+            }
+
+            &-links {
+                @extend %cf-tab;
+                padding: $safeArea*2 0;
+
+                > :last-child:not(:first-child) {
+                    margin-left: $safeArea*3;
+                }
             }
         }
     }
 }
+
+
+
+
 
 .Glidder {
     position: relative;
@@ -223,26 +270,39 @@ $glidderTime: 10;
     06% {z-index: 2;}
     10% {z-index: 2;}
     20% {z-index: 2;}
-    30% {z-index: 2;}
+    24% {z-index: 2; left: 0;}
+    25% {z-index: 2; left: $safeArea/3;}
+    26% {z-index: 2; left: -$safeArea/5;}
+    27% {z-index: 2; left: 0; top: 0}
+    30% {z-index: 2; left: 0; top: 0}
     31% {z-index: -1; left: $safeArea/4; top: $safeArea/4;}
     31.5% {z-index: 2; top: -$safeArea;}
     31.5% {z-index: 2; left: $safeArea/2; top: $safeArea;}
     32.5% {z-index: 2; left: -$safeArea;}
     33.5% {z-index: -1; left: $safeArea*3/2;}
     34% {z-index: -1; left: $safeArea/4; top: $safeArea/4;}
+    35% {z-index: -1;}
     100%  {z-index: 0;}
 }
+
 
 .bot-nav {
     display: block;
     width: 100%;
-    text-align: right;
+    text-align: center;
     font-size: $fontXS;
-    padding: 0 $botWidthLap $safeArea 0;
     color: $clrGray;
+    height: $safeArea;
+    padding-top: $safeArea/2;
+    margin-bottom: -$safeArea+$safeArea/2;
     transition: opacity 150ms ease;
+    opacity: 1;
 
     span {
         color: $clrPrimarySoft;
+    }
+
+    .jsLoading {
+        opacity: 0;
     }
 }

@@ -35,9 +35,9 @@ var chatContent = {
     theory: {
         intro: "Basically she breaths <strong>HTML5, SCSS</strong> and <strong>Javascript / JQuery</strong>."+brk+"She is really into <strong>interactive stuff</strong> and that’s what makes her good at web development: a passion for the work and 24hours of <strong>daily exploration</strong>."+brk+"She loves to create micro interactions that nobody seems to care about until they see them."+brk+"Then, of course, they are mind blown",
         "other techs" : "She also crossed paths with <strong>PHP</strong>, <strong>Angular 2</strong> and <strong>Ionic 2</strong>."+brk+"But right now she is focusing on improving her javascript skills.",
-        "micro inter-what" : "In one sentence: She loves to explore new concepts, meaningful transitions that <strong>connect users like you who interact with stuff like me.</strong>",
+        "micro inter#!?" : "In one sentence: She loves to explore new concepts, meaningful transitions that <strong>connect users like you who interact with stuff like me.</strong>",
         "learning": "She didn't learn it."+brk+"She is learning it."+brk+"Everyday."+brk+"Sharing solutions on <strong>"+linkStackOverflow+"</strong>, learning on Codeschool, and creating experiments on <strong>"+linkCodepen+".</strong>"+brk+"On design side she loves <strong>Sketch</strong>, has a great relationship with <strong>Adobe Tools</strong> and likes <strong>Blender</strong>.",
-        "besides www" : "Hmm... she is a <strong>gamer</strong> too!"+brk+"Maybe she's playing right now."+brk+"Recently she was a part of the creation of a video game's concept as a motion designer. "+btnNox,
+        "besides www" : "Hmm... she is a <strong>gamer</strong> too!"+brk+"Maybe she's playing right now."/*+brk+"Recently she was a part of the creation of a video game's concept as a motion designer. "+btnNox*/,
         "workplace" : "Well... she likes to work alone."+brk+"Unless your ambitions are as high as hers, then it’s a match made in heaven."+brk+"From <strong>creative to technique she can hold any role</strong>."+brk+"More important than that, she believes that each of these roles must work together to achieve the best results."
     },
     practice: {

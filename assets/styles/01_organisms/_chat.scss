@@ -7,19 +7,10 @@
 
     &-nav {
         position: relative;
-
-        .chatSection {
-            &:not(.jsOnNav),
-            &:not(.jsOnNav):nth-of-type(1):nth-last-of-type(2), // [sec] sec
-            &:not(.jsOnNav):nth-of-type(1):nth-last-of-type(3), // [sec] sec sec
-            &:not(.jsOnNav):nth-of-type(2):nth-last-of-type(2) { // sec [sec] sec
-                padding-bottom: $safeArea*10;
-            }
-        }
     }
 
     &Section {
-        padding: $safeArea*2 0;
+        padding-bottom: $safeArea*4;
         transition: all 500ms;
 
         //when user didn't clicked it yet
@@ -33,7 +24,7 @@
             .chatPart:first-of-type {
                 .chatPart {
                     &-title {
-                        font-size: $fontS;
+                        font-size: $fontM;
 
                         &:hover {
                             color: $clrLight;
@@ -51,32 +42,15 @@
             }
         }
 
-        &:not(.jsOnNav):last-of-type {
-            padding-bottom: $safeArea*5;
-        }
-
         &:not(.jsOnNav):nth-of-type(1):nth-last-of-type(2), // [sec] sec
         &:not(.jsOnNav):nth-of-type(1):nth-last-of-type(3), // [sec] sec sec
         &:not(.jsOnNav):nth-of-type(2):nth-last-of-type(2) { // sec [sec] sec
             padding-bottom: $safeArea*2;
         }
 
-        //show button when page is ready
+        //show btn when page is ready
         &.jsLoading {
-            .chatPart:first-of-type {
-                .chatPart {
-                    &-human {
-                        padding-top: $safeArea*2;
-                        opacity: 0;
-                    }
-                }
-            }
-        }
-
-        //remove properties after jsLoading to get ready to jsOnNav.
-        &.jsLoading2 {
-            height: 30px;
-            overflow: hidden;
+            opacity: 0;
         }
     }
 
@@ -96,7 +70,6 @@
                 &-title {
                     font-size: $fontXL;
                     font-weight: $fBold;
-                    transition: font 500ms 250ms;
                 }
 
                 &-human {
@@ -123,7 +96,7 @@
         // human part with titles
         &-human {
             width: 100%;
-            padding: $safeArea*2 $safeArea 0 $safeArea;
+            padding: $safeArea $safeArea 0 $safeArea;
             overflow: hidden;
             display: none;
         }
@@ -158,7 +131,7 @@
             font-size: $fontL;
             opacity: 1;
             transition: opacity $speed;
-            padding: 0 $safeArea 0 $safeArea*2;
+            padding: 0 $safeArea $safeArea $safeArea*2;
 
             &:hover {
                 color: $clrDark;
@@ -177,11 +150,11 @@
         // btns
         &-option {
             display: inline-block;
-            width: 49%;
-            padding-top: $safeArea;
-            padding-right: $safeArea/2;
-            padding-left: $safeArea;
+            padding: 0;
             overflow: hidden;
+            max-width: 0;
+            opacity: 0;
+            transition: all 500ms;
 
             &:nth-child(2) {
                 position: relative;
@@ -190,6 +163,24 @@
 
             &:last-child {
                 padding-right: 0;
+            }
+
+            &.jsLoading {
+                padding: 0 0 0 $safeArea;
+                max-width: 49%;
+                opacity: 1;
+                transition: all 500ms;
+
+                > * {
+                    margin: 0;
+                    transition: all 500ms;
+                }
+            }
+
+            > * {
+                white-space: nowrap; //NOTE: it's dangerous but it's to prevent margin transition break
+                margin-left: -100%;
+                transition: all 500ms;
             }
         }
 
@@ -203,6 +194,10 @@
 
 @include media(phablet) {
     .chat {
+        &Section {
+            padding: $safeArea*2 0;
+        }
+
         &Part {
             &-human {
                 width: $humanWidthPhablet;
@@ -272,6 +267,17 @@
 
 @include media(tablet) {
     .chat {
+        &-nav {
+            .chatSection {
+                &:not(.jsOnNav),
+                &:not(.jsOnNav):nth-of-type(1):nth-last-of-type(2), // [sec] sec
+                &:not(.jsOnNav):nth-of-type(1):nth-last-of-type(3), // [sec] sec sec
+                &:not(.jsOnNav):nth-of-type(2):nth-last-of-type(2) { // sec [sec] sec
+                    padding-bottom: $safeArea*10;
+                }
+            }
+        }
+
         &Section {
             &.jsOnNav {
                 left: $humanWidthLap;
@@ -288,6 +294,10 @@
                     }
                 }
             }
+
+            &:not(.jsOnNav):last-of-type {
+                padding-bottom: $safeArea*5;
+            }
         }
 
         &Part {
@@ -296,16 +306,15 @@
                 text-align: right;
             }
 
-            &-bot {
-                padding: $safeArea/2;
-            }
-
             &-text {
                 padding: 0;
+                padding-bottom: $safeArea;
             }
 
             &-option {
-                padding-left: $safeArea;
+                display: inline-block;
+                width: 49%;
+                padding: 0;
             }
 
         }

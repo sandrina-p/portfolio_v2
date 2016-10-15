@@ -60,8 +60,7 @@ b, strong {font-weight: 600;}
 i {font-style: italic;}
 
 
-html {
-    background: $clrLight;
+body {
     font-size: $fontM;
     line-height: $lineHeightM;
     font-family: $font-sans;
@@ -72,6 +71,11 @@ html {
 	width: 100%;
 	max-width: 100%;
 	overflow-x: hidden;
+	background: $clrDark; //same color as #projects to prevent iOS swipe left/right edges
+
+	> * {
+		background: $clrLight;
+	}
 
     @include media(laptop) {
         font-size: $fontL;
