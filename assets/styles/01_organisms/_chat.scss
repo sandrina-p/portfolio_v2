@@ -1,7 +1,8 @@
 .chat {
     width: 100%;
     margin: auto;
-    padding-bottom: $safeArea*4;
+    padding-bottom: $safeArea*8;
+    min-height: 100vh;
     display: block;
     position: relative;
 
