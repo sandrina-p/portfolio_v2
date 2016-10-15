@@ -45,6 +45,7 @@ button {
     font-family: $font-mono;
     padding: 0 $safeArea/5;
     line-height: $lineHeightM;
+    text-align: left;
 
     &:hover {
         animation: glitch 2s steps(100) infinite;

@@ -71,8 +71,12 @@ var Projects = function() {
                 ? "right"
                 : "left";
 
-        updateVarsOnNav(isParentLeft);
+        if(timer == 0) {
+            changeBotNavText('you can also <span>swipe</span> to the left or to the right');
+            timer = 9999; //prevent showing other stuff FIXME hmmm i'm not sure about this
+        }
 
+        updateVarsOnNav(isParentLeft);
         showNewProject();
     }
 
@@ -81,7 +85,7 @@ var Projects = function() {
         baffleProj();
         getProjectData($newActive.text());
 
-        $projActive.removeClass(activeClass);
+        $projActive.removeClass(activeClass).removeAttr('disabled');
 
         if (addProjNumb > 0) {
             addProjNav(addProjNumb);
@@ -92,8 +96,8 @@ var Projects = function() {
         }
 
         setTimeout(function () {
-            estimateFinalWidth = !isParentLeft;  //calculate final +/- width before it happens - FIXME this is not the best solution, but it's the better i could get
-            $newActive.addClass(activeClass);
+            estimateFinalWidth = !isParentLeft || genericVal.untilTablet;  //calculate final +/- width before it happens - FIXME this is not the best solution, but it's the better i could get
+            $newActive.addClass(activeClass).attr('disabled',true);
             $projActive = $newActive;
             alignPivot(null, direction);
 
@@ -123,7 +127,11 @@ var Projects = function() {
             projActiveWidth = $newProject.outerWidth();
         }
 
-        transX = windowBotWidth + pivotX - projActiveX - projActiveWidth;
+        if (genericVal.untilTablet) {
+            transX = 16 + pivotX - projActiveX;
+        } else {
+            transX = windowBotWidth + pivotX - projActiveX - projActiveWidth;
+        }
         $pivot.css({'transform':'translateX('+ (transX) + 'px)'});
     }
 
@@ -131,7 +139,8 @@ var Projects = function() {
     function buildProj() {
         var sub, role, date, title, more, botTip, elImgs, ElLinks
             elProjNav = buildProjNav('left');
-            ElProj =  $("<div class='proj' id='projects'>"
+            $ElProj =  $("<div class='proj' id='projects'>"
+                            +"<div class='bot-nav'></div>"
                             +"<div class='projNav'>"
                                 +"<div class='projNav-pivot'>"
                                     +"<div class='projNav-left'>"
@@ -163,8 +172,6 @@ var Projects = function() {
                                     +"<span class='projCont-descript-fadeIn'></span>"
                                     +"<div class='projCont-descript'>"
                                         +"<p class='projCont-intro'>"+title+"</p>"
-                                        // +"<input type='checkbox' id='toggleDetails'/>"
-                                        // +"<label for='toggleDetails' class='btnMore'>_more info</label>"
                                         +"<p class='projCont-details'>"+more+"</p>"
                                     +"</div>"
                                     +"<span class='projCont-descript-fadeOut'></span>"
@@ -174,11 +181,9 @@ var Projects = function() {
                                     +"</div>"
                                 +"</div>"
                             +"</div>"
-
-                            +"<div class='bot-nav'>press <span>[<]</span> and <span>[>]</span> to navigate through the projects</div>"
                         +"</div>");
 
-        return ElProj;
+        return $ElProj;
     }
 
     function buildProjNav() {
@@ -187,7 +192,7 @@ var Projects = function() {
         for (var i = 0, projName, nameSlug, projLength = arrProjects.length; i < projLength; i++) {
             projName = arrProjects[i];
             nameSlug = projName.split(' ').join('-').toLowerCase();
-            elProjNav += "<button type='button' name='"+nameSlug+"'>"+projName+"</button>"
+            elProjNav += "<button type='button' name='"+nameSlug+"' class='projNav-btn'>"+projName+"</button>"
         }
 
         return elProjNav;
@@ -196,6 +201,7 @@ var Projects = function() {
 
     function addProjNav(quantity) {
         var addProjects = "",
+            nameSlug,
             projI =
                 isParentLeft
                     ? arrProjects.indexOf($projLeft.children(":first").text())
@@ -204,7 +210,8 @@ var Projects = function() {
         if (isParentLeft) {
             for (var i = 1; i <= quantity; i++) {
                 projName = arrProjects[projI-i] || arrProjects[arrProjects.length-1];
-                addProjects += "<button>"+projName+"</button>";
+                nameSlug = projName.split(' ').join('-').toLowerCase(),
+                addProjects += "<button type='button' name='"+nameSlug+"' class='projNav-btn'>"+projName+"</button>";
             }
 
             $projLeft.prepend(addProjects);
@@ -212,7 +219,7 @@ var Projects = function() {
 
             for (var i = 1; i <= quantity; i++) {
                 projName = arrProjects[projI+i] || arrProjects[0];
-                addProjects += "<button>"+projName+"</button>";
+                addProjects += "<button type='button' name='"+nameSlug+"' class='projNav-btn'>"+projName+"</button>";
             }
 
             $projRight.append(addProjects);
@@ -309,8 +316,24 @@ var Projects = function() {
         baffleRole.text(currentText => projData.role);
         baffleDate.text(currentText => projData.date);
         baffleDet.text(currentText => projData.more);
-    }
 
+        $("img").error(function () {
+            $(this).hide();
+        });
+
+        // FIXME doesn't work very well, dunno why... (removed stick.js from index.js)
+        // var $projNav = $(".projNav");
+        //     // projsHeight = $('#projects').height(),
+        //     // screenH = window.innerHeight;
+        //
+        // $projNav.stick_in_parent({offset_top: 5});
+        // $projNav.on('sticky_kit:bottom', function(e) {
+        //     $(this).parent().css('position', 'static');
+        // });
+        // $projNav.on('sticky_kit:unbottom', function(e) {
+        //     $(this).parent().css('position', 'relative');
+        // });
+    }
 
     function initProj(section) {
         var elProj = buildProj(),
@@ -318,6 +341,13 @@ var Projects = function() {
             projName = arrProjects[i];
 
         $('#'+section).append(elProj);
+
+        // FIXME find a better way to do this
+        if (genericVal.untilTablet) {
+            $('.projCont-links').insertBefore('.projCont-details');
+        }
+        // END FIXME find a better way to do this
+
         $('#projects').slideDown();
 
         getProjPlaceholders(projName);
@@ -325,109 +355,81 @@ var Projects = function() {
         setTimeout(function () {
             getProjectData(projName);
 
-            $('button[name='+projName.slugLower()+']').first().addClass(activeClass);
+            $('button[name='+projName.slugLower()+']').first().addClass(activeClass).attr('disabled', true);
             $projActive = $('button.'+activeClass);
             alignPivot();
         }, 400);
     }
 
 
+
+
     var timer = 0;
+
+    function navigateToProjectOn(direction) {
+        arrowsNavProj(direction);
+        timer ++;
+
+        switch (timer) {
+            // case > 200: //prevent to continue looking for nothing
+            //     break;
+            case 2:
+                changeBotNavText("that's it. you're a natural");
+                break;
+            // case < 20:
+            //     break;
+            case 20:
+                changeBotNavText("you love loops don't you?");
+                break;
+            // case < 40:
+            //     break;
+            case 40:
+                changeBotNavText("[TILT] my head's spinning.");
+                break;
+            // case < 80:
+            //     break;
+            case 80:
+                changeBotNavText("you got the idea.");
+                break;
+            // case < 120:
+            //     break;
+            case 120:
+                changeBotNavText("._.");
+                break;
+            // case < 200:
+            //     break;
+            case 200:
+                changeBotNavText("so much fun.");
+                break;
+            default:
+                break;
+        }
+    }
+
+    $(document).on('swipeleft', '#projects', function() {
+        navigateToProjectOn('right');
+    });
+
+    $(document).on('swiperight', '#projects', function() {
+        navigateToProjectOn('left');
+    });
+
+    function changeBotNavText(text) {
+        $(classProjBotTip).addClass('.jsLoading')
+        setTimeout(function () {
+            $(classProjBotTip).html(text);
+            setTimeout(function () {
+                $(classProjBotTip).removeClass('.jsLoading')
+            }, 150);
+        }, 150);
+    }
+
     $(document).keydown(function(e) {
-        if (e.keyCode == 37) { // <
-            direction = "left";
-            arrowsNavProj(direction);
-            timer ++;
-        } else if (e.keyCode == 39) { // >
-            direction = "right";
-            arrowsNavProj(direction);
-            timer ++;
+        if (e.keyCode == 37) { // [ < ]
+            navigateToProjectOn('left');
+        } else if (e.keyCode == 39) { // [ > ]
+            navigateToProjectOn('right');
         }
-
-        if (timer == 2) {
-            $(classProjBotTip).css({
-                'color':'black'
-            });
-            setTimeout(function () {
-                $(classProjBotTip).text("that's it. you are a natural");
-                setTimeout(function () {
-                    $(classProjBotTip).css({
-                        'color':'gray'
-                    });
-                }, 150);
-            }, 150);
-        }
-
-        if (timer == 20) {
-            $(classProjBotTip).css({
-                'color':'black'
-            });
-            setTimeout(function () {
-                $(classProjBotTip).text("you love loops don't you?");
-                setTimeout(function () {
-                    $(classProjBotTip).css({
-                        'color':'gray'
-                    });
-                }, 150);
-            }, 150);
-        }
-
-        if (timer == 40) {
-            $(classProjBotTip).css({
-                'color':'black'
-            });
-            setTimeout(function () {
-                $(classProjBotTip).text("[TILT] my head's spinning.");
-                setTimeout(function () {
-                    $(classProjBotTip).css({
-                        'color':'gray'
-                    });
-                }, 150);
-            }, 150);
-        }
-
-        if (timer == 80) {
-            $(classProjBotTip).css({
-                'color':'black'
-            });
-            setTimeout(function () {
-                $(classProjBotTip).text("you got the idea.");
-                setTimeout(function () {
-                    $(classProjBotTip).css({
-                        'color':'gray'
-                    });
-                }, 150);
-            }, 150);
-        }
-
-        if (timer == 120) {
-            $(classProjBotTip).css({
-                'color':'black'
-            });
-            setTimeout(function () {
-                $(classProjBotTip).text("....");
-                setTimeout(function () {
-                    $(classProjBotTip).css({
-                        'color':'gray'
-                    });
-                }, 150);
-            }, 150);
-        }
-
-        if (timer == 200) {
-            $(classProjBotTip).css({
-                'color':'black'
-            });
-            setTimeout(function () {
-                $(classProjBotTip).text(".let's have fun. huu huuu ._. .");
-                setTimeout(function () {
-                    $(classProjBotTip).css({
-                        'color':'gray'
-                    });
-                }, 150);
-            }, 150);
-        }
-
     });
 
                             //TODO a class may help

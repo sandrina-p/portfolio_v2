@@ -21,7 +21,7 @@
 
 <?php
     $loading = '';
-    $loadingNav = 'jsLoading jsLoading2';
+    $loadingNav = 'jsLoading';
     // $loadingNav = '';
     //$loading = 'jsLoading';
 ?>
@@ -208,6 +208,7 @@
         else window.addEventListener('load', cb);
     </script>
     <script src="assets/scripts/03_templates/index.min.js" charset="utf-8"></script>
+
 </body>
 
 </html>
