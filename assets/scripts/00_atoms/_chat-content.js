@@ -1,7 +1,7 @@
 var linkCodepen = "<a href='#' class='link' target='_blank'>Codepen</a>",
     linkStackOverflow = "<a href='#' class='link' target='_blank'>Stackoverflow</a>",
     btnNox = "<button class='btnB js-chatStart' data-initproject='N O X'>Check it out!</button>",
-    mainSections = ['background','theory','practice'],
+    mainSections = ['history','knowledge','projects'],
     brk = "<br>",
     browser = "[TODO browser]",
     mobileBrand = "[TODO mobile brand]",

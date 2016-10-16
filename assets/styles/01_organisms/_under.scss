@@ -61,7 +61,7 @@
 
     //around && background
     &-dl {
-        padding: $safeArea $safeArea $safeArea 5vw;;
+        padding: $safeArea $safeArea $safeArea 5vw;
     }
 
     &-dt {
@@ -73,29 +73,35 @@
         &:not(:first-of-type) {
             margin-top: $safeArea/3*4;
         }
-
-
-        a {
-            color: $clrPrimarySoft;
-            font-family: $font-mono;
-            font-weight: $fMed;
-
-            .fa {
-                color: $clrWhite;
-                font-size: $fontS;
-            }
-        }
     }
 
     &-dd {
-        // font-weight: 300;
         font-size: $fontS;
         font-family: $font-mono;
-        padding-left: $safeArea/2;
+        padding-left: $safeArea;
         padding-bottom: $safeArea/5;
         color: $clrGrayLight;
     }
 
+    &-link {
+        color: $clrPrimarySoft;
+        font-family: $font-mono;
+        font-weight: $fMed;
+        cursor: alias;
+
+        &:hover {
+            border-bottom: 1px dotted $clrLight;
+
+            .fa {
+                color: $clrPrimarySoft;
+            }
+        }
+
+        .fa {
+            color: $clrWhite;
+            font-size: $fontS;
+        }
+    }
 
     //theory
     &-ul {
