@@ -16,7 +16,7 @@
             <article class="cv-article">
                 <div class="cv-article-in">
                     <div class="cv-article-header">
-                        <h3 class="cv-title">around</h3>
+                        <h3 class="cv-title">arrround</h3>
                     </div>
 
                     <dl class="cv-dl js-onWebAfter">
