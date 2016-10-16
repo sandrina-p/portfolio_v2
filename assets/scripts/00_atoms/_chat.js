@@ -6,6 +6,7 @@ var genericVal = function() {
     }
 }();
 
+
 var chatApp = function() {
     //general chat classes
     var $chatId = $('#chat'),
