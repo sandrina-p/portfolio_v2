@@ -3,18 +3,26 @@ $placeholderClr: $clrGrayLight;
 $textPaddingMob: $safeArea;
 $textPaddingTab: 20vw;
 
+// .jsNoScroll {
+//     position: fixed;
+//     overflow: hidden;
+//     width: 100%;
+//     max-width: 100%;
+//     max-height: 100vh;
+// }
+
 .bot {
     @include centerxy;
     position: fixed;
-    width: 100vw;
-    background: rgba($clrLight, 0.9);
+    width: 100%;
     z-index: 99;
-    transition: height $speed ease-out;
-    height: 0;
+    height: 100%;
     display: block;
+    background: $clrDark;
+    animation: bgBreath 3s ease-in-out infinite, height $speed ease-out;
 
     &.jsLoading {
-        height: 100vh;
+        height: 0;
     }
 
     &-trigger {
@@ -23,26 +31,21 @@ $textPaddingTab: 20vw;
 
     &-inner {
         position: relative;
-        @include centerxy;
         width: 100%;
-        width: 100vw;
-        height: 0;
-        max-height: 90vh;
+        height: 100%;
+        max-height: 100%;
         overflow: auto;
-        background: $clrDark;
-        animation: bgBreath 3s ease-in-out infinite;
         color: $clrPrimarySoft;
         transition: height $speed ease-out;
+
         @extend %flexbox;
         @include flexboxProp {
             flex-direction: column;
             justify-content: flex-end;
         }
 
-
-
         &.jsLoading {
-            height: $safeArea*35;
+            height: 0;
         }
     }
 
@@ -103,6 +106,12 @@ $textPaddingTab: 20vw;
     @include media(tablet) {
         &-text {
             padding: $safeArea $textPaddingTab $safeArea*2;
+        }
+
+        &-answer {
+            &:before {
+                left: calc(#{$textPaddingTab} - #{$safeArea});
+            }
         }
     }
 }

@@ -112,7 +112,7 @@
             color: $clrPrimary;
 
             &.jsLoading {
-                margin-right: -100%;
+                margin-left: -50%;
                 transition: margin $speed*2;
             }
         }
@@ -155,7 +155,12 @@
             overflow: hidden;
             max-width: 0;
             opacity: 0;
-            transition: all 500ms;
+            height: 0;
+            transition: padding 500ms
+                        width 500ms
+                        margin 500ms
+                        opacity 500ms
+                        height 500ms;
 
             &:nth-child(2) {
                 position: relative;
@@ -170,18 +175,22 @@
                 padding: 0 0 0 $safeArea;
                 max-width: 49%;
                 opacity: 1;
-                transition: all 500ms;
+                height: $safeArea*2;
+                transition: padding 500ms
+                            width 500ms
+                            margin 500ms
+                            height 500ms;
 
                 > * {
                     margin: 0;
-                    transition: all 500ms;
+                    transition: margin 500ms;
                 }
             }
 
             > * {
                 white-space: nowrap; //NOTE: it's dangerous but it's to prevent margin transition break
                 margin-left: -100%;
-                transition: all 500ms;
+                transition: margin 500ms;
             }
         }
 
@@ -255,6 +264,14 @@
             &-human {
                 padding: $safeArea 0 $safeArea $safeArea;
                 text-align: right;
+            }
+
+            &-title {
+
+                &.jsLoading {
+                    margin-left: 0;
+                    margin-right: -100%;
+                }
             }
 
             &-text {
