@@ -360,7 +360,6 @@ var chatApp = function() {
 
     return {
         init,
-        // outsider
     }
 
 }();
@@ -398,32 +397,10 @@ var botSection = function() {
         return '<input type="text" name="'+name+'" placeholder="'+placeholder+'" class="bot-input" id="'+botInputId+'"></input>';
     }
 
-    //showing the 008080 characters
-    // $(document).on('click', '.js-chatOpt', function(){
-    //     var section = $(this).closest('.chatSection').attr('id') || $(this).attr('name'),
-    //         $childrens = $trigger.children().not('.'+visibleClass),
-    //         i = Math.floor( (Math.random() * $childrens.length));
-    //
-    //     if(!clickOn[section]) {
-    //         clickOn[section] = 0;
-    //     }
-    //
-    //     if(clickOn[section] < 2) {
-    //         $childrens.eq(i).addClass(visibleClass);
-    //         clickOn[section] ++;
-    //     }
-    //
-    //     $childrens = $trigger.children().not('.'+visibleClass);
-    //     if ($childrens.length == 0) {
-    //         $trigger.children().removeClass(visibleClass);
-    //         $trigger.removeClass(triggerActive);
-    //     }
-    // });
-
     //showing 008080 section
     $(document).on('click', '.js-botTrigger', function(){
-        $botInner.toggleClass(triggerActive);
-        $bot.toggleClass(triggerActive);
+        $bot.removeClass(triggerActive);
+        // $('body').addClass('jsNoScroll');
         if(firstTrigger) {
             appendBotAnswer(botContent.intro);
             firstTrigger = false;
@@ -432,7 +409,6 @@ var botSection = function() {
 
 
     // talking with 008080 //
-    /////////////////////////
     function hitEnter() {
         sentText = $('#'+botInputId).val().toLowerCase();
         context = $('#'+botInputId).attr('name');
@@ -595,6 +571,7 @@ var botSection = function() {
     function replaceSentText(string) {
         return string.replace("[*param*]", sentText);
     }
+
     //input behavior (ENTER)
     $(document).on('keyup', '#'+botInputId, function(e) {
         if(e.keyCode == 13) { //ENTER
@@ -610,8 +587,8 @@ var botSection = function() {
     //close 008080 section
     $(document).keyup(function(e) {
         if (e.keyCode == 27) { // ESC
-            $botInner.removeClass(triggerActive);
-            $bot.removeClass(triggerActive);
+            // $bot.addClass(triggerActive);
+            $('body').addClass('jsNoScroll');
         }
     });
 }();

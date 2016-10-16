@@ -26,7 +26,7 @@
     //$loading = 'jsLoading';
 ?>
 <body>
-    <h1 class="sr-only">Sandrina Pereira's conversational bot</h1>
+    <h1 class="sr-only">Sandrina Pereira</h1>
     <h2 class="sr-only">interaction designer, frontend developer, creative developer</h2>
     <div class="heyThere">
         <h2 class="heyThere-hey">Hey <br>there</h2>
@@ -70,77 +70,19 @@
         </div>
     </div>
 
-
-    <?php /* PROJECT MARKUP
-    <div class="proj">
-        <div class="projNav">
-            <div class="projNav-pivot">
-                <div class="projNav-left">
-                    <button type="button" name="button">N O X</button>
-                    <button type="button" name="button">carolina machado</button>
-                    <button type="button" name="button">portfolio 15</button>
-                    <button type="button" name="button">pistol shrimp</button>
-                    <button type="button" name="button">moon</button>
-                    <button type="button" name="button">DET</button>
-                    <button type="button" name="button">141205</button>
-                    <button type="button" name="button" class="js-active">rede expressos</button>
-                </div>
-                <div class="projNav-right">
-                    <button type="button" name="button">N O X</button>
-                    <button type="button" name="button">carolina machado</button>
-                    <button type="button" name="button">portfolio 15</button>
-                    <button type="button" name="button">pistol shrimp</button>
-                    <button type="button" name="button">moon</button>
-                    <button type="button" name="button">DET</button>
-                    <button type="button" name="button">141205</button>
-                    <button type="button" name="button">rede expressos</button>
-                </div>
+    <section class="under">
+        <div class="under-header">
+            <div class="under-ascii">
+                <?php include 'index-parts/myself.php';?>
             </div>
+            <span class="glitch" data-text="interaction Designer" data-sub="frontend developer">
+                <span>creative developer</span>
+            </span>
         </div>
 
-        <div class="projCont">
-            <div class="projCont-left">
-                <p class="projCont-subtitle">web and app concept redesign</p>
+        <?php include 'index-parts/under-section.php';?>
 
-                <div class="projCont-media">
-                    <div class="Glidder">
-                        <img src="assets/media/img/projects/rnex0.png" alt="" />
-                    </div>
-                </div>
-
-                <div class="projCont-about">
-                    <p class="projCont-role">creative and frontend</p>
-                    <p class="projCont-date">JUN'16</p>
-                </div>
-            </div>
-
-            <div class="projCont-right">
-                <span class="projCont-descript-fadeIn"></span>
-                <div class="projCont-descript">
-                    <p class="projCont-intro">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                    <input type="checkbox" id="toggleDetails"/>
-                    <label for="toggleDetails" class="btnMore">_more info</label>
-                    <p class="projCont-details">Sed do eiusmod tempor incididunt ut labore et dol. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod Sed do eiusmod tempor incididunt ut labore et dol. <br>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut, tempor incididunt ut labore et dolore magna aliqua. Sed do eiusmod tempor incididunt ut labore et dol. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut.</p>
-                </div>
-                <span class="projCont-descript-fadeOut"></span>
-
-                <div class="projCont-links">
-                    <div class="projCont-links-option">
-                        <a href="#" target="_blank" class="btnCheck"><i class="fa fa-desktop"></i>check website</a>
-                    </div>
-                    <div class="projCont-links-option">
-                        <a href="#" target="_blank" class="btnCheck"><i class="fa fa-mobile"></i>check app prototype</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="bot-nav">
-            press [<] and [>] to navigate through the projects
-        </div>
-    </div>
-    */ ?>
-
+    </section>
     <?php /*
     <div class="void">
         [upside down]
@@ -180,7 +122,7 @@
     <button type="button" name="about" class="bot-trigger js-botTrigger">
         <span>0</span><span>0</span><span>8</span><span>0</span><span>8</span><span>0</span>
     </button>
-    <div class="bot" id="bot">
+    <div class="bot jsLoading" id="bot">
         <div class="bot-inner">
             <div class="bot-text"></div>
         </div>
