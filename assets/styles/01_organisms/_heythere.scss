@@ -57,7 +57,7 @@ $HTFontTab: $font6XL;
         &-hey {
             display: inline-block;
             font-size: $HTFontTab;
-            padding: 0 $safeArea*3;
+            padding-left: 5vw;
             width: $humanWidthLap;
             animation: heyLine-tablet 1750ms ease-out;
         }

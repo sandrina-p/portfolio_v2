@@ -6,8 +6,6 @@ var genericVal = function() {
     }
 }();
 
-
-
 var chatApp = function() {
     //general chat classes
     var $chatId = $('#chat'),
@@ -587,8 +585,7 @@ var botSection = function() {
     //close 008080 section
     $(document).keyup(function(e) {
         if (e.keyCode == 27) { // ESC
-            // $bot.addClass(triggerActive);
-            $('body').addClass('jsNoScroll');
+            $bot.addClass(triggerActive);
         }
     });
 }();
