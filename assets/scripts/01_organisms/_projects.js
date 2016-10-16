@@ -169,15 +169,12 @@ var Projects = function() {
                                 +"</div>"
 
                                 +"<div class='projCont-right'>"
-                                    +"<span class='projCont-descript-fadeIn'></span>"
                                     +"<div class='projCont-descript'>"
                                         +"<p class='projCont-intro'>"+title+"</p>"
+                                        +"<div class='projCont-links'>"
+                                            +ElLinks
+                                        +"</div>"
                                         +"<p class='projCont-details'>"+more+"</p>"
-                                    +"</div>"
-                                    +"<span class='projCont-descript-fadeOut'></span>"
-
-                                    +"<div class='projCont-links'>"
-                                        +ElLinks
                                     +"</div>"
                                 +"</div>"
                             +"</div>"
@@ -371,37 +368,26 @@ var Projects = function() {
         timer ++;
 
         switch (timer) {
-            // case > 200: //prevent to continue looking for nothing
-            //     break;
             case 2:
                 changeBotNavText("that's it. you're a natural");
                 break;
-            // case < 20:
-            //     break;
             case 20:
                 changeBotNavText("you love loops don't you?");
                 break;
-            // case < 40:
-            //     break;
             case 40:
                 changeBotNavText("[TILT] my head's spinning.");
                 break;
-            // case < 80:
-            //     break;
             case 80:
                 changeBotNavText("you got the idea.");
                 break;
-            // case < 120:
-            //     break;
             case 120:
                 changeBotNavText("._.");
                 break;
-            // case < 200:
-            //     break;
             case 200:
                 changeBotNavText("so much fun.");
                 break;
             default:
+                changeBotNavText("");
                 break;
         }
     }

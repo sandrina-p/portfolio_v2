@@ -30,10 +30,31 @@
     <h2 class="sr-only">interaction designer, frontend developer, creative developer</h2>
     <div class="heyThere">
         <h2 class="heyThere-hey">Hey <br>there</h2>
+        <!-- <script type="text/javascript">
+            (function hT(){
+                var elHt = document.getElementsByClassName('heyThere-hey')[0],
+                    arr = ['H','e','y','<br>','t','h','e','r','e'],
+                    text = "",
+                    i = 0,
+                    arrL = arr.length;
+
+                function appendI() {
+                    text += arr[i];
+                    elHt.innerHTML = text;
+                    i++;
+                    if (i < arrL) {
+                        setTimeout(function () {
+                            appendI();
+                        }, 30);
+                    }
+                }
+                appendI();
+            })();
+        </script> -->
         <div class="heyThere-intro">
             <p>
                 I would like to introduce you to someone.
-                <br>She's a frontend developer with a great passion for <span class="nowrap">interaction design.</span>
+                She's a frontend developer with a great passion for <span class="nowrap">interaction design.</span>
                 <span class="heyThere-br"></span>
                 Where do you like to start?
             </p>
@@ -69,18 +90,7 @@
         </div>
     </div>
 
-    <section class="cv">
-        <div class="cv-header">
-            <div class="cv-ascii">
-                <!-- Google doesn't need to read my 312938721 ascii characters -->
-                <?php include 'index-parts/myself.php';?>
-            </div>
-            <span class="glitch" data-text="interaction Designer" data-sub="frontend developer">
-                <span>creative developer</span>
-            </span>
-        </div>
-        <?php include 'index-parts/under-section.php';?>
-    </section>
+    <?php include 'index-parts/under-section.php';?>
 
 
     <button type="button" name="about" class="bot-trigger js-botTrigger">
@@ -93,7 +103,6 @@
         </div>
     </div>
 
-    <!-- SCRIPTS AND STYLES -->
     <noscript>
         <link rel="stylesheet" href="assets/styles/04_templates/index.min.css">
     </noscript>
@@ -107,10 +116,7 @@
             l.href = 'assets/styles/04_templates/index.min.css';
             document.getElementsByTagName('head')[0].appendChild(l);
         };
-
-        var raf = requestAnimationFrame || mozRequestAnimationFrame ||
-        webkitRequestAnimationFrame || msRequestAnimationFrame;
-
+        var raf = requestAnimationFrame || mozRequestAnimationFrame || webkitRequestAnimationFrame || msRequestAnimationFrame;
         if (raf) raf(cb);
         else window.addEventListener('load', cb);
     </script>

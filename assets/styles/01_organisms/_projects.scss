@@ -166,6 +166,7 @@ $navSpeed: 250ms;
             }
 
             &-subtitle {
+                margin-top: 0;
                 padding-left: 0;
             }
 
@@ -181,52 +182,36 @@ $navSpeed: 250ms;
             }
 
             &-descript {
-                height: $safeArea*18;
-                overflow: auto;
-                padding-top: $safeArea*3;
-
-                &::-webkit-scrollbar {
-                    display: none;  // Safari and Chrome
-                }
-
-                &-fadeIn {
-                    z-index: 2;
-                    position: relative;
-                    margin-bottom: -$safeArea*3;
-                    display: block;
-                    background: linear-gradient(to top, rgba($clrDark, 0), $clrDark 80%);
-                    height: $safeArea*3;
-                }
-
-                &-fadeOut {
-                    z-index: 2;
-                    position: relative;
-                    margin-top: -$safeArea*2;
-                    display: block;
-                    background: linear-gradient(to bottom, rgba($clrDark, 0), $clrDark 80%);
-                    height: $safeArea*2;
-                }
+                // padding-top: $safeArea;
             }
 
             &-intro {
-                font-size: $fontXL;
                 padding: 0;
-                margin-bottom: $safeArea;
-            }
-
-            &-details {
-                margin: $safeArea*2 0 $safeArea;
-                padding-left: $safeArea;
-                border-left: 1px solid $clrBlack;
+                padding-top: $safeArea*3;
+                font-size: $fontXL;
             }
 
             &-links {
                 @extend %cf-tab;
-                padding: $safeArea*2 0;
+                padding: $safeArea*2 0 $safeArea*2 $safeArea*2;
 
                 > :last-child:not(:first-child) {
                     margin-left: $safeArea*3;
                 }
+
+                &-option {
+                    &:not(:last-of-type) {
+                        margin: 0;
+                    }
+                }
+            }
+
+            &-details {
+                margin-bottom: $safeArea*2;
+                padding: 0;
+                // padding: 0 0 0 $safeArea;
+
+                // border-left: 1px solid $clrBlack;
             }
         }
     }
