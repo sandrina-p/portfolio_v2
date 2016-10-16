@@ -297,8 +297,15 @@ $myselfs: 7;
 
 
 
+.cv {
+    margin-bottom: rem(250);
+}
 
 .underBot {
+    position: fixed;
+    left: 0; bottom: 0;
+    z-index: -1;
+    width: 100%;
     background: $clrLight;
     padding: $safeArea*2 $safeArea/2;
     text-align: center;
