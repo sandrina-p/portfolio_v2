@@ -92,9 +92,17 @@
 
     <?php include 'index-parts/under-section.php';?>
 
-    <button type="button" name="about" class="bot-trigger js-botTrigger">
-        <span>0</span><span>0</span><span>8</span><span>0</span><span>8</span><span>0</span>
-    </button>
+    <div class="underBot">
+        <p class="underBot-title">psst...</p>
+        <p class="underBot-parag"> Maybe now you want to talk about her.
+            <br>I can tell you more about her projects.
+            <br>What do you think?
+        </p>
+        <button type="button" name="true" class="chatPart-title">yh, sure</button>
+        <button type="button" name="false" class="chatPart-title js-botTrigger">not really</button>
+    </div>
+
+
     <div class="bot jsLoading" id="bot">
         <!-- ◉_◉ for the last time, it's javascript -->
         <div class="bot-inner">

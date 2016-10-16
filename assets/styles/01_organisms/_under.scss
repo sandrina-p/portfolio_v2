@@ -293,3 +293,25 @@ $myselfs: 7;
 .jsGlitching {
     animation: glitch 2s steps(100) infinite;
 }
+
+
+
+
+
+.underBot {
+    background: $clrLight;
+    padding: $safeArea*2 $safeArea/2;
+    text-align: center;
+
+    &-title {
+        font-size: $fontXL;
+    }
+
+    &-parag {
+        padding: $safeArea 0;
+    }
+
+    button {
+        margin: 0 $safeArea;
+    }
+}
