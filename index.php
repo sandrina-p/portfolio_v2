@@ -12,9 +12,9 @@
 
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,200,300,700|Roboto+Mono:100,300,400,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Ubuntu:400,700" rel="stylesheet">
-    <!-- <link rel="icon" type="image/png" href="assets/media/brand/favicon16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="assets/media/brand/favicon16.png" sizes="16x16">
     <link rel="icon" type="image/png" href="assets/media/brand/favicon32.png" sizes="32x32">
-    <link rel="icon" type="image/png" href="assets/media/brand/favicon180.png" sizes="180x180"> -->
+    <link rel="icon" type="image/png" href="assets/media/brand/favicon180.png" sizes="180x180">
 
     <link rel="stylesheet" href="assets/styles/04_templates/header.min.css">
 </head>
@@ -30,7 +30,6 @@
     <h2 class="sr-only">interaction designer, frontend developer, creative developer</h2>
     <div class="heyThere">
         <h2 class="heyThere-hey">Hey <br>there</h2>
-
         <div class="heyThere-intro">
             <p>
                 I would like to introduce you to someone.
@@ -41,8 +40,8 @@
         </div>
     </div>
 
-
     <div class="chat" id="chat">
+        <!-- not so fast. it's javascript ¯\_(ツ)_/¯ -->
         <div class="chat-nav" id="chat-nav">
             <article class="chatSection jsOnNav <?php echo $loadingNav ?>" id="background">
                 <div class="chatPart" id="background-intro">
@@ -73,15 +72,14 @@
     <section class="cv">
         <div class="cv-header">
             <div class="cv-ascii">
+                <!-- Google doesn't need to read my 312938721 ascii characters -->
                 <?php include 'index-parts/myself.php';?>
             </div>
             <span class="glitch" data-text="interaction Designer" data-sub="frontend developer">
                 <span>creative developer</span>
             </span>
         </div>
-
         <?php include 'index-parts/under-section.php';?>
-
     </section>
 
 
@@ -89,6 +87,7 @@
         <span>0</span><span>0</span><span>8</span><span>0</span><span>8</span><span>0</span>
     </button>
     <div class="bot jsLoading" id="bot">
+        <!-- ◉_◉ for the last time, it's javascript -->
         <div class="bot-inner">
             <div class="bot-text"></div>
         </div>

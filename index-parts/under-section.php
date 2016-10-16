@@ -9,7 +9,7 @@
                 </div>
                 <dl class="cv-dl">
                     <dt class="cv-dt">
-                        <a href="mailto:a.sandrina.p4@gmail.com?subject=Hey%20there!">
+                        <a href="mailto:a.sandrina.p4@gmail.com?subject=Hey%20there!" title="sandrina's e-mail" class="cv-link">
                             <i class="fa fa-terminal"></i>
                             a.sandrina.p@gmail.com
                         </a>
@@ -17,7 +17,7 @@
                     <dd class="cv-dd">waiting for your call</dd>
 
                     <dt class="cv-dt">
-                        <a href="//stackoverflow.com/users/4737729/sandrina-pereira" target="_blank" title="sandrina's stackoverflow">
+                        <a href="//stackoverflow.com/users/4737729/sandrina-pereira" target="_blank" title="sandrina's stackoverflow" class="cv-link">
                             <i class="fa fa-stack-overflow"></i>
                             stackoverflow/sandrina-p
                         </a>
@@ -25,7 +25,7 @@
                     <dd class="cv-dd">helping others is as important as being helped</dd>
 
                     <dt class="cv-dt">
-                        <a href="//stackoverflow.com/users/4737729/sandrina-pereira" target="_blank" title="sandrina's stackoverflow">
+                        <a href="//stackoverflow.com/users/4737729/sandrina-pereira" target="_blank" title="sandrina's stackoverflow" class="cv-link">
                             <i class="fa fa-codepen"></i>
                             codepen/sandrina-p
                         </a>
@@ -44,9 +44,9 @@
                     <dt class="cv-dt">frontend developer</dt>
                     <dd class="cv-dd">zaask - since oct'15</dd>
 
-                    <dt class="cv-dt">code school course</dt>
-                    <dd class="cv-dd">JavaScript Road Trip lvl 3/3</dd>
+                    <dt class="cv-dt">codeSchool course</dt>
                     <dd class="cv-dd">JavaScript Best Practices</dd>
+                    <dd class="cv-dd">JavaScript Road Trip lvl 3/3</dd>
                     <dd class="cv-dd">jQuery lvl 2/2</dd>
                     <dd class="cv-dd">Shaping up with Angular.js</dd>
 
@@ -57,13 +57,13 @@
                     <dt class="cv-dt">post graduation - digital experience design</dt>
                     <dd class="cv-dd">faculty fine arts lisbon - 2015'16</dd>
 
-                    <dt class="cv-dt">ux/ui designer </dt>
+                    <dt class="cv-dt">ux|ui designer </dt>
                     <dd class="cv-dd">pure - 2015</dd>
 
                     <dt class="cv-dt">erasmus - communication design</dt>
                     <dd class="cv-dd">faculty fine arts porto - 2014'15</dd>
 
-                    <dt class="cv-dt">eramus - communication design</dt>
+                    <dt class="cv-dt">degree - communication design</dt>
                     <dd class="cv-dd">faculty fine arts lisbon - 2012'15</dd>
                 </dl>
             </div>
