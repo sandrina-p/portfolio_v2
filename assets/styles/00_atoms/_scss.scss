@@ -272,6 +272,10 @@ $mediaHeight: rem(400);
     %flexbox-noFlex-pha {
         @include flexbox(true);
     }
+
+    %cf-pha {
+        @include cf;
+    }
 }
 @include media(tablet) {
     %flexbox-tab {
@@ -339,7 +343,7 @@ $mediaHeight: rem(400);
     #{$prop}: $valFallBack; // poor browsers
     #{$prop}: $val;
 }
-// @include fallback(width, 100vw, 100%);
+// @include fallback(width, 100%, 100vh);
 
 
 
