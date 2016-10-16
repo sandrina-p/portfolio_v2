@@ -92,7 +92,6 @@
 
     <?php include 'index-parts/under-section.php';?>
 
-
     <button type="button" name="about" class="bot-trigger js-botTrigger">
         <span>0</span><span>0</span><span>8</span><span>0</span><span>8</span><span>0</span>
     </button>
