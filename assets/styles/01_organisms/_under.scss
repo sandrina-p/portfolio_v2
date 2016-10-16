@@ -1,12 +1,10 @@
-.under {
-    z-index: 11;
+.cv {
+    display: block;
     position: relative;
-    width: 100%;
     background: $clrDark;
     color: $clrLight;
-    padding: 50vh 0 $safeArea*6;
-    width: 100%;
-    display: block;
+    @include fallback(padding, $safeArea*6 0, 33vh 0 $safeArea*6);
+
 
     &-header {
         position: relative;
@@ -27,162 +25,148 @@
     }
 
     &-section {
-        @extend %cf;
-        text-align: center;
+        padding-top: $safeArea*3;
+    }
+
+
+    &-left,
+    &-right {
+        width: 100%;
     }
 
     &-article {
-        display: inline-block;
         width: 100%;
-        padding: $safeArea/2;
-        text-align: left;
+        padding-bottom: $safeArea*2;
 
         &-in {
-            background: $clrLight;
-            color: $clrDark;
+            color: $clrLight;
             position: relative;
             height: 100%;
+        }
+
+        &-header {
+            border-bottom: 1px solid $clrLight;
+            display: inline-block;
+            text-align: right;
+            padding-left: 5vw;
         }
     }
 
     &-title {
         font-size: $fontXL;
-        padding: $safeArea $safeArea $safeArea/4;
         font-family: $font-mono;
         font-weight: 300;
-        margin-bottom: $safeArea;
-        border-bottom: 2px solid $clrLight;
-        background: $clrDark;
-        color: $clrLight;
-    }
-
-    &-doting {
-        position: absolute;
-        top: $safeArea;
-        right: $safeArea;
-        color: $clrLight;
-        width: $safeArea*3;
-        height: $safeArea*2;
-        text-align: right;
-
-        &:hover {
-            animation: glitch 2s steps(70) infinite;
-
-            &:after {
-                animation: doting 500ms steps(3) infinite;
-                color: $clrPrimarySoft;
-            }
-        }
-
-        &:after {
-            content: '';
-            position: absolute;
-            width: 100%;
-            left: 0;
-            top: $safeArea/2;
-            animation: doting 2s steps(3) infinite;
-
-            .under-article:nth-of-type(1) & {
-                animation-delay: 1s;
-            }
-            .under-article:nth-of-type(2) & {
-                animation-delay: 0s;
-            }
-            .under-article:nth-of-type(3) & {
-                animation-delay: 0.5s;
-            }
-        }
     }
 
 
+    //around && background
     &-dl {
-        padding: 0 $safeArea;
+        padding: $safeArea $safeArea $safeArea 5vw;;
     }
 
     &-dt {
-        font-weight: 400;
+        font-size: $fontL;
+        font-weight: 500;
+        color: $clrWhite;
+
+
+        &:not(:first-of-type) {
+            margin-top: $safeArea/3*4;
+        }
+
+
+        a {
+            color: $clrPrimarySoft;
+            font-family: $font-mono;
+            font-weight: $fMed;
+
+            .fa {
+                color: $clrWhite;
+                font-size: $fontS;
+            }
+        }
     }
 
     &-dd {
-        font-weight: 300;
+        // font-weight: 300;
         font-size: $fontS;
-        margin-bottom: $safeArea;
+        font-family: $font-mono;
+        padding-left: $safeArea/2;
+        padding-bottom: $safeArea/5;
+        color: $clrGrayLight;
     }
 
-    &-liTitle {
-        padding: 0 $safeArea;
-        font-weight: 600;
-        @extend .liIndex-categ;
-    }
 
+    //theory
     &-ul {
-        padding: 0 $safeArea $safeArea;
+        padding: $safeArea/2 $safeArea;
+        padding-left: 5vw;
+
+
+        &Title {
+            padding-top: $safeArea;
+            padding-left: 5vw;
+            font-size: $fontL;
+            font-weight: 600;
+            text-transform: lowercase;
+        }
     }
 
     &-li {
-        font-weight: 300;
-    }
-
-    &-bot {
-        width: 100%;
-        background: $clrDark;
-        padding: $safeArea;
-        text-align: center;
-
-        > * {
-            background: $clrLight;
-            color: $clrDark;
-        }
-    }
-
-    &-nav {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        background: $clrDark;
-        text-align: center;
-        padding: $safeArea;
+        color: $clrLight;
+        letter-spacing: 0.4px;
+        font-family: $font-mono;
         font-size: $fontS;
+        padding-left: $safeArea/2;
+        padding-bottom: $safeArea/5;
 
-        &.jsFixed {
-            position: fixed;
+        &--br {
+            padding-bottom: $safeArea;
         }
 
-        a {
-            position: relative;
-            background: inherit;
+        &--i {
+            font-style: italic;
+        }
+    }
 
-            &:hover {
-                .under-nav-hover-1,
-                .under-nav-hover-3 {
-                    opacity: 1;
+
+    @include media(tablet) {
+        &-section {
+            @extend %cf-tab;
+            padding-top: $safeArea*3;
+        }
+
+        &-article {
+            width: 100%;
+            padding-bottom: $safeArea*2;
+
+            .cv-right & {
+                @include fallback(padding-left, $safeArea*2, 5vw);
+
+                &-header {
+                    text-align: left;
+                    display: block;
+                    padding-left: 0;
                 }
             }
         }
 
-        &-hover-1,
-        &-hover-3 {
-            position: absolute;
-            white-space: nowrap;
-            font-size: $fontXS;
-            font-weight: 100;
-            opacity: 0;
-            padding: 0 $safeArea/3;
-            margin-top: $safeArea/5;
+
+        &-ul {
+            .cv-right &,
+            .cv-right &Title {
+                padding-left: 0;
+            }
         }
 
-        &-hover-1 {
-            right: 100%;
-        }
-
-        &-hover-3 {
-            left: 100%;
+        &-left,
+        &-right {
+            width: 50%;
         }
     }
-
 }
 
+//TODO on chat
 @keyframes doting {
     0% {content: ".";}
     10% {content: ". .";}
@@ -193,59 +177,59 @@
 }
 
 
-@include media(mobile) {
-    .under {
-        &-section {
-            @extend %flexbox-mob;
-            flex-wrap: wrap;
-        }
-
-        &-article {
-            padding: $safeArea;
-            width: 50%;
-
-            &:last-of-type {
-                width: 100%;
-            }
-        }
-
-        &-bot {
-            position: absolute;
-            bottom: 0;
-            width: 100%;
-        }
-    }
-}
-
-@include media(tablet) {
-    .under {
-        padding-left: $safeArea;
-        padding-right: $safeArea;
-        &-article {
-            padding: $safeArea $safeArea*2;
-        }
-    }
-}
-
-@include media(laptop) {
-    .under {
-        &-article,
-        &-article:last-of-type {
-            padding: 1vw;
-            width: 33.333%;
-            max-width: $safeArea*30;
-        }
-    }
-}
-
-@include media(desktop) {
-    .under {
-        &-article,
-        &-article:last-of-type {
-            padding: $safeArea*2;
-        }
-    }
-}
+// @include media(mobile) {
+//     .cv {
+//         &-section {
+//             @extend %flexbox-mob;
+//             flex-wrap: wrap;
+//         }
+//
+//         &-article {
+//             padding: $safeArea;
+//             width: 50%;
+//
+//             &:last-of-type {
+//                 width: 100%;
+//             }
+//         }
+//
+//         &-bot {
+//             position: absolute;
+//             bottom: 0;
+//             width: 100%;
+//         }
+//     }
+// }
+//
+// @include media(tablet) {
+//     .cv {
+//         padding-left: $safeArea;
+//         padding-right: $safeArea;
+//         &-article {
+//             padding: $safeArea $safeArea*2;
+//         }
+//     }
+// }
+//
+// @include media(laptop) {
+//     .cv {
+//         &-article,
+//         &-article:last-of-type {
+//             padding: 1vw;
+//             width: 33.333%;
+//             max-width: $safeArea*30;
+//         }
+//     }
+// }
+//
+// @include media(desktop) {
+//     .cv {
+//         &-article,
+//         &-article:last-of-type {
+//             padding: $safeArea*2;
+//         }
+//     }
+// }
 
 .mee {
     position: absolute;
@@ -260,10 +244,6 @@ $myselfs: 7;
         animation-delay: $i*125ms;
     }
 }
-
-// .myself1 {
-//     opacity: 1;
-// }
 
 @keyframes myself {
     0% {opacity: 0;}

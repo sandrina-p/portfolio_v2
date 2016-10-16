@@ -139,7 +139,7 @@ gulp.task('watch', ['setWatch', 'scssPartials', 'browser-sync'], function(){
             folderScripts+'/**/*.js',
             '!'+folderScripts+'/**/*.min.js'
         ], { usePolling: true }, ['scripts']);
-    gulp.watch(['index.php'], ['gen-html']);
+    gulp.watch(['**/*.php'], ['gen-html']);
 });
 
 

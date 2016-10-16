@@ -70,9 +70,9 @@
         </div>
     </div>
 
-    <section class="under">
-        <div class="under-header">
-            <div class="under-ascii">
+    <section class="cv">
+        <div class="cv-header">
+            <div class="cv-ascii">
                 <?php include 'index-parts/myself.php';?>
             </div>
             <span class="glitch" data-text="interaction Designer" data-sub="frontend developer">
@@ -83,40 +83,6 @@
         <?php include 'index-parts/under-section.php';?>
 
     </section>
-    <?php /*
-    <div class="void">
-        [upside down]
-    </div>
-
-    <div class="under">
-        <header class="under-header">
-            <div class="under-ascii">
-                <?php include 'index-parts/myself.php';?>
-            </div>
-            <span class="glitch" data-text="interaction Designer" data-sub="frontend developer">
-                <span>creative developer</span>
-            </span>
-        </header>
-
-
-
-        <?php include 'index-parts/under-section.php';?>
-        <nav class="under-nav">
-            <h2 class="sr-only">contacts</h2>
-            <a href="//codepen.io/sandrina-p/" target="_blank" title="sandrina's codepen" class="btnB">
-                <span class="under-nav-hover-1">coding without fun, it's just... boring</span>
-                <i class="fa fa-codepen"></i>
-            </a>
-            <a href="mailto:sandrin4pereir4@gmail.com?subject=Hey%20there!" class="btnB">
-                sandrin4pereir4@gmail.com
-            </a>
-            <a href="//stackoverflow.com/users/4737729/sandrina-pereira" target="_blank" title="sandrina's stackoverflow" class="btnB">
-                <i class="fa fa-stack-overflow"></i>
-                <span class="under-nav-hover-3">helping others is as important as being helped</span>
-            </a>
-        </nav>
-    </div>
-    */ ?>
 
 
     <button type="button" name="about" class="bot-trigger js-botTrigger">
