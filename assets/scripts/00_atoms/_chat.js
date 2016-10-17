@@ -1,12 +1,3 @@
-var genericVal = function() {
-    var untilTablet = window.innerWidth < 750;
-
-    return {
-        untilTablet
-    }
-}();
-
-
 var chatApp = function() {
     //general chat classes
     var $chatId = $('#chat'),
@@ -22,30 +13,31 @@ var chatApp = function() {
         title, // string - title of the new part ex: 'before that'
         id, // string - it's build with string.slugLower -> ex : 'rede-expressos'
 
-        //some numbers to better crontrol auto scroll
-        mediaQHeight = 550, // a trigger to prevent some stuff on small devices
-        wHeight =  window.innerHeight, // doesn't need expl., does it?
-        navSectionTop, //number - nav offsetTop to trigger fixed class
+        //some numbers to better crontrol auto scroll and @medias
+        mediaQHeight = 550,
+        wHeight, untilTablet,
 
         intervalLoadingDots; //function - setInteral controller
 
 
     // ------ TRIGGERS ----- //
     // ------ define if is section or part ------ //
-    function init(option) {
-        section = option.closest('.chatSection').attr('id'),
-        $currentPart = option.closest('.chatPart'),
-        title = option.text(),
+    function init($option) {
+        wHeight =  window.innerHeight, //FIXME strange bug with safari isn't always right
+        untilTablet = window.innerWidth < 750, //FIXME strange bug with safari isn't always right
+
+        section = $option.closest('.chatSection').attr('id'),
+        $currentPart = $option.closest('.chatPart'),
+        btnName = $option.text(),
+        title = $option.attr('name'),
         id = title.slugLower();
 
-        if (mainSections.indexOf(title) > -1) {
-
-            option.attr('disabled', 'disabled');
+        if (mainSections.indexOf(btnName) > -1) {
+            $option.attr('disabled', 'disabled');
             buildSection();
-
         } else {
-            animateClickedOption(option);
-            buildSentence();
+            animateClickedOption($option);
+            buildSentence($option);
         }
     }
 
@@ -58,11 +50,18 @@ var chatApp = function() {
 
         finishLoading($parent);
 
-        setTimeout(function () {
-            $parent.slideUp("slow", function() {
-                $parent.remove();
-            });
-        }, 250);
+        if (untilTablet) {
+
+        } else {
+            //FIXME: I don't like this but oh well ._. ...
+            setTimeout(function () {
+                $parent.addClass('remove');
+                    setTimeout(function () {
+                        $parent.remove();
+                    }, 500);
+            }, 300);
+        }
+
     }
 
     function bodyScrollTop(value) {
@@ -78,7 +77,7 @@ var chatApp = function() {
 
     function getElBtn(text) {
         return "<div class='chatPart-option jsLoading'>"
-                    +"<button type='button' name='button' class='btnB jsLoading js-chatOpt'>"+text+"</button>"
+                    +"<button type='button' name='"+text+"' class='btnB jsLoading js-chatOpt'>"+text+"</button>"
                 +"</div>";
     }
 
@@ -125,20 +124,22 @@ var chatApp = function() {
     // 1. scrollSafe() - make sure newPart is 1/4 of the window height.
     // 2. scrollFinal() - if newPart is outside of the window view, scroll it until its end is visible.
     function scrollSafe($currentPart) {
-        var wScroll = $(window).scrollTop(),
-            wHeight = window.innerHeight, //NOTE: i need to set this var again because strange bug on iphone that doesn't get the real value.
-            pHeight =  $currentPart.height(),
-            pScroll = $currentPart.offset().top,
-            tooClose = pScroll - wScroll + pHeight > wHeight/2;
+        if (!untilTablet) {
+            var wScroll = $(window).scrollTop(),
+                wHeight = window.innerHeight;
+                pHeight =  $currentPart.height(),
+                pScroll = $currentPart.offset().top,
+                tooClose = pScroll - wScroll + pHeight > wHeight/2;
 
-        // too close of above the fold || away from the view window
-        if (tooClose || pScroll < wScroll) {
-            bodyScrollTop(pScroll + pHeight - wHeight/4*1);
+            // too close of above the fold || away from the view window
+            if (tooClose || pScroll < wScroll) {
+                bodyScrollTop(pScroll + pHeight - wHeight/4*1);
+            }
         }
     }
 
     function scrollFinal($part) {
-        if( screen.height > mediaQHeight) {
+        if(!untilTablet && screen.height > mediaQHeight) {
             var safeArea = 120,
                 pHeight = $part.height(),
                 pScroll = $part.offset().top,
@@ -150,12 +151,9 @@ var chatApp = function() {
             //if new part is away of the above the fold, scroll it to a safer area.
             if (visibleOnScreen > wArea) {
                 var diff2 = visibleOnScreen - wArea;
-                if (!genericVal.untilTablet) {
-                    bodyScrollTop(wScroll + diff2);
-                }
+                bodyScrollTop(wScroll + diff2);
             }
         }
-
     }
 
 
@@ -178,19 +176,38 @@ var chatApp = function() {
     }
 
     // ------ SHOWING A PART PROCESS - HEY TO TIMEOUTS! ------ //
-    function showingCommon($part, diffPartCallBack) {
+    function showingCommon($part, diffPartCallBack, $option) {
         var loadingTimeXtext = (section == "practice") ? 0 : $part.find(chatPClass+"human").text().length;
-
+        $option = $option || null;
         // if is 1st part (begin of a section) guide on parent
         // otherwise guide on previous part (currentPart where the user clicked);
-
-
         $part.is(':first-child')
             ? scrollSafe($part.parent())
             : scrollSafe($part.prev());
 
         // 1.show line title
         $part.find(chatPClass+"human").slideDown();
+
+        if (untilTablet && $option) {
+            var $parent = $option.parent();
+                thisTop = $parent.offset().top,
+                thisLeft = $parent.offset().left,
+
+                $newTitle = $part.find(chatPClass+"title"),
+                otherTop = $newTitle.offset().top,
+                otherLeft = $newTitle.offset().left,
+
+                thisX = otherLeft - thisLeft,
+                thisY = otherTop - thisTop;
+
+            $parent.css({
+                'transform': 'translate('+thisX+'px, '+thisY+'px)'
+            });
+
+            // setTimeout(function () {
+            //     $option.remove();
+            // }, 500);
+        }
 
         // 2.show title and loading dots
         $part.find(chatPClass+"title").removeClass('jsLoading');
@@ -203,6 +220,7 @@ var chatApp = function() {
             // 4. show text
             setTimeout(function () {
                 $('.js-loadingRetro').remove();
+
 
                 diffPartCallBack($part, chatPClass); //a part or a project
 
@@ -223,13 +241,13 @@ var chatApp = function() {
     function showingOptions($part) {
         // 6. show 1st btn
         setTimeout(function () {
-            finishLoading($part.find(chatPClass+"option:nth-last-of-type(2) .btnB"));
+            finishLoading($part.find(chatPClass+"option:nth-last-of-type(2) button"));
             scrollFinal($part);
 
             // FIXME better buttons target
             // 6. show 2nd btn
             setTimeout(function () {
-                finishLoading( $part.find(chatPClass+"option:last-of-type .btnB") );
+                finishLoading( $part.find(chatPClass+"option:last-of-type button") );
             }, 300);
         }, 400);
     }
@@ -262,7 +280,7 @@ var chatApp = function() {
     }
 
     // ------ talk ------ //
-    function buildSentence() {
+    function buildSentence($option) {
 
         //get text and remove it from chatContent.
         text = chatContent[section][title];
@@ -276,7 +294,7 @@ var chatApp = function() {
         $currentPart.after(ElChatPart);
 
         $newPart = $currentPart.next();
-        showingCommon($newPart, showingSentence);
+        showingCommon($newPart, showingSentence, $option);
     }
 
     // ------ project ------ //
@@ -289,12 +307,15 @@ var chatApp = function() {
     }
 
 
+
+
+
     // --------- NAV INIT ------------ //
 
     var $nav = $('#chat-nav');
 
     function navTranslate(thisId) {
-        var navWidth = genericVal.untilTablet ? 0 : 16, //padding
+        var navWidth = untilTablet ? 0 : 16, //padding
             thisId = thisId || null;
 
         $nav.children().each(function() {

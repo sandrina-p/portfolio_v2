@@ -29,28 +29,8 @@
     <h1 class="sr-only">Sandrina Pereira</h1>
     <h2 class="sr-only">interaction designer, frontend developer, creative developer</h2>
     <div class="heyThere">
-        <h2 class="heyThere-hey">Hey <br>there</h2>
-        <!-- <script type="text/javascript">
-            (function hT(){
-                var elHt = document.getElementsByClassName('heyThere-hey')[0],
-                    arr = ['H','e','y','<br>','t','h','e','r','e'],
-                    text = "",
-                    i = 0,
-                    arrL = arr.length;
-
-                function appendI() {
-                    text += arr[i];
-                    elHt.innerHTML = text;
-                    i++;
-                    if (i < arrL) {
-                        setTimeout(function () {
-                            appendI();
-                        }, 30);
-                    }
-                }
-                appendI();
-            })();
-        </script> -->
+                                    <!-- I know that's not very beuty but this is how it's made that intro animation -->
+        <h2 class="heyThere-hey"><span>H</span><span>e</span><span>y</span><br><span>t</span><span>h</span><span>e</span><span>r</span><span>e</span></h2>
         <div class="heyThere-intro">
             <p>
                 I would like to introduce you to someone.

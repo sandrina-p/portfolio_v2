@@ -16,6 +16,9 @@ var Projects = function() {
         classProjLeft = ".projNav-left", //In case you, sandrina, forget it, it's needed -left and -right to smooth things out when a new button cames out
         classProjRight = ".projNav-right",
 
+        mediaQHeight = 550,
+        wHeight, untilTablet,
+
         $pivot, $projLeft, $projRight, $projActive, // ???() variables
         $projSub, $projMedia, $projRole, $projDate, $projIntro, $projDetails, $projLinks, $projBotTip, // getProjPlaceholders variables
         $newActive, fPos, $projDir, addProjNumb, isParentLeft, //arrowsNavProj variables
@@ -96,7 +99,7 @@ var Projects = function() {
         }
 
         setTimeout(function () {
-            estimateFinalWidth = !isParentLeft || genericVal.untilTablet;  //calculate final +/- width before it happens - FIXME this is not the best solution, but it's the better i could get
+            estimateFinalWidth = !isParentLeft || untilTablet;  //calculate final +/- width before it happens - FIXME this is not the best solution, but it's the better i could get
             $newActive.addClass(activeClass).attr('disabled',true);
             $projActive = $newActive;
             alignPivot(null, direction);
@@ -127,7 +130,7 @@ var Projects = function() {
             projActiveWidth = $newProject.outerWidth();
         }
 
-        if (genericVal.untilTablet) {
+        if (untilTablet) {
             transX = 16 + pivotX - projActiveX;
         } else {
             transX = windowBotWidth + pivotX - projActiveX - projActiveWidth;
@@ -332,35 +335,6 @@ var Projects = function() {
         // });
     }
 
-    function initProj(section) {
-        var elProj = buildProj(),
-            i = Math.floor(Math.random() * (arrProjects.length - 1) + 1),
-            projName = arrProjects[i];
-
-        $('#'+section).append(elProj);
-
-        // FIXME find a better way to do this
-        if (genericVal.untilTablet) {
-            $('.projCont-links').insertBefore('.projCont-details');
-        }
-        // END FIXME find a better way to do this
-
-        $('#projects').slideDown();
-
-        getProjPlaceholders(projName);
-        baffleProj();
-        setTimeout(function () {
-            getProjectData(projName);
-
-            $('button[name='+projName.slugLower()+']').first().addClass(activeClass).attr('disabled', true);
-            $projActive = $('button.'+activeClass);
-            alignPivot();
-        }, 400);
-    }
-
-
-
-
     var timer = 0;
 
     function navigateToProjectOn(direction) {
@@ -421,7 +395,31 @@ var Projects = function() {
                             //TODO a class may help
     $(document).on('click', '.projNav-pivot button', function() {
         clickNavProj($(this));
-    })
+    });
+
+
+    function initProj(section) {
+        var elProj = buildProj(),
+            i = Math.floor(Math.random() * (arrProjects.length - 1) + 1),
+            projName = arrProjects[i];
+
+        wHeight =  window.innerHeight, //FIXME strange bug with safari isn't always right
+        untilTablet = window.innerWidth < 750,
+
+        $('#'+section).append(elProj);
+
+        $('#projects').slideDown();
+
+        getProjPlaceholders(projName);
+        baffleProj();
+        setTimeout(function () {
+            getProjectData(projName);
+
+            $('button[name='+projName.slugLower()+']').first().addClass(activeClass).attr('disabled', true);
+            $projActive = $('button.'+activeClass);
+            alignPivot();
+        }, 400);
+    }
 
     return {
         initProj,

@@ -36,7 +36,7 @@
                     &-human {
                         width: auto;
                         padding: 0;
-                        padding-left: $safeArea;
+                        // padding-left: $safeArea;
                         transition: width 0s 2s, padding 250ms, opacity 1s;
                     }
                 }
@@ -57,8 +57,14 @@
 
     &Part {
         position: relative;
+        padding-left: $safeArea;
+        padding-bottom: $safeArea;
         width: 100%;
+        // overflow: hidden;
         @extend %cf;
+        opacity: 0;
+        animation: showText 500ms steps(7);
+        animation-fill-mode: forwards;
 
         //each section
         &:first-of-type {
@@ -97,23 +103,23 @@
         // human part with titles
         &-human {
             width: 100%;
-            padding: $safeArea $safeArea 0 $safeArea;
+            background: $clrLight;
+            padding: 0;
             overflow: hidden;
             display: none;
         }
 
         &-title {
             display: inline-block;
-            transition: margin $speed*2;
-            margin-right: 0;
             font-family: $font-mono;
             font-size: $fontM;
             font-weight: $fBold;
             color: $clrPrimary;
 
             &.jsLoading {
-                margin-left: -50%;
-                transition: margin $speed*2;
+                // opacity: 0;
+                // margin-left: -50%;
+                // transition: margin $speed*2;
             }
         }
 
@@ -122,17 +128,16 @@
         &-bot {
             width: 100%;
             padding: 0;
-            overflow: hidden;
             display: none;
+            @extend %cf;
         }
 
 
         &-text {
             font-weight: $fReg;
             font-size: $fontL;
-            opacity: 1;
-            transition: opacity $speed;
-            padding: 0 $safeArea $safeArea $safeArea*2;
+            // opacity: 0;
+            padding: 0 $safeArea $safeArea;
 
             &:hover {
                 color: $clrDark;
@@ -151,46 +156,21 @@
         // btns
         &-option {
             display: inline-block;
-            padding: 0;
             overflow: hidden;
-            max-width: 0;
-            opacity: 0;
-            height: 0;
-            transition: padding 500ms
-                        width 500ms
-                        margin 500ms
-                        opacity 500ms
-                        height 500ms;
-
-            &:nth-child(2) {
-                position: relative;
-                z-index: 2;
-            }
-
-            &:last-child {
-                padding-right: 0;
-            }
-
-            &.jsLoading {
-                padding: 0 0 0 $safeArea;
-                max-width: 49%;
-                opacity: 1;
-                height: $safeArea*2;
-                transition: padding 500ms
-                            width 500ms
-                            margin 500ms
-                            height 500ms;
-
-                > * {
-                    margin: 0;
-                    transition: margin 500ms;
-                }
-            }
+            opacity: 1;
+            padding-right: $safeArea;
+            transition: transform 250ms ease-in;
 
             > * {
                 white-space: nowrap; //NOTE: it's dangerous but it's to prevent margin transition break
-                margin-left: -100%;
-                transition: margin 500ms;
+                margin-left: 0;
+                opacity: 1;
+                transition: margin opacity 500ms;
+
+                .jsLoading {
+                    margin-left: -100%;
+                    opacity: 0;
+                }
             }
         }
 
@@ -202,6 +182,15 @@
     }
 }
 
+@keyframes showText {
+    0% {opacity: 0;}
+    64% {opacity: 0;}
+    65% {opacity: 1;}
+    70% {opacity: 0;}
+    75% {opacity: 1;}
+    90% {opacity: 0;}
+    100% {opacity: 1;}
+}
 
 @include media(phablet) {
     .chat {
@@ -262,12 +251,16 @@
         }
 
         &Part {
+            padding-left: 0;
+
             &-human {
                 padding: $safeArea 0 $safeArea $safeArea;
                 text-align: right;
             }
 
             &-title {
+                transition: margin $speed*2;
+                margin-right: 0;
 
                 &.jsLoading {
                     margin-left: 0;
@@ -282,13 +275,24 @@
 
             &-option {
                 display: inline-block;
-                width: 49%;
+                opacity: 0;
+                width: 0;
                 padding: 0;
-                // max-width: 0;
+                height: $safeArea*1.5;
 
                 &.jsLoading {
-                    padding: 0;
-                    // max-width: 49%;
+                    width: 49%;
+                    transition: opacity 300ms margin width 500ms;
+
+                    > * {
+                        margin: 0;
+                        transition: margin 500ms;
+                    }
+                }
+
+                &.remove {
+                    height: 0px;
+                    transition: height 500ms;
                 }
             }
 
@@ -296,71 +300,6 @@
     }
 }
 
-
-// .liIndex {
-//     &-ul {
-//         width: 100%;
-//     }
-//
-//     &-liCateg {
-//         display: inline-block;
-//         margin-top: $safeArea/2;
-//     }
-//
-//     &-categ {
-//         display: block;
-//         font-family: $font-mono;
-//         font-size: $fontS;
-//         font-weight: $fBold;
-//         text-transform: uppercase;
-//         margin-top: $safeArea/2;
-//     }
-//
-//     &-liProj {
-//         display: inline-block;
-//         margin-top: $safeArea/2;
-//
-//         .btnP {
-//             // color: red;
-//             font-size: $fontS;
-//         }
-//     }
-//
-//     &-sub {
-//         padding-left: $safeArea/2;
-//         margin-right: $safeArea/2;
-//         border-bottom: 1px solid $clrDark;
-//         display: inline-block;
-//         height: rem(17);
-//         font-size: $fontXS;
-//     }
-//
-//     &--padding {
-//         padding: 0 $safeArea;
-//
-//         .liIndex {
-//             &-liCateg,
-//             &-categ {
-//                 margin-top: 0;
-//             }
-//
-//             &-liCateg {
-//                 margin-bottom: $safeArea;
-//             }
-//
-//             &-liProj {
-//                 button {
-//                     margin-right: -$safeArea/2;
-//                     font-size: $fontS;
-//                 }
-//             }
-//             &-sub {
-//                 height: rem(18);
-//             }
-//         }
-//     }
-//
-// }
 
 // dots . . .
 .js-loadingRetro {

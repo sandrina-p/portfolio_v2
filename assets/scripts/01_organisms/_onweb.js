@@ -54,7 +54,9 @@ var OnWeb = function() {
     }
 }();
 
-if(!genericVal.untilTablet) {
+var untilTablet = window.innerWidth < 750;
+
+if(untilTablet) {
     $(function lookIntoOnWww(){
         var $cv = $("#cv"),
             offsetCv,

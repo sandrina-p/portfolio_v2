@@ -20,10 +20,10 @@ var chatContent = {
     intro: {
         hey: "Hey there!",
         hi: "I would like to introduce you to someone. She's a frontend developer with a great passion for interaction design. Where do you like to start?",
-        back: "Welcome back! I don't know your name yet. Mine is 008080 (I'm just a bot remember?)",
-        meet0: "So,",
-        meet1: "input[name=visitorName] ? input[name=visitorName] || person",
-        meet2: "You already know who Sandrina is. Is there anything you would like to review about her, or do you want to find out some new stuff?"
+        // back: "Welcome back! I don't know your name yet. Mine is 008080 (I'm just a bot remember?)",
+        // meet0: "So,",
+        // meet1: "input[name=visitorName] ? input[name=visitorName] || person",
+        // meet2: "You already know who Sandrina is. Is there anything you would like to review about her, or do you want to find out some new stuff?"
     },
     background: {
         intro: "Right now she's a <strong>frontend developer</strong> in a startup: Zaask."+brk+"Plus, she just finished a post-graduation degree on <strong>Digital Experience Design</strong> at FBAUL.",

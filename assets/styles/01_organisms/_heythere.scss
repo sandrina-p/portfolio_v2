@@ -19,16 +19,19 @@ $HTFontTab: $font6XL;
         font-size: $HTFont;
         padding-left: $safeArea*2;
         border-bottom: 1px solid black;
-        color: $clrLight;
         animation: heyLine 1750ms ease-out;
 
-        &:before {
-            content: 'Hey \a there';
-            white-space: pre;
-            position: absolute;
-            @extend %textHeyThere;
-            color: $clrDark;
-            animation: heyThere 2250ms steps(11);
+        span {
+            color: transparent;
+            animation: heyThere 500ms ease-out;
+            animation-fill-mode: forwards;
+
+            $chars: 8;
+            @for $i from 1 through $chars {
+                &:nth-of-type(#{$i}) {
+                    animation-delay: 1200+70ms*$i;
+                }
+            }
         }
     }
 
@@ -81,19 +84,8 @@ $HTFontTab: $font6XL;
 
 
 @keyframes heyThere {
-    0% {content: "";}
-    1% {content: "";}
-    75% {content: "";}
-    77% {content: "H";}
-    80% {content: "He";}
-    83% {content: "Hey";}
-    85% {content: "Hey ";}
-    87% {content: "Hey \a t";}
-    90% {content: "Hey \a th";}
-    93% {content: "Hey \a the";}
-    95% {content: "Hey \a ther";}
-    97% {content: "Hey \a there";}
-    100% {content: "Hey \a there";}
+    0%, 90% {color: transparent;}
+    100% {color: $clrDark;}
 }
 
 @keyframes heyLine {
