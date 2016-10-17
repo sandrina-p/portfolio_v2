@@ -58,13 +58,9 @@
     &Part {
         position: relative;
         padding-left: $safeArea;
-        padding-bottom: $safeArea;
+        padding-bottom: $safeArea*2;
         width: 100%;
-        // overflow: hidden;
         @extend %cf;
-        opacity: 0;
-        animation: showText 500ms steps(7);
-        animation-fill-mode: forwards;
 
         //each section
         &:first-of-type {
@@ -72,6 +68,11 @@
                 &-human,
                 &-bot {
                     padding-top: 0;
+                }
+
+                &-human {
+                    opacity: 1;
+                    animation: none;
                 }
 
                 &-title {
@@ -87,6 +88,10 @@
 
                 &-text {
                     padding-top: $safeArea/2;
+                }
+
+                &-bot {
+                    animation-delay: 150ms;
                 }
             }
         }
@@ -107,6 +112,10 @@
             padding: 0;
             overflow: hidden;
             display: none;
+            opacity: 0;
+            animation: showText 500ms steps(7);
+            animation-fill-mode: forwards;
+            animation-delay: 200ms;
         }
 
         &-title {
@@ -115,12 +124,6 @@
             font-size: $fontM;
             font-weight: $fBold;
             color: $clrPrimary;
-
-            &.jsLoading {
-                // opacity: 0;
-                // margin-left: -50%;
-                // transition: margin $speed*2;
-            }
         }
 
 
@@ -130,13 +133,17 @@
             padding: 0;
             display: none;
             @extend %cf;
+
+            opacity: 0;
+            animation: showText 350ms steps(8);
+            animation-fill-mode: forwards;
+            animation-delay: 550ms;
         }
 
 
         &-text {
             font-weight: $fReg;
             font-size: $fontL;
-            // opacity: 0;
             padding: 0 $safeArea $safeArea;
 
             &:hover {
@@ -159,7 +166,8 @@
             overflow: hidden;
             opacity: 1;
             padding-right: $safeArea;
-            transition: transform 250ms ease-in;
+            transition: all 250ms;
+            height: $safeArea*1.5;
 
             > * {
                 white-space: nowrap; //NOTE: it's dangerous but it's to prevent margin transition break
@@ -171,6 +179,11 @@
                     margin-left: -100%;
                     opacity: 0;
                 }
+            }
+
+            &.remove {
+                height: 1px;
+                opacity: 0;
             }
         }
 
@@ -184,9 +197,10 @@
 
 @keyframes showText {
     0% {opacity: 0;}
-    64% {opacity: 0;}
-    65% {opacity: 1;}
-    70% {opacity: 0;}
+    20% {opacity: 0;}
+    25% {opacity: 1;}
+    45% {opacity: 1;}
+    55% {opacity: 0;}
     75% {opacity: 1;}
     90% {opacity: 0;}
     100% {opacity: 1;}
