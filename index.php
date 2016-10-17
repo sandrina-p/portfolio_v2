@@ -29,7 +29,7 @@
     <h1 class="sr-only">Sandrina Pereira</h1>
     <h2 class="sr-only">interaction designer, frontend developer, creative developer</h2>
     <div class="heyThere">
-                                    <!-- I know that's not very beuty but this is how it's made that intro animation -->
+                                    <!-- I know that's not very beuty but this is how I made that intro animation with CSS only -->
         <h2 class="heyThere-hey"><span>H</span><span>e</span><span>y</span><br><span>t</span><span>h</span><span>e</span><span>r</span><span>e</span></h2>
         <div class="heyThere-intro">
             <p>
@@ -41,8 +41,9 @@
         </div>
     </div>
 
-    <div class="chat" id="chat">
-        <!-- not so fast. it's javascript ¯\_(ツ)_/¯ -->
+    <div class="chat" id="chat"> <!-- not so fast. it's javascript ¯\_(ツ)_/¯ -->
+
+    <!-- </div> -->
         <div class="chat-nav" id="chat-nav">
             <article class="chatSection jsOnNav <?php echo $loadingNav ?>" id="background">
                 <div class="chatPart" id="background-intro">
@@ -69,6 +70,12 @@
             </article>
         </div>
     </div>
+
+    <!-- <div class="chat-newnav" id="chat-nav">
+        <button type="button" name="background" id="btn-bg" class="chatPart-title js-chatOpt">history</button>
+        <button type="button" name="theory" id="btn-th" class="chatPart-title js-chatOpt">knowledge</button>
+        <button type="button" name="practice" id="btn-pr" class="chatPart-title js-chatOpt">projects</button>
+    </div> -->
 
     <?php include 'index-parts/under-section.php';?>
 
