@@ -1,8 +1,8 @@
 .chat {
     width: 100%;
     margin: auto;
-    padding-bottom: $safeArea*8;
-    min-height: 100vh;
+    // padding-bottom: $safeArea*8;
+    // min-height: 100vh;
     display: block;
     position: relative;
 
@@ -282,6 +282,10 @@
                 }
             }
 
+            // &-bot {
+            //     animation-delay: 150ms;
+            // }
+
             &-text {
                 padding: 0;
                 padding-bottom: $safeArea;
@@ -289,25 +293,30 @@
 
             &-option {
                 display: inline-block;
-                opacity: 0;
                 width: 0;
                 padding: 0;
-                height: $safeArea*1.5;
+                // opacity: 0;
+                // width: 0;
+                // padding: 0;
+                // height: $safeArea*1.5;
+                transition: width 250ms;
 
                 &.jsLoading {
                     width: 49%;
-                    transition: opacity 300ms margin width 500ms;
-
-                    > * {
-                        margin: 0;
-                        transition: margin 500ms;
-                    }
                 }
-
-                &.remove {
-                    height: 0px;
-                    transition: height 500ms;
-                }
+                //     width: 49%;
+                //     transition: opacity 300ms margin width 500ms;
+                //
+                //     > * {
+                //         margin: 0;
+                //         transition: margin 500ms;
+                //     }
+                // }
+                //
+                // &.remove {
+                //     height: 0px;
+                //     transition: height 500ms;
+                // }
             }
 
         }
@@ -321,4 +330,16 @@
     top: $safeArea;
     padding-left: $safeArea;
     // animation: glitch 2s steps(100) infinite;
+}
+
+
+
+
+.chat-newnav {
+    height: $safeArea*2;
+
+    button {
+        position: absolute;
+        padding-right: $safeArea;
+    }
 }
