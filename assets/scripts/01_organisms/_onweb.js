@@ -56,7 +56,7 @@ var OnWeb = function() {
 
 var untilTablet = window.innerWidth < 750;
 
-if(untilTablet) {
+if(!untilTablet) {
     $(function lookIntoOnWww(){
         var $cv = $("#cv"),
             offsetCv,

@@ -3,8 +3,9 @@ var chatApp = function() {
     var $chatId = $('#chat'),
         $navSections = $(".navSections"),
         $heyThere = $('.heyThere-intro'),
-        botClass = '.chatPart-bot',
         chatPClass = '.chatPart-',
+        botClass = chatPClass+'bot',
+
 
         //crucial content from each part
         section, //string - section of the clicked button, ex: 'background';
@@ -15,9 +16,9 @@ var chatApp = function() {
 
         //some numbers to better crontrol auto scroll and @medias
         mediaQHeight = 550,
-        wHeight, untilTablet,
+        wHeight, untilTablet;
 
-        intervalLoadingDots; //function - setInteral controller
+        // intervalLoadingDots; //function - setInteral controller
 
 
     // ------ TRIGGERS ----- //
@@ -45,23 +46,51 @@ var chatApp = function() {
     //when the user clicks on a chat button, it runs away.
     function animateClickedOption($option) {
         var $parent = $option.parent();
-            $liIndex = $option.closest('.liIndex-liCateg');
-            $siblings = $parent.siblings('.chatPart-option, .liIndex-liProj');
+            $siblings = $parent.siblings(chatPClass+'option');
 
         finishLoading($parent);
 
-        if (untilTablet) {
+        // if (!untilTablet) {
+        //     //FIXME: I don't like this but oh well ._. ...
+        //     setTimeout(function () {
+        //         $parent.addClass('remove');
+        //             setTimeout(function () {
+        //                 $parent.remove();
+        //             }, 500);
+        //     }, 300);
+        // }
 
-        } else {
-            //FIXME: I don't like this but oh well ._. ...
+    }
+
+    function animateClickedOptionMob($option) {
+        var $parent = $option.parent();
+            thisTop = $parent.offset().top,
+            thisLeft = $parent.offset().left,
+
+            $newTitle = $part.find(chatPClass+"title"),
+            otherTop = $newTitle.offset().top,
+            otherLeft = $newTitle.offset().left,
+
+            thisX = otherLeft - thisLeft,
+            thisY = otherTop - thisTop;
+
+        $parent.css({'transform': 'translate('+thisX+'px, '+thisY+'px)'});
+
+        //FIXME ai ai ai ai so ugly - basically timeout to stretch height (slideUp() with css) and remove();
+        setTimeout(function () {
+
+            $parent.addClass('remove');
+
             setTimeout(function () {
-                $parent.addClass('remove');
-                    setTimeout(function () {
-                        $parent.remove();
-                    }, 500);
-            }, 300);
-        }
+                if ($parent.siblings == 0) {
+                    $parent.remove();
+                } else if ($parent.siblings('.remove') == 1){
+                    $parent.siblings('.remove');
+                    $parent.remove();
+                }
+            }, 250);
 
+        }, 500);
     }
 
     function bodyScrollTop(value) {
@@ -88,7 +117,7 @@ var chatApp = function() {
                     +"</div>"
                     +"<div class='chatPart-bot'>"
                         +"<p class='chatPart-text jsLoading'>"+text+"</p>"
-                        // options FIXME
+                        // options
                     +"</div>"
                 +"</div>");
     }
@@ -107,11 +136,15 @@ var chatApp = function() {
                 }
                 clicked = objSection['clicked'];
 
-                //if key isn't on clicked && only first 2 keys && key isn' clicked obj itself
+                //if key isn't on clicked && only first 2 keys found && key isn't clicked obj itself
                 if (clicked.indexOf(key) < 0 && chatOptions.length < 2 && key !== "clicked") {
                     chatBtn = getElBtn(key);
                     chatOptions.push(chatBtn);
                     objSection['clicked'].push(key);
+                }
+
+                if (chatOptions.length == 2) {
+                    break;
                 }
             }
         }
@@ -157,19 +190,19 @@ var chatApp = function() {
     }
 
 
-    //FIXME this MUST be only css
-    function loadingDots($elAfter) {
-        $elAfter.after('<span class="js-loadingRetro"></span>');
-
-        function dotdotdot(cursor, times, string) {
-          return Array(times - Math.abs(cursor % (times * 2) - times) + 1).join(string);
-        }
-
-        var cursor = 0;
-        intervalLoadingDots = setInterval(function () {
-         $('.js-loadingRetro').text( dotdotdot(cursor++, 3, '.') );
-        }, 100);
-    }
+    // //FIXME this MUST be only css
+    // function loadingDots($elAfter) {
+    //     $elAfter.after('<span class="js-loadingRetro"></span>');
+    //
+    //     function dotdotdot(cursor, times, string) {
+    //       return Array(times - Math.abs(cursor % (times * 2) - times) + 1).join(string);
+    //     }
+    //
+    //     var cursor = 0;
+    //     intervalLoadingDots = setInterval(function () {
+    //      $('.js-loadingRetro').text( dotdotdot(cursor++, 3, '.') );
+    //     }, 100);
+    // }
 
     function finishLoading($element) {
         $element.removeClass('jsLoading');
@@ -188,43 +221,15 @@ var chatApp = function() {
 
         $part.find(chatPClass+"human").slideDown();
 
-        // function clickButtonMobile(){}
-        //
         if (untilTablet && $option) {
-            var $parent = $option.parent();
-                thisTop = $parent.offset().top,
-                thisLeft = $parent.offset().left,
-
-                $newTitle = $part.find(chatPClass+"title"),
-                otherTop = $newTitle.offset().top,
-                otherLeft = $newTitle.offset().left,
-
-                thisX = otherLeft - thisLeft,
-                thisY = otherTop - thisTop;
-
-            $parent.css({
-                'transform': 'translate('+thisX+'px, '+thisY+'px)'
-            });
-
-            //TODO ai ai ai ai so ugly
-            setTimeout(function () {
-                $parent.addClass('remove');
-                    setTimeout(function () {
-                        if ($parent.siblings == 0) {
-                            $parent.remove();
-                        } else if ($parent.siblings('.remove') == 1){
-                            $parent.siblings('.remove');
-                            $parent.remove();
-                        }
-                    }, 250);
-            }, 500);
+            animateClickedOptionMob($option);
         }
 
         finishLoading($part.find(chatPClass+"title"));
         $part.find(chatPClass+"bot").slideDown();
 
         setTimeout(function () {
-            diffPartCallBack($part, chatPClass); //a part or a project
+            diffPartCallBack($part, chatPClass);
         }, 500);
     }
 
@@ -241,17 +246,15 @@ var chatApp = function() {
     function showingOptions($part) {
         // show 1st btn and then 2nd
         setTimeout(function () {
-            finishLoading($part.find(chatPClass+"option:nth-last-of-type(2) button"));
+            finishLoading($part.find(chatPClass+"option:first-of-type button"));
             scrollFinal($part);
 
             // FIXME better buttons target
             setTimeout(function () {
-                finishLoading( $part.find(chatPClass+"option:last-of-type button") );
+                finishLoading($part.find(chatPClass+"option:last-of-type button") );
             }, 300);
         }, 400);
     }
-
-
 
     // ------ TYPES OF PART BUILD ------ //
     // ------ section ------ //
@@ -307,20 +310,20 @@ var chatApp = function() {
 
 
 
-
-
     // --------- NAV INIT ------------ //
 
     var $nav = $('#chat-nav');
 
     function navTranslate(thisId) {
         var navWidth = untilTablet ? 0 : 16, //padding
+            padd = 16;
             thisId = thisId || null;
 
         $nav.children().each(function() {
             if(thisId && $(this).attr('id') == thisId) {
                 return;
             }
+            // navWidth += padd;
             $(this).css({'transform': 'translate('+navWidth+'px, 0)'});
             navWidth += $(this).width();
         });
@@ -376,6 +379,19 @@ var chatApp = function() {
             $(this).insertBefore('#chat-nav');
         });
     });
+
+    // $(document).on('click', '.chat-newnav button', function(){
+    //     $navClone = $('#chat-nav').clone().attr('id', 'chat-navClone');
+    //     $('#chat').append($navClone);
+    //     $(this).css({'opacity':'0'});
+    //     navTranslate( $(this).attr('id') );
+    //
+    //     $(this).css({'transform': 'translate(0, 0)'});
+    //     $(this).removeClass('jsOnNav');
+    //     $(this).one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', function(e) {
+    //         $(this).insertBefore('#chat-nav');
+    //     });
+    // });
 
     return {
         init,
@@ -449,7 +465,6 @@ var botSection = function() {
                 var subKeys = key.split(/,\s?/);
                 if (subKeys.indexOf(sentText) > -1) {
                     return key;
-                    break;
                 }
             }
         }
@@ -476,7 +491,6 @@ var botSection = function() {
                     } else {
                         var iR = Math.floor(Math.random() * botContent.EmpTy.length);
                         appendBotAnswer(botContent.EmpTy[iR]);
-                        break;
                         return;
                     }
                 }
@@ -501,12 +515,14 @@ var botSection = function() {
                 break;
 
             default:
-                appendBotAnswer(botContent.LosT);
+                searchVocabulary(context);
+                // appendBotAnswer(botContent.LosT);
         }
     }
 
-    function searchVocabulary() {
-        var objContext = botContent.vocabulary;
+    function searchVocabulary(context) {
+        context = context || "vocabulary";
+        var objContext = botContent[context];
         var botAnswer = [];
 
         //BEFORE: - just to remember how dumb i was...
@@ -522,10 +538,16 @@ var botSection = function() {
         //
         // if(botAnswer.length == 0) { botContent.LosT;}
         // appendBotAnswer(botAnswer);
-        //
+
         // AFTER: - and how i'm so fucking a genius now
-        botAnswer = objContext[objSearchSubKeys(objContext)] || botContent.LosT;
-        appendBotAnswer(botAnswer);
+        if (sentText == "") {
+            var iR = Math.floor(Math.random() * botContent.EmpTy.length);
+            appendBotAnswer(botContent.EmpTy[iR]);
+        } else {
+            botAnswer = objContext[objSearchSubKeys(objContext)] || botContent.LosT;
+            appendBotAnswer(botAnswer);
+        }
+
     }
 
     function appendBotAnswer(answer, objContext) {
@@ -598,10 +620,6 @@ var botSection = function() {
         }
     });
 
-    //force to always focus on input
-    $(document).on('click', '#bot', function(){
-        // $('#'+botInputId).focus();
-    })
 
     //close 008080 section
     $(document).keyup(function(e) {

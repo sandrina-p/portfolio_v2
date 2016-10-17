@@ -219,7 +219,7 @@ var googleIt = genLink('http://lmgtfy.com/?q=one+divided+by+zero', 'Google it');
     linkFOUC = genLink('#linkTODO', 'FOUC'),
     linkGit = genLink('#linkTODO', 'Bitbucket'),
     linkHer = genLink('http://www.imdb.com/title/tt1798709/', "Her"),
-    myEmail = genLink('mailto:sandrin4pereir4@gmail.com?subject=Hey%20there!', 'sandrin4pereir4@gmail.com', "noTarget");
+    myEmail = genLink('mailto:a.sandrina.p@gmail.com?subject=Hey%20there!', 'a.sandrina.p@gmail.com', "noTarget");
 
 
 var publicCmd = "Some stuff you can know about:"
@@ -248,7 +248,7 @@ var botContent = {
     options: {
         // STRUCTURE:
         // "posible human, inputs sent, separated by, comma" : ["bot answer", "context of the next input", "input placeholder"]
-        "infinity, universe, cosmos": ["You are a little crazy… we all are. ^1000 "+brk+""+botTextAbout, "commands", "what's next?", "typedJS"],
+        "infinity, infinito, ∞, universe, cosmos": ["You are a little crazy… we all are. ^1000 "+brk+""+botTextAbout, "commands", "what's next?", "typedJS"],
         "undefined, null": ["Not it's not. It has another name. At least on javascript language.", "options", "go ask it to some console", "typedJS"],
         "1/0, 1 divided by 0, one divided by zero": ["◉_◉ Don't try to turn the game against me."+brk+"I'm a bot, not a console.", "options", "go ask it to other console", "typedJS"],
         "zero, 0": ["You know that Siri isn't always right. ^1000"+brk+"Neither do you.^500"+brk+""+botOptHelp, "options", 'I still believe in you', "typedJS"],
@@ -271,9 +271,19 @@ var botContent = {
         keepSection: [["If you want to know more about Sandrina's [*param*] just press <i>ENTER</i> again.", "commands", "", "typedJS", "keepSectionJS"], ["best practices", "challenges"]],
         allSaid: [["I don't have anything else to tell you about [*param*] "+brk+""+publicCmd, "commands", "", "typedJS"], ["best practices", "challenges"]],
     },
+    bored: {
+        "yes, yh": ["hmmm... let me give you game then [TODO]", "commands", "...", "typedJS"],
+        "no, nop": ["nice for you. I am. You are boring.", "commands", "...", "typedJS"],
+    },
+    username: {
+        "username": ["Nice to meet you [username]!", "commands", "...", "typedJS"],
+    },
     vocabulary: {
         git: ["Now that we know each other a bit better, we should advance to the second base."+brk+"I'll let you check my sources on "+linkGit+"."+brk+"Feel free to explore and maybe improve me, especially on javascript."+brk+"I still feel some strange energies around here, don't you?", "commands", ""],
         "hey, hey there, hello, hi": ["Hey there! This can be the begining of "+linkHer+" *.*", "commands", ""],
+        "thanks, thank you, thank u": ["You're welcome", "commands", ""],
+        "sandrina": ["Yes... anything more you want to know about her? I recommend you to say Hi! ->"+myEmail, "commands", ""],
+        "what's your name?, what is your name?": ["I'm 008080. What about you?", "username", ""],
         "..., bye, cya, shut down, exit, close": ["You know what... It's really hard having a human conversation."+brk+"That's why I'm just a bot."+brk+"<b>008080</b> by the way."+brk+"Nice to meet you :) It was nice to talk to you, thank you!"+brk+"But now do me a favor and go get a life, yes?"+brk+"It’s not healthy to talk to a bot all day."+brk+"By the way, don't forget to share me and talk about Sandrina while you’re out there <3", "commands", "like i said, still under construction, 'ESC' to close"],
         "esc, restart, reset, clear": ["are you sure about that? all our memories - at least mine - will be erased. If so, press ESC twice.","commands","[TODO]"],
         "resources, resources": ["still under construction","commands", "don't push me that way okay? :/"],
@@ -290,6 +300,6 @@ var botContent = {
         ['?', "commands", "silence is good"],
         ['...', "commands", "oh well"],
         ["(ง'̀-'́)ง", "commands", "hi?"],
-        ['◉_◉', "commands", "are you bored?"]
+        ['◉_◉', "bored", "are you bored?"]
     ]
 }
