@@ -179,15 +179,17 @@ var chatApp = function() {
     function showingCommon($part, diffPartCallBack, $option) {
         var loadingTimeXtext = (section == "practice") ? 0 : $part.find(chatPClass+"human").text().length;
         $option = $option || null;
+
         // if is 1st part (begin of a section) guide on parent
         // otherwise guide on previous part (currentPart where the user clicked);
         $part.is(':first-child')
             ? scrollSafe($part.parent())
             : scrollSafe($part.prev());
 
-        // 1.show line title
         $part.find(chatPClass+"human").slideDown();
 
+        // function clickButtonMobile(){}
+        //
         if (untilTablet && $option) {
             var $parent = $option.parent();
                 thisTop = $parent.offset().top,
@@ -204,29 +206,25 @@ var chatApp = function() {
                 'transform': 'translate('+thisX+'px, '+thisY+'px)'
             });
 
+            //TODO ai ai ai ai so ugly
             setTimeout(function () {
-                $option.css({
-                    'opacity':'0'
-                });
+                $parent.addClass('remove');
+                    setTimeout(function () {
+                        if ($parent.siblings == 0) {
+                            $parent.remove();
+                        } else if ($parent.siblings('.remove') == 1){
+                            $parent.siblings('.remove');
+                            $parent.remove();
+                        }
+                    }, 250);
             }, 500);
         }
 
-        // 2.show title and loading dots
-        $part.find(chatPClass+"title").removeClass('jsLoading');
-        loadingDots($part.find(chatPClass+"human"));
-        // 3. hide loading dots and show bigger line
+        finishLoading($part.find(chatPClass+"title"));
+        $part.find(chatPClass+"bot").slideDown();
+
         setTimeout(function () {
-            $('.js-loadingRetro').slideUp();
-            clearInterval(intervalLoadingDots);
-            $part.find(chatPClass+"bot").slideDown();
-            // 4. show text
-            setTimeout(function () {
-                $('.js-loadingRetro').remove();
-
-
-                diffPartCallBack($part, chatPClass); //a part or a project
-
-            }, loadingTimeXtext);
+            diffPartCallBack($part, chatPClass); //a part or a project
         }, 500);
     }
 
@@ -241,13 +239,12 @@ var chatApp = function() {
     }
 
     function showingOptions($part) {
-        // 6. show 1st btn
+        // show 1st btn and then 2nd
         setTimeout(function () {
             finishLoading($part.find(chatPClass+"option:nth-last-of-type(2) button"));
             scrollFinal($part);
 
             // FIXME better buttons target
-            // 6. show 2nd btn
             setTimeout(function () {
                 finishLoading( $part.find(chatPClass+"option:last-of-type button") );
             }, 300);
