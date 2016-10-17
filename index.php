@@ -41,9 +41,9 @@
         </div>
     </div>
 
-    <div class="chat" id="chat"> <!-- not so fast. it's javascript ¯\_(ツ)_/¯ -->
+    <div class="chat" id="chat">
+        <!-- not so fast. it's javascript ¯\_(ツ)_/¯ -->
 
-    <!-- </div> -->
         <div class="chat-nav" id="chat-nav">
             <article class="chatSection jsOnNav <?php echo $loadingNav ?>" id="background">
                 <div class="chatPart" id="background-intro">
