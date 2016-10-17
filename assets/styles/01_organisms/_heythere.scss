@@ -22,8 +22,9 @@ $HTFontTab: $font6XL;
         animation: heyLine 1750ms ease-out;
 
         span {
-            color: transparent;
-            animation: heyThere 500ms ease-out;
+            color: $clrBlack;
+            opacity: 0;
+            animation: heyThere 500ms steps(11);
             animation-fill-mode: forwards;
 
             $chars: 8;
@@ -40,10 +41,11 @@ $HTFontTab: $font6XL;
         max-width: $safeArea*35;
         padding-left: $safeArea;
         padding-right: $safeArea;
-        padding-bottom: $safeArea*2+$safeArea/2;
+        padding-bottom: $safeArea*4;
         margin-top: $safeArea*2;
-        opacity: 1;
-        animation: heyIntro 2500ms ease-in;
+        opacity: 0;
+        animation: heyIntro 3s steps(11);
+        animation-fill-mode: forwards;
     }
 
     &-br {
@@ -84,8 +86,13 @@ $HTFontTab: $font6XL;
 
 
 @keyframes heyThere {
-    0%, 90% {color: transparent;}
-    100% {color: $clrDark;}
+    0%, 85% {opacity: 0;}
+    87% {opacity: 1;}
+    88% {opacity: 0;}
+    89% {opacity: 1;}
+    92% {opacity: 0;}
+    91% {opacity: 1;}
+    90%, 100% {opacity: 1;}
 }
 
 @keyframes heyLine {
@@ -118,15 +125,14 @@ $HTFontTab: $font6XL;
 }
 
 @keyframes heyIntro {
-    0% {
-        opacity: 0;
-    }
-    80% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
+    0%, 85% {opacity: 0;}
+    86% {opacity: 1}
+    87% {opacity: 0;}
+    91% {opacity: 1}
+    92% {opacity: 0;}
+    93% {opacity: 1}
+    96% {opacity: 0;}
+    97%, 100% {opacity: 1}
 }
 @keyframes heyIntro-tablet {
     0% {
