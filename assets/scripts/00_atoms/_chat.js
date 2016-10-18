@@ -6,7 +6,6 @@ var chatApp = function() {
         chatPClass = '.chatPart-',
         botClass = chatPClass+'bot',
 
-
         //crucial content from each part
         section, //string - section of the clicked button, ex: 'background';
         $currentPart, //jquery - id of the clicked button parent chatPart ex: $('#chatpart-intro');
@@ -18,12 +17,9 @@ var chatApp = function() {
         mediaQHeight = 550,
         wHeight, untilTablet;
 
-        // intervalLoadingDots; //function - setInteral controller
 
-
-    // ------ TRIGGERS ----- //
     // ------ define if is section or part ------ //
-    function init($option) {
+    function clickOption($option) {
         wHeight =  window.innerHeight, //FIXME strange bug with safari isn't always right
         untilTablet = window.innerWidth < 750, //FIXME strange bug with safari isn't always right
 
@@ -45,21 +41,7 @@ var chatApp = function() {
     // ------ GENERAL STUFF ----- //
     //when the user clicks on a chat button, it runs away.
     function animateClickedOption($option) {
-        var $parent = $option.parent();
-            $siblings = $parent.siblings(chatPClass+'option');
-
-        finishLoading($parent);
-
-        // if (!untilTablet) {
-        //     //FIXME: I don't like this but oh well ._. ...
-        //     setTimeout(function () {
-        //         $parent.addClass('remove');
-        //             setTimeout(function () {
-        //                 $parent.remove();
-        //             }, 500);
-        //     }, 300);
-        // }
-
+        finishLoading($option.parent());
     }
 
     function animateClickedOptionMob($option) {
@@ -76,16 +58,14 @@ var chatApp = function() {
 
         $parent.css({'transform': 'translate('+thisX+'px, '+thisY+'px)'});
 
-        //FIXME ai ai ai ai so ugly - basically timeout to stretch height (slideUp() with css) and remove();
+        //FIXME ai ai ai ai so ugly - have timeout to stretch height (slideUp() with css) and remove();
         setTimeout(function () {
-
             $parent.addClass('remove');
 
             setTimeout(function () {
                 if ($parent.siblings == 0) {
                     $parent.remove();
                 } else if ($parent.siblings('.remove') == 1){
-                    $parent.siblings('.remove');
                     $parent.remove();
                 }
             }, 250);
@@ -94,9 +74,7 @@ var chatApp = function() {
     }
 
     function bodyScrollTop(value) {
-        $('body').animate({
-            scrollTop: value
-        }, 1000, 'swing');
+        $('body').animate({ scrollTop: value }, 1000, 'swing');
     }
 
     // ------ DOM STRUCTURE ELEMENTS ------ //
@@ -122,6 +100,7 @@ var chatApp = function() {
                 +"</div>");
     }
 
+    // ------ GET CHAT OPTION ------ //
     function getOptions(section) {
         var objSection = chatContent[section],
             objI = 0,
@@ -189,21 +168,6 @@ var chatApp = function() {
         }
     }
 
-
-    // //FIXME this MUST be only css
-    // function loadingDots($elAfter) {
-    //     $elAfter.after('<span class="js-loadingRetro"></span>');
-    //
-    //     function dotdotdot(cursor, times, string) {
-    //       return Array(times - Math.abs(cursor % (times * 2) - times) + 1).join(string);
-    //     }
-    //
-    //     var cursor = 0;
-    //     intervalLoadingDots = setInterval(function () {
-    //      $('.js-loadingRetro').text( dotdotdot(cursor++, 3, '.') );
-    //     }, 100);
-    // }
-
     function finishLoading($element) {
         $element.removeClass('jsLoading');
     }
@@ -266,9 +230,9 @@ var chatApp = function() {
         text = chatContent[section]["intro"];
         delete chatContent[section]["intro"];
 
-        var ElChatPart =    $("<div class='chatPart-bot'>"
-                                +"<p class='chatPart-text jsLoading'>"+text+"</p>"
-                            +"</div>");
+        var ElChatPart = $("<div class='chatPart-bot'>"
+                            +"<p class='chatPart-text jsLoading'>"+text+"</p>"
+                        +"</div>");
 
         $sectionIntro.append(ElChatPart);
 
@@ -303,101 +267,98 @@ var chatApp = function() {
     function buildProject($part) {
         setTimeout(function () {
             Projects.initProj(section);
-            scrollSafe($('#projects'));
-            //TODO adjust until top of screen
+            scrollSafe($('#projects')); //TODO adjust until top of screen
         }, 600);
     }
 
-
-
-    // --------- NAV INIT ------------ //
-
-    var $nav = $('#chat-nav');
-
-    function navTranslate(thisId) {
-        var navWidth = untilTablet ? 0 : 16, //padding
-            padd = 16;
-            thisId = thisId || null;
-
-        $nav.children().each(function() {
-            if(thisId && $(this).attr('id') == thisId) {
-                return;
-            }
-            // navWidth += padd;
-            $(this).css({'transform': 'translate('+navWidth+'px, 0)'});
-            navWidth += $(this).width();
-        });
-    }
-
-
-    $(document).ready(function(){
-
-        $(function navInit() {
-            var $heyThereIntro = $('.heyThere-intro'),
-                baffleBg = baffle("#btn-bg"),
-                baffleTh = baffle("#btn-th"),
-                bafflePr = baffle("#btn-pr");
-
-            baffleBg
-                .start()
-                .text(currentText => mainSections[0]);
-
-            baffleTh
-                .start()
-                .text(currentText => mainSections[1]);
-
-            bafflePr
-                .start()
-                .text(currentText => mainSections[2]);
-
-
-            setTimeout(function () {
-                navTranslate();
-            }, 500);
-
-            (function showNav() {
-                if($heyThereIntro.css('opacity') == "1") {
-                    $('#theory, #background, #practice').removeClass('jsLoading');
-                    baffleBg.reveal(400, 750);
-                    baffleTh.reveal(400, 250);
-                    bafflePr.reveal(400, 500);
-                } else {
-                    setTimeout(function () {
-                        showNav();
-                    }, 500);
-                }
-            })();
-        });
+    $(document).on('click', '.js-chatOpt', function(){
+        clickOption($(this));
     });
-
-    $(document).on('click', '.chatSection.jsOnNav', function(){
-        navTranslate( $(this).attr('id') );
-
-        $(this).css({'transform': 'translate(0, 0)'});
-        $(this).removeClass('jsOnNav');
-        $(this).one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', function(e) {
-            $(this).insertBefore('#chat-nav');
-        });
-    });
-
-    // $(document).on('click', '.chat-newnav button', function(){
-    //     $navClone = $('#chat-nav').clone().attr('id', 'chat-navClone');
-    //     $('#chat').append($navClone);
-    //     $(this).css({'opacity':'0'});
-    //     navTranslate( $(this).attr('id') );
-    //
-    //     $(this).css({'transform': 'translate(0, 0)'});
-    //     $(this).removeClass('jsOnNav');
-    //     $(this).one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', function(e) {
-    //         $(this).insertBefore('#chat-nav');
-    //     });
-    // });
-
-    return {
-        init,
-    }
-
 }();
+
+
+
+// --------- CHAT NAV ------------ //
+var chatNav = function() {
+
+    $(function navInit() {
+
+        var $heyThereIntro = $('.heyThere-intro'),
+            $nav = $('#chat-nav'),
+            baffleBg = baffle("#btn-bg"),
+            baffleTh = baffle("#btn-th"),
+            bafflePr = baffle("#btn-pr");
+
+        baffleBg
+            .start()
+            .text(currentText => mainSections[0]);
+
+        baffleTh
+            .start()
+            .text(currentText => mainSections[1]);
+
+        bafflePr
+            .start()
+            .text(currentText => mainSections[2]);
+
+
+        (function showNav() {
+            if($heyThereIntro.css('opacity') == "1") {
+                $('#theory, #background, #practice').removeClass('jsLoading');
+                baffleBg.reveal(400, 750);
+                baffleTh.reveal(400, 250);
+                bafflePr.reveal(400, 500);
+            } else {
+                setTimeout(function () {
+                    showNav();
+                }, 500);
+            }
+        })();
+
+        function navTranslate(thisId) {
+            var navWidth = untilTablet ? 0 : 16, //padding
+                padd = 16;
+                thisId = thisId || null;
+
+            $nav.children().each(function() {
+                if(thisId && $(this).attr('id') == thisId) {
+                    return;
+                }
+
+                $(this).css({'transform': 'translate('+navWidth+'px, 0)'});
+                navWidth += $(this).width();
+            });
+        }
+
+        $(document).on('click', '.chatSection.jsOnNav', function(){
+            navTranslate( $(this).attr('id') );
+
+            $(this).css({'transform': 'translate(0, 0)'});
+            $(this).removeClass('jsOnNav');
+            $(this).one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', function(e) {
+                $(this).insertBefore('#chat-nav');
+            });
+        });
+
+        setTimeout(function () {
+            navTranslate();
+        }, 500);
+
+        // $(document).on('click', '.chat-newnav button', function(){
+        //     $navClone = $('#chat-nav').clone().attr('id', 'chat-navClone');
+        //     $('#chat').append($navClone);
+        //     $(this).css({'opacity':'0'});
+        //     navTranslate( $(this).attr('id') );
+        //
+        //     $(this).css({'transform': 'translate(0, 0)'});
+        //     $(this).removeClass('jsOnNav');
+        //     $(this).one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', function(e) {
+        //         $(this).insertBefore('#chat-nav');
+        //     });
+        // });
+    });
+}();
+
 
 
 var botSection = function() {
@@ -418,13 +379,6 @@ var botSection = function() {
         sentText, //text written on input
         context; //input context of the conversation
 
-
-
-    // helpful functions //
-    ///////////////////////
-    // function getRandomIndex(val) {
-    //     return Math.floor(Math.random() * arr);
-    // }
 
     // get ready 008080 //
     //////////////////////
@@ -627,14 +581,9 @@ var botSection = function() {
             $bot.addClass(triggerActive);
         }
     });
+
 }();
 
-
-$(document).ready(function(){
-    $(document).on('click', '.js-chatOpt', function(){
-        chatApp.init($(this));
-    });
-});
 
 $(function cvProjects(){
 
@@ -689,9 +638,4 @@ $(function cvProjects(){
         });
 
     }();
-
-    // if(window.innerWidth > 499) {
-    //     cvProjects();
-    // }
-
 });
