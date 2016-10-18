@@ -70,8 +70,12 @@
                 }
 
                 &-human {
+                    display: block;
+                    border-right: none;
+                    transition: padding 250ms;
                     opacity: 1;
                     animation: none;
+                    animation-delay: 0;
                 }
 
                 &-title {
@@ -79,19 +83,13 @@
                     font-weight: $fBold;
                 }
 
-                &-human {
-                    display: block;
-                    border-right: none;
-                    transition: padding 250ms;
+                &-bot {
+                    animation-delay: 150ms;
                 }
 
                 &-text {
                     width: 100%;
                     padding-top: $safeArea/2;
-                }
-
-                &-bot {
-                    animation-delay: 150ms;
                 }
             }
         }
