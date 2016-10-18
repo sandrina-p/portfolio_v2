@@ -11,7 +11,6 @@
 
     <section class="cv-section">
         <h2 class="sr-only">CV</h2>
-
         <div class="cv-left">
             <article class="cv-article">
                 <div class="cv-article-in">
@@ -143,6 +142,25 @@
 
                 </div>
             </article>
+        </div>
+
+        <div class="cv-under">
+            <div class="cv-under-title">
+                <h3 class="cv-title">projects</h3>
+            </div>
+            <div class="cv-under-proj">
+                <span class="cv-under-proj-sub js-cvProjSub"></span>
+                <ul class="cv-under-proj-ul js-cvProj">
+                    <li><a href="#" target="_blank" class="cv-link" data-sub="video game concept">N O X</a></li>
+                    <li><a href="#" target="_blank" class="cv-link" data-sub="3D animation">141205</a></li>
+                    <li><a href="#" target="_blank" class="cv-link" data-sub="web and app concept redesign">Rede Expressos</a></li>
+                    <li><a href="#" target="_blank" class="cv-link" data-sub="digital magazine">DET</a></li>
+                    <li><a href="#" target="_blank" class="cv-link" data-sub="previous website">portfolio'15</a></li>
+                    <li><a href="#" target="_blank" class="cv-link" data-sub="net label website">pistol shrimp</a></li>
+                    <li><a href="#" target="_blank" class="cv-link" data-sub="movie website">moon</a></li>
+                    <li><a href="#" target="_blank" class="cv-link" data-sub="fashion website">carolina machado</a></li>
+                </ul>
+            </div>
         </div>
     </section>
 </div>

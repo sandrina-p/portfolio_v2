@@ -635,3 +635,63 @@ $(document).ready(function(){
         chatApp.init($(this));
     });
 });
+
+$(function cvProjects(){
+
+    var cvProjects = function(){
+
+        var $cvProjUl = $('.js-cvProj'),
+            $cvProjects = $cvProjUl.find('.cv-link');
+            $sub = $('.js-cvProjSub');
+            ArrProj = $cvProjects.toArray(),
+            maxChild = ArrProj.length,
+            projI = 0,
+            keepLooping = true,
+            $child = ''; //var on hightlightProject();
+
+        function hightlightProject(child) {
+
+            if(keepLooping) { // active next project and call itself with next child index,
+                $child = $(child);
+                removeActive();
+                $child.addClass('active');
+                setNewSub($child.data('sub'));
+
+                setTimeout(function () {
+                    projI++;
+                    projI = projI < maxChild ? projI : 0;
+                    hightlightProject(ArrProj[projI]);
+                }, 2500);
+
+            } else { // otherwise call () itself again in 1000ms;
+                setTimeout(function () {
+                    hightlightProject(child);
+                }, 1000);
+            }
+        }
+
+        function removeActive() {
+            $cvProjects.removeClass('active');
+        }
+
+        function setNewSub(text) {
+            $sub.html('<span>'+text+'<span>');
+        }
+
+        hightlightProject(ArrProj[projI]);
+
+        $cvProjects.on('mouseenter', function(){
+            removeActive();
+            setNewSub($(this).data('sub'));
+            keepLooping = false;
+        }).on('mouseleave', function(){
+            keepLooping = true;
+        });
+
+    }();
+
+    // if(window.innerWidth > 499) {
+    //     cvProjects();
+    // }
+
+});
