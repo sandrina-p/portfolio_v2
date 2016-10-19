@@ -29,7 +29,6 @@ var chatContent = {
         "before that": "She was <strong>UX/UI Designer</strong> at Pure."+brk+"What got her there was her <strong>degree in Communication Design</strong> at FBAUL."+brk+"Well, and maybe the fact that she did <strong>Erasmus</strong> in Oporto, where she learned a lot",
         "future": "Of course she is a workaholic, so whenever she has some free time she might accept freelancer projects."+brk+"Maybe she can <strong>help you to bring your next big idea to life.</strong>",
         "tell me more": "Hmm... I'm not allowed to share more info about her."+brk+"But by all means, don't be shy and go say hello."+brk+"She is very nice, specially if you are a bot like me"
-        // "anything else": "Go check some of her projects and find out how many cool things she can do."
     },
     theory: {
         intro: "Basically she breaths <strong>HTML5, SCSS</strong> and <strong>Javascript / JQuery</strong>."+brk+"She is really into <strong>interactive stuff</strong> and that’s what makes her good at web development: a passion for the work and 24hours of <strong>daily exploration</strong>."+brk+"She loves to create micro interactions that nobody seems to care about until they see them."+brk+"Then, of course, they are mind blown",
