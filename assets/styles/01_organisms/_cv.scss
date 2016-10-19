@@ -1,0 +1,410 @@
+$cvPaddingLeft: 10vw;
+
+.cv {
+    display: block;
+    position: relative;
+    background: $clrDark;
+    color: $clrLight;
+    margin-bottom: rem(280); //space to .psst
+
+
+    &-header {
+        position: relative;
+        margin: auto;
+        width: 100%;
+        @include fallback(padding, $safeArea*6 0, 0 0 $safeArea*2);
+    }
+
+    .cv-profile {
+        text-align: center;
+        padding-bottom: $safeArea*2;
+    }
+
+    &-ascii {
+        position: relative;
+        display: inline-block;
+        text-align: center;
+        width: 100%;
+        font-size: 5.4px;
+        line-height: 1.2;
+        height: 320px;
+        overflow: hidden;
+        font-family: $font-mono;
+    }
+
+    &-article {
+        padding-bottom: $safeArea*2;
+
+        &-in {
+            color: $clrLight;
+            position: relative;
+            height: 100%;
+        }
+
+        &-header {
+            border-bottom: 1px solid $clrLight;
+            display: inline-block;
+            text-align: right;
+            padding-left: $cvPaddingLeft;
+        }
+    }
+
+    &-title {
+        font-size: $fontXL;
+        font-family: $font-mono;
+        font-weight: 300;
+    }
+
+
+    //around && background
+    &-dl {
+        padding: $safeArea $safeArea $safeArea $cvPaddingLeft;
+    }
+
+    &-dt {
+        font-size: $fontL;
+        font-weight: 500;
+        color: $clrWhite;
+
+
+        &:not(:first-of-type) {
+            margin-top: $safeArea/3*4;
+        }
+    }
+
+    &-dd {
+        font-size: $fontS;
+        font-family: $font-mono;
+        padding-left: $safeArea;
+        padding-bottom: $safeArea/5;
+        color: $clrGrayLight;
+    }
+
+    &-link {
+        color: $clrPrimarySoft;
+        font-family: $font-mono;
+        font-weight: $fMed;
+        cursor: alias;
+
+        &:hover {
+            border-bottom: 1px dotted $clrLight;
+
+            .fa {
+                color: $clrPrimarySoft;
+            }
+        }
+
+        .fa {
+            color: $clrWhite;
+            font-size: $fontS;
+        }
+    }
+
+    //theory
+    &-ul {
+        padding: $safeArea/2 $safeArea;
+        padding-left: $cvPaddingLeft;
+
+
+        &Title {
+            padding-top: $safeArea;
+            padding-left: $cvPaddingLeft;
+            font-size: $fontL;
+            font-weight: 600;
+            text-transform: lowercase;
+        }
+    }
+
+    &-li {
+        color: $clrLight;
+        letter-spacing: 0.4px;
+        font-family: $font-mono;
+        font-size: $fontS;
+        padding-left: $safeArea/2;
+        padding-bottom: $safeArea/5;
+
+        &--br {
+            padding-bottom: $safeArea;
+        }
+
+        &--i {
+            font-style: italic;
+        }
+    }
+
+
+
+    &-under {
+        width: 100%;
+
+        &-title {
+            text-align: center;
+            border-bottom: 1px solid $clrLight;
+            padding: $safeArea;
+            padding-top: $safeArea*2;
+            padding-bottom: $safeArea/3;
+        }
+
+        &-proj {
+            padding: 0 $safeArea/2;
+
+            &-sub {
+                display: block;
+                text-align: center;
+                font-family: $font-mono;
+                color: $clrGray;
+                font-size: $fontS;
+                padding: $safeArea $safeArea/2 $safeArea/2;
+
+                span {
+                    animation: showText 300ms steps(7);
+                    animation-fill-mode: forwards;
+                }
+            }
+
+            &-ul {
+                position: relative;
+                text-align: center;
+            }
+
+            li {
+                display: inline-block;
+                padding: $safeArea;
+            }
+        }
+
+
+        .cv-link {
+            color: $clrPrimaryDark;
+            transition: font 50ms;
+
+            &:hover,
+            &.active {
+                color: $clrPrimarySoft;
+            }
+
+            &.active {
+                font-size: $fontL;
+                animation: glitch 2s steps(100) infinite;
+            }
+        }
+    }
+
+
+    @include media(phablet) {
+
+        &-under {
+            &-proj {
+                padding: 0 $safeArea;
+
+                &-sub {
+                    padding-top: $safeArea*2;
+                }
+                &-ul {
+                    height: $safeArea*14;
+                    padding-top: $safeArea;
+                }
+
+                li {
+                    text-align: center;
+                    position: absolute;
+                    padding: 0;
+
+                    &:nth-child(1){transform:translate(-3vw, 1%);} //n
+                    &:nth-child(2){transform:translate(22vw, 50%);} //14
+                    &:nth-child(3){transform:translate(-25vw, 140%);} //red
+                    &:nth-child(4){transform:translate(-40vw, 200%);} //det
+                    &:nth-child(5){transform:translate(4vw, 220%);} //port
+                    &:nth-child(6){transform:translate(-30vw, 380%);} //ps
+                    &:nth-child(7){transform:translate(30vw, 350%);} //mo
+                    &:nth-child(8){transform:translate(-5vw, 500%);} //cm
+                }
+            }
+        }
+    }
+
+    @include media(tablet) {
+
+        &-header {
+            @extend %cf-tab;
+            @include fallback(padding, $safeArea*6 0, 25vh 0 $safeArea*4);
+
+            > * {
+                float: right;
+                width: 50%;
+            }
+        }
+
+        &-article {
+            padding-bottom: $safeArea*4;
+
+            &--right {
+                @include fallback(padding-left, $safeArea*2, $cvPaddingLeft*5);
+
+                .cv-article-header {
+                    text-align: left;
+                    display: block;
+                    padding-left: 0;
+                }
+            }
+        }
+
+        &-ul {
+            .cv-article--right &,
+            .cv-article--right &Title {
+                padding-left: 0;
+            }
+        }
+
+        &-left,
+        &-right {
+            width: 50%;
+        }
+    }
+}
+
+//TODO on chat
+@keyframes doting {
+    0% {content: ".";}
+    10% {content: ". .";}
+    20% {content: ". . .";}
+    30% {content: ". .";}
+    40% {content: ".";}
+    50% {content: "";}
+}
+
+.onWeb {
+
+    &-href {
+
+        a {
+            display: inline-block;
+            margin: $safeArea/2 $safeArea/2 $safeArea/2 $safeArea;
+
+            .fa {
+                font-size: $fontL;
+                color: $clrPrimarySoft;
+
+                &:hover {
+                    color: $clrWhite;
+                }
+            }
+        }
+    }
+
+    &-dd,
+    &-site {
+        min-height: $safeArea/2*3;
+    }
+}
+
+.mee {
+    position: absolute;
+    opacity: 0;
+    @include centerx;
+    animation: myself 1s steps(5) infinite; //REVIEW
+}
+
+$myselfs: 7;
+@for $i from 0 through $myselfs {
+    .myself#{$i} {
+        animation-delay: $i*125ms;
+    }
+}
+
+@keyframes myself {
+    0% {opacity: 0;}
+    87.4% {opacity: 0;}
+    87.5% {opacity: 1;}
+    99.9% {opacity: 1;}
+    100% {opacity: 0;}
+}
+
+.glitch {
+  position: relative;
+  margin: 0 auto;
+  width: 300px;
+  background: $clrDark;
+  display: inline-block;
+
+  span {color: $clrDark;}
+
+  &:before,
+  &:after {
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    animation-direction: alternate-reverse;
+    overflow: hidden;
+    background: $clrDark;
+    top: 0;
+    width: 100%;
+    clip: rect(0, 900px, 0, 0);
+    content: attr(data-text);
+    @include centerx;
+  }
+
+  &:after {
+    content: attr(data-sub);
+    animation-name: glitch-animation; //REVIEW
+    animation-duration: 4s;
+    text-shadow: -1px 0 yellow;
+  }
+
+  &:before {
+    animation-name: glitch-animation-2;  //REVIEW
+    animation-duration: 6s;
+    text-shadow: 1px 0 $clrPrimarySoft;
+  }
+}
+
+
+@mixin rect($top, $bottom) {
+  clip: rect($top, 9999px, $bottom, 0);
+}
+
+@keyframes glitch-animation {
+    $steps:20;
+    @for $i from 0 through $steps{
+        #{percentage($i*(1/$steps))}{
+            @include rect(random(100) + px,random(100) + px);
+        }
+    }
+}
+
+@keyframes glitch-animation-2 {
+    $steps:20;
+    @for $i from 0 through $steps{
+        #{percentage($i*(1/$steps))}{
+            @include rect(random(100) + px,random(100) + px);
+        }
+    }
+}
+
+
+.jsGlitching {
+    animation: glitch 2s steps(100) infinite;
+}
+
+
+.psst {
+    position: fixed;
+    left: 0; bottom: 0;
+    z-index: -1;
+    width: 100%;
+    background: $clrLight;
+    padding: $safeArea*2 $safeArea/2;
+    text-align: center;
+    color: $clrBlack;
+
+    &-title {
+        font-size: $fontXL;
+    }
+
+    &-parag {
+        padding: $safeArea 0;
+    }
+
+    button {
+        margin: 0 $safeArea;
+    }
+}

@@ -143,7 +143,7 @@
         </div>
     </article>
 
-    <div class="cv-under">
+    <div class="cv-under js-cvUnder">
         <div class="cv-under-title">
             <h3 class="cv-title">projects</h3>
         </div>

@@ -43,9 +43,15 @@ $HTFontTab: $font6XL;
         padding-right: $safeArea;
         padding-bottom: $safeArea*4;
         margin-top: $safeArea*2;
+        color: $clrGrayDarker;
         opacity: 0;
         animation: heyIntro 3s steps(11);
         animation-fill-mode: forwards;
+
+        strong {
+            font-weight: inherit;
+            // color: $clrGrayDarker;
+        }
     }
 
     &-br {

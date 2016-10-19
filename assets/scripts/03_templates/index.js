@@ -5,21 +5,15 @@
 
 // =include ../../plugins/typedjs-master/dist/typed.min.js
 // =include ../../plugins/baffle/baffle.min.js
-// =inc-//-lude ../../plugins/sticky-kit/jquery.sticky-kit.min.js
 
-// =include ../00_atoms/_custom-functions.js
-// =include ../00_atoms/_chat-content.js
+// =include ../00_atoms/_utilFuncs.js
+
+// =include ../01_organisms/_content-chat.js
+// =include ../01_organisms/_content-008080.js
+
 // =include ../01_organisms/_projects.js
-// =include ../00_atoms/_chat.js
+// =include ../01_organisms/_chatNav.js
+// =include ../01_organisms/_chat.js
 // =include ../01_organisms/_onweb.js
-
-$(document).ready(function(){
-    $(function SmoothScroll() {
-        $('a[href*=#]').click(function(event){
-            $('html, body').animate({
-                scrollTop: $( $.attr(this, 'href') ).offset().top -150
-        }, 500);
-            event.preventDefault();
-        });
-    });
-});
+// =include ../01_organisms/_psst.js
+// =include ../01_organisms/_bot.js

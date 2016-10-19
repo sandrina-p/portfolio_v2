@@ -34,7 +34,7 @@
         <div class="heyThere-intro">
             <p>
                 I would like to introduce you to someone.
-                She's a frontend developer with a great passion for <span class="nowrap">interaction design.</span>
+                She's a <strong>frontend developer</strong> with a great passion for <strong class="nowrap">interaction design</strong>.
                 <span class="heyThere-br"></span>
                 Where do you like to start?
             </p>
@@ -79,9 +79,9 @@
 
     <?php include 'index-parts/under-section.php';?>
 
-    <div class="underBot">
-        <p class="underBot-title">psst...</p>
-        <p class="underBot-parag"> Maybe now you want to talk about her.
+    <div class="psst js-psst">
+        <p class="psst-title">psst...</p>
+        <p class="psst-parag"> Maybe now you want to talk about her.
             <br>I can tell you more about her projects.
             <br>What do you think?
         </p>
