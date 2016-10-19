@@ -361,3 +361,12 @@ $mediaHeight: rem(400);
   }
 }
 // ex: @include bgImg2x('../../media/images/passenger-back', jpg);
+
+
+/*------------------------------------*\
+    #GLITCH WD
+\*------------------------------------*/
+
+%glitchWD {
+    animation: glitch 2s steps(100) infinite;
+}

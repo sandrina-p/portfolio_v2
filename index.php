@@ -29,7 +29,7 @@
     <h1 class="sr-only">Sandrina Pereira</h1>
     <h2 class="sr-only">interaction designer, frontend developer, creative developer</h2>
     <div class="heyThere">
-                                    <!-- I know that's not very beuty but this is how I made that intro animation with CSS only -->
+                                    <!-- I know that's not very beutiful but this is how I made that intro animation with CSS only -->
         <h2 class="heyThere-hey"><span>H</span><span>e</span><span>y</span><br><span>t</span><span>h</span><span>e</span><span>r</span><span>e</span></h2>
         <div class="heyThere-intro">
             <p>
@@ -89,6 +89,9 @@
         <button type="button" name="false" class="chatPart-title js-botTrigger">not really</button>
     </div>
 
+    <div class="navCV">
+        <a href="#cv" class="navCV-link">cv</a>
+    </div>
 
     <div class="bot jsLoading" id="bot">
         <!-- ◉_◉ for the last time, it's javascript -->

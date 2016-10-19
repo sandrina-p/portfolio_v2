@@ -4,6 +4,9 @@ a, button {
     &:focus {
         animation-name: flash;
         animation-duration: 250ms;
+        outline: 0;
+        border: 0;
+        box-shadow: 0;
     }
 
     &:disabled {
@@ -48,7 +51,7 @@ button {
     text-align: left;
 
     &:hover {
-        animation: glitch 2s steps(100) infinite;
+        @extend %glitchWD;
     }
 }
 
@@ -110,34 +113,6 @@ button {
         box-shadow: 0 0 0 1px $clrLight;
 
     }
-}
-
-
-//FIXME
-.btnOut1,
-.btnOut2, {
-    display: inline-block;
-    padding: 0 $safeArea/2;
-    line-height: rem(10);
-
-    &:hover {
-        color: $clrPrimarySoft;
-    }
-
-    &:last-child {
-        padding-right: 0;
-    }
-}
-
-.btnOut1 {
-    font-size: $fontLx;
-    animation: glitch1 2s steps(100) infinite;
-    animation-delay: 4s;
-}
-
-.btnOut2 {
-    animation: glitch2 2s steps(100) infinite;
-    animation-delay: 2s;
 }
 
 
