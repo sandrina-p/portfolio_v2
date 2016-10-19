@@ -141,7 +141,7 @@ var Projects = function() {
 
 
     function buildProj() {
-        var sub, role, date, title, more, botTip, elImgs, ElLinks, xx,
+        var sub, role, date, title, more, botTip, elImgs, ElLinks,
             elProjNav = buildProjNav('left'),
             $ElProj =  $(`<div class='proj' id='projects'>
                             <div class='bot-nav'></div>
