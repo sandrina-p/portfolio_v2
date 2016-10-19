@@ -25,7 +25,8 @@ var Projects = function() {
         estimateFinalWidth, projActiveWidth, pivotPos, projActivePos, transX, //alignPivot variables
         baffle0, baffle1, baffle2, baffle3, baffle4, //baffle variables
 
-        windowBotWidth = window.innerWidth*40/100;
+        windowBotWidth = window.innerWidth*40/100,
+        timer = 0;
 
 
     function checkIsParentLeft() {
@@ -320,22 +321,7 @@ var Projects = function() {
         $("img").error(function () {
             $(this).hide();
         });
-
-        // FIXME doesn't work very well, dunno why... (removed stick.js from index.js)
-        // var $projNav = $(".projNav");
-        //     // projsHeight = $('#projects').height(),
-        //     // screenH = window.innerHeight;
-        //
-        // $projNav.stick_in_parent({offset_top: 5});
-        // $projNav.on('sticky_kit:bottom', function(e) {
-        //     $(this).parent().css('position', 'static');
-        // });
-        // $projNav.on('sticky_kit:unbottom', function(e) {
-        //     $(this).parent().css('position', 'relative');
-        // });
     }
-
-    var timer = 0;
 
     function navigateToProjectOn(direction) {
         arrowsNavProj(direction);
@@ -366,14 +352,6 @@ var Projects = function() {
         }
     }
 
-    $(document).on('swipeleft', '#projects', function() {
-        navigateToProjectOn('right');
-    });
-
-    $(document).on('swiperight', '#projects', function() {
-        navigateToProjectOn('left');
-    });
-
     function changeBotNavText(text) {
         $(classProjBotTip).addClass('.jsLoading')
         setTimeout(function () {
@@ -383,6 +361,14 @@ var Projects = function() {
             }, 150);
         }, 150);
     }
+
+    $(document).on('swipeleft', '#projects', function() {
+        navigateToProjectOn('right');
+    });
+
+    $(document).on('swiperight', '#projects', function() {
+        navigateToProjectOn('left');
+    });
 
     $(document).keydown(function(e) {
         if (e.keyCode == 37) { // [ < ]
@@ -398,24 +384,28 @@ var Projects = function() {
     });
 
 
+    //publicCmd
+
     function initProj(section) {
         var elProj = buildProj(),
             i = Math.floor(Math.random() * (arrProjects.length - 1) + 1),
-            projName = arrProjects[i];
-
-        wHeight =  window.innerHeight, //FIXME strange bug with safari isn't always right
-        untilTablet = window.innerWidth < 750,
+            projName = arrProjects[i],
+            wHeight =  window.innerHeight, //FIXME strange bug with safari isn't always right
+            untilTablet = window.innerWidth < 750;
 
         $('#'+section).append(elProj);
-
         $('#projects').slideDown();
-
         getProjPlaceholders(projName);
         baffleProj();
+
         setTimeout(function () {
             getProjectData(projName);
 
-            $('button[name='+projName.slugLower()+']').first().addClass(activeClass).attr('disabled', true);
+            $('.projNav-btn[name='+UtilFuncs.stringSlugLower(projName)+']')
+                .first()
+                .addClass(activeClass)
+                .attr('disabled', true);
+
             $projActive = $('button.'+activeClass);
             alignPivot();
         }, 400);
@@ -424,5 +414,61 @@ var Projects = function() {
     return {
         initProj,
     }
-
 }();
+
+
+
+$(function cvProjects(){
+
+    var cvProjects = function(){
+
+        var $cvProjUl = $('.js-cvProj'),
+            $cvProjects = $cvProjUl.find('.cv-link'),
+            $sub = $('.js-cvProjSub'),
+            ArrProj = $cvProjects.toArray(),
+            maxChild = ArrProj.length,
+            projI = 0,
+            iR,
+            keepLooping = true,
+            $child; //var on hightlightProject();
+
+        function hightlightProject(child) {
+
+            if(keepLooping) { // active next project and call itself with next child index,
+                $child = $(child);
+                removeActive();
+                $child.addClass('active');
+                setNewSub($child.data('sub'));
+
+                setTimeout(function () {
+                    iR = UtilFuncs.randomNumb(ArrProj);
+                    hightlightProject(ArrProj[iR]);
+                }, 2500);
+
+            } else { // otherwise call () itself again in 1000ms;
+                setTimeout(function () {
+                    hightlightProject(child);
+                }, 1000);
+            }
+        }
+
+        function removeActive() {
+            $cvProjects.removeClass('active');
+        }
+
+        function setNewSub(text) {
+            $sub.html('<span>'+text+'<span>');
+        }
+
+        hightlightProject(ArrProj[projI]);
+
+        $cvProjects.on('mouseenter', function(){
+            removeActive();
+            setNewSub($(this).data('sub'));
+            keepLooping = false;
+        }).on('mouseleave', function(){
+            keepLooping = true;
+        });
+
+    }();
+});

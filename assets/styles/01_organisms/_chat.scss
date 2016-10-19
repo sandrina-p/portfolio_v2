@@ -4,6 +4,7 @@
     min-height: 100vh;
     display: block;
     position: relative;
+    padding-bottom: $safeArea*12;
 
     &-nav {
         position: relative;
@@ -140,13 +141,11 @@
 
 
         &-text {
+            width: 100%;
             font-weight: $fReg;
             font-size: $fontL;
             padding: 0 $safeArea $safeArea;
-
-            &:hover {
-                color: $clrDark;
-            }
+            color: $clrGray;
 
             strong {
                 font-weight: inherit;

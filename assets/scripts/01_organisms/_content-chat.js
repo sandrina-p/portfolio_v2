@@ -15,7 +15,6 @@ if (screen.width < 750) {
         resolutionScreenMsg = "I noticed that you have a "+screenRes+", so the images I showed you have a big and nice resolution. If you were on your mobile, I'd be a thoughtful bot and reduce their size so I could save you some Kb from your mobile data network. How sweet am I, hm ? :D";
 }
 
-
 var chatContent = {
     intro: {
         hey: "Hey there!",
@@ -185,19 +184,11 @@ var chatContent = {
             links: [["//vimeo.com/", "check it on vimeo", "vimeo"]],
         },
     },
-
     behaviour: {
-        // clickMsg: "show projects index",
-        // scrollMsg: "or scroll down and let me show you",
         returnFocus: "It seem her project kept you interested in this conversation. Go on, don't be shy.",
-        returnOnFly : "Hey there, where have you been?", //
-        // emptybackground: " TODO2 Do you know she loves to learn online and that she developed some awesome work?", // THEORY || PRACTICE
-        // emptytheory: "Besides, her timeline is nice too, and so are her projects", // BACKGROUND || PRACTICE
-        // emptypractice: "Go check how she did all of these awesome projects and what she's up to now!", // THEORY || BACKGROUND
-        // missingbackground: "[suggesting to check background part]",
-        // missingtheory: "[suggesting to check theory part]",
-        // missingpractice: "[suggesting to check practice part]"
-   },
+        returnOnFly : "Hey there, where have you been?",
+        psstChat : ["i'm surprised","I think you know more about her <span class='nowrap'>than her parents.</span>", "opt1", "opt2"]
+    },
 };
 
 
