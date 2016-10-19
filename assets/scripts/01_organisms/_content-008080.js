@@ -1,7 +1,8 @@
 //bot links
 function genLink(link, name, target) {
     (typeof target !== 'undefined') ? target = "" : target = "target='_blank'";
-    return "<a href='"+link+"' "+target+" class='linkBot'>"+name+"</a>"
+    // /*ES5 ->*/ return "<a href='"+link+"' "+target+" class='linkBot'>"+name+"</a>"
+    /*ES6 ->*/ return `<a href='${link}' ${target} class='linkBot'>${name}</a>`
 }
 
 var googleIt = genLink('http://lmgtfy.com/?q=one+divided+by+zero', 'Google it'),

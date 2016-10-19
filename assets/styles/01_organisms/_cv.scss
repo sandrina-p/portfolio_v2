@@ -263,20 +263,9 @@ $cvPaddingLeft: 10vw;
     }
 }
 
-//TODO on chat
-@keyframes doting {
-    0% {content: ".";}
-    10% {content: ". .";}
-    20% {content: ". . .";}
-    30% {content: ". .";}
-    40% {content: ".";}
-    50% {content: "";}
-}
 
 .onWeb {
-
     &-href {
-
         a {
             display: inline-block;
             margin: $safeArea/2 $safeArea/2 $safeArea/2 $safeArea;
@@ -298,95 +287,42 @@ $cvPaddingLeft: 10vw;
     }
 }
 
-.mee {
-    position: absolute;
-    opacity: 0;
-    @include centerx;
-    animation: myself 1s steps(5) infinite; //REVIEW
-}
 
-$myselfs: 7;
-@for $i from 0 through $myselfs {
-    .myself#{$i} {
-        animation-delay: $i*125ms;
-    }
-}
-
-@keyframes myself {
-    0% {opacity: 0;}
-    87.4% {opacity: 0;}
-    87.5% {opacity: 1;}
-    99.9% {opacity: 1;}
-    100% {opacity: 0;}
-}
-
-.glitch {
-  position: relative;
-  margin: 0 auto;
-  width: 300px;
-  background: $clrDark;
-  display: inline-block;
-
-  span {color: $clrDark;}
-
-  &:before,
-  &:after {
-    animation-iteration-count: infinite;
-    animation-timing-function: linear;
-    animation-direction: alternate-reverse;
-    overflow: hidden;
-    background: $clrDark;
-    top: 0;
+.navCV {
+    display: block;
+    position: fixed;
+    bottom: 0;
+    left: 0;
     width: 100%;
-    clip: rect(0, 900px, 0, 0);
-    content: attr(data-text);
-    @include centerx;
-  }
+    padding: $safeArea/2 $safeArea;
+    font-family: $fontXS;
+    letter-spacing: 2px;
 
-  &:after {
-    content: attr(data-sub);
-    animation-name: glitch-animation; //REVIEW
-    animation-duration: 4s;
-    text-shadow: -1px 0 yellow;
-  }
+    &-link {
+        font-family: $font-mono;
+        color: $clrPrimary;
 
-  &:before {
-    animation-name: glitch-animation-2;  //REVIEW
-    animation-duration: 6s;
-    text-shadow: 1px 0 $clrPrimarySoft;
-  }
-}
-
-
-@mixin rect($top, $bottom) {
-  clip: rect($top, 9999px, $bottom, 0);
-}
-
-@keyframes glitch-animation {
-    $steps:20;
-    @for $i from 0 through $steps{
-        #{percentage($i*(1/$steps))}{
-            @include rect(random(100) + px,random(100) + px);
+        &:hover {
+            @extend %glitchWD;
         }
     }
 }
 
-@keyframes glitch-animation-2 {
-    $steps:20;
-    @for $i from 0 through $steps{
-        #{percentage($i*(1/$steps))}{
-            @include rect(random(100) + px,random(100) + px);
-        }
-    }
-}
+// //TODO on chat
+// @keyframes doting {
+//     0% {content: ".";}
+//     10% {content: ". .";}
+//     20% {content: ". . .";}
+//     30% {content: ". .";}
+//     40% {content: ".";}
+//     50% {content: "";}
+// }
 
-
-.jsGlitching {
-    animation: glitch 2s steps(100) infinite;
-}
+@import "../01_organisms/mee";
 
 
 .psst {
+    display: block;
     position: fixed;
     left: 0; bottom: 0;
     z-index: -1;
