@@ -143,46 +143,46 @@ var Projects = function() {
     function buildProj() {
         var sub, role, date, title, more, botTip, elImgs, ElLinks
             elProjNav = buildProjNav('left');
-            $ElProj =  $("<div class='proj' id='projects'>"
-                            +"<div class='bot-nav'></div>"
-                            +"<div class='projNav'>"
-                                +"<div class='projNav-pivot'>"
-                                    +"<div class='projNav-left'>"
-                                        +elProjNav
-                                    +"</div>"
-                                    +"<div class='projNav-right'>"
-                                        +elProjNav
-                                    +"</div>"
-                                +"</div>"
-                            +"</div>"
+            $ElProj =  $(`<div class='proj' id='projects'>
+                            <div class='bot-nav'></div>
+                            <div class='projNav'>
+                                <div class='projNav-pivot'>
+                                    <div class='projNav-left'>
+                                        ${elProjNav}
+                                    </div>
+                                    <div class='projNav-right'>
+                                        ${elProjNav}
+                                    </div>
+                                </div>
+                            </div>
 
-                            +"<div class='projCont'>"
-                                +"<div class='projCont-left'>"
-                                    +"<p class='projCont-subtitle'>"+sub+"</p>"
+                            <div class='projCont'>
+                                <div class='projCont-left'>
+                                    <p class='projCont-subtitle'>${sub}</p>
 
-                                    +"<div class='projCont-media'>"
-                                        +"<div class='Glidder'>"
-                                            +elImgs
-                                        +"</div>"
-                                    +"</div>"
+                                    <div class='projCont-media'>
+                                        <div class='Glidder'>
+                                            ${elImgs}
+                                        </div>
+                                    </div>
 
-                                    +"<div class='projCont-about'>"
-                                        +"<p class='projCont-role'>"+role+"</p>"
-                                        +"<p class='projCont-date'>"+date+"</p>"
-                                    +"</div>"
-                                +"</div>"
+                                    <div class='projCont-about'>
+                                        <p class='projCont-role'>${role}</p>
+                                        <p class='projCont-date'>${date}</p>
+                                    </div>
+                                </div>
 
-                                +"<div class='projCont-right'>"
-                                    +"<div class='projCont-descript'>"
-                                        +"<p class='projCont-intro'>"+title+"</p>"
-                                        +"<div class='projCont-links'>"
-                                            +ElLinks
-                                        +"</div>"
-                                        +"<p class='projCont-details'>"+more+"</p>"
-                                    +"</div>"
-                                +"</div>"
-                            +"</div>"
-                        +"</div>");
+                                <div class='projCont-right'>
+                                    <div class='projCont-descript'>
+                                        <p class='projCont-intro'>${title}</p>
+                                        <div class='projCont-links'>
+                                            ${ElLinks}
+                                        </div>
+                                        <p class='projCont-details'>${more}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>`);
 
         return $ElProj;
     }
