@@ -2,7 +2,8 @@ var chatNav = function() {
 
     $(function navInit() {
 
-        var $heyThereIntro = $('.heyThere-intro'),
+        var untilTablet = window.innerWidth <= 750,
+            $heyThereIntro = $('.heyThere-intro'),
             $nav = $('#chat-nav'),
             baffleBg = baffle("#btn-bg"),
             baffleTh = baffle("#btn-th"),
@@ -62,18 +63,5 @@ var chatNav = function() {
         setTimeout(function () {
             navTranslate();
         }, 500);
-
-        // $(document).on('click', '.chat-newnav button', function(){
-        //     $navClone = $('#chat-nav').clone().attr('id', 'chat-navClone');
-        //     $('#chat').append($navClone);
-        //     $(this).css({'opacity':'0'});
-        //     navTranslate( $(this).attr('id') );
-        //
-        //     $(this).css({'transform': 'translate(0, 0)'});
-        //     $(this).removeClass('jsOnNav');
-        //     $(this).one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', function(e) {
-        //         $(this).insertBefore('#chat-nav');
-        //     });
-        // });
     });
 }();

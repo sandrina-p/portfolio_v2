@@ -30,9 +30,6 @@ var UtilFuncs = function(){
         return str.split(' ').join('-').toLowerCase();
     }
 
-    // stringSlugLower(str) => str.split(' ').join('-').toLowerCase();
-
-
     function randomNumb(arr) {
         return Array.isArray(arr)
             ? Math.floor(Math.random() * arr.length)
@@ -45,8 +42,6 @@ var UtilFuncs = function(){
         stringSlugLower,
         randomNumb
     }
-
-
 }();
 
 $.fn.extend({

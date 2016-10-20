@@ -184,6 +184,8 @@ var chatContent = {
         },
     },
     behaviour: {
+        navProjMob: "you can also <span>swipe</span> to the left or to the right",
+        navProjDesk: "you can also use your keyboard <span>[<]</span> and <span>[>]</span> keys",
         returnFocus: "It seem her project kept you interested in this conversation. Go on, don't be shy.",
         returnOnFly : "Hey there, where have you been?",
         psstChat : ["i'm surprised","I think you know more about her <span class='nowrap'>than her parents.</span>", "opt1", "opt2"]

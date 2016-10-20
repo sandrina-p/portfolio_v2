@@ -266,7 +266,7 @@ var chatApp = function() {
     // ------ project ------ //
     function buildProject($part) {
         setTimeout(function () {
-            Projects.initProj(section);
+            Projects.startIt(section);
             scrollSafe($('#projects')); //TODO adjust until top of screen
         }, 600);
     }
@@ -277,9 +277,5 @@ var chatApp = function() {
 
     $(document).one('click', '.js-chatOpt', function(){
         Psst.changePsst('psstChat');
-    });
-
-    $(document).on('click', '#practice', function(){
-        $('.js-cvUnder').remove();
     });
 }();
