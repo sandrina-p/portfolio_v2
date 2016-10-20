@@ -5,6 +5,23 @@
     display: block;
     position: relative;
     padding-bottom: $safeArea*12;
+    color: transparent;
+
+
+    &.jsLoading {
+        color: transparent;
+        animation: colorIn 1250ms;
+        animation-delay: 3s;
+        animation-fill-mode: forwards;
+
+        &:before {
+            position: absolute;
+            left: $safeArea;
+            top: -$safeArea;
+            content: '';
+            animation: doting 1500ms infinite;
+        }
+    }
 
     &-nav {
         position: relative;
@@ -36,7 +53,6 @@
                     &-human {
                         width: auto;
                         padding: 0;
-                        // padding-left: $safeArea;
                         transition: width 0s 2s, padding 250ms, opacity 1s;
                     }
                 }
@@ -95,14 +111,14 @@
             }
         }
 
-        &:last-of-type {
-            .chatPart {
-                &-human,
-                &-bot {
-                    padding-bottom: 0;
-                }
-            }
-        }
+        // &:last-of-type {
+        //     .chatPart {
+        //         &-human,
+        //         &-bot {
+        //             padding-bottom: 0;
+        //         }
+        //     }
+        // }
 
         // human part with titles
         &-human {
@@ -129,6 +145,7 @@
         //bot part with text and options
         &-bot {
             width: 100%;
+            max-width: $chatBotWidth;
             padding: 0;
             display: none;
             @extend %cf;
@@ -192,19 +209,15 @@
     }
 }
 
-@keyframes showText {
-    0% {opacity: 0;}
-    20% {opacity: 0;}
-    25% {opacity: 1;}
-    45% {opacity: 1;}
-    55% {opacity: 0;}
-    75% {opacity: 1;}
-    90% {opacity: 0;}
-    100% {opacity: 1;}
-}
-
 @include media(phablet) {
     .chat {
+
+        &.jsLoading {
+            &:before {
+                @include fallback(left, 45%, calc(#{$humanWidthPhablet} + #{$safeArea*3}));
+            }
+        }
+
         &Section {
             padding: $safeArea*2 0;
         }
@@ -215,19 +228,22 @@
             }
             &-bot {
                 width: $botWidthPhablet;
-                max-width: $chatBotWidth;
-                padding: $safeArea $safeArea $safeArea $safeArea*3;
-                margin-left: -1px;
-                border-right: 0;
+                padding: $safeArea $safeArea $safeArea*3 $safeArea*3;
             }
         }
     }
-
 }
 
 @include media(tablet) {
     .chat {
         @include fallback(padding-bottom, 100px, 50vh);
+
+        &.jsLoading {
+            &:before {
+                @include fallback(left, 45%, calc(#{$humanWidthLap} + #{$safeArea*3}));
+            }
+        }
+
         &-nav {
             .chatSection {
                 &:not(.jsOnNav),
@@ -248,10 +264,6 @@
                         &-title {
                             font-size: $fontL;
                         }
-
-                        &-human {
-                            padding-left: $safeArea*2;
-                        }
                     }
                 }
             }
@@ -266,6 +278,7 @@
             padding-bottom: 0;
 
             &-human {
+                width: $humanWidthTablet;
                 padding: $safeArea 0 $safeArea $safeArea;
                 text-align: right;
             }
@@ -280,9 +293,10 @@
                 }
             }
 
-            // &-bot {
-            //     animation-delay: 150ms;
-            // }
+            &-bot {
+                width: $botWidthTablet;
+                max-width: $chatBotWidthTab;
+            }
 
             &-text {
                 padding: 0;
@@ -293,51 +307,38 @@
                 display: inline-block;
                 width: 0;
                 padding: 0;
-                // opacity: 0;
-                // width: 0;
-                // padding: 0;
-                // height: $safeArea*1.5;
                 transition: width 250ms;
 
                 &.jsLoading {
                     width: 49%;
                 }
-                //     width: 49%;
-                //     transition: opacity 300ms margin width 500ms;
-                //
-                //     > * {
-                //         margin: 0;
-                //         transition: margin 500ms;
-                //     }
-                // }
-                //
-                // &.remove {
-                //     height: 0px;
-                //     transition: height 500ms;
-                // }
             }
 
         }
     }
 }
 
-
-// dots . . .
-.js-loadingRetro {
-    position: absolute;
-    top: $safeArea;
-    padding-left: $safeArea;
-    // animation: glitch 2s steps(100) infinite;
+@keyframes doting {
+    0% {content: ".";}
+    10% {content: ". .";}
+    20% {content: ". . .";}
+    30% {content: ". .";}
+    40% {content: ".";}
+    50% {content: "";}
 }
 
+@keyframes colorIn {
+    0%  {color: transparent;}
+    100%  {color: $clrPrimary;}
+}
 
-
-
-.chat-newnav {
-    height: $safeArea*2;
-
-    button {
-        position: absolute;
-        padding-right: $safeArea;
-    }
+@keyframes showText {
+    0% {opacity: 0;}
+    20% {opacity: 0;}
+    25% {opacity: 1;}
+    45% {opacity: 1;}
+    55% {opacity: 0;}
+    75% {opacity: 1;}
+    90% {opacity: 0;}
+    100% {opacity: 1;}
 }

@@ -24,7 +24,7 @@ var OnWeb = function() {
 
         for (var key in social) {
             if(social.hasOwnProperty(key)) {
-                elLinks += `<a href="${social[key].link}" target="_blank" title="sandrina"s ${key}" class="js-onWeb-link" data-site="${key}" data-dd="${social[key].dd}">
+                elLinks += `<a href="${social[key].link}" target="_blank" title="sandrina's ${key}" class="js-onWeb-link" data-site="${key}" data-dd="${social[key].dd}">
                                 <i class="fa fa-${key}"></i>
                             </a>`
             }

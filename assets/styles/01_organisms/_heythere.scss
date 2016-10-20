@@ -1,12 +1,11 @@
+$HTFont: $font5XL;
+$HTFontTab: $font6XL;
+
 %textHeyThere {
     font-weight: $fBold;
     line-height: 1.1;
     letter-spacing: 3px;
 }
-
-$HTFont: $font5XL;
-$HTFontTab: $font6XL;
-
 
 .heyThere {
     width: 100%;
@@ -19,11 +18,11 @@ $HTFontTab: $font6XL;
         @extend %textHeyThere;
         font-size: $HTFont;
         padding-left: $safeArea*2;
-        border-bottom: 1px solid black;
+        border-bottom: 1px solid $clrGray;
         animation: heyLine 1750ms ease-out;
 
         span {
-            color: $clrBlack;
+            color: $clrGrayDarker;
             opacity: 0;
             animation: heyThere 500ms steps(11);
             animation-fill-mode: forwards;
@@ -60,6 +59,13 @@ $HTFontTab: $font6XL;
     }
 }
 
+@include media(phablet) {
+    .heyThere {
+        &-intro {
+            padding: $safeArea $safeArea $safeArea*3 $safeArea*5;
+        }
+    }
+}
 
 @include media(tablet) {
     .heyThere {
@@ -86,6 +92,7 @@ $HTFontTab: $font6XL;
         }
     }
 }
+
 
 
 @keyframes heyThere {
@@ -136,21 +143,4 @@ $HTFontTab: $font6XL;
     93% {opacity: 1}
     96% {opacity: 0;}
     97%, 100% {opacity: 1}
-}
-@keyframes heyIntro-tablet {
-    0% {
-        margin-top: $safeArea*15;
-        max-height: 0;
-        opacity: 0;
-    }
-    70% {
-        margin-top: $safeArea*13;
-        max-height: 0;
-        opacity: 0;
-    }
-    100% {
-        margin-top: $safeArea*9;
-        max-height: $safeArea*20;
-        opacity: 1;
-    }
 }

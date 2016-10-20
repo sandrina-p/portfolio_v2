@@ -17,9 +17,14 @@
     <link rel="icon" type="image/png" href="assets/media/brand/favicon180.png" sizes="180x180">
 
     <link rel="stylesheet" href="assets/styles/04_templates/header.min.css">
+
+    <style>
+        /*just the needed css to display the intro*/
+            </style>
 </head>
 
 <body>
+
     <h1 class="sr-only">Sandrina Pereira</h1>
     <h2 class="sr-only">interaction designer, frontend developer, creative developer</h2>
     <div class="heyThere">
@@ -28,18 +33,22 @@
         <div class="heyThere-intro">
             <p>
                 I would like to introduce you to someone.
-                She's a <strong>frontend developer</strong> with a great passion for <strong class="nowrap">interaction design</strong>.
+                She is a <strong>frontend developer</strong> with a great passion for <strong class="nowrap">interaction design</strong>.
                 <span class="heyThere-br"></span>
                 Where do you like to start?
             </p>
         </div>
     </div>
 
-    <div class="chat" id="chat">
+    <div class="navCV">
+        <a href="#cv" class="navCV-link">cv</a>
+    </div>
+
+    <div class="chat jsLoading" id="chat">
         <!-- not so fast. it's javascript ¯\_(ツ)_/¯ -->
 
         <div class="chat-nav" id="chat-nav">
-            <article class="chatSection jsOnNav jsLoading" id="background">
+            <article class="chatSection jsOnNav jsLoading" id="background" style="translateX(0px);">
                 <div class="chatPart" id="background-intro">
                     <div class="chatPart-human">
                         <button type="button" name="background" id="btn-bg" class="chatPart-title js-chatOpt"></button>
@@ -47,7 +56,7 @@
                 </div>
             </article>
 
-            <article class="chatSection jsOnNav jsLoading" id="theory">
+            <article class="chatSection jsOnNav jsLoading" id="theory" style="translateX(83px);">
                 <div class="chatPart" id="theory-intro">
                     <div class="chatPart-human">
                         <button type="button" name="theory" id="btn-th" class="chatPart-title js-chatOpt"></button>
@@ -55,7 +64,7 @@
                 </div>
             </article>
 
-            <article class="chatSection jsOnNav jsLoading" id="practice">
+            <article class="chatSection jsOnNav jsLoading" id="practice" style="translateX(185px);">
                 <div class="chatPart" id="practice-intro">
                     <div class="chatPart-human">
                         <button type="button" name="practice" id="btn-pr" class="chatPart-title js-chatOpt"></button>
@@ -725,10 +734,6 @@ mNNysddMMMMMNssso+sos:sooy-so+somyNo+y/ooo+o+/-:sss.  /NMMMMMMMMMMMMMMMMMMMMMMMM
         </p>
         <button type="button" name="true" class="chatPart-title">yh, sure</button>
         <button type="button" name="false" class="chatPart-title js-botTrigger">not really</button>
-    </div>
-
-    <div class="navCV">
-        <a href="#cv" class="navCV-link">cv</a>
     </div>
 
     <div class="bot jsLoading" id="bot">
