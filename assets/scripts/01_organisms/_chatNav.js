@@ -24,7 +24,7 @@ var chatNav = function() {
 
         (function showNav() {
             if($heyThereIntro.css('opacity') == "1") {
-                $('#theory, #background, #practice').removeClass('jsLoading');
+                $('#chat, #theory, #background, #practice').removeClass('jsLoading');
                 baffleBg.reveal(400, 750);
                 baffleTh.reveal(400, 250);
                 bafflePr.reveal(400, 500);
@@ -36,16 +36,15 @@ var chatNav = function() {
         })();
 
         function navTranslate(thisId) {
-            var navWidth = untilTablet ? 0 : 16, //padding
+            var navWidth = untilTablet ? 0 : 34, //padding
                 padd = 16;
                 thisId = thisId || null;
 
             $nav.children().each(function() {
-                if(thisId && $(this).attr('id') == thisId) {
-                    return;
-                }
+                if(thisId && $(this).attr('id') == thisId) return;
 
-                $(this).css({'transform': 'translate('+navWidth+'px, 0)'});
+                navWidth = untilTablet ? navWidth : navWidth + 24;
+                $(this).css({'transform': 'translateX('+navWidth+'px)'});
                 navWidth += $(this).width();
             });
         }
@@ -62,6 +61,6 @@ var chatNav = function() {
 
         setTimeout(function () {
             navTranslate();
-        }, 500);
+        }, 750);
     });
 }();
