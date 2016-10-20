@@ -1,5 +1,4 @@
 var OnWeb = function() {
-
     var $onWebLink,
         baffleWebSite,
         baffleWebDd,
@@ -54,22 +53,20 @@ var OnWeb = function() {
     }
 }();
 
-var untilTablet = window.innerWidth < 750;
-
-if(!untilTablet) {
+if (!Modernizr.touchevents) {
     $(function lookIntoOnWww(){
         var $cv = $("#cv"),
             offsetCv,
+            windowHeight = window.innerHeight;
             triggerOnWebInit = true;
 
         $(window).scroll(function() {
             offsetCv = $cv.offset().top;
 
-            if(triggerOnWebInit && $(window).scrollTop() + window.innerHeight > offsetCv) {
+            if(triggerOnWebInit && $(window).scrollTop() + windowHeight > offsetCv) {
                 triggerOnWebInit = false;
                 OnWeb.init();
             }
         });
-
     });
 }

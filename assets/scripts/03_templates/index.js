@@ -2,6 +2,7 @@
 // =include ../../plugins/jquery/jquery.mobile.events-touch.min.js
 
 // =include ../../plugins/modernizr/modernizr-flexbox.js
+// =include ../../plugins/modernizr/modernizr-touch_event.js
 
 // =include ../../plugins/typedjs-master/dist/typed.min.js
 // =include ../../plugins/baffle/baffle.min.js
