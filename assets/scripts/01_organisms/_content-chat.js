@@ -210,6 +210,7 @@ var chatContent = {
         navProjDesk: "you can also use your keyboard <span>[<]</span> and <span>[>]</span> keys",
         returnFocus: "It seems her project kept you interested in this conversation. Go on, don't be shy.",
         returnOnFly : "Hey there, where have you been?",
-        psstChat : ["i'm surprised","I think you know more about her <span class='nowrap'>than her parents.</span>", "opt1", "opt2"]
+        psstChat : ["i'm surprised","I think you know more about her <span class='nowrap'>than her parents.</span>", "[opt 1]", "[opt 2]"],
+        psstMob : ["Hmm...","You really like to scroll <span class='nowrap'>don't you?</span>", "kinda", "not really"]
     },
 };
