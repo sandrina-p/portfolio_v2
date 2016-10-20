@@ -6,6 +6,7 @@ $cvPaddingLeft: 10vw;
     background: $clrDark;
     color: $clrLight;
     margin-bottom: rem(280); //space to .psst
+    z-index: 2; //above #cv
 
 
     &-header {
@@ -288,26 +289,26 @@ $cvPaddingLeft: 10vw;
     }
 }
 
-
 .navCV {
     display: block;
     position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    padding: $safeArea/2 $safeArea;
-    font-family: $fontXS;
-    letter-spacing: 2px;
+    color: $clrPrimary;
+    bottom: $safeArea/2;
+    left: $safeArea;
+    font-size: $fontS;
+    font-family: $font-mono;
+    z-index: 1;
+    // opacity: 0;
+    // animation: heyThere 500ms steps(11);
+    // animation-delay: 2500ms;
+    // animation-fill-mode: forwards;
 
-    &-link {
-        font-family: $font-mono;
-        color: $clrPrimary;
-
-        &:hover {
-            @extend %glitchWD;
-        }
+    &:hover {
+        @extend %glitchWD;
     }
+
 }
+
 
 // //TODO on chat
 // @keyframes doting {
