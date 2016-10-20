@@ -183,10 +183,32 @@ var chatContent = {
             links: [["//vimeo.com/", "check it on vimeo", "vimeo"]],
         },
     },
+    onWeb: {
+        intro: "social networks",
+        dd: "not a big fan of facebook",
+        social: {
+            codepen: {
+                link: "//codepen.io/sandrina-p",
+                dd: "because coding without fun, it's just boring"
+            },
+            github: {
+                link: "//github.com/sandrina-p",
+                dd: "Sharing it's what make us better"
+            },
+            "stack-overflow": {
+                link: "//stackoverflow.com/story/sandrina",
+                dd: "helping others is as important as being helped"
+            },
+            behance: {
+                link: "//www.behance.net/sandrin4p",
+                dd: "it can't be all about code"
+            }
+        },
+    },
     behaviour: {
         navProjMob: "you can also <span>swipe</span> to the left or to the right",
         navProjDesk: "you can also use your keyboard <span>[<]</span> and <span>[>]</span> keys",
-        returnFocus: "It seem her project kept you interested in this conversation. Go on, don't be shy.",
+        returnFocus: "It seems her project kept you interested in this conversation. Go on, don't be shy.",
         returnOnFly : "Hey there, where have you been?",
         psstChat : ["i'm surprised","I think you know more about her <span class='nowrap'>than her parents.</span>", "opt1", "opt2"]
     },
