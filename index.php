@@ -125,6 +125,15 @@
     </script>
     <script src="assets/scripts/03_templates/index.min.js" charset="utf-8"></script>
 
+    <script type="text/javascript">
+        var _mfq = _mfq || [];
+        (function() {
+            var mf = document.createElement("script");
+            mf.type = "text/javascript"; mf.async = true;
+            mf.src = "//cdn.mouseflow.com/projects/8e1f3c91-ff33-46ac-8fe9-a35fab3ea005.js";
+            document.getElementsByTagName("head")[0].appendChild(mf);
+        })();
+    </script>
 </body>
 
 </html>
