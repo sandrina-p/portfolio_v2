@@ -21,6 +21,7 @@ var OnWeb = function() {
 
     function getElSocial() {
         var elLinks = "";
+        var test = "tess delete me";
 
         for (var key in social) {
             if(social.hasOwnProperty(key)) {
