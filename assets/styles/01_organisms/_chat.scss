@@ -40,7 +40,9 @@
             z-index: 3;
 
             .chatPart:first-of-type {
+                padding-bottom: 0;
                 .chatPart {
+
                     &-title {
                         font-size: $fontM;
 
@@ -59,11 +61,11 @@
             }
         }
 
-        &:not(.jsOnNav):nth-of-type(1):nth-last-of-type(2), // [sec] sec
-        &:not(.jsOnNav):nth-of-type(1):nth-last-of-type(3), // [sec] sec sec
-        &:not(.jsOnNav):nth-of-type(2):nth-last-of-type(2) { // sec [sec] sec
-            padding-bottom: $safeArea*2;
-        }
+        // &:not(.jsOnNav):nth-of-type(1):nth-last-of-type(2), // [sec] sec
+        // &:not(.jsOnNav):nth-of-type(1):nth-last-of-type(3), // [sec] sec sec
+        // &:not(.jsOnNav):nth-of-type(2):nth-last-of-type(2) { // sec [sec] sec
+        //     padding-bottom: $safeArea*2;
+        // }
 
         //show btn when page is ready
         &.jsLoading {

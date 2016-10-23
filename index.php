@@ -86,6 +86,8 @@
 
     <?php include 'index-parts/under-section.php';?>
 
+    <div class="js-scrollForFun"></div>
+
     <div class="psst js-psst">
         <p class="psst-title">psst...</p>
         <p class="psst-parag"> Maybe now you want to talk about her.
@@ -94,6 +96,7 @@
         </p>
         <button type="button" name="true" class="chatPart-title">yh, sure</button>
         <button type="button" name="false" class="chatPart-title js-botTrigger">not really</button>
+        <span class="js-scrolled">xx</span>
     </div>
 
     <div class="bot jsLoading" id="bot">

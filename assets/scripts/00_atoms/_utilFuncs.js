@@ -1,5 +1,9 @@
 var UtilFuncs = function(){
 
+    var iOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream,
+        untilTablet = iOS ? screen.width : window.innerWidth; //http://stackoverflow.com/questions/4629969/ios-return-bad-value-for-window-innerheight-width
+
+        
     $(document).on('click', 'a[href*=#]', function(e){
         $('html, body').animate({
             scrollTop: $( $.attr(this, 'href') ).offset().top -150
@@ -37,6 +41,7 @@ var UtilFuncs = function(){
     }
 
     return {
+        untilTablet,
         objSize,
         objRandom,
         stringSlugLower,

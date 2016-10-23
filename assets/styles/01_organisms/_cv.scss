@@ -334,4 +334,10 @@ $cvPaddingLeft: 10vw;
     button {
         margin: 0 $safeArea;
     }
+
+    .js-scrolled {
+        font-family: $font-mono;
+        font-size: $fontXS;
+        color: $clrGray;
+    }
 }
