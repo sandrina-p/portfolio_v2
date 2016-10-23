@@ -84,7 +84,7 @@
         <button type="button" name="practice" id="btn-pr" class="chatPart-title js-chatOpt">projects</button>
     </div> -->
 
-    <?php include 'index-parts/under-section.php';?>
+    <?php include 'index-parts/cv.php';?>
 
     <div class="js-scrollForFun"></div>
 

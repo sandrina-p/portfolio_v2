@@ -9,7 +9,10 @@ var Psst = function() {
                 $scrolled = $('.js-scrolled'),
                 innerHeight,
                 newMargin = 400,
-                scrolledRecord = localStorage.getItem("scrolledRecord") || 1;
+                scrolledRecord =
+                    !isNaN(localStorage.getItem("scrolledRecord"))
+                        ? localStorage.getItem("scrolledRecord")
+                        : 1;
 
             $jsPsst.find('.psst-title').html(chatContent.behaviour.psstMob[0]);
             $jsPsst.find('.psst-parag').html(chatContent.behaviour.psstMob[1]);
@@ -23,7 +26,7 @@ var Psst = function() {
                     scrolledRecord = $(window).scrollTop();
                     $scrolled.text(scrolledRecord);
                 } else {
-                    $scrolled.text( $(window).scrollTop() - scrolledRecord +" until new record");
+                    $scrolled.text( Math.abs($(window).scrollTop() - scrolledRecord) +" until new record");
                 }
 
                 //increase document height to keep scrolling
