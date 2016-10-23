@@ -1,6 +1,8 @@
 var chatApp = function() {
     //general chat classes
-    var $chatId = $('#chat'),
+    var chatContent = TalkChat.conversation,
+        mainSections = TalkChat.mainSections,
+        $chatId = $('#chat'),
         $navSections = $(".navSections"),
         $heyThere = $('.heyThere-intro'),
         chatPClass = '.chatPart-',

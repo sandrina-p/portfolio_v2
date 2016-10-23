@@ -1,8 +1,7 @@
 var Psst = function() {
-    var hasTouch = Modernizr.touchevents;
+    var hasTouch = Modernizr.touchevents,
+        chatContent = TalkChat.conversation;
 
-
-    var imgg = ``;
     (function onTouchScreen() {
         if (hasTouch) {
             var $jsPsst = $('.js-psst');

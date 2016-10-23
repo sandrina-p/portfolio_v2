@@ -1,5 +1,6 @@
 var botSection = function() {
-    var $trigger = $('.js-botTrigger'),
+    var botContent = TalkBot.conversation,
+        $trigger = $('.js-botTrigger'),
         visibleClass = 'js-aboutVisible',
         triggerActive = 'jsLoading',
         botInputId = "botInput",

@@ -9,8 +9,9 @@
 
 // =include ../00_atoms/_utilFuncs.js
 
-// =include ../01_organisms/_content-chat.js
-// =include ../01_organisms/_content-008080.js
+// =include ../01_organisms/_TalkChat.js
+// =include ../01_organisms/_TalkBot.js
+// =include ../01_organisms/_TalkBot-vocabulary.js
 
 // =include ../01_organisms/_projects.js
 // =include ../01_organisms/_chatNav.js

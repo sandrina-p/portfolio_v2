@@ -1,5 +1,6 @@
 var Projects = function() {
     var activeClass = "js-active",
+        chatContent = TalkChat.conversation,
         arrProjects = chatContent.practice.projects,
         direction,
         projLimit = 7,

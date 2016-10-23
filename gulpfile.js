@@ -14,21 +14,19 @@ var gulp = require('gulp'),
 
     browserSync = require('browser-sync'), // i'm not sure how this and connect-php works ...
     php = require('gulp-connect-php'), // ... but you can read more about it here -> http://stackoverflow.com/a/37040763/4737729
+    reload = browserSync.reload;
 
     //scss stuff
     sass = require('gulp-sass'),
-    cleanCSS = require('gulp-clean-css'), //minify
+    cleanCSS = require('gulp-clean-css'),
     autoprefixer = require('gulp-autoprefixer'),
-    sassInheritance = require('gulp-sass-multi-inheritance'), //watch partials
+    sassInheritance = require('gulp-sass-multi-inheritance'), // watch partials
     importCss = require('gulp-import-css'), //combine css imports (not scss)
 
     //javascript plugins
     uglify = require('gulp-uglify'),
     include = require("gulp-include"), //append js
-    babel = require('gulp-babel'); // better minimize
-
-
-var reload = browserSync.reload;
+    babel = require('gulp-babel'); // ES2015 rocks
 
 var folderScripts = 'assets/scripts',
     folderStyles = 'assets/styles',
@@ -62,12 +60,7 @@ gulp.task('scripts', function(){
         // .on('error', console.log)
         .pipe(gulpif(argv.production, stripDebug()))
         .pipe(gulpif(argv.production,
-            uglify({
-                compress: {
-                    // drop_console: true, //is better stripDebug()
-                    hoist_funs: false
-                }
-            }).on('error', gutil.log)
+            uglify().on('error', gutil.log)
         ))
         .pipe(rename({ suffix: '.min' }))
         .pipe(gulpif(global.isWatching, cached('cachedPlace')))

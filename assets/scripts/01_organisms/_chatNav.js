@@ -1,4 +1,5 @@
 var chatNav = function() {
+    var mainSections = TalkChat.mainSections;
 
     $(function navInit() {
 

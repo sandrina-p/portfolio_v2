@@ -1,5 +1,6 @@
 var OnWeb = function() {
     var $onWebLink,
+        chatContent = TalkChat.conversation,
         contOnWeb = chatContent.onWeb,
         social = contOnWeb.social,
         intro = contOnWeb.intro,
