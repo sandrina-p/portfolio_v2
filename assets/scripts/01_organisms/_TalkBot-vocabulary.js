@@ -82,16 +82,16 @@ var TalkBotVocabulary = function(currentTalkBot){
             "commands", "typedJS"
         ];
 
-        /* You can teach this bot too!
-            Just copy this structure to each new stuff you want to teach:
-            Before that, if you know a better and easier way to not repeat knowIt each time we add a new word, please let me know ;)
+        /*
+        You can teach this bot too!
+        Just copy this structure to each new stuff you want to teach:
+        Before that, if you know a better and easier way to not repeat knowIt each time we add a new word, please let me know ;)
 
         knowIt["possible human, inputs sent, separated by, comma, and in lowercase"] = [
             "an awesome bot answer"
             +brk+"with some lines if you want",
-            "commands", "input placeholder", "possible plugin"
+            "commands", "input placeholder", "typedJS - if you want. That will show character by character"
         ];
-
 
         */
 
