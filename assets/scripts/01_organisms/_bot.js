@@ -159,25 +159,41 @@ var botSection = function() {
         }, 200);
 
         $botText.append("<span class='jsBotThinking'></span>");
-        setTimeout(function () {
-            $('.jsBotThinking').remove();
-            if (botAnswerTyped) {
-                keepSectionClass = "jskeepSection" && keepSectionFlag;
-                $botText.append("<p class='"+botAnswerClass+" "+keepSectionClass+"'></p>").find('p:last-of-type').typed({
+
+        $('.jsBotThinking').remove();
+
+        if (answer.length == 2) {
+            setTimeout(function () {
+                $botText.append("<p class='"+botAnswerClass+"'></p>").find('p:last-of-type').typed({
                     strings: [answer[0]],
                     contentType: 'html',
                     typeSpeed: -450,
                     startDelay: 0,
                     callback: function() {
-                        afterAppendBotAnswer(answer, objContext);
+                        afterAppendBotAnswer(["", answer[1], "commands", "typeJS"], objContext);
                     },
                 });
-            } else {
-                $botText.append("<p class='"+botAnswerClass+"'>"+answer[0]+"</p>");
-                keepSectionClass = "";
-                afterAppendBotAnswer(answer, objContext);
-            }
-        }, answer[0].length*1.33);
+            }, answer.length*1.33);
+        } else {
+            setTimeout(function () {
+                if (botAnswerTyped) {
+                    keepSectionClass = "jskeepSection" && keepSectionFlag;
+                    $botText.append("<p class='"+botAnswerClass+" "+keepSectionClass+"'></p>").find('p:last-of-type').typed({
+                        strings: [answer[0]],
+                        contentType: 'html',
+                        typeSpeed: -450,
+                        startDelay: 0,
+                        callback: function() {
+                            afterAppendBotAnswer(answer, objContext);
+                        },
+                    });
+                } else {
+                    $botText.append("<p class='"+botAnswerClass+"'>"+answer[0]+"</p>");
+                    keepSectionClass = "";
+                    afterAppendBotAnswer(answer, objContext);
+                }
+            }, answer[0].length*1.33);
+        }
     }
 
     function afterAppendBotAnswer(answer, objContext) {
