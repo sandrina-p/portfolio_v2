@@ -170,7 +170,7 @@ var botSection = function() {
                     typeSpeed: -450,
                     startDelay: 0,
                     callback: function() {
-                        afterAppendBotAnswer(["", answer[1], "commands", "typeJS"], objContext);
+                        afterAppendBotAnswer(["", "commands", answer[1], "typeJS"], objContext);
                     },
                 });
             }, answer.length*1.33);
