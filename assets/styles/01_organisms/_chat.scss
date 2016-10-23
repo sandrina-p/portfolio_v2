@@ -69,6 +69,11 @@
         &.jsLoading {
             opacity: 0;
         }
+
+        //each section
+        &:first-of-type {
+            padding-top: 0;
+        }
     }
 
     &Part {
@@ -110,15 +115,6 @@
                 }
             }
         }
-
-        // &:last-of-type {
-        //     .chatPart {
-        //         &-human,
-        //         &-bot {
-        //             padding-bottom: 0;
-        //         }
-        //     }
-        // }
 
         // human part with titles
         &-human {

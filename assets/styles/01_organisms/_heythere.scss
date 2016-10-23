@@ -41,7 +41,7 @@ $HTFontTab: $font6XL;
         max-width: $safeArea*35;
         padding-left: $safeArea;
         padding-right: $safeArea;
-        padding-bottom: $safeArea*4;
+        padding-bottom: $safeArea*5;
         margin-top: $safeArea*2;
         color: $clrGrayDarker;
         opacity: 0;
@@ -62,7 +62,7 @@ $HTFontTab: $font6XL;
 @include media(phablet) {
     .heyThere {
         &-intro {
-            padding: $safeArea $safeArea $safeArea*3 $safeArea*5;
+            padding: $safeArea $safeArea $safeArea*5 $safeArea*5;
         }
     }
 }

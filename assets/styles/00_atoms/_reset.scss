@@ -102,3 +102,11 @@ html {
 		background: $clrDark;
 	}
 }
+
+//Safari font render issue
+//http://stackoverflow.com/questions/3226001/
+@media screen and (max-device-width: 480px){
+  body{
+    -webkit-text-size-adjust: 100%;
+  }
+}

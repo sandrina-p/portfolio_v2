@@ -44,7 +44,7 @@ var chatApp = function() {
         finishLoading($option.parent());
     }
 
-    function animateClickedOptionMob($option) {
+    function animateClickedOptionMob($option, $part) {
         var $parent = $option.parent();
             thisTop = $parent.offset().top,
             thisLeft = $parent.offset().left,
@@ -186,7 +186,7 @@ var chatApp = function() {
         $part.find(chatPClass+"human").slideDown();
 
         if (untilTablet && $option) {
-            animateClickedOptionMob($option);
+            animateClickedOptionMob($option, $part);
         }
 
         finishLoading($part.find(chatPClass+"title"));

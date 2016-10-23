@@ -23,7 +23,7 @@ var chatNav = function() {
 
 
         (function showNav() {
-            if($heyThereIntro.css('opacity') == "1") {
+            if($heyThereIntro.css('opacity') > "0.9") { //wtf safari, why the fuck you give 0.9999989867210388 on console.
                 $('#chat, #theory, #background, #practice').removeClass('jsLoading');
                 baffleBg.reveal(400, 750);
                 baffleTh.reveal(400, 250);

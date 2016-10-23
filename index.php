@@ -25,10 +25,7 @@
 </head>
 
 <?php
-    $loading = '';
     $loadingNav = 'jsLoading';
-    // $loadingNav = '';
-    //$loading = 'jsLoading';
 ?>
 <body>
 
