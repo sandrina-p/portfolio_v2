@@ -1,0 +1,165 @@
+$sentClr: $clrLight;
+$placeholderClr: $clrGrayLight;
+$textPaddingMob: $safeArea;
+$textPaddingTab: 20vw;
+
+
+.bot {
+    @include centerxy;
+    position: fixed;
+    width: 100%;
+    z-index: 99;
+    height: 100%;
+    display: block;
+    background: $clrDark;
+    // animation: bgBreath 3s ease-in-out infinite, height $speed ease-out;
+
+    &.jsLoading {
+        height: 0;
+    }
+
+    &-trigger {
+        padding-left: $safeArea;
+    }
+
+    &-inner {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        max-height: 100%;
+        overflow: auto;
+        color: $clrPrimarySoft;
+        transition: height $speed ease-out;
+
+        @extend %flexbox;
+        @include flexboxProp {
+            flex-direction: column;
+            justify-content: flex-end;
+        }
+
+        &.jsLoading {
+            height: 0;
+        }
+    }
+
+    &-text {
+        position: relative;
+        width: 100%;
+        margin: 0 auto;
+        height: auto;
+        max-height: 100%;
+        overflow: auto;
+        padding: $safeArea $textPaddingMob $safeArea*2;
+        font-family: $font-mono;
+        font-size: $fontS;
+    }
+
+    &-answer {
+        &:before {
+            content: "_";
+            position: absolute;
+            color: $sentClr;
+            left: calc(#{$textPaddingMob} - #{$safeArea/2});
+        }
+    }
+    &-sent {
+        min-height: $safeArea;
+        color: $sentClr;
+        margin-left: -$safeArea;
+        font-size: $fontM;
+
+        &:not(.js-sentEmpty) {
+            padding-top: $safeArea;
+        }
+    }
+
+    &-input {
+        background: none;
+        border: none;
+        color: $sentClr;
+        font-size: $fontM;
+        display: inline;
+        font-family: $font-mono;
+        width: 100%;
+
+        &::-webkit-input-placeholder {
+             color: $placeholderClr;
+        }
+        &:-moz-placeholder {
+            color: $placeholderClr;
+        }
+        &::-moz-placeholder {
+            color: $placeholderClr;
+        }
+        &:-ms-input-placeholder { /* Internet Explorer 10-11 */
+           color: $placeholderClr;
+        }
+
+        &:focus {
+            width: 100%;
+            outline: none;
+        }
+    }
+
+    @include media(tablet) {
+        &-text {
+            padding: $safeArea $textPaddingTab $safeArea*2;
+        }
+
+        &-answer {
+            &:before {
+                left: calc(#{$textPaddingTab} - #{$safeArea});
+            }
+        }
+    }
+}
+
+.jsBotThinking {
+    position: absolute;
+    left: calc(#{$textPaddingMob} - #{$safeArea/2});
+    bottom: $safeArea*1;
+    &:before {
+        color: $clrLight;
+        content: "0 * . _ ;";
+        display: block;
+        animation: botThinking 700ms infinite;
+    }
+}
+
+@keyframes bgBreath {
+    0% {background: $clrBlack;}
+    50% {background: $clrDark;}
+    100% {background: $clrBlack;}
+}
+
+@keyframes botThinking {
+    0% {content: "..";}
+   20% {content: "8";}
+   40% {content: "0";}
+   60% {content: "_";}
+   80% {content: "8";}
+  100% {content: "0";}
+}
+
+
+//typed.js
+.typed-cursor{
+    display: none;
+    // opacity: 1;
+    // animation: blink 0.7s infinite;
+}
+// @keyframes blink{
+//     0% { opacity:1; }
+//     50% { opacity:0; }
+//     100% { opacity:1; }
+// }
+// @-webkit-keyframes blink{
+//     0% { opacity:1; }
+//     50% { opacity:0; }
+//     100% { opacity:1; }
+// }
+// @-moz-keyframes blink{
+//     0% { opacity:1; }
+//     50% { opacity:0; }
+//     100% { opacity:1; }
+// }
