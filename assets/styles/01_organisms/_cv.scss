@@ -312,6 +312,7 @@ $cvPaddingLeft: 10vw;
 @import "../01_organisms/mee";
 
 
+//FIXME improve this markup
 .psst {
     display: block;
     position: fixed;
@@ -333,6 +334,10 @@ $cvPaddingLeft: 10vw;
 
     button {
         margin: 0 $safeArea;
+
+        &:hover {
+            animation: glitch 1s steps(100) 1;
+        }
     }
 
     .js-scrolled {

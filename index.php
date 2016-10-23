@@ -96,7 +96,7 @@
         </p>
         <button type="button" name="true" class="chatPart-title">yh, sure</button>
         <button type="button" name="false" class="chatPart-title js-botTrigger">not really</button>
-        <span class="js-scrolled">xx</span>
+        <span class="js-scrolled"><!-- try me on mobile--></span>
     </div>
 
     <div class="bot jsLoading" id="bot">

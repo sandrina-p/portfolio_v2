@@ -241,8 +241,7 @@ var TalkChat = function(){
             psstMob : [
                 "Hmm...",
                 "You really like to scroll <span class='nowrap'>don't you?</span>",
-                "",
-                "not really"
+                "", ""
             ]
         },
     };

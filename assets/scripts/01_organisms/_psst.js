@@ -51,6 +51,11 @@ var Psst = function() {
         }
     }
 
+    //FIXME baaahhhh so ugly
+    $(document).find('.js-psst').find('button[name="true"]').on('click', function(){
+        $('#btn-pr').trigger('click');
+    });
+
     return {
         changePsst
     }

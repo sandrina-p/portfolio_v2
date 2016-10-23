@@ -151,12 +151,12 @@ var botSection = function() {
             $botText.find('.'+keepSectionClass).remove();
         }
 
-        intervalBotScroll = setInterval(function () {
-            console.log('autoScroll');
-            $botText.animate({
-                scrollTop: $('.bot-text').prop('scrollHeight')
-            }, 0);
-        }, 200);
+        // intervalBotScroll = setInterval(function () {
+        //     console.log('autoScroll');
+        //     $botText.animate({
+        //         scrollTop: $('.bot-text').prop('scrollHeight')
+        //     }, 0);
+        // }, 200);
 
         $botText.append("<span class='jsBotThinking'></span>");
 
@@ -201,19 +201,17 @@ var botSection = function() {
         $botText.append(showInput(answer[1], answer[2]));
         $botText.find('input').last().focus();
 
-        setTimeout(function () {
-            console.log('stop autoscroll');
-            clearInterval(intervalBotScroll);
-        }, 250);
+        // setTimeout(function () {
+        //     console.log('stop autoscroll');
+        //     clearInterval(intervalBotScroll);
+        // }, 250);
 
         //check if it has to show keepStion message
         if (objContext != undefined //if context exists
         && objContext.keepSection[1].indexOf(sentText) > -1 // it's a section with more stuff (array)
         && objContext[sentText].length > 0) { // it still has stuff to show
-            $botText.find('input').remove();
-            objContext.keepSection[0][0] = replaceSentText(objContext.keepSection[0][0]);
-            botAnswer = objContext.keepSection[0];
-            appendBotAnswer(botAnswer);
+            objContext.keepSection[0] = replaceSentText(objContext.keepSection[0]);
+            $botText.find('input').last().attr('placeholder', objContext.keepSection[0])
         }
     }
 

@@ -1,7 +1,7 @@
 var UtilFuncs = function(){
 
     var iOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream,
-        untilTablet = iOS ? screen.width : window.innerWidth; //http://stackoverflow.com/questions/4629969/ios-return-bad-value-for-window-innerheight-width
+        untilTablet = iOS ? screen.width : window.innerWidth < 750; //http://stackoverflow.com/questions/4629969/ios-return-bad-value-for-window-innerheight-width
 
         
     $(document).on('click', 'a[href*=#]', function(e){

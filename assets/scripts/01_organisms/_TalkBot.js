@@ -16,6 +16,8 @@ var TalkBot = function(){
         linkFOUC = genLink('#linkTODO', 'FOUC'),
         linkGit = genLink('#linkTODO', 'Bitbucket'),
         linkHer = genLink('http://www.imdb.com/title/tt1798709/', "Her"),
+        linkFirebase = genLink('//firebase.google.com', 'Google Firebase'),
+        linkHelpMe = genLink('#TODO-push-request', 'help me'),
         myEmail = genLink('mailto:a.sandrina.p@gmail.com?subject=Hey%20there!', 'a.sandrina.p@gmail.com', "noTarget"),
 
         brk = "<br>",
@@ -33,18 +35,12 @@ var TalkBot = function(){
     }
 
     var publicCmd = "Some stuff you can know about:"
+                    +brk+"<b>technologies</b>"
                     +brk+"<b>best practices</<b>"
-                    +brk+"<b>challenges</<b>"
-                    +brk+"<b>resources</<b>"
-                    +brk+"<b>exit</<b>"
-                    +brk+"<b>...</b>"
-                    +brk+"<i>and much more but I'll not tell you.</<i>";
-
-    var botTextAbout = brk+"I was born inside the Atom editor."
-                    +brk+"^100 HTML5, SCSS and Javascript are my vital organs."
-                    +brk+"^500 Eventually I evolved and started being built with "+linkKoala+" but as any good programmer knows, crashes happen, so "+linkGulp+" took its place!"
-                    +brk+"^250 Despite always being under construction I already have the ability to share some stuff that Sandrina taught me while I was growing up."
-                    +brk+""+publicCmd;
+                    +brk+"<b>challenges</b>"
+                    +brk+"<b>resources</b>"
+                    +brk+"<b>exit</b>"
+                    +brk+"<b>...</b>";
 
     var botOptHelp = "Maybe you should "+googleIt+" and then come back. What do you think?";
 
@@ -65,9 +61,10 @@ var TalkBot = function(){
                 "context of the next input", "input placeholder"
             ]
             */
-            "infinity, infinito, ∞, universe, cosmos": [
+            "go, infinity, infinito, ∞, universe, cosmos": [
                 "You are a little crazy… we all are."
-                +brk+"^1000"+botTextAbout,
+                +brk+"Despite always being under construction I already have the ability to share some stuff that Sandrina taught me while I was growing up."
+                +publicCmd,
                 "commands", "what's next?", "typedJS"
             ],
             "undefined, null": [
@@ -94,7 +91,34 @@ var TalkBot = function(){
                 "options", "I still believe in you", "typedJS"
             ],
         },
+
         commands: {
+            "technologies": [
+                [
+                    "I was born inside the Atom editor."
+                    +brk+"HTML5, SCSS and Javascript are my vital organs.",
+                    "commands", ""
+                ],
+                [
+                    "I started being built with "+linkKoala+" but as any good programmer knows, crashes happen, so "+linkGulp+" took its place!",
+                    "commands", ""
+                ],
+                [
+                    "You might be talking only with me, but Sandrina knows everything you said and clicked. That's her way to improve me each time a new user comes here.",
+                    "commands", ""
+                ],
+                [
+                    "Unfortunately right now I'm just a static website with some php on index. But soon I'll be moved to "+linkFirebase+"."
+                    +brk+"Then you'll be able to talk directly with Sandrina right here without using mail or wtv you choose to use now.",
+                    "commands", ""
+                ],
+
+                [
+                    "You might think that javascript and jQuery are old fashion. But the truth is they are the base of all new fancy techs. React, Angular, Typescript, etc.."
+                    +brk+"Sandrina is making sure that she really <i>master</i> jQuery and JS before going further with those fancy techs.",
+                    "commands", ""
+                ],
+            ],
             "best practices": [
                 [
                     "When I first said hello, I wasn't totally ready for you"
@@ -120,8 +144,10 @@ var TalkBot = function(){
                 ],
             ],
             "resources, resources, resource": [
-                "still under construction",
-                "commands", "don't push me that way okay? :/"
+                [
+                    "still under construction",
+                    "commands", "don't push me that way okay? :/"
+                ]
             ],
             "challenges": [
                 [
@@ -153,11 +179,8 @@ var TalkBot = function(){
                 ],
             ],
             "keepSection": [
-                [
-                    "If you want to know more about Sandrina's [*param*] just press <i>ENTER</i> again.",
-                    "commands", "", "typedJS", "keepSectionJS"
-                ],
-                ["best practices", "challenges"]
+                "Press ENTER again to know more about [*param*]",
+                ["technologies", "best practices", "challenges"]
             ],
             "allSaid": [
                 [
@@ -203,7 +226,7 @@ var TalkBot = function(){
                 "I'm 008080. What about you?",
                 "username", "you can tell me, but i'll not be able to understand you. not yet :(",
             ],
-            "..., bye, cya, shut down, exit, close": [
+            "bye, cya, shut down, exit, close": [
                 "You know what... It's really hard having a human conversation."
                 +brk+"That's why I'm just a bot."
                 +brk+"<b>008080</b> by the way."
@@ -211,6 +234,10 @@ var TalkBot = function(){
                 +brk+"But now do me a favor and go get a life, yes?"+brk+"It’s not healthy to talk to a bot all day."
                 +brk+"By the way, don't forget to share me and talk about Sandrina while you’re out there <3",
                 "commands", "like i said, still under construction: 'ESC' to close"
+            ],
+            "..." :[
+                "there are more commands available than you think. In fact, you can "+linkHelpMe+" to better understand your human kind.",
+                "commands", "", "typedJS"
             ],
             "esc, restart, reset, clear": [
                 "are you sure about that? all our memories - at least mine - will be erased. If so, press ESC twice.",

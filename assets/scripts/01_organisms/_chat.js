@@ -269,7 +269,7 @@ var chatApp = function() {
     function buildProject($part) {
         setTimeout(function () {
             Projects.startIt(section);
-            scrollSafe($('#projects')); //TODO adjust until top of screen
+            // scrollSafe($('#projects')); //TODO adjust until top of screen
         }, 600);
     }
 

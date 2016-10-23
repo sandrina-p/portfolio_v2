@@ -18,7 +18,8 @@ var Projects = function() {
         classProjRight = ".projNav-right",
 
         mediaQHeight = 550,
-        wHeight, untilTablet,
+        untilTablet = UtilFuncs.untilTablet,
+        wHeight,
 
         $pivot, $projLeft, $projRight, $projActive, // ???() variables
         $projSub, $projMedia, $projRole, $projDate, $projIntro, $projDetails, $projLinks, $projBotTip, // getProjDomElements variables
@@ -218,10 +219,11 @@ var Projects = function() {
         console.log('pivot aligned');
         $newProject = $newProject || $projActive,
         pivotX = $pivot.offset().left,
-        projActiveX = $newProject.offset().left;
+        projActiveX = $newProject.offset().left,
+        firstProjectShown = true;
 
         if (estimateFinalWidth) {
-            //is this a good identation? i think it's beautiful :3
+            //is this a good identation? I think it's beautiful :3
             projActiveWidth =
                 direction == "right"
                     ? $newProject.outerWidth() * 0.49
@@ -230,11 +232,11 @@ var Projects = function() {
             projActiveWidth = $newProject.outerWidth();
         }
 
-        if (untilTablet) {
-            transX = 16 + pivotX - projActiveX;
-        } else {
-            transX = windowBotWidth + pivotX - projActiveX - projActiveWidth;
-        }
+        transX =
+            untilTablet
+                ? 16 + pivotX - projActiveX
+                : windowBotWidth + pivotX - projActiveX - projActiveWidth; //i think i'm overcomplicating.
+
         $pivot.css({'transform':'translateX('+ (transX) + 'px)'});
     }
 
@@ -276,12 +278,8 @@ var Projects = function() {
 
     function changeBotNavText(text) {
         $(classProjBotTip).addClass('.jsLoading')
-        setTimeout(function () {
-            $(classProjBotTip).html(text);
-            setTimeout(function () {
-                $(classProjBotTip).removeClass('.jsLoading')
-            }, 150);
-        }, 150);
+        setTimeout(() => $(classProjBotTip).html(text), 150);
+        setTimeout(() => $(classProjBotTip).removeClass('.jsLoading'), 300);
     }
 
     function checkIsParentLeft() {
@@ -358,6 +356,8 @@ var Projects = function() {
 
             $projActive = $('button.'+activeClass);
             alignPivot();
+
+            setTimeout(() => alignPivot(), 150); //align Pivot again to pixel perfect
         }, 400);
 
         $('.js-cvUnder').remove(); //remove projects on CV
