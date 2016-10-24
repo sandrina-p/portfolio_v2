@@ -20,18 +20,33 @@ var GAcustom = function(){
         });
     }
 
+    //track all buttons
     $(document).on('click', 'button', function(){
         var $xthis = $(this);
         ga(function(tracker) {
             cid = tracker.get('clientId');
-            ec = $xthis.data('gaec') || 'forgotten';
+            ec = $xthis.data('gaec') || 'btn forgotten';
             inm = $xthis.text().replace(/[^a-zA-Z ]/g, ""); //item name
             ea = inm; //action
             el += inm+"|"; //label
 
             sendToGA(`&cid=${cid}&ec=${ec}&in=${inm}&ea=${ea}&el=${el}`);
         });
+    });
 
+
+    //track all links
+    $(document).on('click', 'a', function(){
+        var $xthis = $(this);
+        ga(function(tracker) {
+            cid = tracker.get('clientId');
+            ec = $xthis.data('gaec') || 'link forgotten';
+            inm = $xthis.text().replace(/[^a-zA-Z ]/g, ""); //item name
+            ea = inm; //action
+            el += inm+"|"; //label
+
+            sendToGA(`&cid=${cid}&ec=${ec}&in=${inm}&ea=${ea}&el=${el}`);
+        });
     });
 
     return {

@@ -41,7 +41,7 @@ var TalkChat = function(){
                 ${brk}Then, of course, they are mind blown`,
             "other techs":
                 `She also crossed paths with <strong>PHP</strong>, <strong>Angular 2</strong> and <strong>Ionic 2</strong>.
-                "+brk+"But right now she is focusing on improving her javascript skills.`,
+                ${brk}But right now she is focusing on improving her javascript skills.`,
             "micro inter#!?":
                 `In one sentence: She loves to explore new concepts, meaningful transitions that <strong>connect users like you who interact with stuff like me.</strong>`,
             "learning":
