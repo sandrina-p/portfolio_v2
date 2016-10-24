@@ -28,6 +28,14 @@
     $loadingNav = 'jsLoading';
 ?>
 <body>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-70069700-3', 'auto');
+        ga('send', 'pageview');
+    </script>
 
     <h1 class="sr-only">Sandrina Pereira</h1>
     <h2 class="sr-only">interaction designer, frontend developer, creative developer</h2>
@@ -55,7 +63,7 @@
             <article class="chatSection jsOnNav <?php echo $loadingNav ?>" id="background" style="translateX(0px);">
                 <div class="chatPart" id="background-intro">
                     <div class="chatPart-human">
-                        <button type="button" name="background" id="btn-bg" class="chatPart-title js-chatOpt"></button>
+                        <button type="button" name="background" id="btn-bg" class="chatPart-title js-chatOpt" data-gaec="chat">history</button>
                     </div>
                 </div>
             </article>
@@ -63,7 +71,7 @@
             <article class="chatSection jsOnNav <?php echo $loadingNav ?>" id="theory" style="translateX(83px);">
                 <div class="chatPart" id="theory-intro">
                     <div class="chatPart-human">
-                        <button type="button" name="theory" id="btn-th" class="chatPart-title js-chatOpt"></button>
+                        <button type="button" name="theory" id="btn-th" class="chatPart-title js-chatOpt" data-gaec="chat">knowledge</button>
                     </div>
                 </div>
             </article>
@@ -71,7 +79,7 @@
             <article class="chatSection jsOnNav <?php echo $loadingNav ?>" id="practice" style="translateX(185px);">
                 <div class="chatPart" id="practice-intro">
                     <div class="chatPart-human">
-                        <button type="button" name="practice" id="btn-pr" class="chatPart-title js-chatOpt"></button>
+                        <button type="button" name="practice" id="btn-pr" class="chatPart-title js-chatOpt" data-gaec="chat">projects</button>
                     </div>
                 </div>
             </article>
@@ -85,19 +93,6 @@
     </div> -->
 
     <?php include 'index-parts/cv.php';?>
-
-    <div class="js-scrollForFun"></div>
-
-    <div class="psst js-psst">
-        <p class="psst-title">psst...</p>
-        <p class="psst-parag"> Maybe now you want to talk about her.
-            <br>I can tell you more about her projects.
-            <br>What do you think?
-        </p>
-        <button type="button" name="true" class="chatPart-title">yh, sure</button>
-        <button type="button" name="false" class="chatPart-title js-botTrigger">not really</button>
-        <span class="js-scrolled"><!-- try me on mobile--></span>
-    </div>
 
     <div class="bot jsLoading" id="bot">
         <!-- ◉_◉ for the last time, it's javascript -->

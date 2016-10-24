@@ -230,8 +230,8 @@ var TalkChat = function(){
         behaviour: {
             navProjMob: "you can also <span>swipe</span> to the left or to the right",
             navProjDesk: "you can also use your keyboard <span>[<]</span> and <span>[>]</span> keys",
-            returnFocus: "It seems her project kept you interested in this conversation. Go on, don't be shy.",
-            returnOnFly: "Hey there, where have you been?",
+            // returnFocus: "It seems her project kept you interested in this conversation. Go on, don't be shy.",
+            // returnOnFly: "Hey there, where have you been?",
             psstChat: [
                 "i'm surprised",
                 "i'm not sure what to say but ... algo fun <span class='nowrap'>seria nice.</span>",

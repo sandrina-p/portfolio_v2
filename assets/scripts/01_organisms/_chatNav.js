@@ -48,7 +48,17 @@ var chatNav = function() {
                 navWidth = untilTablet ? navWidth : navWidth + 24;
                 $(this).css({'transform': 'translateX('+navWidth+'px)'});
                 navWidth += $(this).width();
+                console.log($(this).width());
             });
+
+            //NOTE: Prevent bug on Safari. Sometimes it loads too soon. Even with timeout(),
+            // without knowing the real navWidth value.
+            if (navWidth < 1) {
+                console.log('upps... navTranslate() was loaded too soon');
+                navTranslate();
+            } else {
+                console.log('nav loaded without problems');
+            }
         }
 
         $(document).on('click', '.chatSection.jsOnNav', function(){

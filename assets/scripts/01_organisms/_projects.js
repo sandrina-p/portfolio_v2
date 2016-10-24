@@ -85,7 +85,7 @@ var Projects = function() {
         for (var i = 0, projName, nameSlug, projLength = arrProjects.length; i < projLength; i++) {
             projName = arrProjects[i];
             nameSlug = projName.split(' ').join('-').toLowerCase();
-            elProjNav += "<button type='button' name='"+nameSlug+"' class='projNav-btn'>"+projName+"</button>"
+            elProjNav += "<button type='button' name='"+nameSlug+"' class='projNav-btn' data-gaec='projects'>"+projName+"</button>"
         }
 
         return elProjNav;
@@ -103,14 +103,14 @@ var Projects = function() {
             for (var i = 1; i <= quantity; i++) {
                 projName = arrProjects[projI-i] || arrProjects[arrProjects.length-1];
                 nameSlug = projName.split(' ').join('-').toLowerCase(),
-                addProjects += "<button type='button' name='"+nameSlug+"' class='projNav-btn'>"+projName+"</button>";
+                addProjects += "<button type='button' name='"+nameSlug+"' class='projNav-btn' data-gaec='projects'>"+projName+"</button>"; //TODO merge duplicated syntax
             }
             $projLeft.prepend(addProjects);
 
         } else {
             for (var i = 1; i <= quantity; i++) {
                 projName = arrProjects[projI+i] || arrProjects[0];
-                addProjects += "<button type='button' name='"+nameSlug+"' class='projNav-btn'>"+projName+"</button>";
+                addProjects += "<button type='button' name='"+nameSlug+"' class='projNav-btn' data-gaec='projects'>"+projName+"</button>";
             }
             $projRight.append(addProjects);
         }
@@ -384,9 +384,21 @@ var Projects = function() {
         showNewProject();
     }
 
+    var gael = "";
+
     function onNavMoved(direction) {
         $newActive = direction == 'left' ? $projActive.prev() : $projActive.next();
         isParentLeft = checkIsParentLeft();
+
+        ga(function(tracker) {
+            var cid = tracker.get('clientId');
+                ec = 'navMoved';
+                inm = $newActive.text().replace(/[^a-zA-Z ]/g, ""); //item name without especial characters
+                ea = inm; //action
+                gael += inm+"|"; //label REVIEW save all path clicks to know the jorney
+
+            GAcustom.sendToGA(`&cid=${cid}&ec=${ec}&in=${inm}&ea=${ea}&el=${gael}`);
+        });
 
         updateVarsOnNav(direction == 'left');
 

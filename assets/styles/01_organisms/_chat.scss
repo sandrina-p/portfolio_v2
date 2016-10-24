@@ -15,11 +15,11 @@
         animation-fill-mode: forwards;
 
         &:before {
+            content: '';
             position: absolute;
             left: $safeArea;
             top: -$safeArea;
-            content: '';
-            animation: doting 1500ms infinite;
+            animation: doting 1500ms steps(18) infinite;
         }
     }
 
@@ -317,12 +317,24 @@
 }
 
 @keyframes doting {
-    0% {content: ".";}
-    10% {content: ". .";}
-    20% {content: ". . .";}
-    30% {content: ". .";}
-    40% {content: ".";}
-    50% {content: "";}
+     0% {content: "";}
+     5% {content: "¯";}
+    10% {content: "¯\\";}
+    15% {content: "¯\\_";}
+    20% {content: "¯\\_(";}
+    25% {content: "¯\\_(ツ";}
+    30% {content: "¯\\_(ツ)";}
+    35% {content: "¯\\_(ツ)_";}
+    40% {content: "¯\\_(ツ)_/";}
+    45% {content: "¯\\_(ツ)_/¯";}
+    65% {content: "¯\\_(ツ)_/";}
+    70% {content: "¯\\_(ツ)_";}
+    75% {content: "¯\\_(ツ)";}
+    80% {content: "¯\\_(ツ";}
+    85% {content: "¯\\_(";}
+    90% {content: "¯\\_";}
+    95% {content: "¯\\";}
+   100% {content: "¯";}
 }
 
 @keyframes colorIn {
