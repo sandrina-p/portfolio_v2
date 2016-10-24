@@ -390,16 +390,6 @@ var Projects = function() {
         $newActive = direction == 'left' ? $projActive.prev() : $projActive.next();
         isParentLeft = checkIsParentLeft();
 
-        ga(function(tracker) {
-            var cid = tracker.get('clientId');
-                ec = 'navMoved';
-                inm = $newActive.text().replace(/[^a-zA-Z ]/g, ""); //item name without especial characters
-                ea = inm; //action
-                gael += inm+"|"; //label REVIEW save all path clicks to know the jorney
-
-            GAcustom.sendToGA(`&cid=${cid}&ec=${ec}&in=${inm}&ea=${ea}&el=${gael}`);
-        });
-
         updateVarsOnNav(direction == 'left');
 
         $newActive.length == 0
@@ -433,6 +423,14 @@ var Projects = function() {
         }
 
         numbOfGestures ++;
+
+        // ---- GA
+        var ec = 'navMoved';
+            inm = $newActive.text().replace(/[^a-zA-Z ]/g, ""); //item name without especial characters
+            ea = inm; //action
+            gael += inm+"|"; //label REVIEW save all path clicks to know the jorney
+
+        GAcustom.sendToGA(`&ec=${ec}&in=${inm}&ea=${ea}&el=${gael}`);
     }
 
     return {
