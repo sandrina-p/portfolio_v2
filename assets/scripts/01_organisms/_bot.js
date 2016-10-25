@@ -283,7 +283,7 @@ var botSection = function() {
 
 
     $(document).ready(function () {
-        $.get("http://ipinfo.io", function(response) {
+        $.get("https://ipinfo.io", function(response) {
             console.log(response.ip);
             var newTxt = $('.js-bot-user').text().replace('/*ip*/', response.ip);
             $('.js-bot-user').text(newTxt);
