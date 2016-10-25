@@ -3,6 +3,9 @@ $placeholderClr: $clrGrayLight;
 $textPaddingMob: $safeArea;
 $textPaddingTab: 20vw;
 
+%paddingBotMob {
+    padding: 0 $textPaddingMob 0;
+}
 
 .bot {
     @include centerxy;
@@ -12,46 +15,74 @@ $textPaddingTab: 20vw;
     height: 100%;
     display: block;
     background: $clrDark;
+    transition: top $speed*2;
+
+    font-family: $font-mono;
+    font-size: $fontS;
+    color: $clrPrimarySoft;
+
     // animation: bgBreath 3s ease-in-out infinite, height $speed ease-out;
 
+    @extend %flexbox;
+    @include flexboxProp {
+        flex-direction: column;
+        justify-content: flex-end;
+    }
+
     &.jsLoading {
-        height: 0;
+        top: -200%;
     }
 
-    &-trigger {
-        padding-left: $safeArea;
-    }
-
-    &-inner {
-        position: relative;
+    &-header {
+        position: absolute;
+        left: 0; top: 0;
+        z-index: 2;
         width: 100%;
-        height: 100%;
-        max-height: 100%;
+        padding: $safeArea/2;
+        font-size: $fontXS;
+        border-bottom: 1px solid $clrPrimaryDark;
+        @extend %cf;
+        background: rgba($clrDark, 0.8);
+    }
+
+    &-hr {
+        float: right;
+        margin-left: $safeArea;
+    }
+
+    &-hl {
+        float: left;
+    }
+
+
+
+    &-terminal {
+        font-family: $font-mono;
+        font-size: $fontS;
+        padding-top: $safeArea*3;
+        padding-bottom: $safeArea*4;
         overflow: auto;
-        color: $clrPrimarySoft;
-        transition: height $speed ease-out;
-
-        @extend %flexbox;
-        @include flexboxProp {
-            flex-direction: column;
-            justify-content: flex-end;
-        }
-
-        &.jsLoading {
-            height: 0;
-        }
     }
 
     &-text {
         position: relative;
         width: 100%;
-        margin: 0 auto;
         height: auto;
         max-height: 100%;
+        margin: 0 auto;
         overflow: auto;
-        padding: $safeArea $textPaddingMob $safeArea*2;
-        font-family: $font-mono;
-        font-size: $fontS;
+        @extend %paddingBotMob;
+
+        br + b {
+            padding-left: $safeArea;
+            line-height: $lineHeightL;
+
+            &:before {
+                content: '. ';
+                color: $clrPrimary;
+                font-size: $fontXS;
+            }
+        }
     }
 
     &-answer {
@@ -62,6 +93,7 @@ $textPaddingTab: 20vw;
             left: calc(#{$textPaddingMob} - #{$safeArea/2});
         }
     }
+
     &-sent {
         min-height: $safeArea;
         color: $sentClr;
@@ -73,6 +105,15 @@ $textPaddingTab: 20vw;
         }
     }
 
+
+    &-footer {
+        position: absolute;
+        left: 0; bottom: 0;
+        width: 100%;
+        @extend %paddingBotMob;
+        background: rgba($clrDark, 0.8);
+    }
+
     &-input {
         background: none;
         border: none;
@@ -81,6 +122,10 @@ $textPaddingTab: 20vw;
         display: inline;
         font-family: $font-mono;
         width: 100%;
+        border-bottom: 1px solid $clrLight;
+        transition: width $speed;
+        margin-bottom: $safeArea;
+        margin-left: -$safeArea;
 
         &::-webkit-input-placeholder {
              color: $placeholderClr;
@@ -95,15 +140,29 @@ $textPaddingTab: 20vw;
            color: $placeholderClr;
         }
 
+        &:hover,
         &:focus {
-            width: 100%;
             outline: none;
+            border-bottom: 1px solid $clrPrimary;
+        }
+
+        &.jsLoading {
+            pointer-events: none;
+            width: 0;
         }
     }
 
+
+
+
     @include media(tablet) {
-        &-text {
-            padding: $safeArea $textPaddingTab $safeArea*2;
+        %paddingBotTab {
+            padding: 0 $textPaddingTab $safeArea;
+        }
+
+        &-text,
+        &-footer {
+            @extend %paddingBotTab;
         }
 
         &-answer {

@@ -424,13 +424,14 @@ var Projects = function() {
 
         numbOfGestures ++;
 
-        // ---- GA
-        var ec = 'navMoved';
-            inm = $newActive.text().replace(/[^a-zA-Z ]/g, ""); //item name without especial characters
-            ea = inm; //action
-            gael += inm+"|"; //label REVIEW save all path clicks to know the jorney
+        (function toGA() {
+            var ec = 'navMoved';
+                inm = $newActive.text().replace(/[^a-zA-Z ]/g, ""); //item name without especial characters
+                ea = inm; //action
+                gael += inm+"|"; //label REVIEW save all path clicks to know the jorney
 
-        GAcustom.sendToGA(`&ec=${ec}&in=${inm}&ea=${ea}&el=${gael}`);
+            GAcustom.sendToGA(`&ec=${ec}&in=${inm}&ea=${ea}&el=${gael}`);
+        })();
     }
 
     return {

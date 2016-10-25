@@ -51,44 +51,55 @@ var TalkBot = function(){
             +brk+"^100Ah yes, that's her name, I forgot to tell you. Anyways..."
             +brk+"^150I think I could talk about me. Like, nerd talk... but before that just tell me one thing:"
             +brk+"1 divided by 0 equal to:",
-            "options", "your answer here", "typedJS"
+            "your answer here", "options"
         ],
         options: {
             /* STRUCTURE:
-            "posible human, inputs sent, separated by, comma and in lowercase":[
+            "posible human inputs sent, separated by comma, and in lowercase, it was to be always at least 2 inputs": [
                 "bot answer"
                 +brk+"with some lines",
-                "context of the next input", "input placeholder"
+                "input placeholder", "context of the next input"
             ]
             */
-            "go, infinity, infinito, ∞, universe, cosmos": [
+            "∞ infinity, infinity, infinito, ∞, universe, cosmos": [
                 "You are a little crazy… we all are."
                 +brk+"Despite always being under construction I already have the ability to share some stuff that Sandrina taught me while I was growing up."
                 +publicCmd,
-                "commands", "what's next?", "typedJS"
+                "what's next?", "commands"
             ],
             "undefined, null": [
                 "Not it's not. It has another name. At least on javascript language.",
-                "options", "go ask it to some console", "typedJS"
+                "go ask it to some console", "options"
             ],
             "1/0, 1 divided by 0, one divided by zero": [
                 "◉_◉ Don't try to turn the game against me."
                 +brk+"I'm a bot, not a console.",
-                "options", "go ask it to other console", "typedJS"
+                "go ask it to other console", "options"
             ],
             "zero, 0": [
                 "You know that Siri isn't always right."
-                +brk+"^1000Neither do you.^500"
-                +brk+botOptHelp,
-                "options", 'I still believe in you', "typedJS"
+                +brk+"^400Neither do you."
+                +brk+"^800"+botOptHelp,
+                'I still believe in you', "options"
             ],
             "exit, esc": [
                 "Really? We didn't even start you already want to leave.. Press ESC and go get a life",
-                "options", "I still believe in you", "typedJS"
+                "I still believe in you", "options"
             ],
-            "help": [
+            "HELP, helpp, help, i don't know, dunno, i'm not sure, help me": [
+                "I'm glad I can teach you something new!"
+                +brk+"I'm build with javascript, so in my world 1/0 is <i>∞ infinity</i>."
+                +brk+"In other worlds the answer can be <i>0</i> or <i>undefined</i>."
+                +brk+"I'm a sensible machine so I like to think there is much more beyond nothing.",
+                "so, now you know how much is 1/0!", "options"
+            ],
+            "google it": [
                 botOptHelp,
-                "options", "I still believe in you", "typedJS"
+                "I still believe in you", "options"
+            ],
+            "tell me more, more, what else?, what else": [ //FIXME DRY this.
+                "you are such a curious creature :3. I'm still under construction, but you can leave a quick message to Sandrina. Just type something started by @@. She will answer you for sure.", //TODO
+                "@@ myname@email.com - Hi sandrina! How much is 0.1 + 0.2 ?", "options"
             ],
         },
 
@@ -97,26 +108,26 @@ var TalkBot = function(){
                 [
                     "I was born inside the Atom editor."
                     +brk+"HTML5, SCSS and Javascript are my vital organs.",
-                    "commands", ""
+                    "|","commands"
                 ],
                 [
                     "I started being built with "+linkKoala+" but as any good programmer knows, crashes happen, so "+linkGulp+" took its place!",
-                    "commands", ""
+                    "|","commands"
                 ],
                 [
                     "You might be talking only with me, but Sandrina knows everything you said and clicked. That's her way to improve me each time a new user comes here.",
-                    "commands", ""
+                    "|","commands"
                 ],
                 [
                     "Unfortunately right now I'm just a static website with some php on index. But soon I'll be moved to "+linkFirebase+"."
                     +brk+"Then you'll be able to talk directly with Sandrina right here without using mail or wtv you choose to use now.",
-                    "commands", ""
+                    "|","commands"
                 ],
 
                 [
                     "You might think that javascript and jQuery are old fashion. But the truth is they are the base of all new fancy techs. React, Angular, Typescript, etc.."
                     +brk+"Sandrina is making sure that she really <i>master</i> jQuery and JS before going further with those fancy techs.",
-                    "commands", ""
+                    "|","commands"
                 ],
             ],
             "best practices": [
@@ -125,28 +136,28 @@ var TalkBot = function(){
                     +brk+" I guess that makes me a bit human, right?"
                     +brk+"But while you were reading my first sentence I had enough time to send you the rest of the CSS and JS files that I needed to have a conversation with you."
                     +brk+"That's a great way to reduce "+linkLT+" and avoid "+linkFOUC+", don't you think?",
-                    "commands", ""
+                    "|","commands"
                 ],
                 [
                     "I started following "+linkSUIT+" (css) and "+linkMP+" (js)."
                     +brk+"Which basically means it is very easy for me to adapt myself and change my appearance when Sandrina gets new crazy ideas during her boredom strikes."
                     +brk+"I mean, what will a coder do when she is bored other than code some more?",
-                    "commands", ""
+                    "|","commands"
                 ],
                 [
                     "I know you have a sweet "+browser+" with javascript, but I am a wise bot so I always take into consideration people without javascript or with a shitty browser."
                     +brk+"Of course they don’t get the chance to talk to some cool AI like myself, but at least they will know enough about Sandrina.",
-                    "commands", ""
+                    "|","commands"
                 ],
                 [
                     resolutionScreenMsg,
-                    "commands", ""
+                    "|","commands"
                 ],
             ],
             "resources, resources, resource": [
                 [
                     "still under construction",
-                    "commands", "don't push me that way okay? :/"
+                    "don't push me that way okay? :/", "commands"
                 ]
             ],
             "challenges": [
@@ -156,7 +167,7 @@ var TalkBot = function(){
                     +brk+"And the javascript only toggles them when it is necessary."
                     +brk+"It makes things run much smoother."
                     +brk+"And that’s really important because there is nothing worst than a laggy website.",
-                    "commands", ""
+                    "|","commands"
                 ],
                 [
                     "Maybe you will not believe me, but that switching images effect on Sandrina's projects are CSS only."
@@ -166,7 +177,7 @@ var TalkBot = function(){
                     +brk+"As well as her [portrait]..."
                     +brk+"You didn’t think that was an image, did you?"
                     +brk+""+portraitMsg,
-                    "commands", ""
+                    "|","commands"
                 ],
                 [
                     "My purpose here, despite being a bot, is having a conversation with you."
@@ -175,7 +186,7 @@ var TalkBot = function(){
                     +brk+"Or tell you stuff you didn't asked for."
                     +brk+"What I’m trying to say is I am a bot with a passion for context and human interaction."
                     +brk+"I pretend to think ... by taking some time to answer you, but the truth is, I already knew what to tell you before we first met. They say smart guys think. So I learned to make you think I was thinking so I could impress you [. . .]",
-                    "commands", ""
+                    "|","commands"
                 ],
             ],
             "keepSection": [
@@ -186,83 +197,89 @@ var TalkBot = function(){
                 [
                     "I don't have anything else to tell you about [*param*] "
                     +brk+publicCmd,
-                    "commands", "", "typedJS"
+                    "|","commands"
                 ],
                 ["best practices", "challenges"]
             ],
         },
         bored: {
-            "yes, yh": ["hmmm... let me give you game then [TODO]", "commands", "...", "typedJS"],
-            "no, nop": ["nice for you. I am. You are boring.", "commands", "...", "typedJS"],
+            "yes, yh": "hmmm... let me give you game then [TODO]",
+            "no, nop": "nice for you. I am. You are boring.",
         },
         username: {
-            "username": ["Nice to meet you [*params*]!", "commands", "...", "typedJS"],
+            "username": "Nice to meet you [*params*]!",
         },
-        "help, help me, lost, i'm lost": [
-            "We all get lost sometimes"
-            +brk+""+publicCmd,
-            "[*params*]", "try again"
-        ],
         vocabulary: {
-            "git": [
+            "git":
                 "Now that we know each other a bit better, we should advance to the second base."
                 +brk+"I'll let you check my sources on "+linkGit+"."
                 +brk+"Feel free to explore and maybe improve me, especially on javascript."
                 +brk+"I still feel some strange energies around here, don't you?",
-                "commands", ""
-            ],
             "hey, hey there, hello, hi": [
-                "Hey there! This can be the begining of "+linkHer+" *.*",
-                "commands", ""
+                "Hey there! This can be the begining of "+linkHer+" *.*"
             ],
             "thanks, thank you, thank u": [
-                "You're welcome", "commands", ""
+                "You're welcome", "|","commands"
             ],
             "sandrina": [
-                "Yes... anything more you want to know about her? I recommend you to say Hi! -> "+myEmail,
-                "commands", ""
+                "Yes... anything more you want to know about her? I recommend you to say Hi! -> "+myEmail
             ],
             "what's your name?, what is your name?": [
                 "I'm 008080. What about you?",
-                "username", "you can tell me, but i'll not be able to understand you. not yet :(",
+                "you can tell me, but i'll not be able to understand you. not yet :(", "username"
             ],
-            "bye, cya, shut down, exit, close": [
-                "You know what... It's really hard having a human conversation."
-                +brk+"That's why I'm just a bot."
-                +brk+"<b>008080</b> by the way."
-                +brk+"Nice to meet you :) It was nice to talk to you, thank you!"
-                +brk+"But now do me a favor and go get a life, yes?"+brk+"It’s not healthy to talk to a bot all day."
-                +brk+"By the way, don't forget to share me and talk about Sandrina while you’re out there <3",
-                "commands", "like i said, still under construction: 'ESC' to close"
+
+            "008080, #008080": [
+                "Yap! That's my name! Why? Sandrina likes Teal as you can see, yh... a basic straight answer."
             ],
             "..." :[
-                "there are more commands available than you think. In fact, you can "+linkHelpMe+" to better understand your human kind.",
-                "commands", "", "typedJS"
+                "there are more commands available than you think. In fact, you can "+linkHelpMe+" to better understand your human kind."
             ],
             "esc, restart, reset, clear": [
-                "are you sure about that? all our memories - at least mine - will be erased. If so, press ESC twice.",
-                "commands","[TODO]"
+                "are you sure about that? all our memories - at least mine - will be erased. If so, press ESC twice."
             ],
             "ok, okay": [
-                "hmm... ok.",
-                "commands", "don't push me that way okay? :/"
+                "hmm... ok."
             ],
             "SUIT, SUIT methodology, Module Pattern, Gulp, Grunt, perceived loading time, FOUC": [
                 "hmm... I knew you would type that. Sandrina already did some user research, like you in this moment. Soon I'll be able to better answer you, but for now, it's better for you to [Google It].",
-                "commands", "this time do it by youself, yes? :D"
+                "this time do it by youself, yes? :D"
+            ],
+            "tell me more, more, what else?, what else": [
+                "you are such a curious creature :3. I'm still under construction, but you can leave a quick message to Sandrina. Just type something started by @@. She will answer you for sure.", //TODO
+                "@@ your@email.com - Hi sandrina! How much is 0.1 + 0.3 ?"
+            ],
+
+            "tilttt": [
+                "something went wrong and i think I just crashed... please can you try again?", //TODO
+                "@@ your@email.com - Hi sandrina! How much is 0.1 + 0.3 ?"
+            ],
+            "help, help me, lost, i'm lost": [
+                "We all get lost sometimes"
+                +brk+""+publicCmd,
+                "try again"
+            ],
+            "bye, cya, shut down, exit, halt, close": [
+                "You know what... It's really hard having a human conversation."
+                +brk+"That's why I'm just a bot."
+                +brk+"<i>008080</i> by the way."
+                +brk+"Nice to meet you :) It was nice to talk to you, thank you!"
+                +brk+"But now do me a favor and go get a life, yes?"+brk+"It’s not healthy to talk to a bot all day."
+                +brk+"By the way, don't forget to share me and talk about Sandrina while you’re out there :3",
+                "press x to close"
             ],
         },
         LosT: [
             "I'm not sure what you meant. What about talking directly with Sandrina at "+myEmail
             +brk+"She's smarter than me ¯\\_(ツ)_/¯",
-            "commands", "try again", "typedJS"
+            "try again"
         ],
         EmpTy: [
-            ['._.', "commands", "don't be shy"],
-            ['" "', "commands", "i'm feeling you"],
-            ['?', "commands", "silence is good"],
-            ['...', "commands", "oh well"],
-            ["(ง'̀-'́)ง", "commands", "hi?"],
+            ['._.', "don't be shy"],
+            ['" "', "i'm feeling you"],
+            ['?', "silence is good"],
+            ['...', "oh well"],
+            ["(ง'̀-'́)ง", "hi?"],
             ['◉_◉', "bored", "are you bored?"]
         ]
     }

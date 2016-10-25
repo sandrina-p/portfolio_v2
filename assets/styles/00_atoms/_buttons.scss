@@ -72,11 +72,6 @@ button {
     color: $clrLight;
 }
 
-.btnBot {
-    @extend %btnX;
-    background: $clrDark;
-    color: $clrPrimarySoft;
-}
 
 .btnMore {
     @extend %btnX;
@@ -84,6 +79,13 @@ button {
     color: $clrLight;
     font-size: $fontS;
     padding: $safeArea/5 $safeArea/2;
+}
+
+.btnBot {
+    @extend %btnX;
+    font-size: inherit;
+    background: $clrDark;
+    color: $clrPrimarySoft;
 }
 
 .btnCheck {
