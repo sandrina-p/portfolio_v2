@@ -57,13 +57,10 @@ var botSection = function() {
                         var iSection = objContext.keepSection[1].indexOf(sentText);
                         objContext.keepSection[1].splice(iSection,1); //prevent for showing the same thing again;
                     }
-                    appendBotAnswer("botAnswer, objContext");
+                    appendBotAnswer(botAnswer, objContext);
                 } else {
                     searchVocabulary();
                 }
-                break;
-            case 'vocabulary':
-                searchVocabulary(context);
                 break;
             default:
                 talkToBot("tilttt");
@@ -161,7 +158,7 @@ var botSection = function() {
             && objContext.keepSection[1].indexOf(sentText) > -1 // it's a section with more stuff (array)
             && objContext[sentText].length > 0) { // it still has stuff to show
                 objContext.keepSection[0] = replaceSentText(objContext.keepSection[0]);
-                showInput(answer[1], objContext.keepSection[0]);
+                showInput(objContext.keepSection[0], answer[2]);
                 return true;
             }
 
@@ -190,7 +187,7 @@ var botSection = function() {
     }
 
     // activate input again
-    function showInput(placeholder = "|", name = "vocabulary") {
+    function showInput(placeholder = '>_', name = 'commands') {
 
         $('#'+botInputId)
             .attr({name: name, placeholder: placeholder})
@@ -220,7 +217,7 @@ var botSection = function() {
         }
 
         sentText = sentText.toLowerCase();
-        context = $('#'+botInputId).attr('name') || 'vocabulary';
+        context = $('#'+botInputId).attr('name') || 'commands';
 
         $('#'+botInputId).addClass('jsLoading').val('');
 
@@ -234,7 +231,7 @@ var botSection = function() {
                 ea = inm; //action
                 gael += inm+"|"; //label REVIEW save all path clicks to know the jorney
 
-            GAcustom.sendToGA(`&ec=${ec}&in=${inm}&ea=${ea}&el=${gael}`);
+            // GAcustom.sendToGA(`&ec=${ec}&in=${inm}&ea=${ea}&el=${gael}`);
         })();
 
     }
