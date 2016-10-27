@@ -45,7 +45,7 @@
         <div class="heyThere-intro">
             <p>
                 I wanna to introduce you to someone.
-                She is a <strong>frontend developer</strong> with a great passion for <strong class="nowrap">interaction design</strong>.
+                <span class="nowrap">She is a</span> <strong>frontend developer</strong> with a great passion for <strong class="nowrap">interaction design</strong>.
                 <span class="heyThere-br"></span>
                 Where do you like to start?
             </p>
@@ -53,7 +53,7 @@
     </div>
 
     <div class="navCV">
-        <a href="#cv" class="navCV-link">cv</a>
+        <a href="#cv" class="navCV-link">or you can check her cv</a>
     </div>
 
     <div class="chat jsLoading" id="chat">
@@ -86,29 +86,9 @@
         </div>
     </div>
 
-    <!-- <div class="chat-newnav" id="chat-nav">
-        <button type="button" name="background" id="btn-bg" class="chatPart-title js-chatOpt">history</button>
-        <button type="button" name="theory" id="btn-th" class="chatPart-title js-chatOpt">knowledge</button>
-        <button type="button" name="practice" id="btn-pr" class="chatPart-title js-chatOpt">projects</button>
-    </div> -->
-
     <?php include 'index-parts/cv.php';?>
 
-    <div class="bot jsLoading" id="bot">
-        <!-- ◉_◉ for the last time, it's javascript -->
-        <div class="bot-header">
-            <span class="bot-hl js-bot-user">:: /008080 - as superuser @ /*ip*/</span>
-            <button name="close" type="button" class="btnBot bot-hr">[Close]</button>
-            <button name="help" type="button" class="btnBot bot-hr">[Help]</button>
-            <button name="more" type="button" class="btnBot bot-hr">[More]</button>
-        </div>
-        <div class="bot-terminal">
-            <div class="bot-text"></div>
-        </div>
-        <div class="bot-footer">
-            <input type="text" name="" placeholder="" class="bot-input jsLoading" id="botInput"></input>
-        </div>
-    </div>
+    <div class="bot jsLoading" id="bot"><!-- ◉_◉ for the last time, it's javascript --></div>
 
     <noscript>
         <link rel="stylesheet" href="assets/styles/04_templates/index.min.css">

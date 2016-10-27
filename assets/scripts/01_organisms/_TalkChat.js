@@ -235,13 +235,11 @@ var TalkChat = function(){
             psstChat: [
                 "i'm surprised",
                 "i'm not sure what to say but ... algo fun <span class='nowrap'>seria nice.</span>",
-                "[do nothing]",
                 "[go to bot]"
             ],
             psstMob : [
                 "Hmm...",
-                "You really like to scroll <span class='nowrap'>don't you?</span>",
-                "", ""
+                "You really like to scroll <span class='nowrap'>don't you?</span>"
             ]
         },
     };

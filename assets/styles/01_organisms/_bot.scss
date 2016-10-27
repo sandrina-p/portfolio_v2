@@ -43,6 +43,10 @@ $textPaddingTab: 20vw;
         border-bottom: 1px solid $clrPrimaryDark;
         @extend %cf;
         background: rgba($clrDark, 0.8);
+
+        *.jsLoading {
+            opacity: 0;
+        }
     }
 
     &-hr {
@@ -59,7 +63,7 @@ $textPaddingTab: 20vw;
     &-terminal {
         font-family: $font-mono;
         font-size: $fontS;
-        padding-top: $safeArea*3;
+        padding-top: $safeArea*5;
         padding-bottom: $safeArea*4;
         overflow: auto;
     }
@@ -76,6 +80,7 @@ $textPaddingTab: 20vw;
         br + b {
             padding-left: $safeArea;
             line-height: $lineHeightL;
+            color: $clrGrayLighter;
 
             &:before {
                 content: '. ';

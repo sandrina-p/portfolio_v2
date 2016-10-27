@@ -1,5 +1,20 @@
 $cvPaddingLeft: 10vw;
 
+%cvSub {
+    font-size: $fontL;
+    font-weight: 500;
+    color: $clrWhite;
+}
+
+%cvItems {
+    letter-spacing: 0.4px;
+    font-size: $fontS;
+    font-family: $font-mono;
+    padding-left: $safeArea*1.5;
+    padding-bottom: $safeArea/5;
+    color: $clrGrayLighter;
+}
+
 .cv {
     display: block;
     position: relative;
@@ -52,7 +67,7 @@ $cvPaddingLeft: 10vw;
     }
 
     &-title {
-        font-size: $fontXL;
+        font-size: $fontXXL;
         font-family: $font-mono;
         font-weight: 300;
     }
@@ -64,10 +79,7 @@ $cvPaddingLeft: 10vw;
     }
 
     &-dt {
-        font-size: $fontL;
-        font-weight: 500;
-        color: $clrWhite;
-
+        @extend %cvSub;
 
         &:not(:first-of-type) {
             margin-top: $safeArea/3*4;
@@ -75,11 +87,8 @@ $cvPaddingLeft: 10vw;
     }
 
     &-dd {
-        font-size: $fontS;
-        font-family: $font-mono;
-        padding-left: $safeArea;
-        padding-bottom: $safeArea/5;
-        color: $clrGrayLight;
+        display: block;
+        @extend %cvItems;
     }
 
     &-link {
@@ -111,19 +120,13 @@ $cvPaddingLeft: 10vw;
         &Title {
             padding-top: $safeArea;
             padding-left: $cvPaddingLeft;
-            font-size: $fontL;
-            font-weight: 600;
+            @extend %cvSub;
             text-transform: lowercase;
         }
     }
 
     &-li {
-        color: $clrLight;
-        letter-spacing: 0.4px;
-        font-family: $font-mono;
-        font-size: $fontS;
-        padding-left: $safeArea/2;
-        padding-bottom: $safeArea/5;
+        @extend %cvItems;
 
         &--br {
             padding-bottom: $safeArea;
@@ -289,30 +292,39 @@ $cvPaddingLeft: 10vw;
     }
 }
 
+
 .navCV {
     display: block;
     position: fixed;
-    color: $clrPrimary;
     bottom: $safeArea/2;
-    left: $safeArea;
-    font-size: $fontS;
-    font-family: $font-mono;
+    left: 0;
+    padding-left: $safeArea;
     z-index: 1;
-    // opacity: 0;
-    // animation: heyThere 500ms steps(11);
-    // animation-delay: 2500ms;
-    // animation-fill-mode: forwards;
+    opacity: 0;
+    animation: heyThere 300ms steps(11);
+    animation-delay: 2600ms;
+    animation-fill-mode: forwards;
 
-    &:hover {
-        @extend %glitchWD;
+    .navCV-link {
+        font-size: $fontXS;
+        font-family: $font-mono;
+        color: $clrGray;
+
+        &:hover {
+            @extend %glitchWD;
+        }
     }
 
+    @include media(tablet) {
+        display: block;
+        left: $humanWidthTablet;
+        padding-left: $safeArea*3;
+    }
 }
 
 @import "../01_organisms/mee";
 
 
-//FIXME improve this markup
 .psst {
     display: block;
     position: fixed;

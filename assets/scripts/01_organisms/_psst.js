@@ -16,8 +16,7 @@ var Psst = function() {
 
             $jsPsst.find('.psst-title').html(chatContent.behaviour.psstMob[0]);
             $jsPsst.find('.psst-parag').html(chatContent.behaviour.psstMob[1]);
-            $jsPsst.find('button[name="true"]').remove();
-            $jsPsst.find('button[name="false"]').remove();
+            $jsPsst.find('button').remove();
 
 
             $(window).scroll(function() {
@@ -49,15 +48,14 @@ var Psst = function() {
             var $jsPsst = $('.js-psst');
             $jsPsst.find('.psst-title').html(chatContent.behaviour[context][0]);
             $jsPsst.find('.psst-parag').html(chatContent.behaviour[context][1]);
-            $jsPsst.find('button[name="true"]').html(chatContent.behaviour[context][2]);
-            $jsPsst.find('button[name="false"]').html(chatContent.behaviour[context][3]);
+            $jsPsst.find('button[name="true"]').remove();
+            $jsPsst.find('button[name="false"]').html(chatContent.behaviour[context][2]);
         }
     }
 
-    //FIXME baaahhhh so ugly
-    $(document).find('.js-psst').find('button[name="true"]').on('click', function(){
+    $(document).on('click', '.js-botProjects', function(){
         $('#btn-pr').trigger('click');
-    });
+    })
 
     return {
         changePsst

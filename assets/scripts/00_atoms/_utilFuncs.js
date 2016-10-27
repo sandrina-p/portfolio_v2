@@ -3,11 +3,11 @@ var UtilFuncs = function(){
     var iOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream,
         untilTablet = iOS ? screen.width : window.innerWidth < 750; //http://stackoverflow.com/questions/4629969/ios-return-bad-value-for-window-innerheight-width
 
-        
+
     $(document).on('click', 'a[href*=#]', function(e){
         $('html, body').animate({
-            scrollTop: $( $.attr(this, 'href') ).offset().top -150
-        }, 500);
+            scrollTop: $( $.attr(this, 'href') ).offset().top -100
+        }, 1000);
         e.preventDefault();
     });
 
@@ -31,7 +31,7 @@ var UtilFuncs = function(){
     }
 
     function stringSlugLower(str) {
-        return str.split(' ').join('-').toLowerCase();
+        return str.replace(' ','-').toLowerCase();
     }
 
     function randomNumb(arr) {

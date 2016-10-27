@@ -60,23 +60,23 @@ $fMed: 400;
 $fBold: 700;
 
 
+
+
 $humanWidthMob: 100%;
 $botWidthMob: 100%;
 
-$humanWidthPhablet: 100%;
-$botWidthPhablet: 100%;
+$humanWidthPhablet: $humanWidthMob;
+$botWidthPhablet: $botWidthMob;
 
 $humanWidthTablet: 40%;
 $botWidthTablet: 60%;
 
 
-$humanWidthLap: 40%;
-$botWidthLap: 60%;
+$humanWidthLap: $humanWidthTablet;
+$botWidthLap: $botWidthTablet;
 
 $chatBotWidth: rem(620);
 $chatBotWidthTab: rem(520);
-
-
 
 
 /*------------------------------------*\

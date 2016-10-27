@@ -77,7 +77,7 @@
                 <dd class="cv-dd">jQuery lvl 2/2</dd>
                 <dd class="cv-dd">Shaping up with Angular.js</dd>
 
-                <dt class="cv-dt">some freelancer frontend</dt>
+                <dt class="cv-dt">freelancer projects</dt>
                 <dd class="cv-dd">learning health - jan'16</dd>
                 <dd class="cv-dd">carolina machado - oct'15</dd>
 
@@ -133,6 +133,14 @@
 
                 <li class="cv-li">3D Blender</li>
             </ul>
+
+            <h4 class="cv-ulTitle">Optimization</h4>
+            <ul class="cv-ul">
+                <li class="cv-li">Accessibility</li>
+                <li class="cv-li">SEO</li>
+                <li class="cv-li">Google Analytics</li>
+            </ul>
+
             <h4 class="cv-ulTitle">Assets</h4>
             <ul class="cv-ul">
                 <li class="cv-li">ambition</li>
@@ -169,7 +177,7 @@
         <br>I can tell you more about her projects.
         <br>What do you think?
     </p>
-    <button type="button" name="true" class="chatPart-title" data-gaec='psst'>yh, sure</button>
+    <button type="button" name="true" class="chatPart-title js-botProjects" data-gaec='psst'>yh, sure</button>
     <button type="button" name="false" class="chatPart-title js-botTrigger" data-gaec='psst'>not really</button>
     <span class="js-scrolled"><!-- try me on mobile--></span>
 </div>

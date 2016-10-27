@@ -79,6 +79,7 @@ var chatApp = function() {
         $('body').animate({ scrollTop: value }, 1000, 'swing');
     }
 
+
     // ------ DOM STRUCTURE ELEMENTS ------ //
     function getElSection(trigger) {
         return $("<div class='chatSection' id='"+trigger+"'></div>");
@@ -102,7 +103,6 @@ var chatApp = function() {
                 +"</div>");
     }
 
-    // ------ GET CHAT OPTION ------ //
     function getOptions(section) {
         var objSection = chatContent[section],
             objI = 0,
@@ -133,6 +133,7 @@ var chatApp = function() {
         return chatOptions;
     }
 
+
     // ------ SHOWING A PART COMPONENTS ------ //
     //scroll has 2 phases:
     // 1. scrollSafe() - make sure newPart is 1/4 of the window height.
@@ -152,23 +153,24 @@ var chatApp = function() {
         }
     }
 
-    function scrollFinal($part) {
-        if(!untilTablet && screen.height > mediaQHeight) {
-            var safeArea = 120,
-                pHeight = $part.height(),
-                pScroll = $part.offset().top,
-                wScroll = $(window).scrollTop(),
-                diff = pScroll - wScroll,
-                visibleOnScreen = diff + pHeight, //part position + its height
-                wArea = wHeight - safeArea; // safe area of the window.
-
-            //if new part is away of the above the fold, scroll it to a safer area.
-            if (visibleOnScreen > wArea) {
-                var diff2 = visibleOnScreen - wArea;
-                bodyScrollTop(wScroll + diff2);
-            }
-        }
-    }
+    // probably will not be used anymore.
+    // function scrollFinal($part) {
+    //     if(!untilTablet && screen.height > mediaQHeight) {
+    //         var safeArea = 120,
+    //             pHeight = $part.height(),
+    //             pScroll = $part.offset().top,
+    //             wScroll = $(window).scrollTop(),
+    //             diff = pScroll - wScroll,
+    //             visibleOnScreen = diff + pHeight, //part position + its height
+    //             wArea = wHeight - safeArea; // safe area of the window.
+    //
+    //         //if new part is away of the above the fold, scroll it to a safer area.
+    //         if (visibleOnScreen > wArea) {
+    //             var diff2 = visibleOnScreen - wArea;
+    //             bodyScrollTop(wScroll + diff2);
+    //         }
+    //     }
+    // }
 
     function finishLoading($element) {
         $element.removeClass('jsLoading');
@@ -213,7 +215,7 @@ var chatApp = function() {
         // show 1st btn and then 2nd
         setTimeout(function () {
             finishLoading($part.find(chatPClass+"option:first-of-type button"));
-            scrollFinal($part);
+            // scrollFinal($part);
 
             // FIXME better buttons target
             setTimeout(function () {

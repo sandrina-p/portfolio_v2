@@ -63,7 +63,7 @@ var TalkBot = function(){
             */
             "∞ infinity, infinity, infinito, ∞, universe, cosmos": [
                 "You are a little crazy… we all are."
-                +brk+"Despite always being under construction I already have the ability to share some stuff that Sandrina taught me while I was growing up."
+                +brk+"Despite always being under construction I already have the ability to share some stuff that Sandrina taught me while I was growing up. "
                 +publicCmd,
                 "what's next?", "commands"
             ],
@@ -86,7 +86,7 @@ var TalkBot = function(){
                 "Really? We didn't even start you already want to leave.. Press ESC and go get a life",
                 "I still believe in you", "options"
             ],
-            "HELP, helpp, help, i don't know, dunno, i'm not sure, help me": [
+            "helpp, help, i don't know, dunno, i'm not sure, help me": [
                 "I'm glad I can teach you something new!"
                 +brk+"I'm build with javascript, so in my world 1/0 is <i>∞ infinity</i>."
                 +brk+"In other worlds the answer can be <i>0</i> or <i>undefined</i>."
@@ -101,6 +101,10 @@ var TalkBot = function(){
                 "you are such a curious creature :3. I'm still under construction, but you can leave a quick message to Sandrina. Just type something started by @@. She will answer you for sure.", //TODO
                 "@@ myname@email.com - Hi sandrina! How much is 0.1 + 0.2 ?", "options"
             ],
+            "welcome back" : [
+                "Look who is back! So, How much is 1/0?",
+                "options"
+            ]
         },
 
         commands: {
@@ -241,7 +245,7 @@ var TalkBot = function(){
             "ok, okay": [
                 "hmm... ok."
             ],
-            "SUIT, SUIT methodology, Module Pattern, Gulp, Grunt, perceived loading time, FOUC": [
+            "suit, suit methodology, Module Pattern, gulp, grunt, perceived loading time, fouc": [
                 "hmm... I knew you would type that. Sandrina already did some user research, like you in this moment. Soon I'll be able to better answer you, but for now, it's better for you to [Google It].",
                 "this time do it by youself, yes? :D"
             ],
@@ -251,8 +255,8 @@ var TalkBot = function(){
             ],
 
             "tilttt": [
-                "something went wrong and i think I just crashed... please can you try again?", //TODO
-                "@@ your@email.com - Hi sandrina! How much is 0.1 + 0.3 ?"
+                "ahhh... Something went wrong and I almost crashed... please can you try again?",
+                "sandrina will take a look. I hope."
             ],
             "help, help me, lost, i'm lost": [
                 "We all get lost sometimes"
@@ -268,6 +272,7 @@ var TalkBot = function(){
                 +brk+"By the way, don't forget to share me and talk about Sandrina while you’re out there :3",
                 "press x to close"
             ],
+            "hey there" : "Hi again! It was so dark here, now I feel safer with you :3"
         },
         LosT: [
             "I'm not sure what you meant. What about talking directly with Sandrina at "+myEmail

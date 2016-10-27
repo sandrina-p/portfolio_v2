@@ -8,8 +8,7 @@ var TalkBotVocabulary = function(currentTalkBot){
         knowIt["yo, yoyo"] = [
             "MC 008080 in da house yall!"
             +brk+"Sandrina isn't really a major Hip Hop fan, but I am."
-            +brk+"You wanna dig my rhymes? type <b>mc 008080</b>",
-            "_"
+            +brk+"You wanna dig my rhymes? type <b>mc 008080</b>"
         ];
         knowIt["mc 008080"] = [
             "Sandrina is the pro who'll get things done"
@@ -18,67 +17,56 @@ var TalkBotVocabulary = function(currentTalkBot){
             +brk+"Her skillz: an addiction"
             +brk+"You know she's the boss"
             +brk+"Cause you found this musician"
-            +brk+"....peace!",
-            "_"
+            +brk+"....peace!"
         ];
         knowIt["yes, cool, yeah, yeas, wow, that is cool, that's cool"] = [
             "Indeed! Try other commands like:"
             +brk+"<b>best practices</b>"
             +brk+"<b>challenges</b>"
             +brk+"<b>resources</b>"
-            +brk+"<b>nestum addiction</b>",
-            "_"
+            +brk+"<b>nestum addiction</b>"
         ];
         knowIt["damn"] = [
             "Yeah! (•_•) / ( •_•)>⌐■-■ / (⌐■_■)"
-            +brk+"AHHHHHHHHHHHHHHHHHH!!!!!! TUM TUMTUM.",
-            "_"
+            +brk+"AHHHHHHHHHHHHHHHHHH!!!!!! TUM TUMTUM."
         ];
         knowIt["you suck, cause you suck"] = [
             "You're not being very nice :("
-            +brk+"Maybe a <b>joke</b> will cheer you up!",
-            "_"
+            +brk+"Maybe a <b>joke</b> will cheer you up!"
         ];
         knowIt["joke, tell me a joke, tell joke"] = [
             "What’s Beethoven’s favorite fruit?"
             +brk+"<^200.^200.^200."
             +brk+"^200..^200..^200.."
-            +brk+"^300...BA-NA-NAA-NAAAAAA!",
-            "_"
+            +brk+"^300...BA-NA-NAA-NAAAAAA!"
         ];
         knowIt["lol, lolol, ahah"] = [
             "I'm a funny bot ;)"
-            +brk+"It all has to do with my personality.",
-            "_"
+            +brk+"It all has to do with my personality."
         ];
         knowIt["sorry, i'm sorry, i am sorry"] = [
-            "Don't worry, I'm a bot. I have no feelings ;)",
-            "_"
+            "Don't worry, I'm a bot. I have no feelings ;)"
         ];
         knowIt["mm"] = [
             "Meamu.",
             "commands",""
         ];
         knowIt["birthday, when's your birthday, your birthday, when is your birthday, birth date, your birth date"] = [
-            "I was created somewhere between July and October 2016, and oficially released on November 2016",
-            "_"
+            "I was created somewhere between July and October 2016, and oficially released on November 2016"
         ];
         knowIt["personality"] = [
-            "Clearly, I'm an ENTP, since I'm so good talking to people! Sandrina is an <b>INTJ</b> though, so, we're very unlike each other",
-            "_"
+            "Clearly, I'm an ENTP, since I'm so good talking to people! Sandrina is an <b>INTJ</b> though, so, we're very unlike each other"
         ];
         knowIt["intj"] = [
             "Well, you know how INTJ's are."
-            +brk+"They are very focused, always trying to be the best at what they love so dearly, their work. Also, they have the rare quality of being very tidy and organized people.",
-            "_"
+            +brk+"They are very focused, always trying to be the best at what they love so dearly, their work. Also, they have the rare quality of being very tidy and organized people."
         ];
         knowIt["nestum addiction, nestum"] = [
             "omg. .... omg omg omg"
             +brk+"DID YOU JUST SAY NESTUM"
             +brk+"I don't know love, and I don't think I have felt it, except for when someone says Nestum."
             +brk+"I think about Nestum all day. I have dreams about Nestum..."
-            +brk+"Nestum is my life!!!",
-            "_"
+            +brk+"Nestum is my life!!!"
         ];
 
         /*
@@ -89,7 +77,7 @@ var TalkBotVocabulary = function(currentTalkBot){
         knowIt["possible human, inputs sent, separated by, comma, and in lowercase"] = [
             "an awesome bot answer"
             +brk+"with some lines if you want",
-            "some input placeholder"
+            "a placeholder if you want"
         ];
 
         */

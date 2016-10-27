@@ -1,25 +1,43 @@
 var botSection = function() {
     var botContent = TalkBot.conversation,
-        $trigger = $('.js-botTrigger'),
         triggerActive = 'jsLoading',
         botInputId = "botInput",
         botAnswerClass = "bot-answer",
         botSentClass = "bot-sent",
         jsSentEmptyClass = "js-sentEmpty",
         $bot = $('#bot'),
-        $botInner = $('#bot').find('.bot-inner'),
-        $botText = $bot.find('.bot-text'),
-        clickOn = {},
+        $botInner,
+        $botText,
         intervalBotScroll,
         firstTrigger = true,
-        // botAnswerTyped = false,
         sentText, //text written on input
         context; //input context of the conversation
+
 
     function appendSent() {
         var sentEmpty = "";
         if(sentText == "") sentEmpty = jsSentEmptyClass;
         $botText.append("<p class='"+botSentClass+" "+sentEmpty+"'>"+sentText+"</p>");
+    }
+
+    function buildBot() {
+        var $elBot = $(`<div class="bot-header">
+                        <span class="bot-hl js-bot-user">:: /008080 - as superuser @ /*ip*/</span>
+                        <button name="close" type="button" class="btnBot bot-hr jsLoading" data-bot="exit">[Close]</button>
+                        <button name="help" type="button" class="btnBot bot-hr jsLoading" data-bot="help">[Help]</button>
+                        <button name="more" type="button" class="btnBot bot-hr jsLoading" data-bot="more">[More]</button>
+                    </div>
+                    <div class="bot-terminal">
+                        <div class="bot-text"></div>
+                    </div>
+                    <div class="bot-footer">
+                        <input type="text" name="talk-to-bot" class="bot-input jsLoading" id="botInput"></input>
+                    </div>`);
+
+        $bot.append($elBot);
+
+        $botInner = $('#bot').find('.bot-inner'),
+        $botText = $bot.find('.bot-text');
     }
 
     function getBotAnswer() {
@@ -64,6 +82,7 @@ var botSection = function() {
                 break;
             default:
                 talkToBot("tilttt");
+                GAcustom.sendToGA(`&ec=bug&ea=tilttt`);
         }
     }
 
@@ -79,14 +98,6 @@ var botSection = function() {
     }
 
     function appendBotAnswer(answer, objContext) {
-        // botAnswerTyped = answer.indexOf('typedJS') > -1;
-        // keepSectionFlag = answer.indexOf('keepSectionJS') > -1;
-
-        //remove previous keepSection messages
-        // if(typeof keepSectionClass !== 'undefined' && keepSectionClass != "") {
-        //     $botText.find('.'+keepSectionClass).remove();
-        // }
-
         $('.bot-terminal').animate({
             scrollTop: $('.bot-text').prop('scrollHeight')
         }, 0);
@@ -117,21 +128,15 @@ var botSection = function() {
 
         } else {
             setTimeout(function () {
-                // if (botAnswerTyped) {
-                    $botText.append("<p class='"+botAnswerClass+"'></p>").find('p:last-of-type').typed({
-                        strings: [answer[0]],
-                        contentType: 'html',
-                        typeSpeed: -450,
-                        startDelay: 0,
-                        callback: function() {
-                            afterAppendBotAnswer(answer, objContext);
-                        },
-                    });
-                // } else {
-                //     $botText.append("<p class='"+botAnswerClass+"'>"+answer[0]+"</p>");
-                //     keepSectionClass = "";
-                //     afterAppendBotAnswer(answer, objContext);
-                // }
+                $botText.append("<p class='"+botAnswerClass+"'></p>").find('p:last-of-type').typed({
+                    strings: [answer[0]],
+                    contentType: 'html',
+                    typeSpeed: -450,
+                    startDelay: 0,
+                    callback: function() {
+                        afterAppendBotAnswer(answer, objContext);
+                    },
+                });
             }, answer[0].length*1.33);
         }
     }
@@ -245,9 +250,15 @@ var botSection = function() {
 
     //showing 008080 section
     $(document).on('click', '.js-botTrigger', function(){
-        $bot.removeClass(triggerActive);
-        if(firstTrigger) {
-            appendBotAnswer(botContent.intro);
+
+        if(!firstTrigger) {
+            toggleBot();
+            talkToBot('welcome back');
+        } else {
+            buildBot();
+            $bot.removeClass(triggerActive);
+            setTimeout(() => appendBotAnswer(botContent.intro), 500);
+            setTimeout(() => { $('.bot-header').find('button').removeClass(triggerActive) }, 3000);
             firstTrigger = false;
         }
     });
@@ -266,24 +277,17 @@ var botSection = function() {
         }
     });
 
-    $(document).on('click', 'button[name=close]', function(){
-        toggleBot();
-    });
-
-    $(document).on('click', 'button[name=help]', function(){
-        talkToBot('help');
-    });
-
-    $(document).on('click', 'button[name=more]', function(){
-        talkToBot('more');
+    $(document).on('click', '.btnBot', function(){
+        talkToBot($(this).data('bot'));
     });
 
 
     $(document).ready(function () {
         $.get("https://ipinfo.io", function(response) {
             console.log(response.ip);
-            var newTxt = $('.js-bot-user').text().replace('/*ip*/', response.ip);
-            $('.js-bot-user').text(newTxt);
+            var $botUser = $('.js-bot-user'),
+                newTxt = $botUser.text().replace('/*ip*/', response.ip);
+            $botUser.text(newTxt);
         }, "jsonp");
     });
 

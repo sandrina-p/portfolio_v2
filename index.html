@@ -41,7 +41,7 @@
         <div class="heyThere-intro">
             <p>
                 I wanna to introduce you to someone.
-                She is a <strong>frontend developer</strong> with a great passion for <strong class="nowrap">interaction design</strong>.
+                <span class="nowrap">She is a</span> <strong>frontend developer</strong> with a great passion for <strong class="nowrap">interaction design</strong>.
                 <span class="heyThere-br"></span>
                 Where do you like to start?
             </p>
@@ -49,7 +49,7 @@
     </div>
 
     <div class="navCV">
-        <a href="#cv" class="navCV-link">cv</a>
+        <a href="#cv" class="navCV-link">or you can check her cv</a>
     </div>
 
     <div class="chat jsLoading" id="chat">
@@ -81,12 +81,6 @@
             </article>
         </div>
     </div>
-
-    <!-- <div class="chat-newnav" id="chat-nav">
-        <button type="button" name="background" id="btn-bg" class="chatPart-title js-chatOpt">history</button>
-        <button type="button" name="theory" id="btn-th" class="chatPart-title js-chatOpt">knowledge</button>
-        <button type="button" name="practice" id="btn-pr" class="chatPart-title js-chatOpt">projects</button>
-    </div> -->
 
     <section class="cv" id="cv">
     <h2 class="sr-only">CV</h2>
@@ -648,7 +642,7 @@ mNNysddMMMMMNssso+sos:sooy-so+somyNo+y/ooo+o+/-:sss.  /NMMMMMMMMMMMMMMMMMMMMMMMM
                 <dd class="cv-dd">jQuery lvl 2/2</dd>
                 <dd class="cv-dd">Shaping up with Angular.js</dd>
 
-                <dt class="cv-dt">some freelancer frontend</dt>
+                <dt class="cv-dt">freelancer projects</dt>
                 <dd class="cv-dd">learning health - jan'16</dd>
                 <dd class="cv-dd">carolina machado - oct'15</dd>
 
@@ -704,6 +698,14 @@ mNNysddMMMMMNssso+sos:sooy-so+somyNo+y/ooo+o+/-:sss.  /NMMMMMMMMMMMMMMMMMMMMMMMM
 
                 <li class="cv-li">3D Blender</li>
             </ul>
+
+            <h4 class="cv-ulTitle">Optimization</h4>
+            <ul class="cv-ul">
+                <li class="cv-li">Accessibility</li>
+                <li class="cv-li">SEO</li>
+                <li class="cv-li">Google Analytics</li>
+            </ul>
+
             <h4 class="cv-ulTitle">Assets</h4>
             <ul class="cv-ul">
                 <li class="cv-li">ambition</li>
@@ -740,26 +742,12 @@ mNNysddMMMMMNssso+sos:sooy-so+somyNo+y/ooo+o+/-:sss.  /NMMMMMMMMMMMMMMMMMMMMMMMM
         <br>I can tell you more about her projects.
         <br>What do you think?
     </p>
-    <button type="button" name="true" class="chatPart-title" data-gaec='psst'>yh, sure</button>
+    <button type="button" name="true" class="chatPart-title js-botProjects" data-gaec='psst'>yh, sure</button>
     <button type="button" name="false" class="chatPart-title js-botTrigger" data-gaec='psst'>not really</button>
     <span class="js-scrolled"><!-- try me on mobile--></span>
 </div>
 
-    <div class="bot jsLoading" id="bot">
-        <!-- ◉_◉ for the last time, it's javascript -->
-        <div class="bot-header">
-            <span class="bot-hl js-bot-user">:: /008080 - as superuser @ /*ip*/</span>
-            <button name="close" type="button" class="btnBot bot-hr">[Close]</button>
-            <button name="help" type="button" class="btnBot bot-hr">[Help]</button>
-            <button name="more" type="button" class="btnBot bot-hr">[More]</button>
-        </div>
-        <div class="bot-terminal">
-            <div class="bot-text"></div>
-        </div>
-        <div class="bot-footer">
-            <input type="text" name="" placeholder="" class="bot-input jsLoading" id="botInput"></input>
-        </div>
-    </div>
+    <div class="bot jsLoading" id="bot"><!-- ◉_◉ for the last time, it's javascript --></div>
 
     <noscript>
         <link rel="stylesheet" href="assets/styles/04_templates/index.min.css">

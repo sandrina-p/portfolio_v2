@@ -25,18 +25,16 @@ var chatNav = function() {
         (function showNav() {
             if($heyThereIntro.css('opacity') > "0.9") { //wtf iphone6, why the fuck you return 0.9999989867210388 on console.
                 $('#chat, #theory, #background, #practice').removeClass('jsLoading');
-                baffleBg.reveal(400, 750);
+                baffleBg.reveal(400, 450);
                 baffleTh.reveal(400, 250);
-                bafflePr.reveal(400, 500);
+                bafflePr.reveal(400, 300);
             } else {
-                setTimeout(function () {
-                    showNav();
-                }, 500);
+                setTimeout(() => showNav(), 500);
             }
         })();
 
         function navTranslate(thisId) {
-            var navWidth = untilTablet ? 0 : 34, //padding
+            var navWidth = untilTablet ? 0 : 20, //padding
                 padd = 16;
                 thisId = thisId || null;
 
@@ -45,17 +43,18 @@ var chatNav = function() {
                     return;
                 }
 
-                navWidth = untilTablet ? navWidth : navWidth + 24;
+                navWidth = untilTablet ? navWidth : navWidth + 36;
                 $(this).css({'transform': 'translateX('+navWidth+'px)'});
                 navWidth += $(this).width();
                 console.log($(this).width());
             });
 
-            //NOTE: Prevent bug on Safari. Sometimes it loads too soon. Even with timeout(),
+            //BUG: Prevent bug on Safari. Sometimes it loads too soon. Even with timeout(),
             // without knowing the real navWidth value.
-            if (navWidth < 1) {
+            if (navWidth < 150) {
                 console.log('upps... navTranslate() was loaded too soon');
                 navTranslate();
+                GAcustom.sendToGA(`&ec=bug&ea=navSoon`);
             } else {
                 console.log('nav loaded without problems');
             }
@@ -71,8 +70,6 @@ var chatNav = function() {
             });
         });
 
-        setTimeout(function () {
-            navTranslate();
-        }, 1000);
+        setTimeout(() => navTranslate(), 1000);
     });
 }();

@@ -85,6 +85,7 @@ if (!Modernizr.touchevents) {
 
             if(triggerOnWebInit && $(window).scrollTop() + windowHeight > offsetCv) {
                 triggerOnWebInit = false;
+                $('.navCV').remove();
                 OnWeb.init();
             }
         });

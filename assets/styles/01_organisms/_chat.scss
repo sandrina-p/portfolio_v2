@@ -10,7 +10,7 @@
 
     &.jsLoading {
         color: transparent;
-        animation: colorIn 1250ms;
+        animation: colorIn 50ms;
         animation-delay: 3s;
         animation-fill-mode: forwards;
 
@@ -19,7 +19,7 @@
             position: absolute;
             left: $safeArea;
             top: -$safeArea;
-            animation: doting 1500ms steps(18) infinite;
+            animation: waiting 1500ms steps(18) infinite;
         }
     }
 
@@ -316,23 +316,24 @@
     }
 }
 
-@keyframes doting {
+@keyframes waiting {
      0% {content: "";}
-     5% {content: "¯";}
-    10% {content: "¯\\";}
-    15% {content: "¯\\_";}
-    20% {content: "¯\\_(";}
-    25% {content: "¯\\_(ツ";}
-    30% {content: "¯\\_(ツ)";}
-    35% {content: "¯\\_(ツ)_";}
-    40% {content: "¯\\_(ツ)_/";}
+    23% {content: "";}
+    25% {content: "¯";}
+    27% {content: "¯\\";}
+    30% {content: "¯\\_";}
+    33% {content: "¯\\_(";}
+    35% {content: "¯\\_(ツ";}
+    37% {content: "¯\\_(ツ)";}
+    40% {content: "¯\\_(ツ)_";}
+    43% {content: "¯\\_(ツ)_/";}
     45% {content: "¯\\_(ツ)_/¯";}
-    65% {content: "¯\\_(ツ)_/";}
-    70% {content: "¯\\_(ツ)_";}
-    75% {content: "¯\\_(ツ)";}
-    80% {content: "¯\\_(ツ";}
-    85% {content: "¯\\_(";}
-    90% {content: "¯\\_";}
+    80% {content: "¯\\_(ツ)_/";}
+    83% {content: "¯\\_(ツ)_";}
+    85% {content: "¯\\_(ツ)";}
+    87% {content: "¯\\_(ツ";}
+    90% {content: "¯\\_(";}
+    93% {content: "¯\\_";}
     95% {content: "¯\\";}
    100% {content: "¯";}
 }

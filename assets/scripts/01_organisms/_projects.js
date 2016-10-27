@@ -21,14 +21,16 @@ var Projects = function() {
         untilTablet = UtilFuncs.untilTablet,
         wHeight,
 
-        $pivot, $projLeft, $projRight, $projActive, // ???() variables
+        $pivot, $projsLeft, $projsRight, $projActive, // ???() variables
         $projSub, $projMedia, $projRole, $projDate, $projIntro, $projDetails, $projLinks, $projBotTip, // getProjDomElements variables
         $newActive, fPos, $projDir, addProjNumb, isParentLeft, //onNavMoved variables
         estimateFinalWidth, projActiveWidth, pivotPos, projActivePos, transX, //alignPivot variables
         baffle0, baffle1, baffle2, baffle3, baffle4, //baffle variables
 
         windowBotWidth = window.innerWidth*40/100,
-        numbOfGestures = 0; //
+        numbOfGestures = 0
+        projectsVisible = false,
+        gael = ""; //google analytics order of projects viewed
 
 
     // ------ build nav and project DOM ------ //
@@ -84,11 +86,15 @@ var Projects = function() {
 
         for (var i = 0, projName, nameSlug, projLength = arrProjects.length; i < projLength; i++) {
             projName = arrProjects[i];
-            nameSlug = projName.split(' ').join('-').toLowerCase();
-            elProjNav += "<button type='button' name='"+nameSlug+"' class='projNav-btn' data-gaec='projects'>"+projName+"</button>"
+            nameSlug = UtilFuncs.stringSlugLower(projName);
+            elProjNav += getElBtn(nameSlug, projName);
         }
 
         return elProjNav;
+    }
+
+    function getElBtn(nameSlug, projName) {
+        return "<button type='button' name='"+nameSlug+"' class='projNav-btn' data-gaec='projects'>"+projName+"</button>"
     }
 
     function addProjNav(quantity) {
@@ -96,24 +102,26 @@ var Projects = function() {
             nameSlug,
             projI =
                 isParentLeft
-                    ? arrProjects.indexOf($projLeft.children(":first").text())
-                    : arrProjects.indexOf($projRight.children(":last").text());
+                    ? arrProjects.indexOf($projsLeft.children(":first").text())
+                    : arrProjects.indexOf($projsRight.children(":last").text());
 
         if (isParentLeft) {
+            projRestart = arrProjects[arrProjects.length-1];
             for (var i = 1; i <= quantity; i++) {
-                projName = arrProjects[projI-i] || arrProjects[arrProjects.length-1];
-                nameSlug = projName.split(' ').join('-').toLowerCase(),
-                addProjects += "<button type='button' name='"+nameSlug+"' class='projNav-btn' data-gaec='projects'>"+projName+"</button>"; //TODO merge duplicated syntax
+                projName = arrProjects[projI-i] || projRestart;
+                nameSlug = UtilFuncs.stringSlugLower(projName),
+                addProjects += getElBtn(nameSlug, projName);
             }
-            $projLeft.prepend(addProjects);
-
         } else {
+            projRestart = arrProjects[0];
             for (var i = 1; i <= quantity; i++) {
-                projName = arrProjects[projI+i] || arrProjects[0];
-                addProjects += "<button type='button' name='"+nameSlug+"' class='projNav-btn' data-gaec='projects'>"+projName+"</button>";
+                projName = arrProjects[projI+i] || projRestart;
+                nameSlug = UtilFuncs.stringSlugLower(projName),
+                addProjects += getElBtn(nameSlug, projName);
             }
-            $projRight.append(addProjects);
         }
+
+        $projsRight.append(addProjects);
     }
 
 
@@ -131,8 +139,8 @@ var Projects = function() {
         $projBotTip = $(classProjBotTip),
 
         $pivot = $('.projNav-pivot'),
-        $projLeft = $('.projNav-left'), //In case you, sandrina, forget it, it's needed -left and -right to smooth things out when a new button cames out
-        $projRight = $('.projNav-right');
+        $projsLeft = $('.projNav-left'), //In case you, sandrina, forget it, it's needed -left and -right to smooth things out when a new button cames out
+        $projsRight = $('.projNav-right');
     }
 
     function getProjectImgs(imgArray) {
@@ -166,8 +174,8 @@ var Projects = function() {
     }
 
     function getProjectData(projName) {
-        //FIXME no var declarated
-        var projSlug = projName.split(' ').join('-').toLowerCase(),
+        //FIXME take out var from here.
+        var projSlug = UtilFuncs.stringSlugLower(projName),
             projData = chatContent.practice[projName],
 
             elImgs = getProjectImgs(projData.img),
@@ -200,10 +208,10 @@ var Projects = function() {
 
     function updateVarsOnNav(condition) {
         if (condition) {
-            $projDir = $projLeft,
+            $projDir = $projsLeft,
             fPos = 'last';
         } else {
-            $projDir = $projRight,
+            $projDir = $projsRight,
             fPos = 'first';
         }
 
@@ -241,7 +249,6 @@ var Projects = function() {
     }
 
     function showNewProject() {
-
         baffleProj();
         getProjectData($newActive.text());
 
@@ -252,23 +259,23 @@ var Projects = function() {
             addProjNav(addProjNumb);
         } else {
             isParentLeft
-                ? $projLeft.children().first().remove()
-                : $projRight.children().last().remove();
+                ? $projsLeft.children().first().remove()
+                : $projsRight.children().last().remove();
         }
 
         setTimeout(function () {
             estimateFinalWidth = !isParentLeft || untilTablet;  //calculate final +/- width before it happens - FIXME this is not the best solution, but it's the better i could get
-            $newActive.addClass(activeClass).attr('disabled',true);
+            $newActive.addClass(activeClass).prop('disabled', true);
             $projActive = $newActive;
-            alignPivot(null, direction);
+            alignPivot();
 
             //align Pivot again to pixel perfect
-            setTimeout(function () {
-                if (estimateFinalWidth) {
+            if (estimateFinalWidth) {
+                setTimeout(function () {
                     estimateFinalWidth = false;
                     alignPivot();
-                }
-            }, 150);
+                }, 150);
+            }
         }, 150);
     }
 
@@ -317,14 +324,17 @@ var Projects = function() {
     }
 
     $(document).keydown(function(e) {
-        if (e.keyCode == 37) { // [ < ]
-            onNavMoved('left');
-        } else if (e.keyCode == 39) { // [ > ]
-            onNavMoved('right');
+        if (projectsVisible) {
+            if (e.keyCode == 37) { // [ < ]
+                onNavMoved('left');
+            } else if (e.keyCode == 39) { // [ > ]
+                onNavMoved('right');
+            }
         }
+
     });
 
-                        //TODO a class here please.
+                        //FIXME a class here please.
     $(document).on('click', '.projNav-pivot button', function() {
         onNavProjClick($(this));
     });
@@ -360,6 +370,7 @@ var Projects = function() {
             setTimeout(() => alignPivot(), 150); //align Pivot again to pixel perfect
         }, 400);
 
+        projectsVisible = true;
         $('.js-cvUnder').remove(); //remove projects on CV
     }
 
@@ -384,11 +395,26 @@ var Projects = function() {
         showNewProject();
     }
 
-    var gael = "";
-
     function onNavMoved(direction) {
         $newActive = direction == 'left' ? $projActive.prev() : $projActive.next();
         isParentLeft = checkIsParentLeft();
+
+        // //i need a draw to explain this ._.
+        // //if the direction is left <-, get the prev project.
+        // if (direction == "left") {
+        //     $newActive = $projActive.prev();
+        //     // if there is no project it's because you are between .projNav-*.
+        //     // So get the last project of the .projNav-left ($projsLeft).
+        //     if ($newActive.length == 0) {
+        //         $newActive = $projsLeft.children(":last");
+        //     }
+        //
+        // } else { //do the same condition but for the other side.
+        //     $newActive = $projActive.next();
+        //     if ($newActive.length == 0) {
+        //         $newActive = $projsRight.children(":first");
+        //     }
+        // }
 
         updateVarsOnNav(direction == 'left');
 
@@ -406,7 +432,7 @@ var Projects = function() {
                 changeBotNavText("you love loops don't you?");
                 break;
             case 40:
-                changeBotNavText("[TILT] my head's spinning.");
+                changeBotNavText("my head's spinning.");
                 break;
             case 80:
                 changeBotNavText("you got the idea.");
@@ -415,7 +441,7 @@ var Projects = function() {
                 changeBotNavText("._.");
                 break;
             case 200:
-                changeBotNavText("so much fun.");
+                changeBotNavText("what a kid ¯\\_(ツ)_/¯");
                 break;
             default:
                 changeBotNavText("");
@@ -471,9 +497,7 @@ $(function cvProjects(){
                 }, 2500);
 
             } else { // otherwise call () itself again in 1000ms;
-                setTimeout(function () {
-                    hightlightProject(child);
-                }, 1000);
+                setTimeout(() => hightlightProject(child), 1000);
             }
         }
 
