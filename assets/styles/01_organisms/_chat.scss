@@ -6,6 +6,7 @@
     position: relative;
     padding-bottom: $safeArea*12;
     color: transparent;
+    z-index: 1;
 
 
     &.jsLoading {

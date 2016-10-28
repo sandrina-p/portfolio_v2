@@ -73,21 +73,22 @@ var OnWeb = function() {
     }
 }();
 
-if (!Modernizr.touchevents) {
-    $(function lookIntoOnWww(){
-        var $cv = $("#cv"),
-            offsetCv,
-            windowHeight = window.innerHeight;
-            triggerOnWebInit = true;
 
-        $(window).scroll(function() {
-            offsetCv = $cv.offset().top;
+$(function lookIntoOnWww(){
+    var $cv = $("#cv"),
+        offsetCv,
+        windowHeight = window.innerHeight;
+        triggerOnWebInit = true;
 
-            if(triggerOnWebInit && $(window).scrollTop() + windowHeight > offsetCv) {
-                triggerOnWebInit = false;
-                $('.navCV').remove();
+    $(window).scroll(function() {
+        offsetCv = $cv.offset().top;
+
+        if(triggerOnWebInit && $(window).scrollTop() + windowHeight > offsetCv) {
+            triggerOnWebInit = false;
+            $('.navCV').remove();
+            if (!Modernizr.touchevents) {
                 OnWeb.init();
             }
-        });
+        }
     });
-}
+});

@@ -53,7 +53,7 @@
     </div>
 
     <div class="navCV">
-        <a href="#cv" class="navCV-link" data-gaec="navCV">Cut the shit. Who is she?</a>
+        <a href="#cv" class="navCV-link" data-gaec="navCV">Let's cut the bullshit. Who is she?</a>
     </div>
 
     <div class="chat jsLoading" id="chat">

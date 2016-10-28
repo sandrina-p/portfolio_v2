@@ -299,17 +299,18 @@ $cvPaddingLeft: 10vw;
     width: 100%;
     left: 0;
     background: $clrDark;
-    padding: $safeArea/3;
-    padding-left: $safeArea;
     z-index: 1;
     bottom: -$safeArea*2;
     animation: navCVshow $speed/2 steps(10);
     animation-delay: 2800ms;
     animation-fill-mode: forwards;
     transition: bottom $speed/2;
+    text-align: center;
+    z-index: 2;
+    padding: $safeArea/2 $safeArea/3;
 
     .navCV-link {
-        padding-left: $safeArea*3;
+        font-size: $fontXS;
         font-family: $font-mono;
         color: $clrPrimarySoft;
 
@@ -320,6 +321,11 @@ $cvPaddingLeft: 10vw;
 
     @include media(tablet) {
         padding-left: $humanWidthTablet;
+        text-align: left;
+
+        .navCV-link {
+            padding-left: $safeArea*3;
+        }
     }
 }
 

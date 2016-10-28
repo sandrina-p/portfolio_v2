@@ -71,27 +71,27 @@
                 <dd class="cv-dd">zaask - since oct'15</dd>
 
                 <dt class="cv-dt">code school courses</dt>
-                <dd class="cv-dd">JavaScript ES2015 lvl 1/2</dd>
+                <dd class="cv-dd">JavaScript ES2015 <span class="nowrap">lvl 1/2</span></dd>
                 <dd class="cv-dd">JavaScript Best Practices</dd>
-                <dd class="cv-dd">JavaScript Road Trip lvl 3/3</dd>
+                <dd class="cv-dd">JavaScript Road Trip <span class="nowrap">lvl 3/3</span></dd>
                 <dd class="cv-dd">jQuery lvl 2/2</dd>
                 <dd class="cv-dd">Shaping up with Angular.js</dd>
 
                 <dt class="cv-dt">freelancer projects</dt>
-                <dd class="cv-dd">learning health - jan'16</dd>
-                <dd class="cv-dd">carolina machado - oct'15</dd>
+                <dd class="cv-dd">learning health <span class="nowrap">- jan'16</span></dd>
+                <dd class="cv-dd">carolina machado <span class="nowrap">- oct'15</span></dd>
 
                 <dt class="cv-dt">post graduation - digital <span class="nowrap">experience design</span></dt>
-                <dd class="cv-dd">faculty fine arts lisbon - 2015'16</dd>
+                <dd class="cv-dd">faculty fine arts lisbon <span class="nowrap">- 2015'16</span></dd>
 
                 <dt class="cv-dt">ux|ui designer </dt>
-                <dd class="cv-dd">pure - 2015</dd>
+                <dd class="cv-dd">pure <span class="nowrap">- 2015</span></dd>
 
                 <dt class="cv-dt">erasmus - communication design</dt>
-                <dd class="cv-dd">faculty fine arts porto - 2014'15</dd>
+                <dd class="cv-dd">faculty fine arts porto <span class="nowrap">- 2014'15</span></dd>
 
                 <dt class="cv-dt">degree - communication design</dt>
-                <dd class="cv-dd">faculty fine arts lisbon - 2012'15</dd>
+                <dd class="cv-dd">faculty fine arts lisbon <span class="nowrap">- 2012'15</span></dd>
             </dl>
         </div>
     </article>

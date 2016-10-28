@@ -97,6 +97,8 @@ $chatBotWidthTab: rem(520);
     #MEDIA QUERIES
 \*------------------------------------*/
 
+$i4-height: rem(440);
+$i5-height: rem(470);
 $mobile-width: rem(450);
 $phablet-width: rem(550);
 $tablet-width: rem(750);
@@ -105,6 +107,18 @@ $desktop-width: rem(1600);
 $mediaHeight: rem(400);
 
 @mixin media($media) {
+
+    @if $media == iphone4 {
+        @media (max-height: #{$i4-height}) {
+            @content;
+        }
+    }
+
+    @if $media == iphone5 {
+        @media (max-height: #{$i5-height}) {
+            @content;
+        }
+    }
 
     @if $media == untilPhablet {
         @media (max-width: #{$phablet-width - rem(1)}) {

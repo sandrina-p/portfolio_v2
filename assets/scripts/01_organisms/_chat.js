@@ -1,4 +1,4 @@
-var chatApp = function() {
+var ChatApp = function() {
     //general chat classes
     var chatContent = TalkChat.conversation,
         mainSections = TalkChat.mainSections,
@@ -282,4 +282,8 @@ var chatApp = function() {
     $(document).one('click', '.js-chatOpt', function(){
         Psst.changePsst('psstChat');
     });
+
+    return {
+        scrollSafe
+    }
 }();

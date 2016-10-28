@@ -59,6 +59,25 @@ $HTFontTab: $font6XL;
     }
 }
 
+@include media(iphone4) {
+    .heyThere {
+        &-hey {
+            font-size: $fontXXXXL;
+        }
+    }
+}
+
+@include media(iphone5) {
+    .heyThere {
+        padding-top: 2vh;
+
+        &-intro {
+            margin-top: $safeArea;
+            padding-bottom: $safeArea*3;
+        }
+    }
+}
+
 @include media(phablet) {
     .heyThere {
         &-intro {

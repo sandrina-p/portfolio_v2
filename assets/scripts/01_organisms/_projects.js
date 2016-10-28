@@ -106,15 +106,14 @@ var Projects = function() {
                     : arrProjects.indexOf($projsRight.children(":last").text());
 
         if (isParentLeft) {
-            projRestart = arrProjects[arrProjects.length-1];
-            for (var i = 1; i <= quantity; i++) {
+
+            for (var i = 1, projRestart = arrProjects[arrProjects.length-1]; i <= quantity; i++) {
                 projName = arrProjects[projI-i] || projRestart;
                 nameSlug = UtilFuncs.stringSlugLower(projName),
                 addProjects += getElBtn(nameSlug, projName);
             }
         } else {
-            projRestart = arrProjects[0];
-            for (var i = 1; i <= quantity; i++) {
+            for (var i = 1, projRestart = arrProjects[arrProjects.length-1]; i <= quantity; i++) {
                 projName = arrProjects[projI+i] || projRestart;
                 nameSlug = UtilFuncs.stringSlugLower(projName),
                 addProjects += getElBtn(nameSlug, projName);
