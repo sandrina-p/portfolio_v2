@@ -296,19 +296,22 @@ $cvPaddingLeft: 10vw;
 .navCV {
     display: block;
     position: fixed;
-    bottom: $safeArea/2;
+    width: 100%;
     left: 0;
+    background: $clrDark;
+    padding: $safeArea/3;
     padding-left: $safeArea;
     z-index: 1;
-    opacity: 0;
-    animation: heyThere 300ms steps(11);
-    animation-delay: 2600ms;
+    bottom: -$safeArea*2;
+    animation: navCVshow $speed/2 steps(10);
+    animation-delay: 2800ms;
     animation-fill-mode: forwards;
+    transition: bottom $speed/2;
 
     .navCV-link {
-        font-size: $fontXS;
+        padding-left: $safeArea*3;
         font-family: $font-mono;
-        color: $clrGray;
+        color: $clrPrimarySoft;
 
         &:hover {
             @extend %glitchWD;
@@ -316,10 +319,13 @@ $cvPaddingLeft: 10vw;
     }
 
     @include media(tablet) {
-        display: block;
-        left: $humanWidthTablet;
-        padding-left: $safeArea*3;
+        padding-left: $humanWidthTablet;
     }
+}
+
+@keyframes navCVshow {
+    0% {bottom: -$safeArea*2;}
+    100% {bottom: 0;}
 }
 
 @import "../01_organisms/mee";
