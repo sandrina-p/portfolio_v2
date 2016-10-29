@@ -31,7 +31,7 @@
                             <i class="fa fa-codepen"></i> codepen
                         </a>
                     </dt>
-                    <dd class="cv-dd js-onWeb-remove">because coding without fun, it's <span class="nowrap">just boring</span></dd>
+                    <dd class="cv-dd js-onWeb-remove">because coding without fun is <span class="nowrap">just boring</span></dd>
 
                     <dt class="cv-dt js-onWeb-remove">
                         <a href="//github.com/sandrina-p" target="_blank" title="sandrina's stackoverflow" class="cv-link">

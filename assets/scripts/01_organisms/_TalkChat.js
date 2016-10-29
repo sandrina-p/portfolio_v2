@@ -203,7 +203,7 @@ var TalkChat = function(){
             social: {
                 codepen: {
                     link: "//codepen.io/sandrina-p",
-                    dd: "because coding without fun, it's just boring"
+                    dd: "because coding without fun is just boring"
                 },
                 github: {
                     link: "//github.com/sandrina-p",
