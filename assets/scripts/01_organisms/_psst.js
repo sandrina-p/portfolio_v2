@@ -84,6 +84,10 @@ var Psst = function() {
         showScrollify($('.js-psst'));
     })
 
+    $(document).on('click', '#btn-pr', function(){
+        Psst.changePsst('psstChat');
+    });
+
     return {
         changePsst
     }

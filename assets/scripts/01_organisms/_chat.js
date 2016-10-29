@@ -279,10 +279,6 @@ var ChatApp = function() {
         clickOption($(this));
     });
 
-    $(document).one('click', '.js-chatOpt', function(){
-        Psst.changePsst('psstChat');
-    });
-
     return {
         scrollSafe
     }
