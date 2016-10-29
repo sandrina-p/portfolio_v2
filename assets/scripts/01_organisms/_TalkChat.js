@@ -226,8 +226,8 @@ var TalkChat = function(){
             // returnOnFly: "Hey there, where have you been?",
             psstChat: [
                 "i'm surprised",
-                "i'm not sure what to say but ... algo fun <span class='nowrap'>seria nice.</span>",
-                "[go to bot]"
+                "Hmm... I'm not allowed to share more info about her. <br> She is very nice, specially if you are a good looking website like me.",
+                "Who are you?"
             ],
             psstMob : [
                 "Hmm...",

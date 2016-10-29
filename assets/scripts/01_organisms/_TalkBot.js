@@ -52,7 +52,7 @@ var TalkBot = function(){
         intro: [
             "Now that we talked enough about Sandrina,"
             +brk+"^100Ah yes, that's her name, I forgot to tell you."
-            +brk+"^150 Now I think I could talk about me. Like, nerd talk... but before that just tell me one thing:"
+            +brk+"^150 Now we can talk about me. Like, nerd talk... but before that just tell me one thing:"
             +brk+"1 divided by 0 equal to:",
             "your answer here", "options"
         ],
