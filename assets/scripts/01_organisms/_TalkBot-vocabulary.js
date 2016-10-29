@@ -51,7 +51,7 @@ var TalkBotVocabulary = function(currentTalkBot){
             "Meamu.",
             "commands",""
         ];
-        knowIt["birthday, when's your birthday, your birthday, when is your birthday, birth date, your birth date"] = [
+        knowIt["birthday, bday, when's your birthday, your birthday, when is your birthday, birth date, your birth date"] = [
             "I was created somewhere between July and October 2016, and oficially released on November 2016"
         ];
         knowIt["personality"] = [
@@ -76,7 +76,7 @@ var TalkBotVocabulary = function(currentTalkBot){
 
         knowIt["possible human, inputs sent, separated by, comma, and in lowercase"] = [
             "an awesome bot answer"
-            +brk+"with some lines if you want",
+            +brk+"with multiple lines if you want",
             "a placeholder if you want"
         ];
 

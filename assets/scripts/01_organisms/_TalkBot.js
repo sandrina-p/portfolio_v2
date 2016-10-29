@@ -65,7 +65,7 @@ var TalkBot = function(){
             ]
             */
             "gg, ggg":['ready to go', "sabes os comandos nao sabes?", "commands"],
-            "∞ infinity, infinity, ∞, universe, cosmos": [
+            "infinity and beyond, chaos, ∞ infinity, infinity, ∞, universe, cosmos": [
                 "You are a little crazy… we all are."
                 +brk+"Despite always being under construction I already have the ability to share some knowledge Sandrina taught me while I was growing up."
                 +publicCmd,
@@ -237,7 +237,7 @@ var TalkBot = function(){
             "sandrina": [
                 "Yes... anything more you want to know about her? I recommend you to say Hi! -> "+myEmail
             ],
-            "what's your name?, what is your name?": [
+            "what's your name, what is your name, name": [
                 "I'm 008080. What about you?",
                 "you can tell me, but i'll not be able to understand you. not yet :(", "username"
             ],
@@ -254,11 +254,11 @@ var TalkBot = function(){
             "ok, okay": [
                 "hmm... ok."
             ],
-            "suit, suit methodology, Module Pattern, gulp, grunt, perceived loading time, fouc": [
+            "suit, suit methodology, module pattern, gulp, grunt, perceived loading time, fouc": [
                 "hmm... I knew you would type that. Sandrina already did some user research, like you in this moment. Soon I'll be able to better answer you, but for now, it's better for you to [Google It].",
                 "this time do it by youself, yes? :D"
             ],
-            "tell me more, more, what else?, what else": [
+            "tell me more, more, what else, anything else": [
                 "you are such a curious creature :3. I'm still under construction, but you can leave a quick message to Sandrina. Just type something started by @@. She will answer you for sure.", //TODO
                 "@@ your@email.com - Hi sandrina! How much is 0.1 + 0.3 ?"
             ],
@@ -267,7 +267,7 @@ var TalkBot = function(){
                 "ahhh... Something went wrong and I almost crashed... please can you try again?",
                 "sandrina will take a look. I hope."
             ],
-            "help, help me, lost, i'm lost": [
+            "help, help me, lost, i'm lost, im lost, i am lost": [
                 "We all get lost sometimes"
                 +brk+""+publicCmd,
                 "try again"
