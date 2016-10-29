@@ -41,7 +41,7 @@
         <h2 class="heyThere-hey"><span>H</span><span>e</span><span>y</span><br><span>t</span><span>h</span><span>e</span><span>r</span><span>e</span></h2>
         <div class="heyThere-intro">
             <p>
-                I wanna to introduce you to someone.
+                I wanna introduce you to someone.
                 <span class="nowrap">She is a</span> <strong>frontend developer</strong> with a great passion for <strong class="nowrap">interaction design</strong>.
                 <span class="heyThere-br"></span>
                 Where would you like to start?
