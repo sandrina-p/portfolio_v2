@@ -252,6 +252,7 @@ var botSection = function() {
 
     function toggleBot() {
         $bot.toggleClass(triggerActive);
+        cvProjects.setProjLoop(false);
     }
 
 
@@ -264,6 +265,7 @@ var botSection = function() {
             toggleBot();
             talkToBot('welcome back');
         } else {
+            cvProjects.setProjLoop(false);
             buildBot();
             $bot.removeClass(triggerActive);
             setTimeout(() => appendBotAnswer(botContent.intro), 500);

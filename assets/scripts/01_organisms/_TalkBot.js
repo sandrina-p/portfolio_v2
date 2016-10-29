@@ -64,8 +64,8 @@ var TalkBot = function(){
                 "input placeholder", "context of the next input"
             ]
             */
-            "gg":['ready to go', "sabes os comandos nao sabes?", "commands"],
-            "∞ infinity, infinity, , ∞, universe, cosmos": [
+            "gg, ggg":['ready to go', "sabes os comandos nao sabes?", "commands"],
+            "∞ infinity, infinity, ∞, universe, cosmos": [
                 "You are a little crazy… we all are."
                 +brk+"Despite always being under construction I already have the ability to share some knowledge Sandrina taught me while I was growing up."
                 +publicCmd,

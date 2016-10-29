@@ -85,7 +85,10 @@ $(function lookIntoOnWww(){
 
         if(triggerOnWebInit && $(window).scrollTop() + windowHeight - 45 > offsetCv) {
             triggerOnWebInit = false;
+
             $('.navCV').remove();
+            cvProjects.setProjLoop(true);
+
             if (!Modernizr.touchevents) {
                 OnWeb.init();
             }

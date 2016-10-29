@@ -467,56 +467,75 @@ var Projects = function() {
 }();
 
 
+var cvProjects = function(){
 
-$(function cvProjects(){
+    var $cvProjUl,
+        $cvProjects,
+        $sub,
+        ArrProj,
+        maxChild,
+        projI = 0,
+        iR,
+        keepLooping = false, //triggered _onweb.js
+        $child; //var on hightlightProject();
 
-    var cvProjects = function(){
 
-        var $cvProjUl = $('.js-cvProj'),
-            $cvProjects = $cvProjUl.find('.cv-link'),
-            $sub = $('.js-cvProjSub'),
-            ArrProj = $cvProjects.toArray(),
-            maxChild = ArrProj.length,
-            projI = 0,
-            iR,
-            keepLooping = true,
-            $child; //var on hightlightProject();
+    function hightlightProject(child) {
 
-        function hightlightProject(child) {
+        if(keepLooping) { // active next project and call itself with next child index,
+            $child = $(child);
+            removeActive();
+            $child.addClass('active');
+            setNewSub($child.data('sub'));
 
-            if(keepLooping) { // active next project and call itself with next child index,
-                $child = $(child);
-                removeActive();
-                $child.addClass('active');
-                setNewSub($child.data('sub'));
+            setTimeout(function () {
+                iR = UtilFuncs.randomNumb(ArrProj);
+                hightlightProject(ArrProj[iR]);
+            }, 2500);
 
-                setTimeout(function () {
-                    iR = UtilFuncs.randomNumb(ArrProj);
-                    hightlightProject(ArrProj[iR]);
-                }, 2500);
-
-            } else { // otherwise call () itself again in 1000ms;
-                setTimeout(() => hightlightProject(child), 1000);
-            }
+        } else { // otherwise call () itself again in 1000ms;
+            setTimeout(() => hightlightProject(child), 1000);
         }
+    }
 
-        function removeActive() {
-            $cvProjects.removeClass('active');
-        }
+    function removeActive() {
+        $cvProjects.removeClass('active');
+    }
 
-        function setNewSub(text) {
-            $sub.html(`<span>${text}<span>`);
-        }
+    function setNewSub(text) {
+        $sub.html(`<span>${text}<span>`);
+    }
+
+
+    $(function cvProjects(){
+        (function updateVars() {
+            $cvProjUl = $('.js-cvProj');
+            $cvProjects = $cvProjUl.find('.cv-link');
+            $sub = $('.js-cvProjSub');
+            ArrProj = $cvProjects.toArray();
+            maxChild = ArrProj.length;
+        })();
 
         hightlightProject(ArrProj[projI]);
 
         $cvProjects.on('mouseenter', function(){
             removeActive();
             setNewSub($(this).data('sub'));
-            keepLooping = false;
+            setProjLoop(false);
         }).on('mouseleave', function(){
-            keepLooping = true;
+            setProjLoop(true);
         });
+    });
 
-    }();
-});
+
+
+    // ------ publicCmd  ------ //
+    function setProjLoop(status = false) {
+        keepLooping = status;
+    }
+
+    return {
+        setProjLoop
+    }
+
+}();

@@ -16,7 +16,7 @@ var TalkChat = function(){
         // },
         background: {
             "intro":
-                `Right now she's a <strong>frontend developer</strong> in a startup: Zaask.
+                `Right now she's a <strong>frontend developer</strong> in <span class="nowrap">a startup: Zaask.</span>
                 ${brk}Plus, she just finished a post-graduation degree on <strong>Digital Experience Design</strong> at FBAUL.`,
 
             "before that":
@@ -32,12 +32,12 @@ var TalkChat = function(){
         theory: {
             "intro":
                 `She breaths <strong>HTML5, SCSS</strong> and <strong>Javascript</strong>.
-                ${br} Interactivity is her main passion, and that results in a <strong>daily exploration</strong> of all things technological.
-                ${br}Her favourite hobby is to <strong>connect users like you to awesome websites like me</strong>.
-                ${br}As a designer, she loves <strong>Sketch</strong>, has a great relationship with <strong>Adobe Tools</strong> and likes <strong>Blender</strong>.`,
+                ${brk} Interactivity is her main passion, and that results in a <strong>daily exploration</strong> of all things technological.
+                ${brk}Her favourite hobby is to <strong>connect users like you to awesome websites like me</strong>.
+                ${brk}As a designer, she loves <strong>Sketch</strong>, has a great relationship with <strong>Adobe Tools</strong> and likes <strong>Blender</strong>.`,
             "other techs":
                 `<strong>PHP</strong>, <strong>Angular 2</strong> and <strong>Ionic</strong> 2 have crossed her path, but right now she is focusing on improving her javascript skills.
-                ${br}Soon she will start learning <strong>React</strong>, <strong>Firebase</strong> and <strong>Regular Expressions</strong>`,
+                ${brk}Soon she will start learning <strong>React</strong>, <strong>Firebase</strong> and <strong>Regular Expressions</strong>`,
             "micro inter#!?":
                 `In one sentence: She loves to explore new concepts, meaningful transitions that <strong>connect users like you who interact with stuff like me.</strong>`,
             "learning":
@@ -49,8 +49,8 @@ var TalkChat = function(){
             //     ${brk}Recently she was a part of the creation of a video game's concept as a motion designer.`,
             "workplace":
                 `She is a fast paced worker, so she likes to work alone.
-                ${br}Unless your ambitions are as high as hers, then it’s a match made in heaven.
-                ${br} From <strong>creative to technical, she can excel at any role.</strong>`
+                ${brk}Unless your ambitions are as high as hers, then it’s a match made in heaven.
+                ${brk} From <strong>creative to technical, she can excel at any role.</strong>`
         },
         practice: {
             intro: "Most of these projects she did both design and code parts."+brk+"What connects them is the <strong>constant searching for a unique experience</strong>."+brk+"A visual pleasure that engages the user through a nice interactive experience."+brk+"Let me start with something cool:",
@@ -226,7 +226,9 @@ var TalkChat = function(){
             // returnOnFly: "Hey there, where have you been?",
             psstChat: [
                 "i'm surprised",
-                "Hmm... I'm not allowed to share more info about her. <br> She is very nice, specially if you are a good looking website like me.",
+                "Hmm... I'm not allowed to share more info about her."
+                +brk+"But by all means, don't be shy and go <a href='mailto:a.sandrina.p@gmail.com?subject=Hello!' target='_blank' class='link'>say hello</a>."
+                +brk+"She is very nice, specially if you are a good looking website like me.",
                 "Who are you?"
             ],
             psstMob : [
