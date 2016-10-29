@@ -24,9 +24,6 @@
     </style>
 </head>
 
-<?php
-    $loadingNav = 'jsLoading';
-?>
 <body>
     <script>
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -60,26 +57,25 @@
         <!-- not so fast. it's javascript ¯\_(ツ)_/¯ -->
 
         <div class="chat-nav" id="chat-nav">
-            <article class="chatSection jsOnNav <?php echo $loadingNav ?>" id="background" style="translateX(0px);">
-                <div class="chatPart" id="background-intro">
-                    <div class="chatPart-human">
-                        <button type="button" name="background" id="btn-bg" class="chatPart-title js-chatOpt" data-gaec="chat">history</button>
-                    </div>
-                </div>
-            </article>
-
-            <article class="chatSection jsOnNav <?php echo $loadingNav ?>" id="theory" style="translateX(83px);">
-                <div class="chatPart" id="theory-intro">
-                    <div class="chatPart-human">
-                        <button type="button" name="theory" id="btn-th" class="chatPart-title js-chatOpt" data-gaec="chat">knowledge</button>
-                    </div>
-                </div>
-            </article>
-
-            <article class="chatSection jsOnNav <?php echo $loadingNav ?>" id="practice" style="translateX(185px);">
+            <article class="chatSection jsOnNav jsLoading" id="practice">
                 <div class="chatPart" id="practice-intro">
                     <div class="chatPart-human">
-                        <button type="button" name="practice" id="btn-pr" class="chatPart-title js-chatOpt" data-gaec="chat">projects</button>
+                        <button type="button" name="practice" id="btn-pr" class="chatPart-title js-chatOpt" data-gaec="chatNavL">projects</button>
+                    </div>
+                </div>
+            </article>
+            <article class="chatSection jsOnNav jsLoading" id="background">
+                <div class="chatPart" id="background-intro">
+                    <div class="chatPart-human">
+                        <button type="button" name="background" id="btn-bg" class="chatPart-title js-chatOpt" data-gaec="chatNavL">history</button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="chatSection jsOnNav jsLoading" id="theory">
+                <div class="chatPart" id="theory-intro">
+                    <div class="chatPart-human">
+                        <button type="button" name="theory" id="btn-th" class="chatPart-title js-chatOpt" data-gaec="chatNavL">knowledge</button>
                     </div>
                 </div>
             </article>

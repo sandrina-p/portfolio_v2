@@ -10,14 +10,14 @@ var botSection = function() {
         $botText,
         intervalBotScroll,
         firstTrigger = true,
-        sentText, //text written on input
+        originalSent, sentText, //text written on input
         context; //input context of the conversation
 
 
     function appendSent() {
         var sentEmpty = "";
-        if(sentText == "") sentEmpty = jsSentEmptyClass;
-        $botText.append("<p class='"+botSentClass+" "+sentEmpty+"'>"+sentText+"</p>");
+        if(originalSent == "") sentEmpty = jsSentEmptyClass;
+        $botText.append("<p class='"+botSentClass+" "+sentEmpty+"'>"+originalSent+"</p>");
     }
 
     function buildBot() {
@@ -214,14 +214,15 @@ var botSection = function() {
     var gael = "";
 
     function talkToBot(directText) {
-        sentText = directText || $('#'+botInputId).val(); //prevent funny users to struggle with this function;
+        originalSent = directText || $('#'+botInputId).val()
+        sentText = originalSent; //prevent funny users to struggle with this function;
 
         //prevent funny users to struggle with this function
         if (typeof sentText !== "string" ) {
             sentText = "tilttt";
         }
 
-        sentText = sentText.toLowerCase();
+        sentText = sentText.replace(/[^a-zA-Z ]/g, "").toLowerCase();
         context = $('#'+botInputId).attr('name') || 'commands';
 
         $('#'+botInputId).addClass('jsLoading').val('');

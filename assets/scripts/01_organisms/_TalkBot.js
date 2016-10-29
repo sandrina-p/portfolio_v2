@@ -61,11 +61,15 @@ var TalkBot = function(){
                 "input placeholder", "context of the next input"
             ]
             */
-            "∞ infinity, infinity, infinito, ∞, universe, cosmos": [
+            "∞ infinity, infinity, , ∞, universe, cosmos": [
                 "You are a little crazy… we all are."
                 +brk+"Despite always being under construction I already have the ability to share some stuff that Sandrina taught me while I was growing up. "
                 +publicCmd,
                 "what's next?", "commands"
+            ],
+            "infinito, infinite": [
+                "I think you meant <b>infinity</b> right?",
+                "", "options"
             ],
             "undefined, null": [
                 "Not it's not. It has another name. At least on javascript language.",
@@ -97,7 +101,7 @@ var TalkBot = function(){
                 botOptHelp,
                 "I still believe in you", "options"
             ],
-            "tell me more, more, what else?, what else": [ //FIXME DRY this.
+            "tell me more, more, what else": [ //FIXME DRY this.
                 "you are such a curious creature :3. I'm still under construction, but you can leave a quick message to Sandrina. Just type something started by @@. She will answer you for sure.", //TODO
                 "@@ myname@email.com - Hi sandrina! How much is 0.1 + 0.2 ?", "options"
             ],

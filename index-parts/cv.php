@@ -148,6 +148,13 @@
                 <li class="cv-li cv-li--i">less is more only <span class="nowrap">when more is too much</span></li>
             </ul>
 
+            <h4 class="cv-ulTitle">Next steps</h4>
+            <ul class="cv-ul">
+                <li class="cv-li">React</li>
+                <li class="cv-li">Regular Expressions</li>
+                <li class="cv-li">HTML5 Canvas</span></li>
+            </ul>
+
         </div>
     </article>
 

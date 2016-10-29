@@ -53,8 +53,10 @@ var chatNav = function() {
             // without knowing the real navWidth value.
             if (navWidth < 150) {
                 console.log('upps... navTranslate() was loaded too soon');
-                navTranslate();
                 GAcustom.sendToGA(`&ec=bug&ea=navSoon`);
+                setTimeout(function () {
+                    navTranslate();
+                }, 250);
             } else {
                 console.log('nav loaded without problems');
             }

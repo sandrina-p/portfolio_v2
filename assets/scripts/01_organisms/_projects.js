@@ -94,7 +94,7 @@ var Projects = function() {
     }
 
     function getElBtn(nameSlug, projName) {
-        return "<button type='button' name='"+nameSlug+"' class='projNav-btn' data-gaec='projects'>"+projName+"</button>"
+        return "<button type='button' name='"+nameSlug+"' class='projNav-btn' data-gaec='projNavClick'>"+projName+"</button>"
     }
 
     function addProjNav(quantity) {
@@ -450,7 +450,7 @@ var Projects = function() {
         numbOfGestures ++;
 
         (function toGA() {
-            var ec = 'navMoved';
+            var ec = 'projNavMoved';
                 inm = $newActive.text().replace(/[^a-zA-Z ]/g, ""); //item name without especial characters
                 ea = inm; //action
                 gael += inm+"|"; //label REVIEW save all path clicks to know the jorney
