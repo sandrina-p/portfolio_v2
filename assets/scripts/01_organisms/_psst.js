@@ -63,7 +63,7 @@ var Psst = function() {
     });
 
     $(document).on('click', '.js-botProjects', function(){
-        $('#btn-pr').trigger('click'); //it will  call Psst.changePsst().
+        $('#btn-pr').trigger('click'); //it will call Psst.changePsst().
 
         if (hasTouch) {
             // FIXME: DRY here please... it's from _chat.js   scrollSafe()

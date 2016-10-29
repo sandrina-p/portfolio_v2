@@ -44,7 +44,7 @@
                 I wanna to introduce you to someone.
                 <span class="nowrap">She is a</span> <strong>frontend developer</strong> with a great passion for <strong class="nowrap">interaction design</strong>.
                 <span class="heyThere-br"></span>
-                Where do you like to start?
+                Where would you like to start?
             </p>
         </div>
     </div>

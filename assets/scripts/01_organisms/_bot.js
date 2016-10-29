@@ -35,7 +35,7 @@ var botSection = function() {
                     </div>`);
 
         $bot.append($elBot);
-
+        getIp();
         $botInner = $('#bot').find('.bot-inner'),
         $botText = $bot.find('.bot-text');
     }
@@ -196,7 +196,7 @@ var botSection = function() {
 
         $('#'+botInputId)
             .attr({name: name, placeholder: placeholder})
-            .removeClass('jsLoading').focus();
+            .removeClass('jsLoading').prop('disabled', false).focus();
 
         // $('.typed-cursor').remove(); //NOTE i think this doesn't do nothing. | | blink |
 
@@ -209,6 +209,14 @@ var botSection = function() {
         console.log('stop autoscroll');
     }
 
+    function getIp() {
+        $.get("https://ipinfo.io", function(response) {
+            console.log(response.ip);
+            var $botUser = $('.js-bot-user'),
+                newTxt = $botUser.text().replace('/*ip*/', response.ip);
+            $botUser.text(newTxt);
+        }, "jsonp");
+    }
 
     // ----- publicCmd ----- //
     var gael = "";
@@ -225,7 +233,7 @@ var botSection = function() {
         sentText = sentText.replace(/[^a-zA-Z ]/g, "").toLowerCase();
         context = $('#'+botInputId).attr('name') || 'commands';
 
-        $('#'+botInputId).addClass('jsLoading').val('');
+        $('#'+botInputId).addClass('jsLoading').val('').prop('disabled', true);
 
         appendSent();
         getBotAnswer();
@@ -280,16 +288,6 @@ var botSection = function() {
 
     $(document).on('click', '.btnBot', function(){
         talkToBot($(this).data('bot'));
-    });
-
-
-    $(document).ready(function () {
-        $.get("https://ipinfo.io", function(response) {
-            console.log(response.ip);
-            var $botUser = $('.js-bot-user'),
-                newTxt = $botUser.text().replace('/*ip*/', response.ip);
-            $botUser.text(newTxt);
-        }, "jsonp");
     });
 
     return {

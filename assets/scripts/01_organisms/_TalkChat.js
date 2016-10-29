@@ -22,43 +22,35 @@ var TalkChat = function(){
             "before that":
                 `She was <strong>UX/UI Designer</strong> at Pure.
                 ${brk}What got her there was her <strong>degree in Communication Design</strong> at FBAUL.
-                ${brk}Well, and maybe the fact that she did <strong>Erasmus</strong> in Oporto, where she learned a lot`,
+                ${brk}Plus, she did <strong>Erasmus</strong> in Oporto, where she learned a lot`,
 
             "future":
-                `Of course she is a workaholic, so whenever she has some free time she might accept freelancer projects.
-                ${brk}Maybe she can <strong>help you to bring your next big idea to life.</strong>`,
-
-            "tell me more":
-                `Hmm... I'm not allowed to share more info about her.
-                ${brk}But by all means, don't be shy and go say hello.
-                ${brk}She is very nice, specially if you are a bot like me`
+                `She likes to spend all her time coding.
+                ${brk}Whenever some free time comes up, she might accept freelance projects.
+                ${brk}Maybe she can help you to bring <a href='mailto:a.sandrina.p@gmail.com?subject=I%20have%20an%20idea!' target='_blank' class='link'>your next big idea</a> to life.`,
         },
         theory: {
             "intro":
-                `Basically she breaths <strong>HTML5, SCSS</strong> and <strong>Javascript / JQuery</strong>.
-                ${brk}She is really into <strong>interactive stuff</strong> and that’s what makes her good at web development: a passion for the work and 24hours of <strong>daily exploration</strong>.
-                ${brk}She loves to create micro interactions that nobody seems to care about until they see them.
-                ${brk}Then, of course, they are mind blown`,
+                `She breaths <strong>HTML5, SCSS</strong> and <strong>Javascript</strong>.
+                ${br} Interactivity is her main passion, and that results in a <strong>daily exploration</strong> of all things technological.
+                ${br}Her favourite hobby is to <strong>connect users like you to awesome websites like me</strong>.
+                ${br}As a designer, she loves <strong>Sketch</strong>, has a great relationship with <strong>Adobe Tools</strong> and likes <strong>Blender</strong>.`,
             "other techs":
-                `She also crossed paths with <strong>PHP</strong>, <strong>Angular 2</strong> and <strong>Ionic 2</strong>.
-                ${brk}But right now she is focusing on improving her javascript skills.`,
+                `<strong>PHP</strong>, <strong>Angular 2</strong> and <strong>Ionic</strong> 2 have crossed her path, but right now she is focusing on improving her javascript skills.
+                ${br}Soon she will start learning <strong>React</strong>, <strong>Firebase</strong> and <strong>Regular Expressions</strong>`,
             "micro inter#!?":
                 `In one sentence: She loves to explore new concepts, meaningful transitions that <strong>connect users like you who interact with stuff like me.</strong>`,
             "learning":
-                `She didn't learn it.
-                ${brk}She is learning it.
-                ${brk}Everyday.
-                ${brk}Sharing solutions on <strong>${linkStackOverflow}</strong>, learning on Code School, and creating experiments on <strong>${linkCodepen}.</strong>
-                ${brk}On design side she loves <strong>Sketch</strong>, has a great relationship with <strong>Adobe Tools</strong> and likes <strong>Blender</strong>.`,
-            "besides www":
-                `Hmm... she is a <strong>gamer</strong> too!
-                ${brk}Maybe she's playing right now.
-                ${brk}Recently she was a part of the creation of a video game's concept as a motion designer.`,
+                `Learning is a 24h thing for her.
+                ${brk}Sharing solutions on <strong>${linkStackOverflow}</strong>, taking classes on Code School and creating experiments on <strong>${linkCodepen}.</strong>, those are everyday tasks.`,
+            // "besides www":
+            //     `Hmm... she is a <strong>gamer</strong> too!
+            //     ${brk}Maybe she's playing right now.
+            //     ${brk}Recently she was a part of the creation of a video game's concept as a motion designer.`,
             "workplace":
-                `Well... she likes to work alone.
-                ${brk}Unless your ambitions are as high as hers, then it’s a match made in heaven.
-                ${brk}From <strong>creative to technique she can hold any role</strong>.
-                ${brk}More important than that, she believes that each of these roles must work together to achieve the best results.`
+                `She is a fast paced worker, so she likes to work alone.
+                ${br}Unless your ambitions are as high as hers, then it’s a match made in heaven.
+                ${br} From <strong>creative to technical, she can excel at any role.</strong>`
         },
         practice: {
             intro: "Most of these projects she did both design and code parts."+brk+"What connects them is the <strong>constant searching for a unique experience</strong>."+brk+"A visual pleasure that engages the user through a nice interactive experience."+brk+"Let me start with something cool:",
@@ -113,9 +105,9 @@ var TalkChat = function(){
                     "assets/media/img/projects/cm4.png",
                     "assets/media/img/projects/cmx.png",
                 ],
-                capt: "A website build from scratch on Tumblr. Its navigation is all through Ajax.",
-                more: "After 6 months, Carolina Machado presented her collection for the second time in ModaLisboa - Lisboa Fashion. So I decided to give an upgrade to this website as well as adding some CMS, to make the content dynamic (and of course more easier for her to update it). I chose Tumblr to rebuild the website, and now all the navigation is through Ajax. This way I could have almost full control over the Tumblr standart API and improve <span class='nowrap'>the User Experience.</span>",
-                date: "MMM'YY",
+                capt: "A website build from scratch on Tumblr: its navigation is all through Ajax.",
+                more: "After 6 months, Carolina Machado presented her collection for the second time in ModaLisboa - Lisboa Fashion. So I decided to give an upgrade to this website as well as adding some CMS, to make the content dynamic (and of course easier for her to update). I choose Tumblr to rebuild the website, and now all the navigation is through Ajax. This way I could have almost full control over the Tumblr standart API and improve User Experience.",
+                date: "mar'16",
                 links: [["//carolina-machado.com", "check the website", "desktop"]],
             },
             'portfolio 15': {
@@ -147,7 +139,7 @@ var TalkChat = function(){
                     "assets/media/img/projects/ps3.png",
                 ],
                 capt: "When you do everything except what teachers asked you to do, you end up with a crazy interactive website.",
-                more: "Final Degree project in Communication Design. Website of an online record label that distributes music for free. In each release the record label creates an interactive experience, enhancing the download, so there is more to it than just a click. The website presents itself with a black and white visual by focusing on the user experience. My part was focused on coding HTML5, CSS3 and JQuery. This was a group project made with João Rodrigues, Mariana Freitas and <span class='nowrap'>Margarida Botelho.</span>",
+                more: "Final Degree project in Communication Design. Website of an online record label that distributes music for free. In each release the record label creates an interactive experience, enhancing the download, so there is more to it than just a click. The website presents itself with a black and white visual by focusing on the user experience. My part was focused on coding HTML5, CSS3 and JQuery. This was a group project made with João Rodrigues, Mariana Freitas and Margarida Botelho.",
                 date: "MMM'YY",
                 links: [["practice/pistolshrimp.html", "check the website", "desktop"]],
             },
@@ -164,9 +156,9 @@ var TalkChat = function(){
                     "assets/media/img/projects/moon4.png",
                     "assets/media/img/projects/moonx.png",
                 ],
-                capt: "It was in this website she started discovering the beauty about javascript and jQuery.",
-                more: "Hope you know the movie Moon (2001) by Duncan Jones. The main focus of the website was not about how the film was made but the story and experience that the character lives along the narration. For this, the user’s interaction was fundamental on creating <span class='nowrap'>the website.</span>",
-                date: "MMM'YY",
+                capt: "It was in this website she started discovering the beauty of javascript and jQuery",
+                more: "Hope you know the movie Moon (2001) by Duncan Jones. The main focus of this website was not about how the film was made but the story and experience that the character lives along the narration. Here, the user’s interaction is fundamental to create the website.",
+                date: "feb'15",
                 links: [["/practice/moon/", "check the website", "desktop"]],
             },
             'DET': {
@@ -181,7 +173,7 @@ var TalkChat = function(){
                     "assets/media/img/projects/DET3.png",
                     "assets/media/img/projects/DETx.png",
                 ],
-                capt: "'I heard there is tool that creates digital magazine with inDesign!', - 'Oh really? Let's try it out!'",
+                capt: "'I heard there is tool that creates digital magazines with inDesign!' ... 'Oh really? Let's try it out!'",
                 more: "Dutch Experimental Typography” is a digital catalogue of typography, developed from the 70’s throughout the 90’s in the Netherlands. This app includes an interactive cover that the user can play with. It was developed using Mag+ Software with InDesign. This was a group project made with <span class='nowrap'>Margarida Botelho.</span>",
                 date: "MMM'YY",
                 links: [["//behance.com/sandrin4p/det", "check it on behance", "behance"]],

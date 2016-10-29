@@ -83,7 +83,7 @@ $(function lookIntoOnWww(){
     $(window).scroll(function() {
         offsetCv = $cv.offset().top;
 
-        if(triggerOnWebInit && $(window).scrollTop() + windowHeight > offsetCv) {
+        if(triggerOnWebInit && $(window).scrollTop() + windowHeight - 45 > offsetCv) {
             triggerOnWebInit = false;
             $('.navCV').remove();
             if (!Modernizr.touchevents) {

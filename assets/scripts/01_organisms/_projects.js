@@ -105,19 +105,19 @@ var Projects = function() {
                     ? arrProjects.indexOf($projsLeft.children(":first").text())
                     : arrProjects.indexOf($projsRight.children(":last").text());
 
-        if (isParentLeft) {
 
-            for (var i = 1, projRestart = arrProjects[arrProjects.length-1]; i <= quantity; i++) {
-                projName = arrProjects[projI-i] || projRestart;
-                nameSlug = UtilFuncs.stringSlugLower(projName),
-                addProjects += getElBtn(nameSlug, projName);
-            }
+        if (isParentLeft) {
+            var projRestart = arrProjects[arrProjects.length-1],
+                r = 2;
         } else {
-            for (var i = 1, projRestart = arrProjects[arrProjects.length-1]; i <= quantity; i++) {
-                projName = arrProjects[projI+i] || projRestart;
-                nameSlug = UtilFuncs.stringSlugLower(projName),
-                addProjects += getElBtn(nameSlug, projName);
-            }
+            var projRestart = arrProjects[0],
+                r = 0;
+        }
+
+        for (var i = 1; i <= quantity; i++) {
+            projName = arrProjects[projI+i+r] || projRestart;
+            nameSlug = UtilFuncs.stringSlugLower(projName),
+            addProjects += getElBtn(nameSlug, projName);
         }
 
         $projsRight.append(addProjects);

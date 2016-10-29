@@ -152,7 +152,7 @@
             <ul class="cv-ul">
                 <li class="cv-li">React</li>
                 <li class="cv-li">Regular Expressions</li>
-                <li class="cv-li">HTML5 Canvas</span></li>
+                <li class="cv-li">Google Firebase</span></li>
             </ul>
 
         </div>

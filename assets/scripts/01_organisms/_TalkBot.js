@@ -18,12 +18,14 @@ var TalkBot = function(){
         linkHer = genLink('http://www.imdb.com/title/tt1798709/', "Her"),
         linkFirebase = genLink('//firebase.google.com', 'Google Firebase'),
         linkHelpMe = genLink('#TODO-push-request', 'help me'),
+        linkCodeAvatar = genLink('#TODO-codepen-avatar', 'codepen'),
+        linkCodeGlidder = genLink('#TODO-codepen-glidder', 'codepen'),
         myEmail = genLink('mailto:a.sandrina.p@gmail.com?subject=Hey%20there!', 'a.sandrina.p@gmail.com', "noTarget"),
+        linkCHTSTW = genLink('http://clickheretosavetheworld.com/', 'clickHereToSaveTheWorld'),
 
         brk = "<br>",
         browser = "[TODO browser]",
-        mobileBrand = "[TODO mobile brand]",
-        portraitMsg = "[TODO if (scroll.top < window.innerHeight) */oh wait.. you didn't see her portrait yet! clicking isn't everything, you know...]";
+        mobileBrand = "[TODO mobile brand]";
 
     if (screen.width < 750) {
         var screenRes = 'small screen',
@@ -34,7 +36,7 @@ var TalkBot = function(){
             resolutionScreenMsg = "I noticed that you have a "+screenRes+", so the images I showed you have a big and nice resolution. If you were on your mobile, I'd be a thoughtful bot and reduce their size so I could save you some Kb from your mobile data network. How sweet am I, hm ? :D";
     }
 
-    var publicCmd = "Some stuff you can know about:"
+    var publicCmd = "What do you want to know?"
                     +brk+"<b>technologies</b>"
                     +brk+"<b>best practices</<b>"
                     +brk+"<b>challenges</b>"
@@ -46,10 +48,11 @@ var TalkBot = function(){
 
 
     var conversation = {
+        // intro: ['type gg', "aqui", "options"],
         intro: [
             "Now that we talked enough about Sandrina,"
-            +brk+"^100Ah yes, that's her name, I forgot to tell you. Anyways..."
-            +brk+"^150I think I could talk about me. Like, nerd talk... but before that just tell me one thing:"
+            +brk+"^100Ah yes, that's her name, I forgot to tell you."
+            +brk+"^150 Now I think I could talk about me. Like, nerd talk... but before that just tell me one thing:"
             +brk+"1 divided by 0 equal to:",
             "your answer here", "options"
         ],
@@ -61,9 +64,10 @@ var TalkBot = function(){
                 "input placeholder", "context of the next input"
             ]
             */
+            "gg":['ready to go', "sabes os comandos nao sabes?", "commands"],
             "∞ infinity, infinity, , ∞, universe, cosmos": [
                 "You are a little crazy… we all are."
-                +brk+"Despite always being under construction I already have the ability to share some stuff that Sandrina taught me while I was growing up. "
+                +brk+"Despite always being under construction I already have the ability to share some knowledge Sandrina taught me while I was growing up."
                 +publicCmd,
                 "what's next?", "commands"
             ],
@@ -115,7 +119,7 @@ var TalkBot = function(){
             "technologies": [
                 [
                     "I was born inside the Atom editor."
-                    +brk+"HTML5, SCSS and Javascript are my vital organs.",
+                    +brk+"HTML5, SCSS and Javascript (with jQuery) are my vital organs.",
                     "|","commands"
                 ],
                 [
@@ -123,18 +127,19 @@ var TalkBot = function(){
                     "|","commands"
                 ],
                 [
-                    "You might be talking only with me, but Sandrina knows everything you said and clicked. That's her way to improve me each time a new user comes here.",
+                    "You probably value your privacy, but Sandrina knows everything you told me and where you clicked. That's her way to improve me each time a new user comes here."
+                    +brk+"Thank you Google Analytics.",
                     "|","commands"
                 ],
                 [
                     "Unfortunately right now I'm just a static website with some php on index. But soon I'll be moved to "+linkFirebase+"."
-                    +brk+"Then you'll be able to talk directly with Sandrina right here without using mail or wtv you choose to use now.",
+                    +brk+"Then you'll be able to talk directly with Sandrina. No need for e-mails or whatever.",
                     "|","commands"
                 ],
 
                 [
-                    "You might think that javascript and jQuery are old fashion. But the truth is they are the base of all new fancy techs. React, Angular, Typescript, etc.."
-                    +brk+"Sandrina is making sure that she really <i>master</i> jQuery and JS before going further with those fancy techs.",
+                    "You might think that javascript and jQuery are old fashion. But the truth is they are the starting point of all new fancy techs. React, Angular, Typescript, etc.."
+                    +brk+"Sandrina is making sure that she really <i>masters</i> jQuery and JS before going further towards the fancy side.",
                     "|","commands"
                 ],
             ],
@@ -142,7 +147,7 @@ var TalkBot = function(){
                 [
                     "When I first said hello, I wasn't totally ready for you"
                     +brk+" I guess that makes me a bit human, right?"
-                    +brk+"But while you were reading my first sentence I had enough time to send you the rest of the CSS and JS files that I needed to have a conversation with you."
+                    +brk+"But while you were reading my first sentence I had enough time to send you the rest of the CSS and JS files that I needed to. Now I can hold a conversation with you."
                     +brk+"That's a great way to reduce "+linkLT+" and avoid "+linkFOUC+", don't you think?",
                     "|","commands"
                 ],
@@ -162,15 +167,15 @@ var TalkBot = function(){
                     "|","commands"
                 ],
             ],
-            "resources, resources, resource": [
+            "resources": [
                 [
-                    "still under construction",
-                    "don't push me that way okay? :/", "commands"
+                    "still under construction. But ${linkCHTSTW}. I think he is in the family.",
+                    "come back soon and I'll have more stuff to share", "commands"
                 ]
             ],
             "challenges": [
                 [
-                    "Do you want to know the secret behind these cool animations?"
+                    "Do you know the secret behind these cool animations?"
                     +brk+"CSS makes the magic happen."
                     +brk+"And the javascript only toggles them when it is necessary."
                     +brk+"It makes things run much smoother."
@@ -178,13 +183,12 @@ var TalkBot = function(){
                     "|","commands"
                 ],
                 [
-                    "Maybe you will not believe me, but that switching images effect on Sandrina's projects are CSS only."
+                    "Maybe you will not believe me, but that switching images effect on Sandrina's projects is CSS only."
                     +brk+"You read me right:"
-                    +brk+"no javascript"
-                    +brk+"at all. Check it out on [codepen]."
-                    +brk+"As well as her [portrait]..."
-                    +brk+"You didn’t think that was an image, did you?"
-                    +brk+""+portraitMsg,
+                    +brk+"no javascript at all"
+                    +brk+"Check it out on "+linkCodeGlidder+"."
+                    +brk+"As well as her "+linkCodeAvatar+"..."
+                    +brk+"You didn’t think that was an image, did you?",
                     "|","commands"
                 ],
                 [
@@ -192,8 +196,9 @@ var TalkBot = function(){
                     +brk+"I try to be funny, of course."
                     +brk+"But I won’t say the same thing twice."
                     +brk+"Or tell you stuff you didn't asked for."
-                    +brk+"What I’m trying to say is I am a bot with a passion for context and human interaction."
-                    +brk+"I pretend to think ... by taking some time to answer you, but the truth is, I already knew what to tell you before we first met. They say smart guys think. So I learned to make you think I was thinking so I could impress you [. . .]",
+                    +brk+"What I’m trying to say is I am a website with a passion for context and human interaction."
+                    +brk+"I pretend to think ... by taking some time to answer you, but the truth is, I already knew what to tell you before we first met."
+                    +brk+"They say smart guys think. So I learned to make you think I was thinking so I could impress you [. . .]",
                     "|","commands"
                 ],
             ],
@@ -207,7 +212,7 @@ var TalkBot = function(){
                     +brk+publicCmd,
                     "|","commands"
                 ],
-                ["best practices", "challenges"]
+                ["best practices", "challenges", "resources"]
             ],
         },
         bored: {
@@ -243,9 +248,9 @@ var TalkBot = function(){
             "..." :[
                 "there are more commands available than you think. In fact, you can "+linkHelpMe+" to better understand your human kind."
             ],
-            "esc, restart, reset, clear": [
-                "are you sure about that? all our memories - at least mine - will be erased. If so, press ESC twice."
-            ],
+            // "esc, restart, reset, clear": [
+            //     "Are you sure about that? all our memories - at least mine - will be erased. If so, press ESC twice."
+            // ],
             "ok, okay": [
                 "hmm... ok."
             ],
@@ -269,12 +274,13 @@ var TalkBot = function(){
             ],
             "bye, cya, shut down, exit, halt, close": [
                 "You know what... It's really hard having a human conversation."
-                +brk+"That's why I'm just a bot."
-                +brk+"<i>008080</i> by the way."
-                +brk+"Nice to meet you :) It was nice to talk to you, thank you!"
-                +brk+"But now do me a favor and go get a life, yes?"+brk+"It’s not healthy to talk to a bot all day."
+                +brk+"That's why I'm just a website."
+                +brk+"<i>008080</i> by the way, that's how they call me."
+                +brk+"Nice to meet you :) It was good to talk to you, thank you!"
+                +brk+"But now do me a favor and go get a life, yes?"
+                +brk+"It’s not healthy to talk to a bot all day."
                 +brk+"By the way, don't forget to share me and talk about Sandrina while you’re out there :3",
-                "press x to close"
+                "press ESC to close"
             ],
             "hey there" : "Hi again! It was so dark here, now I feel safer with you :3"
         },
