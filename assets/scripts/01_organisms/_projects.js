@@ -9,6 +9,7 @@ var Projects = function() {
         classProjMedia = ".projCont-media",
         classProjRole = ".projCont-role",
         classProjDate = ".projCont-date",
+        classProjTeam = ".projCont-team",
         classProjIntro = ".projCont-intro",
         classProjDetails = ".projCont-details",
         classProjLinks = ".projCont-links",
@@ -21,8 +22,8 @@ var Projects = function() {
         untilTablet = UtilFuncs.untilTablet,
         wHeight,
 
-        $pivot, $projsLeft, $projsRight, $projActive, // ???() variables
-        $projSub, $projMedia, $projRole, $projDate, $projIntro, $projDetails, $projLinks, $projBotTip, // getProjDomElements variables
+        $pivot, $projsLeft, $projsRight, $projActive, // nav variables
+        $projSub, $projMedia, $projRole, $projDate, $projTeam, $projRole, $projIntro, $projDetails, $projLinks, $projBotTip, // getProjDomElements variables
         $newActive, fPos, $projDir, addProjNumb, isParentLeft, //onNavMoved variables
         estimateFinalWidth, projActiveWidth, pivotPos, projActivePos, transX, //alignPivot variables
         baffle0, baffle1, baffle2, baffle3, baffle4, //baffle variables
@@ -35,7 +36,7 @@ var Projects = function() {
 
     // ------ build nav and project DOM ------ //
     function buildProj() {
-        var sub, role, date, title, more, botTip, elImgs, ElLinks,
+        var sub, role, date, team, title, more, botTip, elImgs, ElLinks,
             elProjNav = buildProjNav('left'),
             $ElProj =  $(`<div class='proj' id='projects'>
                             <div class='bot-nav'></div>
@@ -63,15 +64,16 @@ var Projects = function() {
                                     <div class='projCont-about'>
                                         <p class='projCont-role'>${role}</p>
                                         <p class='projCont-date'>${date}</p>
+                                        <p class='projCont-team'>${team}</p>
+                                    </div>
+                                    <div class='projCont-links'>
+                                        ${ElLinks}
                                     </div>
                                 </div>
 
                                 <div class='projCont-right'>
                                     <div class='projCont-descript'>
                                         <p class='projCont-intro'>${title}</p>
-                                        <div class='projCont-links'>
-                                            ${ElLinks}
-                                        </div>
                                         <p class='projCont-details'>${more}</p>
                                     </div>
                                 </div>
@@ -132,6 +134,8 @@ var Projects = function() {
         $projMedia = $(classProjMedia),
         $projRole = $(classProjRole),
         $projDate = $(classProjDate),
+        $projTeam = $(classProjTeam),
+        $projRole = $(classProjRole),
         $projIntro = $(classProjIntro),
         $projDetails = $(classProjDetails),
         $projLinks = $(classProjLinks),
@@ -182,18 +186,21 @@ var Projects = function() {
 
         $projMedia.html(elImgs);
         $projLinks.html(elLinks);
+        $projTeam.html(projData.team);
 
         baffleSub.reveal(400, 150);
         baffleIntro.reveal(400, 0);
         baffleRole.reveal(400, 70);
         baffleDate.reveal(400, 250);
+        // baffleTeam.reveal(400, 250);
         baffleDet.reveal(400, 300);
 
-        //FIXME is there any way to create a loop/for on these?
+        //REVIEW is there any way to create a loop/for on these?
         baffleSub.text(currentText => projData.sub);
         baffleIntro.text(currentText => projData.capt);
         baffleRole.text(currentText => projData.role);
         baffleDate.text(currentText => projData.date);
+        // baffleTeam.text(currentText => projData.team);
         baffleDet.text(currentText => projData.more);
 
         $("img").error(function () {
@@ -293,20 +300,22 @@ var Projects = function() {
     }
 
     function baffleProj() {
-        var arrBuffle = [classProjSub, classProjIntro, classProjRole, classProjDate, classProjDetails],
+        var arrBuffle = [classProjSub, classProjIntro, classProjRole, classProjDate, classProjTeam, classProjDetails],
             arrBuffleLength = arrBuffle.length;
 
         baffleSub = baffle(arrBuffle[0]),
         baffleIntro = baffle(arrBuffle[1]),
         baffleRole = baffle(arrBuffle[2]),
         baffleDate = baffle(arrBuffle[3]),
-        baffleDet = baffle(arrBuffle[4]);
+        // baffleTeam = baffle(arrBuffle[4]),
+        baffleDet = baffle(arrBuffle[5]);
 
         //TODO is there any way to create a loop/for on these?
         baffleSub.start();
         baffleIntro.start();
         baffleRole.start();
         baffleDate.start();
+        // baffleTeam.start();
         baffleDet.start();
     }
 
@@ -398,23 +407,6 @@ var Projects = function() {
         $newActive = direction == 'left' ? $projActive.prev() : $projActive.next();
         isParentLeft = checkIsParentLeft();
 
-        // //i need a draw to explain this ._.
-        // //if the direction is left <-, get the prev project.
-        // if (direction == "left") {
-        //     $newActive = $projActive.prev();
-        //     // if there is no project it's because you are between .projNav-*.
-        //     // So get the last project of the .projNav-left ($projsLeft).
-        //     if ($newActive.length == 0) {
-        //         $newActive = $projsLeft.children(":last");
-        //     }
-        //
-        // } else { //do the same condition but for the other side.
-        //     $newActive = $projActive.next();
-        //     if ($newActive.length == 0) {
-        //         $newActive = $projsRight.children(":first");
-        //     }
-        // }
-
         updateVarsOnNav(direction == 'left');
 
         $newActive.length == 0
@@ -440,7 +432,7 @@ var Projects = function() {
                 changeBotNavText("._.");
                 break;
             case 200:
-                changeBotNavText("what a kid ¯\\_(ツ)_/¯");
+                changeBotNavText("such a kid ¯\\_(ツ)_/¯");
                 break;
             default:
                 changeBotNavText("");

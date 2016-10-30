@@ -12,7 +12,7 @@ $navSpeed: 250ms;
     width: 100%;
     background: $clrDark;
     color: $clrLight;
-    margin: $safeArea 0 $safeArea*2;
+    margin: 0 0 $safeArea*2;
     display: none;
     overflow: auto;
 
@@ -98,15 +98,21 @@ $navSpeed: 250ms;
             font-size: $fontS;
             color: $clrGray;
             @extend %cf;
+        }
 
-            > :first-child {
-                float: left;
-            }
+        &-role {
+            float: left;
+        }
 
-            > :last-child {
-                float: right;
-                font-size: $fontXS;
-            }
+        &-date {
+            float: right;
+            text-transform: lowercase;
+        }
+
+        &-team {
+            width: 100%;
+            text-align: left;
+            font-size: $fontXS;
         }
 
         &-right {
@@ -160,13 +166,30 @@ $navSpeed: 250ms;
         &Cont {
             @extend %cf-tab;
 
+            &-links {
+                display: inline-block;
+                padding: $safeArea 0 $safeArea*3 $safeArea;
+                // text-align: center;
+
+                > :last-child:not(:first-child) {
+                    margin-left: $safeArea*3;
+                }
+
+                &-option {
+                    display: inline-block;
+                    &:not(:last-of-type) {
+                        margin: 0;
+                    }
+                }
+            }
+
             &-left {
                 width: $humanWidthLap;
                 text-align: right;
             }
 
             &-subtitle {
-                margin-top: 0;
+                margin-top: -$safeArea/3;
                 padding-left: 0;
             }
 
@@ -178,7 +201,8 @@ $navSpeed: 250ms;
 
             &-right {
                 width: $botWidthLap;
-                padding-left: $safeArea*3;
+                max-width: $chatBotWidthTab+$safeArea*5;
+                padding: 0 $safeArea*3;
             }
 
             &-descript {
@@ -191,24 +215,10 @@ $navSpeed: 250ms;
                 font-size: $fontXL;
             }
 
-            &-links {
-                @extend %cf-tab;
-                padding: $safeArea*2 0 $safeArea*2 $safeArea*2;
-
-                > :last-child:not(:first-child) {
-                    margin-left: $safeArea*3;
-                }
-
-                &-option {
-                    &:not(:last-of-type) {
-                        margin: 0;
-                    }
-                }
-            }
-
             &-details {
-                margin-bottom: $safeArea*2;
+                margin: $safeArea*2 0;
                 padding: 0;
+                line-height: $lineHeightL;
                 // padding: 0 0 0 $safeArea;
 
                 // border-left: 1px solid $clrBlack;

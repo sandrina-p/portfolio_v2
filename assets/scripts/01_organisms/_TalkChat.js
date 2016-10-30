@@ -2,8 +2,14 @@ var TalkChat = function(){
     var brk = "<br>",
         linkCodepen = "<a href='#' class='link' target='_blank'>Codepen</a>",
         linkStackOverflow = "<a href='#' class='link' target='_blank'>Stackoverflow</a>",
-
+        linkBleid = genLink('https://www.facebook.com/BLEIDDD/?fref=ts', 'Mariana Freitas'),
+        linkLusco = genLink('https://www.facebook.com/luscooo/?fref=ts', 'João Rodrigues'),
+        linkMaggie = genLink('mmbotelho.com', 'Margarida Botelho'),
         mainSections = ['history','knowledge','projects'];
+
+    function genLink(link, name) {
+        return `<a href='${link}' target='_blank' class='linkProj'>${name}</a>`;
+    }
 
     var conversation = {
         // intro: {
@@ -53,9 +59,7 @@ var TalkChat = function(){
                 ${brk} From <strong>creative to technical, she can excel at any role.</strong>`
         },
         practice: {
-            intro: "Most of these projects she did both design and code parts."
-                +brk+"What connects them is the <strong>constant searching for a unique experience</strong>."
-                +brk+"A visual pleasure that engages the user through a nice interactive experience."
+            intro: "On most of them she did both design and code parts. What connects them is the constant searching for <strong>something unique and interactive</strong>."
                 +brk+"Let me start with something cool:",
             projects: ['rede expressos', 'carolina machado', 'portfolio 15', 'pistol shrimp', 'moon', 'N O X', 'DET', '141205'],
             'rede expressos': {
@@ -63,6 +67,7 @@ var TalkChat = function(){
                 title: "Rede Expressos",
                 sub: "web and app concept redesign",
                 role: "creative and front-end",
+                team: "Individual project",
                 img: [
                     "assets/media/img/projects/rnex0.png",
                     "assets/media/img/projects/rnex1.png",
@@ -73,8 +78,8 @@ var TalkChat = function(){
                 more: "As final project in her post graduation she redesigned and coded the website homepage with Jekyll. On UX UI side, she redesign the 'buy ticket' userflow for Mobile iOS and Android. The project had several phases: competitor Analysis, product swot, wireframes, design and prototype. She also learned how to adapt a app to follow both Human Guidelines and Material Design.",
                 date: "JUN'16",
                 links: [
-                    ["https://marvelapp.com/6jef9dg", "check the iOS prototype", "apple"],
-                    ["#todo-git-redeexpressos", "check homepage", "desktop"]
+                    ["https://marvelapp.com/6jef9dg", "iOS prototype", "apple"],
+                    ["#todo-git-redeexpressos", "homepage", "desktop"]
                 ]
             },
             'N O X': {
@@ -82,6 +87,7 @@ var TalkChat = function(){
                 title: "N O X",
                 sub: "video game concept",
                 role: "Motion Graphics",
+                team: "Made with "+linkMaggie,
                 img: [
                     "assets/media/img/projects/nox0.png",
                     "assets/media/img/projects/nox1.png",
@@ -90,7 +96,7 @@ var TalkChat = function(){
                     "assets/media/img/projects/nox4.png",
                     "assets/media/img/projects/noxx.png",
                 ],
-                capt: "It's not a videogame but it could be",
+                capt: "This one is out of the text editor",
                 more: "She and her friend Margarida always loved videogames. When given the chance, they took it and just did it. They didn't know anything about the design process behind it but learned a lot trying to understand it. With Nyx (the greek goddess of night) in mind, they designed a videogame trailer that focuses on darkness. Everything is illuminated only by the main characters fireflies. But I will not spoil you. Watch the video!",
                 date: "JUl'16",
                 links: [["https://vimeo.com/176452854", "watch the video", "vimeo"]],
@@ -100,6 +106,7 @@ var TalkChat = function(){
                 title: "Carolina Machado",
                 sub: "fashion website",
                 role: "Tumblr theme developer",
+                team: "Individual project",
                 img: [
                     "assets/media/img/projects/cm0.png",
                     "assets/media/img/projects/cm1.png",
@@ -108,8 +115,8 @@ var TalkChat = function(){
                     "assets/media/img/projects/cm4.png",
                     "assets/media/img/projects/cmx.png",
                 ],
-                capt: "A website build from scratch on Tumblr: its navigation is all through Ajax.",
-                more: "After 6 months, Carolina Machado presented her collection for the second time in ModaLisboa - Lisboa Fashion. So I decided to give an upgrade to this website as well as adding some CMS, to make the content dynamic (and of course easier for her to update). I choose Tumblr to rebuild the website, and now all the navigation is through Ajax. This way I could have almost full control over the Tumblr standart API and improve User Experience.",
+                capt: "A Tumblr theme build from scratch. Ajax is the secret.",
+                more: "After the first static website, she decided to give it an upgrade as well as adding some CMS, to make the content dynamic, and of course easier for Carolina to update it.  Tumblr was the choosed one for its simple API and content management. With Ajax it was possible to have almost full control over it that now no one says it's a Tumblr.",
                 date: "mar'16",
                 links: [["//carolina-machado.com", "check the website", "desktop"]],
             },
@@ -118,6 +125,7 @@ var TalkChat = function(){
                 title: "Portfolio15",
                 sub: "her previous site",
                 role: "Creative and Programmer",
+                team: "Individual project",
                 img: [
                     "assets/media/img/projects/sp0.png",
                     "assets/media/img/projects/sp1.png",
@@ -126,7 +134,7 @@ var TalkChat = function(){
                     "assets/media/img/projects/sp4.png",
                 ],
                 capt: "Say hello to my brother from 2015",
-                more: "What can I say about this website... She was looking for new interactive ways to present herself. I think the best part is that navigation. You never saw something like that! She started to explore advanced CSS transitions and experiment a lot of JS plugins. It's also an under construction website that she never finished. I don't think that's bad. In fact, that's the beauty about it!",
+                more: "She was looking for new interactive ways to present herself. I think the best part is the menu. You never saw something like that! She started to explore advanced CSS transitions and experiment a lot of JS plugins. It's also an under construction website that she never finished. I don't think that's bad. In fact, that's the beauty about it!",
                 date: "AUG'15",
                 links: [["practice/portfolio15", "check the website", "desktop"]],
             },
@@ -135,14 +143,15 @@ var TalkChat = function(){
                 title: "Pistol Shrimp",
                 sub: "net label website",
                 role: "Creative and Programmer",
+                team: "Made with "+linkBleid+", "+linkLusco+" and "+linkMaggie,
                 img: [
                     "assets/media/img/projects/ps0.png",
                     "assets/media/img/projects/ps1.png",
                     "assets/media/img/projects/ps2.png",
                     "assets/media/img/projects/ps3.png",
                 ],
-                capt: "When you do everything except what teachers asked you to do, you end up with a crazy interactive website.",
-                more: "Final Degree project in Communication Design. Website of an online record label that distributes music for free. In each release the record label creates an interactive experience, enhancing the download, so there is more to it than just a click. The website presents itself with a black and white visual by focusing on the user experience. My part was focused on coding HTML5, CSS3 and JQuery. This was a group project made with João Rodrigues, Mariana Freitas and Margarida Botelho.",
+                capt: "When you do all but what teachers asked, you end up with a crazy interactive project.",
+                more: "Some friends of her wanted to build a online record label that distributes music for free. She wanted to work on a website. So they decided to go for it as Final Degree project in Communication Design. The website presents itself with a black and white visual by focusing on the user experience through each interactive release, enhancing the download, so there is more to it than just a click.",
                 date: "JUN'15",
                 links: [["#todo-ps-git", "check the website", "desktop"]],
             },
@@ -151,6 +160,7 @@ var TalkChat = function(){
                 title: "Moon",
                 sub: "Movie website",
                 role: "Creative and Programmer",
+                team: "Individual project",
                 img: [
                     "assets/media/img/projects/moon0.png",
                     "assets/media/img/projects/moon1.png",
@@ -159,7 +169,7 @@ var TalkChat = function(){
                     "assets/media/img/projects/moon4.png",
                     "assets/media/img/projects/moonx.png",
                 ],
-                capt: "It was in this website she started discovering the beauty of javascript and jQuery",
+                capt: "It's not a movie, but it could be",
                 more: "Hope you know the movie Moon (2001) by Duncan Jones. The main focus of this website was not about how the film was made but the story and experience that the character lives along the narration. Here, the user’s interaction is fundamental to create the website.",
                 date: "feb'15",
                 links: [["/practice/moon/", "check the website", "desktop"]],
@@ -169,6 +179,7 @@ var TalkChat = function(){
                 title: "DET Dutch Experimental Typography",
                 sub: "Digital Magazine",
                 role: "Creative and Mag+",
+                team: "Made with "+linkMaggie,
                 img: [
                     "assets/media/img/projects/DET0.png",
                     "assets/media/img/projects/DET1.png",
@@ -176,16 +187,17 @@ var TalkChat = function(){
                     "assets/media/img/projects/DET3.png",
                     "assets/media/img/projects/DETx.png",
                 ],
-                capt: "'I heard there is tool that creates digital magazines with inDesign!' ... 'Oh really? Let's try it out!'",
-                more: "Dutch Experimental Typography” is a digital catalogue of typography, developed from the 70’s throughout the 90’s in the Netherlands. This app includes an interactive cover that the user can play with. It was developed using Mag+ Software with InDesign. This was a group project made with <span class='nowrap'>Margarida Botelho.</span>",
-                date: "MMM'YY",
-                links: [["//behance.com/sandrin4p/det", "check it on behance", "behance"]],
+                capt: "\"I heard we can create digital magazines with inDesign!\" \"Oh really? Let's try it out!\"",
+                more: "Because creating books it's not her thing, she and Margarida Botelho decided to experiment a new digital world once again. Then it cames \"Dutch Experimental Typography\”, a digital catalogue of typography, developed from the 70’s throughout the 90’s in the Netherlands. I wish you could use it by yourself. It's really funny playing with its cover.",
+                date: "Mar'15",
+                links: [["https://www.behance.net/gallery/26687261/Digital-Magazine-Dutch-experimental-typography", "check it on behance", "behance"]],
             },
             '141205': {
                 categ: "opening other doors",
                 title: "141205",
                 sub: "3D animation",
                 role: "Creative and Programmer",
+                team: "Made with "+linkLusco,
                 img: [
                     "assets/media/img/projects/blend0.png",
                     "assets/media/img/projects/blend1.png",
@@ -194,8 +206,8 @@ var TalkChat = function(){
                     "assets/media/img/projects/blend4.png",
                     "assets/media/img/projects/blendx.png",
                 ],
-                capt: "For now it's on Blender, one day will be on JS",
-                more: "Finally she had the opportunity to have 3D classes during her Erasmus in Porto. Although this video project is all about a single solid, she felt that it was the one where she more learned about Blender essentials. Shapes, transforms, camera and how to join external audio with internal visuals. She dreams for the day where her path crosses with ThreeJS and she can merge 3D with code.",
+                capt: "For now it's a video, one day will be a website",
+                more: "Finally she had the opportunity to have 3D classes during her Erasmus in Porto. Although this video project is all about a single solid, she learned the essencial Blender to keep learning after Eramus by herself. She dreams for the day where her path crosses with ThreeJS and she can bring 3D to me!",
                 date: "DEC'14",
                 links: [["https://vimeo.com/115483647", "check the video", "vimeo"]],
             },

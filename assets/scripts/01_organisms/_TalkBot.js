@@ -1,9 +1,6 @@
 var TalkBot = function(){
 
-    function genLink(link, name, target) {
-        (typeof target == 'undefined')
-            ? target = "target='_blank'"
-            : target = "";
+    function genLink(link, name, target = "target='_blank'") {
         return `<a href='${link}' ${target} class='linkBot'>${name}</a>`;
     }
 
@@ -75,19 +72,6 @@ var TalkBot = function(){
                 "I think you meant <b>infinity</b>, right?",
                 "", "options"
             ],
-            "whatever, no, come on": [
-                "Come on.. giving up so easily? You can "+googleIt+" or asking me for <b>help</>",
-                "go ask it to some console", "options"
-            ],
-            "dumb, you are dumb, your dumb": [
-                "A little, I have to admit it... ._.",
-                "but Sandrina isn't!", "options"
-            ],
-            "skip, skip this shit": [
-                "You asked for it"
-                +brk+""+publicCmd,
-                "but Sandrina isn't!", "options"
-            ],
             "undefined, null": [
                 "Not it's not. It has another name. At least on javascript language.",
                 "go ask it to some console", "options"
@@ -130,7 +114,20 @@ var TalkBot = function(){
             "hello, hi, hey there" : [
                 "Hi there! :D",
                 "options"
-            ]
+            ],
+            "whatever, no, nop, come on": [
+                "Come on.. giving up so easily? You can "+googleIt+" or ask for <b>help</>",
+                "go ask it to some console", "options"
+            ],
+            "dumb, you are dumb, your dumb": [
+                "A little, I have to admit it... ._.",
+                "but Sandrina isn't!", "options"
+            ],
+            "skip, skip this shit": [
+                "You asked for it"
+                +brk+""+publicCmd,
+                "but Sandrina isn't!", "options"
+            ],
         },
 
         commands: {

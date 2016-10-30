@@ -88,6 +88,14 @@ button {
     color: $clrPrimarySoft;
 }
 
+.linkProj {
+    color: $clrPrimary;
+
+    &:hover {
+        color: $clrPrimarySoft;
+    }
+}
+
 .btnCheck {
     @extend %btnX;
     background: $clrLight;
