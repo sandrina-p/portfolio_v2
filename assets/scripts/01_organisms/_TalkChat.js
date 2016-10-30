@@ -82,25 +82,6 @@ var TalkChat = function(){
                     ["#todo-git-redeexpressos", "homepage", "desktop"]
                 ]
             },
-            'N O X': {
-                categ: "opening other doors",
-                title: "N O X",
-                sub: "video game concept",
-                role: "Motion Graphics",
-                team: "Made with "+linkMaggie,
-                img: [
-                    "assets/media/img/projects/nox0.png",
-                    "assets/media/img/projects/nox1.png",
-                    "assets/media/img/projects/nox2.png",
-                    "assets/media/img/projects/nox3.png",
-                    "assets/media/img/projects/nox4.png",
-                    "assets/media/img/projects/noxx.png",
-                ],
-                capt: "This one is out of the text editor",
-                more: "She and her friend Margarida always loved videogames. When given the chance, they took it and just did it. They didn't know anything about the design process behind it but learned a lot trying to understand it. With Nyx (the greek goddess of night) in mind, they designed a videogame trailer that focuses on darkness. Everything is illuminated only by the main characters fireflies. But I will not spoil you. Watch the video!",
-                date: "JUl'16",
-                links: [["https://vimeo.com/176452854", "watch the video", "vimeo"]],
-            },
             'carolina machado': {
                 categ: "www projects",
                 title: "Carolina Machado",
@@ -173,6 +154,25 @@ var TalkChat = function(){
                 more: "Hope you know the movie Moon (2001) by Duncan Jones. The main focus of this website was not about how the film was made but the story and experience that the character lives along the narration. Here, the user’s interaction is fundamental to create the website.",
                 date: "feb'15",
                 links: [["/practice/moon/", "check the website", "desktop"]],
+            },
+            'N O X': {
+                categ: "opening other doors",
+                title: "N O X",
+                sub: "video game concept",
+                role: "Motion Graphics",
+                team: "Made with "+linkMaggie,
+                img: [
+                    "assets/media/img/projects/nox0.png",
+                    "assets/media/img/projects/nox1.png",
+                    "assets/media/img/projects/nox2.png",
+                    "assets/media/img/projects/nox3.png",
+                    "assets/media/img/projects/nox4.png",
+                    "assets/media/img/projects/noxx.png",
+                ],
+                capt: "This one is out of the text editor",
+                more: "She and her friend Margarida always loved videogames. When given the chance, they took it and just did it. They didn't know anything about the design process behind it but learned a lot trying to understand it. With Nyx (the greek goddess of night) in mind, they designed a videogame trailer that focuses on darkness. Everything is illuminated only by the main characters fireflies. But I will not spoil you. Watch the video!",
+                date: "JUl'16",
+                links: [["https://vimeo.com/176452854", "watch the video", "vimeo"]],
             },
             'DET': {
                 categ: "opening other doors",

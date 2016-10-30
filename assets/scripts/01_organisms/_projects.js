@@ -102,24 +102,35 @@ var Projects = function() {
     function addProjNav(quantity) {
         var addProjects = "",
             nameSlug,
-            projRestart,
+            projsIndexs = arrProjects.length - 1,
             projI =
                 isParentLeft
-                    ? arrProjects.indexOf($projsLeft.children(":first").text()) + 1
+                    ? arrProjects.indexOf($projsLeft.children(":first").text()) - 1
                     : arrProjects.indexOf($projsRight.children(":last").text()) + 1;
 
 
         if (isParentLeft) {
-            for (var i = 0, projRestart = arrProjects[arrProjects.length-1]; i < quantity; i++) {
-                projName = arrProjects[projI] || projRestart;
+            for (var i = 0; i < quantity; i++) {
+                if (arrProjects[projI]) {
+                    projName = arrProjects[projI];
+                } else {
+                    projI = projsIndexs;
+                    projName = arrProjects[projI];
+                }
                 nameSlug = UtilFuncs.stringSlugLower(projName);
                 addProjects += getElBtn(nameSlug, projName);
                 projI--;
+
             }
 
         } else {
-            for (var i = 0, projRestart = arrProjects[0]; i < quantity; i++) {
-                projName = arrProjects[projI-i] || projRestart;
+            for (var i = 0; i < quantity; i++) {
+                if (arrProjects[projI]) {
+                    projName = arrProjects[projI];
+                } else {
+                    projI = 0;
+                    projName = arrProjects[projI];
+                }
                 nameSlug = UtilFuncs.stringSlugLower(projName);
                 addProjects += getElBtn(nameSlug, projName);
                 projI++;
