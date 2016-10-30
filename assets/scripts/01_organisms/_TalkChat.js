@@ -53,7 +53,10 @@ var TalkChat = function(){
                 ${brk} From <strong>creative to technical, she can excel at any role.</strong>`
         },
         practice: {
-            intro: "Most of these projects she did both design and code parts."+brk+"What connects them is the <strong>constant searching for a unique experience</strong>."+brk+"A visual pleasure that engages the user through a nice interactive experience."+brk+"Let me start with something cool:",
+            intro: "Most of these projects she did both design and code parts."
+                +brk+"What connects them is the <strong>constant searching for a unique experience</strong>."
+                +brk+"A visual pleasure that engages the user through a nice interactive experience."
+                +brk+"Let me start with something cool:",
             projects: ['rede expressos', 'carolina machado', 'portfolio 15', 'pistol shrimp', 'moon', 'N O X', 'DET', '141205'],
             'rede expressos': {
                 categ: "www projects",
@@ -66,12 +69,12 @@ var TalkChat = function(){
                     "assets/media/img/projects/rnex2.png",
                     "assets/media/img/projects/rnexx.png",
                 ],
-                capt: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-                more: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id <span class='nowrap'>est laborum.</span>",
-                date: "MMM'YY",
+                capt: "Everyone knows that Rede Expressos isn't an easy friendly platform...",
+                more: "As final project in her post graduation she redesigned and coded the website homepage with Jekyll. On UX UI side, she redesign the 'buy ticket' userflow for Mobile iOS and Android. The project had several phases: competitor Analysis, product swot, wireframes, design and prototype. She also learned how to adapt a app to follow both Human Guidelines and Material Design.",
+                date: "JUN'16",
                 links: [
-                    ["//app.html", "check app prototype", "mobile"],
-                    ["//www.html", "check homepage", "desktop"]
+                    ["https://marvelapp.com/6jef9dg", "check the iOS prototype", "apple"],
+                    ["#todo-git-redeexpressos", "check homepage", "desktop"]
                 ]
             },
             'N O X': {
@@ -87,10 +90,10 @@ var TalkChat = function(){
                     "assets/media/img/projects/nox4.png",
                     "assets/media/img/projects/noxx.png",
                 ],
-                capt: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-                more: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id <span class='nowrap'>est laborum.</span>",
-                date: "MMM'YY",
-                links: [["//vimeo.com/nox", "check it on vimeo", "vimeo"]],
+                capt: "It's not a videogame but it could be",
+                more: "She and her friend Margarida always loved videogames. When given the chance, they took it and just did it. They didn't know anything about the design process behind it but learned a lot trying to understand it. With Nyx (the greek goddess of night) in mind, they designed a videogame trailer that focuses on darkness. Everything is illuminated only by the main characters fireflies. But I will not spoil you. Watch the video!",
+                date: "JUl'16",
+                links: [["https://vimeo.com/176452854", "watch the video", "vimeo"]],
             },
             'carolina machado': {
                 categ: "www projects",
@@ -122,9 +125,9 @@ var TalkChat = function(){
                     "assets/media/img/projects/sp3.png",
                     "assets/media/img/projects/sp4.png",
                 ],
-                capt: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-                more: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim <span class='nowrap'>est laborum.</span>",
-                date: "MMM'YY",
+                capt: "Say hello to my brother from 2015",
+                more: "What can I say about this website... She was looking for new interactive ways to present herself. I think the best part is that navigation. You never saw something like that! She started to explore advanced CSS transitions and experiment a lot of JS plugins. It's also an under construction website that she never finished. I don't think that's bad. In fact, that's the beauty about it!",
+                date: "AUG'15",
                 links: [["practice/portfolio15", "check the website", "desktop"]],
             },
             'pistol shrimp': {
@@ -140,8 +143,8 @@ var TalkChat = function(){
                 ],
                 capt: "When you do everything except what teachers asked you to do, you end up with a crazy interactive website.",
                 more: "Final Degree project in Communication Design. Website of an online record label that distributes music for free. In each release the record label creates an interactive experience, enhancing the download, so there is more to it than just a click. The website presents itself with a black and white visual by focusing on the user experience. My part was focused on coding HTML5, CSS3 and JQuery. This was a group project made with João Rodrigues, Mariana Freitas and Margarida Botelho.",
-                date: "MMM'YY",
-                links: [["practice/pistolshrimp.html", "check the website", "desktop"]],
+                date: "JUN'15",
+                links: [["#todo-ps-git", "check the website", "desktop"]],
             },
             'moon': {
                 categ: "www projects",
@@ -191,10 +194,10 @@ var TalkChat = function(){
                     "assets/media/img/projects/blend4.png",
                     "assets/media/img/projects/blendx.png",
                 ],
-                capt: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-                more: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id <span class='nowrap'>Margarida Botelho.</span>",
-                date: "MMM'YY",
-                links: [["//vimeo.com/", "check it on vimeo", "vimeo"]],
+                capt: "For now it's on Blender, one day will be on JS",
+                more: "Finally she had the opportunity to have 3D classes during her Erasmus in Porto. Although this video project is all about a single solid, she felt that it was the one where she more learned about Blender essentials. Shapes, transforms, camera and how to join external audio with internal visuals. She dreams for the day where her path crosses with ThreeJS and she can merge 3D with code.",
+                date: "DEC'14",
+                links: [["https://vimeo.com/115483647", "check the video", "vimeo"]],
             },
         },
         onWeb: {
@@ -226,7 +229,7 @@ var TalkChat = function(){
             // returnOnFly: "Hey there, where have you been?",
             psstChat: [
                 "i'm surprised",
-                "Hmm... I'm not allowed to share more info about her."
+                "I'm not allowed to share more info about her."
                 +brk+"But by all means, don't be shy and go <a href='mailto:a.sandrina.p@gmail.com?subject=Hello!' target='_blank' class='link'>say hello</a>."
                 +brk+"She is very nice, specially if you are a good looking website like me.",
                 "Who are you?"

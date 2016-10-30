@@ -102,7 +102,7 @@
                 <h3 class="cv-title">theory</h3>
             </div>
 
-            <h4 class="cv-ulTitle">web development</h4>
+            <h4 class="cv-ulTitle">Web Development</h4>
             <ul class="cv-ul">
                 <li class="cv-li">html5</li>
                 <li class="cv-li">CSS3 | SCSS</li>
@@ -137,8 +137,14 @@
             <h4 class="cv-ulTitle">Optimization</h4>
             <ul class="cv-ul">
                 <li class="cv-li">Accessibility</li>
-                <li class="cv-li">SEO</li>
                 <li class="cv-li">Google Analytics</li>
+                <li class="cv-li">SEO</li>
+            </ul>
+
+            <h4 class="cv-ulTitle">Platforms</h4>
+            <ul class="cv-ul">
+                <li class="cv-li">Jekyll</li>
+                <li class="cv-li">Tumblr</li>
             </ul>
 
             <h4 class="cv-ulTitle">Assets</h4>
@@ -152,7 +158,7 @@
             <ul class="cv-ul">
                 <li class="cv-li">React</li>
                 <li class="cv-li">Regular Expressions</li>
-                <li class="cv-li">Google Firebase</span></li>
+                <li class="cv-li">Google Firebase</li>
             </ul>
 
         </div>

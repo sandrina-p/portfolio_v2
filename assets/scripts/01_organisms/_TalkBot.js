@@ -44,7 +44,7 @@ var TalkBot = function(){
                     +brk+"<b>exit</b>"
                     +brk+"<b>...</b>";
 
-    var botOptHelp = "Maybe you should "+googleIt+" and then come back. What do you think?";
+    var botOptHelp = "Maybe you should "+googleIt+" and then come back, what do you think?";
 
 
     var conversation = {
@@ -64,16 +64,29 @@ var TalkBot = function(){
                 "input placeholder", "context of the next input"
             ]
             */
-            "gg, ggg":['ready to go', "sabes os comandos nao sabes?", "commands"],
-            "infinity and beyond, chaos, ∞ infinity, infinity, ∞, universe, cosmos": [
-                "You are a little crazy… we all are."
+            // "gg, ggg":['ready to go', "sabes os comandos nao sabes?", "commands"],
+            "infinity and beyond, chaos, ∞ infinity, infinity, ∞, universe, cosmos, abracadabra": [
+                "That's the way!"
                 +brk+"Despite always being under construction I already have the ability to share some knowledge Sandrina taught me while I was growing up."
-                +publicCmd,
+                +br+""+publicCmd,
                 "what's next?", "commands"
             ],
             "infinito, infinite": [
-                "I think you meant <b>infinity</b> right?",
+                "I think you meant <b>infinity</b>, right?",
                 "", "options"
+            ],
+            "whatever, no, come on": [
+                "Come on.. giving up so easily? You can "+googleIt+" or asking me for <b>help</>",
+                "go ask it to some console", "options"
+            ],
+            "dumb, you are dumb, your dumb": [
+                "A little, I have to admit it... ._.",
+                "but Sandrina isn't!", "options"
+            ],
+            "skip, skip this shit": [
+                "You asked for it"
+                +br+""+publicCmd,
+                "but Sandrina isn't!", "options"
             ],
             "undefined, null": [
                 "Not it's not. It has another name. At least on javascript language.",
@@ -111,6 +124,10 @@ var TalkBot = function(){
             ],
             "welcome back" : [
                 "Look who is back! So, How much is 1/0?",
+                "options"
+            ],
+            "hello, hi, hey there" : [
+                "Hi there! :D",
                 "options"
             ]
         },
@@ -169,7 +186,7 @@ var TalkBot = function(){
             ],
             "resources": [
                 [
-                    "still under construction. But ${linkCHTSTW}. I think he is in the family.",
+                    "still under construction. But "+linkCHTSTW+". I think he is in the family.",
                     "come back soon and I'll have more stuff to share", "commands"
                 ]
             ],
