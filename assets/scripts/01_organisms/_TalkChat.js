@@ -2,9 +2,9 @@ var TalkChat = function(){
     var brk = "<br>",
         linkCodepen = "<a href='#' class='link' target='_blank'>Codepen</a>",
         linkStackOverflow = "<a href='#' class='link' target='_blank'>Stackoverflow</a>",
-        linkBleid = genLink('https://www.facebook.com/BLEIDDD/?fref=ts', 'Mariana Freitas'),
-        linkLusco = genLink('https://www.facebook.com/luscooo/?fref=ts', 'João Rodrigues'),
-        linkMaggie = genLink('mmbotelho.com', 'Margarida Botelho'),
+        linkBleid = genLink('//marianarpdf.com', 'Mariana Freitas'),
+        linkLusco = genLink('//www.facebook.com/joaocdvrodrigues', 'João Rodrigues'),
+        linkMaggie = genLink('//mmbotelho.com', 'Margarida Botelho'),
         mainSections = ['history','knowledge','projects'];
 
     function genLink(link, name) {
@@ -187,7 +187,7 @@ var TalkChat = function(){
                     "assets/media/img/projects/DET3.png",
                     "assets/media/img/projects/DETx.png",
                 ],
-                capt: "\"I heard we can create digital magazines with inDesign!\" \"Oh really? Let's try it out!\"",
+                capt: "\"I heard we can create digital magazines with inDesign!\", \"Oh really? Let's try it out!\"",
                 more: "Because creating books it's not her thing, she and Margarida Botelho decided to experiment a new digital world once again. Then it cames \"Dutch Experimental Typography\”, a digital catalogue of typography, developed from the 70’s throughout the 90’s in the Netherlands. I wish you could use it by yourself. It's really funny playing with its cover.",
                 date: "Mar'15",
                 links: [["https://www.behance.net/gallery/26687261/Digital-Magazine-Dutch-experimental-typography", "check it on behance", "behance"]],
@@ -196,7 +196,7 @@ var TalkChat = function(){
                 categ: "opening other doors",
                 title: "141205",
                 sub: "3D animation",
-                role: "Creative and Programmer",
+                role: "Creative and technique",
                 team: "Made with "+linkLusco,
                 img: [
                     "assets/media/img/projects/blend0.png",

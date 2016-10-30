@@ -26,12 +26,12 @@ var Projects = function() {
         $projSub, $projMedia, $projRole, $projDate, $projTeam, $projRole, $projIntro, $projDetails, $projLinks, $projBotTip, // getProjDomElements variables
         $newActive, fPos, $projDir, addProjNumb, isParentLeft, //onNavMoved variables
         estimateFinalWidth, projActiveWidth, pivotPos, projActivePos, transX, //alignPivot variables
-        baffle0, baffle1, baffle2, baffle3, baffle4, //baffle variables
+        baffle0, baffle1, baffle2, baffle3, baffle4, baffle5, //baffle variables
 
         windowBotWidth = window.innerWidth*40/100,
         numbOfGestures = 0
-        projectsVisible = false,
-        gael = ""; //google analytics order of projects viewed
+        projectsVisible = false, //prevent use of keyboard < > before opening projects
+        gael = ""; //GA projects viewed path
 
 
     // ------ build nav and project DOM ------ //
@@ -102,27 +102,36 @@ var Projects = function() {
     function addProjNav(quantity) {
         var addProjects = "",
             nameSlug,
+            projRestart,
             projI =
                 isParentLeft
-                    ? arrProjects.indexOf($projsLeft.children(":first").text())
-                    : arrProjects.indexOf($projsRight.children(":last").text());
+                    ? arrProjects.indexOf($projsLeft.children(":first").text()) + 1
+                    : arrProjects.indexOf($projsRight.children(":last").text()) + 1;
 
 
         if (isParentLeft) {
-            var projRestart = arrProjects[arrProjects.length-1],
-                r = 2;
+            for (var i = 0, projRestart = arrProjects[arrProjects.length-1]; i < quantity; i++) {
+                projName = arrProjects[projI] || projRestart;
+                nameSlug = UtilFuncs.stringSlugLower(projName);
+                addProjects += getElBtn(nameSlug, projName);
+                projI--;
+            }
+
         } else {
-            var projRestart = arrProjects[0],
-                r = 0;
+            for (var i = 0, projRestart = arrProjects[0]; i < quantity; i++) {
+                projName = arrProjects[projI-i] || projRestart;
+                nameSlug = UtilFuncs.stringSlugLower(projName);
+                addProjects += getElBtn(nameSlug, projName);
+                projI++;
+            }
         }
 
-        for (var i = 1; i <= quantity; i++) {
-            projName = arrProjects[projI+i+r] || projRestart;
-            nameSlug = UtilFuncs.stringSlugLower(projName),
-            addProjects += getElBtn(nameSlug, projName);
+        if (isParentLeft) {
+            $projsLeft.prepend(addProjects);
+        } else {
+            $projsRight.append(addProjects);
         }
 
-        $projsRight.append(addProjects);
     }
 
 
@@ -147,13 +156,14 @@ var Projects = function() {
     }
 
     function getProjectImgs(imgArray) {
-        var $glidder = $("<div class='Glidder'></div>");
-        var elImgs = "";
-        var desktop = window.innerWidth >= 940;
+        var $glidder = $("<div class='Glidder'></div>"),
+            elImgs = "",
+            newImg, imgRet,
+            desktop = window.innerWidth >= 940;
+
         for (var i = 0; i < imgArray.length; i++) {
             if(desktop) {
-                var newImg;
-                var imgRet = imgArray[i].split('.');
+                imgRet = imgArray[i].split('.');
                 imgRet.splice(1, 0, "@2x");
                 imgRet.splice(2, 0, ".");
                 var newImg = imgRet.join("");
@@ -163,6 +173,7 @@ var Projects = function() {
             }
 
         }
+
         return $glidder.append(elImgs);
     }
 
@@ -204,7 +215,7 @@ var Projects = function() {
         baffleDet.text(currentText => projData.more);
 
         $("img").error(function () {
-            $(this).hide();
+            $(this).hide(); //prevent displaying 404 images
         });
     }
 
@@ -226,6 +237,8 @@ var Projects = function() {
             isParentLeft
                 ? projLimit - $projActive.prevAll().length
                 : projLimit - $projActive.nextAll().length;
+
+        console.log(addProjNumb);
 
     }
 
@@ -320,33 +333,6 @@ var Projects = function() {
     }
 
 
-    // ------ DOM Interactions ------ //
-    if (Modernizr.touchevents) {
-        $(document).on('swipeleft', '#projects', function() {
-            onNavMoved('right');
-        });
-
-        $(document).on('swiperight', '#projects', function() {
-            onNavMoved('left');
-        });
-    }
-
-    $(document).keydown(function(e) {
-        if (projectsVisible) {
-            if (e.keyCode == 37) { // [ < ]
-                onNavMoved('left');
-            } else if (e.keyCode == 39) { // [ > ]
-                onNavMoved('right');
-            }
-        }
-
-    });
-
-                        //FIXME a class here please.
-    $(document).on('click', '.projNav-pivot button', function() {
-        onNavProjClick($(this));
-    });
-
 
     // ------ Public ------ //
 
@@ -387,7 +373,7 @@ var Projects = function() {
         isParentLeft = checkIsParentLeft();
 
         //FIXME
-        //bug : if the buttons current and new are not in the same parent, it's a false true
+        //bug : if the current btn and new btn are not in the same parent, it's a false true
         direction =
             $newActive.prevAll($projActive).length
                 ? "right"
@@ -404,14 +390,18 @@ var Projects = function() {
     }
 
     function onNavMoved(direction) {
-        $newActive = direction == 'left' ? $projActive.prev() : $projActive.next();
+        $newActive =
+            direction == 'left'
+                ? $projActive.prev()
+                : $projActive.next();
+
         isParentLeft = checkIsParentLeft();
 
         updateVarsOnNav(direction == 'left');
 
-        $newActive.length == 0
-            ? $newActive = $projDir.children(":"+fPos)
-            : "";
+        if ($newActive.length == 0) {
+            $newActive = $projDir.children(":"+fPos)
+        }
 
         showNewProject();
 
@@ -443,13 +433,42 @@ var Projects = function() {
 
         (function toGA() {
             var ec = 'projNavMoved';
-                inm = $newActive.text().replace(/[^a-zA-Z ]/g, ""); //item name without especial characters
+                inm = $newActive.text().replace(/[^a-zA-Z]/g, "");
                 ea = inm; //action
-                gael += inm+"|"; //label REVIEW save all path clicks to know the jorney
+                gael += inm+"|";
 
             GAcustom.sendToGA(`&ec=${ec}&in=${inm}&ea=${ea}&el=${gael}`);
         })();
     }
+
+
+    // ------ DOM Interactions ------ //
+    if (Modernizr.touchevents) {
+        $(document).on('swipeleft', '#projects', function() {
+            onNavMoved('right');
+        });
+
+        $(document).on('swiperight', '#projects', function() {
+            onNavMoved('left');
+        });
+    }
+
+    $(document).keydown(function(e) {
+        if (projectsVisible) {
+            if (e.keyCode == 37) { // [ < ]
+                onNavMoved('left');
+            } else if (e.keyCode == 39) { // [ > ]
+                onNavMoved('right');
+            }
+        }
+
+    });
+
+                        //FIXME a class here please.
+    $(document).on('click', '.projNav-pivot button', function() {
+        onNavProjClick($(this));
+    });
+
 
     return {
         startIt,
