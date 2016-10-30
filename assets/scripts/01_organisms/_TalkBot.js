@@ -68,7 +68,7 @@ var TalkBot = function(){
             "infinity and beyond, chaos, ∞ infinity, infinity, ∞, universe, cosmos, abracadabra": [
                 "That's the way!"
                 +brk+"Despite always being under construction I already have the ability to share some knowledge Sandrina taught me while I was growing up."
-                +br+""+publicCmd,
+                +brk+""+publicCmd,
                 "what's next?", "commands"
             ],
             "infinito, infinite": [
@@ -85,7 +85,7 @@ var TalkBot = function(){
             ],
             "skip, skip this shit": [
                 "You asked for it"
-                +br+""+publicCmd,
+                +brk+""+publicCmd,
                 "but Sandrina isn't!", "options"
             ],
             "undefined, null": [
@@ -104,7 +104,8 @@ var TalkBot = function(){
                 'I still believe in you', "options"
             ],
             "exit, esc": [
-                "Really? We didn't even start you already want to leave.. Press ESC and go get a life",
+                "Really? We didn't even start you already want to leave.. Press ESC and go get a life"
+                +brk+"By the way, don't forget to share me and talk about Sandrina while you’re out there :3",
                 "I still believe in you", "options"
             ],
             "helpp, help, i don't know, dunno, i'm not sure, help me": [
