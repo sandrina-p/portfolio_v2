@@ -120,7 +120,6 @@ var Projects = function() {
                 nameSlug = UtilFuncs.stringSlugLower(projName);
                 addProjects += getElBtn(nameSlug, projName);
                 projI--;
-
             }
 
         } else {
