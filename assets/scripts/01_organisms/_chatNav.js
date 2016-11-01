@@ -1,7 +1,9 @@
-var chatNav = function() {
+var ChatNav = function() {
     var mainSections = TalkChat.mainSections,
-        untilTablet = UtilFuncs.untilTablet;
+        untilTablet = UtilFuncs.untilTablet,
+        isNavReady = false;
 
+    //it has to wait for DOM ready to make sure all elements are ready to be shown
     $(function navInit() {
         var $heyThereIntro = $('.heyThere-intro'),
             $nav = $('#chat-nav'),
@@ -28,15 +30,20 @@ var chatNav = function() {
                 baffleBg.reveal(400, 450);
                 baffleTh.reveal(400, 250);
                 bafflePr.reveal(400, 300);
+                setTimeout(function () {
+                    isNavReady = true; //to trigger _hashs.js if needed
+                }, 1000);
             } else {
                 setTimeout(() => showNav(), 500);
             }
         })();
 
-        function navTranslate(thisId) {
+        setTimeout(() => navTranslate(), 1000);
+
+
+        function navTranslate(thisId = null) {
             var navWidth = untilTablet ? 0 : 20, //padding
                 padd = 16;
-                thisId = thisId || null;
 
             $nav.children().each(function() {
                 if (thisId && $(this).attr('id') == thisId) {
@@ -62,9 +69,11 @@ var chatNav = function() {
             }
         }
 
+                                //FIXME i should really add a class here ._.
         $(document).on('click', '.chatSection.jsOnNav', function(){
-            navTranslate( $(this).attr('id') );
+            Hashs.set( $(this).find('.chatPart-title').text() );
 
+            navTranslate( $(this).attr('id') );
             $(this).css({'transform': 'translate(0, 0)'});
             $(this).removeClass('jsOnNav');
             $(this).one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', function(e) {
@@ -72,6 +81,13 @@ var chatNav = function() {
             });
         });
 
-        setTimeout(() => navTranslate(), 1000);
     });
+
+    function checkIsNavReady() {
+        return isNavReady;
+    }
+
+    return {
+        checkIsNavReady
+    }
 }();

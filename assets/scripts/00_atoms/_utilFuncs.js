@@ -1,8 +1,10 @@
 var UtilFuncs = function(){
 
     var iOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream,
-        untilTablet = iOS ? screen.width : window.innerWidth < 750; //http://stackoverflow.com/questions/4629969/ios-return-bad-value-for-window-innerheight-width
+        untilTablet = iOS ? screen.width : window.innerWidth < 750,
+        wHeight = iOS ? screen.height : window.innerHeight; //http://stackoverflow.com/questions/4629969/ios-return-bad-value-for-window-innerheight-width
 
+    console.log(untilTablet, wHeight);
 
     $(document).on('click', 'a[href*=#]', function(e){
         $('html, body').animate({
@@ -31,7 +33,7 @@ var UtilFuncs = function(){
     }
 
     function stringSlugLower(str) {
-        return str.replace(' ','-').toLowerCase();
+        return str.replace(/ /g,'-').toLowerCase();
     }
 
     function randomNumb(arr) {
@@ -42,6 +44,7 @@ var UtilFuncs = function(){
 
     return {
         untilTablet,
+        wHeight,
         objSize,
         objRandom,
         stringSlugLower,

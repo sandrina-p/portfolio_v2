@@ -240,12 +240,12 @@ var botSection = function() {
 
 
         (function toGA() {
-            var ec = 'bot';
-                inm = sentText.replace(/[^a-zA-Z ]/g, ""); //item name without especial characters
-                ea = inm; //action
-                gael += inm+"|"; //label REVIEW save all path clicks to know the jorney
+            var ec = 'bot',
+                ea = sentText.replace(/[^a-zA-Z ]/g, ""); //action
 
-            GAcustom.sendToGA(`&ec=${ec}&in=${inm}&ea=${ea}&el=${gael}`);
+            gael += ea+"|"; //save all path clicks to know the jorney
+
+            GAcustom.sendToGA(`&ec=${ec}&ea=${ea}&el=${gael}`);
         })();
 
     }

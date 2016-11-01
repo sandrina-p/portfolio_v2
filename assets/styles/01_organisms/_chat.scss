@@ -317,6 +317,7 @@
     }
 }
 
+// FIXME can't be content!
 @keyframes waiting {
      0% {content: "";}
     23% {content: "";}
@@ -329,6 +330,7 @@
     40% {content: "¯\\_(ツ)_";}
     43% {content: "¯\\_(ツ)_/";}
     45% {content: "¯\\_(ツ)_/¯";}
+    77% {content: "¯\\_(ツ)_/¯";}
     80% {content: "¯\\_(ツ)_/";}
     83% {content: "¯\\_(ツ)_";}
     85% {content: "¯\\_(ツ)";}

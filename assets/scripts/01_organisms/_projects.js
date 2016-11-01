@@ -2,8 +2,9 @@ var Projects = function() {
     var activeClass = "js-active",
         chatContent = TalkChat.conversation,
         arrProjects = chatContent.practice.projects,
-        projLimit = 7,
-        openingProject,
+        projLimit = 7, //limit of projects on nav for each side
+        initialProject = "", //if you want to open a specific project
+        classbtnNav = '.projNav-btn',
         classProjSub = ".projCont-subtitle",
         classProjMedia = ".projCont-media",
         classProjRole = ".projCont-role",
@@ -19,7 +20,7 @@ var Projects = function() {
 
         mediaQHeight = 550,
         untilTablet = UtilFuncs.untilTablet,
-        wHeight,
+        wHeight = UtilFuncs.wHeight,
 
         direction,
         $pivot, $projsLeft, $projsRight, $projActive, // nav variables
@@ -110,6 +111,7 @@ var Projects = function() {
 
 
         if (isParentLeft) {
+
             for (var i = 0; i < quantity; i++) {
                 if (arrProjects[projI]) {
                     projName = arrProjects[projI];
@@ -118,11 +120,14 @@ var Projects = function() {
                     projName = arrProjects[projI];
                 }
                 nameSlug = UtilFuncs.stringSlugLower(projName);
-                addProjects += getElBtn(nameSlug, projName);
+                addProjects = getElBtn(nameSlug, projName) + addProjects; //reverse order
                 projI--;
             }
 
+            $projsLeft.prepend(addProjects)
+
         } else {
+
             for (var i = 0; i < quantity; i++) {
                 if (arrProjects[projI]) {
                     projName = arrProjects[projI];
@@ -134,14 +139,9 @@ var Projects = function() {
                 addProjects += getElBtn(nameSlug, projName);
                 projI++;
             }
-        }
 
-        if (isParentLeft) {
-            $projsLeft.prepend(addProjects);
-        } else {
             $projsRight.append(addProjects);
         }
-
     }
 
 
@@ -242,14 +242,11 @@ var Projects = function() {
             fPos = 'first';
         }
 
-        //check how many projects should we add to the nav
+        //check how many projects should be added to the nav
         addProjNumb =
             isParentLeft
                 ? projLimit - $projActive.prevAll().length
                 : projLimit - $projActive.nextAll().length;
-
-        console.log(addProjNumb);
-
     }
 
     function alignPivot($newProject) {
@@ -281,6 +278,8 @@ var Projects = function() {
         baffleProj();
         getProjectData($newActive.text());
 
+        Hashs.set( $newActive.text() );
+
         $projActive.removeClass(activeClass).removeAttr('disabled');
 
         //remove or add buttons on nav to mantain the balance on the DOM.
@@ -307,7 +306,6 @@ var Projects = function() {
             }
         }, 150);
     }
-
 
 
     // ------ util functions ------ //
@@ -346,12 +344,17 @@ var Projects = function() {
 
     // ------ Public ------ //
 
+    function setInitialProject(project) {
+        if (typeof project == "string") {
+            return initialProject = project;
+        } else {
+            console.log('it has to be a string');
+        }
+    }
+
     function startIt(section) {
         var elProj = buildProj(),
-            wHeight =  window.innerHeight, //FIXME strange bug with safari isn't always right
-            untilTablet = window.innerWidth < 750,
-            i = UtilFuncs.randomNumb(arrProjects.length - 1) + 1, //between 1 and arrProjects.length
-            projName = arrProjects[i];
+            projName = initialProject || arrProjects[ UtilFuncs.randomNumb(arrProjects.length - 1) + 1 ];
 
         $('#'+section).append(elProj);
         $('#projects').slideDown();
@@ -474,13 +477,13 @@ var Projects = function() {
 
     });
 
-                        //FIXME a class here please.
-    $(document).on('click', '.projNav-pivot button', function() {
+    $(document).on('click', classbtnNav, function() {
         onNavProjClick($(this));
     });
 
 
     return {
+        setInitialProject,
         startIt,
         onNavProjClick,
         onNavMoved

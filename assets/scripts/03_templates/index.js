@@ -13,10 +13,17 @@
 // =include ../01_organisms/_TalkBot.js
 // =include ../01_organisms/_TalkBot-vocabulary.js
 
-// =include ../01_organisms/_projects.js
 // =include ../01_organisms/_chatNav.js
 // =include ../01_organisms/_chat.js
+
+// =include ../01_organisms/_projects.js
+
 // =include ../01_organisms/_onweb.js
+
 // =include ../01_organisms/_psst.js
+
 // =include ../01_organisms/_bot.js
+
 // =include ../01_organisms/_ga.js
+
+// =include ../01_organisms/_hashs.js

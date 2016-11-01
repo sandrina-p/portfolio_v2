@@ -2,9 +2,10 @@ var TalkChat = function(){
     var brk = "<br>",
         linkCodepen = "<a href='#' class='link' target='_blank'>Codepen</a>",
         linkStackOverflow = "<a href='#' class='link' target='_blank'>Stackoverflow</a>",
-        linkBleid = genLink('//marianarpdf.com', 'Mariana Freitas'),
-        linkLusco = genLink('//www.facebook.com/joaocdvrodrigues', 'João Rodrigues'),
+        linkMariana = genLink('//marianarpdf.com', 'Mariana Freitas'),
+        linkJoao = genLink('//www.facebook.com/joaocdvrodrigues', 'João Rodrigues'),
         linkMaggie = genLink('//mmbotelho.com', 'Margarida Botelho'),
+        linkLusco = genLink('//www.facebook.com/luscooo', 'LUSCO'),
         mainSections = ['history','knowledge','projects'];
 
     function genLink(link, name) {
@@ -123,7 +124,7 @@ var TalkChat = function(){
                 title: "Pistol Shrimp",
                 sub: "net label website",
                 role: "Creative and Programmer",
-                team: "Made with "+linkBleid+", "+linkLusco+" and "+linkMaggie,
+                team: "Made with "+linkMariana+", "+linkJoao+" and "+linkMaggie,
                 img: [
                     "assets/media/img/projects/ps0.png",
                     "assets/media/img/projects/ps1.png",
@@ -196,7 +197,7 @@ var TalkChat = function(){
                 title: "141205",
                 sub: "3D animation",
                 role: "Creative and technique",
-                team: "Made with "+linkLusco,
+                team: "Sound by "+linkLusco,
                 img: [
                     "assets/media/img/projects/blend0.png",
                     "assets/media/img/projects/blend1.png",
