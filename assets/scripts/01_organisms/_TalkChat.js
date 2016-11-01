@@ -74,12 +74,12 @@ var TalkChat = function(){
                     "assets/media/img/projects/rnex2.png",
                     "assets/media/img/projects/rnexx.png",
                 ],
-                capt: "Everyone knows that Rede Expressos isn't an easy friendly platform...",
-                more: "As final project in her post graduation she redesigned and coded the website homepage and used Jekyll. On UX UI side, she redesign the \"buy ticket\" userflow for Mobile iOS and Android. The project had several phases: competitor Analysis, product SWOT, wireframes, design and prototype. She also learned how to adapt an app to follow both Human Guidelines and Material Design.",
+                capt: "Everyone knows that Rede Expressos is not an user friendly platform...",
+                more: "As a final project for her post graduation she redesigned and coded the website's homepage and used Jekyll. UX / UI wise, she redesigned the "buy ticket" userflow for Mobile iOS and Android. The project had several phases: competitor Analysis, product SWOT, wireframes, design and prototype. She also learned how to adapt an app to follow both Human Guidelines and Material Design.",
                 date: "JUN'16",
                 links: [
                     ["https://marvelapp.com/6jef9dg", "iOS prototype", "apple"],
-                    ["#todo-git-redeexpressos", "homepage", "desktop"]
+                    ["https://sandrina-p.github.io/rede-expressos/", "homepage", "desktop"]
                 ]
             },
             'carolina machado': {
@@ -96,8 +96,8 @@ var TalkChat = function(){
                     "assets/media/img/projects/cm4.png",
                     "assets/media/img/projects/cmx.png",
                 ],
-                capt: "A Tumblr theme build from scratch. Ajax is the secret.",
-                more: "After the first static website, she decided to give it an upgrade adding some CMS, to make the content dynamic, and of course easier for Carolina to update it. Tumblr was the chosen one for its simple API and content management. With Ajax it was possible to have almost full control over it that now no one says it's a Tumblr.",
+                capt: "A Tumblr theme build from scratch. Ajax is the secret",
+                more: "After the first static website, she decided to give it an upgrade by adding some CMS to make the content dynamic and of course, easier for Carolina to update. Tumblr was the chosen one for its simple API and content management. With Ajax it was possible to have almost full control over it that now no one says it's a Tumblr.",
                 date: "mar'16",
                 links: [["//carolina-machado.com", "check the website", "desktop"]],
             },
@@ -115,9 +115,9 @@ var TalkChat = function(){
                     "assets/media/img/projects/sp4.png",
                 ],
                 capt: "Say hello to my brother from 2015",
-                more: "She was looking for new interactive ways to present herself. I think the best part is the menu. You never saw something like that! She started to explore advanced CSS transitions and experiment a lot of JS plugins. It's also an under construction website that she never finished. I don't think that's bad. In fact, that's the beauty about it!",
+                more: "She was looking for new interactive ways to present herself. I think the best part is the menu. You never saw something like that! She started to explore advanced CSS transitions and experimenting a lot of JS plugins. It's also an under construction website that she never finished. I don't think that's bad. In fact, that's the beauty about it!",
                 date: "AUG'15",
-                links: [["practice/portfolio15", "check the website", "desktop"]],
+                links: [["https://sandrina-p.github.io/portfolio-15/", "check the website", "desktop"]],
             },
             'pistol shrimp': {
                 categ: "www projects",
@@ -131,8 +131,8 @@ var TalkChat = function(){
                     "assets/media/img/projects/ps2.png",
                     "assets/media/img/projects/ps3.png",
                 ],
-                capt: "When you do all but what teachers asked, you end up with a crazy interactive project.",
-                more: "Some friends of her wanted to build a online record label that distributes music for free. She wanted to work on a website. So they decided to go for it as Final Degree project in Communication Design. The website presents itself with a black and white visual by focusing on the user experience through each interactive release, enhancing the download, so there is more to it than just a click.",
+                capt: "When you do all but what teachers asked, you end up with a crazy interactive project",
+                more: "Some friends of her wanted to build an online record label that distributes music for free. She wanted to work on a website. So they decided to go for it as a Final Degree project in Communication Design. The website presents itself with a black and white design by focusing on the user experience through each interactive release, enhancing the download, so there is more to it than just a click.",
                 date: "JUN'15",
                 links: [["#todo-ps-git", "check the website", "desktop"]],
             },
@@ -153,7 +153,7 @@ var TalkChat = function(){
                 capt: "It's not a movie, but it could be",
                 more: "Hope you know the movie Moon (2001) by Duncan Jones. The main focus of this website was not about how the film was made but the story and experience that the character lives along the narration. Here, the user’s interaction is fundamental to create the website.",
                 date: "feb'15",
-                links: [["/practice/moon/", "check the website", "desktop"]],
+                links: [["https://sandrina-p.github.io/moon/", "check the website", "desktop"]],
             },
             'N O X': {
                 categ: "opening other doors",
