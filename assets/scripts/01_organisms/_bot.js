@@ -81,7 +81,7 @@ var botSection = function() {
                 }
                 break;
             default:
-                talkToBot("tilttt");
+                talkToBot('tilttt', 'commands');
                 GAcustom.sendToGA(`&ec=bug&ea=tilttt`);
         }
     }
@@ -221,17 +221,19 @@ var botSection = function() {
     // ----- publicCmd ----- //
     var gael = "";
 
-    function talkToBot(directText) {
+    function talkToBot(directText, directContext = null) {
         originalSent = directText || $('#'+botInputId).val()
         sentText = originalSent; //prevent funny users to struggle with this function;
 
         //prevent funny users to struggle with this function
         if (typeof sentText !== "string" ) {
+            console.log('tillt typeof');
             sentText = "tilttt";
+            directContext = "commands";
         }
 
         sentText = sentText.replace(/[^a-zA-Z ]/g, "").toLowerCase();
-        context = $('#'+botInputId).attr('name') || 'commands';
+        context = directContext || $('#'+botInputId).attr('name') || 'commands';
 
         $('#'+botInputId).addClass('jsLoading').val('').prop('disabled', true);
 

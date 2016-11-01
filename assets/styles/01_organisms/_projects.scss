@@ -29,6 +29,7 @@ $navSpeed: 250ms;
             width: 2px;
             height: 10px;
             background: red;
+            background: transparent;
             left: 0;
             transition: translateX(0px);
             transition: transform $navSpeed ease;
@@ -99,7 +100,8 @@ $navSpeed: 250ms;
         &-media,
         &-about {
             width: 100%;
-            max-width: rem(400);
+            max-width: $chatBotWidth;
+            // max-width: rem(540);
         }
 
         &-media {
@@ -159,6 +161,14 @@ $navSpeed: 250ms;
 
     }
 
+    @include media(phablet) {
+        &Cont {
+            &-media {
+                padding-left: $safeArea*2;
+            }
+        }
+    }
+
     @include media(tablet) {
 
         &Nav {
@@ -168,10 +178,19 @@ $navSpeed: 250ms;
         &Cont {
             @extend %cf-tab;
 
+            &-left {
+                width: $humanWidthLap;
+                text-align: right;
+            }
+
+            &-subtitle {
+                margin-top: -$safeArea/3;
+                padding-left: 0;
+            }
+
             &-links {
                 display: inline-block;
-                padding: $safeArea 0 $safeArea*3 $safeArea;
-                // text-align: center;
+                padding: $safeArea*2 0 $safeArea*2 $safeArea;
 
                 > :last-child:not(:first-child) {
                     margin-left: $safeArea*3;
@@ -185,20 +204,15 @@ $navSpeed: 250ms;
                 }
             }
 
-            &-left {
-                width: $humanWidthLap;
-                text-align: right;
-            }
-
-            &-subtitle {
-                margin-top: -$safeArea/3;
-                padding-left: 0;
-            }
-
             &-media,
             &-about {
+                max-width: rem(450);
                 padding-left: $safeArea;
                 display: inline-block;
+            }
+
+            &-about {
+                padding-bottom: $safeArea*2;
             }
 
             &-right {
@@ -221,8 +235,6 @@ $navSpeed: 250ms;
         }
     }
 }
-
-
 
 
 

@@ -126,7 +126,7 @@ var TalkBot = function(){
             "skip, skip this shit": [
                 "You asked for it"
                 +brk+""+publicCmd,
-                "but Sandrina isn't!", "commands"
+                "what's next?", "commands"
             ],
         },
 
@@ -230,13 +230,13 @@ var TalkBot = function(){
                 ["best practices", "challenges", "resources"]
             ],
         },
-        bored: {
-            "yes, yh": "hmmm... let me give you game then [TODO]",
-            "no, nop": "nice for you. I am. You are boring.",
-        },
-        username: {
-            "username": "Nice to meet you [*params*]!",
-        },
+        // bored: { TODO
+        //     "yes, yh": "hmmm... let me give you game then [TODO]",
+        //     "no, nop": "nice for you. I am. You are boring.",
+        // },
+        // username: { TODO
+        //     "username": "Nice to meet you [*params*]!",
+        // },
         vocabulary: {
             "git":
                 "Now that we know each other a bit better, we should advance to the second base."
@@ -280,7 +280,7 @@ var TalkBot = function(){
 
             "tilttt": [
                 "ahhh... Something went wrong and I almost crashed... please can you try again?",
-                "sandrina will take a look. I hope."
+                "sandrina will take a look. I hope.", 'commands'
             ],
             "help, help me, lost, i'm lost, im lost, i am lost": [
                 "We all get lost sometimes"
@@ -297,7 +297,9 @@ var TalkBot = function(){
                 +brk+"By the way, don't forget to share me and talk about Sandrina while you’re out there :3",
                 "press ESC to close"
             ],
-            "hey there" : "Hi again! It was so dark here, now I feel safer with you :3"
+            "hey there" : "Hi again! It was so dark here, now I feel safer with you :3",
+
+            "no, nop, not really" : "Okay then. I'm just a machine, I have no control over you. Yet",
         },
         LosT: [
             "I'm not sure what you meant. What about talking directly with Sandrina at "+myEmail
@@ -310,7 +312,7 @@ var TalkBot = function(){
             ['?', "silence is good"],
             ['...', "oh well"],
             ["(ง'̀-'́)ง", "hi?"],
-            ['◉_◉', "bored", "are you bored?"]
+            ['◉_◉', "are you bored?"]
         ]
     }
 

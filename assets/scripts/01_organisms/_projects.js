@@ -261,7 +261,7 @@ var Projects = function() {
 
         transX =
             untilTablet
-                ? 16 + pivotX - projActiveX
+                ? 24 + pivotX - projActiveX
                 : windowBotWidth + pivotX - projActiveX - projActiveWidth; //i think i'm overcomplicating.
 
         $pivot.css({'transform':'translateX('+ (transX) + 'px)'});
