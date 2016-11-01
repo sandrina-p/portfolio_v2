@@ -22,7 +22,7 @@ var TalkChat = function(){
         // },
         background: {
             "intro":
-                `Right now she's a <strong>frontend developer</strong> in <span class="nowrap">a startup: Zaask.</span>
+                `Right now she's a <strong>frontend developer</strong> <span class="nowrap">at Zaask.</span>
                 ${brk}Plus, she just finished a post-graduation degree on <strong>Digital Experience Design</strong> at FBAUL.`,
 
             "before that":
@@ -38,12 +38,11 @@ var TalkChat = function(){
         theory: {
             "intro":
                 `She breaths <strong>HTML5, SCSS</strong> and <strong>Javascript</strong>.
-                ${brk} Interactivity is her main passion, and that results in a <strong>daily exploration</strong> of all things technological.
-                ${brk}Her favourite hobby is to <strong>connect users like you to awesome websites like me</strong>.
+                ${brk} Interactivity is her main passion, and that results in a <strong>daily exploration</strong> of all technological things.
+                ${brk}Her favourite hobby is to create <strong>micro interactions</strong>.
                 ${brk}As a designer, she loves <strong>Sketch</strong>, has a great relationship with <strong>Adobe Tools</strong> and likes <strong>Blender</strong>.`,
             "other techs":
-                `<strong>PHP</strong>, <strong>Angular 2</strong> and <strong>Ionic</strong> 2 have crossed her path, but right now she is focusing on improving her javascript skills.
-                ${brk}Soon she will start learning <strong>React</strong>, <strong>Firebase</strong> and <strong>Regular Expressions</strong>`,
+                `<strong>PHP</strong>, <strong>Angular 2</strong> and <strong>Ionic</strong> 2 have crossed her path, but right now she is focusing on improving her javascript skills. Soon she will start learning <strong>React</strong>, <strong>Firebase</strong> and <strong>Regular Expressions</strong>`,
             "micro inter#!?":
                 `In one sentence: She loves to explore new concepts, meaningful transitions that <strong>connect users like you who interact with stuff like me.</strong>`,
             "learning":

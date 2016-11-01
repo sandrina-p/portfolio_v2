@@ -4,7 +4,6 @@
     <div class="cv-header">
         <div class="cv-profile">
             <div class="cv-ascii">
-                <?php /*<!-- Google doesn't need to read my 312938721 ascii characters -->*/ ?>
                 <?php include 'index-parts/myself.php';?>
             </div>
             <span class="glitch" data-text="interaction Designer" data-sub="frontend developer">
@@ -55,7 +54,7 @@
                     </dt>
                     <dd class="cv-dd js-onWeb-remove">it can't be all <span class="nowrap">about coding</span></dd>
                 </dl>
-                <!-- don't kill me, but those fancy hover links are loaded by javascript too. Why? Because I like fancy layouts as much as I want Google to better understand my website x) -->
+                <!-- don't kill me, but those fancy chat links are loaded by javascript too. Why? Because I like fancy layouts as much as I want Google to better understand my website x) -->
             </div>
         </article>
 
@@ -171,14 +170,14 @@
         <div class="cv-under-proj">
             <span class="cv-under-proj-sub js-cvProjSub"></span>
             <ul class="cv-under-proj-ul js-cvProj">
-                <li><a href="#" target="_blank" class="cv-link" data-sub="video game concept">N O X</a></li>
-                <li><a href="#" target="_blank" class="cv-link" data-sub="3D animation">141205</a></li>
-                <li><a href="#" target="_blank" class="cv-link" data-sub="web and app concept redesign">Rede Expressos</a></li>
-                <li><a href="#" target="_blank" class="cv-link" data-sub="digital magazine">DET</a></li>
-                <li><a href="#" target="_blank" class="cv-link" data-sub="previous website">portfolio'15</a></li>
-                <li><a href="#" target="_blank" class="cv-link" data-sub="net label website">pistol shrimp</a></li>
-                <li><a href="#" target="_blank" class="cv-link" data-sub="movie website">moon</a></li>
-                <li><a href="//carolina-machado.com" target="_blank" class="cv-link" data-sub="fashion website">carolina machado</a></li>
+                <li><a target="_blank" href="https://vimeo.com/176452854" class="cv-link" data-gaec="cvproj" data-sub="video game concept">N O X</a></li>
+                <li><a target="_blank" href="#TODO-link" class="cv-link" data-gaec="cvproj" data-sub="3D animation">141205</a></li>
+                <li><a target="_blank" href="#TODO-link" class="cv-link" data-gaec="cvproj" data-sub="web and app concept redesign">Rede Expressos</a></li>
+                <li><a target="_blank" href="https://www.behance.net/gallery/26687261/Digital-Magazine-Dutch-experimental-typography" class="cv-link" data-gaec="cvproj" data-sub="digital magazine">DET</a></li>
+                <li><a target="_blank" href="#TODO-link" class="cv-link" data-gaec="cvproj" data-sub="previous website">portfolio'15</a></li>
+                <li><a target="_blank" href="#TODO-link" class="cv-link" data-gaec="cvproj" data-sub="net label website">pistol shrimp</a></li>
+                <li><a target="_blank" href="#TODO-link" class="cv-link" data-gaec="cvproj" data-sub="movie website">moon</a></li>
+                <li><a target="_blank" href="http://carolina-machado.com/" target="_blank" class="cv-link" data-gaec="cvproj" data-sub="fashion website">carolina machado</a></li>
             </ul>
         </div>
     </div>
