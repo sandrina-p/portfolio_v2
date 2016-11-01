@@ -16,11 +16,12 @@
     <link rel="icon" type="image/png" href="assets/media/brand/favicon32.png" sizes="32x32">
     <link rel="icon" type="image/png" href="assets/media/brand/favicon180.png" sizes="180x180">
 
-    <link rel="stylesheet" href="assets/styles/04_templates/header.min.css">
+    <?php // <link rel="stylesheet" href="assets/styles/04_templates/header.min.css"> ?>
+
 
     <style>
         /*just the needed css to display the intro*/
-        <?php //echo file_get_contents('assets/styles/04_templates/header.min.css') ?>
+        <?php echo file_get_contents('assets/styles/04_templates/header.min.css') ?>
     </style>
 </head>
 
