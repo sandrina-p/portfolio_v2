@@ -7,16 +7,17 @@ var TalkBot = function(){
     var googleIt = genLink('http://lmgtfy.com/?q=one+divided+by+zero', 'Google it'),
         linkKoala = genLink('//koala-app.com/', 'Koala'),
         linkGulp = genLink('http://gulpjs.com/', 'Gulp'),
-        linkSUIT = genLink('#linkTODO', 'SUIT methodology'),
-        linkMP = genLink('#TlinkODO', 'Module Pattern'),
-        linkLT = genLink('#TlinkODO', 'perceived loading time'),
-        linkFOUC = genLink('#linkTODO', 'FOUC'),
-        linkGit = genLink('#linkTODO', 'Bitbucket'),
+        linkSUIT = genLink('https://github.com/suitcss/suit/blob/master/doc/naming-conventions.md#ComponentName', 'SUIT methodology'),
+        linkMP = genLink('http://www.adequatelygood.com/JavaScript-Module-Pattern-In-Depth.html', 'Module Pattern'),
+        linkLT = genLink('https://uxplanet.org/how-to-make-users-think-your-app-loads-faster-24052fe307bf#.330znvww7', 'perceived loading time'),
+        linkFOUC = genLink('https://en.wikipedia.org/wiki/Flash_of_unstyled_content', 'FOUC'),
+        linkGit = genLink('https://github.com/sandrina-p/s008080', 'Github'),
         linkHer = genLink('http://www.imdb.com/title/tt1798709/', "Her"),
         linkFirebase = genLink('//firebase.google.com', 'Google Firebase'),
-        linkHelpMe = genLink('#TODO-push-request', 'help me'),
+        linkHelpMe = genLink('https://github.com/sandrina-p/s008080/blob/master/assets/scripts/01_organisms/_TalkBot-vocabulary.js', 'help me'),
         linkCodeAvatar = genLink('#TODO-codepen-avatar', 'codepen'),
         linkCodeGlidder = genLink('#TODO-codepen-glidder', 'codepen'),
+        linkChill = genLink('#TODO', 'watch and learn'),
         myEmail = genLink('mailto:a.sandrina.p@gmail.com?subject=Hey%20there!', 'a.sandrina.p@gmail.com', "noTarget"),
         linkCHTSTW = genLink('http://clickheretosavetheworld.com/', 'clickHereToSaveTheWorld'),
 
@@ -103,9 +104,10 @@ var TalkBot = function(){
                 botOptHelp,
                 "I still believe in you", "options"
             ],
-            "tell me more, more, what else": [ //FIXME DRY this.
-                "you are such a curious creature :3. I'm still under construction, but you can leave a quick message to Sandrina. Just type something started by @@. She will answer you for sure.", //TODO
-                "@@ myname@email.com - Hi sandrina! How much is 0.1 + 0.2 ?", "options"
+            "tell me more, more, what else, anything else": [ //FIXME DRY this
+                "you are such a curious creature :3. I'm still under construction... I think you best move here is to talk with Sandrina at "+myEmail, //but you can leave a quick message to Sandrina. Just type something started by @@.*/",
+                // "@@ Hi sandrina! How much is 0.1 + 0.3 ?"
+                "or you can use social networks, she's there somewhere..."
             ],
             "welcome back" : [
                 "Look who is back! So, How much is 1/0?",
@@ -127,6 +129,10 @@ var TalkBot = function(){
                 "You asked for it"
                 +brk+""+publicCmd,
                 "what's next?", "commands"
+            ],
+            "fk, fuck you, shit, go fuck yourself, fuck u": [
+                "You are so agressive... This will calm you: "+linkChill,
+                "what's next?"
             ],
         },
 
@@ -274,8 +280,9 @@ var TalkBot = function(){
                 "this time do it by youself, yes? :D"
             ],
             "tell me more, more, what else, anything else": [
-                "you are such a curious creature :3. I'm still under construction, but you can leave a quick message to Sandrina. Just type something started by @@. She will answer you for sure.", //TODO
-                "@@ your@email.com - Hi sandrina! How much is 0.1 + 0.3 ?"
+                "you are such a curious creature :3. I'm still under construction... I think you best move here is to talk with Sandrina at "+myEmail, //but you can leave a quick message to Sandrina. Just type something started by @@.*/",
+                // "@@ Hi sandrina! How much is 0.1 + 0.3 ?"
+                "or you can use social networks, she's there somewhere..."
             ],
 
             "tilttt": [
@@ -313,7 +320,8 @@ var TalkBot = function(){
             ['...', "oh well"],
             ["(ง'̀-'́)ง", "hi?"],
             ['◉_◉', "are you bored?"]
-        ]
+        ],
+        poet: "<i style='font-family:times'>Hey Shakespeare, keep it short okay? ಠ~ಠ</i>"
     }
 
     return { conversation }

@@ -6,16 +6,18 @@ var botSection = function() {
         botSentClass = "bot-sent",
         jsSentEmptyClass = "js-sentEmpty",
         $bot = $('#bot'),
+        $botTerminal,
         $botInner,
         $botText,
-        intervalBotScroll,
+        setAutoScroll = true,
         firstTrigger = true,
         originalSent, sentText, //text written on input
         context; //input context of the conversation
 
 
-    function appendSent() {
+    function appendSent(directInput = null) {
         var sentEmpty = "";
+        originalSent = directInput || originalSent;
         if(originalSent == "") sentEmpty = jsSentEmptyClass;
         $botText.append("<p class='"+botSentClass+" "+sentEmpty+"'>"+originalSent+"</p>");
     }
@@ -27,17 +29,16 @@ var botSection = function() {
                         <button name="help" type="button" class="btnBot bot-hr jsLoading" data-bot="help">[Help]</button>
                         <button name="more" type="button" class="btnBot bot-hr jsLoading" data-bot="more">[More]</button>
                     </div>
-                    <div class="bot-terminal">
-                        <div class="bot-text"></div>
-                    </div>
+                    <div class="bot-terminal"><div class="bot-text"></div></div>
                     <div class="bot-footer">
-                        <input type="text" name="talk-to-bot" class="bot-input jsLoading" id="botInput"></input>
+                        <input type="text" name="talk-to-bot" class="bot-input jsLoading" id="botInput" maxlength="20"></input>
                     </div>`);
 
         $bot.append($elBot);
         getIp();
         $botInner = $('#bot').find('.bot-inner'),
         $botText = $bot.find('.bot-text');
+        $botTerminal = $('.bot-terminal');
     }
 
     function getBotAnswer() {
@@ -98,16 +99,8 @@ var botSection = function() {
     }
 
     function appendBotAnswer(answer, objContext) {
-        $('.bot-terminal').animate({
-            scrollTop: $('.bot-text').prop('scrollHeight')
-        }, 0);
-
-        intervalBotScroll = setInterval(function () {
-            console.log('autoScroll');
-            $('.bot-terminal').animate({
-                scrollTop: $('.bot-text').prop('scrollHeight')
-            }, 0);
-        }, 333);
+        setAutoScroll = true;
+        startAutoScroll();
 
         $botText.append("<span class='jsBotThinking'></span>"); //BUG review this please
 
@@ -205,8 +198,7 @@ var botSection = function() {
             scrollTop: $('.bot-text').prop('scrollHeight')
         }, 0);
 
-        clearInterval(intervalBotScroll);
-        console.log('stop autoscroll');
+        setAutoScroll = false;
     }
 
     function getIp() {
@@ -218,6 +210,16 @@ var botSection = function() {
         }, "jsonp");
     }
 
+    function startAutoScroll() {
+        if (setAutoScroll) {
+            setTimeout(function () {
+                $botTerminal.animate({
+                    scrollTop: $('.bot-text').prop('scrollHeight')
+                }, 0);
+                startAutoScroll();
+            }, 300);
+        }
+    }
     // ----- publicCmd ----- //
     var gael = "";
 
@@ -276,8 +278,27 @@ var botSection = function() {
         }
     });
 
+    var tooLongWarn = true,
+        inputVal
     //press ENTER key to send what's on input
     $(document).on('keyup', '#'+botInputId, function(e) {
+        var inputVal = this.value;
+
+        switch (inputVal.length) {
+            case 20:
+                if (tooLongWarn) {
+                    appendSent(botContent.poet);
+                    GAcustom.sendToGA(`&ec=chatMax&ea=${inputVal}`);
+                    tooLongWarn = false;
+                }
+                break;
+            case 10:
+                tooLongWarn = true;
+                    break;
+            default:
+
+        }
+
         if(e.keyCode == 13) { //ENTER
             talkToBot();
         }
