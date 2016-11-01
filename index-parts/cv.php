@@ -70,11 +70,12 @@
                 <dd class="cv-dd">zaask - since oct'15</dd>
 
                 <dt class="cv-dt">code school courses</dt>
-                <dd class="cv-dd">JavaScript ES2015 <span class="nowrap">lvl 1/2</span></dd>
+                <dd class="cv-dd">JavaScript ES2015 <span class="nowrap">lvl 2/6</span></dd>
                 <dd class="cv-dd">JavaScript Best Practices</dd>
-                <dd class="cv-dd">JavaScript Road Trip <span class="nowrap">lvl 3/3</span></dd>
-                <dd class="cv-dd">jQuery lvl 2/2</dd>
+                <dd class="cv-dd">JavaScript Road Trip</dd>
+                <dd class="cv-dd">jQuery lvl</dd>
                 <dd class="cv-dd">Shaping up with Angular.js</dd>
+                <dd class="cv-dd">...</dd>
 
                 <dt class="cv-dt">freelancer projects</dt>
                 <dd class="cv-dd">learning health <span class="nowrap">- jan'16</span></dd>
@@ -158,6 +159,7 @@
                 <li class="cv-li">React</li>
                 <li class="cv-li">Regular Expressions</li>
                 <li class="cv-li">Google Firebase</li>
+                <li class="cv-li">three.js</li>
             </ul>
 
         </div>

@@ -1,7 +1,6 @@
 var GAcustom = function(){
     var clickN = 0,
         cid, //client id
-        inm, //item name
         ea, //action
         el = "", //label
         ec; //category
@@ -29,7 +28,7 @@ var GAcustom = function(){
 
         ec = $xthis.data('gaec') || 'btn forgotten';
         ea = $xthis.text().replace(/[^a-zA-Z ]/g, ""); //action
-        el += inm+"|"; //label
+        el += ea+"|"; //label
 
         sendToGA(`&ec=${ec}&in=${inm}&ea=${ea}&el=${el}`);
     });
@@ -41,7 +40,7 @@ var GAcustom = function(){
 
         ec = $xthis.data('gaec') || 'link forgotten';
         ea = $xthis.data('gaea') || $xthis.text().replace(/[^a-zA-Z ]/g, ""); //action
-        el += inm+"|"; //label
+        el += ea+"|"; //label
 
         sendToGA(`&cid=${cid}&ec=${ec}&in=${inm}&ea=${ea}&el=${el}`);
     });
