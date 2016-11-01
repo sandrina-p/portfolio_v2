@@ -1,7 +1,8 @@
 var ChatNav = function() {
     var mainSections = TalkChat.mainSections,
         untilTablet = UtilFuncs.untilTablet,
-        isNavReady = false;
+        isNavReady = false,
+        firstShowNav = true;
 
     //it has to wait for DOM ready to make sure all elements are ready to be shown
     $(function navInit() {
@@ -34,7 +35,7 @@ var ChatNav = function() {
                     isNavReady = true; //to trigger _hashs.js if needed
                 }, 1000);
             } else {
-                setTimeout(() => showNav(), 500);
+                setTimeout(() => showNav(), 300);
             }
         })();
 
@@ -47,6 +48,7 @@ var ChatNav = function() {
 
             $nav.children().each(function() {
                 if (thisId && $(this).attr('id') == thisId) {
+                    $(this).css({'transform': 'translateX(0px)'});
                     return;
                 }
 
@@ -58,13 +60,14 @@ var ChatNav = function() {
 
             //BUG: Prevent bug on Safari. Sometimes it loads too soon. Even with timeout(),
             // without knowing the real navWidth value.
-            if (navWidth < 150) {
+            if (firstShowNav && navWidth < 150) {
                 console.log('upps... navTranslate() was loaded too soon');
                 GAcustom.sendToGA(`&ec=bug&ea=navSoon`);
                 setTimeout(function () {
                     navTranslate();
                 }, 250);
             } else {
+                firstShowNav = false;
                 console.log('nav loaded without problems');
             }
         }
