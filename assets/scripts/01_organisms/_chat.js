@@ -135,9 +135,7 @@ var ChatApp = function() {
 
 
     // ------ SHOWING A PART COMPONENTS ------ //
-    //scroll has 2 phases:
     // 1. scrollSafe() - make sure newPart is 1/4 of the window height.
-    // 2. scrollFinal() - if newPart is outside of the window view, scroll it until its end is visible.
     function scrollSafe($currentPart) {
         if (!untilTablet) {
             var wScroll = $(window).scrollTop(),
@@ -148,29 +146,10 @@ var ChatApp = function() {
 
             // too close of above the fold || away from the view window
             if (tooClose || pScroll < wScroll) {
-                bodyScrollTop(pScroll + pHeight - wHeight/4*1);
+                bodyScrollTop(pScroll + pHeight - wHeight/4);
             }
         }
     }
-
-    // probably will not be used anymore.
-    // function scrollFinal($part) {
-    //     if(!untilTablet && screen.height > mediaQHeight) {
-    //         var safeArea = 120,
-    //             pHeight = $part.height(),
-    //             pScroll = $part.offset().top,
-    //             wScroll = $(window).scrollTop(),
-    //             diff = pScroll - wScroll,
-    //             visibleOnScreen = diff + pHeight, //part position + its height
-    //             wArea = wHeight - safeArea; // safe area of the window.
-    //
-    //         //if new part is away of the above the fold, scroll it to a safer area.
-    //         if (visibleOnScreen > wArea) {
-    //             var diff2 = visibleOnScreen - wArea;
-    //             bodyScrollTop(wScroll + diff2);
-    //         }
-    //     }
-    // }
 
     function finishLoading($element) {
         $element.removeClass('jsLoading');
@@ -214,12 +193,11 @@ var ChatApp = function() {
     function showingOptions($part) {
         // show 1st btn and then 2nd
         setTimeout(function () {
-            finishLoading($part.find(chatPClass+"option:first-of-type button"));
-            // scrollFinal($part);
+            finishLoading($part.find(chatPClass+"option:first-of-type .js-chatOpt"));
 
-            // FIXME better buttons target
-            setTimeout(function () {
-                finishLoading($part.find(chatPClass+"option:last-of-type button") );
+            
+            setTimeout(function () {                    // REVIEW better buttons target
+                finishLoading($part.find(chatPClass+"option:last-of-type .js-chatOpt") );
             }, 300);
         }, 400);
     }

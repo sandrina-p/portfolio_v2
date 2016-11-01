@@ -24,14 +24,14 @@ var TalkBot = function(){
         browser = "[TODO browser]",
         mobileBrand = "[TODO mobile brand]";
 
-    if (screen.width < 750) {
-        var screenRes = 'small screen',
-            resolutionScreenMsg = "I feel so happy that we are reaching this point of our relationship on your "+mobileBrand+". Like a good bot, I always take into consideration what kind of device you are using to connect with me. This way, images and those scary stuff that drain the data network are not really problem: you always get the best for both your eyes and your device. ;)"
-
-    } else {
+    // if (screen.width < 750) {
+    //     var screenRes = 'small screen',
+    //         resolutionScreenMsg = "I feel so happy that we are reaching this point of our relationship on your "+mobileBrand+". Like a good bot, I always take into consideration what kind of device you are using to connect with me. This way, images and those scary stuff that drain the data network are not really problem: you always get the best for both your eyes and your device. ;)"
+    //
+    // } else {
         var screenRes = 'big screen',
             resolutionScreenMsg = "I noticed that you have a "+screenRes+", so the images I showed you have a big and nice resolution. If you were on your mobile, I'd be a thoughtful bot and reduce their size so I could save you some Kb from your mobile data network. How sweet am I, hm ? :D";
-    }
+    // }
 
     var publicCmd = "What do you want to know?"
                     +brk+"<b>technologies</b>"
@@ -126,7 +126,7 @@ var TalkBot = function(){
             "skip, skip this shit": [
                 "You asked for it"
                 +brk+""+publicCmd,
-                "but Sandrina isn't!", "options"
+                "but Sandrina isn't!", "commands"
             ],
         },
 

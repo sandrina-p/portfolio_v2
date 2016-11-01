@@ -42,13 +42,18 @@ var UtilFuncs = function(){
             : Math.floor(Math.random() * arr);
     }
 
+    function scrollTo(value) {
+        $('body').animate({ scrollTop: value }, 1500, 'swing');
+    }
+
     return {
         untilTablet,
         wHeight,
         objSize,
         objRandom,
         stringSlugLower,
-        randomNumb
+        randomNumb,
+        scrollTo
     }
 }();
 

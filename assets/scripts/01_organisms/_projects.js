@@ -43,12 +43,8 @@ var Projects = function() {
                             <div class='bot-nav'></div>
                             <div class='projNav'>
                                 <div class='projNav-pivot'>
-                                    <div class='projNav-left'>
-                                        ${elProjNav}
-                                    </div>
-                                    <div class='projNav-right'>
-                                        ${elProjNav}
-                                    </div>
+                                    <div class='projNav-left'>${elProjNav}</div>
+                                    <div class='projNav-right'>${elProjNav}</div>
                                 </div>
                             </div>
 
@@ -56,19 +52,16 @@ var Projects = function() {
                                 <div class='projCont-left'>
                                     <p class='projCont-subtitle'>${sub}</p>
 
+                                    <div class='projCont-links'>${ElLinks}</div>
+
                                     <div class='projCont-media'>
-                                        <div class='Glidder'>
-                                            ${elImgs}
-                                        </div>
+                                        <div class='Glidder'>${elImgs}</div>
                                     </div>
 
                                     <div class='projCont-about'>
                                         <p class='projCont-role'>${role}</p>
                                         <p class='projCont-date'>${date}</p>
                                         <p class='projCont-team'>${team}</p>
-                                    </div>
-                                    <div class='projCont-links'>
-                                        ${ElLinks}
                                     </div>
                                 </div>
 
@@ -376,6 +369,11 @@ var Projects = function() {
 
             setTimeout(() => alignPivot(), 150); //align Pivot again to pixel perfect
         }, 400);
+
+        if (initialProject) {
+            $('body').animate({ scrollTop: $('#projects').offset().top - 60 }, 1500, 'swing');
+            initialProject = false;
+        }
 
         projectsVisible = true;
         $('.js-cvUnder').remove(); //remove projects on CV

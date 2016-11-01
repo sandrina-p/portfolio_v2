@@ -50,7 +50,7 @@ $navSpeed: 250ms;
             height: $safeArea*2;
             vertical-align: bottom;
             padding-top: $safeArea/2;
-            @include fallback(margin-left, $safeArea*8, 7vw);
+            @include fallback(margin-left, $safeArea*8, 9vw);
             transition: color $navSpeed ease, font $navSpeed ease, padding $navSpeed ease;
 
             &:hover {
@@ -77,8 +77,23 @@ $navSpeed: 250ms;
             font-family: $font-mono;
             font-size: $fontS;
             margin-top: $safeArea/3;
-            margin-bottom: $safeArea*2;
-            padding-left: $safeArea*2;
+            // margin-bottom: $safeArea*2;
+            padding-left: $safeArea;
+        }
+
+
+        &-links {
+            width: 100%;
+            padding: $safeArea*2 0 $safeArea*2 $safeArea;
+            font-size: $fontS;
+
+            &-option {
+                // text-align: center;
+
+                &:not(:last-of-type) {
+                    margin-bottom: $safeArea;
+                }
+            }
         }
 
         &-media,
@@ -142,19 +157,6 @@ $navSpeed: 250ms;
             color: $clrGrayLight;
         }
 
-        &-links {
-            width: 100%;
-            padding: $safeArea 0;
-            font-size: $fontS;
-
-            &-option {
-                text-align: center;
-
-                &:not(:last-of-type) {
-                    margin-bottom: $safeArea;
-                }
-            }
-        }
     }
 
     @include media(tablet) {
@@ -201,17 +203,13 @@ $navSpeed: 250ms;
 
             &-right {
                 width: $botWidthLap;
-                max-width: $chatBotWidthTab+$safeArea*5;
+                max-width: $chatBotWidthTab+$safeArea*3;
                 padding: 0 $safeArea*3;
-            }
-
-            &-descript {
-                // padding-top: $safeArea;
             }
 
             &-intro {
                 padding: 0;
-                padding-top: $safeArea*3;
+                padding-top: $safeArea*2.5;
                 font-size: $fontXL;
             }
 
@@ -219,9 +217,6 @@ $navSpeed: 250ms;
                 margin: $safeArea*2 0;
                 padding: 0;
                 line-height: $lineHeightL;
-                // padding: 0 0 0 $safeArea;
-
-                // border-left: 1px solid $clrBlack;
             }
         }
     }
