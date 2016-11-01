@@ -30,7 +30,7 @@ var GAcustom = function(){
         ea = $xthis.text().replace(/[^a-zA-Z ]/g, ""); //action
         el += ea+"|"; //label
 
-        sendToGA(`&ec=${ec}&in=${inm}&ea=${ea}&el=${el}`);
+        sendToGA(`&ec=${ec}&ea=${ea}&el=${el}`);
     });
 
 
@@ -42,7 +42,7 @@ var GAcustom = function(){
         ea = $xthis.data('gaea') || $xthis.text().replace(/[^a-zA-Z ]/g, ""); //action
         el += ea+"|"; //label
 
-        sendToGA(`&cid=${cid}&ec=${ec}&in=${inm}&ea=${ea}&el=${el}`);
+        sendToGA(`&cid=${cid}&ec=${ec}&ea=${ea}&el=${el}`);
     });
 
     return {

@@ -2,9 +2,8 @@ var Projects = function() {
     var activeClass = "js-active",
         chatContent = TalkChat.conversation,
         arrProjects = chatContent.practice.projects,
-        direction,
         projLimit = 7,
-
+        openingProject,
         classProjSub = ".projCont-subtitle",
         classProjMedia = ".projCont-media",
         classProjRole = ".projCont-role",
@@ -22,6 +21,7 @@ var Projects = function() {
         untilTablet = UtilFuncs.untilTablet,
         wHeight,
 
+        direction,
         $pivot, $projsLeft, $projsRight, $projActive, // nav variables
         $projSub, $projMedia, $projRole, $projDate, $projTeam, $projRole, $projIntro, $projDetails, $projLinks, $projBotTip, // getProjDomElements variables
         $newActive, fPos, $projDir, addProjNumb, isParentLeft, //onNavMoved variables
@@ -31,7 +31,7 @@ var Projects = function() {
         windowBotWidth = window.innerWidth*40/100,
         numbOfGestures = 0
         projectsVisible = false, //prevent use of keyboard < > before opening projects
-        gael = ""; //GA projects viewed path
+        gael = ""; //used to GA
 
 
     // ------ build nav and project DOM ------ //
