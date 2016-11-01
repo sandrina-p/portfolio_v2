@@ -107,7 +107,7 @@ var TalkBot = function(){
             "tell me more, more, what else, anything else": [ //FIXME DRY this
                 "you are such a curious creature :3. I'm still under construction... I think you best move here is to talk with Sandrina at "+myEmail, //but you can leave a quick message to Sandrina. Just type something started by @@.*/",
                 // "@@ Hi sandrina! How much is 0.1 + 0.3 ?"
-                "or you can use social networks, she's there somewhere..."
+                "or you can use social networks, she's there somewhere...", "options"
             ],
             "welcome back" : [
                 "Look who is back! So, How much is 1/0?",

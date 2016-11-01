@@ -20,6 +20,8 @@ var botSection = function() {
         originalSent = directInput || originalSent;
         if(originalSent == "") sentEmpty = jsSentEmptyClass;
         $botText.append("<p class='"+botSentClass+" "+sentEmpty+"'>"+originalSent+"</p>");
+        setAutoScroll = true;
+        startAutoScroll();
     }
 
     function buildBot() {
@@ -99,9 +101,6 @@ var botSection = function() {
     }
 
     function appendBotAnswer(answer, objContext) {
-        setAutoScroll = true;
-        startAutoScroll();
-
         $botText.append("<span class='jsBotThinking'></span>"); //BUG review this please
 
         $('.jsBotThinking').remove();
