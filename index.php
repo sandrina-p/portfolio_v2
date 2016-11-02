@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <title>Sandrina Pereira</title>
     <meta name='copyright' content='@2016 Mariana Freitas and Sandrina Pereira'>
-    <meta name='description' content='Hey There! I want to introduce you to someone. She is a frontend developer with a great passion for interaction design'>
+    <meta name='description' content='Hey There! I want to introduce you to someone who spends her time exploring new ways to connect people like you with stuff like me'>
     <meta name="Designer" CONTENT="Sandrina Pereira">
     <meta name='language' content='en-US'>
     <meta name='subject' content='internet'>
@@ -24,10 +24,10 @@
     <link rel="icon" type="image/png" href="assets/media/favicon180.png" sizes="180x180">
 
     <!--TWITTER CARD-->
-    <meta name="twitter:card" content="Psst.. Hey there" />
+    <meta name="twitter:card" content="Psst.. Hey there!" />
     <meta name="twitter:site" content="sandrina-p.net" />
     <meta name="twitter:title" content="sandrina pereira website" />
-    <meta name="twitter:description" content="I want to introduce you to someone who loves to create interactice stuff" />
+    <meta name="twitter:description" content="I want to introduce you to someone who spends her time exploring new ways to connect people like you with stuff like me" />
     <meta name="twitter:image" content="assets/media/card.png" />
 
     <!--Open Graph protocol-->
@@ -63,11 +63,16 @@
                 I want to introduce you to someone.
                 <span class="nowrap">She is a</span> <strong>front-end developer</strong> with a great passion for <strong class="nowrap">interaction design</strong>.
                 <span class="heyThere-br"></span>
-                Where would you like to start?
+                <span class="noscript">Where would you like to start?</span>
             </p>
         </div>
     </div>
 
+    <noscript>
+        <style media="screen">
+            .noscript, .navCV, .chat, .js-psst {display:none!important;}
+        </style>
+    </noscript>
     <div class="navCV">
         <a href="#cv" class="navCV-link" data-gaec="navCV">Let's cut the bullshit. Who is she?</a>
     </div>

@@ -194,3 +194,14 @@
     <button type="button" name="false" class="chatPart-title js-botTrigger" data-gaec='psst'>not really</button>
     <span class="js-scrolled"><!-- try me on mobile--></span>
 </div>
+
+<noscript>
+    <div class="psst">
+        <p class="psst-title">ಠ_ಥ</p>
+        <p class="psst-parag">You came so far with that tiny browser.
+            <br>Most of people don't care about persons like you, but not Sandrina.
+            <br>Ah yes, that's here name! Don't forget to talk about her and share me!
+            <br><small><i>p.s. Ask to your son or boss to install a better browser <span class="nowrap">¯\_(ツ)_/¯</span></i></small>
+        </p>
+    </div>
+</noscript>
