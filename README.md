@@ -1,4 +1,4 @@
-#Hey there.
+#Hey there
 
 I want to to introduce you to someone.
 
