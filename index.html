@@ -2,14 +2,14 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>sandrina pereira</title>
+    <title>Sandrina Pereira</title>
     <meta name='copyright' content='@2016 Mariana Freitas and Sandrina Pereira'>
     <meta name='description' content='Hey There! I want to introduce you to someone. She is a frontend developer with a great passion for interaction design'>
     <meta name="Designer" CONTENT="Sandrina Pereira">
     <meta name='language' content='en-US'>
     <meta name='subject' content='internet'>
 
-    <meta name="DC.title" content="Mr.TheChessMan - Impressões Ideológicas" />
+    <meta name="DC.title" content="Sandrina Pereira" />
     <meta name="DC.creator " content="Sandrina Pereira" />
     <meta name="DC.creator.address" content="a.sandrina.p@gmail.com" />
 
