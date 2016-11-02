@@ -1,7 +1,7 @@
 var TalkChat = function(){
     var brk = "<br>",
-        linkCodepen = "<a href='#' class='link' target='_blank'>Codepen</a>",
-        linkStackOverflow = "<a href='#' class='link' target='_blank'>Stackoverflow</a>",
+        linkCodepen = "<a href='//codepen.com/sandrina-p' class='link' target='_blank'>Codepen</a>",
+        linkStackOverflow = "<a href='//stackoverflow.com/story/sandrina' class='link' target='_blank'>Stackoverflow</a>",
         linkMariana = genLink('//marianarpdf.com', 'Mariana Freitas'),
         linkJoao = genLink('//www.facebook.com/joaocdvrodrigues', 'João Rodrigues'),
         linkMaggie = genLink('//mmbotelho.com', 'Margarida Botelho'),
