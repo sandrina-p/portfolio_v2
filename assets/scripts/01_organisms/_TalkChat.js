@@ -132,7 +132,7 @@ var TalkChat = function(){
                 capt: "When you do all but what teachers asked, you end up with a crazy interactive project",
                 more: "Some friends of her wanted to build an online record label that distributes music for free. She wanted to work on a website. So they decided to go for it as a Final Degree project in Communication Design. The website presents itself with a black and white design by focusing on the user experience through each interactive release, enhancing the download, so there is more to it than just a click.",
                 date: "JUN'15",
-                links: [["#todo-ps-git", "check the website", "desktop"]],
+                links: [["https://sandrina-p.github.io/pistol-shrimp/", "check the website", "desktop"]],
             },
             'moon': {
                 categ: "www projects",
