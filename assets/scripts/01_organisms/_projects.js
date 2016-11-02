@@ -547,6 +547,12 @@ var cvProjects = function(){
         }).on('mouseleave', function(){
             setProjLoop(true);
         });
+
+        $cvProjects.on('click', function(e){
+            e.preventDefault(); //whoever doesn't have js, go to original page.
+            Projects.setInitialProject($(this).text());
+            $('#btn-pr').trigger('click');
+        });
     });
 
 

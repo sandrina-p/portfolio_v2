@@ -2,23 +2,28 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>008080</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
-    <meta name='keywords' content='keywords'>
-    <meta name='description' content='[description]'>
-    <meta name='subject' content='subject'>
-    <meta name='copyright' content='xxxx'>
-    <meta name='language' content='PT'>
+    <title>sandrina pereira</title>
+    <meta name='copyright' content='@2016 Mariana Freitas and Sandrina Pereira'>
+    <meta name='description' content='Hey There! I want to introduce you to someone. She is a frontend developer with a great passion for interaction design'>
+    <meta name="Designer" CONTENT="Sandrina Pereira">
+    <meta name='language' content='en-US'>
+    <meta name='subject' content='internet'>
 
-    <link href="https://fonts.googleapis.com/css?family=Roboto:100,200,300,700|Roboto+Mono:100,300,400,700" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Ubuntu:400,700" rel="stylesheet">
-    <link rel="icon" type="image/png" href="assets/media/brand/favicon16.png" sizes="16x16">
-    <link rel="icon" type="image/png" href="assets/media/brand/favicon32.png" sizes="32x32">
-    <link rel="icon" type="image/png" href="assets/media/brand/favicon180.png" sizes="180x180">
+    <meta name="DC.title" content="Mr.TheChessMan - Impressões Ideológicas" />
+    <meta name="DC.creator " content="Sandrina Pereira" />
+    <meta name="DC.creator.address" content="a.sandrina.p@gmail.com" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:300,400,600" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu:400,600" rel="stylesheet">
+
+    <link rel="icon" type="image/png" href="assets/media/favicon16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="assets/media/favicon32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="assets/media/favicon64.png" sizes="64x64">
+    <link rel="icon" type="image/png" href="assets/media/favicon180.png" sizes="180x180">
 
     <?php // <link rel="stylesheet" href="assets/styles/04_templates/header.min.css"> ?>
-
-
     <style>
         /*just the needed css to display the intro*/
         <?php echo file_get_contents('assets/styles/04_templates/header.min.css') ?>
@@ -42,7 +47,7 @@
         <h2 class="heyThere-hey"><span>H</span><span>e</span><span>y</span><br><span>t</span><span>h</span><span>e</span><span>r</span><span>e</span></h2>
         <div class="heyThere-intro">
             <p>
-                I wanna introduce you to someone.
+                I want to introduce you to someone.
                 <span class="nowrap">She is a</span> <strong>frontend developer</strong> with a great passion for <strong class="nowrap">interaction design</strong>.
                 <span class="heyThere-br"></span>
                 Where would you like to start?

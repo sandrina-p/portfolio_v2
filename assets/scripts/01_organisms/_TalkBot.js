@@ -121,8 +121,8 @@ var TalkBot = function(){
                 "Come on.. giving up so easily? You can "+googleIt+" or ask for <b>help</>",
                 "go ask it to some console", "options"
             ],
-            "dumb, you are dumb, your dumb": [
-                "A little, I have to admit it... ._.",
+            "dumb, you are dumb, your dumb, you suck, this sucks": [
+                "A little, I have to admit it... but you are too ._.",
                 "but Sandrina isn't!", "options"
             ],
             "skip, skip this shit": [
