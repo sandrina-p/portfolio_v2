@@ -34,7 +34,7 @@
     <meta property="og:title" content="Psst... Hey there!" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="//www.sandrina-p.net" />
-    <meta name="og:image" content="assets/media/card.png" />
+    <meta property="og:image" content="assets/media/card.png" />
 
     <?php // <link rel="stylesheet" href="assets/styles/04_templates/header.min.css"> ?>
     <style>
