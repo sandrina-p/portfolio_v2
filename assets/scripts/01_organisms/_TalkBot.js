@@ -69,7 +69,7 @@ var TalkBot = function(){
                 +brk+""+publicCmd,
                 "what's next?", "commands"
             ],
-            "infinito, infinite": [
+            "infinito, infinite, infiniti, infinyti": [
                 "I think you meant <b>infinity</b>, right?",
                 "", "options"
             ],
@@ -303,7 +303,7 @@ var TalkBot = function(){
                 +brk+""+publicCmd,
                 "try again"
             ],
-            "bye, cya, shut down, exit, halt, close": [
+            "bye, cya, shut down, exit, halt, close, take care, git gud, get good": [
                 "You know what... It's really hard having a human conversation."
                 +brk+"That's why I'm just a website."
                 +brk+"<i>008080</i> by the way, that's how they call me."
@@ -314,6 +314,8 @@ var TalkBot = function(){
                 "press ESC to close"
             ],
             "hey there" : "Hi again! It was so dark here, now I feel safer with you :3",
+
+            "how are you, how are you today" : "I'm happy for having someone to talk!",
 
             "no, nop, not really" : "Okay then. I'm just a machine, I have no control over you. Yet",
         },
