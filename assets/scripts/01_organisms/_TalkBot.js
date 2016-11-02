@@ -313,11 +313,17 @@ var TalkBot = function(){
                 +brk+"By the way, don't forget to share me and talk about Sandrina while you’re out there :3",
                 "press ESC to close"
             ],
-            "hey there" : "Hi again! It was so dark here, now I feel safer with you :3",
+            "hey there" : [
+                "Hi again! It was so dark here, now I feel safer with you :3"
+            ],
 
-            "how are you, how are you today" : "I'm happy for having someone to talk!",
+            "how are you, how are you today" : [
+                "I'm happy for having someone to talk!"
+            ],
 
-            "no, nop, not really" : "Okay then. I'm just a machine, I have no control over you. Yet",
+            "no, nop, not really" : [
+                "Okay then. I'm just a machine, I have no control over you. Yet"
+            ],
         },
         LosT: [
             "I'm not sure what you meant. What about talking directly with Sandrina at "+myEmail
