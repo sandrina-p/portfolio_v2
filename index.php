@@ -23,6 +23,19 @@
     <link rel="icon" type="image/png" href="assets/media/favicon64.png" sizes="64x64">
     <link rel="icon" type="image/png" href="assets/media/favicon180.png" sizes="180x180">
 
+    <!--TWITTER CARD-->
+    <meta name="twitter:card" content="Psst.. Hey there" />
+    <meta name="twitter:site" content="sandrina-p.net" />
+    <meta name="twitter:title" content="sandrina pereira website" />
+    <meta name="twitter:description" content="I want to introduce you to someone who loves to create interactice stuff" />
+    <meta name="twitter:image" content="assets/media/card.png" />
+
+    <!--Open Graph protocol-->
+    <meta property="og:title" content="Psst... Hey there" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="//www.sandrina-p.net" />
+    <meta name="twitter:image" content="assets/media/card.png" />
+
     <?php // <link rel="stylesheet" href="assets/styles/04_templates/header.min.css"> ?>
     <style>
         /*just the needed css to display the intro*/
