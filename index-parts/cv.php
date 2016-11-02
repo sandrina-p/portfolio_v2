@@ -113,7 +113,6 @@
 
                 <li class="cv-li">javascript | ES2015</li>
                 <li class="cv-li">jQuery</li>
-                <li class="cv-li">Modernizr</li>
                 <li class="cv-li cv-li--br">JS Module Pattern</li>
 
                 <li class="cv-li">Angular 2</li>

@@ -17,7 +17,7 @@ var TalkBot = function(){
         linkHelpMe = genLink('https://github.com/sandrina-p/s008080/blob/master/assets/scripts/01_organisms/_TalkBot-vocabulary.js', 'help me'),
         linkCodeAvatar = genLink('#TODO-codepen-avatar', 'codepen'),
         linkCodeGlidder = genLink('#TODO-codepen-glidder', 'codepen'),
-        linkChill = genLink('#TODO', 'watch and learn'),
+        linkChill = genLink('https://www.youtube.com/watch?v=yecFTeMVSlo', 'She A Go'),
         myEmail = genLink('mailto:a.sandrina.p@gmail.com?subject=Hey%20there!', 'a.sandrina.p@gmail.com', "noTarget"),
         linkCHTSTW = genLink('http://clickheretosavetheworld.com/', 'clickHereToSaveTheWorld'),
 

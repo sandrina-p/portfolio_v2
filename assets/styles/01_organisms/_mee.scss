@@ -46,13 +46,13 @@ $myselfs: 7;
   &:after {
     content: attr(data-sub);
     animation-name: glitch-animation; //REVIEW
-    animation-duration: 4s;
+    animation-duration: 3s;
     text-shadow: -1px 0 yellow;
   }
 
   &:before {
     animation-name: glitch-animation-2;  //REVIEW
-    animation-duration: 6s;
+    animation-duration: 5s;
     text-shadow: 1px 0 $clrPrimarySoft;
   }
 }
@@ -63,19 +63,19 @@ $myselfs: 7;
 }
 
 @keyframes glitch-animation {
-    $steps:20;
+    $steps:10;
     @for $i from 0 through $steps{
         #{percentage($i*(1/$steps))}{
-            @include rect(random(100) + px,random(800) + px);
+            @include rect(random(100) + px,random(500) + px);
         }
     }
 }
 
 @keyframes glitch-animation-2 {
-    $steps:20;
+    $steps:10;
     @for $i from 0 through $steps{
         #{percentage($i*(1/$steps))}{
-            @include rect(random(100) + px,random(100) + px);
+            @include rect(random(100) + px,random(700) + px);
         }
     }
 }

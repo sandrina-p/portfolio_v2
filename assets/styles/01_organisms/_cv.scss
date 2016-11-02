@@ -244,7 +244,7 @@ $cvPaddingLeft: 10vw;
             padding-bottom: $safeArea*4;
 
             &--right {
-                @include fallback(padding-left, $safeArea*2, $cvPaddingLeft*5);
+                @include fallback(padding-left, $safeArea*15, $cvPaddingLeft*5);
 
                 .cv-article-header {
                     text-align: left;
@@ -265,6 +265,16 @@ $cvPaddingLeft: 10vw;
         &-right {
             width: 50%;
         }
+    }
+
+    @include media(laptop) {
+        &-article {
+
+            &--right {
+                margin-top: -$safeArea*4;
+            }
+        }
+
     }
 }
 
