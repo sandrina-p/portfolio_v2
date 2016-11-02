@@ -15,8 +15,8 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
 
-    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:300,400,600" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Ubuntu:400,600" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:300,400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu:400,700" rel="stylesheet">
 
     <link rel="icon" type="image/png" href="assets/media/favicon16.png" sizes="16x16">
     <link rel="icon" type="image/png" href="assets/media/favicon32.png" sizes="32x32">
