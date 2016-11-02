@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <title>Sandrina Pereira</title>
     <meta name='copyright' content='@2016 Mariana Freitas and Sandrina Pereira'>
-    <meta name='description' content='Hey There! I want to introduce you to someone who spends her time exploring new ways to connect people like you with websites like me'>
+    <meta name='description' content='I want to introduce you to someone who spends her time exploring new ways to connect people like you with websites like me'>
     <meta name="Designer" CONTENT="Sandrina Pereira">
     <meta name='language' content='en-US'>
     <meta name='subject' content='internet'>
@@ -24,14 +24,14 @@
     <link rel="icon" type="image/png" href="assets/media/favicon180.png" sizes="180x180">
 
     <!--TWITTER CARD-->
-    <meta name="twitter:card" content="Psst.. Hey there!" />
+    <meta name="twitter:card" content="Psst.. Hey there" />
     <meta name="twitter:site" content="sandrina-p.net" />
     <meta name="twitter:title" content="sandrina pereira website" />
     <meta name="twitter:description" content="I want to introduce you to someone who spends her time exploring new ways to connect people like you with websites like me" />
     <meta name="twitter:image" content="assets/media/card.png" />
 
     <!--Open Graph protocol-->
-    <meta property="og:title" content="Psst... Hey there!" />
+    <meta property="og:title" content="Psst... Hey there" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="//www.sandrina-p.net" />
     <meta property="og:image" content="assets/media/card.png" />
