@@ -15,15 +15,15 @@ var TalkBot = function(){
         linkHer = genLink('http://www.imdb.com/title/tt1798709/', "Her"),
         linkFirebase = genLink('//firebase.google.com', 'Google Firebase'),
         linkHelpMe = genLink('https://github.com/sandrina-p/s008080/blob/master/assets/scripts/01_organisms/_TalkBot-vocabulary.js', 'help me'),
-        linkCodeAvatar = genLink('#TODO-codepen-avatar', 'codepen'),
-        linkCodeGlidder = genLink('#TODO-codepen-glidder', 'codepen'),
+        linkCodeAvatar = genLink('//codepen.com/sandrina-p', 'codepen'),
+        linkCodeGlidder = genLink('//codepen.com/sandrina-p', 'codepen'),
         linkChill = genLink('https://www.youtube.com/watch?v=yecFTeMVSlo', 'She A Go'),
         myEmail = genLink('mailto:a.sandrina.p@gmail.com?subject=Hey%20there!', 'a.sandrina.p@gmail.com', "noTarget"),
         linkCHTSTW = genLink('http://clickheretosavetheworld.com/', 'clickHereToSaveTheWorld'),
 
         brk = "<br>",
-        browser = "[TODO browser]",
-        mobileBrand = "[TODO mobile brand]";
+        browser = "browser";
+        // mobileBrand = "mobile";
 
     // if (screen.width < 750) {
     //     var screenRes = 'small screen',
@@ -190,8 +190,8 @@ var TalkBot = function(){
             ],
             "resources": [
                 [
-                    "still under construction. But "+linkCHTSTW+". I think he is in the family.",
-                    "come back soon and I'll have more stuff to share", "commands"
+                    "I'm still under construction. But "+linkCHTSTW+". I think he is in the family.",
+                    "come back soon and I'll have more stuff to share :)", "commands"
                 ]
             ],
             "challenges": [
@@ -244,6 +244,15 @@ var TalkBot = function(){
         //     "username": "Nice to meet you [*params*]!",
         // },
         vocabulary: {
+            "resorce, resource": [
+                "I think you meant <b>resources</b>, right?"
+            ],
+            "bp, practices, best practice, best pratice": [
+                "I think you meant <b>best practices</b>, right?"
+            ],
+            "challenge, chalenge": [
+                "I think you meant <b>challenges</b>, right?"
+            ],
             "git":
                 "Now that we know each other a bit better, we should advance to the second base."
                 +brk+"I'll let you check my sources on "+linkGit+"."
@@ -264,7 +273,7 @@ var TalkBot = function(){
             ],
 
             "008080, #008080": [
-                "Yap! That's my name! Why? Sandrina likes Teal as you can see, yh... a basic straight answer."
+                "Yap! That's my name! Why? Sandrina likes Teal as you can see, yh... she's not that creative ._."
             ],
             "..." :[
                 "there are more commands available than you think. In fact, you can "+linkHelpMe+" to better understand your human kind."
@@ -276,8 +285,8 @@ var TalkBot = function(){
                 "hmm... ok."
             ],
             "suit, suit methodology, module pattern, gulp, grunt, perceived loading time, fouc": [
-                "hmm... I knew you would type that. Sandrina already did some user research, like you in this moment. Soon I'll be able to better answer you, but for now, it's better for you to [Google It].",
-                "this time do it by youself, yes? :D"
+                "I knew you would type that. Sandrina already did some user research, like you in this moment. Soon I'll be able to better answer you, but for now, it's better for you to [Google It].",
+                "this time do it by youself, ok? :D"
             ],
             "tell me more, more, what else, anything else": [
                 "you are such a curious creature :3. I'm still under construction... I think you best move here is to talk with Sandrina at "+myEmail, //but you can leave a quick message to Sandrina. Just type something started by @@.*/",

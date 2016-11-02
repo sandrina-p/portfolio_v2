@@ -257,7 +257,7 @@ $glidderLength: 4;
 $glidderTime: 10;
 
 .Glidder img {
-    animation: glidder #{$glidderTime}s steps(9) infinite;
+    animation: glidder #{$glidderTime}s infinite;
 }
 
 
@@ -269,16 +269,12 @@ $glidderTime: 10;
 
 @keyframes glidder {
     0% {z-index: 0;}
-    06% {z-index: 2;}
-    10% {z-index: 2;}
     20% {z-index: 2;}
     24% {z-index: 2; left: 0;}
-    25% {z-index: 2; left: $safeArea/3;}
     26% {z-index: 2; left: -$safeArea/5;}
     27% {z-index: 2; left: 0; top: 0}
     30% {z-index: 2; left: 0; top: 0}
     31% {z-index: -1; left: $safeArea/4; top: $safeArea/4;}
-    31.5% {z-index: 2; top: -$safeArea;}
     31.5% {z-index: 2; left: $safeArea/2; top: $safeArea;}
     32.5% {z-index: 2; left: -$safeArea;}
     33.5% {z-index: -1; left: $safeArea*3/2;}
