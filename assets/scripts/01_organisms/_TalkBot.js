@@ -128,7 +128,7 @@ var TalkBot = function(){
                 "but Sandrina isn't!", "options"
             ],
             "skip, skip this shit": [
-                "You asked for it"
+                "Okay then, so these are some of the things i can share with you:"
                 +brk+""+publicCmd,
                 "what's next?", "commands"
             ],

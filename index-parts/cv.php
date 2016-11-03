@@ -191,7 +191,7 @@
         <br>What do you think?
     </p>
     <button type="button" name="true" class="chatPart-title js-botProjects" data-gaec='psst'>yh, sure</button>
-    <button type="button" name="false" class="chatPart-title js-botTrigger" data-gaec='psst'>not really</button>
+    <button type="button" name="false" class="chatPart-title js-botTrigger" data-gaec='psst'>who are you?</button>
     <span class="js-scrolled"><!-- try me on mobile--></span>
 </div>
 
