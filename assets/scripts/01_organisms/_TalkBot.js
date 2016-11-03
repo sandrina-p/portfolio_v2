@@ -13,10 +13,10 @@ var TalkBot = function(){
         linkFOUC = genLink('https://en.wikipedia.org/wiki/Flash_of_unstyled_content', 'FOUC'),
         linkGit = genLink('https://github.com/sandrina-p/s008080', 'Github'),
         linkHer = genLink('http://www.imdb.com/title/tt1798709/', "Her"),
-        linkFirebase = genLink('//firebase.google.com', 'Google Firebase'),
+        linkFirebase = genLink('http://firebase.google.com', 'Google Firebase'),
         linkHelpMe = genLink('https://github.com/sandrina-p/s008080/blob/master/assets/scripts/01_organisms/_TalkBot-vocabulary.js', 'help me'),
         linkCodeAvatar = genLink('https://codepen.io/sandrina-p/pen/XNrVZj', 'codepen'),
-        linkCodeGlidder = genLink('https://codepen.io/sandrina-p/pen/pNzpqj', 'codepen'),
+        linkCodeGlidder = genLink('https://codepen.io/sandrina-p/pen/pNzpqj', 'profile picture'),
         linkChill = genLink('https://www.youtube.com/watch?v=yecFTeMVSlo', 'She A Go'),
         myEmail = genLink('mailto:a.sandrina.p@gmail.com?subject=Hey%20there!', 'a.sandrina.p@gmail.com', "noTarget"),
         linkCHTSTW = genLink('http://clickheretosavetheworld.com/', 'clickHereToSaveTheWorld'),
@@ -42,15 +42,15 @@ var TalkBot = function(){
                     +brk+"<b>exit</b>"
                     +brk+"<b>...</b>";
 
-    var botOptHelp = "Maybe you should "+googleIt+" and then come back, what do you think?";
+    var botOptHelp = "It's okay not knowing the answer. You can "+googleIt+" or you can ask me for <b><i>help</i></b>! You can also <b><i>skip</i></b> this nerd question ;)";
 
 
     var conversation = {
         // intro: ['type gg', "aqui", "options"],
         intro: [
             "Now that we talked enough about Sandrina,"
-            +brk+"^100Ah yes, that's her name, I forgot to tell you."
-            +brk+"^150 Now we can talk about me. Like, nerd talk... but before that just tell me one thing:"
+            +brk+"^100Ah yes, that's her name, I forgot to tell you..."
+            +brk+"^150 Now we can talk about me. How I was made and what Sandrina has to share! But before that just tell me one thing:"
             +brk+"1 divided by 0 equal to:",
             "your answer here", "options"
         ],
@@ -69,11 +69,13 @@ var TalkBot = function(){
                 +brk+""+publicCmd,
                 "what's next?", "commands"
             ],
-            "infinito, infinite, infiniti, infinyti": [
-                "I think you meant <b>infinity</b>, right?",
-                "", "options"
+            "infinito, infinite, infiniti, infinyti, infiniti,": [
+                "I think you meant <i>infinity</i>... Well let's start:",
+                +brk+"Despite always being under construction I already have the ability to share some knowledge Sandrina taught me while I was growing up."
+                +brk+""+publicCmd,
+                "what's next?", "commands"
             ],
-            "undefined, null": [
+            "undefined, null, error": [
                 "Not it's not. It has another name. At least on javascript language.",
                 "go ask it to some console", "options"
             ],
@@ -85,7 +87,7 @@ var TalkBot = function(){
             "zero, 0": [
                 "You know that Siri isn't always right."
                 +brk+"^400Neither do you."
-                +brk+"^800"+botOptHelp,
+                +brk+"^600"+botOptHelp,
                 'I still believe in you', "options"
             ],
             "exit, esc": [
@@ -190,8 +192,8 @@ var TalkBot = function(){
             ],
             "resources": [
                 [
-                    "I'm still under construction. But "+linkCHTSTW+". I think he is in the family.",
-                    "come back soon and I'll have more stuff to share :)", "commands"
+                    "I'm still under construction. But "+linkCHTSTW+". I think he is in the family. Or you can ask me another thing.",
+                    "Come back soon and I'll have more stuff to share :)", "commands"
                 ]
             ],
             "challenges": [
