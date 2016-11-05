@@ -30,6 +30,13 @@ $boxShadow: 0 0 0 1px;
     @return $rem;
 }
 
+@function em($px) {
+    // 1rem --> 16px
+    // xrem --> $px
+    $rem: $px * 1em / 16 ;
+    @return $rem;
+}
+
 $safeArea: rem(16);
 $speed: 250ms;
 
@@ -96,14 +103,14 @@ $chatBotWidthTab: rem(520);
     #MEDIA QUERIES
 \*------------------------------------*/
 
-$i4-height: rem(440);
-$i5-height: rem(470);
-$mobile-width: rem(450);
-$phablet-width: rem(550);
-$tablet-width: rem(750);
-$laptop-width: rem(1000);
-$desktop-width: rem(1600);
-$mediaHeight: rem(400);
+$i4-height: em(440);
+$i5-height: em(470);
+$mobile-width: em(450);
+$phablet-width: em(550);
+$tablet-width: em(750);
+$laptop-width: em(1000);
+$desktop-width: em(1600);
+$mediaHeight: em(400);
 
 @mixin media($media) {
 
@@ -120,35 +127,35 @@ $mediaHeight: rem(400);
     }
 
     @if $media == untilPhablet {
-        @media (max-width: #{$phablet-width - rem(1)}) {
+        @media (max-width: #{$phablet-width - em(1)}) {
             @content;
         }
     }
 
-    @if $media == mobileUntilPhablet {
-        @media (min-width: $mobile-width) and (max-width: #{$phablet-width - rem(1)}) {
-            @content;
-        }
-    }
+    // @if $media == mobileUntilPhablet {
+    //     @media (min-width: $mobile-width) and (max-width: #{$phablet-width - rem(1)}) {
+    //         @content;
+    //     }
+    // }
 
-    @if $media == untilLaptop {
-        @media (max-width: #{$laptop-width - rem(1)}) {
-            @content;
-        }
-    }
+    // @if $media == untilLaptop {
+    //     @media (max-width: #{$laptop-width - rem(1)}) {
+    //         @content;
+    //     }
+    // }
 
-    @if $media == untilDesktop {
-        @media (max-width: #{$desktop-width - rem(1)}) {
-            @content;
-        }
-    }
+    // @if $media == untilDesktop {
+    //     @media (max-width: #{$desktop-width - rem(1)}) {
+    //         @content;
+    //     }
+    // }
 
-    @if $media == PhabletandSinceLaptop {
-        @media  (min-width: $phablet-width) and (max-width: #{$tablet-width - rem(1)}),
-                (min-width: $laptop-width){
-            @content;
-        }
-    }
+    // @if $media == PhabletandSinceLaptop {
+    //     @media  (min-width: $phablet-width) and (max-width: #{$tablet-width - rem(1)}),
+    //             (min-width: $laptop-width){
+    //         @content;
+    //     }
+    // }
 
     @if $media == mobile {
         @media (min-width: $mobile-width) {
@@ -179,18 +186,18 @@ $mediaHeight: rem(400);
             @content;
         }
     }
-
-    @if $media == onlyPhablet {
-        @media (min-width: $phablet-width) and (max-width: #{$tablet-width - rem(1)}) {
-            @content;
-        }
-    }
-
-    @if $media == onlyTablet {
-        @media (min-width: $tablet-width) and (max-width: #{$laptop-width - rem(1)}) {
-            @content;
-        }
-    }
+    //
+    // @if $media == onlyPhablet {
+    //     @media (min-width: $phablet-width) and (max-width: #{$tablet-width - rem(1)}) {
+    //         @content;
+    //     }
+    // }
+    //
+    // @if $media == onlyTablet {
+    //     @media (min-width: $tablet-width) and (max-width: #{$laptop-width - rem(1)}) {
+    //         @content;
+    //     }
+    // }
 }
 
 

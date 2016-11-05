@@ -1,10 +1,10 @@
 var UtilFuncs = function(){
 
     var iOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream,
-        untilTablet = iOS ? screen.width : window.innerWidth < 750,
+        untilTablet = iOS ? screen.width < 750 : window.innerWidth < 750,
         wHeight = iOS ? screen.height : window.innerHeight; //http://stackoverflow.com/questions/4629969/ios-return-bad-value-for-window-innerheight-width
 
-    console.log(untilTablet, wHeight);
+    console.log('until' + untilTablet, wHeight);
 
     $(document).on('click', 'a[href*=#]', function(e){
         $('html, body').animate({
