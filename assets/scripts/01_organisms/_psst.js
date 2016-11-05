@@ -7,10 +7,7 @@ var Psst = function() {
         var $scrolled = $('.js-scrolled'),
             innerHeight,
             newMargin = 400,
-            scrolledRecord =
-                !isNaN(localStorage.getItem("scrolledRecord"))
-                    ? localStorage.getItem("scrolledRecord")
-                    : 1;
+            scrolledRecord = getStorage();
 
         $jsPsst.find('.psst-title').html(chatContent.behaviour.psstMob[0]);
         $jsPsst.find('.psst-parag').html(chatContent.behaviour.psstMob[1]+"<br><br>");
@@ -32,6 +29,16 @@ var Psst = function() {
                 $('#cv').css({ 'margin-bottom': newMargin});
             };
         });
+
+
+        function getStorage() {
+            try { //Safari BUG fixed: SecurityError: DOM Exception 18: An attempt was made to break through the security policy of the user agent.
+                var storedRecord = localStorage.getItem("scrolledRecord")
+                return !isNaN(storedRecord) ? storedRecord : 1;
+            } catch (e) {
+                return 1;
+            }
+        }
 
         (function setStorage() {
             localStorage.setItem("scrolledRecord", JSON.stringify(scrolledRecord));
@@ -58,7 +65,7 @@ var Psst = function() {
 
     $(function hideBotTrigger(){
         if(hasTouch) {
-            $('.js-botTrigger').removeClass('js-botTrigger').addClass('js-scrollify');
+            $('.js-botTrigger').removeClass('js-botTrigger').addClass('js-scrollify').text('not really');
         }
     });
 
