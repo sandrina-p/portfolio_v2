@@ -128,7 +128,7 @@
         if (raf) raf(cb);
         else window.addEventListener('load', cb);
     </script>
-    <script src="assets/scripts/03_templates/index.min.js" charset="utf-8"></script>
+    <script async src="assets/scripts/03_templates/index.min.js" charset="utf-8"></script>
 
     <script type="text/javascript">
         var _mfq = _mfq || [];

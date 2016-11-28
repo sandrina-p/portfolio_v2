@@ -2,15 +2,16 @@ var gulp = require('gulp'),
 
     //general plugins
     rename = require('gulp-rename'),
-    argv = require('yargs').argv, // flags to command-line
-    gulpif = require('gulp-if'), // execute some task conditions (ex dev vs prod)
-    gutil = require('gulp-util'), // better error logs like pump
-    changed = require('gulp-changed'), // NOTE: only compiles what was changed
-    cached = require('gulp-cached'), // NOTE: i'm not sure if this is working correctly
-    stripDebug = require('gulp-strip-debug'), //bye bye console.logs
-    chalk = require('chalk'), //because after all i'm a designer and i need some colors on terminal x)
+    argv = require('yargs').argv,
+    gulpif = require('gulp-if'),
+    gutil = require('gulp-util'),
+    changed = require('gulp-changed'),
+    cached = require('gulp-cached'),
+    stripDebug = require('gulp-strip-debug'),
+    chalk = require('chalk'),
 
-    php2html = require("gulp-php2html"), //turn php into static files to upload on github
+    php2html = require("gulp-php2html"),
+    htmlmin = require('gulp-htmlmin'),
 
     browserSync = require('browser-sync'), // i'm not sure how this and connect-php works ...
     php = require('gulp-connect-php'), // ... but you can read more about it here -> http://stackoverflow.com/a/37040763/4737729
@@ -25,8 +26,8 @@ var gulp = require('gulp'),
 
     //javascript plugins
     uglify = require('gulp-uglify'),
-    include = require("gulp-include"), //append js
-    babel = require('gulp-babel'); // ES2015 rocks
+    include = require("gulp-include"),
+    babel = require('gulp-babel');
 
 var folderScripts = 'assets/scripts',
     folderStyles = 'assets/styles',
@@ -50,7 +51,6 @@ gulp.task('scripts', function(){
             '!'+folderScripts+'/**/_*.js',
             '!'+folderScripts+'/**/*.min.js'
         ])
-        //TODO find a way to not duplicate this *1
         .pipe(include())
         .pipe(babel({
             presets: ["es2015-script"],
@@ -65,7 +65,6 @@ gulp.task('scripts', function(){
         .pipe(rename({ suffix: '.min' }))
         .pipe(gulpif(global.isWatching, cached('cachedPlace')))
         .pipe(gulp.dest( function(file) { return file.base; } ));
-        //end TODO find a way to not duplicate this *1
     logEnv();
 });
 
@@ -84,7 +83,7 @@ gulp.task('scss', function(){
         .pipe(cleanCSS({compatibility: 'ie9'}))
         .pipe(gulpif(global.isWatching, cached('cachedPlace')))
         .pipe(gulp.dest(folderStyles))
-        .pipe(browserSync.stream()); //TODO-SYNC
+        .pipe(browserSync.stream());
     logEnv();
 });
 
@@ -96,23 +95,41 @@ gulp.task('scssPartials', function() {
         .pipe(sassInheritance({dir: 'assets'}).on('error', gutil.log)); //find files that depend on the files that have changed
 });
 
-gulp.task('min-all', ['scripts', 'scss'] );
+gulp.task('min-all', ['scripts', 'scss', 'gen-html'] );
 
 gulp.task('gen-html', function(){
     gulp.src("index.php")
     .pipe(php2html())
+    .pipe(gulpif(argv.production,
+        htmlmin({collapseWhitespace: true})
+    ))
+    .on('error', console.error)
     .pipe(gulp.dest(""));
 });
 
 
-gulp.task('php', function() {
-    php.server({ base: 'http://localhost:8888/git/s008080', port: 8888, keepalive: true});
-});
+// gulp.task('php', function() {
+//     php.server({ base: 'http://localhost:8888/git/s008080', port: 8888, keepalive: true});
+// });
 
-gulp.task('browser-sync',['php'], function() {
+// gulp.task('browser-sync',['php'], function() {
+//     browserSync({
+//         proxy: '127.0.0.1:8888',
+//         port: 8888,
+//         notify: false,
+//         open: false,
+//         ghostMode: false
+//     });
+//
+//     gulp.watch(folderStyles+"/**/*.scss", ['scss']);
+//     gulp.watch(["*.phtml", "*.php"]).on('change', browserSync.reload);
+// });
+
+gulp.task('browser-sync', function() {
     browserSync({
-        proxy: '127.0.0.1:8888',
-        port: 8888,
+        server: {
+            baseDir: './'
+        },
         notify: false,
         open: false,
         ghostMode: false
@@ -136,43 +153,26 @@ gulp.task('watch', ['setWatch', 'scssPartials', 'browser-sync'], function(){
 });
 
 
+gulp.task('default', function(){
+    var chTitle = chalk.bold.blue,
+        chBold = chalk.bold;
+    console.log(chBold('Gulp tasks available')+"\n"
+        +chTitle('$ gulp watch')+"\n"
+        	+"     watch .js (!*.min.js, !_*.js) modifications on assets/scripts and apply scripts task.  Use '--production' to also minify them.\n"
+            +"     watch .scss (!_*.scss) modifications on assets/styles and apply styles task. \n"
+            +"     also executes gulp gen-html \n"
 
-gulp.task('tasks', function(){
-        var chTitle = chalk.bold.blue;
-        var chBold = chalk.bold;
-        console.log(chBold('Gulp tasks available')+"\n"
-            +chTitle('$ gulp watch')+"\n"
-            	+"     watch .js (!*.min.js, !_*.js) modifications on assets/scripts and apply scripts task.  Use '--production' to also minify them.\n"
-                +"     watch .scss (!_*.scss) modifications on assets/styles and apply styles task. \n"
-                +"     also executes gulp gen-html \n"
+        +"\n"+chTitle('$ gulp scripts')+"\n"
+        	+"     create .min of all .js (!*.min.js, !_*.js) on assets/scripts \n"
+        	+"     Use '--production' to also minify and delete console_logs \n"
 
-            +"\n"+chTitle('$ gulp scripts')+"\n"
-            	+"     create .min of all .js (!*.min.js, !_*.js) on assets/scripts \n"
-            	+"     Use '--production' to also minify and delete console_logs \n"
+        +"\n"+chTitle('$ gulp styles')+"\n"
+        	+"     compile and minify all scss (!_*.scss) on assets/styles to .min.css \n"
 
-            +"\n"+chTitle('$ gulp styles')+"\n"
-            	+"     compile and minify all scss (!_*.scss) on assets/styles to .min.css \n"
+        +"\n"+chTitle('$ gulp min-all')+"\n"
+        	+"     run scripts and styles tasks. use '--production' to also minify them.\n"
+        +"\n"+chTitle('$ gulp gen-html')+"\n"
+        	+"     compile index.php to index.html. because bitbucket doesn't like php.\n"
 
-            // +"\n"+chTitle('$ gulp min-this --js [path/to/file.js]')+"\n"
-            // 	+"     minify only a specific .js file. Useful for js on assets/plugins \n"
-            //
-            // +"\n"+chTitle('$ gulp min-this --scss [path/to/file.scss]')+"\n"
-            // 	+"     compile only a specific .scss file. Useful for scss on assets/plugins \n"
-            //
-            // +"\n"+chTitle('$ gulp min-this --jsscss [path/to/folder]')+"\n"
-            // 	+"     compile all .js files inside that specific folder. \n"
-            //
-            // +"\n"+chTitle('$ gulp min-this --scssfolder [path/to/folder]')+"\n"
-            // 	+"     compile all .scss files inside that specific folder. \n"
-
-            +"\n"+chTitle('$ gulp min-all')+"\n"
-            	+"     run scripts and styles tasks. use '--production' to also minify them.\n"
-            +"\n"+chTitle('$ gulp gen-html')+"\n"
-            	+"     compile index.php to index.html. because bitbucket doesn't like php.\n"
-
-        );
-});
-
-gulp.task('default', function() {
-        console.log('hello person. type "gulp tasks" to know what tasks are available');
+    );
 });
