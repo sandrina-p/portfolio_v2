@@ -36,11 +36,10 @@
     <meta property="og:url" content="//www.sandrina-p.net" />
     <meta property="og:image" content="assets/media/card.png" />
 
-<link rel="stylesheet" href="assets/styles/04_templates/header.min.css">
     <?php // <link rel="stylesheet" href="assets/styles/04_templates/header.min.css"> ?>
     <style>
         /*just the needed css to display the intro*/
-        <?php //echo file_get_contents('assets/styles/04_templates/header.min.css') ?>
+        <?php echo file_get_contents('assets/styles/04_templates/header.min.css') ?>
     </style>
 </head>
 
