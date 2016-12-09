@@ -125,6 +125,39 @@ gulp.task('gen-html', function(){
 //     gulp.watch(["*.phtml", "*.php"]).on('change', browserSync.reload);
 // });
 
+
+gulp.task('test', function (done) {
+  // Define the Intern command line
+  var command = [
+    './node_modules/intern/runner.js',
+    'config=tests/intern'
+  ];
+
+  // Add environment variables, such as service keys
+  var env = Object.create(process.env);
+  // env.BROWSERSTACK_ACCESS_KEY = '123456';
+  // env.BROWSERSTACK_USERNAME = 'foo@nowhere.com';
+
+  // Spawn the Intern process
+  var child = require('child_process').spawn('node', command, {
+    // Allow Intern to write directly to the gulp process's stdout and
+    // stderr.
+    stdio: 'inherit',
+    env: env
+  });
+
+  // Let gulp know when the child process exits
+  child.on('close', function (code) {
+    if (code) {
+      done(new Error('Intern exited with code ' + code));
+    }
+    else {
+      done();
+    }
+  });
+});
+
+
 gulp.task('browser-sync', function() {
     browserSync({
         server: {
