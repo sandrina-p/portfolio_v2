@@ -156,7 +156,7 @@
             <h4 class="cv-ulTitle">Next steps</h4>
             <ul class="cv-ul">
                 <li class="cv-li">React</li>
-                <li class="cv-li">Regular Expressions</li>
+                <li class="cv-li">Webpack</li>
                 <li class="cv-li">Google Firebase</li>
                 <li class="cv-li">three.js</li>
             </ul>

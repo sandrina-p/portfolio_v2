@@ -78,7 +78,7 @@
     </div>
 
     <div class="chat jsLoading" id="chat">
-        <!-- not so fast. it's javascript ¯\_(ツ)_/¯ -->
+        <!-- js -->
 
         <div class="chat-nav" id="chat-nav">
             <div class="chatSection jsOnNav jsLoading" id="practice">
@@ -108,7 +108,7 @@
 
     <?php include 'index-parts/cv.php';?>
 
-    <div class="bot jsLoading" id="bot"><!-- ◉_◉ for the last time, it's javascript --></div>
+    <div class="bot jsLoading" id="bot"><!-- ◉_◉ js --></div>
 
     <noscript>
         <link rel="stylesheet" href="assets/styles/04_templates/index.min.css">
