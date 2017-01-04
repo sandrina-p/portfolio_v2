@@ -2,13 +2,13 @@ var gulp = require('gulp'),
 
     //general plugins
     rename = require('gulp-rename'),
-    argv = require('yargs').argv,
-    gulpif = require('gulp-if'),
-    gutil = require('gulp-util'),
+    argv = require('yargs').argv, //useful to create ENV (prod vs dev)
+    gulpif = require('gulp-if'), //useful to create ENV (prod vs dev)
+    gutil = require('gulp-util'), //some debug logs
     changed = require('gulp-changed'),
     cached = require('gulp-cached'),
-    stripDebug = require('gulp-strip-debug'),
-    chalk = require('chalk'),
+    stripDebug = require('gulp-strip-debug'), //byebye console.logs
+    chalk = require('chalk'), //some colors on terminal
 
     php2html = require("gulp-php2html"),
     htmlmin = require('gulp-htmlmin'),
@@ -27,7 +27,7 @@ var gulp = require('gulp'),
     //javascript plugins
     uglify = require('gulp-uglify'),
     include = require("gulp-include"),
-    babel = require('gulp-babel');
+    babel = require('gulp-babel'); //es2015 rocks
 
 var folderScripts = 'assets/scripts',
     folderStyles = 'assets/styles',

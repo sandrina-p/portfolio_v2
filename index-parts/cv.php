@@ -1,176 +1,209 @@
 <section class="cv" id="cv">
-    <h2 class="sr-only">CV</h2>
-
-    <div class="cv-header">
-        <div class="cv-profile">
-            <div class="cv-ascii">
-                <?php include 'index-parts/myself.php';?>
-            </div>
-            <span class="glitch" data-text="interaction Designer" data-sub="frontend developer">
-                <span>creative developer</span>
-            </span>
-        </div>
-
-        <article class="cv-article">
-            <div class="cv-article-in">
-                <div class="cv-article-header">
-                    <h3 class="cv-title">around</h3>
-                </div>
-
-                <dl class="cv-dl js-onWebAfter">
-                    <dt class="cv-dt">
-                        <a href="mailto:a.sandrina.p4@gmail.com?subject=Hey%20there!" title="sandrina's e-mail" class="cv-link">
-                            <i class="fa fa-terminal"></i> a.sandrina.p@gmail.com
-                        </a>
-                    </dt>
-                    <dd class="cv-dd">waiting for your call</dd>
-
-                    <dt class="cv-dt js-onWeb-remove">
-                        <a href="//codepen.io/sandrina-p" target="_blank" title="sandrina's stackoverflow" class="cv-link">
-                            <i class="fa fa-codepen"></i> codepen
-                        </a>
-                    </dt>
-                    <dd class="cv-dd js-onWeb-remove">because coding without fun is <span class="nowrap">just boring</span></dd>
-
-                    <dt class="cv-dt js-onWeb-remove">
-                        <a href="//github.com/sandrina-p" target="_blank" title="sandrina's stackoverflow" class="cv-link">
-                            <i class="fa fa-github"></i> github
-                        </a>
-                    </dt>
-                    <dd class="cv-dd js-onWeb-remove">sharing is what make <span class="nowrap">us better</span></dd>
-
-                    <dt class="cv-dt js-onWeb-remove">
-                        <a href="//stackoverflow.com/users/4737729/sandrina-pereira" target="_blank" title="sandrina's stackoverflow" class="cv-link">
-                            <i class="fa fa-stack-overflow"></i> stackoverflow
-                        </a>
-                    </dt>
-                    <dd class="cv-dd js-onWeb-remove">helping others is as important <span class="nowrap">as being</span> helped</dd>
-
-                    <dt class="cv-dt js-onWeb-remove">
-                        <a href="//www.behance.net/sandrin4p" target="_blank" title="sandrina's stackoverflow" class="cv-link">
-                            <i class="fa fa-behance"></i>
-                            behance
-                        </a>
-                    </dt>
-                    <dd class="cv-dd js-onWeb-remove">it can't be all <span class="nowrap">about coding</span></dd>
-                </dl>
-                <!-- don't kill me, but those fancy chat links are loaded by javascript too. Why? Because I like fancy layouts as much as I want Google to better understand my website x) -->
-            </div>
-        </article>
-
+    <h2 class="sr-only">About</h2>
+    <span class="cv-lamp" id="xx"></span>
+    <div class="cv-ascii">
+        <?php include 'myself.php';?>
     </div>
 
+    <script type="text/javascript">
+
+    var tooltipSpan = document.getElementById('xx');
+        window.onmousemove = function (e) {
+        var x = e.clientX,
+            y = e.clientY;
+        tooltipSpan.style.top = (y - window.innerWidth) + 'px';
+        tooltipSpan.style.left = (x - window.innerWidth) + 'px';
+        };
+
+
+    </script>
+
+    <?php // around ?>
     <article class="cv-article">
         <div class="cv-article-in">
             <div class="cv-article-header">
-                <h3 class="cv-title">background</h3>
+                <h3 class="cv-title">around</h3>
             </div>
-            <dl class="cv-dl">
-                <dt class="cv-dt">frontend developer</dt>
-                <dd class="cv-dd">Zaask - since oct'15</dd>
 
-                <dt class="cv-dt">code school courses</dt>
-                <dd class="cv-dd">JavaScript ES2015 <span class="nowrap">lvl 2/6</span></dd>
-                <dd class="cv-dd">JavaScript Best Practices</dd>
-                <dd class="cv-dd">JavaScript Road Trip</dd>
-                <dd class="cv-dd">jQuery lvl</dd>
-                <dd class="cv-dd">Shaping up with Angular.js</dd>
-                <dd class="cv-dd">...</dd>
 
-                <dt class="cv-dt">freelancer projects</dt>
-                <dd class="cv-dd">learning health <span class="nowrap">- jan'16</span></dd>
-                <dd class="cv-dd">carolina machado <span class="nowrap">- oct'15</span></dd>
 
-                <dt class="cv-dt">post graduation - digital <span class="nowrap">experience design</span></dt>
-                <dd class="cv-dd">faculty fine arts lisbon <span class="nowrap">- 2015'16</span></dd>
+            <dl class="cv-dl js-onWebAfter">
+                <dt class="cv-dt">
+                    <a href="mailto:a.sandrina.p4@gmail.com?subject=Hey%20there!" title="sandrina's e-mail" class="cv-link">a.sandrina.p@gmail.com</a>
+                </dt>
+                <dd class="cv-dd">waiting for your call</dd>
 
-                <dt class="cv-dt">ux|ui designer </dt>
-                <dd class="cv-dd">pure <span class="nowrap">- 2015</span></dd>
+                <dt class="cv-dt js-onWeb-remove">
+                    <a href="//codepen.io/sandrina-p" target="_blank" title="sandrina's stackoverflow" class="cv-link">
+                        <i class="fa fa-codepen"></i> codepen
+                    </a>
+                </dt>
+                <dd class="cv-dd js-onWeb-remove">because coding without fun is <span class="nowrap">just boring</span></dd>
 
-                <dt class="cv-dt">erasmus - communication design</dt>
-                <dd class="cv-dd">faculty fine arts porto <span class="nowrap">- 2014'15</span></dd>
+                <dt class="cv-dt js-onWeb-remove">
+                    <a href="//github.com/sandrina-p" target="_blank" title="sandrina's stackoverflow" class="cv-link">
+                        <i class="fa fa-github"></i> github
+                    </a>
+                </dt>
+                <dd class="cv-dd js-onWeb-remove">sharing is what make <span class="nowrap">us better</span></dd>
 
-                <dt class="cv-dt">degree - communication design</dt>
-                <dd class="cv-dd">faculty fine arts lisbon <span class="nowrap">- 2012'15</span></dd>
+                <dt class="cv-dt js-onWeb-remove">
+                    <a href="//stackoverflow.com/users/4737729/sandrina-pereira" target="_blank" title="sandrina's stackoverflow" class="cv-link">
+                        <i class="fa fa-stack-overflow"></i> stackoverflow
+                    </a>
+                </dt>
+                <dd class="cv-dd js-onWeb-remove">helping others is as important <span class="nowrap">as being</span> helped</dd>
+
+                <dt class="cv-dt js-onWeb-remove">
+                    <a href="//www.behance.net/sandrin4p" target="_blank" title="sandrina's stackoverflow" class="cv-link">
+                        <i class="fa fa-behance"></i>
+                        behance
+                    </a>
+                </dt>
+                <dd class="cv-dd js-onWeb-remove">it can't be all <span class="nowrap">about coding</span></dd>
             </dl>
+            <!-- those fancy links are JS loaded too. Why? Because I like fancy layouts as much as I want Google to better understand my website content -->
         </div>
     </article>
 
-    <article class="cv-article cv-article--right">
+    <?php // superpowers ?>
+    <article class="cv-article">
         <div class="cv-article-in">
             <div class="cv-article-header">
-                <h3 class="cv-title">theory</h3>
+                <h3 class="cv-title">superpowers</h3>
             </div>
 
-            <h4 class="cv-ulTitle">Web Development</h4>
-            <ul class="cv-ul">
-                <li class="cv-li">html5</li>
-                <li class="cv-li">e-mails</li>
-                <li class="cv-li">schemas</li>
-                <li class="cv-li cv-li--br">SVG</li>
-                <li class="cv-li">CSS3 | SCSS</li>
-                <li class="cv-li">SUIT methodology</li>
+            <div class="cv-list">
+                <h4 class="cv-list-title">new in town</h4>
+                <ul class="cv-list-ul cv-list-ul--split">
+                    <li>Google Firebase</li>
+                    <li>React</li>
+                    <li>Webpack</li>
+                </ul>
+            </div>
 
-                <li class="cv-li">javascript | ES2015</li>
-                <li class="cv-li">jQuery</li>
-                <li class="cv-li cv-li--br">JS Module Pattern</li>
+            <div class="cv-list">
+                <h4 class="cv-list-title">rocking at</h4>
+                <ul class="cv-list-ul">
+                    <li>HTML5</li>
+                    <li>CSS3 / SCSS</li>
+                    <li>SUIT methologody</li>
+                    <li>e-mails</li>
+                    <li>SEO</li>
+                </ul>
+                <ul class="cv-list-ul">
+                    <li>jQuery</li>
+                    <li>Javascript</li>
+                    <li>JS ES2015</li>
+                    <li>JS Modular Pattern</li>
+                    <li>Modernizr</li>
+                </ul>
+                <ul class="cv-list-ul">
+                    <li>Ionic 2</li>
+                    <li>Jekyll</li>
+                    <li>PHP</li>
+                    <li>SVG</li>
+                    <li>Tumblr</li>
+                </ul>
+            </div>
 
-                <li class="cv-li">Angular 2</li>
-                <li class="cv-li">Ionic 2</li>
-                <li class="cv-li">php</li>
-            </ul>
+            <div class="cv-list">
+                <h4 class="cv-list-title">with the help of</h4>
+                <ul class="cv-list-ul">
+                    <li>Atom</li>
+                    <li>Git</li>
+                    <li>Gulp</li>
+                    <li>Toggl</li>
+                </ul>
+                <ul class="cv-list-ul">
+                    <li>Caniuse</li>
+                    <li>Browserstack</li>
+                    <li>Google Analytics</li>
+                    <li>Mouseflow</li>
+                </ul>
+                <ul class="cv-list-ul">
+                    <li>Sketch</li>
+                    <li>Adobe Tools</li>
+                    <li>Zeplin</li>
+                    <li>Invision</li>
+                </ul>
+            </div>
 
-            <h4 class="cv-ulTitle">Tools</h4>
-            <ul class="cv-ul">
-                <li class="cv-li">Atom</li>
-                <li class="cv-li">Git</li>
-                <li class="cv-li">Gulp</li>
-                <li class="cv-li cv-li--br">Koala</li>
-
-                <li class="cv-li">Adobe Family <span class="nowrap">[ps id ai ae]</span></li>
-                <li class="cv-li cv-li--br">Sketch</li>
-
-                <li class="cv-li">3D Blender</li>
-            </ul>
-
-            <h4 class="cv-ulTitle">Optimization</h4>
-            <ul class="cv-ul">
-                <li class="cv-li">Accessibility</li>
-                <li class="cv-li">Google Analytics</li>
-                <li class="cv-li">SEO</li>
-            </ul>
-
-            <h4 class="cv-ulTitle">Platforms</h4>
-            <ul class="cv-ul">
-                <li class="cv-li">Jekyll</li>
-                <li class="cv-li">Tumblr</li>
-            </ul>
-
-            <h4 class="cv-ulTitle">Assets</h4>
-            <ul class="cv-ul">
-                <li class="cv-li">ambition</li>
-                <li class="cv-li">daily exploration</li>
-                <li class="cv-li cv-li--i">less is more only <span class="nowrap">when more is too much</span></li>
-            </ul>
-
-            <h4 class="cv-ulTitle">Next steps</h4>
-            <ul class="cv-ul">
-                <li class="cv-li">React</li>
-                <li class="cv-li">Webpack</li>
-                <li class="cv-li">Google Firebase</li>
-                <li class="cv-li">three.js</li>
-            </ul>
+            <div class="cv-list">
+                <h4 class="cv-list-title">natural powers</h4>
+                <ul class="cv-list-ul cv-list-ul--all">
+                    <li>Daily exploration</li>
+                    <li>Great retention</li>
+                    <li><em>Less is more only when more is too much</em></li>
+                </ul>
+            </div>
 
         </div>
     </article>
 
-    <div class="cv-under js-cvUnder">
-        <div class="cv-under-title">
+    <?php // timeline ?>
+    <article class="cv-article">
+        <div class="cv-article-in">
+            <div class="cv-article-header">
+                <h3 class="cv-title">timeline</h3>
+            </div>
+
+            <div class="cv-list">
+                <h4 class="cv-list-title">crossed paths with</h4>
+                <dl class="cv-list-dl">
+                    <dt><a href="https://www.farfetch.com" target="_blank" class="link">Farfetch</a></dt>
+                    <dd class="cv-list-dl-date">since jan'17</dd>
+                    <dd class="cv-list-dl-desc">ui developer</dd>
+
+                    <dt><a href="https://www.zaask.pt" target="_blank" class="link">Zaask</a></dt>
+                    <dd class="cv-list-dl-date">oct'15 - dez'16</dd>
+                    <dd class="cv-list-dl-desc">front-end developer</dd>
+
+                    <dt><a href="https://en.pure.dating/" target="_blank" class="link">Pure</a></dt>
+                    <dd class="cv-list-dl-date">jul-sep'15</dd>
+                    <dd class="cv-list-dl-desc">ui|ux designer</dd>
+                </dl>
+
+                <dl class="cv-list-dl">
+                    <dt>Post-graduation <span class="at">@ <a href="http://www.belasartes.ulisboa.pt/" target="_blank" class="link">FBAUL</a></span></dt>
+                    <dd class="cv-list-dl-date">2015'16</dd>
+                    <dd class="cv-list-dl-desc">Digital Experience Design</dd>
+
+                    <dt>Erasmus <span class="at">@ <a href="http://www.fba.up.pt/" target="_blank" class="link">FBAUP</a></span></dt>
+                    <dd class="cv-list-dl-date">2014'15</dd>
+                    <dd class="cv-list-dl-desc">Communication Design</dd>
+
+                    <dt>Degree <span class="at">@ <a href="http://www.belasartes.ulisboa.pt/" target="_blank" class="link">FBAUL</a></span></dt>
+                    <dd class="cv-list-dl-date">2012'15</dd>
+                    <dd class="cv-list-dl-desc">Communication Design</dd>
+                </dl>
+            </div>
+
+            <div class="cv-list">
+                <h4 class="cv-list-title">shared bytes with</h4>
+                <dl class="cv-list-dl">
+                    <dt><a href="http://www.codeschool.com/" target="_blank" class="link">Code School</a></dt>
+                    <dd class="cv-list-dl-desc">SCSS, JS, ES2015, jQuery, etc...</dd>
+                </dl>
+
+                <dl class="cv-list-dl">
+                    <dt><a href="https://www.youtube.com/learncodeacademy/" target="_blank" class="link">LearnCode.academy</a></dt>
+                    <dd class="cv-list-dl-desc">Modular JS, React, etc..</dd>
+                </dl>
+            </div>
+
+        </div>
+    </article>
+
+    <?php // projects ?>
+    <div class="cv-projs js-cvUnder">
+        <div class="cv-article-header">
             <h3 class="cv-title">projects</h3>
         </div>
-        <div class="cv-under-proj">
-            <span class="cv-under-proj-sub js-cvProjSub"></span>
-            <ul class="cv-under-proj-ul js-cvProj">
+
+        <div class="cv-projs-proj">
+            <span class="cv-projs-proj-sub js-cvProjSub"></span>
+            <ul class="cv-projs-proj-ul js-cvProj">
                 <li><a target="_blank" href="https://vimeo.com/176452854" class="cv-link" data-gaec="cvproj" data-sub="video game concept">N O X</a></li>
                 <li><a target="_blank" href="https://vimeo.com/115483647" class="cv-link" data-gaec="cvproj" data-sub="3D animation">141205</a></li>
                 <li><a target="_blank" href="https://sandrina-p.github.io/rede-expressos/" class="cv-link" data-gaec="cvproj" data-sub="web and app concept redesign">Rede Expressos</a></li>
@@ -182,7 +215,9 @@
             </ul>
         </div>
     </div>
+
 </section>
+
 
 <div class="psst js-psst">
     <p class="psst-title">psst...</p>
@@ -198,10 +233,10 @@
 <noscript>
     <div class="psst">
         <p class="psst-title">ಠ_ಥ</p>
-        <p class="psst-parag">You came so far with that tiny browser.
-            <br>Most of people don't care about persons like you, but not Sandrina.
+        <p class="psst-parag">You came so far with that old browser.
+            <br>Most of people don't care about users like you, but not Sandrina.
             <br>Ah yes, that's here name! Don't forget to talk about her and share me!
-            <br><small><i>p.s. Ask to your son or boss to install a better browser <span class="nowrap">¯\_(ツ)_/¯</span></i></small>
+            <br><small><i>p.s. Ask your son or boss to install a better browser <span class="nowrap">¯\_(ツ)_/¯</span></i></small>
         </p>
     </div>
 </noscript>

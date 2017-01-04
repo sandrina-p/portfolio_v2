@@ -5,6 +5,10 @@
     animation: myself 1s steps(5) infinite; //REVIEW
 }
 
+.myself5 {
+    // opacity: 1;
+}
+
 $myselfs: 7;
 @for $i from 0 through $myselfs {
     .myself#{$i} {
