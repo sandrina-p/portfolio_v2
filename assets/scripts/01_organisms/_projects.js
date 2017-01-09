@@ -49,26 +49,26 @@ var Projects = function() {
                             </div>
 
                             <div class='projCont'>
-                                <div class='projCont-left'>
-                                    <p class='projCont-subtitle'>${sub}</p>
+                                <div class='projCont-left'>`
+                                    /*<p class='projCont-subtitle'>${sub}</p>*/
 
+                                    +`<div class='projCont-media'>
+                                        <div class='Glidder'>${elImgs}</div>
+                                    </div>
+                                </div>
+
+                                <div class='projCont-right'>
                                     <div class='projCont-links'>${ElLinks}</div>
 
-                                    <div class='projCont-media'>
-                                        <div class='Glidder'>${elImgs}</div>
+                                    <div class='projCont-descript'>
+                                        <p class='projCont-intro'>${title}</p>
+                                        <p class='projCont-details'>${more}</p>
                                     </div>
 
                                     <div class='projCont-about'>
                                         <p class='projCont-role'>${role}</p>
                                         <p class='projCont-date'>${date}</p>
                                         <p class='projCont-team'>${team}</p>
-                                    </div>
-                                </div>
-
-                                <div class='projCont-right'>
-                                    <div class='projCont-descript'>
-                                        <p class='projCont-intro'>${title}</p>
-                                        <p class='projCont-details'>${more}</p>
                                     </div>
                                 </div>
                             </div>
@@ -206,7 +206,6 @@ var Projects = function() {
         baffleIntro.reveal(400, 0);
         baffleRole.reveal(400, 70);
         baffleDate.reveal(400, 250);
-        // baffleTeam.reveal(400, 250);
         baffleDet.reveal(400, 300);
 
         //REVIEW is there any way to create a loop/for on these?
@@ -214,14 +213,51 @@ var Projects = function() {
         baffleIntro.text(currentText => projData.capt);
         baffleRole.text(currentText => projData.role);
         baffleDate.text(currentText => projData.date);
-        // baffleTeam.text(currentText => projData.team);
         baffleDet.text(currentText => projData.more);
 
         $("img").error(function () {
             $(this).hide(); //prevent displaying 404 images
         });
+
+        setTimeout(function () {
+            imgParallax();
+        }, 250);
+
     }
 
+    function imgParallax() {
+        //REVIEW this could be much better
+
+        var windowH =  window.innerHeight,
+            elementOffset = $projMedia.offset().top,
+            $bg1 = $('.js-cvBg'),
+            scrollTop,
+            distance,
+            topperc,
+            topfinal;
+
+        $(document).scroll(function() {
+
+            scrollTop = $(window).scrollTop();
+            distance = elementOffset - scrollTop;
+            topperc = 100 - distance * 100 / windowH;
+            topfinal = ((topperc * 36 / 100 * -1 + 10) / 1.5 ).toFixed(2);
+
+            if (topfinal < 0) {
+                $projMedia.find('img').css({
+                    'transform' : 'translateY('+topfinal+'%)'
+                });
+
+                $bg1.addClass('is-js');
+                //TODO this shoudn't be here...
+                $bg1.css({
+                    'transform' : 'translateY('+topfinal*2+'%)'
+                });
+            }
+
+        });
+
+    }
 
 
     // ------ deal with nav behavior ------ //
@@ -356,7 +392,6 @@ var Projects = function() {
 
         setTimeout(function () {
             var projNameSlugged = UtilFuncs.stringSlugLower(projName);
-
             getProjectData(projName);
 
             $(`.projNav-btn[name='${projNameSlugged}']`)

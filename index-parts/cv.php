@@ -1,33 +1,15 @@
 <section class="cv" id="cv">
+    <span class="cv-bg js-cvBg"></span>
     <h2 class="sr-only">About</h2>
-    <span class="cv-lamp" id="xx"></span>
-    <div class="cv-ascii">
-        <?php include 'myself.php';?>
-    </div>
-
-    <script type="text/javascript">
-
-    var tooltipSpan = document.getElementById('xx');
-        window.onmousemove = function (e) {
-        var x = e.clientX,
-            y = e.clientY;
-        tooltipSpan.style.top = (y - window.innerWidth) + 'px';
-        tooltipSpan.style.left = (x - window.innerWidth) + 'px';
-        };
-
-
-    </script>
 
     <?php // around ?>
     <article class="cv-article">
         <div class="cv-article-in">
             <div class="cv-article-header">
-                <h3 class="cv-title">around</h3>
+                <h3 class="cv-title js-cvShowTitle">around</h3>
             </div>
 
-
-
-            <dl class="cv-dl js-onWebAfter">
+            <dl class="cv-dl js-onWebAfter js-cvShow">
                 <dt class="cv-dt">
                     <a href="mailto:a.sandrina.p4@gmail.com?subject=Hey%20there!" title="sandrina's e-mail" class="cv-link">a.sandrina.p@gmail.com</a>
                 </dt>
@@ -70,10 +52,10 @@
     <article class="cv-article">
         <div class="cv-article-in">
             <div class="cv-article-header">
-                <h3 class="cv-title">superpowers</h3>
+                <h3 class="cv-title js-cvShowTitle">superpowers</h3>
             </div>
 
-            <div class="cv-list">
+            <div class="cv-list js-cvShow">
                 <h4 class="cv-list-title">new in town</h4>
                 <ul class="cv-list-ul cv-list-ul--split">
                     <li>Google Firebase</li>
@@ -82,7 +64,7 @@
                 </ul>
             </div>
 
-            <div class="cv-list">
+            <div class="cv-list js-cvShow">
                 <h4 class="cv-list-title">rocking at</h4>
                 <ul class="cv-list-ul">
                     <li>HTML5</li>
@@ -107,7 +89,7 @@
                 </ul>
             </div>
 
-            <div class="cv-list">
+            <div class="cv-list js-cvShow">
                 <h4 class="cv-list-title">with the help of</h4>
                 <ul class="cv-list-ul">
                     <li>Atom</li>
@@ -129,7 +111,7 @@
                 </ul>
             </div>
 
-            <div class="cv-list">
+            <div class="cv-list js-cvShow">
                 <h4 class="cv-list-title">natural powers</h4>
                 <ul class="cv-list-ul cv-list-ul--all">
                     <li>Daily exploration</li>
@@ -145,10 +127,10 @@
     <article class="cv-article">
         <div class="cv-article-in">
             <div class="cv-article-header">
-                <h3 class="cv-title">timeline</h3>
+                <h3 class="cv-title js-cvShowTitle">timeline</h3>
             </div>
 
-            <div class="cv-list">
+            <div class="cv-list js-cvShow">
                 <h4 class="cv-list-title">crossed paths with</h4>
                 <dl class="cv-list-dl">
                     <dt><a href="https://www.farfetch.com" target="_blank" class="link">Farfetch</a></dt>
@@ -179,7 +161,7 @@
                 </dl>
             </div>
 
-            <div class="cv-list">
+            <div class="cv-list js-cvShow">
                 <h4 class="cv-list-title">shared bytes with</h4>
                 <dl class="cv-list-dl">
                     <dt><a href="http://www.codeschool.com/" target="_blank" class="link">Code School</a></dt>
@@ -198,7 +180,7 @@
     <?php // projects ?>
     <div class="cv-projs js-cvUnder">
         <div class="cv-article-header">
-            <h3 class="cv-title">projects</h3>
+            <h3 class="cv-title js-cvShowTitle">projects</h3>
         </div>
 
         <div class="cv-projs-proj">

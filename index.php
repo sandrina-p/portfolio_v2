@@ -36,10 +36,10 @@
     <meta property="og:url" content="//www.sandrina-p.net" />
     <meta property="og:image" content="assets/media/card.png" />
 
-    <?php // <link rel="stylesheet" href="assets/styles/04_templates/header.min.css"> ?>
+    <link rel="stylesheet" href="assets/styles/04_templates/header.min.css">
     <style>
         /*just the needed css to display the intro*/
-        <?php echo file_get_contents('assets/styles/04_templates/header.min.css') ?>
+        <?php //echo file_get_contents('assets/styles/04_templates/header.min.css') ?>
     </style>
 </head>
 
@@ -79,7 +79,6 @@
 
     <div class="chat jsLoading" id="chat">
         <!-- js -->
-
         <div class="chat-nav" id="chat-nav">
             <div class="chatSection jsOnNav jsLoading" id="practice">
                 <div class="chatPart" id="practice-intro">
@@ -110,6 +109,10 @@
 
     <div class="bot jsLoading" id="bot"><!-- ◉_◉ js --></div>
 
+    <div class="cv-ascii">
+        <?php include 'index-parts/myself.php';?>
+    </div>
+
     <noscript>
         <link rel="stylesheet" href="assets/styles/04_templates/index.min.css">
     </noscript>
@@ -128,7 +131,7 @@
         else window.addEventListener('load', cb);
     </script>
     <script async src="assets/scripts/03_templates/index.min.js" charset="utf-8"></script>
-
+    
     <script type="text/javascript">
         var _mfq = _mfq || [];
         (function() {

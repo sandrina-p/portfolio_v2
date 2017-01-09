@@ -20,6 +20,7 @@ var OnWeb = function() {
                     </div>
                 </div>`);
 
+
     function getElSocial() {
         var elLinks = "";
         var test = "tess delete me";
@@ -34,6 +35,80 @@ var OnWeb = function() {
         return elLinks;
     }
 
+    function ascii() {
+
+        var winHeight = $(window).innerHeight(),
+            i,
+            scrolled,
+            $ascii = $(".cv-ascii");
+            $mee = $(".cv-ascii").find('.mee');
+            $meeLength = $mee.length;
+
+        $(window).on('scroll',function(){
+
+          $ascii.css('bottom', $('#cv').offset().top + $(window).scrollTop()*0.8 * -1);
+          $mee.css('display','block');
+          scrolled = $(window).scrollTop();
+
+          if (scrolled%3 == 0) {
+              i = scrolled%$meeLength;
+              $mee.css('opacity', 0);
+              $('.myself'+i).css('opacity', 1);
+          }
+
+        });
+    }
+
+    ascii();
+
+    function cvListShow() {
+
+        //show Titles
+        $('.js-cvShowTitle').each(function(){
+
+            var $t = $(this),
+                shut = false;
+
+            $t.addClass('is-js');
+
+            $(document).scroll(function(){
+                if($(this).scrollTop() + window.innerHeight*0.4 > $t.offset().top) {
+                   if (!shut) {
+                        $t.addClass('is-active');
+                        shut = true;
+                   }
+                }
+                // } else {
+                //     if (shut) {
+                //         $t.removeClass('is-active');
+                //         console.log('remove');
+                //         shut = false;
+                //     }
+                // }
+            });
+        });
+
+        //show Lists
+        $('.js-cvShow').each(function(){
+
+            var $t = $(this),
+                shut = false;
+
+            $t.addClass('is-js');
+
+            $(document).scroll(function(){
+                if(!shut && $(this).scrollTop() + window.innerHeight*0.6 > $t.offset().top) {
+                   $t.addClass('is-active');
+                   shut = true;
+                }
+            });
+
+        });
+
+    }
+
+
+
     function init() {
         $('.js-onWeb-remove').remove();
         $('.js-onWebAfter').after(elOnWeb);
@@ -41,6 +116,8 @@ var OnWeb = function() {
         $onWebLink = $('.js-onWeb-site').parent(),
         baffleWebSite = baffle('.js-onWeb-site'),
         baffleWebDd = baffle('.js-onWeb-dd');
+
+        cvListShow();
 
         $(document).on('mouseenter', '.js-onWeb-link', function(){
             baffleWebSite
@@ -67,9 +144,6 @@ var OnWeb = function() {
             $onWebLink.removeAttr('href');
         });
     }
-
-
-
 
     return {
         init

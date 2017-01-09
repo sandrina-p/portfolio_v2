@@ -2,12 +2,12 @@
     position: absolute;
     opacity: 0;
     @include centerx;
-    animation: myself 1s steps(5) infinite; //REVIEW
+    // animation: myself 1s steps(5) infinite; //REVIEW
 }
 
-.myself5 {
-    // opacity: 1;
-}
+// .myself5 {
+//     opacity: 1;
+// }
 
 $myselfs: 7;
 @for $i from 0 through $myselfs {

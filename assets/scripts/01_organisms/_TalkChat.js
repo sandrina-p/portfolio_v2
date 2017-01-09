@@ -59,7 +59,7 @@ var TalkChat = function(){
                 ${brk} From <strong>creative to technical, she can excel at any role.</strong>`
         },
         practice: {
-            intro: "On most of them she did both design and code parts. What connects them is the constant searching for <strong>something unique and interactive</strong>."
+            intro: "The constant searching for <strong>something unique and interactive</strong> it's what connects her projects."
                 +brk+"Lets start with something cool:",
             projects: ['rede expressos', 'carolina machado', 'portfolio 15', 'pistol shrimp', 'moon', 'N O X', 'DET', '141205'],
             'rede expressos': {

@@ -10,7 +10,6 @@ $cvPaddingLeft: 10vw;
     letter-spacing: 0.4px;
     font-size: $fontS;
     font-family: $font-mono;
-    // color: $clrGrayLight;
 }
 
 .js-onWebAfter {
@@ -30,35 +29,30 @@ $cvPaddingLeft: 10vw;
     display: block;
     position: relative;
     background: $clrDark;
-
     color: $clrLight;
     margin-bottom: rem(280); //space to .psst
-
     z-index: 2; //above #cv
     overflow: hidden;
 
-    // &:before {
-    //     content: '';
-    //     position: fixed;
-    //     top: 0;
-    //     left: 0;
-    //     background: radial-gradient(-10% 50%, circle, #003333 10%, $clrDark 50%);
-    //     width: 100%;
-    //     height: 100%;
-    // }
+    &-bg {
+        position: absolute;
+        display: block;
 
-    &-lamp {
-        display:block;
-        position:fixed;
-        overflow:hidden;
-        // background: radial-gradient(#001f1f 2%, $clrDark 40%);
-        width: 200vw;
-        height: 200vw;
+        // &--1 {
+            width: 200vw;
+            height: 200vw;
+            top: 50vh;
+            background: radial-gradient(-10% 50%, circle, rgba(#004040, 0.7) 2%, rgba(0,0,0,0) 35%);
+
+        // }
+
+        &.is-js {
+            top: 900vh;
+        }
     }
 
     &-ascii {
-        position: relative;
-        display: inline-block;
+        position: fixed;
         text-align: center;
         width: 100%;
         font-size: 5.2px;
@@ -66,19 +60,16 @@ $cvPaddingLeft: 10vw;
         height: 300px;
         overflow: hidden;
         font-family: $font-mono;
-        margin:  50px 0 -100px 0;
-        // margin-top: -75px;
-        // position: absolute;
-        // @include centerxy;
-        // position: fixed;
-        // opacity: 0.4;
-        // z-index: 332;
-
-        // transform: translateZ(-2px);
-
+        font-weight: $fBold;
+        z-index: 3;
+        color: $clrLight;
+        mix-blend-mode: difference;
+        opacity: 0.7;
+        pointer-events: none;
     }
 
     &-article {
+        margin-bottom: $safeArea*4;
 
         &-in {
             color: $clrLight;
@@ -92,10 +83,24 @@ $cvPaddingLeft: 10vw;
     }
 
     &-title {
+        position: relative;
         font-size: $font4XL;
         font-family: $font-mono;
         font-weight: $fMed;
         padding: $safeArea*6 0 0;
+
+        &.is-js {
+            transform: scale(0.5);
+            opacity: 0;
+            transition: transform $speed*3;
+        }
+
+        &.is-active {
+            transform: scale(1);
+            animation: heyIntro 3s steps(11);
+            animation-fill-mode: forwards;
+            animation-delay: -2s;
+        }
     }
 
 
@@ -104,8 +109,6 @@ $cvPaddingLeft: 10vw;
         padding-bottom: $safeArea*2;
         text-align: center;
     }
-
-
 
     &-dt {
         @extend %cvSub;
@@ -150,6 +153,18 @@ $cvPaddingLeft: 10vw;
             border-color: $clrGray;
         }
 
+
+        &.is-js > * {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity $speed*3, transform $speed*3;
+        }
+
+        &.is-active > * {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
         &-title {
             font-size: $fontLx;
             font-family: $font-mono;
@@ -157,8 +172,9 @@ $cvPaddingLeft: 10vw;
             width: 100%;
             text-align: center;
             @extend %flexbox;
+            justify-content: center;
             padding: $safeArea*3 0 $safeArea*2;
-
+            white-space: nowrap;
 
             @include flexboxProp {
                 align-items: center;
@@ -175,11 +191,19 @@ $cvPaddingLeft: 10vw;
             &:before,
             &:after {
                 content: '';
-                display: block;
-                flex: 1;
+                width: 1%;
                 height: 1px;
                 background: $clrPrimary;
                 margin-top: $safeArea/3;
+                transition: width $speed*3;
+            }
+
+            .is-active & {
+
+                &:before,
+                &:after {
+                    width: 50%;
+                }
             }
         }
 
@@ -262,14 +286,6 @@ $cvPaddingLeft: 10vw;
 
     &-projs {
         width: 100%;
-
-        // &-title {
-        //     text-align: center;
-        //     border-bottom: 1px solid $clrLight;
-        //     padding: $safeArea;
-        //     padding-top: $safeArea*2;
-        //     padding-bottom: $safeArea/3;
-        // }
 
         &-proj {
             padding: 0 $safeArea/2;

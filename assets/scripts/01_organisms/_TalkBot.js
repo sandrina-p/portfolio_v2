@@ -34,7 +34,7 @@ var TalkBot = function(){
             resolutionScreenMsg = "I noticed that you have a "+screenRes+", so the images I showed you have a big and nice resolution. If you were on your mobile, I'd be a thoughtful bot and reduce their size so I could save you some Kb from your mobile data network. How sweet am I, hm ? :D";
     // }
 
-    var publicCmd = "What do you want to know?"
+    var publicCmd = "What do you wanna know?"
                     +brk+"<b>technologies</b>"
                     +brk+"<b>best practices</<b>"
                     +brk+"<b>challenges</b>"
@@ -48,95 +48,94 @@ var TalkBot = function(){
     var conversation = {
         // intro: ['type gg', "aqui", "options"],
         intro: [
-            "Now that we talked enough about Sandrina,"
-            +brk+"^100Ah yes, that's her name, I forgot to tell you..."
-            +brk+"^150 Now we can talk about me. How I was made and what Sandrina has to share! But before that just tell me one thing:"
-            +brk+"1 divided by 0 equal to:",
-            "your answer here", "options"
+            "Now that you know Sandrina, let me introduce myself:"
+            +brk+"I'm 008080 and here you can ask me stuff about me."
+            +brk+""+publicCmd,
+            "e.g. How are you", "commands"
         ],
-        options: {
-            /* STRUCTURE:
-            "posible human inputs sent, separated by comma, and in lowercase, it was to be always at least 2 inputs": [
-                "bot answer"
-                +brk+"with some lines",
-                "input placeholder", "context of the next input"
-            ]
-            */
-            // "gg, ggg":['ready to go', "sabes os comandos nao sabes?", "commands"],
-            "infinity and beyond, chaos, ∞ infinity, infinity, ∞, universe, cosmos, abracadabra": [
-                "That's the way!"
-                +brk+"Despite always being under construction I already have the ability to share some knowledge Sandrina taught me while I was growing up."
-                +brk+""+publicCmd,
-                "what's next?", "commands"
-            ],
-            "infinito, infinite, infiniti, infinyti, infiniti,": [
-                "I think you meant <i>infinity</i>... Well let's start:",
-                +brk+"Despite always being under construction I already have the ability to share some knowledge Sandrina taught me while I was growing up."
-                +brk+""+publicCmd,
-                "what's next?", "commands"
-            ],
-            "undefined, null, error": [
-                "Not it's not. It has another name. At least on javascript language.",
-                "go ask it to some console", "options"
-            ],
-            "1/0, 1 divided by 0, one divided by zero": [
-                "◉_◉ Don't try to turn the game against me."
-                +brk+"I'm a bot, not a console.",
-                "go ask it to other console", "options"
-            ],
-            "zero, 0": [
-                "You know that Siri isn't always right."
-                +brk+"^400Neither do you."
-                +brk+"^600"+botOptHelp,
-                'I still believe in you', "options"
-            ],
-            "exit, esc": [
-                "Really? We didn't even start you already want to leave.. Press ESC and go get a life"
-                +brk+"By the way, don't forget to share me and talk about Sandrina while you’re out there :3",
-                "I still believe in you", "options"
-            ],
-            "helpp, help, i don't know, dunno, i'm not sure, help me": [
-                "I'm glad I can teach you something new!"
-                +brk+"I'm build with javascript, so in my world 1/0 is <i>∞ infinity</i>."
-                +brk+"In other worlds the answer can be <i>0</i> or <i>undefined</i>."
-                +brk+"I'm a sensible machine so I like to think there is much more beyond nothing.",
-                "so, now you know how much is 1/0!", "options"
-            ],
-            "google it": [
-                botOptHelp,
-                "I still believe in you", "options"
-            ],
-            "tell me more, more, what else, anything else": [ //FIXME DRY this
-                "you are such a curious creature :3. I'm still under construction... I think you best move here is to talk with Sandrina at "+myEmail, //but you can leave a quick message to Sandrina. Just type something started by @@.*/",
-                // "@@ Hi sandrina! How much is 0.1 + 0.3 ?"
-                "or you can use social networks, she's there somewhere...", "options"
-            ],
-            "welcome back" : [
-                "Look who is back! So, How much is 1/0?",
-                "options"
-            ],
-            "hello, hi, hey there" : [
-                "Hi there! :D",
-                "options"
-            ],
-            "whatever, no, nop, come on": [
-                "Come on.. giving up so easily? You can "+googleIt+" or ask for <b>help</>",
-                "go ask it to some console", "options"
-            ],
-            "dumb, you are dumb, your dumb, you suck, this sucks": [
-                "A little, I have to admit it... but you are too ._.",
-                "but Sandrina isn't!", "options"
-            ],
-            "skip, skip this shit": [
-                "Okay then, so these are some of the things i can share with you:"
-                +brk+""+publicCmd,
-                "what's next?", "commands"
-            ],
-            "fk, fuck you, shit, go fuck yourself, fuck u": [
-                "You are so agressive... This will calm you: "+linkChill,
-                "what's next?"
-            ],
-        },
+        // options: {
+        //     /* STRUCTURE:
+        //     "posible human inputs sent, separated by comma, and in lowercase, it was to be always at least 2 inputs": [
+        //         "bot answer"
+        //         +brk+"with some lines",
+        //         "input placeholder", "context of the next input"
+        //     ]
+        //     */
+        //     // "gg, ggg":['ready to go', "sabes os comandos nao sabes?", "commands"],
+        //     "infinity and beyond, chaos, ∞ infinity, infinity, ∞, universe, cosmos, abracadabra": [
+        //         "That's the way!"
+        //         +brk+"Despite always being under construction I already have the ability to share some knowledge Sandrina taught me while I was growing up."
+        //         +brk+""+publicCmd,
+        //         "what's next?", "commands"
+        //     ],
+        //     "infinito, infinite, infiniti, infinyti, infiniti,": [
+        //         "I think you meant <i>infinity</i>... Well let's start:",
+        //         +brk+"Despite always being under construction I already have the ability to share some knowledge Sandrina taught me while I was growing up."
+        //         +brk+""+publicCmd,
+        //         "what's next?", "commands"
+        //     ],
+        //     "undefined, null, error": [
+        //         "Not it's not. It has another name. At least on javascript language.",
+        //         "go ask it to some console", "options"
+        //     ],
+        //     "1/0, 1 divided by 0, one divided by zero": [
+        //         "◉_◉ Don't try to turn the game against me."
+        //         +brk+"I'm a bot, not a console.",
+        //         "go ask it to other console", "options"
+        //     ],
+        //     "zero, 0": [
+        //         "You know that Siri isn't always right."
+        //         +brk+"^400Neither do you."
+        //         +brk+"^600"+botOptHelp,
+        //         'I still believe in you', "options"
+        //     ],
+        //     "exit, esc": [
+        //         "Really? We didn't even start you already want to leave.. Press ESC and go get a life"
+        //         +brk+"By the way, don't forget to share me and talk about Sandrina while you’re out there :3",
+        //         "I still believe in you", "options"
+        //     ],
+        //     "helpp, help, i don't know, dunno, i'm not sure, help me": [
+        //         "I'm glad I can teach you something new!"
+        //         +brk+"I'm build with javascript, so in my world 1/0 is <i>∞ infinity</i>."
+        //         +brk+"In other worlds the answer can be <i>0</i> or <i>undefined</i>."
+        //         +brk+"I'm a sensible machine so I like to think there is much more beyond nothing.",
+        //         "so, now you know how much is 1/0!", "options"
+        //     ],
+        //     "google it": [
+        //         botOptHelp,
+        //         "I still believe in you", "options"
+        //     ],
+        //     "tell me more, more, what else, anything else": [ //FIXME DRY this
+        //         "you are such a curious creature :3. I'm still under construction... I think you best move here is to talk with Sandrina at "+myEmail, //but you can leave a quick message to Sandrina. Just type something started by @@.*/",
+        //         // "@@ Hi sandrina! How much is 0.1 + 0.3 ?"
+        //         "or you can use social networks, she's there somewhere...", "options"
+        //     ],
+        //     "welcome back" : [
+        //         "Look who is back! So, How much is 1/0?",
+        //         "options"
+        //     ],
+        //     "hello, hi, hey there" : [
+        //         "Hi there! :D",
+        //         "options"
+        //     ],
+        //     "whatever, no, nop, come on": [
+        //         "Come on.. giving up so easily? You can "+googleIt+" or ask for <b>help</>",
+        //         "go ask it to some console", "options"
+        //     ],
+        //     "dumb, you are dumb, your dumb, you suck, this sucks": [
+        //         "A little, I have to admit it... but you are too ._.",
+        //         "but Sandrina isn't!", "options"
+        //     ],
+        //     "skip, skip this shit": [
+        //         "Okay then, so these are some of the things i can share with you:"
+        //         +brk+""+publicCmd,
+        //         "what's next?", "commands"
+        //     ],
+        //     "fk, fuck you, shit, go fuck yourself, fuck u": [
+        //         "You are so agressive... This will calm you: "+linkChill,
+        //         "what's next?"
+        //     ],
+        // },
 
         commands: {
             "technologies": [
@@ -274,8 +273,8 @@ var TalkBot = function(){
                 "you can tell me, but i'll not be able to understand you. not yet :(", "username"
             ],
 
-            "008080, #008080": [
-                "Yap! That's my name! Why? Sandrina likes Teal as you can see, yh... she's not that creative ._."
+            "008080, #008080, why that name?": [
+                "Why? Sandrina likes Teal as you can see, yh... she's not that creative ._."
             ],
             "..." :[
                 "there are more commands available than you think. In fact, you can "+linkHelpMe+" to better understand your human kind."
@@ -308,7 +307,6 @@ var TalkBot = function(){
             "bye, cya, shut down, exit, halt, close, take care, git gud, get good": [
                 "You know what... It's really hard having a human conversation."
                 +brk+"That's why I'm just a website."
-                +brk+"<i>008080</i> by the way, that's how they call me."
                 +brk+"Nice to meet you :) It was good to talk to you, thank you!"
                 +brk+"But now do me a favor and go get a life, yes?"
                 +brk+"It’s not healthy to talk to a bot all day."
