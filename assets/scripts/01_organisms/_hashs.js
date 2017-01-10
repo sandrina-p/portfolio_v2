@@ -29,14 +29,14 @@ var Hashs = function() {
                 $('#btn-pr').trigger('click');
                 UtilFuncs.scrollTo($('#btn-pr').offset().top - 60)
                 break;
-            case 'history':
-                $('#btn-bg').trigger('click');
-                UtilFuncs.scrollTo($('#btn-bg').offset().top - 60)
+            case 'journey':
+                $('#btn-jr').trigger('click');
+                UtilFuncs.scrollTo($('#btn-jr').offset().top - 60)
                 break;
-            case 'knowledge':
-                $('#btn-th').trigger('click');
-                UtilFuncs.scrollTo($('#btn-th').offset().top - 60)
-                break;
+            // case 'knowledge':
+            //     $('#btn-th').trigger('click');
+            //     UtilFuncs.scrollTo($('#btn-th').offset().top - 60)
+            //     break;
             // case '008080': //TODO prevent this on touch devices
             // case 'bot':
             //     $('#btn-th').trigger('click');

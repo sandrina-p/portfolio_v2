@@ -80,25 +80,25 @@
     <div class="chat jsLoading" id="chat">
         <!-- js -->
         <div class="chat-nav" id="chat-nav">
-            <div class="chatSection jsOnNav jsLoading" id="practice">
+            <div class="chatSection jsOnNav jsLoading js-chatBtn" id="practice">
                 <div class="chatPart" id="practice-intro">
                     <div class="chatPart-human">
-                        <button type="button" name="practice" id="btn-pr" class="chatPart-title js-chatOpt" data-gaec="chatNavL">projects</button>
+                        <button type="button" name="practice" id="btn-pr" class="chatPart-title js-chatOpt" data-gaec="chatNavL"></button>
                     </div>
                 </div>
             </div>
-            <div class="chatSection jsOnNav jsLoading" id="background">
-                <div class="chatPart" id="background-intro">
+            <div class="chatSection jsOnNav jsLoading js-chatBtn" id="journey">
+                <div class="chatPart" id="journey-intro">
                     <div class="chatPart-human">
-                        <button type="button" name="background" id="btn-bg" class="chatPart-title js-chatOpt" data-gaec="chatNavL">history</button>
+                        <button type="button" name="journey" id="btn-jr" class="chatPart-title js-chatOpt" data-gaec="chatNavL"></button>
                     </div>
                 </div>
             </div>
 
-            <div class="chatSection jsOnNav jsLoading" id="theory">
-                <div class="chatPart" id="theory-intro">
+            <div class="chatSection jsOnNav jsLoading">
+                <div class="chatPart">
                     <div class="chatPart-human">
-                        <button type="button" name="theory" id="btn-th" class="chatPart-title js-chatOpt" data-gaec="chatNavL">knowledge</button>
+                        <button type="button" name="bot" id="btn-bot" class="chatPart-title js-botTrigger" data-gaec="chatNavL"></button>
                     </div>
                 </div>
             </div>
@@ -131,7 +131,7 @@
         else window.addEventListener('load', cb);
     </script>
     <script async src="assets/scripts/03_templates/index.min.js" charset="utf-8"></script>
-    
+
     <script type="text/javascript">
         var _mfq = _mfq || [];
         (function() {

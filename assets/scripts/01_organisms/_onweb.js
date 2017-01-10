@@ -46,7 +46,7 @@ var OnWeb = function() {
 
         $(window).on('scroll',function(){
 
-          $ascii.css('bottom', $('#cv').offset().top + $(window).scrollTop()*0.8 * -1);
+          $ascii.css('bottom', $('#cv').offset().top + $(window).scrollTop()*0.9 * -1);
           $mee.css('display','block');
           scrolled = $(window).scrollTop();
 

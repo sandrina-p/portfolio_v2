@@ -6,55 +6,23 @@ var TalkChat = function(){
         linkJoao = genLink('//www.facebook.com/joaocdvrodrigues', 'João Rodrigues'),
         linkMaggie = genLink('//mmbotelho.com', 'Margarida Botelho'),
         linkLusco = genLink('//www.facebook.com/luscooo', 'LUSCO'),
-        mainSections = ['history','knowledge','projects'];
+        mainSections = ['projects', 'journey', 'about'];
 
     function genLink(link, name) {
         return `<a href='${link}' target='_blank' class='linkProj'>${name}</a>`;
     }
 
     var conversation = {
-        // intro: {
-        //     hey: "Hey there!",
-        //     hi: "I wanna introduce you to someone. She's a frontend developer with a great passion for interaction design. Where do you like to start?",
-        //     back: "Welcome back! I don't know your name yet. Mine is 008080 (I'm just a bot remember?)",
-        //     meet0: "So,",
-        //     meet1: "input[name=visitorName] ? input[name=visitorName] || person",
-        //     meet2: "You already know who Sandrina is. Is there anything you would like to review about her, or do you want to find out some new stuff?"
-        // },
-        background: {
-            "intro":
-                `Right now she's a <strong>frontend developer</strong> <span class="nowrap">at Zaask.</span>
-                ${brk}Plus, she just finished a post-graduation degree on <strong>Digital Experience Design</strong> at FBAUL.`,
-
-            "before that":
-                `She was <strong>UX/UI Designer</strong> at Pure.
-                ${brk}What got her there was her <strong>degree in Communication Design</strong> at FBAUL.
-                ${brk}Plus, she did <strong>Erasmus</strong> in Oporto, where she learned a lot`,
-
-            "future":
-                `She likes to spend all her time coding.
-                ${brk}Whenever some free time comes up, she might accept freelance projects.
-                ${brk}Maybe she can help you to bring <a href='mailto:a.sandrina.p@gmail.com?subject=I%20have%20an%20idea!' target='_blank' class='link'>your next big idea</a> to life.`,
-        },
-        theory: {
-            "intro":
-                `She breaths <strong>HTML5, SCSS</strong> and <strong>Javascript</strong>.
-                ${brk} Interactivity is her main passion, and that results in a <strong>daily exploration</strong> of all technological things.
-                ${brk}Her favourite hobby is to create <strong>micro interactions</strong>.
-                ${brk}As a designer, she loves <strong>Sketch</strong>, has a great relationship with <strong>Adobe Tools</strong> and likes <strong>Blender</strong>.`,
-            "other techs":
-                `<strong>PHP</strong>, <strong>Angular 2</strong> and <strong>Ionic</strong> 2 have crossed her path, but right now she is focusing on improving her javascript skills. Soon she will start learning <strong>React</strong>, <strong>Firebase</strong> and <strong>Regular Expressions</strong>`,
-            "micro inter#!?":
-                `In one sentence: She loves to explore new concepts, meaningful transitions that <strong>connect users like you who interact with stuff like me.</strong>`,
-            "learning":
-                `Learning is a 24h thing for her.
-                ${brk}Sharing solutions on <strong>${linkStackOverflow}</strong>, taking classes on Code School and creating experiments on <strong>${linkCodepen}.</strong>, those are everyday tasks.`,
-            // "besides www":
-            //     `Hmm... she is a <strong>gamer</strong> too!
-            //     ${brk}Maybe she's playing right now.
-            //     ${brk}Recently she was a part of the creation of a video game's concept as a motion designer.`,
-            "workplace":
-                `She is a fast paced worker, so she likes to work alone.
+        journey: {
+            "intro": `Right now she's loving work as <strong>UI Developer</strong> <span class="nowrap">at Farfetch.</span>
+                ${brk}On her free time, she explores new ideas`,
+            "ambition": `She believes that design is more than a interface and coding is not only about performance.
+                ${brk}She seeks for a state where ...  user ... interaction ... focused ... experience `,
+            "hobbies": `When she's way from coding, she likes to play <span class="nowrap"><strong>video games</strong></span>.
+                ${brk}That's the place where the <strong>experience is on its richer state</strong>. Interface, interaction and sound focused on the user behavior.`,
+            "what else": `Last year she was <strong>frontend developer</strong> <span class="nowrap">at Zaask.</span>
+                ${brk}At the same time she also did a post-graduation on <strong>Digital Experience Design</strong> <span class="nowrap">at FBAUL.</span>`,
+            "workplace": `She is a fast paced worker, so she likes to work alone.
                 ${brk}Unless your ambitions are as high as hers, then it’s a match made in heaven.
                 ${brk} From <strong>creative to technical, she can excel at any role.</strong>`
         },

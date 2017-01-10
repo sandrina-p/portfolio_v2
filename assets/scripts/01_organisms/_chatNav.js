@@ -8,9 +8,10 @@ var ChatNav = function() {
     $(function navInit() {
         var $heyThereIntro = $('.heyThere-intro'),
             $nav = $('#chat-nav'),
-            baffleBg = baffle("#btn-bg"),
-            baffleTh = baffle("#btn-th"),
-            bafflePr = baffle("#btn-pr");
+            $navSections = $nav.find('[id^="btn-"]');
+            baffleBg = baffle('#'+$navSections[0].id),
+            baffleTh = baffle('#'+$navSections[1].id),
+            bafflePr = baffle('#'+$navSections[2].id);
 
         baffleBg
             .start()
@@ -27,7 +28,7 @@ var ChatNav = function() {
 
         (function showNav() {
             if($heyThereIntro.css('opacity') > "0.9") { //wtf iphone6, why the fuck you return 0.9999989867210388 on console.
-                $('#chat, #theory, #background, #practice').removeClass('jsLoading');
+                $('#chat, #chat-nav > *').removeClass('jsLoading');
                 baffleBg.reveal(400, 450);
                 baffleTh.reveal(400, 250);
                 bafflePr.reveal(400, 300);
@@ -58,7 +59,7 @@ var ChatNav = function() {
                 console.log($(this).width());
             });
 
-            //BUG: Prevent bug on Safari. Sometimes it loads too soon. Even with timeout(),
+            //NOTE: Prevent bug on Safari. Sometimes it loads too soon. Even with timeout(),
             // without knowing the real navWidth value.
             if (firstShowNav && navWidth < 150) {
                 console.log('upps... navTranslate() was loaded too soon');
@@ -73,7 +74,7 @@ var ChatNav = function() {
         }
 
                                 //FIXME i should really add a class here ._.
-        $(document).on('click', '.chatSection.jsOnNav', function(){
+        $(document).on('click', '.js-chatBtn', function(){
             Hashs.set( $(this).find('.chatPart-title').text() );
 
             navTranslate( $(this).attr('id') );
