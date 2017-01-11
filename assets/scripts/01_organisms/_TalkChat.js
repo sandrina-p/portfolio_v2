@@ -14,21 +14,19 @@ var TalkChat = function(){
 
     var conversation = {
         journey: {
-            "intro": `Right now she's loving work as <strong>UI Developer</strong> <span class="nowrap">at Farfetch.</span>
-                ${brk}On her free time, she explores new ideas`,
-            "ambition": `She believes that design is more than a interface and coding is not only about performance.
-                ${brk}She seeks for a state where ...  user ... interaction ... focused ... experience `,
-            "hobbies": `When she's way from coding, she likes to play <span class="nowrap"><strong>video games</strong></span>.
-                ${brk}That's the place where the <strong>experience is on its richer state</strong>. Interface, interaction and sound focused on the user behavior.`,
+            "intro": `Right now she's loving to work as a <strong>UI Developer</strong> <span class="nowrap">at Farfetch.</span>
+                ${brk}On her free time, she explores new ideas and techs that cross her feeds.`,
+            "ambition": `She believes design is more than a interface and coding is not only about performance.
+                ${brk}She seeks for a scenario where both can work as one to explore new possibilites.`,
+            "hobbies": `When she's away from coding, <span class="nowrap"><strong>video games</strong></span> are her first choice. Something where the <strong>experience is on its richer state</strong>: Interface, interaction and sound focused on <span class="nowrap">the user behavior.</span>`,
             "what else": `Last year she was <strong>frontend developer</strong> <span class="nowrap">at Zaask.</span>
-                ${brk}At the same time she also did a post-graduation on <strong>Digital Experience Design</strong> <span class="nowrap">at FBAUL.</span>`,
+                ${brk}During that time she also did a post-graduation on <strong>Digital Experience Design</strong> <span class="nowrap">at FBAUL.</span>.`,
             "workplace": `She is a fast paced worker, so she likes to work alone.
                 ${brk}Unless your ambitions are as high as hers, then it’s a match made in heaven.
                 ${brk} From <strong>creative to technical, she can excel at any role.</strong>`
         },
         practice: {
-            intro: "The constant searching for <strong>something unique and interactive</strong> it's what connects her projects."
-                +brk+"Lets start with something cool:",
+            intro: "The constant searching for <strong>something unique and interactive</strong> is what connects her projects.",
             projects: ['rede expressos', 'carolina machado', 'portfolio 15', 'pistol shrimp', 'moon', 'N O X', 'DET', '141205'],
             'rede expressos': {
                 categ: "www projects",

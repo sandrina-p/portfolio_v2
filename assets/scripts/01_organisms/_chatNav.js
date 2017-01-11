@@ -78,7 +78,7 @@ var ChatNav = function() {
             $('#btn-bot').remove();
         }
 
-        $(document).on('click', '.js-chatBtn', function(){
+        $(document).on('click', '.jsOnNav', function(){
             Hashs.set( $(this).find('.chatPart-title').text() );
 
             navTranslate( $(this).attr('id') );

@@ -195,7 +195,6 @@ var ChatApp = function() {
         setTimeout(function () {
             finishLoading($part.find(chatPClass+"option:first-of-type .js-chatOpt"));
 
-
             setTimeout(function () {                    // REVIEW better buttons target
                 finishLoading($part.find(chatPClass+"option:last-of-type .js-chatOpt") );
             }, 300);

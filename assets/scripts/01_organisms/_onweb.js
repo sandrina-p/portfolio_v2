@@ -72,7 +72,7 @@ var OnWeb = function() {
             $t.addClass('is-js');
 
             $(document).scroll(function(){
-                if($(this).scrollTop() + window.innerHeight*0.4 > $t.offset().top) {
+                if($(this).scrollTop() + window.innerHeight*0.47 > $t.offset().top) {
                    if (!shut) {
                         $t.addClass('is-active');
                         shut = true;
