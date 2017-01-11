@@ -61,7 +61,7 @@ var OnWeb = function() {
 
     ascii();
 
-    function cvListShow() {
+    function cvShowing() {
 
         //show Titles
         $('.js-cvShowTitle').each(function(){
@@ -78,13 +78,6 @@ var OnWeb = function() {
                         shut = true;
                    }
                 }
-                // } else {
-                //     if (shut) {
-                //         $t.removeClass('is-active');
-                //         console.log('remove');
-                //         shut = false;
-                //     }
-                // }
             });
         });
 
@@ -107,8 +100,6 @@ var OnWeb = function() {
 
     }
 
-
-
     function init() {
         $('.js-onWeb-remove').remove();
         $('.js-onWebAfter').after(elOnWeb);
@@ -116,8 +107,6 @@ var OnWeb = function() {
         $onWebLink = $('.js-onWeb-site').parent(),
         baffleWebSite = baffle('.js-onWeb-site'),
         baffleWebDd = baffle('.js-onWeb-dd');
-
-        cvListShow();
 
         $(document).on('mouseenter', '.js-onWeb-link', function(){
             baffleWebSite
@@ -146,7 +135,8 @@ var OnWeb = function() {
     }
 
     return {
-        init
+        init,
+        cvShowing
     }
 }();
 
@@ -169,6 +159,8 @@ $(function lookIntoOnWww(){
             if (!Modernizr.touchevents) {
                 OnWeb.init();
             }
+
+            OnWeb.cvShowing();
         }
     });
 });

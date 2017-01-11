@@ -272,8 +272,6 @@ $navSpeed: 250ms;
             }
         }
     }
-
-
 }
 
 
@@ -365,7 +363,7 @@ $glidderTime: 15;
     display: block;
     width: 100%;
     height: $safeArea;
-    padding-top: $safeArea*3;
+    padding-top: $safeArea*2.5;
     text-align: center;
     font-size: $fontXXS;
     font-weight: $fBold;
@@ -382,5 +380,9 @@ $glidderTime: 15;
 
     .jsLoading {
         opacity: 0;
+    }
+
+    @include media(tablet) {
+        padding-top: $safeArea*3;
     }
 }

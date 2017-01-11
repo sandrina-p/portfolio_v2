@@ -17,12 +17,31 @@ $cvPaddingLeft: 10vw;
 }
 
 
-%ListAlignments {
-    text-align: center;
-    width: 33.333%;
+@mixin ListAlignments {
+    width: 50%;
+    &:nth-of-type(2n+1) { text-align: left; }
+    &:nth-of-type(2n) { text-align: right; }
+}
 
+
+@mixin ListAlignments-pha {
+    width: 33.333%;
+    &:nth-of-type(1n) { text-align: center; }
     &:nth-of-type(3n+1) { text-align: left; }
     &:nth-of-type(3n) { text-align: right; }
+}
+
+@mixin isJs-List {
+    &.is-js > * {
+        opacity: 0;
+        transform: translateY(50px);
+        transition: opacity $speed*3, transform $speed*3;
+    }
+
+    &.is-active > * {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .cv {
@@ -38,16 +57,13 @@ $cvPaddingLeft: 10vw;
         position: absolute;
         display: block;
 
-        // &--1 {
-            width: 200vw;
-            height: 200vw;
-            top: 50vh;
-            background: radial-gradient(-10% 50%, circle, rgba(#004040, 0.7) 2%, rgba(0,0,0,0) 35%);
-
-        // }
+        width: 200vw;
+        height: 200vw;
+        top: 50vh;
+        background: radial-gradient(-10% 50%, circle, rgba(#004040, 0.7) 2%, rgba(0,0,0,0) 35%);
 
         &.is-js {
-            top: 900vh;
+            top: 850vh;
         }
     }
 
@@ -69,25 +85,39 @@ $cvPaddingLeft: 10vw;
     }
 
     &-article {
+        position: relative;
         margin-bottom: $safeArea*4;
+        color: $clrLight;
+
+        &:first-of-type {
+            margin-bottom: $safeArea*8;
+        }
 
         &-in {
-            color: $clrLight;
-            position: relative;
-            height: 100%;
+            padding: 0 $safeArea;
         }
 
         &-header {
             text-align: center;
+
+            // & + * {
+            //     // margin-top: $safeArea*14;
+            // }
         }
     }
 
     &-title {
         position: relative;
-        font-size: $font4XL;
+        font-size: $fontXXL;
         font-family: $font-mono;
         font-weight: $fMed;
         padding: $safeArea*6 0 0;
+
+        // position: absolute;
+        // width: 100%;
+        // font-size: 12vw;
+        // z-index: -1;
+        // opacity: 0.1 !important;
 
         &.is-js {
             transform: scale(0.5);
@@ -100,6 +130,7 @@ $cvPaddingLeft: 10vw;
             animation: heyIntro 3s steps(11);
             animation-fill-mode: forwards;
             animation-delay: -2s;
+            opacity: 0.1;
         }
     }
 
@@ -146,24 +177,16 @@ $cvPaddingLeft: 10vw;
 
     &-list {
         max-width: $safeArea*34;
-        margin: auto;
+        margin-left: auto;
+        margin-right: auto;
         @extend %cf;
+
+        @include isJs-List;
 
         .link {
             border-color: $clrGray;
         }
 
-
-        &.is-js > * {
-            opacity: 0;
-            transform: translateY(50px);
-            transition: opacity $speed*3, transform $speed*3;
-        }
-
-        &.is-active > * {
-            opacity: 1;
-            transform: translateY(0);
-        }
 
         &-title {
             font-size: $fontLx;
@@ -196,6 +219,7 @@ $cvPaddingLeft: 10vw;
                 background: $clrPrimary;
                 margin-top: $safeArea/3;
                 transition: width $speed*3;
+                flex: 1;
             }
 
             .is-active & {
@@ -213,7 +237,7 @@ $cvPaddingLeft: 10vw;
             font-size: $fontS;
             color: $clrGrayLight;
 
-            @extend %ListAlignments;
+            @include ListAlignments;
 
             li {
                 width: 100%;
@@ -225,8 +249,7 @@ $cvPaddingLeft: 10vw;
                 @extend %cf;
 
                 li {
-                    width: 33.333%;
-                    @extend %ListAlignments;
+                    @include ListAlignments;
                 }
             }
 
@@ -243,18 +266,10 @@ $cvPaddingLeft: 10vw;
 
         &-dl {
             position: relative;
-            width: 50%;
-            padding: 0 $safeArea*1.5;
-
-            &:nth-of-type(2n+1) { padding-left: 0; }
-            &:nth-of-type(2n) {
-                padding-right: 0;
-
-                .cv-list-dl-date {
-                    right: 0;
-                }
-            }
-
+            width: 100%;
+            max-width: $safeArea*20;
+            margin: auto;
+            float: none;
 
             dt {
                 padding-bottom: $safeArea/3;
@@ -267,7 +282,7 @@ $cvPaddingLeft: 10vw;
 
             &-date {
                 position: absolute;
-                right: $safeArea;
+                right: 0;
                 font-size: $fontXS;
                 opacity: 0.4;
                 margin-top: -$safeArea*1.5;
@@ -290,6 +305,8 @@ $cvPaddingLeft: 10vw;
         &-proj {
             padding: 0 $safeArea/2;
 
+            @include isJs-List;
+
             &-sub {
                 display: block;
                 text-align: center;
@@ -307,6 +324,7 @@ $cvPaddingLeft: 10vw;
             &-ul {
                 position: relative;
                 text-align: center;
+                padding-bottom: $safeArea;
             }
 
             li {
@@ -317,7 +335,7 @@ $cvPaddingLeft: 10vw;
 
 
         .cv-link {
-            color: $clrPrimaryDark;
+            color: lighten($clrPrimaryDark, 10%);
             transition: font 50ms;
 
             &:hover,
@@ -333,7 +351,76 @@ $cvPaddingLeft: 10vw;
     }
 
 
+    @include media(untilPhablet) {
+        &-list {
+            &-ul {
+                &:nth-of-type(3) {
+                    width: 100%;
+                    @extend %cf-untPha;
+
+                    li {
+                        @include ListAlignments;
+                    }
+                }
+            }
+        }
+    }
+
     @include media(phablet) {
+        &-title {
+            font-size: $font4XL;
+        }
+
+        &-list {
+            &-ul {
+
+                @include ListAlignments-pha;
+
+                li {
+                    width: 100%;
+                    padding-bottom: $safeArea;
+                }
+
+                &--split {
+                    width: 100%;
+                    @extend %cf-pha;
+
+                    li {
+                        @include ListAlignments-pha;
+                    }
+                }
+
+
+                &--all {
+                    width: 100%;
+
+                    li {
+                        width: 100%;
+                        text-align: center;
+                    }
+                }
+
+            }
+
+            &-dl {
+                width: 50%;
+                padding: 0 $safeArea*1.5;
+                float: left;
+
+                &:nth-of-type(2n+1) {
+                    padding-left: 0;
+
+                    .cv-list-dl-date {
+                        right: $safeArea;
+                    }
+                }
+
+                &:nth-of-type(2n) {
+                    padding-right: 0;
+                }
+
+            }
+        }
 
         &-projs {
             &-proj {
@@ -380,9 +467,6 @@ $cvPaddingLeft: 10vw;
 
     }
 
-    @include media(laptop) {
-
-    }
 }
 
 

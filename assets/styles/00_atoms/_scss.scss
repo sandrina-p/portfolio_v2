@@ -48,7 +48,7 @@ $font5XL: rem(68);
 $font4XL: rem(54);
 $fontXXXXL: rem(42);
 // $fontXXXL: rem(38);
-// $fontXXL: rem(32);
+$fontXXL: rem(32);
 $fontXL: rem(26);
 $fontLx: rem(21);
 $fontL: rem(18);
@@ -286,6 +286,13 @@ $mediaHeight: em(400);
         @include flexbox(true);
     }
 }
+
+@include media(untilPhablet) {
+    %cf-untPha {
+        @include cf;
+    }
+}
+
 @include media(phablet) {
     %flexbox-pha {
         @include flexbox;

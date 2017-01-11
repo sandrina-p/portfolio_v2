@@ -73,7 +73,11 @@ var ChatNav = function() {
             }
         }
 
-                                //FIXME i should really add a class here ._.
+        //TODO hide bot on touch devices
+        if (Modernizr.touchevents) {
+            $('#btn-bot').remove();
+        }
+
         $(document).on('click', '.js-chatBtn', function(){
             Hashs.set( $(this).find('.chatPart-title').text() );
 

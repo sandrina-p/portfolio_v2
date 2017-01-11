@@ -219,6 +219,7 @@ var Projects = function() {
             $(this).hide(); //prevent displaying 404 images
         });
 
+
         setTimeout(function () {
             imgParallax();
         }, 250);
@@ -244,13 +245,16 @@ var Projects = function() {
             topfinal = ((topperc * 36 / 100 * -1 + 10) / 1.5 ).toFixed(2);
 
             if (topfinal < 0) {
-                $projMedia.find('img').css({
-                    'transform' : 'translateY('+topfinal+'%)'
-                });
 
-                $bg1.addClass('is-js');
+                if (!untilTablet) {
+                    $projMedia.find('img').css({
+                        'transform' : 'translateY('+topfinal+'%)'
+                    });
+                }
+
                 //TODO this shoudn't be here...
-                $bg1.css({
+
+                $bg1.addClass('is-js').css({
                     'transform' : 'translateY('+topfinal*2+'%)'
                 });
             }
@@ -357,7 +361,6 @@ var Projects = function() {
         baffleIntro = baffle(arrBuffle[1]),
         baffleRole = baffle(arrBuffle[2]),
         baffleDate = baffle(arrBuffle[3]),
-        // baffleTeam = baffle(arrBuffle[4]),
         baffleDet = baffle(arrBuffle[5]);
 
         //TODO is there any way to create a loop/for on these?
@@ -365,7 +368,6 @@ var Projects = function() {
         baffleIntro.start();
         baffleRole.start();
         baffleDate.start();
-        // baffleTeam.start();
         baffleDet.start();
     }
 
@@ -510,7 +512,8 @@ var Projects = function() {
 
     });
 
-    $(document).on('click', classbtnNav, function() {
+    $(document).on('click', classbtnNav, function(e){
+        e.stopPropagation(); //prevent scroll to top
         onNavProjClick($(this));
     });
 
