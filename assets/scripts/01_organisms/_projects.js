@@ -162,19 +162,42 @@ var Projects = function() {
         var $glidder = $("<div class='Glidder'></div>"),
             elImgs = "",
             newImg, imgRet,
-            desktop = window.innerWidth >= 940;
+            screenM = window.innerWidth >= 650,
+            screenL = window.innerWidth >= 1250,
+            screenRetina = UtilFuncs.isRetina();
 
-        for (var i = 0; i < imgArray.length; i++) {
-            if(desktop) {
+        function fetchRes(res) {
+            for (var i = 0, arr = imgArray.length; i < arr; i++) {
                 imgRet = imgArray[i].split('.');
-                imgRet.splice(1, 0, "@2x");
+                imgRet.splice(1, 0, res);
                 imgRet.splice(2, 0, ".");
-                var newImg = imgRet.join("");
+                newImg = imgRet.join("");
                 elImgs += "<img src='"+newImg+"'>";
-            } else {
-                elImgs += "<img src='"+imgArray[i]+"'>";
             }
 
+            return elImgs;
+        }
+
+        function fetchStand(res) {
+            for (var i = 0, arr = imgArray.length; i < arr; i++) {
+                elImgs += "<img src='"+imgArray[i]+"'>"
+            }
+
+            return elImgs;
+        }
+
+        // check screen resolution to fetch the best images
+
+        if (screenM && !screenL) { // ~ tablet
+            // if ~tablet retina
+            elImgs = screenRetina ? fetchRes('@3x') : fetchRes('@2x');
+
+        } else if (screenL) { // ~ desktop
+            elImgs = fetchRes('@3x');
+
+        } else {  // ~ mobile
+            //if ~mobile retina
+            elImgs = screenRetina ? fetchRes('@2x') : fetchStand();
         }
 
         return $glidder.append(elImgs);

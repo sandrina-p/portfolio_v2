@@ -18,8 +18,8 @@ var TalkChat = function(){
                 ${brk}On her free time, she explores new ideas and techs that cross her feeds.`,
             "ambition": `She believes design is more than a interface and coding is not only about performance.
                 ${brk}She seeks for a scenario where both can work as one to explore new possibilites.`,
-            "hobbies": `When she's away from coding, <span class="nowrap"><strong>video games</strong></span> are her first choice. Something where the <strong>experience is on its richer state</strong>: Interface, interaction and sound focused on <span class="nowrap">the user behavior.</span>`,
-            "what else": `Last year she was <strong>frontend developer</strong> <span class="nowrap">at Zaask.</span>
+            "hobbies": `When she's away from coding, <span class="nowrap"><strong>video games</strong></span> are her first choice. Something where the <strong>experience is on its richer state</strong>: Interface, interaction and sound, focused on <span class="nowrap">the user behavior.</span>`,
+            "what else": `Last year she was a <strong>frontend developer</strong> <span class="nowrap">at Zaask.</span>
                 ${brk}During that time she also did a post-graduation on <strong>Digital Experience Design</strong> <span class="nowrap">at FBAUL.</span>.`,
             "workplace": `She is a fast paced worker, so she likes to work alone.
                 ${brk}Unless your ambitions are as high as hers, then it’s a match made in heaven.
@@ -38,7 +38,7 @@ var TalkChat = function(){
                     "assets/media/img/projects/rnex0.png",
                     "assets/media/img/projects/rnex1.png",
                     "assets/media/img/projects/rnex2.png",
-                    "assets/media/img/projects/rnexx.png",
+                    "assets/media/img/projects/rnex3.png",
                 ],
                 capt: "Everyone knows that Rede Expressos is not an user friendly platform...",
                 more: "As a final project for her post graduation she redesigned and coded the website's homepage and used Jekyll. UX / UI wise, she redesigned the \"buy ticket\" userflow for Mobile iOS and Android. The project had several phases: competitor Analysis, product SWOT, wireframes, design and prototype. She also learned how to adapt an app to follow both Human Guidelines and Material Design.",
@@ -75,8 +75,7 @@ var TalkChat = function(){
                     "assets/media/img/projects/sp0.png",
                     "assets/media/img/projects/sp1.png",
                     "assets/media/img/projects/sp2.png",
-                    "assets/media/img/projects/sp3.png",
-                    "assets/media/img/projects/sp4.png",
+                    "assets/media/img/projects/sp3.png"
                 ],
                 capt: "Say hello to my brother from 2015",
                 more: "She was looking for new interactive ways to present herself. I think the best part is the menu. You never saw something like that! She started to explore advanced CSS transitions and experimenting a lot of JS plugins. It's also an under construction website that she never finished. I don't think that's bad. In fact, that's the beauty about it!",
@@ -107,10 +106,10 @@ var TalkChat = function(){
                 role: "Creative and Programmer",
                 team: "Individual project",
                 img: [
-                    "assets/media/img/projects/moon3.png",
                     "assets/media/img/projects/moon0.png",
                     "assets/media/img/projects/moon1.png",
                     "assets/media/img/projects/moon2.png",
+                    "assets/media/img/projects/moon3.png",
                 ],
                 capt: "It's not a movie, but it could be",
                 more: "Hope you know the movie Moon (2009) by Duncan Jones. The main focus of this website was not about how the film was made but the story and experience that the character lives along the narration. Here, the user’s interaction is fundamental to create the website.",
@@ -127,8 +126,7 @@ var TalkChat = function(){
                     "assets/media/img/projects/nox0.png",
                     "assets/media/img/projects/nox1.png",
                     "assets/media/img/projects/nox2.png",
-                    "assets/media/img/projects/nox3.png",
-                    "assets/media/img/projects/nox4.png",
+                    "assets/media/img/projects/nox3.png"
                 ],
                 capt: "This one is out of the text editor",
                 more: "She and her friend Margarida always loved video games. When given the chance, they took it and just did it. They didn't know anything about the design process behind it, but learned a lot trying to understand it. With Nyx (the greek goddess of night) in mind, they designed a video game trailer that focuses on darkness. Everything is illuminated only by the main characters fireflies. But I will not spoil you. Watch the video!",
@@ -142,11 +140,10 @@ var TalkChat = function(){
                 role: "Creative and Mag+",
                 team: "Made with "+linkMaggie,
                 img: [
-                    "assets/media/img/projects/DET0.png",
-                    "assets/media/img/projects/DET1.png",
-                    "assets/media/img/projects/DET2.png",
-                    "assets/media/img/projects/DET3.png",
-                    "assets/media/img/projects/DET4.png",
+                    "assets/media/img/projects/det0.png",
+                    "assets/media/img/projects/det1.png",
+                    "assets/media/img/projects/det2.png",
+                    "assets/media/img/projects/det3.png"
                 ],
                 capt: "\"I heard we can create digital magazines with inDesign!\", \"Oh really? Let's try it out!\"",
                 more: "Because creating books it's not her thing, she and her friend Margarida decided to experiment a new digital world once again. They came up with \"Dutch Experimental Typography\”, a digital catalogue of typography, developed from the 70’s throughout the 90’s in the Netherlands. I wish you could use it by yourself. It's really funny playing with its cover.",
@@ -163,9 +160,7 @@ var TalkChat = function(){
                     "assets/media/img/projects/blend0.png",
                     "assets/media/img/projects/blend1.png",
                     "assets/media/img/projects/blend2.png",
-                    "assets/media/img/projects/blend3.png",
-                    "assets/media/img/projects/blend4.png",
-                    "assets/media/img/projects/blendx.png",
+                    "assets/media/img/projects/blend3.png"
                 ],
                 capt: "Today is a video, tomorrow might be a website",
                 more: "Finally she had the opportunity to have 3D classes during her Erasmus in Porto. Although this video project is all about a single solid, she learned the essential about Blender features and 3D mechanisms to keep learning it by herself after Erasmus. She dreams for the day where her path crosses with ThreeJS and she can bring 3D to me!",

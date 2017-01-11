@@ -46,6 +46,15 @@ var UtilFuncs = function(){
         $('body').animate({ scrollTop: value }, 1500, 'swing');
     }
 
+    function isRetina() {
+        var mediaQuery = "(-webkit-min-device-pixel-ratio: 1.5),\
+                (min--moz-device-pixel-ratio: 1.5),\
+                (-o-min-device-pixel-ratio: 3/2),\
+                (min-resolution: 1.5dppx)";
+
+        return (window.devicePixelRatio > 1) || (window.matchMedia && window.matchMedia(mediaQuery).matches)
+    }
+
     return {
         untilTablet,
         wHeight,
@@ -53,7 +62,8 @@ var UtilFuncs = function(){
         objRandom,
         stringSlugLower,
         randomNumb,
-        scrollTo
+        scrollTo,
+        isRetina
     }
 }();
 
