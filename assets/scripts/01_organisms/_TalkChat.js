@@ -17,7 +17,7 @@ var TalkChat = function(){
             "intro": `Right now she's loving to work as a <strong>UI Developer</strong> <span class="nowrap">at Farfetch.</span>
                 ${brk}On her free time, she explores new ideas and techs that cross her feeds.`,
             "ambition": `She believes design is more than a interface and coding is not only about performance.
-                ${brk}She seeks for a scenario where both can work as one to explore new possibilites.`,
+                ${brk}She seeks for a scenario where both can work as one to <strong>explore new possibilites.</strong>`,
             "hobbies": `When she's away from coding, <span class="nowrap"><strong>video games</strong></span> are her first choice. Something where the <strong>experience is on its richer state</strong>: Interface, interaction and sound, focused on <span class="nowrap">the user behavior.</span>`,
             "what else": `Last year she was a <strong>frontend developer</strong> <span class="nowrap">at Zaask.</span>
                 ${brk}During that time she also did a post-graduation on <strong>Digital Experience Design</strong> <span class="nowrap">at FBAUL.</span>.`,

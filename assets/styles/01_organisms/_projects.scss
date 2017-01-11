@@ -278,6 +278,7 @@ $navSpeed: 250ms;
 
 .Glidder {
     position: relative;
+    min-height: 53vw; //hold during img loading
 
     img {
         width: 100%;

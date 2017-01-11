@@ -58,9 +58,9 @@
             <div class="cv-list js-cvShow">
                 <h4 class="cv-list-title">new in town</h4>
                 <ul class="cv-list-ul cv-list-ul--split">
-                    <li>Google Firebase</li>
                     <li>React</li>
                     <li>Webpack</li>
+                    <li>Google Firebase</li>
                 </ul>
             </div>
 

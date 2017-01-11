@@ -84,7 +84,7 @@
                 <div class="chatPart" id="practice-intro">
                     <div class="chatPart-human">
                         <button type="button" name="practice" id="btn-pr" class="chatPart-title js-chatOpt" data-gaec="chatNavL"></button>
-                    </div>å
+                    </div>
                 </div>
             </div>
             <div class="chatSection jsOnNav jsLoading js-chatBtn" id="journey">
@@ -95,7 +95,7 @@
                 </div>
             </div>
 
-            <div class="chatSection jsOnNav jsLoading">
+            <div class="chatSection jsOnNav js-ignoreBot jsLoading">
                 <div class="chatPart">
                     <div class="chatPart-human">
                         <button type="button" name="bot" id="btn-bot" class="chatPart-title js-botTrigger" data-gaec="chatNavL"></button>

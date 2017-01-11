@@ -81,6 +81,10 @@ var ChatNav = function() {
         $(document).on('click', '.jsOnNav', function(){
             Hashs.set( $(this).find('.chatPart-title').text() );
 
+            if ($(this).hasClass('js-ignoreBot')) {
+                return false
+            }
+            
             navTranslate( $(this).attr('id') );
             $(this).css({'transform': 'translate(0, 0)'});
             $(this).removeClass('jsOnNav');
