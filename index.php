@@ -36,10 +36,10 @@
     <meta property="og:url" content="//www.sandrina-p.net" />
     <meta property="og:image" content="assets/media/card.png" />
 
-    <link rel="stylesheet" href="assets/styles/04_templates/header.min.css">
+    <?php // <link rel="stylesheet" href="assets/styles/04_templates/header.min.css"> ?>
     <style>
         /*just the needed css to display the intro*/
-        <?php //echo file_get_contents('assets/styles/04_templates/header.min.css') ?>
+        <?php echo file_get_contents('assets/styles/04_templates/header.min.css') ?>
     </style>
 </head>
 
@@ -57,7 +57,7 @@
     <div class="heyThere">
 
         <p class="heyThere-hey" aria-hidden="true"><span>H</span><span>e</span><span>y</span><br><span>t</span><span>h</span><span>e</span><span>r</span><span>e</span></p>
-        <div class="heyThere-intro" role="paragraph">
+        <div class="heyThere-intro">
             <p>
                 <span class="sr-only">Hey There!</span>
                 I want to introduce you to someone.
@@ -111,7 +111,7 @@
 
     <div class="bot jsLoading" id="bot"><!-- ◉_◉ js --></div>
 
-    <div class="cv-ascii" aria-hidden>
+    <div class="cv-ascii" aria-hidden="true">
         <?php include 'index-parts/myself.php';?>
     </div>
 
