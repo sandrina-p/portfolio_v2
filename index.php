@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="utf-8">
     <title>Sandrina Pereira</title>
@@ -54,12 +54,12 @@
     </script>
 
     <h1 class="sr-only">Sandrina Pereira</h1>
-    <h2 class="sr-only">interaction designer, front-end developer, creative developer</h2>
     <div class="heyThere">
-                                    <!-- I know that's not very beautiful but this is how I made that intro animation with CSS only -->
-        <h2 class="heyThere-hey"><span>H</span><span>e</span><span>y</span><br><span>t</span><span>h</span><span>e</span><span>r</span><span>e</span></h2>
-        <div class="heyThere-intro">
+
+        <p class="heyThere-hey" aria-hidden="true"><span>H</span><span>e</span><span>y</span><br><span>t</span><span>h</span><span>e</span><span>r</span><span>e</span></p>
+        <div class="heyThere-intro" role="paragraph">
             <p>
+                <span class="sr-only">Hey There!</span>
                 I want to introduce you to someone.
                 <span class="nowrap">She is a</span> <strong>front-end developer</strong> with a great passion for <strong class="nowrap">interaction design</strong>.
                 <span class="heyThere-br"></span>
@@ -73,24 +73,21 @@
             .noscript, .navCV, .chat, .js-psst {display:none!important;}
         </style>
     </noscript>
-    <div class="navCV">
-        <a href="#cv" class="navCV-link" data-gaec="navCV">Let's cut the bullshit. Who is she?</a>
-    </div>
 
     <div class="chat jsLoading" id="chat">
         <!-- js -->
-        <div class="chat-nav" id="chat-nav">
+        <nav class="chat-nav" id="chat-nav" aria-label="I confess right now this can be hard for who is only listening me. I'm being improved in order for you to use me easily!">
             <div class="chatSection jsOnNav jsLoading js-chatBtn" id="practice">
                 <div class="chatPart" id="practice-intro">
                     <div class="chatPart-human">
-                        <button type="button" name="practice" id="btn-pr" class="chatPart-title js-chatOpt" data-gaec="chatNavL"></button>
+                        <button type="button" name="practice" id="btn-pr" class="chatPart-title js-chatOpt" data-gaec="chatNavL" aria-label="Projects - here you have a navigation in loop that toggles each project at the time"></button>
                     </div>
                 </div>
             </div>
             <div class="chatSection jsOnNav jsLoading js-chatBtn" id="journey">
                 <div class="chatPart" id="journey-intro">
                     <div class="chatPart-human">
-                        <button type="button" name="journey" id="btn-jr" class="chatPart-title js-chatOpt" data-gaec="chatNavL"></button>
+                        <button type="button" name="journey" id="btn-jr" class="chatPart-title js-chatOpt" data-gaec="chatNavL" aria-label="Journey - Each time a new topic shows up, it will show 2 buttons to choose another topic about my journey"></button>
                     </div>
                 </div>
             </div>
@@ -98,18 +95,23 @@
             <div class="chatSection jsOnNav js-ignoreBot jsLoading">
                 <div class="chatPart">
                     <div class="chatPart-human">
-                        <button type="button" name="bot" id="btn-bot" class="chatPart-title js-botTrigger" data-gaec="chatNavL"></button>
+                        <button type="button" name="bot" id="btn-bot" class="chatPart-title js-botTrigger" data-gaec="chatNavL" aria-label="About - This is a chat with me where I explain how I was built technically. Despite being the part that most of users love more, unfortunately it's the worse part of me for users like you. I'm sorry about that, I'm working on it!"></button>
                     </div>
                 </div>
             </div>
-        </div>
+        </nav>
+    </div>
+
+
+    <div class="navCV">
+        <a href="#cv" class="navCV-link" data-gaec="navCV" aria-hidden="true">Let's cut the bullshit. Who is she?</a>
     </div>
 
     <?php include 'index-parts/cv.php';?>
 
     <div class="bot jsLoading" id="bot"><!-- ◉_◉ js --></div>
 
-    <div class="cv-ascii">
+    <div class="cv-ascii" aria-hidden>
         <?php include 'index-parts/myself.php';?>
     </div>
 

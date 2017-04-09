@@ -17,28 +17,28 @@
 
                 <dt class="cv-dt js-onWeb-remove">
                     <a href="//codepen.io/sandrina-p" target="_blank" title="sandrina's stackoverflow" class="cv-link">
-                        <i class="fa fa-codepen"></i> codepen
+                        <i class="fa fa-codepen" aria-hidden="true"></i> codepen
                     </a>
                 </dt>
                 <dd class="cv-dd js-onWeb-remove">because coding without fun is <span class="nowrap">just boring</span></dd>
 
                 <dt class="cv-dt js-onWeb-remove">
                     <a href="//github.com/sandrina-p" target="_blank" title="sandrina's stackoverflow" class="cv-link">
-                        <i class="fa fa-github"></i> github
+                        <i class="fa fa-github" aria-hidden="true"></i> github
                     </a>
                 </dt>
                 <dd class="cv-dd js-onWeb-remove">sharing is what make <span class="nowrap">us better</span></dd>
 
                 <dt class="cv-dt js-onWeb-remove">
                     <a href="//stackoverflow.com/users/4737729/sandrina-pereira" target="_blank" title="sandrina's stackoverflow" class="cv-link">
-                        <i class="fa fa-stack-overflow"></i> stackoverflow
+                        <i class="fa fa-stack-overflow" aria-hidden="true"></i> stackoverflow
                     </a>
                 </dt>
                 <dd class="cv-dd js-onWeb-remove">helping others is as important <span class="nowrap">as being</span> helped</dd>
 
                 <dt class="cv-dt js-onWeb-remove">
                     <a href="//www.behance.net/sandrin4p" target="_blank" title="sandrina's stackoverflow" class="cv-link">
-                        <i class="fa fa-behance"></i>
+                        <i class="fa fa-behance" aria-hidden="true"></i>
                         behance
                     </a>
                 </dt>
@@ -59,7 +59,10 @@
                 <h4 class="cv-list-title">new in town</h4>
                 <ul class="cv-list-ul cv-list-ul--split">
                     <li>React</li>
-                    <li>Webpack</li>
+                    <li>Webpack 2</li>
+                    <li>NodeJS</li>
+                    <li>Redux</li>
+                    <li>PostCSS</li>
                     <li>Google Firebase</li>
                 </ul>
             </div>
@@ -68,24 +71,21 @@
                 <h4 class="cv-list-title">rocking at</h4>
                 <ul class="cv-list-ul">
                     <li>HTML5</li>
+                    <li>SEO | A11Y</li>
                     <li>CSS3 / SCSS</li>
                     <li>SUIT methologody</li>
-                    <li>e-mails</li>
-                    <li>SEO</li>
                 </ul>
                 <ul class="cv-list-ul">
-                    <li>jQuery</li>
                     <li>Javascript</li>
-                    <li>JS ES2015</li>
+                    <li>ES2015 / ES6</li>
                     <li>JS Modular Pattern</li>
-                    <li>Modernizr</li>
+                    <li>jQuery</li>
                 </ul>
                 <ul class="cv-list-ul">
-                    <li>Ionic 2</li>
+                    <li>E-mails</li>
                     <li>Jekyll</li>
-                    <li>SVG</li>
-                    <li>Tumblr</li>
                     <li>PHP</li>
+                    <li>Tumblr</li>
                 </ul>
             </div>
 
@@ -197,17 +197,26 @@
             </ul>
         </div>
     </div>
-
 </section>
 
+<div class="sr-only">
+    <h5>Psst... You, yes you that are listening me.</h5>
+    <p class="sr-only">
+        Currently I'm being improved in accessibility and usability by Sandrina and she would love to have insights about it.
+        This is something that she is starting to really care. She truly believes that when you improve the usability of 1% of users, you are also improving the experience of another x% of users. The web should be delivered to everyone within the best possible scenario.
+        You can contact her at <a href="mailto:a.sandrina.p4@gmail.com?subject=Hey%20there!%20I%20did%20listen%20your%20website!" title="sandrina's e-mail" class="cv-link">a.sandrina.p@gmail.com</a>
 
-<div class="psst js-psst">
+    </p>
+</div>
+
+
+<div class="psst js-psst" aria-hidden="true">
     <p class="psst-title">psst...</p>
     <p class="psst-parag"> Maybe now you want to talk about her.
         <br>I can tell you more about her projects.
         <br>What do you think?
     </p>
-    <button type="button" name="true" class="chatPart-title js-botProjects" data-gaec='psst'>yh, sure</button>
+    <button type="button" name="true" class="chatPart-title js-botProjects" data-gaec='psst'>yah, sure</button>
     <button type="button" name="false" class="chatPart-title js-botTrigger" data-gaec='psst'>who are you?</button>
     <span class="js-scrolled"><!-- try me on mobile--></span>
 </div>
@@ -218,7 +227,7 @@
         <p class="psst-parag">You came so far with that old browser.
             <br>Most of people don't care about users like you, but not Sandrina.
             <br>Ah yes, that's here name! Don't forget to talk about her and share me!
-            <br><small><i>p.s. Ask your son or boss to install a better browser <span class="nowrap">¯\_(ツ)_/¯</span></i></small>
+            <br><small><i>p.s. Ask your son or boss to install a better browser<span class="nowrap" aria-hidden="true">¯\_(ツ)_/¯</span></i></small>
         </p>
     </div>
 </noscript>

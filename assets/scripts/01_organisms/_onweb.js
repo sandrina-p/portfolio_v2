@@ -15,7 +15,7 @@ var OnWeb = function() {
                     <div class="onWeb-href">
                         ${elSocial}
                     </div>
-                    <div class="onWeb-desc">
+                    <div class="onWeb-desc" aria-hidden="true">
                         <span class="cv-dd js-onWeb-dd">${dd}</span>
                     </div>
                 </div>`);
@@ -27,9 +27,7 @@ var OnWeb = function() {
 
         for (var key in social) {
             if(social.hasOwnProperty(key)) {
-                elLinks += `<a href="${social[key].link}" target="_blank" title="sandrina's ${key}" class="js-onWeb-link" data-site="${key}" data-dd="${social[key].dd}">
-                                <i class="fa fa-${key}"></i>
-                            </a>`
+                elLinks += `<a href="${social[key].link}" target="_blank" title="sandrina's ${key}" aria-label="${key} - ${social[key].dd}" class="js-onWeb-link" data-site="${key}" data-dd="${social[key].dd}"> <i class="fa fa-${key}" aria-hidden="true"></i> </a>`
             }
         }
         return elLinks;
