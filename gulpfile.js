@@ -47,16 +47,14 @@ gulp.task('default', function(){
         chBold = chalk.bold;
     console.log(chBold('Gulp tasks available')+"\n"
         +chTitle('gulp start')+"\n"
-        	+"     watch .js (!*.min.js, !_*.js) modifications on assets/scripts and apply scripts task.\n"
-            +"     watch .scss (!_*.scss) modifications on assets/styles and apply styles task. \n"
-            +"     compile index.php to index.html \n"
-            +"     Use '--production' to also minify them. \n"
+        	+"     watch changes on src/*js | src/*.css and apply scripts and stylestask.\n"
+            +"     watch changes on index.php and compile to index.html \n"
+            +"     Use '--production' to work in production mode. \n"
 
         +"\n"+chTitle('gulp build')+"\n"
-        	+"     run scripts, styles and html tasks. and minify them.\n"
+        	+"     run scripts, styles and html tasks and minify them.\n"
 
-        +"\n"+chTitle('$ gulp gen-html')+"\n"
-            +"     compile index.php to index.html.\n"
+        +"\n"+chTitle('read /gulpfile.js to see other tasks')+"\n"
     );
 });
 

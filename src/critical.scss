@@ -1,0 +1,15 @@
+@import "components/utilities/scss";
+@import "components/utilities/reset";
+@import "components/utilities/helpers";
+@import "components/header/heythere";
+
+.navSections,
+.chat,
+.bot,
+.cv,
+.navCV,
+.psst {
+    display: none;
+}
+
+@import "components/chat/chat-critical";

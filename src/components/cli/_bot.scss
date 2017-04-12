@@ -1,0 +1,230 @@
+$sentClr: $clrLight;
+$placeholderClr: $clrGrayLight;
+$textPaddingMob: $safeArea;
+$textPaddingTab: 20vw;
+
+%paddingBotMob {
+    padding: 0 $textPaddingMob 0;
+}
+
+.bot {
+    @include centerxy;
+    position: fixed;
+    width: 100%;
+    z-index: 99;
+    height: 100%;
+    display: block;
+    background: $clrDark;
+    transition: top $speed*2;
+
+    font-family: $font-mono;
+    font-size: $fontS;
+    color: $clrPrimarySoft;
+
+    // animation: bgBreath 3s ease-in-out infinite, height $speed ease-out;
+
+    @extend %flexbox;
+    @include flexboxProp {
+        flex-direction: column;
+        justify-content: flex-end;
+    }
+
+    &.jsLoading {
+        top: -200%;
+    }
+
+
+    &-header {
+        position: absolute;
+        left: 0; top: 0;
+        z-index: 2;
+        width: 100%;
+        padding: $safeArea/2;
+        font-size: $fontXS;
+        border-bottom: 1px solid $clrPrimaryDark;
+        @extend %cf;
+        background: rgba($clrDark, 0.8);
+
+        *.jsLoading {
+            opacity: 0;
+        }
+    }
+
+    &-hr {
+        float: right;
+        margin-left: $safeArea;
+    }
+
+    &-hl {
+        float: left;
+    }
+
+
+
+    &-terminal {
+        font-family: $font-mono;
+        font-size: $fontS;
+        padding-top: $safeArea*5;
+        padding-bottom: $safeArea*4;
+        overflow: auto;
+    }
+
+    &-text {
+        position: relative;
+        width: 100%;
+        height: auto;
+        max-height: 100%;
+        margin: 0 auto;
+        overflow: auto;
+        @extend %paddingBotMob;
+
+        br + b {
+            padding-left: $safeArea;
+            line-height: $lineHeightL;
+            color: $clrGrayLighter;
+
+            &:before {
+                content: '. ';
+                color: $clrPrimary;
+                font-size: $fontXS;
+            }
+        }
+    }
+
+    &-answer {
+        &:before {
+            content: "_";
+            position: absolute;
+            color: $sentClr;
+            left: calc(#{$textPaddingMob} - #{$safeArea/2});
+        }
+    }
+
+    &-sent {
+        min-height: $safeArea;
+        color: $sentClr;
+        margin-left: -$safeArea;
+        font-size: $fontM;
+
+        &:not(.js-sentEmpty) {
+            padding-top: $safeArea;
+        }
+    }
+
+
+    &-footer {
+        position: absolute;
+        left: 0; bottom: 0;
+        width: 100%;
+        @extend %paddingBotMob;
+        background: rgba($clrDark, 0.8);
+    }
+
+    &-input {
+        background: none;
+        border: none;
+        color: $sentClr;
+        font-size: $fontM;
+        display: inline;
+        font-family: $font-mono;
+        width: 100%;
+        border-bottom: 1px solid $clrLight;
+        transition: width $speed;
+        margin-bottom: $safeArea;
+        margin-left: -$safeArea;
+
+        &::-webkit-input-placeholder {
+             color: $placeholderClr;
+        }
+        &:-moz-placeholder {
+            color: $placeholderClr;
+        }
+        &::-moz-placeholder {
+            color: $placeholderClr;
+        }
+        &:-ms-input-placeholder { /* Internet Explorer 10-11 */
+           color: $placeholderClr;
+        }
+
+        &:hover,
+        &:focus {
+            outline: none;
+            border-bottom: 1px solid $clrPrimary;
+        }
+
+        &.jsLoading {
+            pointer-events: none;
+            width: 0;
+        }
+    }
+
+
+
+
+    @include media(tablet) {
+        %paddingBotTab {
+            padding: 0 $textPaddingTab $safeArea;
+        }
+
+        &-text,
+        &-footer {
+            @extend %paddingBotTab;
+        }
+
+        &-answer {
+            &:before {
+                left: calc(#{$textPaddingTab} - #{$safeArea});
+            }
+        }
+    }
+}
+
+.jsBotThinking {
+    position: absolute;
+    left: calc(#{$textPaddingMob} - #{$safeArea/2});
+    bottom: $safeArea*1;
+    &:before {
+        color: $clrLight;
+        content: "0 * . _ ;";
+        display: block;
+        animation: botThinking 700ms infinite;
+    }
+}
+
+@keyframes bgBreath {
+    0% {background: $clrBlack;}
+    50% {background: $clrDark;}
+    100% {background: $clrBlack;}
+}
+
+@keyframes botThinking {
+    0% {content: "..";}
+   20% {content: "8";}
+   40% {content: "0";}
+   60% {content: "_";}
+   80% {content: "8";}
+  100% {content: "0";}
+}
+
+
+//typed.js
+.typed-cursor{
+    display: none;
+    // opacity: 1;
+    // animation: blink 0.7s infinite;
+}
+// @keyframes blink{
+//     0% { opacity:1; }
+//     50% { opacity:0; }
+//     100% { opacity:1; }
+// }
+// @-webkit-keyframes blink{
+//     0% { opacity:1; }
+//     50% { opacity:0; }
+//     100% { opacity:1; }
+// }
+// @-moz-keyframes blink{
+//     0% { opacity:1; }
+//     50% { opacity:0; }
+//     100% { opacity:1; }
+// }

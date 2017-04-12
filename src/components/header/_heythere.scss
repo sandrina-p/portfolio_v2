@@ -1,0 +1,165 @@
+$HTFont: $font5XL;
+$HTFontTab: $font6XL;
+
+%textHeyThere {
+    font-weight: $fBold;
+    line-height: 1.1;
+    letter-spacing: 3px;
+}
+
+.heyThere {
+    width: 100%;
+    margin: auto;
+    @extend %cf;
+    padding-top: 5vh;
+
+    &-hey {
+        position: relative;
+        @extend %textHeyThere;
+        font-size: $HTFont;
+        padding-left: $safeArea*2;
+        border-bottom: 1px solid $clrGray;
+        animation: heyLine 1750ms ease-out;
+
+        span {
+            color: $clrGrayDarker;
+            opacity: 0;
+            animation: heyThere 500ms steps(11);
+            animation-fill-mode: forwards;
+
+            $chars: 8;
+            @for $i from 1 through $chars {
+                &:nth-of-type(#{$i}) {
+                    animation-delay: 1200+70ms*$i;
+                }
+            }
+        }
+    }
+
+    &-intro {
+        font-size: $fontL;
+        max-width: $safeArea*35;
+        padding-left: $safeArea;
+        padding-right: $safeArea;
+        padding-bottom: $safeArea*5;
+        margin-top: $safeArea*2;
+        color: $clrGrayDarker;
+        opacity: 0;
+        animation: heyIntro 3s steps(11);
+        animation-fill-mode: forwards;
+
+        strong {
+            font-weight: inherit;
+        }
+    }
+
+    &-br {
+        display: block;
+        height: $safeArea/3*2;
+    }
+}
+
+@include media(iphone4) {
+    .heyThere {
+        &-hey {
+            font-size: $fontXXXXL;
+        }
+    }
+}
+
+@include media(iphone5) {
+    .heyThere {
+        padding-top: 2vh;
+
+        &-intro {
+            margin-top: $safeArea;
+            padding-bottom: $safeArea*3;
+        }
+    }
+}
+
+@include media(phablet) {
+    .heyThere {
+        &-intro {
+            padding: $safeArea $safeArea $safeArea*5 $safeArea*5;
+        }
+    }
+}
+
+@include media(tablet) {
+    .heyThere {
+        padding-top: 10vh;
+
+        &-hey {
+            display: inline-block;
+            font-size: $HTFontTab;
+            padding-left: 5vw;
+            width: $humanWidthLap;
+            animation: heyLine-tablet 1750ms ease-out;
+        }
+
+        &-intro {
+            font-size: $fontXL;
+            width: $botWidthLap;
+            margin-top: $safeArea*8;
+            padding-left: $safeArea*3;
+            padding-bottom: $safeArea*5;
+        }
+
+        &-br {
+            height: $safeArea/2*3;
+        }
+    }
+}
+
+
+
+@keyframes heyThere {
+    0%, 85% {opacity: 0;}
+    87% {opacity: 1;}
+    88% {opacity: 0;}
+    89% {opacity: 1;}
+    92% {opacity: 0;}
+    91% {opacity: 1;}
+    90%, 100% {opacity: 1;}
+}
+
+@keyframes heyLine {
+    0% {
+        max-width: 0;
+        padding-left: 0;
+    }
+    60% {
+        max-width: 0;
+        padding-left: 0;
+    }
+    100% {
+        max-width: 100%;
+        padding-left: $safeArea*2;
+    }
+}
+@keyframes heyLine-tablet {
+    0% {
+        max-width: 0;
+        padding: 0;
+    }
+    70% {
+        max-width: 0;
+        padding: 0;
+    }
+    100% {
+        max-width: $humanWidthLap;
+        padding: 0 0 0 $safeArea*3;
+    }
+}
+
+@keyframes heyIntro {
+    0%, 85% {opacity: 0;}
+    86% {opacity: 1}
+    87% {opacity: 0;}
+    91% {opacity: 1}
+    92% {opacity: 0;}
+    93% {opacity: 1}
+    96% {opacity: 0;}
+    97%, 100% {opacity: 1}
+}

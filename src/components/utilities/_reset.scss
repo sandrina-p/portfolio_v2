@@ -1,0 +1,112 @@
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section, main {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+    padding: 0;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+
+/*CUSTOM*/
+* {
+    padding: 0;
+    margin: 0;
+}
+
+
+b, strong {font-weight: 600;}
+i, em {font-style: italic;}
+small {font-size: 80%;}
+
+html {
+    line-height: $lineHeightM;
+    font-family: $font-sans;
+    font-weight: $fMed;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+	box-sizing: border-box;
+	width: 100%;
+	max-width: 100%;
+	overflow-x: hidden;
+	background: $clrDark; //same color as #projects to prevent iOS swipe left/right edges
+	animation: fadein 3s; //prevent loading delay that shows black screen half black/white
+
+	> * {
+		background: $clrLight;
+	}
+
+    @include media(laptop) {
+        font-size: $fontL;
+    }
+
+    @include media(desktop) {
+        font-size: $fontLx;
+    }
+
+	* {
+		box-sizing: inherit;
+		line-height: inherit;
+	}
+}
+
+@keyframes fadein {
+	0% {
+		background: $clrLight;
+	}
+	80% {
+		background: $clrLight;
+	}
+	100% {
+		background: $clrDark;
+	}
+}
+
+//Safari font render issue
+//http://stackoverflow.com/questions/3226001/
+@media screen and (max-device-width: 480px){
+  body{
+    -webkit-text-size-adjust: 100%;
+  }
+}
