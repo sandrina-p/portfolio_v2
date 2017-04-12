@@ -44,6 +44,39 @@ function logEnv() {
 
 // ------------ tasks ------------- //
 
+gulp.task('default', function(){
+    var chTitle = chalk.bold.blue,
+        chBold = chalk.bold;
+    console.log(chBold('Gulp tasks available')+"\n"
+        +chTitle('gulp start')+"\n"
+        	+"     watch .js (!*.min.js, !_*.js) modifications on assets/scripts and apply scripts task.\n"
+            +"     watch .scss (!_*.scss) modifications on assets/styles and apply styles task. \n"
+            +"     compile index.php to index.html \n"
+            +"      Use '--production' to also minify them. \n"
+
+        +"\n"+chTitle('gulp build')+"\n"
+        	+"     run scripts, styles and html tasks. and minify them.\n"
+
+        +"\n"+chTitle('$ gulp gen-html')+"\n"
+            +"     compile index.php to index.html.\n"
+    );
+});
+
+gulp.task('start', ['setWatch', 'scssPartials', 'browser-sync'], function(){
+    gulp.watch([
+            folderScripts+'/**/*.js',
+            '!'+folderScripts+'/**/*.min.js'
+        ], { usePolling: true }, ['scripts']);
+    gulp.watch(['**/*.php'], ['gen-html']);
+});
+
+gulp.task('build', ['run-prod', 'scripts', 'scss', 'gen-html'] );
+
+gulp.task('run-prod', function() {
+    argv.production = true;
+});
+
+
 gulp.task('scripts', function(){
     console.log('start task scripts');
     gulp.src([
@@ -69,33 +102,40 @@ gulp.task('scripts', function(){
 });
 
 
-// sass, rename .min, autoprefixer, cleanCSS minimize
 gulp.task('scss', function(){
     console.log('start task scss');
     gulp.src(srcScss)
         .pipe(sass.sync().on('error', sass.logError))
         .pipe(rename({ suffix: '.min' }))
         .pipe(autoprefixer({
-            browsers: ['last 2 version', 'safari 6', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'],
+            browsers: ['last 2 version'],
             cascade: true
         }))
         .pipe(importCss())
-        .pipe(cleanCSS({compatibility: 'ie9'}))
+        .pipe(gulpif(argv.production,
+            cleanCSS({
+                compatibility: 'ie9'
+            })
+        ))
+        .pipe(gulpif(argv.development,
+            cleanCSS({
+                compatibility: 'ie9',
+                advanced: false //much faster comp.
+            })
+        ))
         .pipe(gulpif(global.isWatching, cached('cachedPlace')))
         .pipe(gulp.dest(folderStyles))
         .pipe(browserSync.stream());
     logEnv();
 });
 
-
-// watch for partials when they are changed to change their parent.
 gulp.task('scssPartials', function() {
+    // watch for partials when they are changed to change their parent.
     return gulp.src('assets/**/*.scss')
         .pipe(gulpif(global.isWatching, cached(srcScss))) //filter out unchanged scss files, only works when watching
         .pipe(sassInheritance({dir: 'assets'}).on('error', gutil.log)); //find files that depend on the files that have changed
 });
 
-gulp.task('min-all', ['scripts', 'scss', 'gen-html'] );
 
 gulp.task('gen-html', function(){
     gulp.src("index.php")
@@ -105,56 +145,6 @@ gulp.task('gen-html', function(){
     ))
     .on('error', console.error)
     .pipe(gulp.dest(""));
-});
-
-
-// gulp.task('php', function() {
-//     php.server({ base: 'http://localhost:8888/git/s008080', port: 8888, keepalive: true});
-// });
-
-// gulp.task('browser-sync',['php'], function() {
-//     browserSync({
-//         proxy: '127.0.0.1:8888',
-//         port: 8888,
-//         notify: false,
-//         open: false,
-//         ghostMode: false
-//     });
-//
-//     gulp.watch(folderStyles+"/**/*.scss", ['scss']);
-//     gulp.watch(["*.phtml", "*.php"]).on('change', browserSync.reload);
-// });
-
-
-gulp.task('test', function (done) {
-  // Define the Intern command line
-  var command = [
-    './node_modules/intern/runner.js',
-    'config=tests/intern'
-  ];
-
-  // Add environment variables, such as service keys
-  var env = Object.create(process.env);
-  // env.BROWSERSTACK_ACCESS_KEY = '123456';
-  // env.BROWSERSTACK_USERNAME = 'foo@nowhere.com';
-
-  // Spawn the Intern process
-  var child = require('child_process').spawn('node', command, {
-    // Allow Intern to write directly to the gulp process's stdout and
-    // stderr.
-    stdio: 'inherit',
-    env: env
-  });
-
-  // Let gulp know when the child process exits
-  child.on('close', function (code) {
-    if (code) {
-      done(new Error('Intern exited with code ' + code));
-    }
-    else {
-      done();
-    }
-  });
 });
 
 
@@ -172,40 +162,6 @@ gulp.task('browser-sync', function() {
     gulp.watch(["*.phtml", "*.php"]).on('change', browserSync.reload);
 });
 
-
 gulp.task('setWatch', function() {
     global.isWatching = true;
-});
-
-gulp.task('watch', ['setWatch', 'scssPartials', 'browser-sync'], function(){
-    gulp.watch([
-            folderScripts+'/**/*.js',
-            '!'+folderScripts+'/**/*.min.js'
-        ], { usePolling: true }, ['scripts']);
-    gulp.watch(['**/*.php'], ['gen-html']);
-});
-
-
-gulp.task('default', function(){
-    var chTitle = chalk.bold.blue,
-        chBold = chalk.bold;
-    console.log(chBold('Gulp tasks available')+"\n"
-        +chTitle('$ gulp watch')+"\n"
-        	+"     watch .js (!*.min.js, !_*.js) modifications on assets/scripts and apply scripts task.  Use '--production' to also minify them.\n"
-            +"     watch .scss (!_*.scss) modifications on assets/styles and apply styles task. \n"
-            +"     also executes gulp gen-html \n"
-
-        +"\n"+chTitle('$ gulp scripts')+"\n"
-        	+"     create .min of all .js (!*.min.js, !_*.js) on assets/scripts \n"
-        	+"     Use '--production' to also minify and delete console_logs \n"
-
-        +"\n"+chTitle('$ gulp styles')+"\n"
-        	+"     compile and minify all scss (!_*.scss) on assets/styles to .min.css \n"
-
-        +"\n"+chTitle('$ gulp min-all')+"\n"
-        	+"     run scripts and styles tasks. use '--production' to also minify them.\n"
-        +"\n"+chTitle('$ gulp gen-html')+"\n"
-        	+"     compile index.php to index.html. because bitbucket doesn't like php.\n"
-
-    );
 });

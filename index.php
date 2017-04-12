@@ -132,6 +132,7 @@
         if (raf) raf(cb);
         else window.addEventListener('load', cb);
     </script>
+
     <script async src="assets/scripts/03_templates/index.min.js" charset="utf-8"></script>
 
     <script type="text/javascript">
