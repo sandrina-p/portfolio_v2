@@ -1,46 +1,46 @@
+<?php $DEV = false; ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Sandrina Pereira</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:300,400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu:400,700" rel="stylesheet">
+
+    <title>Sandrina Pereira - front-end developer | UX / Interaction Design</title>
+
     <meta name='copyright' content='@2016 Mariana Freitas and Sandrina Pereira'>
     <meta name='description' content='I want to introduce you to someone who spends her time exploring new ways to connect people like you with websites like me'>
     <meta name="Designer" CONTENT="Sandrina Pereira">
     <meta name='language' content='en-US'>
-    <meta name='subject' content='internet'>
+    <meta name='subject' content='internet, design, web development'>
 
     <meta name="DC.title" content="Sandrina Pereira" />
     <meta name="DC.creator " content="Sandrina Pereira" />
     <meta name="DC.creator.address" content="a.sandrina.p@gmail.com" />
 
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
+    <link rel="icon" type="image/png" href="src/media/metatags/favicon16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="src/media/metatags/favicon32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="src/media/metatags/favicon64.png" sizes="64x64">
+    <link rel="icon" type="image/png" href="src/media/metatags/favicon180.png" sizes="180x180">
 
-    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:300,400,700" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Ubuntu:400,700" rel="stylesheet">
-
-    <link rel="icon" type="image/png" href="assets/media/favicon16.png" sizes="16x16">
-    <link rel="icon" type="image/png" href="assets/media/favicon32.png" sizes="32x32">
-    <link rel="icon" type="image/png" href="assets/media/favicon64.png" sizes="64x64">
-    <link rel="icon" type="image/png" href="assets/media/favicon180.png" sizes="180x180">
-
-    <!--TWITTER CARD-->
     <meta name="twitter:card" content="Psst.. Hey there" />
     <meta name="twitter:site" content="sandrina-p.net" />
     <meta name="twitter:title" content="sandrina pereira website" />
     <meta name="twitter:description" content="I want to introduce you to someone who spends her time exploring new ways to connect people like you with websites like me" />
-    <meta name="twitter:image" content="assets/media/card.png" />
+    <meta name="twitter:image" content="src/media/metatags/card.png" />
 
-    <!--Open Graph protocol-->
     <meta property="og:title" content="Psst... Hey there" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="//www.sandrina-p.net" />
-    <meta property="og:image" content="assets/media/card.png" />
+    <meta property="og:image" content="src/media/metatags/card.png" />
 
-    <?php // <link rel="stylesheet" href="assets/styles/04_templates/header.min.css"> ?>
-    <style>
-        /*just the needed css to display the intro*/
-        <?php echo file_get_contents('assets/styles/04_templates/header.min.css') ?>
-    </style>
+    <?php // in production inline the critical css to faster DOM render.
+    echo $DEV
+        ? '<link rel="stylesheet" href="src/critical.min.css">'
+        : '<style>' . file_get_contents('src/critical.min.css') . '</style>';
+    ?>
 </head>
 
 <body>
@@ -53,7 +53,7 @@
         ga('send', 'pageview');
     </script>
 
-    <h1 class="sr-only">Sandrina Pereira</h1>
+    <h1 class="sr-only">Sandrina Pereira - Interaction Design and front-end developer</h1>
     <div class="heyThere">
 
         <p class="heyThere-hey" aria-hidden="true"><span>H</span><span>e</span><span>y</span><br><span>t</span><span>h</span><span>e</span><span>r</span><span>e</span></p>
@@ -107,25 +107,25 @@
         <a href="#cv" class="navCV-link" data-gaec="navCV" aria-hidden="true">Let's cut the bullshit. Who is she?</a>
     </div>
 
-    <?php include 'index-parts/cv.php';?>
+    <?php include 'views/cv.php';?>
 
     <div class="bot jsLoading" id="bot"><!-- ◉_◉ js --></div>
 
     <div class="cv-ascii" aria-hidden="true">
-        <?php include 'index-parts/myself.php';?>
+        <?php include 'views/myself.php';?>
     </div>
 
     <noscript>
-        <link rel="stylesheet" href="assets/styles/04_templates/index.min.css">
+        <link rel="stylesheet" href="src/index.min.css">
     </noscript>
     <!--[if lt IE 9 || IE9]>
-        <link rel="stylesheet" href="assets/styles/04_templates/index.min.css">
+        <link rel="stylesheet" href="src/index.min.css">
     <![endif]-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <script>
         var cb = function() {
             var l = document.createElement('link'); l.rel = 'stylesheet';
-            l.href = 'assets/styles/04_templates/index.min.css';
+            l.href = 'src/index.min.css';
             document.getElementsByTagName('head')[0].appendChild(l);
         };
         var raf = requestAnimationFrame || mozRequestAnimationFrame || webkitRequestAnimationFrame || msRequestAnimationFrame;
@@ -133,7 +133,8 @@
         else window.addEventListener('load', cb);
     </script>
 
-    <script async src="assets/scripts/03_templates/index.min.js" charset="utf-8"></script>
+    <script defer src="src/vendor.min.js" charset="utf-8"></script>
+    <script defer src="src/index.min.js" charset="utf-8"></script>
 
     <script type="text/javascript">
         var _mfq = _mfq || [];

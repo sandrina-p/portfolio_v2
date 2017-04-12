@@ -29,10 +29,9 @@ var gulp = require('gulp'),
     include = require("gulp-include"),
     babel = require('gulp-babel'); //es2015 rocks
 
-var folderScripts = 'assets/scripts',
-    folderStyles = 'assets/styles',
+var folderScripts = 'src',
+    folderStyles = 'src';
     srcScss = [ folderStyles+'/**/*.scss', '!'+folderStyles+'/**/_*.scss'];
-
 
 
 function logEnv() {
@@ -42,7 +41,6 @@ function logEnv() {
     console.log('environment: ' + envv);
 }
 
-// ------------ tasks ------------- //
 
 gulp.task('default', function(){
     var chTitle = chalk.bold.blue,
@@ -52,7 +50,7 @@ gulp.task('default', function(){
         	+"     watch .js (!*.min.js, !_*.js) modifications on assets/scripts and apply scripts task.\n"
             +"     watch .scss (!_*.scss) modifications on assets/styles and apply styles task. \n"
             +"     compile index.php to index.html \n"
-            +"      Use '--production' to also minify them. \n"
+            +"     Use '--production' to also minify them. \n"
 
         +"\n"+chTitle('gulp build')+"\n"
         	+"     run scripts, styles and html tasks. and minify them.\n"
@@ -62,15 +60,9 @@ gulp.task('default', function(){
     );
 });
 
-gulp.task('start', ['setWatch', 'scssPartials', 'browser-sync'], function(){
-    gulp.watch([
-            folderScripts+'/**/*.js',
-            '!'+folderScripts+'/**/*.min.js'
-        ], { usePolling: true }, ['scripts']);
-    gulp.watch(['**/*.php'], ['gen-html']);
-});
+gulp.task('start', ['setWatch', 'scssPartials', 'browser-sync']);
 
-gulp.task('build', ['run-prod', 'scripts', 'scss', 'gen-html'] );
+gulp.task('build', ['run-prod', 'scripts', 'scss', 'gen-html']);
 
 gulp.task('run-prod', function() {
     argv.production = true;
@@ -79,32 +71,27 @@ gulp.task('run-prod', function() {
 
 gulp.task('scripts', function(){
     console.log('start task scripts');
-    gulp.src([
-            folderScripts+'/**/*.js',
-            '!'+folderScripts+'/**/_*.js',
-            '!'+folderScripts+'/**/*.min.js'
-        ])
+    gulp.src(['src/vendor.js', 'src/index.js'])
         .pipe(include())
         .pipe(babel({
             presets: ["es2015-script"],
-            compact: false //use uglify
+            compact: false // use uglify
         }))
-
-        // .on('error', console.log)
         .pipe(gulpif(argv.production, stripDebug()))
         .pipe(gulpif(argv.production,
             uglify().on('error', gutil.log)
         ))
         .pipe(rename({ suffix: '.min' }))
         .pipe(gulpif(global.isWatching, cached('cachedPlace')))
-        .pipe(gulp.dest( function(file) { return file.base; } ));
+        .pipe(gulp.dest(folderScripts))
+        .pipe(browserSync.stream());
     logEnv();
 });
 
 
 gulp.task('scss', function(){
     console.log('start task scss');
-    gulp.src(srcScss)
+    gulp.src(['src/critical.scss', 'src/index.scss'])
         .pipe(sass.sync().on('error', sass.logError))
         .pipe(rename({ suffix: '.min' }))
         .pipe(autoprefixer({
@@ -131,9 +118,9 @@ gulp.task('scss', function(){
 
 gulp.task('scssPartials', function() {
     // watch for partials when they are changed to change their parent.
-    return gulp.src('assets/**/*.scss')
+    return gulp.src('**/*.scss')
         .pipe(gulpif(global.isWatching, cached(srcScss))) //filter out unchanged scss files, only works when watching
-        .pipe(sassInheritance({dir: 'assets'}).on('error', gutil.log)); //find files that depend on the files that have changed
+        .pipe(sassInheritance({dir: 'src'}).on('error', gutil.log)); //find files that depend on the files that have changed
 });
 
 
@@ -158,8 +145,10 @@ gulp.task('browser-sync', function() {
         ghostMode: false
     });
 
+    gulp.watch(folderScripts+"/**/*.js", ['scripts']);
     gulp.watch(folderStyles+"/**/*.scss", ['scss']);
-    gulp.watch(["*.phtml", "*.php"]).on('change', browserSync.reload);
+    gulp.watch(['**/*.php'], ['gen-html']);
+    gulp.watch(["index.html"]).on('change', browserSync.reload);
 });
 
 gulp.task('setWatch', function() {
