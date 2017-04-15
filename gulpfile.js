@@ -131,12 +131,13 @@ gulp.task('scssPartials', function() {
 
 gulp.task('gen-html', function(){
     gulp.src('index.php')
-    .pipe(php2html())
-    .pipe(gulpif(argv.production,
-        htmlmin({collapseWhitespace: true})
-    ))
-    .on('error', console.error)
-    .pipe(gulp.dest(''));
+        .pipe(php2html())
+        .pipe(gulpif(argv.production,
+            htmlmin({collapseWhitespace: true})
+        ))
+        .on('error', console.error)
+        .pipe(gulp.dest(''));
+    logEnv();
 });
 
 
