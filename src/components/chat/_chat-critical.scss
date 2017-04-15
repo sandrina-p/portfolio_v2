@@ -15,7 +15,7 @@
         animation-delay: 3.5s;
         animation-fill-mode: forwards;
 
-        &:before {
+        &::before {
             content: "¯\\_(ツ)_/¯";
             position: absolute;
             left: $safeArea;
@@ -33,7 +33,7 @@
 
     @include media(phablet) {
         &.jsLoading {
-            &:before {
+            &::before {
                 @include fallback(left, 45%, calc(#{$humanWidthPhablet} + #{$safeArea*3}));
             }
         }
@@ -43,7 +43,7 @@
         @include fallback(padding-bottom, 100px, 80vh);
 
         &.jsLoading {
-            &:before {
+            &::before {
                 @include fallback(left, 45%, calc(#{$humanWidthLap} + #{$safeArea*3}));
             }
         }

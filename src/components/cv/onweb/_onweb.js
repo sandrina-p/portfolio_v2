@@ -2,58 +2,30 @@ var OnWeb = function() {
     var $onWebLink,
         chatContent = TalkChat.conversation,
         contOnWeb = chatContent.onWeb,
-        social = contOnWeb.social,
         intro = contOnWeb.intro,
         dd = contOnWeb.dd,
         baffleWebSite,
-        baffleWebDd,
-        elSocial = getElSocial();
-        elOnWeb = $(`<div class="onWeb cv-dl">
-                    <div class="onWeb-site">
-                        <span class="cv-dt js-onWeb-site">${intro}</span>
-                    </div>
-                    <div class="onWeb-href">
-                        ${elSocial}
-                    </div>
-                    <div class="onWeb-desc" aria-hidden="true">
-                        <span class="cv-dd js-onWeb-dd">${dd}</span>
-                    </div>
-                </div>`);
-
-
-    function getElSocial() {
-        var elLinks = "";
-        var test = "tess delete me";
-
-        for (var key in social) {
-            if(social.hasOwnProperty(key)) {
-                elLinks += `<a href="${social[key].link}" target="_blank" title="sandrina's ${key}" aria-label="${key} - ${social[key].dd}" class="js-onWeb-link" data-site="${key}" data-dd="${social[key].dd}"> <i class="fa fa-${key}" aria-hidden="true"></i> </a>`
-            }
-        }
-        return elLinks;
-    }
+        baffleWebDd;
 
     function ascii() {
 
-        var winHeight = $(window).innerHeight(),
-            i,
+        var i,
             scrolled,
-            $ascii = $(".cv-ascii");
-            $mee = $(".cv-ascii").find('.mee');
+            $ascii = $('.cv-ascii'),
+            $mee = $('.cv-ascii').find('.mee'),
             $meeLength = $mee.length;
 
         $(window).on('scroll',function(){
 
-          $ascii.css('bottom', $('#cv').offset().top + $(window).scrollTop()*0.9 * -1);
-          $mee.css('display','block');
-          scrolled = $(window).scrollTop();
+            $ascii.css('bottom', $('#cv').offset().top + $(window).scrollTop()*0.9 * -1);
+            $mee.css('display','block');
+            scrolled = $(window).scrollTop();
 
-          if (scrolled%3 == 0) {
-              i = scrolled%$meeLength;
-              $mee.css('opacity', 0);
-              $('.myself'+i).css('opacity', 1);
-          }
-
+            if (scrolled % 3 == 0) {
+                i = scrolled%$meeLength;
+                $mee.css('opacity', 0);
+                $('.myself'+i).css('opacity', 1);
+            }
         });
     }
 
@@ -71,10 +43,10 @@ var OnWeb = function() {
 
             $(document).scroll(function(){
                 if($(this).scrollTop() + window.innerHeight*0.47 > $t.offset().top) {
-                   if (!shut) {
+                    if (!shut) {
                         $t.addClass('is-active');
                         shut = true;
-                   }
+                    }
                 }
             });
         });
@@ -89,8 +61,8 @@ var OnWeb = function() {
 
             $(document).scroll(function(){
                 if(!shut && $(this).scrollTop() + window.innerHeight*0.6 > $t.offset().top) {
-                   $t.addClass('is-active');
-                   shut = true;
+                    $t.addClass('is-active');
+                    shut = true;
                 }
             });
 
@@ -99,9 +71,6 @@ var OnWeb = function() {
     }
 
     function init() {
-        $('.js-onWeb-remove').remove();
-        $('.js-onWebAfter').after(elOnWeb);
-
         $onWebLink = $('.js-onWeb-site').parent(),
         baffleWebSite = baffle('.js-onWeb-site'),
         baffleWebDd = baffle('.js-onWeb-dd');
@@ -135,14 +104,14 @@ var OnWeb = function() {
     return {
         init,
         cvShowing
-    }
+    };
 }();
 
 
 $(function lookIntoOnWww(){
-    var $cv = $("#cv"),
+    var $cv = $('#cv'),
         offsetCv,
-        windowHeight = window.innerHeight;
+        windowHeight = window.innerHeight,
         triggerOnWebInit = true;
 
     $(window).scroll(function() {

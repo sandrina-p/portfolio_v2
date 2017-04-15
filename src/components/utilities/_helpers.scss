@@ -14,13 +14,13 @@ HELPERS
 
 .cf {
     *zoom: 1;
-    &:before,
+    &::before,
     :after {
         content: "";
         display: table;
     }
 
-    &:after {
+    &::after {
         clear: both;
     }
 }

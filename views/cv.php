@@ -2,11 +2,11 @@
     <span class="cv-bg js-cvBg"></span>
     <h2 class="sr-only">About</h2>
 
-    <?php // around ?>
+    <?php // Contact ?>
     <article class="cv-article">
         <div class="cv-article-in">
             <div class="cv-article-header">
-                <h3 class="sr-only cv-title js-cvShowTitle">around</h3>
+                <h3 class="sr-only cv-title js-cvShowTitle">Contact</h3>
             </div>
 
             <dl class="cv-dl js-onWebAfter js-cvShow">
@@ -14,37 +14,42 @@
                     <a href="mailto:a.sandrina.p4@gmail.com?subject=Hey%20there!" title="sandrina's e-mail" class="cv-link">a.sandrina.p@gmail.com</a>
                 </dt>
                 <dd class="cv-dd">waiting for your call</dd>
-
-                <dt class="cv-dt js-onWeb-remove">
-                    <a href="//codepen.io/sandrina-p" target="_blank" title="sandrina's stackoverflow" class="cv-link">
-                        <i class="fa fa-codepen" aria-hidden="true"></i> codepen
-                    </a>
-                </dt>
-                <dd class="cv-dd js-onWeb-remove">because coding without fun is <span class="nowrap">just boring</span></dd>
-
-                <dt class="cv-dt js-onWeb-remove">
-                    <a href="//github.com/sandrina-p" target="_blank" title="sandrina's stackoverflow" class="cv-link">
-                        <i class="fa fa-github" aria-hidden="true"></i> github
-                    </a>
-                </dt>
-                <dd class="cv-dd js-onWeb-remove">sharing is what make <span class="nowrap">us better</span></dd>
-
-                <dt class="cv-dt js-onWeb-remove">
-                    <a href="//stackoverflow.com/users/4737729/sandrina-pereira" target="_blank" title="sandrina's stackoverflow" class="cv-link">
-                        <i class="fa fa-stack-overflow" aria-hidden="true"></i> stackoverflow
-                    </a>
-                </dt>
-                <dd class="cv-dd js-onWeb-remove">helping others is as important <span class="nowrap">as being</span> helped</dd>
-
-                <dt class="cv-dt js-onWeb-remove">
-                    <a href="//www.behance.net/sandrin4p" target="_blank" title="sandrina's stackoverflow" class="cv-link">
-                        <i class="fa fa-behance" aria-hidden="true"></i>
-                        behance
-                    </a>
-                </dt>
-                <dd class="cv-dd js-onWeb-remove">it can't be all <span class="nowrap">about coding</span></dd>
             </dl>
-            <!-- those fancy links are JS loaded too. Why? Because I like fancy layouts as much as I want Google to better understand my website content -->
+
+            <div class="onWeb cv-dl">
+                <div class="onWeb-site">
+                    <span class="cv-dt js-onWeb-site">social networks</span>
+                </div>
+                <div class="onWeb-href">
+                    <a href="//codepen.io/sandrina-p" target="_blank" title="sandrina's codepen"
+                        aria-label="codepen - because coding without fun is just boring" class="onWeb-link js-onWeb-link" data-site="codepen" data-dd="because coding without fun is just boring">
+                        <svg viewBox="0 0 26 26" aria-hidden="true" class="onWeb-icon">
+                           <use class="code" xlink:href="src/media/svg/sprite.svg#codepen"/>
+                        </svg>
+                    </a>
+
+                    <a href="//github.com/sandrina-p" target="_blank" title="sandrina's github" aria-label="github - Sharing it's what make us better" class="onWeb-link js-onWeb-link" data-site="github" data-dd="Sharing it's what make us better">
+                        <svg viewBox="0 0 26 26" aria-hidden="true" class="onWeb-icon">
+                           <use class="code" xlink:href="src/media/svg/sprite.svg#github"/>
+                        </svg>
+                    </a>
+
+                    <a href="//stackoverflow.com/story/sandrina" target="_blank" title="sandrina's stack-overflow" aria-label="stack-overflow - helping others is as important as being helped" class="onWeb-link js-onWeb-link" data-site="stack-overflow" data-dd="helping others is as important as being helped">
+                        <svg viewBox="0 0 26 26" aria-hidden="true" class="onWeb-icon">
+                           <use class="code" xlink:href="src/media/svg/sprite.svg#stack-overflow"/>
+                        </svg>
+                    </a>
+
+                    <a href="//www.twitter.com/a_sandrina_p" target="_blank" title="sandrina's twitter" aria-label="twitter - where geeks share geek stuff" class="onWeb-link js-onWeb-link" data-site="twitter" data-dd="where geeks share geek stuff">
+                        <svg viewBox="0 0 26 26" aria-hidden="true" class="onWeb-icon">
+                           <use class="code" xlink:href="src/media/svg/sprite.svg#twitter"/>
+                        </svg>
+                    </a>
+                </div>
+                <div class="onWeb-desc" aria-hidden="true">
+                    <span class="cv-dd js-onWeb-dd">not a big fan of facebook</span>
+                </div>
+            </div>
         </div>
     </article>
 
@@ -52,7 +57,7 @@
     <article class="cv-article">
         <div class="cv-article-in">
             <div class="cv-article-header">
-                <h3 class="cv-title js-cvShowTitle">superpowers</h3>
+                <h3 class="cv-title js-cvShowTitle">Superpowers</h3>
             </div>
 
             <div class="cv-list js-cvShow">
@@ -127,7 +132,7 @@
     <article class="cv-article">
         <div class="cv-article-in">
             <div class="cv-article-header">
-                <h3 class="cv-title js-cvShowTitle">timeline</h3>
+                <h3 class="cv-title js-cvShowTitle">Timeline</h3>
             </div>
 
             <div class="cv-list js-cvShow">
@@ -180,7 +185,7 @@
     <?php // projects ?>
     <div class="cv-projs js-cvUnder">
         <div class="cv-article-header">
-            <h3 class="cv-title js-cvShowTitle">projects</h3>
+            <h3 class="cv-title js-cvShowTitle">Projects</h3>
         </div>
 
         <div class="cv-projs-proj js-cvShow">

@@ -233,13 +233,13 @@ $mediaHeight: em(400);
 @mixin cf {
     *zoom: 1;
 
-	&:before,
-	&:after {
+	&::before,
+	&::after {
 	    content: "";
 	    display: table;
 	}
 
-	&:after {
+	&::after {
 	    clear: both;
 	}
 

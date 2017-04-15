@@ -33,8 +33,8 @@ $myselfs: 7;
 
   span {color: $clrDark;}
 
-  &:before,
-  &:after {
+  &::before,
+  &::after {
     animation-iteration-count: infinite;
     animation-timing-function: linear;
     animation-direction: alternate-reverse;
@@ -47,14 +47,14 @@ $myselfs: 7;
     @include centerx;
   }
 
-  &:after {
+  &::after {
     content: attr(data-sub);
     animation-name: glitch-animation; //REVIEW
     animation-duration: 3s;
     text-shadow: -1px 0 yellow;
   }
 
-  &:before {
+  &::before {
     animation-name: glitch-animation-2;  //REVIEW
     animation-duration: 5s;
     text-shadow: 1px 0 $clrPrimarySoft;

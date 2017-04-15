@@ -195,7 +195,7 @@ $navSpeed: 250ms;
                 max-width: rem(400);
                 z-index: 2;
 
-                &:before {
+                &::before {
                     content: '';
                     top: 0; bottom: 0;
                     left: 0; right: 0;

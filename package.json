@@ -36,6 +36,7 @@
     "gulp-sass": "^2.3.2",
     "gulp-sass-multi-inheritance": "^1.0.2",
     "gulp-strip-debug": "^1.1.0",
+    "gulp-svg-sprites": "^4.1.1",
     "gulp-uglify": "^2.0.0",
     "gulp-util": "^3.0.7",
     "stylelint": "^7.10.1",

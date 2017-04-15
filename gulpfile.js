@@ -1,3 +1,6 @@
+/* global require global :true */
+/* eslint-disable no-console */
+
 var gulp = require('gulp'),
 
     //general plugins
@@ -5,17 +8,14 @@ var gulp = require('gulp'),
     argv = require('yargs').argv, //useful to create ENV (prod vs dev)
     gulpif = require('gulp-if'), //useful to create ENV (prod vs dev)
     gutil = require('gulp-util'), //some debug logs
-    changed = require('gulp-changed'),
     cached = require('gulp-cached'),
     stripDebug = require('gulp-strip-debug'), //byebye console.logs
     chalk = require('chalk'), //some colors on terminal
 
-    php2html = require("gulp-php2html"),
+    php2html = require('gulp-php2html'),
     htmlmin = require('gulp-htmlmin'),
 
     browserSync = require('browser-sync'), // i'm not sure how this and connect-php works ...
-    php = require('gulp-connect-php'), // ... but you can read more about it here -> http://stackoverflow.com/a/37040763/4737729
-    reload = browserSync.reload;
 
     //scss stuff
     sass = require('gulp-sass'),
@@ -26,11 +26,14 @@ var gulp = require('gulp'),
 
     //javascript plugins
     uglify = require('gulp-uglify'),
-    include = require("gulp-include"),
-    babel = require('gulp-babel'); //es2015 rocks
+    include = require('gulp-include'),
+    babel = require('gulp-babel'),
+
+    svgSprite = require('gulp-svg-sprites');
+
 
 var folderScripts = 'src',
-    folderStyles = 'src';
+    folderStyles = 'src',
     srcScss = [ folderStyles+'/**/*.scss', '!'+folderStyles+'/**/_*.scss'];
 
 
@@ -38,6 +41,7 @@ function logEnv() {
     var chWarn = chalk.bold.red,
         chGood = chalk.bold.green,
         envv = argv.production ? chGood('production') : chWarn('development');
+
     console.log('environment: ' + envv);
 }
 
@@ -45,16 +49,19 @@ function logEnv() {
 gulp.task('default', function(){
     var chTitle = chalk.bold.blue,
         chBold = chalk.bold;
-    console.log(chBold('Gulp tasks available')+"\n"
-        +chTitle('gulp start')+"\n"
-        	+"     watch changes on src/*js | src/*.css and apply scripts and stylestask.\n"
-            +"     watch changes on index.php and compile to index.html \n"
-            +"     Use '--production' to work in production mode. \n"
+    console.log(chBold('Gulp tasks available')+'\n'
+        +chTitle('gulp start')+'\n'
+            +' watch changes on src/*js | src/*.css and apply scripts and stylestask.\n'
+            +' watch changes on index.php and compile to index.html \n'
+            +' Use "--production" to work in production mode. \n'
 
-        +"\n"+chTitle('gulp build')+"\n"
-        	+"     run scripts, styles and html tasks and minify them.\n"
+        +'\n'+chTitle('gulp build')+'\n'
+            +' run scripts, styles and html tasks and minify them.\n'
 
-        +"\n"+chTitle('read /gulpfile.js to see other tasks')+"\n"
+        +'\n'+chTitle('gulp sprite')+'\n'
+            +' mount a sprite with svg/*.svg to be used with <use> tag.\n'
+
+        +'\n'+chTitle('read /gulpfile.js to see other tasks')+'\n'
     );
 });
 
@@ -72,7 +79,7 @@ gulp.task('scripts', function(){
     gulp.src(['src/vendor.js', 'src/index.js'])
         .pipe(include())
         .pipe(babel({
-            presets: ["es2015-script"],
+            presets: ['es2015-script'],
             compact: false // use uglify
         }))
         .pipe(gulpif(argv.production, stripDebug()))
@@ -123,13 +130,27 @@ gulp.task('scssPartials', function() {
 
 
 gulp.task('gen-html', function(){
-    gulp.src("index.php")
+    gulp.src('index.php')
     .pipe(php2html())
     .pipe(gulpif(argv.production,
         htmlmin({collapseWhitespace: true})
     ))
     .on('error', console.error)
-    .pipe(gulp.dest(""));
+    .pipe(gulp.dest(''));
+});
+
+
+gulp.task('sprite', function () {
+    return gulp.src('src/media/svg/*.svg')
+        .pipe(svgSprite({
+            mode: 'symbols',
+            svg: {
+                symbols: 'sprite.svg'
+            },
+            preview: false,
+            template: false,
+        }))
+        .pipe(gulp.dest('src/media/svg'));
 });
 
 
@@ -143,10 +164,10 @@ gulp.task('browser-sync', function() {
         ghostMode: false
     });
 
-    gulp.watch(folderScripts+"/**/*.js", ['scripts']);
-    gulp.watch(folderStyles+"/**/*.scss", ['scss']);
+    gulp.watch(folderScripts+'/**/*.js', ['scripts']);
+    gulp.watch(folderStyles+'/**/*.scss', ['scss']);
     gulp.watch(['**/*.php'], ['gen-html']);
-    gulp.watch(["index.html"]).on('change', browserSync.reload);
+    gulp.watch(['index.html']).on('change', browserSync.reload);
 });
 
 gulp.task('setWatch', function() {

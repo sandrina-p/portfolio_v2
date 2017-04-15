@@ -83,7 +83,7 @@ $textPaddingTab: 20vw;
             line-height: $lineHeightL;
             color: $clrGrayLighter;
 
-            &:before {
+            &::before {
                 content: '. ';
                 color: $clrPrimary;
                 font-size: $fontXS;
@@ -92,7 +92,7 @@ $textPaddingTab: 20vw;
     }
 
     &-answer {
-        &:before {
+        &::before {
             content: "_";
             position: absolute;
             color: $sentClr;
@@ -172,7 +172,7 @@ $textPaddingTab: 20vw;
         }
 
         &-answer {
-            &:before {
+            &::before {
                 left: calc(#{$textPaddingTab} - #{$safeArea});
             }
         }
@@ -183,7 +183,7 @@ $textPaddingTab: 20vw;
     position: absolute;
     left: calc(#{$textPaddingMob} - #{$safeArea/2});
     bottom: $safeArea*1;
-    &:before {
+    &::before {
         color: $clrLight;
         content: "0 * . _ ;";
         display: block;

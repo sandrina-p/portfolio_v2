@@ -16,7 +16,6 @@ $cvPaddingLeft: 10vw;
     padding-top: $safeArea*3;
 }
 
-
 @mixin ListAlignments {
     width: 50%;
     &:nth-of-type(2n+1) { text-align: left; }
@@ -60,7 +59,7 @@ $cvPaddingLeft: 10vw;
         width: 200vw;
         height: 200vw;
         top: 50vh;
-        background: radial-gradient(-10% 50%, circle, rgba(#004040, 0.7) 2%, rgba(0,0,0,0) 35%);
+        background: radial-gradient(-10% 50%, circle, rgba(#004040, 0.7) 2%, rgba(0, 0, 0, 0) 35%);
 
         &.is-js {
             top: 850vh;
@@ -99,10 +98,6 @@ $cvPaddingLeft: 10vw;
 
         &-header {
             text-align: center;
-
-            // & + * {
-            //     // margin-top: $safeArea*14;
-            // }
         }
     }
 
@@ -112,12 +107,7 @@ $cvPaddingLeft: 10vw;
         font-family: $font-mono;
         font-weight: $fMed;
         padding: $safeArea*6 0 0;
-
-        // position: absolute;
-        // width: 100%;
-        // font-size: 12vw;
-        // z-index: -1;
-        // opacity: 0.1 !important;
+        text-transform: lowercase;
 
         &.is-js {
             transform: scale(0.5);
@@ -145,7 +135,7 @@ $cvPaddingLeft: 10vw;
         @extend %cvSub;
 
         &:not(:first-of-type) {
-            margin-top: $safeArea/3*4;
+            margin-top: $safeArea / 3 * 4;
         }
     }
 
@@ -162,15 +152,6 @@ $cvPaddingLeft: 10vw;
 
         &:hover {
             border-bottom: 1px dotted $clrLight;
-
-            .fa {
-                color: $clrPrimarySoft;
-            }
-        }
-
-        .fa {
-            color: $clrWhite;
-            font-size: $fontS;
         }
     }
 
@@ -180,7 +161,6 @@ $cvPaddingLeft: 10vw;
         margin-left: auto;
         margin-right: auto;
         @extend %cf;
-
         @include isJs-List;
 
         .link {
@@ -198,21 +178,20 @@ $cvPaddingLeft: 10vw;
             justify-content: center;
             padding: $safeArea*3 0 $safeArea*2;
             white-space: nowrap;
-
             @include flexboxProp {
                 align-items: center;
 
-                &:before {
+                &::before {
                     margin-right: $safeArea/2;
                 }
 
-                &:after {
+                &::after {
                     margin-left: $safeArea/2;
                 }
             }
 
-            &:before,
-            &:after {
+            &::before,
+            &::after {
                 content: '';
                 width: 1%;
                 height: 1px;
@@ -223,9 +202,8 @@ $cvPaddingLeft: 10vw;
             }
 
             .is-active & {
-
-                &:before,
-                &:after {
+                &::before,
+                &::after {
                     width: 50%;
                 }
             }
@@ -236,7 +214,6 @@ $cvPaddingLeft: 10vw;
             font-family: $font-mono;
             font-size: $fontS;
             color: $clrGrayLight;
-
             @include ListAlignments;
 
             li {
@@ -295,7 +272,6 @@ $cvPaddingLeft: 10vw;
                 padding-bottom: $safeArea*1.5;
             }
         }
-
     }
 
 
@@ -304,7 +280,6 @@ $cvPaddingLeft: 10vw;
 
         &-proj {
             padding: 0 $safeArea/2;
-
             @include isJs-List;
 
             &-sub {
@@ -350,7 +325,6 @@ $cvPaddingLeft: 10vw;
         }
     }
 
-
     @include media(untilPhablet) {
         &-list {
             &-ul {
@@ -390,7 +364,6 @@ $cvPaddingLeft: 10vw;
                     }
                 }
 
-
                 &--all {
                     width: 100%;
 
@@ -399,7 +372,6 @@ $cvPaddingLeft: 10vw;
                         text-align: center;
                     }
                 }
-
             }
 
             &-dl {
@@ -418,7 +390,6 @@ $cvPaddingLeft: 10vw;
                 &:nth-of-type(2n) {
                     padding-right: 0;
                 }
-
             }
         }
 
@@ -440,21 +411,20 @@ $cvPaddingLeft: 10vw;
                     position: absolute;
                     padding: 0;
 
-                    &:nth-child(1){transform:translate(-3vw, 1%);} //n
-                    &:nth-child(2){transform:translate(22vw, 50%);} //14
-                    &:nth-child(3){transform:translate(-25vw, 140%);} //red
-                    &:nth-child(4){transform:translate(-40vw, 200%);} //det
-                    &:nth-child(5){transform:translate(4vw, 220%);} //port
-                    &:nth-child(6){transform:translate(-30vw, 380%);} //ps
-                    &:nth-child(7){transform:translate(30vw, 350%);} //mo
-                    &:nth-child(8){transform:translate(-5vw, 500%);} //cm
+                    &:nth-child(1) { transform: translate(-3vw, 1%); } //n
+                    &:nth-child(2) { transform: translate(22vw, 50%); } //14
+                    &:nth-child(3) { transform: translate(-25vw, 140%); } //red
+                    &:nth-child(4) { transform: translate(-40vw, 200%); } //det
+                    &:nth-child(5) { transform: translate(4vw, 220%); } //port
+                    &:nth-child(6) { transform: translate(-30vw, 380%); } //ps
+                    &:nth-child(7) { transform: translate(30vw, 350%); } //mo
+                    &:nth-child(8) { transform: translate(-5vw, 500%); } //cm
                 }
             }
         }
     }
 
     @include media(tablet) {
-
         &-header {
             @extend %cf-tab;
             @include fallback(padding, $safeArea*6 0, 25vh 0 $safeArea*4);
@@ -464,32 +434,31 @@ $cvPaddingLeft: 10vw;
                 width: 50%;
             }
         }
-
     }
-
 }
 
 
 .onWeb {
-    &-href {
-        a {
-            display: inline-block;
-            margin: $safeArea;
+    // &-href { }
 
-            .fa {
-                font-size: $fontXL;
-                color: $clrPrimarySoft;
+    &-link {
+        display: inline-block;
+        margin: $safeArea;
+    }
 
-                &:hover {
-                    color: $clrWhite;
-                }
-            }
+    &-icon {
+        width: 2rem;
+        height: 2rem;
+        fill: $clrPrimarySoft;
+
+        &:hover {
+            fill: $clrWhite;
         }
     }
 
     &-dd,
     &-site {
-        min-height: $safeArea/2*3;
+        min-height: $safeArea / 2 * 3;
     }
 }
 
@@ -500,7 +469,6 @@ $cvPaddingLeft: 10vw;
     width: 100%;
     left: 0;
     background: $clrDark;
-    z-index: 1;
     bottom: -$safeArea*2;
     animation: navCVshow $speed/2 steps(10);
     animation-delay: 2800ms;
@@ -532,8 +500,8 @@ $cvPaddingLeft: 10vw;
 
 
 @keyframes navCVshow {
-    0% {bottom: -$safeArea*2;}
-    100% {bottom: 0;}
+    0% { bottom: -$safeArea*2; }
+    100% { bottom: 0; }
 }
 
 @import "myself/mee";
@@ -542,7 +510,8 @@ $cvPaddingLeft: 10vw;
 .psst {
     display: block;
     position: fixed;
-    left: 0; bottom: 0;
+    left: 0;
+    bottom: 0;
     z-index: -1;
     width: 100%;
     background: $clrLight;
