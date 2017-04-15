@@ -16,7 +16,7 @@
             </div>
         </div>
 
-        <div class="chatSection jsOnNav js-ignoreBot jsLoading">
+        <div class="chatSection jsOnNav js-ignoreBot jsLoading" aria-hidden="true">
             <div class="chatPart">
                 <div class="chatPart-human">
                     <button type="button" name="bot" id="btn-bot" class="chatPart-title js-botTrigger" data-gaec="chatNavL" aria-label="About - This is a chat with me where I explain how I was built technically. Despite being the part that most of users love more, unfortunately it's the worse part of me for users like you. I'm sorry about that, I'm working on it!"></button>
