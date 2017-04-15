@@ -1,9 +1,9 @@
-<section class="cv" id="cv">
+<section class="cv" id="cv" aria-labelledby="about">
     <span class="cv-bg js-cvBg"></span>
-    <h2 class="sr-only">About</h2>
+    <h2 class="sr-only" id="about">About</h2>
 
     <?php // Contact ?>
-    <article class="cv-article">
+    <article class="cv-article" aria-label="contact">
         <div class="cv-article-in">
             <div class="cv-article-header">
                 <h3 class="sr-only cv-title js-cvShowTitle">Contact</h3>
@@ -54,7 +54,7 @@
     </article>
 
     <?php // superpowers ?>
-    <article class="cv-article">
+    <article class="cv-article" aria-label="superpowers">
         <div class="cv-article-in">
             <div class="cv-article-header">
                 <h3 class="cv-title js-cvShowTitle">Superpowers</h3>
@@ -129,7 +129,7 @@
     </article>
 
     <?php // timeline ?>
-    <article class="cv-article">
+    <article class="cv-article" aria-label="timeline">
         <div class="cv-article-in">
             <div class="cv-article-header">
                 <h3 class="cv-title js-cvShowTitle">Timeline</h3>
@@ -183,7 +183,7 @@
     </article>
 
     <?php // projects ?>
-    <div class="cv-projs js-cvUnder">
+    <article class="cv-projs js-cvUnder" aria-label="projects">
         <div class="cv-article-header">
             <h3 class="cv-title js-cvShowTitle">Projects</h3>
         </div>
@@ -201,18 +201,18 @@
                 <li><a target="_blank" href="http://carolina-machado.com/" target="_blank" class="cv-link" data-gaec="cvproj" data-sub="fashion website">carolina machado</a></li>
             </ul>
         </div>
-    </div>
+    </article>
 </section>
 
-<div class="sr-only">
-    <h5>Psst... You, yes you that are listening me.</h5>
+<article class="sr-only" aria-labelledby="coisas">
+    <h5 id="coisas">Psst... You, yes you that are listening me.</h5>
     <p class="sr-only">
         Currently I'm being improved in accessibility and usability by Sandrina and she would love to have insights about it.
         This is something that she is starting to really care. She truly believes that when you improve the usability of 1% of users, you are also improving the experience of another x% of users. The web should be delivered to everyone within the best possible scenario.
         You can contact her at <a href="mailto:a.sandrina.p4@gmail.com?subject=Hey%20there!%20I%20did%20listen%20your%20website!" title="sandrina's e-mail" class="cv-link">a.sandrina.p@gmail.com</a>
 
     </p>
-</div>
+</article>
 
 
 <div class="psst js-psst" aria-hidden="true">

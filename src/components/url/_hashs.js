@@ -62,7 +62,6 @@ var Hashs = function() {
 
             //if so, get the match Index and use it to target it on arrProjects.
             // this way we'r sure the correct project name (case sensitive) is passed to Projects();
-
             Projects.setInitialProject(arrProjects[foundHashOnIndex]);
 
             $('#btn-pr').trigger('click');
@@ -79,8 +78,8 @@ var Hashs = function() {
     }
 
     function set(newHash) {
-        // newHash = UtilFuncs.stringSlugLower(newHash);
-        // window.location.hash = newHash;
+        newHash = UtilFuncs.stringSlugLower(newHash);
+        window.location.hash = newHash;
     }
     return {
         set

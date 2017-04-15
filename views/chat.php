@@ -26,8 +26,6 @@
     </nav>
 </div>
 
-<div class="bot jsLoading" id="bot"><!-- ◉_◉ js --></div>
-
-<div class="navCV" aria-hidden="true">
-    <a href="#cv" class="navCV-link" data-gaec="navCV">Let's cut the bullshit. Who is she?</a>
+<div class="navCV">
+    <a href="#cv" class="navCV-link" data-gaec="navCV" aria-hidden="true">Let's cut the bullshit. Who is she?</a>
 </div>
