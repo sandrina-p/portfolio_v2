@@ -1,0 +1,19 @@
+/*------------------------------------*\
+    # INDEX.SCSS
+    * created by Sandrina Pereira
+    * v2.1.1 12 april 2017
+\*------------------------------------*/
+
+
+/*------------------------------------*\
+#IMPORTS
+\*------------------------------------*/
+@import "components/utilities/scss";
+@import "components/utilities/typography";
+@import "components/utilities/buttons";
+
+// header is on critical.scss
+@import "components/chat/chat";
+@import "components/projects/projects";
+@import "components/cli/bot";
+@import "components/cv/cv";

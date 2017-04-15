@@ -1,11 +1,5 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0"><link href="https://fonts.googleapis.com/css?family=Roboto+Mono:300,400,700" rel="stylesheet"><link href="https://fonts.googleapis.com/css?family=Ubuntu:400,700" rel="stylesheet"><title>Sandrina Pereira - front-end developer | UX / Interaction Design</title><meta name="copyright" content="@2016 Mariana Freitas and Sandrina Pereira"><meta name="description" content="I want to introduce you to someone who spends her time exploring new ways to connect people like you with websites like me"><meta name="Designer" content="Sandrina Pereira"><meta name="language" content="en-US"><meta name="subject" content="internet, design, web development"><meta name="DC.title" content="Sandrina Pereira"><meta name="DC.creator " content="Sandrina Pereira"><meta name="DC.creator.address" content="a.sandrina.p@gmail.com"><link rel="icon" type="image/png" href="src/media/metatags/favicon16.png" sizes="16x16"><link rel="icon" type="image/png" href="src/media/metatags/favicon32.png" sizes="32x32"><link rel="icon" type="image/png" href="src/media/metatags/favicon64.png" sizes="64x64"><link rel="icon" type="image/png" href="src/media/metatags/favicon180.png" sizes="180x180"><meta name="twitter:card" content="Psst.. Hey there"><meta name="twitter:site" content="sandrina-p.net"><meta name="twitter:title" content="sandrina pereira website"><meta name="twitter:description" content="I want to introduce you to someone who spends her time exploring new ways to connect people like you with websites like me"><meta name="twitter:image" content="src/media/metatags/card.png"><meta property="og:title" content="Psst... Hey there"><meta property="og:type" content="website"><meta property="og:url" content="//www.sandrina-p.net"><meta property="og:image" content="src/media/metatags/card.png"><style></style><!--[if lt IE 9 || IE9]>
-        <link rel="stylesheet" href="src/index.min.css">
-    <![endif]--><noscript><link rel="stylesheet" href="src/index.min.css"><style>.noscript, .navCV, .chat, .js-psst { display:none!important; }</style></noscript></head><body><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-        ga('create', 'UA-70069700-3', 'auto');
-        ga('send', 'pageview');</script><div class="heyThere"><h1 class="sr-only">Sandrina Pereira - Interaction Design and front-end developer</h1><p class="heyThere-hey" aria-hidden="true"><span>H</span><span>e</span><span>y</span><br><span>t</span><span>h</span><span>e</span><span>r</span><span>e</span></p><header class="heyThere-intro"><p><span class="sr-only">Hey There!</span> I want to introduce you to someone. <span class="nowrap">She is a</span> <strong>front-end developer</strong> with a great passion for <strong class="nowrap">interaction design</strong>. <span class="heyThere-br"></span> <span class="noscript">Where would you like to start?</span></p></header></div><main><div class="chat jsLoading" id="chat"><!-- js --><nav class="chat-nav" id="chat-nav" aria-label="I confess right now this can be hard for who is only listening me. I'm being improved in order for you to use me easily!"><div class="chatSection jsOnNav jsLoading js-chatBtn" id="practice"><div class="chatPart" id="practice-intro"><div class="chatPart-human"><button type="button" name="practice" id="btn-pr" class="chatPart-title js-chatOpt" data-gaec="chatNavL" aria-label="Projects - here you have a navigation in loop that toggles each project at the time"></button></div></div></div><div class="chatSection jsOnNav jsLoading js-chatBtn" id="journey"><div class="chatPart" id="journey-intro"><div class="chatPart-human"><button type="button" name="journey" id="btn-jr" class="chatPart-title js-chatOpt" data-gaec="chatNavL" aria-label="Journey - Each time a new topic shows up, it will show 2 buttons to choose another topic about my journey"></button></div></div></div><div class="chatSection jsOnNav js-ignoreBot jsLoading"><div class="chatPart"><div class="chatPart-human"><button type="button" name="bot" id="btn-bot" class="chatPart-title js-botTrigger" data-gaec="chatNavL" aria-label="About - This is a chat with me where I explain how I was built technically. Despite being the part that most of users love more, unfortunately it's the worse part of me for users like you. I'm sorry about that, I'm working on it!"></button></div></div></div></nav></div><div class="navCV"><a href="#cv" class="navCV-link" data-gaec="navCV" aria-hidden="true">Let's cut the bullshit. Who is she?</a></div><section class="cv" id="cv" aria-labelledby="about"><span class="cv-bg js-cvBg"></span><h2 class="sr-only" id="about">About</h2><article class="cv-article" aria-label="contact"><div class="cv-article-in"><div class="cv-article-header"><h3 class="sr-only cv-title js-cvShowTitle">Contact</h3></div><dl class="cv-dl js-onWebAfter js-cvShow"><dt class="cv-dt"><a href="mailto:a.sandrina.p4@gmail.com?subject=Hey%20there!" title="sandrina's e-mail" class="cv-link">a.sandrina.p@gmail.com</a></dt><dd class="cv-dd">waiting for your call</dd></dl><div class="onWeb cv-dl"><div class="onWeb-site"><span class="cv-dt js-onWeb-site">social networks</span></div><div class="onWeb-href"><a href="//codepen.io/sandrina-p" target="_blank" title="sandrina's codepen" aria-label="codepen - because coding without fun is just boring" class="onWeb-link js-onWeb-link" data-site="codepen" data-dd="because coding without fun is just boring"><svg viewBox="0 0 26 26" aria-hidden="true" class="onWeb-icon"><use class="code" xlink:href="src/media/svg/sprite.svg#codepen"/></svg> </a><a href="//github.com/sandrina-p" target="_blank" title="sandrina's github" aria-label="github - Sharing it's what make us better" class="onWeb-link js-onWeb-link" data-site="github" data-dd="Sharing it's what make us better"><svg viewBox="0 0 26 26" aria-hidden="true" class="onWeb-icon"><use class="code" xlink:href="src/media/svg/sprite.svg#github"/></svg> </a><a href="//stackoverflow.com/story/sandrina" target="_blank" title="sandrina's stack-overflow" aria-label="stack-overflow - helping others is as important as being helped" class="onWeb-link js-onWeb-link" data-site="stack-overflow" data-dd="helping others is as important as being helped"><svg viewBox="0 0 26 26" aria-hidden="true" class="onWeb-icon"><use class="code" xlink:href="src/media/svg/sprite.svg#stack-overflow"/></svg> </a><a href="//www.twitter.com/a_sandrina_p" target="_blank" title="sandrina's twitter" aria-label="twitter - where geeks share geek stuff" class="onWeb-link js-onWeb-link" data-site="twitter" data-dd="where geeks share geek stuff"><svg viewBox="0 0 26 26" aria-hidden="true" class="onWeb-icon"><use class="code" xlink:href="src/media/svg/sprite.svg#twitter"/></svg></a></div><div class="onWeb-desc" aria-hidden="true"><span class="cv-dd js-onWeb-dd">not a big fan of facebook</span></div></div></div></article><article class="cv-article" aria-label="superpowers"><div class="cv-article-in"><div class="cv-article-header"><h3 class="cv-title js-cvShowTitle">Superpowers</h3></div><div class="cv-list js-cvShow"><h4 class="cv-list-title">new in town</h4><ul class="cv-list-ul cv-list-ul--split"><li>React</li><li>Webpack 2</li><li>NodeJS</li><li>Redux</li><li>PostCSS</li><li>Google Firebase</li></ul></div><div class="cv-list js-cvShow"><h4 class="cv-list-title">rocking at</h4><ul class="cv-list-ul"><li>HTML5</li><li>SEO | A11Y</li><li>CSS3 / SCSS</li><li>SUIT methologody</li></ul><ul class="cv-list-ul"><li>Javascript</li><li>ES2015 / ES6</li><li>JS Modular Pattern</li><li>jQuery</li></ul><ul class="cv-list-ul"><li>E-mails</li><li>Jekyll</li><li>PHP</li><li>Tumblr</li></ul></div><div class="cv-list js-cvShow"><h4 class="cv-list-title">with the help of</h4><ul class="cv-list-ul"><li>Atom</li><li>Git</li><li>Gulp</li><li>Toggl</li></ul><ul class="cv-list-ul"><li>Caniuse</li><li>Browserstack</li><li>Google Analytics</li><li>Mouseflow</li></ul><ul class="cv-list-ul"><li>Sketch</li><li>Adobe Tools</li><li>Zeplin</li><li>Invision</li></ul></div><div class="cv-list js-cvShow"><h4 class="cv-list-title">natural powers</h4><ul class="cv-list-ul cv-list-ul--all"><li>Daily exploration</li><li>Great retention</li><li><em>Less is more only when more is too much</em></li></ul></div></div></article><article class="cv-article" aria-label="timeline"><div class="cv-article-in"><div class="cv-article-header"><h3 class="cv-title js-cvShowTitle">Timeline</h3></div><div class="cv-list js-cvShow"><h4 class="cv-list-title">crossed paths with</h4><dl class="cv-list-dl"><dt><a href="https://www.farfetch.com" target="_blank" class="link">Farfetch</a></dt><dd class="cv-list-dl-date">since jan'17</dd><dd class="cv-list-dl-desc">ui developer</dd><dt><a href="https://www.zaask.pt" target="_blank" class="link">Zaask</a></dt><dd class="cv-list-dl-date">oct'15 - dez'16</dd><dd class="cv-list-dl-desc">front-end developer</dd><dt><a href="https://en.pure.dating/" target="_blank" class="link">Pure</a></dt><dd class="cv-list-dl-date">jul-sep'15</dd><dd class="cv-list-dl-desc">ui|ux designer</dd></dl><dl class="cv-list-dl"><dt>Post-graduation <span class="at">@ <a href="http://www.belasartes.ulisboa.pt/" target="_blank" class="link">FBAUL</a></span></dt><dd class="cv-list-dl-date">2015'16</dd><dd class="cv-list-dl-desc">Digital Experience Design</dd><dt>Erasmus <span class="at">@ <a href="http://www.fba.up.pt/" target="_blank" class="link">FBAUP</a></span></dt><dd class="cv-list-dl-date">2014'15</dd><dd class="cv-list-dl-desc">Communication Design</dd><dt>Degree <span class="at">@ <a href="http://www.belasartes.ulisboa.pt/" target="_blank" class="link">FBAUL</a></span></dt><dd class="cv-list-dl-date">2012'15</dd><dd class="cv-list-dl-desc">Communication Design</dd></dl></div><div class="cv-list js-cvShow"><h4 class="cv-list-title">shared bytes with</h4><dl class="cv-list-dl"><dt><a href="http://www.codeschool.com/" target="_blank" class="link">Code School</a></dt><dd class="cv-list-dl-desc">SCSS, JS, ES2015, jQuery, etc...</dd></dl><dl class="cv-list-dl"><dt><a href="https://www.youtube.com/learncodeacademy/" target="_blank" class="link">LearnCode.academy</a></dt><dd class="cv-list-dl-desc">Modular JS, React, etc..</dd></dl></div></div></article><article class="cv-projs js-cvUnder" aria-label="projects"><div class="cv-article-header"><h3 class="cv-title js-cvShowTitle">Projects</h3></div><div class="cv-projs-proj js-cvShow"><span class="cv-projs-proj-sub js-cvProjSub" aria-hidden="true" id="cvProjSub"></span><ul class="cv-projs-proj-ul js-cvProj"><li><a target="_blank" href="https://vimeo.com/176452854" class="cv-link" data-gaec="cvproj" data-sub="video game concept" aria-labelledby="cvProjSub">N O X</a></li><li><a target="_blank" href="https://vimeo.com/115483647" class="cv-link" data-gaec="cvproj" data-sub="3D animation" aria-labelledby="cvProjSub">141205</a></li><li><a target="_blank" href="https://sandrina-p.github.io/rede-expressos/" class="cv-link" data-gaec="cvproj" data-sub="web and app concept redesign" aria-labelledby="cvProjSub">Rede Expressos</a></li><li><a target="_blank" href="https://www.behance.net/gallery/26687261/Digital-Magazine-Dutch-experimental-typography" class="cv-link" data-gaec="cvproj" data-sub="digital magazine" aria-labelledby="cvProjSub">DET</a></li><li><a target="_blank" href="https://sandrina-p.github.io/portfolio-15/" class="cv-link" data-gaec="cvproj" data-sub="previous website" aria-labelledby="cvProjSub">portfolio 15</a></li><li><a target="_blank" href="https://sandrina-p.github.io/pistol-shrimp" class="cv-link" data-gaec="cvproj" data-sub="net label website" aria-labelledby="cvProjSub">pistol shrimp</a></li><li><a target="_blank" href="https://sandrina-p.github.io/moon/" class="cv-link" data-gaec="cvproj" data-sub="movie website" aria-labelledby="cvProjSub">moon</a></li><li><a target="_blank" href="http://carolina-machado.com/" target="_blank" class="cv-link" data-gaec="cvproj" data-sub="fashion website" aria-labelledby="cvProjSub">carolina machado</a></li></ul></div></article></section><article class="sr-only" aria-labelledby="coisas"><h5 id="coisas">Psst... You, yes you that are listening me.</h5><p class="sr-only">Currently I'm being improved in accessibility and usability by Sandrina and she would love to have insights about it. This is something that she is starting to really care. She truly believes that when you improve the usability of 1% of users, you are also improving the experience of another x% of users. The web should be delivered to everyone within the best possible scenario. You can contact her at <a href="mailto:a.sandrina.p4@gmail.com?subject=Hey%20there!%20I%20did%20listen%20your%20website!" title="sandrina's e-mail" class="cv-link">a.sandrina.p@gmail.com</a></p></article><div class="psst js-psst" aria-hidden="true"><p class="psst-title">psst...</p><p class="psst-parag">Maybe now you want to talk about her.<br>I can tell you more about her projects.<br>What do you think?</p><button type="button" name="true" class="chatPart-title js-botProjects" data-gaec="psst">yah, sure</button> <button type="button" name="false" class="chatPart-title js-botTrigger" data-gaec="psst">who are you?</button> <span class="js-scrolled"><!-- try me on mobile--></span></div><noscript><div class="psst"><p class="psst-title">ಠ_ಥ</p><p class="psst-parag">You came so far with that old browser.<br>Most of people don't care about users like you, but not Sandrina.<br>Ah yes, that's here name! Don't forget to talk about her and share me!<br><small><i>p.s. Ask your son or boss to install a better browser<span class="nowrap" aria-hidden="true">¯\_(ツ)_/¯</span></i></small></p></div></noscript></main><div class="cv-ascii" aria-hidden="true"><pre class="myself0" style="display:none">
+<div class="cv-ascii" aria-hidden="true">
+<pre class="myself0" style="display:none;">
 ymmmooNmhyd/+mdhdhd:/hyhoyyydy:::-:-----:/+++/::-.``            `   ```......-:--.////////::``..--..
 oNddh:mmhsdo/hhhhhhhhhyysyysdh/++++++++//:--.````````````````````   ```..-::://.-`/::---./+/``.-.-.-
 /mddd+hhdohddhhhhhhhhhhhyyo/hd:--..--.--------.....``````````````   ```-:..````          os+``--.-:-
@@ -57,7 +51,8 @@ yysso-/://-//:/++:.---..``....+/://::`syyyyydmNNNNNNNNMMMMMMMNmo-/o+..//.`      
 /:-::-:----::./---.-.--.:...:-:::.`````     ``..``     ```` ```.-:/++++++//+sdmNy+ssss+-````````````
 :--:/::-::.:-:/-:---...-:--::.--.`````      ```.``     ````````.-://///+++yhhhmy+o+++/+:``` `````
 /:-:---:---.-:-//:/:-//-:-.:/.-```````       ````    `````` ``..-://///+shs+yhooo+/+//o:`` ` ``
-</pre><pre class="mee myself1" style="display:none">
+</pre>
+<pre class="mee myself1" style="display:none;">
 MMMysMMNhMs+mmNNMNmymdNmsNhMM+--::++osyyhyo/.                        ```.`-:/:+/`:`yssoo+//// `.--..
 MMMN:dmMyNmhdmNNNNmmdmmNymomMdys+//:-.`..--.-.```````````````  ``    ```.:::-::: ``.``    ydy `...--
 NMMMdNNNyNNNNNNNMNNNNNNNhm:sMs.:--::---:::---....``````  `  `` ``    ` :s.                dms `...-.
@@ -109,7 +104,8 @@ MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
 MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
 MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
 MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
-</pre><pre class="mee myself2" style="display:none">
+</pre>
+<pre class="mee myself2" style="display:none;">
 hdNyyhhyhoo+sdyhyhsd++hyyysyy:yy+++s+ohsys+-+:::+-o/:.+/:/-+MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
 dsho+hsd/moyhs+yoysodoy+yy+oyy+//o:s++::++oo++o+:y-/:o+o-:+sMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
 hod+oyssoysosdsyohsydshoyh+oms/+hoos+soo:sss://-s+/:+:-:o/:dMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
@@ -161,7 +157,9 @@ yyyyhyhdyssyhyhs+syydhdodmhhh++sy+dyoodsdhoo+hyd/oyosyhMMMMMMMMMMMMMMMMMMMMMMMMM
 hsdh/hdhhydhdhydoyomhsyosdyyh+ssy:dy/o+yshyhoys+s:soosNMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
 yydoyhdhddhmhssoydhNyosydmossys/+sooyysyy/yyooso+ys+o+mMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
 +yhoh+hoydyshhyshhdhyNssd+/oshhss++shshsysooyh/o/y+/oohMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
-</pre><pre class="mee myself3" style="display:none">
+</pre>
+
+<pre class="mee myself3" style="display:none;">
 .:/.o.-+s/:+:-/++o/-://+oos/://///++++oooo++:.``      ```` `````.`  `-..:-/+ooss./.yyysyoosso`--:/::
 `//::-:/s+--:/+oo+ossssos+s/:+//++//::-::////::--.............`..`  `-.-++++////`.`-.```  oso`-::://
 -//////+so+ooooo+osssssos++o/::++++o++oooo+++////:-.......``.-..-`  `-`+y:                ss+`.:::/:
@@ -213,7 +211,9 @@ mNNNNNMMMNNNNMMMMNNmNNNMNNMMNmNNNMMMMMMddNMMMMMMMMMMMMMMMMMMMMMMMNmhhyhyhhhhyyhh
 NMNMNNMMMmNNMNNMMMMNMNMNNNNNmmMmNMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMNmdhhhyhhddddo` :do:/+hNMMMMMMMMMMM
 MNMNNNMMMMNdNdNNmNNMMMMNmMNNNMNmMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMNNmdddddddy+-.`:hyyhyhdmMMMMMMMMMMM
 mMdmNNNNNMNNNmNmmNMMNmNNNNNmNMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMNNmdmmddh/-oy.+hhydddmydMMMMMMMMMMM
-</pre><pre class="mee myself4" style="display:none">
+</pre>
+
+<pre class="mee myself4" style="display:none;">
 hys+y+syyssy+ossysosysyysssysssyyyyysyysyssyhsyydhhyyhhyoyyyhyyssssoyshosodNMMMM+d-MMMMMMm+os-d+os+N
 :sssy+ssssysososssyssysssosysssssyyhsssysyysysysysyyyyyysyysysysos+hyyyyhyNddhNdymoMMMMMMsd+s-d+o+sh
 ysssysssysyssssyyysyyyyyssyysyhyyyyssyyysysyyssssyysssyyysyyyysyyohshy/+y-. --h/NNMMMMMMMsd+s:h+os+o
@@ -265,7 +265,9 @@ os+os/y++h-s+d-sos+os-yss-d+sMMMhshdmhyssyMMMMMMMMMMMMMMMMMMmmohMMMMMMhoo+y+os+o
 s-d+os+oo/h+oosooooo+h:sso:ssMMMos+NMMhoohMMMMMMMMMMMMMMMMMMdd-yMMMMMMd++d-sossmmN-MMMMMMMMMMMMM+d-s
 os+oos/ss/sosMMMs/y++d:oos/ssMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMss/y++osoyMMMod-MMMMMMMMMMMMMo+so
 s/y+os/ss/sooNym+d-so+oooyoddMMMMMMMMMMMMMMMMMMMdNyMMMMMMMMMMMMMMMMdym+oo+mhmMMMymoMMMNddNMMMMMMo+so
-</pre><pre class="mee myself5" style="display:none">
+</pre>
+
+<pre class="mee myself5" style="display:none;">
  ``+y``-o.oh:.--.-:+:/--s:o.`hNNNMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMNmmmddNmNsyyhhdmdmmMMNNNNN
  `..d--.s--/:-----:////:s-h:`/osmMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMNNNNNmmmMMMNNMMMMMo/oMMNNNNN
 ``../---o:-:----.-::::::o/ms.oNmNMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMmyNMMMMMMMMMMMMMMMM+/sMMNNNNN
@@ -317,7 +319,9 @@ MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
 MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
 MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
 MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
-</pre><pre class="mee myself6" style="display:none">
+</pre>
+
+<pre class="mee myself6" style="display:none;">
                                          .yo/.                   ``  `-`.``  `s+o+d-so++s////: `.--..
                                         `--.-.```````````````  ``` ``....`  `s+os/y+o++s  ydy `...--
                                         `:---....``````  `  `` `.` ``.`:s-y++s+oo+soos/s  hds  ...-.
@@ -369,7 +373,9 @@ ooooosooo+y+o+sos-d+s-yoo:d+s:h++d--  /oo/d+s/y+                   :+.:     `s+o
 o+sos/y++s+oo+so+h:so+oooooos-d+s:h   :++y:s+y:s                   /s-/     `s+os/y+o++ss-  .:y+
 s-d+os+ooo+oo+soos+o+d+++d-sos+os-d      +-s+                            `y+os+oo+soos/ss-d++
 os+o+h+++s+os/y+os+oos/ss/soo+so/.o      `/:-         `--`               .-:/+so-o./:-/ss-d++/`-
-</pre><pre class="mee myself7" style="display:none">
+</pre>
+
+<pre class="mee myself7" style="display:none;">
  ``+y``-o.oh:.--.-:+:/--s:o.`hNNmdhhysoooohmMMMMMMMMMMMMMMMMMNNmNNNMMMMMMMNmmmddNmNsyyhhdmdmmMMNNNNN
  `..d--.s--/:-----:////:s-h:`/oshdddmNMMNNNNNMMMMMMMMMMMMMMMMmmmNNNMMMMMMNNNNmmmMMMNNMMMMMo/oMMNNNNN
 ``../---o:-:----.-::::::o/ms.oNmNNmmNNNNNNNNNMMMMMMMMMMMNMNNNNmdNmNMNMNNNMMMMMMMMMMMMMMMMM+/sMMNNNNN
@@ -421,7 +427,9 @@ MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
 MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
 MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
 MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
-</pre><pre class="mee myself8" style="display:none">
+</pre>
+
+<pre class="mee myself8" style="display:none;">
 MMMysMMNhMy+mNNNNNmymdNmsmhMM/--::++osyhhyo/.   hMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
 MMMN:mmMyNmymNNNNNmmmmmmymomMdys+//:--`..--...``mMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
 MMMMdNNNyNNNNNNNNNNNNNNNhd:sMs.---::---:::--..`.mMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
@@ -473,17 +481,5 @@ ddd.  sMMMMMmoooooooooo++s+os-h/+s/mmdNmmNMMMMMMMMMmmN+mMMMMMMMMMMMMMMMMMMMMMMMM
  ``   sMMMMMms+oos+os/soos+os:y+o+sooo+ooy-s+y:sMMMs+ohMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMN-o+o/+s:y+
 mMMs/dsMMMMMmy/so+soosoooh-so+soMMMss:h++oy++y/sMMM-  sMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMo+oo+soo+so
 mNNysddMMMMMNssso+sos:sooy-so+somyNo+y/ooo+o+/-:sss.  /NMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMhsoo.o-:/-o
-</pre></div><script>var cb = function() {
-            var l = document.createElement('link'); l.rel = 'stylesheet';
-            l.href = 'src/index.min.css';
-            document.getElementsByTagName('head')[0].appendChild(l);
-        };
-        var raf = requestAnimationFrame || mozRequestAnimationFrame || webkitRequestAnimationFrame || msRequestAnimationFrame;
-        if (raf) raf(cb);
-        else window.addEventListener('load', cb);</script><script defer="defer" src="src/vendor.min.js" charset="utf-8"></script><script defer="defer" src="src/index.min.js" charset="utf-8"></script><script type="text/javascript">var _mfq = _mfq || [];
-        (function() {
-            var mf = document.createElement("script");
-            mf.type = "text/javascript"; mf.async = true;
-            mf.src = "//cdn.mouseflow.com/projects/8e1f3c91-ff33-46ac-8fe9-a35fab3ea005.js";
-            document.getElementsByTagName("head")[0].appendChild(mf);
-        })();</script></body></html>
+</pre>
+</div>
