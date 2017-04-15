@@ -79,8 +79,8 @@ var Hashs = function() {
     }
 
     function set(newHash) {
-        newHash = UtilFuncs.stringSlugLower(newHash);
-        window.location.hash = newHash;
+        // newHash = UtilFuncs.stringSlugLower(newHash);
+        // window.location.hash = newHash;
     }
     return {
         set
