@@ -601,7 +601,7 @@ var cvProjects = function(){
 
         hightlightProject(ArrProj[projI]);
 
-        $cvProjects.on('mouseenter, focus', function(){
+        $cvProjects.on('mouseenter focus', function(){
             removeActive();
             setNewSub($(this).data('sub'));
             setProjLoop(false);
