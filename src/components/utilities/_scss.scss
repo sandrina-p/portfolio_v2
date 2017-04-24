@@ -6,17 +6,14 @@ $clrPrimary: #008080;
 $clrPrimarySoft: #00e8e8;
 $clrPrimaryDark: #004040; //darken($clrPrimary, 15%);
 
-$clrBlack: #000000;
+$clrBlack: #000;
 $clrDark: #121212;
 $clrGrayDarker: lighten($clrDark, 10%);
-// $clrGrayDark: lighten($clrDark, 25%);
 $clrGray: lighten($clrDark, 40%);
 $clrGrayLight: lighten($clrDark, 70%);
 $clrGrayLighter: lighten($clrDark, 85%);
 $clrLight: lighten($clrDark, 88%);
-$clrWhite: #ffffff;
-
-// $clr-error: #ED332A;
+$clrWhite: #fff;
 
 $borderWidth: 1px;
 $borderradius: 0;
@@ -26,14 +23,14 @@ $boxShadow: 0 0 0 1px;
 @function rem($px) {
     // 1rem --> 16px
     // xrem --> $px
-    $rem: $px * 1rem / 16 ;
+    $rem: $px * 1rem / 16;
     @return $rem;
 }
 
 @function em($px) {
     // 1rem --> 16px
     // xrem --> $px
-    $rem: $px * 1em / 16 ;
+    $rem: $px * 1em / 16;
     @return $rem;
 }
 
@@ -67,8 +64,6 @@ $fMed: 400;
 $fBold: 700;
 
 
-
-
 $humanWidthMob: 100%;
 $botWidthMob: 100%;
 
@@ -97,7 +92,6 @@ $chatBotWidthTab: rem(520);
     > %retina2x
     > others
 \*------------------------------------*/
-
 
 
 /*------------------------------------*\

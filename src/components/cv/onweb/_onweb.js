@@ -1,3 +1,7 @@
+/* global TalkChat:false, baffle:false, cvProjects: false */
+/* exported currentText */
+/* global currentText */
+
 var OnWeb = function() {
     var $onWebLink,
         chatContent = TalkChat.conversation,
@@ -33,7 +37,7 @@ var OnWeb = function() {
 
     function cvShowing() {
 
-        //show Titles
+        // show Titles
         $('.js-cvShowTitle').each(function(){
 
             var $t = $(this),
@@ -51,7 +55,7 @@ var OnWeb = function() {
             });
         });
 
-        //show Lists
+        // show Lists
         $('.js-cvShow').each(function(){
 
             var $t = $(this),
@@ -75,7 +79,7 @@ var OnWeb = function() {
         baffleWebSite = baffle('.js-onWeb-site'),
         baffleWebDd = baffle('.js-onWeb-dd');
 
-        $(document).on('mouseenter', '.js-onWeb-link', function(){
+        $(document).on('mouseenter focus', '.js-onWeb-link', function(){
             baffleWebSite
                 .start()
                 .text(currentText => $(this).data('site'))

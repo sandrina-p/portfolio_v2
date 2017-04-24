@@ -1,52 +1,24 @@
 .chat {
+    &-container {
+        @include flexbox;
+        flex-direction: column-reverse;
+        padding-bottom: $safeArea*8;
 
-    &-nav {
-        display: block;
-        position: relative;
+        @include media(tablet) {
+            min-height: 50vh;
+            padding-bottom: 80vh;
+        }
     }
 
     &Section {
-        padding-bottom: $safeArea*4;
         transition: all 500ms;
 
-        //when user didn't clicked it yet
-        &.jsOnNav {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            padding: 0;
-            z-index: 3;
-
-            .chatPart:first-of-type {
-                padding-bottom: 0;
-                .chatPart {
-
-                    &-title {
-                        font-size: $fontM;
-
-                        &:hover {
-                            color: $clrLight;
-                            animation: glitch 2s steps(100) infinite;
-                        }
-                    }
-
-                    &-human {
-                        width: auto;
-                        padding: 0;
-                        transition: width 0s 2s, padding 250ms, opacity 1s;
-                    }
-                }
-            }
-        }
-
-        //show btn when page is ready
-        &.jsLoading {
-            opacity: 0;
-        }
-
-        //each section
-        &:first-of-type {
+        &:first-child {
             padding-top: 0;
+        }
+
+        &:last-child {
+            padding-bottom: $safeArea*3;
         }
     }
 
@@ -58,20 +30,11 @@
         @extend %cf;
 
         //each section
-        &:first-of-type {
+        &:first-child {
             .chatPart {
                 &-human,
                 &-bot {
                     padding-top: 0;
-                }
-
-                &-human {
-                    display: block;
-                    border-right: none;
-                    transition: padding 250ms;
-                    opacity: 1;
-                    animation: none;
-                    animation-delay: 0;
                 }
 
                 &-title {
@@ -93,7 +56,6 @@
         // human part with titles
         &-human {
             width: 100%;
-            // background: $clrLight;
             padding: 0;
             overflow: hidden;
             display: none;
@@ -170,18 +132,11 @@
                 opacity: 0;
             }
         }
-
-        &--jsLast {
-            .chatPart-text {
-                color: $clrDark;
-            }
-        }
     }
 }
 
 @include media(phablet) {
     .chat {
-
         &Section {
             padding: $safeArea*2 0;
         }
@@ -190,9 +145,10 @@
             &-human {
                 width: $humanWidthPhablet;
             }
+
             &-bot {
                 width: $botWidthPhablet;
-                padding: $safeArea $safeArea $safeArea*3 $safeArea*3;
+                padding: $safeArea $safeArea $safeArea*2 $safeArea*3;
             }
         }
     }
@@ -200,36 +156,6 @@
 
 @include media(tablet) {
     .chat {
-
-        &-nav {
-            .chatSection {
-                &:not(.jsOnNav),
-                &:not(.jsOnNav):nth-of-type(1):nth-last-of-type(2), // [sec] sec
-                &:not(.jsOnNav):nth-of-type(1):nth-last-of-type(3), // [sec] sec sec
-                &:not(.jsOnNav):nth-of-type(2):nth-last-of-type(2) { // sec [sec] sec
-                    padding-bottom: $safeArea*10;
-                }
-            }
-        }
-
-        &Section {
-            &.jsOnNav {
-                left: $humanWidthLap;
-
-                .chatPart:first-of-type {
-                    .chatPart {
-                        &-title {
-                            font-size: $fontL;
-                        }
-                    }
-                }
-            }
-
-            &:not(.jsOnNav):last-of-type {
-                padding-bottom: $safeArea*5;
-            }
-        }
-
         &Part {
             padding-left: 0;
             padding-bottom: 0;
@@ -270,19 +196,18 @@
                     width: 49%;
                 }
             }
-
         }
     }
 }
 
 
 @keyframes showText {
-    0% {opacity: 0;}
-    20% {opacity: 0;}
-    25% {opacity: 1;}
-    45% {opacity: 1;}
-    55% {opacity: 0.4;}
-    75% {opacity: 1;}
-    90% {opacity: 0.6;}
-    100% {opacity: 1;}
+    0% { opacity: 0; }
+    20% { opacity: 0; }
+    25% { opacity: 1; }
+    45% { opacity: 1; }
+    55% { opacity: 0.4; }
+    75% { opacity: 1; }
+    90% { opacity: 0.6; }
+    100% { opacity: 1; }
 }

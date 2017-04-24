@@ -7,9 +7,13 @@ var UtilFuncs = function(){
     console.log('until' + untilTablet, wHeight);
 
     $(document).on('click', 'a[href*=#]', function(e){
-        $('html, body').animate({
-            scrollTop: $( $.attr(this, 'href') ).offset().top -100
-        }, 1000);
+        const HrefOffset = $( $.attr(this, 'href') ).offset();
+
+        if (HrefOffset) {
+            $('html, body').animate({
+                scrollTop: HrefOffset.top -100,
+            }, 1000);
+        }
         e.preventDefault();
     });
 

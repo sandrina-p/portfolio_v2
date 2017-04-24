@@ -1,0 +1,100 @@
+.Nav {
+    position: relative;
+    margin-left: $safeArea*2;
+    color: $clrPrimary;
+
+    &-item {
+        display: inline-block;
+        font-family: $font-mono;
+        font-size: $fontL;
+        font-weight: $fBold;
+        vertical-align: top;
+        color: inherit;
+
+        // to is-active
+        visibility: hidden;
+        pointer-events: none;
+        opacity: 0;
+
+        // to is-selected
+        overflow: hidden;
+        max-width: rem(112);
+        margin-right: rem(24);
+
+        transition:
+            opacity $speed,
+            max-width $speed,
+            margin-right $speed;
+
+        &:nth-of-type(2) {
+            transition:
+                opacity $speed ease-in 150ms,
+                max-width $speed ease-out,
+                margin-right $speed ease-out;
+        }
+
+        &:nth-of-type(3) {
+            transition:
+                opacity $speed ease-in 300ms,
+                max-width $speed ease-out,
+                margin-right $speed ease-out;
+        }
+
+        &:hover,
+        &:focus {
+            animation: glitch 2s steps(100) infinite;
+        }
+
+        &:focus {
+            box-shadow: none;
+        }
+
+        &.is-active {
+            visibility: visible;
+            pointer-events: auto;
+            opacity: 1;
+        }
+
+        &.is-selected {
+            max-width: 0;
+            margin-right: 0;
+        }
+    }
+
+    &.is-loading {
+        color: transparent;
+        animation: colorIn 50ms;
+        animation-delay: 3.5s;
+        animation-fill-mode: forwards;
+
+        &::before {
+            content: "¯\\_(ツ)_/¯";
+            position: absolute;
+            left: 0;
+            top: 0;
+            animation: waiting 1s steps(11) alternate infinite;
+            white-space: nowrap;
+            overflow: hidden;
+            width: 0;
+        }
+    }
+
+    @include media(phablet) {
+        margin-left: $safeArea*2;
+    }
+
+    @include media(tablet) {
+        margin-left: calc(#{$humanWidthLap} + #{$safeArea*3});
+    }
+}
+
+@keyframes colorIn {
+    0% { color: transparent; }
+    100% { color: $clrPrimary; }
+}
+
+@keyframes waiting {
+    0% { width: 0; }
+    80% { width: 4.5rem; }
+    100% { width: 4.5rem; }
+}

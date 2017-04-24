@@ -13,5 +13,24 @@
         'linebreak-style': [ 'error', 'unix' ],
         'quotes': [ 'error', 'single' ],
         'semi': [ 'error', 'always' ],
+        'no-console': ['error', {
+            'allow': ['warn', 'error', 'log']
+        }],
+        'spaced-comment': ['error', 'always', {
+            'line': {
+                'markers': ['/'],
+                'exceptions': ['-', '+']
+            },
+            'block': {
+                'markers': ['!'],
+                'exceptions': ['*'],
+                'balanced': true
+            }
+        }]
+    },
+    'globals': {
+        'require': false,
+        'Modernizr': false,
+        'global': false,
     }
 }

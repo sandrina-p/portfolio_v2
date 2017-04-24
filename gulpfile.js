@@ -1,30 +1,27 @@
-/* global require global :true */
-/* eslint-disable no-console */
-
 var gulp = require('gulp'),
 
-    //general plugins
+    // general plugins
     rename = require('gulp-rename'),
-    argv = require('yargs').argv, //useful to create ENV (prod vs dev)
-    gulpif = require('gulp-if'), //useful to create ENV (prod vs dev)
-    gutil = require('gulp-util'), //some debug logs
+    argv = require('yargs').argv, // useful to create ENV (prod vs dev)
+    gulpif = require('gulp-if'), // useful to create ENV (prod vs dev)
+    gutil = require('gulp-util'), // some debug logs
     cached = require('gulp-cached'),
-    stripDebug = require('gulp-strip-debug'), //byebye console.logs
-    chalk = require('chalk'), //some colors on terminal
+    stripDebug = require('gulp-strip-debug'), // byebye console.logs
+    chalk = require('chalk'), // some colors on terminal
 
     php2html = require('gulp-php2html'),
     htmlmin = require('gulp-htmlmin'),
 
     browserSync = require('browser-sync'), // i'm not sure how this and connect-php works ...
 
-    //scss stuff
+    // scss stuff
     sass = require('gulp-sass'),
     cleanCSS = require('gulp-clean-css'),
     autoprefixer = require('gulp-autoprefixer'),
     sassInheritance = require('gulp-sass-multi-inheritance'), // watch partials
-    importCss = require('gulp-import-css'), //combine css imports (not scss)
+    importCss = require('gulp-import-css'), // combine css imports (not scss)
 
-    //javascript plugins
+    // javascript plugins
     uglify = require('gulp-uglify'),
     include = require('gulp-include'),
     babel = require('gulp-babel'),
@@ -112,7 +109,7 @@ gulp.task('scss', function(){
         .pipe(gulpif(argv.development,
             cleanCSS({
                 compatibility: 'ie9',
-                advanced: false //much faster comp.
+                advanced: false // much faster comp.
             })
         ))
         .pipe(gulpif(global.isWatching, cached('cachedPlace')))
@@ -124,8 +121,8 @@ gulp.task('scss', function(){
 gulp.task('scssPartials', function() {
     // watch for partials when they are changed to change their parent.
     return gulp.src('**/*.scss')
-        .pipe(gulpif(global.isWatching, cached(srcScss))) //filter out unchanged scss files, only works when watching
-        .pipe(sassInheritance({dir: 'src'}).on('error', gutil.log)); //find files that depend on the files that have changed
+        .pipe(gulpif(global.isWatching, cached(srcScss))) // filter out unchanged scss files, only works when watching
+        .pipe(sassInheritance({dir: 'src'}).on('error', gutil.log)); // find files that depend on the files that have changed
 });
 
 
