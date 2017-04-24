@@ -1,12 +1,19 @@
+/* global
+    TalkChat:false,
+    UtilFuncs: false,
+*/
+/* exported ChatApp */
+
 var ChatApp = function() {
     // general chat classes
     var chatContent = TalkChat.conversation,
         mainSections = TalkChat.mainSections,
         $chatId = $('#chat'),
-        $navSections = $(".navSections"),
+        $navSections = $('.navSections'),
         $heyThere = $('.heyThere-intro'),
         chatPClass = '.chatPart-',
         botClass = chatPClass+'bot',
+        btnName,
 
         // crucial content from each part
         section, // string - section of the clicked button, ex: 'background';
@@ -15,15 +22,17 @@ var ChatApp = function() {
         title, // string - title of the new part ex: 'before that'
         id, // string -> ex : 'rede-expressos'
 
-        // some numbers to better crontrol auto scroll and @medias
+        // some numbers to better control auto scroll and @medias
         mediaQHeight = 550,
-        wHeight, untilTablet;
+        wHeight,
+        untilTablet;
 
 
     // ------ define if is section or part ------ //
     function clickOption($option) {
-        wHeight =  window.innerHeight, // FIXME strange bug with safari isn't always right
-        untilTablet = window.innerWidth < 750, // FIXME strange bug with safari isn't always right
+        // FIXME strange bug with safari isn't always right wHeight & untilTablet
+        wHeight =  window.innerHeight,
+        untilTablet = window.innerWidth < 750,
 
         section = $option.closest('.chatSection').attr('id'),
         $currentPart = $option.closest('.chatPart'),
@@ -139,7 +148,7 @@ var ChatApp = function() {
     function scrollSafe($currentPart) {
         if (!untilTablet) {
             var wScroll = $(window).scrollTop(),
-                wHeight = window.innerHeight;
+                wHeight = window.innerHeight,
                 pHeight =  $currentPart.height(),
                 pScroll = $currentPart.offset().top,
                 tooClose = pScroll - wScroll + pHeight > wHeight/2;
@@ -203,13 +212,30 @@ var ChatApp = function() {
 
     // ------ TYPES OF PART BUILD ------ //
     // ------ section ------ //
-    function buildSection() {
-        var $section = $('#'+section),
-            $sectionIntro = $("#"+section+"-intro"),
+    function buildSection($chatSection) {
+        console.log('ora bem');
+        title = $chatSection.attr('data-section'),
+        section = $chatSection.attr('data-section');
+
+        var $section =
+                $('<div class="chatSection" id="'+section+'">'
+                    +'<div class="chatPart" id="'+section+'-intro">'
+                        +'<div class="chatPart-human">'
+                            +'<h3 class="chatPart-title">'+section+'</h3>'
+                        +'</div>'
+                    +'</div>'
+                +'</div>'),
             ElChatPart;
 
-        text = chatContent[section]["intro"];
-        delete chatContent[section]["intro"];
+        $chatId.append($section);
+
+        var $sectionIntro = $("#"+section+"-intro");
+
+        // var $section = $('#'+section);
+
+        text = chatContent[section]['intro'];
+        delete chatContent[section]['intro'];
+
 
         var ElChatPart = $("<div class='chatPart-bot'>"
                             +"<p class='chatPart-text jsLoading'>"+text+"</p>"
@@ -254,6 +280,10 @@ var ChatApp = function() {
 
     $(document).on('click', '.js-chatOpt', function(){
         clickOption($(this));
+    });
+
+    $(document).on('click', '.js-chatSection', function() {
+        buildSection($(this));
     });
 
     return {

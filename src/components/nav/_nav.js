@@ -33,6 +33,7 @@ var Nav = function() {
     }
 
     function showNav() {
+        console.log('showNav()');
         // Bug on iphone6 returns 0.9999989867210388 instead of 1.
         if($heyThereIntro.css('opacity') >= '0.9') {
             startBaffle();
@@ -45,6 +46,7 @@ var Nav = function() {
             }, 1000);
 
         } else {
+            console.log('showNav 3000');
             setTimeout(() => showNav(), 300);
         }
     }
@@ -67,7 +69,7 @@ var Nav = function() {
 
     function selectItem(e) {
         e.preventDefault();
-        if (!$(this).hasClass('is-selected')) {
+        if (!$(this).hasClass('is-selected') && !$(this).hasClass('js-botTrigger')) {
             $(this).addClass('is-selected');
         }
 
