@@ -1,6 +1,6 @@
 .Nav {
     position: relative;
-    @include fallback(margin-left, 45%, calc(#{$humanWidthLap} + #{$safeArea*3}));
+    margin-left: $safeArea*2;
     color: $clrPrimary;
 
     &-item {
@@ -75,6 +75,14 @@
             overflow: hidden;
             width: 0;
         }
+    }
+
+    @include media(phablet) {
+        margin-left: $safeArea*2;
+    }
+
+    @include media(tablet) {
+        margin-left: calc(#{$humanWidthLap} + #{$safeArea*3});
     }
 }
 

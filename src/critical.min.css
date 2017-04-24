@@ -539,8 +539,7 @@ html * {
 
 .Nav {
   position: relative;
-  margin-left: 45%;
-  margin-left: calc(40% + 3rem);
+  margin-left: 2rem;
   color: #008080;
 }
 
@@ -604,6 +603,18 @@ html * {
   width: 0;
 }
 
+@media (min-width: 34.375em) {
+  .Nav {
+    margin-left: 2rem;
+  }
+}
+
+@media (min-width: 46.875em) and (min-height: 25em) {
+  .Nav {
+    margin-left: calc(40% + 3rem);
+  }
+}
+
 @keyframes colorIn {
   0% {
     color: transparent;
@@ -637,4 +648,10 @@ html * {
   padding-bottom: 6rem;
   color: transparent;
   z-index: 1;
+}
+
+@media (min-width: 46.875em) and (min-height: 25em) {
+  .chat {
+    padding-bottom: 80vh;
+  }
 }

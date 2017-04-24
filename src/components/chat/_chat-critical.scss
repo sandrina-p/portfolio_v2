@@ -7,4 +7,8 @@
     padding-bottom: $safeArea*6;
     color: transparent;
     z-index: 1;
+
+    @include media(tablet) {
+        padding-bottom: 80vh;
+    }
 }
