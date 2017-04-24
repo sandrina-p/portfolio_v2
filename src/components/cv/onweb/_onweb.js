@@ -75,7 +75,7 @@ var OnWeb = function() {
         baffleWebSite = baffle('.js-onWeb-site'),
         baffleWebDd = baffle('.js-onWeb-dd');
 
-        $(document).on('mouseenter', '.js-onWeb-link', function(){
+        $(document).on('mouseenter focus', '.js-onWeb-link', function(){
             baffleWebSite
                 .start()
                 .text(currentText => $(this).data('site'))
