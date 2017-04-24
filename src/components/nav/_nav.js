@@ -1,7 +1,6 @@
 /* global
     TalkChat:false,
     baffle:false,
-    Hashs: false,
 */
 /* exported Nav */
 
@@ -23,8 +22,6 @@ var Nav = function() {
         $navItems = $('.js-NavItem');
 
         showNav();
-
-        $navItems.on('click', selectItem);
 
         if (Modernizr.touchevents) {
             // TODO Hide all bot stuff on touch devices
@@ -65,15 +62,6 @@ var Nav = function() {
         baffle0.reveal(400, 450);
         baffle1.reveal(400, 250);
         baffle2.reveal(400, 300);
-    }
-
-    function selectItem(e) {
-        e.preventDefault();
-        if (!$(this).hasClass('is-selected') && !$(this).hasClass('js-botTrigger')) {
-            $(this).addClass('is-selected');
-        }
-
-        Hashs.set($(this).text());
     }
 
     function checkIsNavReady() {

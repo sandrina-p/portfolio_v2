@@ -9,35 +9,36 @@
         padding-bottom: $safeArea*4;
         transition: all 500ms;
 
-        //when user didn't clicked it yet
-        &.jsOnNav {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            padding: 0;
-            z-index: 3;
-
-            .chatPart:first-of-type {
-                padding-bottom: 0;
-                .chatPart {
-
-                    &-title {
-                        font-size: $fontM;
-
-                        &:hover {
-                            color: $clrLight;
-                            animation: glitch 2s steps(100) infinite;
-                        }
-                    }
-
-                    &-human {
-                        width: auto;
-                        padding: 0;
-                        transition: width 0s 2s, padding 250ms, opacity 1s;
-                    }
-                }
-            }
-        }
+        // //when user didn't clicked it yet
+        // &.jsOnNav {
+        //     position: absolute;
+        //     bottom: 0;
+        //     left: 0;
+        //     padding: 0;
+        //     z-index: 3;
+        //
+        //     .chatPart:first-child {
+        //         padding-bottom: 0;
+        //         .chatPart {
+        //
+        //             &-title {
+        //                 font-size: $fontM;
+        //
+        //                 &:hover {
+        //                     color: $clrLight;
+        //                     animation: glitch 2s steps(100) infinite;
+        //                 }
+        //             }
+        //
+        //             &-human {
+        //                 width: auto;
+        //                 padding: 0;
+        //                 transition: width 0s 2s, padding 250ms, opacity 1s;
+        //             }
+        //         }
+        //     }
+        // }
+        //
 
         //show btn when page is ready
         &.jsLoading {
@@ -45,7 +46,7 @@
         }
 
         //each section
-        &:first-of-type {
+        &:first-child {
             padding-top: 0;
         }
     }
@@ -58,7 +59,7 @@
         @extend %cf;
 
         //each section
-        &:first-of-type {
+        &:first-child {
             .chatPart {
                 &-human,
                 &-bot {
@@ -93,7 +94,6 @@
         // human part with titles
         &-human {
             width: 100%;
-            // background: $clrLight;
             padding: 0;
             overflow: hidden;
             display: none;
@@ -181,7 +181,6 @@
 
 @include media(phablet) {
     .chat {
-
         &Section {
             padding: $safeArea*2 0;
         }
@@ -190,6 +189,7 @@
             &-human {
                 width: $humanWidthPhablet;
             }
+
             &-bot {
                 width: $botWidthPhablet;
                 padding: $safeArea $safeArea $safeArea*3 $safeArea*3;
@@ -200,7 +200,6 @@
 
 @include media(tablet) {
     .chat {
-
         &-nav {
             .chatSection {
                 &:not(.jsOnNav),
@@ -216,7 +215,7 @@
             &.jsOnNav {
                 left: $humanWidthLap;
 
-                .chatPart:first-of-type {
+                .chatPart:first-child {
                     .chatPart {
                         &-title {
                             font-size: $fontL;
@@ -270,19 +269,18 @@
                     width: 49%;
                 }
             }
-
         }
     }
 }
 
 
 @keyframes showText {
-    0% {opacity: 0;}
-    20% {opacity: 0;}
-    25% {opacity: 1;}
-    45% {opacity: 1;}
-    55% {opacity: 0.4;}
-    75% {opacity: 1;}
-    90% {opacity: 0.6;}
-    100% {opacity: 1;}
+    0% { opacity: 0; }
+    20% { opacity: 0; }
+    25% { opacity: 1; }
+    45% { opacity: 1; }
+    55% { opacity: 0.4; }
+    75% { opacity: 1; }
+    90% { opacity: 0.6; }
+    100% { opacity: 1; }
 }

@@ -1,28 +1,34 @@
-<nav class="Nav is-loading js-Nav" role="navigation">
-    <h2 class="sr-only">Chat menu</h2>
-    <a href="#projects" class="Nav-item js-NavItem js-chatSection"
-        data-section="practice" data-gaec="chatNavL"
-        aria-label="Projects - here you have a navigation in loop that toggles each project at the time">
-        Projects
-    </a>
+<div>
+    <nav class="Nav is-loading js-Nav" role="navigation">
+        <h2 class="sr-only">Chat Bot sections</h2>
+        <a href="#projects" class="Nav-item js-NavItem js-chatSection"
+            data-section="practice" data-gaec="chatNavL"
+            aria-expanded="false"
+            aria-controls="practice">
+            Projects
+        </a>
 
-    <a href="#journey" class="Nav-item js-NavItem js-chatSection"
-        data-section="journey" data-gaec="chatNavL"
-        aria-label="Journey - Each time a new topic shows up, it will show 2 buttons to choose another topic about my journey">
-        Journey
-    </a>
+        <a href="#journey" class="Nav-item js-NavItem js-chatSection"
+            data-section="journey" data-gaec="chatNavL"
+            aria-expanded="false"
+            aria-controls="journey">
+            Journey
+        </a>
 
-    <a href="#about" class="Nav-item js-botTrigger js-NavItem"
-        data-gaec="chatNavL" aria-hidden="true">
-        About
-    </a>
-</nav>
+        <a href="#about" class="Nav-item js-NavItem js-botTrigger"
+            data-gaec="chatNavL" aria-hidden="true">
+            About
+        </a>
+    </nav>
 
-<div class="navCV">
-    <a href="#cv" class="navCV-link" data-gaec="navCV" aria-hidden="true">Let's cut the bullshit. Who is she?</a>
+    <div class="navCV" aria-hidden="true">
+        <a href="#cv" class="navCV-link" data-gaec="navCV">Let's cut the bullshit. Who is she?</a>
+    </div>
+
+    <div class="chat" id="chat">
+        <!-- js -->
+    </div>
 </div>
-
-<div class="chat" id="chat"> <!-- chat --> </div>
 
 <!-- <div class="chatSection js-chatBtn" id="journey">
     <div class="chatPart" id="journey-intro">

@@ -2,6 +2,7 @@
     TalkChat:false,
     UtilFuncs: false,
     Projects: false,
+    Hashs: false,
 */
 /* exported ChatApp */
 
@@ -49,6 +50,7 @@ var ChatApp = function() {
     }
 
     function animateClickedOptionMob($option, $part) {
+        console.log('animateClickedOptionMob() triggered');
         var $parent = $option.parent(),
             thisTop = $parent.offset().top,
             thisLeft = $parent.offset().left,
@@ -89,14 +91,14 @@ var ChatApp = function() {
 
     function getElBtn(text) {
         return '<div class="chatPart-option jsLoading">'
-                    +`<button type="button" name="${text}" class="btnB jsLoading js-chatOpt" data-gaec="chat">${text}</button>`
+                    +`<button type="button" name="${text}" class="btnB jsLoading js-chatOpt" data-gaec="chat" aria-label="Know more about ${text}">${text}</button>`
                 +'</div>';
     }
 
     function getElPart() {
-        return  $(`<div class="chatPart" id="${id}">`
+        return  $(`<div class="chatPart" id="${id}" aria-live="polite">`
                     +'<div class="chatPart-human">'
-                        +`<p class="chatPart-title jsLoading">${title}</p>`
+                        +`<h3 class="chatPart-title jsLoading">${title}</h3>`
                     +'</div>'
                     +'<div class="chatPart-bot">'
                         +`<p class="chatPart-text jsLoading">${text}</p>`
@@ -183,7 +185,13 @@ var ChatApp = function() {
     }
 
     function showingSentence($part) {
-        finishLoading($part.find(`${chatPClass}text`));
+        var $sentence = $part.find(`${chatPClass}text`);
+        finishLoading($sentence);
+        setTimeout(function () {
+            console.log('ora bem', $sentence);
+            $sentence.focus();
+        }, 500);
+
         showingOptions($part);
     }
 
@@ -199,6 +207,9 @@ var ChatApp = function() {
 
             setTimeout(function () {                    // REVIEW better buttons target
                 finishLoading($part.find(`${chatPClass}option:last-of-type .js-chatOpt`));
+
+                // a11y focus next button
+                $part.find(`${chatPClass}option:first-of-type .js-chatOpt`).focus();
             }, 300);
         }, 400);
     }
@@ -206,17 +217,17 @@ var ChatApp = function() {
     // ------ TYPES OF PART BUILD ------ //
     // ------ section ------ //
     function buildSection($chatSection) {
-        title = $chatSection.attr('data-section'),
+        title = $chatSection.text(),
         section = $chatSection.attr('data-section');
 
         var $section =
-                $('<div class="chatSection" id="'+section+'">'
-                    +'<div class="chatPart" id="'+section+'-intro">'
+                $('<section class="chatSection" id="'+section+'">'
+                    +'<div class="chatPart" id="'+section+'-intro" aria-live="polite">'
                         +'<div class="chatPart-human">'
-                            +'<h3 class="chatPart-title">'+section+'</h3>'
+                            +'<h2 class="chatPart-title">'+title+'</h3>'
                         +'</div>'
                     +'</div>'
-                +'</div>'),
+                +'</section>'),
             ElChatPart;
 
         $chatId.append($section);
@@ -275,7 +286,14 @@ var ChatApp = function() {
     });
 
     $(document).on('click', '.js-chatSection', function() {
-        buildSection($(this));
+        if (!$(this).hasClass('is-selected') && !$(this).hasClass('js-botTrigger')) {
+            $(this)
+                .addClass('is-selected')
+                .attr('aria-expanded', true);
+            buildSection($(this));
+        }
+
+        Hashs.set($(this).text());
     });
 
     return {
