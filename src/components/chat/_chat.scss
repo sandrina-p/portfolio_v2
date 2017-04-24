@@ -1,48 +1,29 @@
 .chat {
+    &-container {
+        @include flexbox;
+        flex-direction: column-reverse;
 
-    &-nav {
-        display: block;
-        position: relative;
+        min-height: 50vh;
+        padding-bottom: $safeArea*6;
+
+        @include media(tablet) {
+            padding-bottom: 80vh;
+        }
     }
+
+    // &-nav {
+    //     display: block;
+    //     position: relative;
+    // }
 
     &Section {
         padding-bottom: $safeArea*4;
         transition: all 500ms;
 
-        // //when user didn't clicked it yet
-        // &.jsOnNav {
-        //     position: absolute;
-        //     bottom: 0;
-        //     left: 0;
-        //     padding: 0;
-        //     z-index: 3;
-        //
-        //     .chatPart:first-child {
-        //         padding-bottom: 0;
-        //         .chatPart {
-        //
-        //             &-title {
-        //                 font-size: $fontM;
-        //
-        //                 &:hover {
-        //                     color: $clrLight;
-        //                     animation: glitch 2s steps(100) infinite;
-        //                 }
-        //             }
-        //
-        //             &-human {
-        //                 width: auto;
-        //                 padding: 0;
-        //                 transition: width 0s 2s, padding 250ms, opacity 1s;
-        //             }
-        //         }
-        //     }
-        // }
-        //
-
         //show btn when page is ready
         &.jsLoading {
             opacity: 0;
+            padding-bottom: 0;
         }
 
         //each section
@@ -171,11 +152,11 @@
             }
         }
 
-        &--jsLast {
-            .chatPart-text {
-                color: $clrDark;
-            }
-        }
+        // &--jsLast {
+        //     .chatPart-text {
+        //         color: $clrDark;
+        //     }
+        // }
     }
 }
 
@@ -200,31 +181,8 @@
 
 @include media(tablet) {
     .chat {
-        &-nav {
-            .chatSection {
-                &:not(.jsOnNav),
-                &:not(.jsOnNav):nth-of-type(1):nth-last-of-type(2), // [sec] sec
-                &:not(.jsOnNav):nth-of-type(1):nth-last-of-type(3), // [sec] sec sec
-                &:not(.jsOnNav):nth-of-type(2):nth-last-of-type(2) { // sec [sec] sec
-                    padding-bottom: $safeArea*10;
-                }
-            }
-        }
-
         &Section {
-            &.jsOnNav {
-                left: $humanWidthLap;
-
-                .chatPart:first-child {
-                    .chatPart {
-                        &-title {
-                            font-size: $fontL;
-                        }
-                    }
-                }
-            }
-
-            &:not(.jsOnNav):last-of-type {
+            &:last-of-type {
                 padding-bottom: $safeArea*5;
             }
         }

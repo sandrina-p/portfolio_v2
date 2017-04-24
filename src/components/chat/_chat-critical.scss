@@ -1,14 +1,7 @@
 .chat {
     width: 100%;
     margin: auto;
-    min-height: 50vh;
     display: block;
     position: relative;
-    padding-bottom: $safeArea*6;
-    color: transparent;
     z-index: 1;
-
-    @include media(tablet) {
-        padding-bottom: 80vh;
-    }
 }

@@ -1,4 +1,4 @@
-<div>
+<div class="chat-container">
     <nav class="Nav is-loading js-Nav" role="navigation">
         <h2 class="sr-only">Chat Bot sections</h2>
         <a href="#projects" class="Nav-item js-NavItem js-chatSection"

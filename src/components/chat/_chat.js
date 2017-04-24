@@ -224,7 +224,7 @@ var ChatApp = function() {
                 $('<section class="chatSection" id="'+section+'">'
                     +'<div class="chatPart" id="'+section+'-intro" aria-live="polite">'
                         +'<div class="chatPart-human">'
-                            +'<h2 class="chatPart-title">'+title+'</h3>'
+                            +'<h2 class="chatPart-title jsLoading">'+title+'</h3>'
                         +'</div>'
                     +'</div>'
                 +'</section>'),

@@ -642,16 +642,7 @@ html * {
 .chat {
   width: 100%;
   margin: auto;
-  min-height: 50vh;
   display: block;
   position: relative;
-  padding-bottom: 6rem;
-  color: transparent;
   z-index: 1;
-}
-
-@media (min-width: 46.875em) and (min-height: 25em) {
-  .chat {
-    padding-bottom: 80vh;
-  }
 }
