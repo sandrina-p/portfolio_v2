@@ -8,6 +8,8 @@
         font-family: $font-mono;
         font-size: $fontL;
         font-weight: $fBold;
+        vertical-align: top;
+        color: inherit;
 
         // to is-active
         visibility: hidden;

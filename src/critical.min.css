@@ -548,6 +548,8 @@ html * {
   font-family: "Roboto Mono", monospace;
   font-size: 1.125rem;
   font-weight: 700;
+  vertical-align: top;
+  color: inherit;
   visibility: hidden;
   pointer-events: none;
   opacity: 0;
