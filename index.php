@@ -21,6 +21,8 @@
         <?php include 'views/chat.php';?>
 
         <?php include 'views/cv.php';?>
+
+        <?php include 'views/cli.php';?>
     </main>
 
     <?php include 'views/myself.php';?>
