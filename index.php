@@ -1,4 +1,4 @@
-<?php $DEV = true; ?>
+<?php $DEV = false; ?>
 
 <!DOCTYPE html>
 <html lang="en">

@@ -11,16 +11,16 @@ var GAcustom = function(){
         clickN++; // ev = event value
 
         ga(function(tracker) {
-            // cid = tracker.get('clientId');
-            // console.log('ga_'+ params);
-            // 
-            // $.ajax({
-            //     url: `https://www.google-analytics.com/collect?v=1&t=event&tid=UA-70069700-3&cid=${cid}${params}&ev=${clickN}`,
-            //     type: 'POST',
-            //     cache: false,
-            //     async: true,
-            //     dataType: 'json'
-            // });
+            cid = tracker.get('clientId');
+            console.log('ga_'+ params);
+
+            $.ajax({
+                url: `https://www.google-analytics.com/collect?v=1&t=event&tid=UA-70069700-3&cid=${cid}${params}&ev=${clickN}`,
+                type: 'POST',
+                cache: false,
+                async: true,
+                dataType: 'json'
+            });
         });
     }
 
