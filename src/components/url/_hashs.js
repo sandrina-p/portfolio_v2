@@ -26,12 +26,12 @@ var Hashs = function() {
     function triggerWhateverIsOn(hash) {
         switch (hash) {
             case 'projects':
-                $('#btn-pr').trigger('click');
-                UtilFuncs.scrollTo($('#btn-pr').offset().top - 60)
+                $('.js-NavItem[data-section="practice"]').trigger('click');
+                // UtilFuncs.scrollTo($('#btn-pr').offset().top - 60)
                 break;
             case 'journey':
-                $('#btn-jr').trigger('click');
-                UtilFuncs.scrollTo($('#btn-jr').offset().top - 60)
+                $('.js-NavItem[data-section="journey"]').trigger('click');
+                // UtilFuncs.scrollTo($('#btn-jr').offset().top - 60)
                 break;
             // case 'knowledge':
             //     $('#btn-th').trigger('click');

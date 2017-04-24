@@ -199,8 +199,8 @@ var ChatApp = function() {
             setTimeout(function () {                    // REVIEW better buttons target
                 finishLoading($part.find(`${chatPClass}option:last-of-type .js-chatOpt`));
 
-                // a11y focus next button
-                $part.find(`${chatPClass}option:first-of-type .js-chatOpt`).focus();
+                // a11y focus text
+                $part.find(`${chatPClass}text`).focus();
             }, 300);
         }, 400);
     }
