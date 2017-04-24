@@ -9,7 +9,7 @@ var Hashs = function() {
             setTimeout(function () {
 
                 (function watchingNav() {
-                    if (ChatNav.checkIsNavReady()) {
+                    if (Nav.checkIsNavReady()) {
                         console.log('ready');
                         triggerWhateverIsOn(hash);
 
@@ -79,7 +79,8 @@ var Hashs = function() {
 
     function set(newHash) {
         newHash = UtilFuncs.stringSlugLower(newHash);
-        window.location.hash = newHash;
+        console.log('new window location:', newHash);
+        // window.location.hash = newHash;
     }
     return {
         set

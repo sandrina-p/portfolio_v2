@@ -1,5 +1,5 @@
 var ChatApp = function() {
-    //general chat classes
+    // general chat classes
     var chatContent = TalkChat.conversation,
         mainSections = TalkChat.mainSections,
         $chatId = $('#chat'),
@@ -8,22 +8,22 @@ var ChatApp = function() {
         chatPClass = '.chatPart-',
         botClass = chatPClass+'bot',
 
-        //crucial content from each part
-        section, //string - section of the clicked button, ex: 'background';
-        $currentPart, //jquery - id of the clicked button parent chatPart ex: $('#chatpart-intro');
+        // crucial content from each part
+        section, // string - section of the clicked button, ex: 'background';
+        $currentPart, // jquery - id of the clicked button parent chatPart ex: $('#chatpart-intro');
         text, // string - simple text of the bot;
         title, // string - title of the new part ex: 'before that'
         id, // string -> ex : 'rede-expressos'
 
-        //some numbers to better crontrol auto scroll and @medias
+        // some numbers to better crontrol auto scroll and @medias
         mediaQHeight = 550,
         wHeight, untilTablet;
 
 
     // ------ define if is section or part ------ //
     function clickOption($option) {
-        wHeight =  window.innerHeight, //FIXME strange bug with safari isn't always right
-        untilTablet = window.innerWidth < 750, //FIXME strange bug with safari isn't always right
+        wHeight =  window.innerHeight, // FIXME strange bug with safari isn't always right
+        untilTablet = window.innerWidth < 750, // FIXME strange bug with safari isn't always right
 
         section = $option.closest('.chatSection').attr('id'),
         $currentPart = $option.closest('.chatPart'),
@@ -41,7 +41,7 @@ var ChatApp = function() {
     }
 
     // ------ GENERAL STUFF ----- //
-    //when the user clicks on a chat button, it runs away.
+    // when the user clicks on a chat button, it runs away.
     function animateClickedOption($option) {
         finishLoading($option.parent());
     }
@@ -60,7 +60,7 @@ var ChatApp = function() {
 
         $parent.css({'transform': 'translate('+thisX+'px, '+thisY+'px)'});
 
-        //FIXME ai ai ai ai so ugly - have timeout to stretch height (slideUp() with css) and remove();
+        // FIXME ai ai ai ai so ugly - have timeout to stretch height (slideUp() with css) and remove();
         setTimeout(function () {
             $parent.addClass('remove');
 
@@ -117,7 +117,7 @@ var ChatApp = function() {
                 }
                 clicked = objSection['clicked'];
 
-                //if key isn't on clicked && only first 2 keys found && key isn't clicked obj itself
+                // if key isn't on clicked && only first 2 keys found && key isn't clicked obj itself
                 if (clicked.indexOf(key) < 0 && chatOptions.length < 2 && key !== "clicked") {
                     chatBtn = getElBtn(key);
                     chatOptions.push(chatBtn);
@@ -229,11 +229,11 @@ var ChatApp = function() {
     // ------ talk ------ //
     function buildSentence($option) {
 
-        //get text and remove it from chatContent.
+        // get text and remove it from chatContent.
         text = chatContent[section][title];
         delete chatContent[section][title];
 
-        //build part
+        // build part
         var ElChatPart = getElPart(),
             ElChatOptions = getOptions(section);
 

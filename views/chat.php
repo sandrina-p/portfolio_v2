@@ -1,5 +1,29 @@
+<nav class="Nav is-loading js-Nav" role="navigation">
+    <h2 class="sr-only">Chat menu</h2>
+    <a href="#projects" class="Nav-item js-NavItem" data-gaec="chatNavL"
+        aria-label="Projects - here you have a navigation in loop that toggles each project at the time">
+        Projects
+    </a>
+
+    <a href="#journey" class="Nav-item js-NavItem" data-gaec="chatNavL"
+        aria-label="Journey - Each time a new topic shows up, it will show 2 buttons to choose another topic about my journey">
+        Journey
+    </a>
+
+    <a href="#about" class="Nav-item js-botTrigger js-NavItem" data-gaec="chatNavL" aria-hidden="true">
+        About
+    </a>
+</nav>
+
+<div class="navCV">
+    <a href="#cv" class="navCV-link" data-gaec="navCV" aria-hidden="true">Let's cut the bullshit. Who is she?</a>
+</div>
+
+<div class="chat" id="chat"> <!-- chat --> </div>
+
+<!--
 <div class="chat jsLoading" id="chat">
-    <!-- js -->
+
     <nav class="chat-nav" id="chat-nav" aria-label="I confess right now this can be hard for who is only listening me. I'm being improved in order for you to use me easily!">
         <div class="chatSection jsOnNav jsLoading js-chatBtn" id="practice">
             <div class="chatPart" id="practice-intro">
@@ -29,3 +53,5 @@
 <div class="navCV">
     <a href="#cv" class="navCV-link" data-gaec="navCV" aria-hidden="true">Let's cut the bullshit. Who is she?</a>
 </div>
+
+-->

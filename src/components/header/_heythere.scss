@@ -30,7 +30,7 @@ $HTFontTab: $font6XL;
             $chars: 8;
             @for $i from 1 through $chars {
                 &:nth-of-type(#{$i}) {
-                    animation-delay: 1200+70ms*$i;
+                    animation-delay: 1200 + 70ms * $i;
                 }
             }
         }
@@ -103,7 +103,7 @@ $HTFontTab: $font6XL;
             width: $botWidthLap;
             margin-top: $safeArea*8;
             padding-left: $safeArea*3;
-            padding-bottom: $safeArea*5;
+            padding-bottom: $safeArea*4;
         }
 
         &-br {

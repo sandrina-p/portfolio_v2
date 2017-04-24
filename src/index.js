@@ -4,7 +4,8 @@
 // =include data/_TalkBot.js
 // =include data/_TalkBot-vocabulary.js
 
-// =include components/chat/_chatNav.js
+// =include components/nav/_nav.js
+
 // =include components/chat/_chat.js
 
 // =include components/projects/_projects.js
