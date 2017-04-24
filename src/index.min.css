@@ -561,8 +561,7 @@ button:focus {
 .chat-container {
   -ms-flex-direction: column-reverse;
   flex-direction: column-reverse;
-  min-height: 50vh;
-  padding-bottom: 6rem;
+  padding-bottom: 8rem;
 }
 
 .flexbox .chat-container {
@@ -581,22 +580,21 @@ button:focus {
 
 @media (min-width: 46.875em) and (min-height: 25em) {
   .chat-container {
+    min-height: 50vh;
     padding-bottom: 80vh;
   }
 }
 
 .chatSection {
-  padding-bottom: 4rem;
   transition: all 500ms;
-}
-
-.chatSection.jsLoading {
-  opacity: 0;
-  padding-bottom: 0;
 }
 
 .chatSection:first-child {
   padding-top: 0;
+}
+
+.chatSection:last-child {
+  padding-bottom: 3rem;
 }
 
 .chatPart {
@@ -609,15 +607,6 @@ button:focus {
 .chatPart:first-child .chatPart-human,
 .chatPart:first-child .chatPart-bot {
   padding-top: 0;
-}
-
-.chatPart:first-child .chatPart-human {
-  display: block;
-  border-right: none;
-  transition: padding 250ms;
-  opacity: 1;
-  animation: none;
-  animation-delay: 0;
 }
 
 .chatPart:first-child .chatPart-title {
@@ -718,15 +707,11 @@ button:focus {
 
   .chatPart-bot {
     width: 100%;
-    padding: 1rem 1rem 3rem 3rem;
+    padding: 1rem 1rem 2rem 3rem;
   }
 }
 
 @media (min-width: 46.875em) and (min-height: 25em) {
-  .chatSection:last-of-type {
-    padding-bottom: 5rem;
-  }
-
   .chatPart {
     padding-left: 0;
     padding-bottom: 0;
@@ -2114,93 +2099,93 @@ button:focus {
 
 @keyframes glitch-animation {
   0% {
-    clip: rect(3px, 9999px, 451px, 0);
+    clip: rect(75px, 9999px, 338px, 0);
   }
 
   10% {
-    clip: rect(68px, 9999px, 94px, 0);
+    clip: rect(29px, 9999px, 5px, 0);
   }
 
   20% {
-    clip: rect(16px, 9999px, 393px, 0);
+    clip: rect(73px, 9999px, 405px, 0);
   }
 
   30% {
-    clip: rect(75px, 9999px, 88px, 0);
+    clip: rect(15px, 9999px, 458px, 0);
   }
 
   40% {
-    clip: rect(89px, 9999px, 148px, 0);
+    clip: rect(72px, 9999px, 391px, 0);
   }
 
   50% {
-    clip: rect(9px, 9999px, 198px, 0);
+    clip: rect(5px, 9999px, 252px, 0);
   }
 
   60% {
-    clip: rect(25px, 9999px, 56px, 0);
+    clip: rect(16px, 9999px, 471px, 0);
   }
 
   70% {
-    clip: rect(57px, 9999px, 81px, 0);
+    clip: rect(90px, 9999px, 159px, 0);
   }
 
   80% {
-    clip: rect(35px, 9999px, 99px, 0);
+    clip: rect(24px, 9999px, 362px, 0);
   }
 
   90% {
-    clip: rect(71px, 9999px, 11px, 0);
+    clip: rect(49px, 9999px, 225px, 0);
   }
 
   100% {
-    clip: rect(41px, 9999px, 269px, 0);
+    clip: rect(53px, 9999px, 303px, 0);
   }
 }
 
 @keyframes glitch-animation-2 {
   0% {
-    clip: rect(93px, 9999px, 127px, 0);
+    clip: rect(40px, 9999px, 667px, 0);
   }
 
   10% {
-    clip: rect(15px, 9999px, 468px, 0);
+    clip: rect(92px, 9999px, 213px, 0);
   }
 
   20% {
-    clip: rect(89px, 9999px, 572px, 0);
+    clip: rect(3px, 9999px, 471px, 0);
   }
 
   30% {
-    clip: rect(95px, 9999px, 409px, 0);
+    clip: rect(19px, 9999px, 185px, 0);
   }
 
   40% {
-    clip: rect(73px, 9999px, 517px, 0);
+    clip: rect(19px, 9999px, 315px, 0);
   }
 
   50% {
-    clip: rect(21px, 9999px, 44px, 0);
+    clip: rect(18px, 9999px, 527px, 0);
   }
 
   60% {
-    clip: rect(75px, 9999px, 484px, 0);
+    clip: rect(96px, 9999px, 384px, 0);
   }
 
   70% {
-    clip: rect(91px, 9999px, 444px, 0);
+    clip: rect(77px, 9999px, 99px, 0);
   }
 
   80% {
-    clip: rect(39px, 9999px, 307px, 0);
+    clip: rect(18px, 9999px, 539px, 0);
   }
 
   90% {
-    clip: rect(34px, 9999px, 520px, 0);
+    clip: rect(69px, 9999px, 684px, 0);
   }
 
   100% {
-    clip: rect(57px, 9999px, 339px, 0);
+    clip: rect(66px, 9999px, 355px, 0);
   }
 }
 

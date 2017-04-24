@@ -187,11 +187,6 @@ var ChatApp = function() {
     function showingSentence($part) {
         var $sentence = $part.find(`${chatPClass}text`);
         finishLoading($sentence);
-        setTimeout(function () {
-            console.log('ora bem', $sentence);
-            $sentence.focus();
-        }, 500);
-
         showingOptions($part);
     }
 
@@ -220,8 +215,11 @@ var ChatApp = function() {
         title = $chatSection.text(),
         section = $chatSection.attr('data-section');
 
+        text = chatContent[section]['intro'];
+        delete chatContent[section]['intro'];
+
         var $section =
-                $('<section class="chatSection" id="'+section+'">'
+                $('<section class="chatSection jsLoading" id="'+section+'">'
                     +'<div class="chatPart" id="'+section+'-intro" aria-live="polite">'
                         +'<div class="chatPart-human">'
                             +'<h2 class="chatPart-title jsLoading">'+title+'</h3>'
@@ -230,29 +228,26 @@ var ChatApp = function() {
                 +'</section>'),
             ElChatPart;
 
-        $chatId.append($section);
+        setTimeout(function () {
+            $chatId.append($section);
 
-        var $sectionIntro = $('#'+section+'-intro');
+            var $sectionIntro = $('#'+section+'-intro');
 
-        // var $section = $('#'+section);
+            ElChatPart =
+                $('<div class="chatPart-bot">'
+                    +`<p class="chatPart-text jsLoading">${text}</p>`
+                +'</div>');
 
-        text = chatContent[section]['intro'];
-        delete chatContent[section]['intro'];
+            $sectionIntro.append(ElChatPart);
 
-        ElChatPart =
-            $('<div class="chatPart-bot">'
-                +`<p class="chatPart-text jsLoading">"${text}</p>`
-            +'</div>');
-
-        $sectionIntro.append(ElChatPart);
-
-        if (section == 'practice') {
-            showingCommon($sectionIntro, showingPractice);
-        } else {
-            var ElChatOptions = getOptions(title);
-            $sectionIntro.find(botClass).append(ElChatOptions);
-            showingCommon($sectionIntro, showingSentence);
-        }
+            if (section == 'practice') {
+                showingCommon($sectionIntro, showingPractice);
+            } else {
+                var ElChatOptions = getOptions(title);
+                $sectionIntro.find(botClass).append(ElChatOptions);
+                showingCommon($sectionIntro, showingSentence);
+            }
+        }, 200);
     }
 
     // ------ talk ------ //

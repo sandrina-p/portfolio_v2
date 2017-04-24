@@ -2,33 +2,23 @@
     &-container {
         @include flexbox;
         flex-direction: column-reverse;
-
-        min-height: 50vh;
-        padding-bottom: $safeArea*6;
+        padding-bottom: $safeArea*8;
 
         @include media(tablet) {
+            min-height: 50vh;
             padding-bottom: 80vh;
         }
     }
 
-    // &-nav {
-    //     display: block;
-    //     position: relative;
-    // }
-
     &Section {
-        padding-bottom: $safeArea*4;
         transition: all 500ms;
 
-        //show btn when page is ready
-        &.jsLoading {
-            opacity: 0;
-            padding-bottom: 0;
-        }
-
-        //each section
         &:first-child {
             padding-top: 0;
+        }
+
+        &:last-child {
+            padding-bottom: $safeArea*3;
         }
     }
 
@@ -45,15 +35,6 @@
                 &-human,
                 &-bot {
                     padding-top: 0;
-                }
-
-                &-human {
-                    display: block;
-                    border-right: none;
-                    transition: padding 250ms;
-                    opacity: 1;
-                    animation: none;
-                    animation-delay: 0;
                 }
 
                 &-title {
@@ -151,12 +132,6 @@
                 opacity: 0;
             }
         }
-
-        // &--jsLast {
-        //     .chatPart-text {
-        //         color: $clrDark;
-        //     }
-        // }
     }
 }
 
@@ -173,7 +148,7 @@
 
             &-bot {
                 width: $botWidthPhablet;
-                padding: $safeArea $safeArea $safeArea*3 $safeArea*3;
+                padding: $safeArea $safeArea $safeArea*2 $safeArea*3;
             }
         }
     }
@@ -181,12 +156,6 @@
 
 @include media(tablet) {
     .chat {
-        &Section {
-            &:last-of-type {
-                padding-bottom: $safeArea*5;
-            }
-        }
-
         &Part {
             padding-left: 0;
             padding-bottom: 0;
