@@ -7,7 +7,7 @@
             <span class="sr-only">Hey There!</span>
             I want to introduce you to someone.
             <span class="nowrap">She is a</span> <strong>front-end developer</strong> with a great passion for <strong class="nowrap">interaction design</strong>.
-            <span class="heyThere-br"></span>
+            <span class="heyThere-br" aria-hidden="true"></span>
             <span class="noscript">Where would you like to start?</span>
         </p>
     </div>
