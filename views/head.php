@@ -2,8 +2,8 @@
     <meta charset="utf-8">
     <?php //     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/> ?>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <link rel="preload" as="font" href="https://fonts.googleapis.com/css?family=Roboto+Mono:300,400,700">
-    <link rel="preload" as="font" href="https://fonts.googleapis.com/css?family=Ubuntu:400,700">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Mono:300,400,700">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,700">
 
     <title>Sandrina Pereira - front-end developer | UX / Interaction Design</title>
 
