@@ -306,7 +306,7 @@ var botSection = function() {
     //close 008080 section with ESC key
     $(document).keyup(function(e) {
         if (e.keyCode == 27) { // ESC
-            toggleBot();
+            $bot.addClass(triggerActive);
         }
     });
 

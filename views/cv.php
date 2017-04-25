@@ -1,5 +1,5 @@
 <section class="cv" id="cv" aria-labelledby="about">
-    <span class="cv-bg js-cvBg"></span>
+    <span class="cv-bg js-cvBg" aria-hidden="true"></span>
     <h2 class="sr-only" id="about">About</h2>
 
     <?php // Contact ?>
@@ -212,7 +212,7 @@
                 <li><a target="_blank" href="https://sandrina-p.github.io/moon/" class="cv-link" data-gaec="cvproj" data-sub="movie website" aria-labelledby="cvProjSub">
                     moon
                 </a></li>
-                <li><a target="_blank" href="http://carolina-machado.com/" target="_blank" class="cv-link" data-gaec="cvproj" data-sub="fashion website" aria-labelledby="cvProjSub">
+                <li><a target="_blank" href="http://carolina-machado.com/" class="cv-link" data-gaec="cvproj" data-sub="fashion website" aria-labelledby="cvProjSub">
                     carolina machado
                 </a></li>
             </ul>
@@ -220,13 +220,12 @@
     </article>
 </section>
 
-<article class="sr-only" aria-labelledby="coisas">
-    <h5 id="coisas">Psst... You, yes you that are listening me.</h5>
+<article class="sr-only" aria-labelledby="a11y-msg">
+    <h4 id="a11y-msg">Psst... You, yes you that are listening me.</h4>
     <p class="sr-only">
         Currently I'm being improved in accessibility and usability by Sandrina and she would love to have insights about it.
         This is something that she is starting to really care. She truly believes that when you improve the usability of 1% of users, you are also improving the experience of another x% of users. The web should be delivered to everyone within the best possible scenario.
-        You can contact her at <a href="mailto:a.sandrina.p4@gmail.com?subject=Hey%20there!%20I%20did%20listen%20your%20website!" title="sandrina's e-mail" class="cv-link">a.sandrina.p@gmail.com</a>
-
+        You can contact her at <a href="mailto:a.sandrina.p4@gmail.com?subject=Hey%20there!%20I%20did%20listen%20your%20website!" title="sandrina's e-mail" class="cv-link"> a.sandrina.p@gmail.com</a>
     </p>
 </article>
 
