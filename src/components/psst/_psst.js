@@ -70,14 +70,15 @@ var Psst = function() {
     });
 
     $(document).on('click', '.js-botProjects', function(){
-        $('#btn-pr').trigger('click'); //it will call Psst.changePsst().
+        var $NavItemPractice = $('.js-chatSection[data-section="practice"]');
+        $NavItemPractice.trigger('click'); //it will call Psst.changePsst().
 
         if (hasTouch) {
             // FIXME: DRY here please... it's from _chat.js   scrollSafe()
             var wScroll = $(window).scrollTop(),
                 wHeight = window.innerHeight;
-                pHeight =  $("#btn-pr").height(),
-                pScroll = $("#btn-pr").offset().top,
+                pHeight =  $NavItemPractice.height(),
+                pScroll = $NavItemPractice.offset().top,
                 tooClose = pScroll - wScroll + pHeight > wHeight/2;
 
             // too close of above the fold || away from the view window
@@ -91,7 +92,7 @@ var Psst = function() {
         showScrollify($('.js-psst'));
     })
 
-    $(document).on('click', '#btn-pr', function(){
+    $(document).on('click', '.js-chatSection[data-section="practice"]', function(){
         Psst.changePsst('psstChat');
     });
 
