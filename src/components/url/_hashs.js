@@ -80,7 +80,7 @@ var Hashs = function() {
     function set(newHash) {
         newHash = Util.stringSlugLower(newHash);
         console.log('new window location:', newHash);
-        window.location.hash = newHash;
+        // window.location.hash = newHash;
     }
     return {
         set

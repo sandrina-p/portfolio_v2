@@ -7,7 +7,6 @@
 /* exported ChatApp */
 
 var ChatApp = function() {
-    // general chat classes
     var chatContent = TalkChat.conversation,
         mainSections = TalkChat.mainSections,
         $chatId = $('#chat'),
@@ -28,7 +27,6 @@ var ChatApp = function() {
         untilTablet;
 
 
-    // ------ define if is section or part ------ //
     function clickOption($option) {
         // FIXME strange bug with safari isn't always right wHeight & untilTablet
         untilTablet = window.innerWidth < 750,
@@ -43,10 +41,28 @@ var ChatApp = function() {
         buildSentence($option);
     }
 
+    function clickSection($section) {
+        var $this = $($section);
+
+        Hashs.set($this.text());
+
+        // prevent buildSection twice
+        if ($this.hasClass('is-selected') || $this.hasClass('js-botTrigger')) {
+            return false;
+        }
+
+        $this.addClass('is-selected').attr('aria-expanded', true);
+        buildSection($this);
+    }
+
     // ------ GENERAL STUFF ----- //
     // when the user clicks on a chat button, it runs away.
     function animateClickedOption($option) {
-        finishLoading($option.parent());
+        var $optionParent = $option.parent();
+        finishLoading($optionParent);
+        setTimeout(function () {
+            $optionParent.remove();
+        }, 250);
     }
 
     function animateClickedOptionMob($option, $part) {
@@ -85,22 +101,29 @@ var ChatApp = function() {
 
 
     // ------ DOM STRUCTURE ELEMENTS ------ //
+    function getElPart() {
+        return  $(`<div class="chatPart" id="${id}">`
+                    +getElTitle(title)
+                    +getElSentence(text)
+                +'</div>');
+    }
+
+    function getElTitle(title) {
+        return '<div class="chatPart-human">'
+                +`<h3 class="chatPart-title jsLoading" tabindex="0">${title}</h3>`
+            +'</div>';
+    }
+    function getElSentence(text) {
+        return '<div class="chatPart-bot">'
+                    +`<p class="chatPart-text jsLoading" role="alert" aria-atomic="true">${text}</p>`
+                    // options
+                +'</div>';
+    }
+
     function getElBtn(text) {
         return '<div class="chatPart-option jsLoading">'
                     +`<button type="button" name="${text}" class="btnB jsLoading js-chatOpt" data-gaec="chat" aria-label="Know more about ${text}">${text}</button>`
                 +'</div>';
-    }
-
-    function getElPart() {
-        return  $(`<div class="chatPart" id="${id}">`
-                    +'<div class="chatPart-human">'
-                        +`<h3 class="chatPart-title jsLoading">${title}</h3>`
-                    +'</div>'
-                    +'<div class="chatPart-bot">'
-                        +`<p class="chatPart-text jsLoading">${text}</p>`
-                        // options
-                    +'</div>'
-                +'</div>');
     }
 
     function getOptions(section) {
@@ -178,6 +201,10 @@ var ChatApp = function() {
         setTimeout(function () {
             diffPartCallBack($part, chatPClass);
         }, 500);
+
+        console.log($part.find(`${chatPClass}title`));
+        $part.find(`${chatPClass}title`).focus();
+
     }
 
     function showingSentence($part) {
@@ -219,23 +246,18 @@ var ChatApp = function() {
             'id': section,
             'class': 'chatSection jsLoading',
             'html': `<div class="chatPart" id="${section}-intro">`
-                    +'<div class="chatPart-human">'
-                        +`<h2 class="chatPart-title jsLoading">${title}</h3>`
-                    +'</div>'
+                    +getElTitle(title)
+                    +getElSentence(text)
                 +'</div>',
         }).appendTo($chatId);
 
         $sectionIntro = $(`#${section}-intro`);
 
-        $('<div/>', {
-            'class':'chatPart-bot',
-            'html':`<p class="chatPart-text jsLoading">${text}</p>`,
-        }).appendTo($sectionIntro);
-
         if (section === 'practice') {
             showingCommon($sectionIntro, showingPractice);
         } else {
             $sectionIntro.find(botClass).append(getOptions(title));
+
             showingCommon($sectionIntro, showingSentence);
         }
     }
@@ -269,17 +291,7 @@ var ChatApp = function() {
     });
 
     $(document).on('click', '.js-chatSection', function() {
-        var $this = $(this);
-
-        Hashs.set($this.text());
-
-        // prevent buildSection twice
-        if ($this.hasClass('is-selected') || $this.hasClass('js-botTrigger')) {
-            return false;
-        }
-
-        $this.addClass('is-selected').attr('aria-expanded', true);
-        buildSection($this);
+        clickSection($(this));
     });
 
     return {

@@ -71,6 +71,12 @@
             font-size: $fontM;
             font-weight: $fBold;
             color: $clrPrimary;
+
+            // a11y purposes
+            &:focus {
+                outline: none;
+                @extend %glitchWD;
+            }
         }
 
 
