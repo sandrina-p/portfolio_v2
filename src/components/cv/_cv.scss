@@ -178,16 +178,14 @@ $cvPaddingLeft: 10vw;
             justify-content: center;
             padding: $safeArea*3 0 $safeArea*2;
             white-space: nowrap;
-            @include flexboxProp {
-                align-items: center;
+            align-items: center;
 
-                &::before {
-                    margin-right: $safeArea/2;
-                }
+            &::before {
+                margin-right: $safeArea/2;
+            }
 
-                &::after {
-                    margin-left: $safeArea/2;
-                }
+            &::after {
+                margin-left: $safeArea/2;
             }
 
             &::before,
@@ -427,7 +425,7 @@ $cvPaddingLeft: 10vw;
     @include media(tablet) {
         &-header {
             @extend %cf-tab;
-            @include fallback(padding, $safeArea*6 0, 25vh 0 $safeArea*4);
+            padding: 25vh 0 $safeArea*4;
 
             > * {
                 float: right;

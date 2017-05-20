@@ -51,7 +51,7 @@ $navSpeed: 250ms;
             height: $safeArea*2;
             vertical-align: bottom;
             padding-top: $safeArea/2;
-            @include fallback(margin-left, $safeArea*8, 9vw);
+            margin-left: 9vw;
             transition: color $navSpeed ease, font $navSpeed ease, padding $navSpeed ease;
 
             &:hover {
