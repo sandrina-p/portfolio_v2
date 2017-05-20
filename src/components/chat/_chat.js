@@ -208,59 +208,54 @@ var ChatApp = function() {
     // ------ TYPES OF PART BUILD ------ //
     // ------ section ------ //
     function buildSection($chatSection) {
+        var $sectionIntro = '';
         title = $chatSection.text(),
         section = $chatSection.attr('data-section');
 
         text = chatContent[section]['intro'];
         delete chatContent[section]['intro'];
 
-        var $section =
-                $('<section class="chatSection jsLoading" id="'+section+'">'
-                    +'<div class="chatPart" id="'+section+'-intro" aria-live="polite">'
-                        +'<div class="chatPart-human">'
-                            +'<h2 class="chatPart-title jsLoading">'+title+'</h3>'
-                        +'</div>'
+        $('<section/>', {
+            'id': section,
+            'class': 'chatSection jsLoading',
+            'html': `<div class="chatPart" id="${section}-intro">`
+                    +'<div class="chatPart-human">'
+                        +`<h2 class="chatPart-title jsLoading">${title}</h3>`
                     +'</div>'
-                +'</section>'),
-            ElChatPart;
+                +'</div>',
+        }).appendTo($chatId);
 
-        setTimeout(function () {
-            $chatId.append($section);
+        $sectionIntro = $(`#${section}-intro`);
 
-            var $sectionIntro = $('#'+section+'-intro');
+        $('<div/>', {
+            'class':'chatPart-bot',
+            'html':`<p class="chatPart-text jsLoading">${text}</p>`,
+        }).appendTo($sectionIntro);
 
-            ElChatPart =
-                $('<div class="chatPart-bot">'
-                    +`<p class="chatPart-text jsLoading">${text}</p>`
-                +'</div>');
-
-            $sectionIntro.append(ElChatPart);
-
-            if (section == 'practice') {
-                showingCommon($sectionIntro, showingPractice);
-            } else {
-                var ElChatOptions = getOptions(title);
-                $sectionIntro.find(botClass).append(ElChatOptions);
-                showingCommon($sectionIntro, showingSentence);
-            }
-        }, 200);
+        if (section === 'practice') {
+            showingCommon($sectionIntro, showingPractice);
+        } else {
+            $sectionIntro.find(botClass).append(getOptions(title));
+            showingCommon($sectionIntro, showingSentence);
+        }
     }
 
     // ------ talk ------ //
     function buildSentence($option) {
+        var $newPart;
 
         // get text and remove it from chatContent.
         text = chatContent[section][title];
         delete chatContent[section][title];
 
         // build part
-        var ElChatPart = getElPart(),
-            ElChatOptions = getOptions(section);
+        var $ChatPart = getElPart(),
+            $ChatOptions = getOptions(section);
 
-        ElChatPart.find(botClass).append(ElChatOptions);
-        $currentPart.after(ElChatPart);
+        $ChatPart.find(botClass).append($ChatOptions);
+        $currentPart.after($ChatPart);
 
-        var $newPart = $currentPart.next();
+        $newPart = $currentPart.next();
         showingCommon($newPart, showingSentence, $option);
     }
 
