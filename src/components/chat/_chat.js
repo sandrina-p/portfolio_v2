@@ -8,18 +8,16 @@
 
 var ChatApp = function() {
     var chatContent = TalkChat.conversation,
-        mainSections = TalkChat.mainSections,
         $chatId = $('#chat'),
         chatPClass = '.chatPart-',
         botClass = chatPClass+'bot',
-        btnName,
 
         // crucial content from each part
-        section, // string - section of the clicked button, ex: 'background';
+        section, // string - section of the clicked button, ex: 'practice';
         $currentPart, // jquery - id of the clicked button parent chatPart ex: $('#chatpart-intro');
-        text, // string - simple text of the bot;
+        id, // string - id of part ex: 'hobbies'
         title, // string - title of the new part ex: 'before that'
-        id, // string -> ex : 'rede-expressos'
+        sentence, // string - sentece shown on that part
 
         // some numbers to better control auto scroll and @medias
         // mediaQHeight = 550,
@@ -33,7 +31,6 @@ var ChatApp = function() {
 
         section = $option.closest('.chatSection').attr('id'),
         $currentPart = $option.closest('.chatPart'),
-        btnName = $option.text(),
         title = $option.attr('name'),
         id = Util.stringSlugLower(title);
 
@@ -80,7 +77,7 @@ var ChatApp = function() {
 
         $parent.css({'transform': `translate(${thisX}px, ${thisY}px)`});
 
-        // FIXME ai ai ai ai so ugly - have timeout to stretch height (slideUp() with css) and remove();
+        // FIXME - have timeout to stretch height (slideUp() with css) and remove();
         setTimeout(function () {
             $parent.addClass('remove');
 
@@ -104,7 +101,7 @@ var ChatApp = function() {
     function getElPart() {
         return  $(`<div class="chatPart" id="${id}">`
                     +getElTitle(title)
-                    +getElSentence(text)
+                    +getElSentence()
                 +'</div>');
     }
 
@@ -113,9 +110,9 @@ var ChatApp = function() {
                 +`<h3 class="chatPart-title jsLoading" tabindex="0">${title}</h3>`
             +'</div>';
     }
-    function getElSentence(text) {
+    function getElSentence() {
         return '<div class="chatPart-bot">'
-                    +`<p class="chatPart-text jsLoading" role="alert" aria-atomic="true">${text}</p>`
+                    +`<p class="chatPart-text jsLoading" role="alert" aria-atomic="true">${sentence}</p>`
                     // options
                 +'</div>';
     }
@@ -202,9 +199,8 @@ var ChatApp = function() {
             diffPartCallBack($part, chatPClass);
         }, 500);
 
-        console.log($part.find(`${chatPClass}title`));
+        // a11y purposes
         $part.find(`${chatPClass}title`).focus();
-
     }
 
     function showingSentence($part) {
@@ -239,7 +235,7 @@ var ChatApp = function() {
         title = $chatSection.text(),
         section = $chatSection.attr('data-section');
 
-        text = chatContent[section]['intro'];
+        sentence = chatContent[section]['intro'];
         delete chatContent[section]['intro'];
 
         $('<section/>', {
@@ -247,7 +243,7 @@ var ChatApp = function() {
             'class': 'chatSection jsLoading',
             'html': `<div class="chatPart" id="${section}-intro">`
                     +getElTitle(title)
-                    +getElSentence(text)
+                    +getElSentence()
                 +'</div>',
         }).appendTo($chatId);
 
@@ -265,7 +261,7 @@ var ChatApp = function() {
     // ------ talk ------ //
     function buildSentence($option) {
         // get text and remove it from chatContent.
-        text = chatContent[section][title];
+        sentence = chatContent[section][title];
         delete chatContent[section][title];
 
         // build part
