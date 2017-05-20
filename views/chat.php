@@ -16,7 +16,7 @@
         </a>
 
         <button name="button" class="Nav-item js-NavItem js-botTrigger"
-            data-gaec="chatNavL" aria-label="About - This is a chat with me where I explain how I was built technically. Despite being the part that most of users love more, unfortunately it's the worse part of me for users like you. I'm sorry about that, I'm working on it!">
+            data-gaec="chatNavL" aria-label="About - This is a chat where I explain how I was built. Despite being the part that most of users love, unfortunately it's the worse part of me for users like you. I'm sorry about that, I'm working on it!">
             About
         </button>
     </nav>

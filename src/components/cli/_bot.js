@@ -59,7 +59,7 @@ var botSection = function() {
                     if(objContext.keepSection[1].indexOf(lastSection) > -1) {
                         sentText = lastSection;
                     } else {
-                        var iR = UtilFuncs.randomNumb(botContent.EmpTy);
+                        var iR = Util.randomNumb(botContent.EmpTy);
                         appendBotAnswer(botContent.EmpTy[iR]);
                         return;
                     }
@@ -69,7 +69,7 @@ var botSection = function() {
                 if(key) {
                     var contextLength = objContext[key].length;
                     if (contextLength) {
-                        var iR = UtilFuncs.randomNumb(contextLength);
+                        var iR = Util.randomNumb(contextLength);
                         botAnswer = objContext[key][iR];
                         objContext[key].splice([iR], 1); //prevent for showing the same thing twice.
                     } else {
@@ -91,7 +91,7 @@ var botSection = function() {
 
     function searchVocabulary(context) {
         if (sentText == "") {
-            var botAnswer = botContent.EmpTy[UtilFuncs.randomNumb(botContent.EmpTy)]
+            var botAnswer = botContent.EmpTy[Util.randomNumb(botContent.EmpTy)]
         } else {
             context = context || "vocabulary";
             var objContext = botContent[context];

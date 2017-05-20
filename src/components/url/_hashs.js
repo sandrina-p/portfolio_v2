@@ -27,15 +27,15 @@ var Hashs = function() {
         switch (hash) {
             case 'projects':
                 $('.js-NavItem[data-section="practice"]').trigger('click');
-                // UtilFuncs.scrollTo($('#btn-pr').offset().top - 60)
+                // Util.scrollTo($('#btn-pr').offset().top - 60)
                 break;
             case 'journey':
                 $('.js-NavItem[data-section="journey"]').trigger('click');
-                // UtilFuncs.scrollTo($('#btn-jr').offset().top - 60)
+                // Util.scrollTo($('#btn-jr').offset().top - 60)
                 break;
             // case 'knowledge':
             //     $('#btn-th').trigger('click');
-            //     UtilFuncs.scrollTo($('#btn-th').offset().top - 60)
+            //     Util.scrollTo($('#btn-th').offset().top - 60)
             //     break;
             // case '008080': //TODO prevent this on touch devices
             // case 'bot':
@@ -78,7 +78,7 @@ var Hashs = function() {
     }
 
     function set(newHash) {
-        newHash = UtilFuncs.stringSlugLower(newHash);
+        newHash = Util.stringSlugLower(newHash);
         console.log('new window location:', newHash);
         window.location.hash = newHash;
     }

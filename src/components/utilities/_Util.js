@@ -1,12 +1,17 @@
-var UtilFuncs = function(){
+/* exported Util */
 
-    var iOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream,
-        untilTablet = iOS ? screen.width < 750 : window.innerWidth < 750,
-        wHeight = iOS ? screen.height : window.innerHeight; //http://stackoverflow.com/questions/4629969/ios-return-bad-value-for-window-innerheight-width
+var Util = function(){
 
-    console.log('until' + untilTablet, wHeight);
+    var isiOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream,
+        untilTablet = isiOS ? screen.width < 750 : window.innerWidth < 750,
+        wHeight = isiOS ? screen.height : window.innerHeight, // http://stackoverflow.com/questions/4629969/ios-return-bad-value-for-window-innerheight-width
+        hasTouchEvents = false,
+        isRetina = checkForRetina();
 
-    $(document).on('click', 'a[href*=#]', function(e){
+    // smooth anchor scroll
+    $(document).on('click', 'a[href*=\\#]', function(e){
+        e.preventDefault();
+
         const HrefOffset = $( $.attr(this, 'href') ).offset();
 
         if (HrefOffset) {
@@ -14,8 +19,13 @@ var UtilFuncs = function(){
                 scrollTop: HrefOffset.top -100,
             }, 1000);
         }
-        e.preventDefault();
     });
+
+    // detect if is a touch device
+    document.addEventListener('touchstart', function onFirstTouch() {
+        hasTouchEvents = true;
+        document.removeEventListener('touchstart', onFirstTouch, false);
+    }, false);
 
     function objSize(obj) {
         var size = 0,
@@ -50,25 +60,26 @@ var UtilFuncs = function(){
         $('body').animate({ scrollTop: value }, 1500, 'swing');
     }
 
-    function isRetina() {
-        var mediaQuery = "(-webkit-min-device-pixel-ratio: 1.5),\
+    function checkForRetina() {
+        var mediaQuery = '(-webkit-min-device-pixel-ratio: 1.5),\
                 (min--moz-device-pixel-ratio: 1.5),\
                 (-o-min-device-pixel-ratio: 3/2),\
-                (min-resolution: 1.5dppx)";
+                (min-resolution: 1.5dppx)';
 
-        return (window.devicePixelRatio > 1) || (window.matchMedia && window.matchMedia(mediaQuery).matches)
+        return (window.devicePixelRatio > 1) || (window.matchMedia && window.matchMedia(mediaQuery).matches);
     }
 
     return {
-        untilTablet,
-        wHeight,
+        hasTouchEvents,
+        isRetina,
         objSize,
         objRandom,
-        stringSlugLower,
         randomNumb,
         scrollTo,
-        isRetina
-    }
+        stringSlugLower,
+        untilTablet,
+        wHeight,
+    };
 }();
 
 $.fn.extend({

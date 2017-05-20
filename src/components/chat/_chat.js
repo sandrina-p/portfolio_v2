@@ -1,6 +1,6 @@
 /* global
     TalkChat:false,
-    UtilFuncs: false,
+    Util: false,
     Projects: false,
     Hashs: false,
 */
@@ -37,7 +37,7 @@ var ChatApp = function() {
         $currentPart = $option.closest('.chatPart'),
         btnName = $option.text(),
         title = $option.attr('name'),
-        id = UtilFuncs.stringSlugLower(title);
+        id = Util.stringSlugLower(title);
 
         animateClickedOption($option);
         buildSentence($option);

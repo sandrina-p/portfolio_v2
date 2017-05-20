@@ -1,4 +1,4 @@
-// =include components/utilities/_utilFuncs.js
+// =include components/utilities/_Util.js
 
 // =include data/_TalkChat.js
 // =include data/_TalkBot.js
