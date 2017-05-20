@@ -1,4 +1,4 @@
-/* global TalkChat:false, baffle:false, cvProjects: false */
+/* global TalkChat:false, baffle:false, cvProjects: false, Util:false */
 /* exported currentText */
 /* global currentText */
 
@@ -127,7 +127,7 @@ $(function lookIntoOnWww(){
             $('.navCV').remove();
             cvProjects.setProjLoop(true);
 
-            if (!Modernizr.touchevents) {
+            if (!Util.hasTouchEvents) {
                 OnWeb.init();
             }
 

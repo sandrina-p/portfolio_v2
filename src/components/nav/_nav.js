@@ -1,6 +1,7 @@
 /* global
-    TalkChat:false,
-    baffle:false,
+    TalkChat: false,
+    baffle: false,
+    Util: false,
 */
 /* exported Nav */
 
@@ -23,7 +24,7 @@ var Nav = function() {
 
         showNav();
 
-        if (Modernizr.touchevents) {
+        if (Util.hasTouchEvents) {
             // TODO Hide all bot stuff on touch devices
             $('.js-botTrigger').remove();
         }

@@ -219,7 +219,6 @@ $mediaHeight: em(400);
 }
 
 
-
 /*------------------------------------*\
     #FLEXBOX & CLEARFIX
 \*------------------------------------*/
@@ -247,23 +246,14 @@ $mediaHeight: em(400);
 }
 
 
-@mixin flexbox($noFlex:null) {
+@mixin flexbox() {
+    display: flex;
 
-    .flexbox & {
-        display: flex;
-
-        & > * {
-            // this is to prevent bugs on IE 10 11
-            flex-grow: 0;
-            flex-shrink: 1;
-            flex-basis: auto;
-        }
-    }
-
-    @if ($noFlex) {
-        .no-flexbox & {
-            @include cf;
-        }
+    // prevent bugs on IE 10 11
+    & > * {
+        flex-grow: 0;
+        flex-shrink: 1;
+        flex-basis: auto;
     }
 }
 
@@ -274,10 +264,6 @@ $mediaHeight: em(400);
 @include media(mobile) {
     %flexbox-mob {
         @include flexbox;
-    }
-
-    %flexbox-noFlex-mob {
-        @include flexbox(true);
     }
 }
 
@@ -292,10 +278,6 @@ $mediaHeight: em(400);
         @include flexbox;
     }
 
-    %flexbox-noFlex-pha {
-        @include flexbox(true);
-    }
-
     %cf-pha {
         @include cf;
     }
@@ -303,10 +285,6 @@ $mediaHeight: em(400);
 @include media(tablet) {
     %flexbox-tab {
         @include flexbox;
-    }
-
-    %flexbox-noFlex-tab {
-        @include flexbox(true);
     }
 
     %cf-tab {
@@ -319,69 +297,18 @@ $mediaHeight: em(400);
     }
 }
 
-// @include flexboxProp
-
-%flexbox-noFlex {
-    @include flexbox(true);
-}
-
-
-@mixin flexboxProp {
-    .flexbox & {
-        @content;
-    }
-}
-
-@mixin noFlex {
-    .no-flexbox & {
-        @content;
-    }
-}
-
-// .test {
-//     @include noFlex {
-//         padding: 10px;
-//     };
-// }
-//output css
-// .no-flexbox .test {
-//     padding: 10px;
-// }
-
-
-/*------------------------------------*\
-    #CALC
-\*------------------------------------*/
-@mixin calc($prop, $valFallBack, $valCal) {
-    #{$prop}: $valFallBack; // poor browsers
-    #{$prop}: calc(#{$valCal});
-}
-// @include calc(width, 100%, 100% - #{$safeArea}/2);
-
-
-/*------------------------------------*\
-    #SUPPORT
-\*------------------------------------*/
-@mixin fallback($prop, $valFallBack, $val) {
-    #{$prop}: $valFallBack; // poor browsers
-    #{$prop}: $val;
-}
-// @include fallback(width, 100%, 100vh);
-
-
 
 /*------------------------------------*\
     #IMG RETINA
 \*------------------------------------*/
 @mixin bgImg2x($file, $type) {
-  background-image: url($file + '.' + $type);
+    background-image: url($file + '.' + $type);
 
-  @media (-webkit-min-device-pixel-ratio: 2),
-    (min-resolution: 192dpi) {
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
         & {
             background-image: url($file + '@2x.' + $type);
         }
-  }
+    }
 }
 // ex: @include bgImg2x('../../media/images/passenger-back', jpg);
 

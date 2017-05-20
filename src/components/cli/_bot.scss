@@ -24,10 +24,8 @@ $textPaddingTab: 20vw;
     // animation: bgBreath 3s ease-in-out infinite, height $speed ease-out;
 
     @extend %flexbox;
-    @include flexboxProp {
-        flex-direction: column;
-        justify-content: flex-end;
-    }
+    flex-direction: column;
+    justify-content: flex-end;
 
     &.jsLoading {
         top: -200%;
