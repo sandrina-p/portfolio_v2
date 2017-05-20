@@ -25,13 +25,13 @@ var Projects = function() {
         direction,
         $pivot, $projsLeft, $projsRight, $projActive, // nav variables
         $projSub, $projMedia, $projRole, $projDate, $projTeam, $projRole, $projIntro, $projDetails, $projLinks, $projBotTip, // getProjDomElements variables
-        $newActive, fPos, $projDir, addProjNumb, isParentLeft, // onNavMoved variables
+        $newActive, fPos, $projDir, addProjNumb, isParentLeft, // moveNavTo variables
         estimateFinalWidth, projActiveWidth, pivotPos, projActivePos, transX, // alignPivot variables
         baffle0, baffle1, baffle2, baffle3, baffle4, baffle5, // baffle variables
 
         windowBotWidth = window.innerWidth*40/100,
-        numbOfGestures = 0;
-    projectsVisible = false, // prevent use of keyboard < > before opening projects
+        numbOfGestures = 0,
+        projectsVisible = false, // prevent use of keyboard < > before opening projects
         gael = ''; // used to GA
 
 
@@ -411,6 +411,7 @@ var Projects = function() {
 
         $('#'+section).append(elProj);
         $('#projects').slideDown();
+        listenForSwipes();
         getProjDomElements();
         baffleProj();
 
@@ -459,11 +460,16 @@ var Projects = function() {
         showNewProject();
     }
 
-    function onNavMoved(direction) {
-        $newActive =
-            direction == 'left'
-                ? $projActive.prev()
-                : $projActive.next();
+    function moveNavTo(direction) {
+        console.log('moveNavTo()', direction);
+
+        if (direction === 'left') {
+            $newActive = $projActive.prev();
+        } else if (direction === 'right') {
+            $newActive = $projActive.next();
+        } else {
+            return false;
+        }
 
         isParentLeft = checkIsParentLeft();
 
@@ -503,8 +509,8 @@ var Projects = function() {
 
         (function toGA() {
             var ec = 'projNavMoved';
-            inm = $newActive.text().replace(/[^a-zA-Z]/g, '');
-            ea = inm; // action
+            var inm = $newActive.text().replace(/[^a-zA-Z]/g, '');
+            var ea = inm; // action
             gael += inm+'|';
 
             GAcustom.sendToGA(`&ec=${ec}&in=${inm}&ea=${ea}&el=${gael}`);
@@ -513,22 +519,23 @@ var Projects = function() {
 
 
     // ------ DOM Interactions ------ //
-    if (Util.hasTouchEvents) {
-        $(document).on('swipeleft', '#projects', function() {
-            onNavMoved('right');
-        });
+    function listenForSwipes() {
+        if (Util.hasTouchEvents) {
+            var elProjects = document.getElementById('projects');
 
-        $(document).on('swiperight', '#projects', function() {
-            onNavMoved('left');
-        });
+            console.log(elProjects);
+
+            Swipper.right(elProjects, moveNavTo, 'left');
+            Swipper.left(elProjects, moveNavTo, 'right');
+        }
     }
 
     $(document).keydown(function(e) {
         if (projectsVisible) {
             if (e.keyCode == 37) { // [ < ]
-                onNavMoved('left');
+                moveNavTo('left');
             } else if (e.keyCode == 39) { // [ > ]
-                onNavMoved('right');
+                moveNavTo('right');
             }
         }
 
@@ -544,7 +551,7 @@ var Projects = function() {
         setInitialProject,
         startIt,
         onNavProjClick,
-        onNavMoved
+        moveNavTo
     };
 }();
 

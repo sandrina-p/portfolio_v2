@@ -5,7 +5,7 @@ var Util = function(){
     var isiOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream,
         untilTablet = isiOS ? screen.width < 750 : window.innerWidth < 750,
         wHeight = isiOS ? screen.height : window.innerHeight, // http://stackoverflow.com/questions/4629969/ios-return-bad-value-for-window-innerheight-width
-        hasTouchEvents = false,
+        hasTouchEvents = Modernizr.touchevents,
         isRetina = checkForRetina();
 
     // smooth anchor scroll
@@ -20,12 +20,6 @@ var Util = function(){
             }, 1000);
         }
     });
-
-    // detect if is a touch device
-    document.addEventListener('touchstart', function onFirstTouch() {
-        hasTouchEvents = true;
-        document.removeEventListener('touchstart', onFirstTouch, false);
-    }, false);
 
     function objSize(obj) {
         var size = 0,
