@@ -50,6 +50,8 @@ var ChatApp = function() {
 
         $this.addClass('is-selected').attr('aria-expanded', true);
         buildSection($this);
+
+        $('.navCV').remove();
     }
 
     // ------ GENERAL STUFF ----- //
