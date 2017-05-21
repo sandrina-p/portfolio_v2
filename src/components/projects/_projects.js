@@ -155,13 +155,23 @@ var Projects = function() {
         $projsRight = $(classProjRight);
     }
 
-    function getProjectImgs(imgArray) {
-        var $glidder = $('<div class=\'Glidder\'></div>'),
-            elImgs = '',
-            newImg, imgRet,
-            screenM = window.innerWidth >= 650,
-            screenL = window.innerWidth >= 1250,
+    function getImages(imgArray) {
+        var elImgs = '',
+            newImg,
+            imgRet,
+            screenM = window.innerWidth >= 650, // TODO: add support to convert REM in PX
+            screenL = window.innerWidth >= 1250, // TODO: add support to convert REM in PX
             { isRetina } = Util;
+
+        if (screenL) {
+            elImgs = fetchRes('@3x');
+        } else if (screenM) {
+            elImgs = isRetina ? fetchRes('@3x') : fetchRes('@2x');
+        } else {
+            elImgs = isRetina ? fetchRes('@2x') : fetchRes();
+        }
+
+        return $('<div/>', { 'class': 'Glidder'}).html(elImgs);
 
         function fetchRes(res) {
             if (res) {
@@ -170,41 +180,26 @@ var Projects = function() {
                     imgRet.splice(1, 0, res);
                     imgRet.splice(2, 0, '.');
                     newImg = imgRet.join('');
-                    elImgs += '<img src=\''+newImg+'\'>';
+                    elImgs += `<img src="${newImg}">`;
                 }
-                return elImgs;
-            }
-
-            for (let i = 0, arr = imgArray.length; i < arr; i++) {
-                elImgs += '<img src=\''+imgArray[i]+'\'>';
+            } else {
+                for (let i = 0, arr = imgArray.length; i < arr; i++) {
+                    elImgs += `<img src="${imgArray[i]}">`;
+                }
             }
 
             return elImgs;
         }
-
-        // check screen resolution to fetch the best images
-
-        if (screenM && !screenL) { // ~ tablet
-            // if ~tablet retina
-            elImgs = isRetina ? fetchRes('@3x') : fetchRes('@2x');
-
-        } else if (screenL) { // ~ desktop
-            elImgs = fetchRes('@3x');
-
-        } else {  // ~ mobile
-            // if ~mobile retina
-            elImgs = isRetina ? fetchRes('@2x') : fetchRes();
-        }
-
-        return $glidder.append(elImgs);
     }
 
     function getProjectLinks(links) {
         var elLinks = '';
-        for (i = 0; i < links.length; i++) {
-            (links[i][1] == 'available soon')
-                ? elLinks += '<div class=\'projCont-links-option\'><p class=\'btnCheck\'><i class=\'fa fa-'+links[i][2]+'\'></i>'+links[i][1]+'</p></div>'
-                : elLinks += '<div class=\'projCont-links-option\'><a href=\''+links[i][0]+'\' target=\'_blank\' class=\'btnCheck\'><i class=\'fa fa-'+links[i][2]+'\'></i>'+links[i][1]+'</a></div>';
+        for (let i = 0, l = links.length; i < l; i++) {
+            elLinks += '<div class="projCont-links-option">'
+                            +`<a href="${links[i][0]}" target="_blank" class="btnCheck">`
+                                +`<i class="fa fa-${links[i][2]}"></i>${links[i][1]}`
+                            +'</a>'
+                        +'</div>';
         }
         return elLinks;
     }
@@ -214,10 +209,9 @@ var Projects = function() {
         var projSlug = Util.stringSlugLower(projName),
             projData = chatContent.practice[projName],
 
-            elImgs = getProjectImgs(projData.img),
             elLinks = getProjectLinks(projData.links);
 
-        $projMedia.html(elImgs);
+        $projMedia.html(getImages(projData.img));
         $projLinks.html(elLinks);
         $projTeam.html(projData.team);
 
