@@ -22,7 +22,9 @@ var Nav = function() {
         $nav = $('.js-Nav');
         $navItems = $('.js-NavItem');
 
-        showNav();
+        setTimeout(function () {
+            showNav();
+        }, 1500);
 
         if (Util.hasTouchEvents) {
             // TODO Hide all bot stuff on touch devices
@@ -44,7 +46,6 @@ var Nav = function() {
             }, 1000);
 
         } else {
-            console.log('showNav 3000');
             setTimeout(() => showNav(), 300);
         }
     }

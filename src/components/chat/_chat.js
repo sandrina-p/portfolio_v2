@@ -213,7 +213,9 @@ var ChatApp = function() {
 
     function showingPractice($part){
         finishLoading($part.find(`${chatPClass}text`));
-        buildProject($part);
+        setTimeout(function () {
+            Projects.startIt(section);
+        }, 400);
     }
 
     function showingOptions($part) {
@@ -276,13 +278,6 @@ var ChatApp = function() {
         showingCommon($currentPart.next(), showingSentence, $option);
     }
 
-    // ------ project ------ //
-    function buildProject() {
-        setTimeout(function () {
-            Projects.startIt(section);
-            // scrollSafe($('#projects')); //TODO adjust until top of screen
-        }, 600);
-    }
 
     $(document).on('click', '.js-chatOpt', function(){
         clickOption($(this));
