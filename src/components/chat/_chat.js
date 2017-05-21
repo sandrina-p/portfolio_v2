@@ -122,7 +122,7 @@ var ChatApp = function() {
 
     function getElBtn(text) {
         return '<div class="chatPart-option jsLoading">'
-                    +`<button type="button" name="${text}" class="btnB jsLoading js-chatOpt" data-gaec="chat" aria-label="Know more about ${text}">${text}</button>`
+                    +`<button type="button" name="${text}" class="btnB jsLoading js-chatOpt" data-gaec="chat">${text}</button>`
                 +'</div>';
     }
 

@@ -31,7 +31,7 @@ var TalkChat = function(){
         },
         practice: {
             intro: 'The constant searching for <strong>something unique and interactive</strong> is what connects her projects.',
-            projects: ['rede expressos', 'carolina machado', 'portfolio 15', 'pistol shrimp', 'moon', 'Nox', 'DET', '141205'],
+            projects: ['rede expressos', 'carolina machado', 'portfolio 15', 'pistol shrimp', 'moon', 'NOX', 'DET', '141205'],
             'rede expressos': {
                 categ: 'www projects',
                 title: 'Rede Expressos',
@@ -120,9 +120,9 @@ var TalkChat = function(){
                 date: 'feb\'15',
                 links: [['https://sandrina-p.github.io/moon/', 'check the website', 'desktop']],
             },
-            'Nox': {
+            'NOX': {
                 categ: 'opening other doors',
-                title: 'Nox',
+                title: 'NOX',
                 sub: 'video game concept',
                 role: 'Motion Graphics',
                 team: 'Made with '+linkMaggie,
