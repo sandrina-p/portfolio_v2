@@ -11,7 +11,7 @@
     'rules': {
         'indent': ['error', 4],
         'linebreak-style': [ 'error', 'unix' ],
-        'quotes': [ 'error', 'single' ],
+        'quotes': [ 'error', 'single', { 'avoidEscape': true }],
         'semi': [ 'error', 'always' ],
         'no-console': ['error', {
             'allow': ['warn', 'error', 'log']

@@ -1,10 +1,18 @@
+/* global
+    TalkChat:false,
+    Util: false,
+    Projects: false,
+    Hashs: false,
+*/
+/* exported Projects */
+
 var Projects = function() {
     var activeClass = 'js-active',
         chatContent = TalkChat.conversation,
         arrProjects = chatContent.practice.projects,
-        projLimit = 7, // limit of projects on nav for each side
-        initialProject = '', // if you want to open a specific project
-        classbtnNav = '.projNav-btn',
+        projLimit = 7, // min limit of projects on nav for each side
+        initialProject = '', // start projects with a specific project
+
         classProjSub = '.projCont-subtitle',
         classProjMedia = '.projCont-media',
         classProjRole = '.projCont-role',
@@ -15,16 +23,16 @@ var Projects = function() {
         classProjLinks = '.projCont-links',
         classProjBotTip = '.bot-nav',
         classPivot = '.projNav-pivot',
-        classProjLeft = '.projNav-left', // In case you, sandrina, forget it, it's needed -left and -right to smooth things out when a new button cames out
+
+        // -left and -right are needed to smooth nav transitions when a new button is added.
+        classProjLeft = '.projNav-left',
         classProjRight = '.projNav-right',
 
-        mediaQHeight = 550,
         untilTablet = Util.untilTablet,
-        wHeight = Util.wHeight,
 
         direction,
         $pivot, $projsLeft, $projsRight, $projActive, // nav variables
-        $projSub, $projMedia, $projRole, $projDate, $projTeam, $projRole, $projIntro, $projDetails, $projLinks, $projBotTip, // getProjDomElements variables
+        $projMedia, $projDate, $projTeam, $projRole, $projIntro, $projDetails, $projLinks, $projBotTip, // getProjDomElements variables
         $newActive, fPos, $projDir, addProjNumb, isParentLeft, // moveNavTo variables
         estimateFinalWidth, projActiveWidth, pivotPos, projActivePos, transX, // alignPivot variables
         baffle0, baffle1, baffle2, baffle3, baffle4, baffle5, // baffle variables
@@ -37,47 +45,42 @@ var Projects = function() {
 
     // ------ build nav and project DOM ------ //
     function buildProj() {
-        var sub, role, date, team, title, more, botTip, elImgs, ElLinks,
-            elProjNav = buildProjNav('left'),
-            $ElProj =  $(`<div class='proj' id='projects'>
-                            <div class='bot-nav'></div>
-                            <div class='projNav'>
-                                <div class='projNav-pivot'>
-                                    <div class='projNav-left'>${elProjNav}</div>
-                                    <div class='projNav-right'>${elProjNav}</div>
-                                </div>
-                            </div>
+        var elNav = buildNav();
 
-                            <div class='projCont'>
-                                <div class='projCont-left'>`
-                                    /* <p class='projCont-subtitle'>${sub}</p> */
+        return $('<div class="proj" id="projects">'
+            +'<div class="bot-nav"></div>'
 
-                                    +`<div class='projCont-media'>
-                                        <div class='Glidder'>${elImgs}</div>
-                                    </div>
-                                </div>
+            +'<div class="projNav">'
+                +'<div class="projNav-pivot">'
+                    +`<div class="projNav-left">${elNav}</div>`
+                    +`<div class="projNav-right">${elNav}</div>`
+                +'</div>'
+            +'</div>'
 
-                                <div class='projCont-right'>
-                                    <div class='projCont-links'>${ElLinks}</div>
+            +'<div class="projCont">'
+                +'<div class="projCont-left">'
+                    +'<div class="projCont-media">'
+                        +'<div class="Glidder"> </div>'
+                    +'</div>'
+                +'</div>'
 
-                                    <div class='projCont-descript'>
-                                        <p class='projCont-intro'>${title}</p>
-                                        <p class='projCont-details'>${more}</p>
-                                    </div>
-
-                                    <div class='projCont-about'>
-                                        <p class='projCont-role'>${role}</p>
-                                        <p class='projCont-date'>${date}</p>
-                                        <p class='projCont-team'>${team}</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>`);
-
-        return $ElProj;
+                +'<div class="projCont-right">'
+                    +'<div class="projCont-links"></div>'
+                    +'<div class="projCont-descript">'
+                        +'<p class="projCont-intro"> </p>'
+                        +'<p class="projCont-details"> </p>'
+                    +'</div>'
+                    +'<div class="projCont-about">'
+                        +'<p class="projCont-role"> </p>'
+                        +'<p class="projCont-date"> </p>'
+                        +'<p class="projCont-team"> </p>'
+                    +'</div>'
+                +'</div>'
+            +'</div>'
+        +'</div>');
     }
 
-    function buildProjNav() {
+    function buildNav() {
         var elProjNav = '';
 
         for (var i = 0, projName, nameSlug, projLength = arrProjects.length; i < projLength; i++) {
@@ -90,22 +93,21 @@ var Projects = function() {
     }
 
     function getElBtn(nameSlug, projName) {
-        return '<button type=\'button\' name=\''+nameSlug+'\' class=\'projNav-btn\' data-gaec=\'projNavClick\'>'+projName+'</button>';
+        return `<button type="button" name="${nameSlug}" class="projNav-btn" data-gaec="projNavClick">${projName}</button>`;
     }
 
-    function addProjNav(quantity) {
-        var addProjects = '',
+    function addProjNav(numberOfProj) {
+        var navProjects = '',
             nameSlug,
+            projName = '',
             projsIndexs = arrProjects.length - 1,
-            projI =
-                isParentLeft
-                    ? arrProjects.indexOf($projsLeft.children(':first').text()) - 1
-                    : arrProjects.indexOf($projsRight.children(':last').text()) + 1;
+            projI = isParentLeft
+                ? arrProjects.indexOf($projsLeft.children(':first').text()) - 1
+                : arrProjects.indexOf($projsRight.children(':last').text()) + 1;
 
 
         if (isParentLeft) {
-
-            for (var i = 0; i < quantity; i++) {
+            for (let i = 0; i < numberOfProj; i++) {
                 if (arrProjects[projI]) {
                     projName = arrProjects[projI];
                 } else {
@@ -113,15 +115,12 @@ var Projects = function() {
                     projName = arrProjects[projI];
                 }
                 nameSlug = Util.stringSlugLower(projName);
-                addProjects = getElBtn(nameSlug, projName) + addProjects; // reverse order
+                navProjects = getElBtn(nameSlug, projName) + navProjects; // reverse order
                 projI--;
             }
 
-            $projsLeft.prepend(addProjects);
-
         } else {
-
-            for (var i = 0; i < quantity; i++) {
+            for (let i = 0; i < numberOfProj; i++) {
                 if (arrProjects[projI]) {
                     projName = arrProjects[projI];
                 } else {
@@ -129,23 +128,20 @@ var Projects = function() {
                     projName = arrProjects[projI];
                 }
                 nameSlug = Util.stringSlugLower(projName);
-                addProjects += getElBtn(nameSlug, projName);
+                navProjects += getElBtn(nameSlug, projName);
                 projI++;
             }
-
-            $projsRight.append(addProjects);
         }
+
+        $projsLeft.prepend(navProjects);
     }
 
 
     // ------ get project content ------ //
 
     function getProjDomElements() {
-        // get all the projects placeholders once they are ready to be manipulated
-        $projSub = $(classProjSub),
+        // get all the projects placeholders once they are on the DOM
         $projMedia = $(classProjMedia),
-        $projRole = $(classProjRole),
-        $projDate = $(classProjDate),
         $projTeam = $(classProjTeam),
         $projRole = $(classProjRole),
         $projIntro = $(classProjIntro),
@@ -153,9 +149,10 @@ var Projects = function() {
         $projLinks = $(classProjLinks),
         $projBotTip = $(classProjBotTip),
 
-        $pivot = $('.projNav-pivot'),
-        $projsLeft = $('.projNav-left'), // In case you, sandrina, forget it, it's needed -left and -right to smooth things out when a new button cames out
-        $projsRight = $('.projNav-right');
+        $pivot = $(classPivot),
+
+        $projsLeft = $(classProjLeft),
+        $projsRight = $(classProjRight);
     }
 
     function getProjectImgs(imgArray) {
@@ -228,17 +225,17 @@ var Projects = function() {
         baffleIntro.reveal(400, 0);
         baffleRole.reveal(400, 70);
         baffleDate.reveal(400, 250);
-        baffleDet.reveal(400, 300);
+        baffleDetails.reveal(400, 300);
 
         // REVIEW is there any way to create a loop/for on these?
         baffleSub.text(currentText => projData.sub);
         baffleIntro.text(currentText => projData.capt);
         baffleRole.text(currentText => projData.role);
         baffleDate.text(currentText => projData.date);
-        baffleDet.text(currentText => projData.more);
+        baffleDetails.text(currentText => projData.more);
 
         $('img').on('error', function () {
-            $(this).hide(); // prevent displaying 404 images
+            $(this).remove(); // prevent displaying 404 images
         });
 
 
@@ -366,9 +363,9 @@ var Projects = function() {
     // ------ util functions ------ //
 
     function changeBotNavText(text) {
-        $(classProjBotTip).addClass('.jsLoading');
-        setTimeout(() => $(classProjBotTip).html(text), 150);
-        setTimeout(() => $(classProjBotTip).removeClass('.jsLoading'), 300);
+        $projBotTip.addClass('.jsLoading');
+        setTimeout(() => $projBotTip.html(text), 150);
+        setTimeout(() => $projBotTip.removeClass('.jsLoading'), 300);
     }
 
     function checkIsParentLeft() {
@@ -379,18 +376,18 @@ var Projects = function() {
         var arrBuffle = [classProjSub, classProjIntro, classProjRole, classProjDate, classProjTeam, classProjDetails],
             arrBuffleLength = arrBuffle.length;
 
-        baffleSub = baffle(arrBuffle[0]),
-        baffleIntro = baffle(arrBuffle[1]),
-        baffleRole = baffle(arrBuffle[2]),
-        baffleDate = baffle(arrBuffle[3]),
-        baffleDet = baffle(arrBuffle[5]);
+        baffleSub = baffle(classProjSub),
+        baffleIntro = baffle(classProjIntro),
+        baffleRole = baffle(classProjRole),
+        baffleDate = baffle(classProjDate),
+        baffleDetails = baffle(classProjDetails);
 
         // TODO is there any way to create a loop/for on these?
         baffleSub.start();
         baffleIntro.start();
         baffleRole.start();
         baffleDate.start();
-        baffleDet.start();
+        baffleDetails.start();
     }
 
 
@@ -541,7 +538,7 @@ var Projects = function() {
 
     });
 
-    $(document).on('click', classbtnNav, function(e){
+    $(document).on('click', '.projNav-btn', function(e){
         e.stopPropagation(); // prevent scroll to top
         onNavProjClick($(this));
     });
