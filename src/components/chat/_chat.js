@@ -115,7 +115,7 @@ var ChatApp = function() {
     }
     function getElSentence() {
         return '<div class="chatPart-bot">'
-                    +`<p class="chatPart-text jsLoading" role="alert" aria-atomic="true">${sentence}</p>`
+                    +`<p class="chatPart-text jsLoading" aria-live="polite" aria-atomic="true">${sentence}</p>`
                     // options
                 +'</div>';
     }

@@ -51,6 +51,7 @@ var Projects = function() {
     // ------ build nav and project DOM ------ //
     function buildProj() {
         var elNav = buildNav();
+        var elNavHidden = buildNav(true);
 
         return $('<div class="proj" id="projects">'
             +'<div class="bot-nav"></div>'
@@ -62,12 +63,12 @@ var Projects = function() {
                         +'<h4 id="a11y-projNav" class="sr-only" aria-hidden="true">Projects in a carousel</h4>'
                         + elNav
                     +'</nav>'
-                    +`<div class="projNav-right" aria-hidden="true">${elNav}</div>`
+                    +`<div class="projNav-right" aria-hidden="true">${elNavHidden}</div>`
                 +'</div>'
             +'</div>'
 
             +'<article id="a11y-projCont" class="projCont">'
-                +'<h4 class="sr-only js-projCont-title"> </h4>'
+                +'<h4 class="sr-only js-projCont-title" aria-live="polite" aria-atomic="true" tabindex="0"> </h4>'
                 +'<div class="projCont-left">'
                     +'<div class="projCont-media">'
                         +'<div class="Glidder"> </div>'
@@ -90,7 +91,7 @@ var Projects = function() {
         +'</div>');
     }
 
-    function buildNav() {
+    function buildNav(ariaHidden) {
         var elProjNav = '',
             projName,
             nameSlug;
@@ -98,7 +99,7 @@ var Projects = function() {
         for (var i = 0, l = arrProjects.length; i < l; i++) {
             projName = arrProjects[i];
             nameSlug = Util.stringSlugLower(projName);
-            elProjNav += getElBtn(nameSlug, projName);
+            elProjNav += getElBtn(nameSlug, projName, ariaHidden);
         }
 
         return elProjNav;
@@ -220,6 +221,7 @@ var Projects = function() {
         projData = chatContent.practice[projName];
 
         $projTitle.text(projName);
+        $projTitle.focus();
         $projMedia.html(getImages(projData.img));
         $projLinks.html(getProjectLinks(projData.links));
         $projTeam.html(projData.team);
