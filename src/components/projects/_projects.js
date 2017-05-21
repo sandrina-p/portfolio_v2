@@ -203,16 +203,13 @@ var Projects = function() {
         return elLinks;
     }
 
-    function getProjectData(projName) {
+    function revealProject(projName) {
         // FIXME take out var from here.
-        var projSlug = Util.stringSlugLower(projName),
-            projData = chatContent.practice[projName],
+        var data = chatContent.practice[projName];
 
-            elLinks = getProjectLinks(projData.links);
-
-        $projMedia.html(getImages(projData.img));
-        $projLinks.html(elLinks);
-        $projTeam.html(projData.team);
+        $projMedia.html(getImages(data.img));
+        $projLinks.html(getProjectLinks(data.links));
+        $projTeam.html(data.team);
 
         baffleSub.reveal(400, 150);
         baffleIntro.reveal(400, 0);
@@ -220,16 +217,18 @@ var Projects = function() {
         baffleDate.reveal(400, 250);
         baffleDetails.reveal(400, 300);
 
-        baffleSub.text(currentText => projData.sub);
-        baffleIntro.text(currentText => projData.capt);
-        baffleRole.text(currentText => projData.role);
-        baffleDate.text(currentText => projData.date);
-        baffleDetails.text(currentText => projData.more);
+        /* eslint-disable no-unused-vars */
+        baffleSub.text(currentText => data.sub);
+        baffleIntro.text(currentText => data.capt);
+        baffleRole.text(currentText => data.role);
+        baffleDate.text(currentText => data.date);
+        baffleDetails.text(currentText => data.more);
+        /* eslint-enable no-unused-vars */
+
 
         $('img').on('error', function () {
-            $(this).remove(); // prevent displaying 404 images
+            $(this).remove();
         });
-
 
         setTimeout(function () {
             imgParallax();
@@ -320,7 +319,7 @@ var Projects = function() {
 
     function showNewProject() {
         baffleProj();
-        getProjectData($newActive.text());
+        revealProject($newActive.text());
 
         Hashs.set( $newActive.text() );
 
@@ -406,7 +405,7 @@ var Projects = function() {
 
         setTimeout(function () {
             var projNameSlugged = Util.stringSlugLower(projName);
-            getProjectData(projName);
+            revealProject(projName);
 
             $(`.projNav-btn[name='${projNameSlugged}']`)
                 .first()
