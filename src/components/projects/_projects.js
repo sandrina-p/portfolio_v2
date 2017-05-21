@@ -10,7 +10,7 @@
 /* exported Projects */
 
 var Projects = function() {
-    var activeClass = 'js-active',
+    var activeClass = 'is-active',
         chatContent = TalkChat.conversation,
         arrProjects = chatContent.practice.projects,
         projLimit = 7, // min limit of projects on nav for each side
@@ -54,7 +54,7 @@ var Projects = function() {
         var elNavHidden = buildNav(true);
 
         return $('<div class="proj" id="projects">'
-            +'<div class="bot-nav"></div>'
+            +'<div class="bot-nav" aria-hidden="true"></div>'
 
             +'<div class="projNav">'
                 +'<div class="projNav-pivot">'
@@ -327,7 +327,7 @@ var Projects = function() {
 
         Hashs.set(newActiveText);
 
-        $projActive.removeClass(activeClass).removeAttr('disabled').attr('aria-expanded', false);
+        $projActive.removeClass(activeClass).attr('aria-expanded', false);
 
         if (addProjNumb > 0) {
             addProjNav(addProjNumb);
@@ -338,7 +338,7 @@ var Projects = function() {
             // calculate ~ final width before it happens - might not be the best solution, but it's the best i could do.
             estimateFinalWidth = !isParentLeft || untilTablet;
 
-            $newActive.addClass(activeClass).prop('disabled', true).attr('aria-expanded', true);
+            $newActive.addClass(activeClass).attr('aria-expanded', true);
             $projActive = $newActive;
 
             alignPivot();
@@ -405,12 +405,10 @@ var Projects = function() {
             var projNameSlugged = Util.stringSlugLower(projName);
             revealProject(projName);
 
-            $(`.projNav-btn[name='${projNameSlugged}']`)
-                .first()
-                .addClass(activeClass)
-                .attr('disabled', true);
+            $projActive = $(`.projNav-btn[name='${projNameSlugged}']`).first();
 
-            $projActive = $('button.'+activeClass);
+            $projActive.addClass(activeClass).attr('aria-expanded', true);
+
             alignPivot();
 
             setTimeout(() => alignPivot(), 150); // align Pivot again to pixel perfect
@@ -522,6 +520,11 @@ var Projects = function() {
 
     $(document).on('click', '.projNav-btn', function(e){
         e.stopPropagation(); // prevent scroll to top
+
+        if ($(this).hasClass(activeClass)) {
+            $projTitle.focus();
+            return true;
+        }
         onNavProjClick($(this));
     });
 

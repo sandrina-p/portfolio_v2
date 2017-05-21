@@ -57,12 +57,12 @@ $navSpeed: 250ms;
             &:hover {
                 animation: glitch 2s steps(100) infinite;
             }
-        }
 
-        .js-active {
-            color: $clrWhite;
-            font-size: $fontLx;
-            padding-top: 0;
+            &.is-active {
+                color: $clrWhite;
+                font-size: $fontLx;
+                padding-top: 0;
+            }
         }
     }
 
