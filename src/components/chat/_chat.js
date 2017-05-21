@@ -45,7 +45,8 @@ var ChatApp = function() {
 
         // prevent buildSection twice
         if ($this.hasClass('is-selected') || $this.hasClass('js-botTrigger')) {
-            return false;
+            $(`#${$this.data('section')}-intro`).find(`${chatPClass}title`).focus();
+            return true;
         }
 
         $this.addClass('is-selected').attr('aria-expanded', true);
@@ -226,7 +227,7 @@ var ChatApp = function() {
             setTimeout(function () {                    // REVIEW better buttons target
                 finishLoading($part.find(`${chatPClass}option:last-of-type .js-chatOpt`));
 
-                // a11y focus text
+                // a11y purposes
                 $part.find(`${chatPClass}text`).focus();
             }, 300);
         }, 400);
