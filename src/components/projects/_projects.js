@@ -3,6 +3,9 @@
     Util: false,
     Projects: false,
     Hashs: false,
+    baffle: false,
+    GAcustom: false,
+    Swipped: false,
 */
 /* exported Projects */
 
@@ -32,9 +35,9 @@ var Projects = function() {
 
         direction,
         $pivot, $projsLeft, $projsRight, $projActive, // nav variables
-        $projMedia, $projDate, $projTeam, $projRole, $projIntro, $projDetails, $projLinks, $projBotTip, // getProjDomElements variables
+        $projMedia, $projTeam, $projLinks, $projBotTip, // getProjDomElements variables
         $newActive, fPos, $projDir, addProjNumb, isParentLeft, // moveNavTo variables
-        estimateFinalWidth, projActiveWidth, pivotPos, projActivePos, transX, // alignPivot variables
+        estimateFinalWidth, projActiveWidth, pivotX, projActiveX, transX, // alignPivot variables
         baffleSub, baffleIntro, baffleRole, baffleDate, baffleDetails, // baffle variables
 
         windowBotWidth = window.innerWidth*40/100,
@@ -148,9 +151,9 @@ var Projects = function() {
 
         $projMedia = $(classProjMedia);
         $projTeam = $(classProjTeam);
-        $projRole = $(classProjRole);
-        $projIntro = $(classProjIntro);
-        $projDetails = $(classProjDetails);
+        // $projRole = $(classProjRole);
+        // $projIntro = $(classProjIntro);
+        // $projDetails = $(classProjDetails);
         $projLinks = $(classProjLinks);
     }
 
@@ -237,38 +240,30 @@ var Projects = function() {
     }
 
     function imgParallax() {
-        // REVIEW this could be much better
+        const windowH =  window.innerHeight;
+        const safeMargin = 36;
 
-        var windowH =  window.innerHeight,
-            elementOffset = $projMedia.offset().top,
-            $bg1 = $('.js-cvBg'),
+        let elementOffset = $projMedia.offset().top,
             scrollTop,
-            distance,
-            topperc,
-            topfinal;
+            distanceFromTopScreen,
+            distanceInPercentage,
+            translateY;
 
         $(document).scroll(function() {
-
             scrollTop = $(window).scrollTop();
-            distance = elementOffset - scrollTop;
-            topperc = 100 - distance * 100 / windowH;
-            topfinal = ((topperc * 36 / 100 * -1 + 10) / 1.5 ).toFixed(2);
+            distanceFromTopScreen = elementOffset - scrollTop;
+            distanceInPercentage = 100 - distanceFromTopScreen * 100 / windowH;
 
-            if (topfinal < 0) {
+            translateY = ((distanceInPercentage * safeMargin / 100 * -1 + 10) / 1.5 ).toFixed(2);
 
+            if (translateY < 0) {
                 if (!untilTablet) {
-                    $projMedia.find('img').css({
-                        'transform' : 'translateY('+topfinal+'%)'
+                    // its faster to apply the transform on each image than its parent because images have animations
+                    $projMedia.find('img').each(function(){
+                        $(this)[0].style.transform = `translateY(${translateY}%)`;
                     });
                 }
-
-                // TODO this shoudn't be here...
-
-                $bg1.addClass('is-js').css({
-                    'transform' : 'translateY('+topfinal*2+'%)'
-                });
             }
-
         });
 
     }
@@ -278,29 +273,23 @@ var Projects = function() {
 
     function updateVarsOnNav(condition) {
         if (condition) {
-            $projDir = $projsLeft,
+            $projDir = $projsLeft;
             fPos = 'last';
         } else {
-            $projDir = $projsRight,
+            $projDir = $projsRight;
             fPos = 'first';
         }
 
         // check how many projects should be added to the nav
-        addProjNumb =
-            isParentLeft
-                ? projLimit - $projActive.prevAll().length
-                : projLimit - $projActive.nextAll().length;
+        addProjNumb = isParentLeft ? projLimit - $projActive.prevAll().length : projLimit - $projActive.nextAll().length;
     }
 
     function alignPivot($newProject) {
-        console.log('pivot aligned');
-        $newProject = $newProject || $projActive,
-        pivotX = $pivot.offset().left,
-        projActiveX = $newProject.offset().left,
-        firstProjectShown = true;
+        $newProject = $newProject || $projActive;
+        pivotX = $pivot.offset().left;
+        projActiveX = $newProject.offset().left;
 
         if (estimateFinalWidth) {
-            // is this a good identation? I think it's beautiful :3
             projActiveWidth =
                 direction == 'right'
                     ? $newProject.outerWidth() * 0.49
@@ -312,32 +301,34 @@ var Projects = function() {
         transX =
             untilTablet
                 ? 24 + pivotX - projActiveX
-                : windowBotWidth + pivotX - projActiveX - projActiveWidth; // i think i'm overcomplicating.
+                : windowBotWidth + pivotX - projActiveX - projActiveWidth; // pixel perfect
 
-        $pivot.css({'transform':'translateX('+ (transX) + 'px)'});
+        $pivot[0].style.transform = `translateX(${transX}px)`;
+        console.log('pivot aligned');
     }
 
     function showNewProject() {
-        baffleProj();
-        revealProject($newActive.text());
+        const newActiveText = $newActive.text();
 
-        Hashs.set( $newActive.text() );
+        baffleProj();
+        revealProject(newActiveText);
+
+        Hashs.set(newActiveText);
 
         $projActive.removeClass(activeClass).removeAttr('disabled');
 
-        // remove or add buttons on nav to mantain the balance on the DOM.
         if (addProjNumb > 0) {
             addProjNav(addProjNumb);
-        } else {
-            isParentLeft
-                ? $projsLeft.children().first().remove()
-                : $projsRight.children().last().remove();
         }
 
+        // give ~ time to CSS transition ends
         setTimeout(function () {
-            estimateFinalWidth = !isParentLeft || untilTablet;  // calculate final +/- width before it happens - FIXME this is not the best solution, but it's the better i could get
+            // calculate ~ final width before it happens - might not be the best solution, but it's the best i could do.
+            estimateFinalWidth = !isParentLeft || untilTablet;
+
             $newActive.addClass(activeClass).prop('disabled', true);
             $projActive = $newActive;
+
             alignPivot();
 
             // align Pivot again to pixel perfect
@@ -355,8 +346,8 @@ var Projects = function() {
 
     function changeBotNavText(text) {
         $projBotTip.addClass('.jsLoading');
-        setTimeout(() => $projBotTip.html(text), 150);
-        setTimeout(() => $projBotTip.removeClass('.jsLoading'), 300);
+        setTimeout(function() { $projBotTip.html(text); }, 150);
+        setTimeout(function() { $projBotTip.removeClass('.jsLoading'); }, 300);
     }
 
     function checkIsParentLeft() {
@@ -364,16 +355,12 @@ var Projects = function() {
     }
 
     function baffleProj() {
-        var arrBuffle = [classProjSub, classProjIntro, classProjRole, classProjDate, classProjTeam, classProjDetails],
-            arrBuffleLength = arrBuffle.length;
-
         baffleSub = baffle(classProjSub),
         baffleIntro = baffle(classProjIntro),
         baffleRole = baffle(classProjRole),
         baffleDate = baffle(classProjDate),
         baffleDetails = baffle(classProjDetails);
 
-        // TODO is there any way to create a loop/for on these?
         baffleSub.start();
         baffleIntro.start();
         baffleRole.start();
@@ -386,11 +373,10 @@ var Projects = function() {
     // ------ Public ------ //
 
     function setInitialProject(project) {
-        if (typeof project == 'string') {
+        if (typeof project === 'string') {
             return initialProject = project;
-        } else {
-            console.log('it has to be a string');
         }
+        return false;
     }
 
     function startIt(section) {
@@ -424,15 +410,14 @@ var Projects = function() {
         }
 
         projectsVisible = true;
-        $('.js-cvUnder').remove(); // remove projects on CV
+        $('.js-cvUnder').remove(); // remove projects from CV section
     }
 
     function onNavProjClick($btn) {
         $newActive = $btn;
         isParentLeft = checkIsParentLeft();
 
-        // FIXME
-        // bug : if the current btn and new btn are not in the same parent, it's a false true
+        // FIXME | BUG - if the current btn and new btn are not in the same parent, it's a false true
         direction =
             $newActive.prevAll($projActive).length
                 ? 'right'
@@ -471,13 +456,13 @@ var Projects = function() {
 
         switch (numbOfGestures) {
         case 2:
-            changeBotNavText('that\'s it. you\'re a natural');
+            changeBotNavText("that's it. you're a natural");
             break;
         case 20:
-            changeBotNavText('you love loops don\'t you?');
+            changeBotNavText("you love loops don't you?");
             break;
         case 40:
-            changeBotNavText('my head\'s spinning.');
+            changeBotNavText("my head's spinning.");
             break;
         case 80:
             changeBotNavText('you got the idea.');
@@ -544,13 +529,12 @@ var Projects = function() {
 }();
 
 
-var cvProjects = function(){
 
+var cvProjects = function(){
     var $cvProjUl,
         $cvProjects,
         $sub,
         ArrProj,
-        maxChild,
         projI = 0,
         iR,
         keepLooping = false, // triggered _onweb.js
@@ -590,7 +574,6 @@ var cvProjects = function(){
             $cvProjects = $cvProjUl.find('.cv-link');
             $sub = $('.js-cvProjSub');
             ArrProj = $cvProjects.toArray();
-            maxChild = ArrProj.length;
         })();
 
         hightlightProject(ArrProj[projI]);
