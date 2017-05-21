@@ -4,8 +4,8 @@ var Hashs = function() {
     if (hash) {
         $(function onDomReady() {
 
-            //i know this has a lot of levels,
-            //but this way I can reduce the number of loops by 6
+            // i know this has a lot of levels,
+            // but this way I can reduce the number of loops by 6
             setTimeout(function () {
 
                 (function watchingNav() {
@@ -25,25 +25,15 @@ var Hashs = function() {
 
     function triggerWhateverIsOn(hash) {
         switch (hash) {
-            case 'projects':
-                $('.js-NavItem[data-section="practice"]').trigger('click');
-                // Util.scrollTo($('#btn-pr').offset().top - 60)
-                break;
-            case 'journey':
-                $('.js-NavItem[data-section="journey"]').trigger('click');
-                // Util.scrollTo($('#btn-jr').offset().top - 60)
-                break;
-            // case 'knowledge':
-            //     $('#btn-th').trigger('click');
-            //     Util.scrollTo($('#btn-th').offset().top - 60)
-            //     break;
-            // case '008080': //TODO prevent this on touch devices
-            // case 'bot':
-            //     $('#btn-th').trigger('click');
-            //     break;
-            default:
-                lookIntoProjects(hash);
-                break;
+        case 'projects':
+            $('.js-NavItem[data-section="practice"]').trigger('click');
+            break;
+        case 'journey':
+            $('.js-NavItem[data-section="journey"]').trigger('click');
+            break;
+        default:
+            lookIntoProjects(hash);
+            break;
         }
     }
 
@@ -60,14 +50,13 @@ var Hashs = function() {
 
         if ( foundHashOnIndex > -1 ) {
 
-            //if so, get the match Index and use it to target it on arrProjects.
+            // if so, get the match Index and use it to target it on arrProjects.
             // this way we'r sure the correct project name (case sensitive) is passed to Projects();
             Projects.setInitialProject(arrProjects[foundHashOnIndex]);
-
-            $('#btn-pr').trigger('click');
+            $('.js-NavItem[data-section="practice"]').trigger('click');
 
         } else {
-            hash = hash.replace(/[^a-zA-Z ]/g, "");
+            hash = hash.replace(/[^a-zA-Z ]/g, '');
             GAcustom.sendToGA(`&ec=hash&ea=${hash}`);
         }
     }
@@ -84,6 +73,6 @@ var Hashs = function() {
     }
     return {
         set
-    }
+    };
 
 }();

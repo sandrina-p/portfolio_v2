@@ -1,4 +1,5 @@
 // Based on https://gist.github.com/SleepWalker/da5636b1abcbaff48c4d
+
 /* eslint-disable no-unused-vars */
 
 var Swipper = function() {
