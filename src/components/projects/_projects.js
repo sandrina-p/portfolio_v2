@@ -35,7 +35,7 @@ var Projects = function() {
         $projMedia, $projDate, $projTeam, $projRole, $projIntro, $projDetails, $projLinks, $projBotTip, // getProjDomElements variables
         $newActive, fPos, $projDir, addProjNumb, isParentLeft, // moveNavTo variables
         estimateFinalWidth, projActiveWidth, pivotPos, projActivePos, transX, // alignPivot variables
-        baffle0, baffle1, baffle2, baffle3, baffle4, baffle5, // baffle variables
+        baffleSub, baffleIntro, baffleRole, baffleDate, baffleDetails, // baffle variables
 
         windowBotWidth = window.innerWidth*40/100,
         numbOfGestures = 0,
@@ -92,10 +92,6 @@ var Projects = function() {
         return elProjNav;
     }
 
-    function getElBtn(nameSlug, projName) {
-        return `<button type="button" name="${nameSlug}" class="projNav-btn" data-gaec="projNavClick">${projName}</button>`;
-    }
-
     function addProjNav(numberOfProj) {
         var navProjects = '',
             nameSlug,
@@ -136,23 +132,25 @@ var Projects = function() {
         $projsLeft.prepend(navProjects);
     }
 
+    function getElBtn(nameSlug, projName) {
+        return `<button type="button" name="${nameSlug}" class="projNav-btn" data-gaec="projNavClick">${projName}</button>`;
+    }
+
 
     // ------ get project content ------ //
-
     function getProjDomElements() {
         // get all the projects placeholders once they are on the DOM
-        $projMedia = $(classProjMedia),
-        $projTeam = $(classProjTeam),
-        $projRole = $(classProjRole),
-        $projIntro = $(classProjIntro),
-        $projDetails = $(classProjDetails),
-        $projLinks = $(classProjLinks),
-        $projBotTip = $(classProjBotTip),
-
-        $pivot = $(classPivot),
-
-        $projsLeft = $(classProjLeft),
+        $projsLeft = $(classProjLeft);
         $projsRight = $(classProjRight);
+        $pivot = $(classPivot);
+        $projBotTip = $(classProjBotTip);
+
+        $projMedia = $(classProjMedia);
+        $projTeam = $(classProjTeam);
+        $projRole = $(classProjRole);
+        $projIntro = $(classProjIntro);
+        $projDetails = $(classProjDetails);
+        $projLinks = $(classProjLinks);
     }
 
     function getImages(imgArray) {
@@ -221,7 +219,6 @@ var Projects = function() {
         baffleDate.reveal(400, 250);
         baffleDetails.reveal(400, 300);
 
-        // REVIEW is there any way to create a loop/for on these?
         baffleSub.text(currentText => projData.sub);
         baffleIntro.text(currentText => projData.capt);
         baffleRole.text(currentText => projData.role);
