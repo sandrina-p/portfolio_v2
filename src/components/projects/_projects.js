@@ -404,11 +404,7 @@ var Projects = function() {
             setTimeout(() => alignPivot(), 150); // align Pivot again to pixel perfect
         }, 400);
 
-        if (initialProject) {
-            $('body').animate({ scrollTop: $('#projects').offset().top - 60 }, 1500, 'swing');
-            initialProject = false;
-        }
-
+        initialProject = false;
         projectsVisible = true;
         $('.js-cvUnder').remove(); // remove projects from CV section
     }
@@ -587,9 +583,9 @@ var cvProjects = function(){
         });
 
         $cvProjects.on('click', function(e){
-            e.preventDefault(); // whoever doesn't have js, go to original page.
+            e.preventDefault(); // whoever doesn't have js, at least go to the original page
             Projects.setInitialProject($(this).text());
-            $('#btn-pr').trigger('click');
+            $('.js-NavItem[data-section="practice"]').trigger('click');
         });
     });
 
