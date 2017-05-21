@@ -70,7 +70,7 @@ var Projects = function() {
             +'<article id="a11y-projCont" class="projCont">'
                 +'<h4 class="sr-only js-projCont-title" aria-live="polite" aria-atomic="true" tabindex="0"> </h4>'
                 +'<div class="projCont-left">'
-                    +'<div class="projCont-media">'
+                    +'<div class="projCont-media" aria-hidden="true">'
                         +'<div class="Glidder"> </div>'
                     +'</div>'
                 +'</div>'
