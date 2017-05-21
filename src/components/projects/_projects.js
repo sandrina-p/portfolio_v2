@@ -10,20 +10,21 @@
 /* exported Projects */
 
 var Projects = function() {
-    var activeClass = 'js-active',
+    var activeClass = 'is-active',
         chatContent = TalkChat.conversation,
         arrProjects = chatContent.practice.projects,
         projLimit = 7, // min limit of projects on nav for each side
         initialProject = '', // start projects with a specific project
 
-        classProjSub = '.projCont-subtitle',
         classProjMedia = '.projCont-media',
+        classProjSub = '.projCont-subtitle',
+        classProjTitle = '.js-projCont-title',
+        classProjLinks = '.projCont-links',
+        classProjIntro = '.projCont-intro',
+        classProjDetails = '.projCont-details',
         classProjRole = '.projCont-role',
         classProjDate = '.projCont-date',
         classProjTeam = '.projCont-team',
-        classProjIntro = '.projCont-intro',
-        classProjDetails = '.projCont-details',
-        classProjLinks = '.projCont-links',
         classProjBotTip = '.bot-nav',
         classPivot = '.projNav-pivot',
 
@@ -34,8 +35,9 @@ var Projects = function() {
         untilTablet = Util.untilTablet,
 
         direction,
+
         $pivot, $projsLeft, $projsRight, $projActive, // nav variables
-        $projMedia, $projTeam, $projLinks, $projBotTip, // getProjDomElements variables
+        projData, $projTitle, $projMedia, $projTeam, $projLinks, $projBotTip, // getProjDomElements variables
         $newActive, fPos, $projDir, addProjNumb, isParentLeft, // moveNavTo variables
         estimateFinalWidth, projActiveWidth, pivotX, projActiveX, transX, // alignPivot variables
         baffleSub, baffleIntro, baffleRole, baffleDate, baffleDetails, // baffle variables
@@ -49,20 +51,26 @@ var Projects = function() {
     // ------ build nav and project DOM ------ //
     function buildProj() {
         var elNav = buildNav();
+        var elNavHidden = buildNav(true);
 
         return $('<div class="proj" id="projects">'
-            +'<div class="bot-nav"></div>'
+            +'<div class="bot-nav" aria-hidden="true"></div>'
 
             +'<div class="projNav">'
                 +'<div class="projNav-pivot">'
-                    +`<div class="projNav-left">${elNav}</div>`
-                    +`<div class="projNav-right">${elNav}</div>`
+                    +'<nav class="projNav-left" aria-labelledby="a11y-projNav">'
+                        // W3C will not say "Untitled Nav" and at the same time Screen Readers will read correctly Nav without reading the h4 ;)
+                        +'<h4 id="a11y-projNav" class="sr-only" aria-hidden="true">Projects in a carousel</h4>'
+                        + elNav
+                    +'</nav>'
+                    +`<div class="projNav-right" aria-hidden="true">${elNavHidden}</div>`
                 +'</div>'
             +'</div>'
 
-            +'<div class="projCont">'
+            +'<article id="a11y-projCont" class="projCont">'
+                +'<h4 class="sr-only js-projCont-title" aria-live="polite" aria-atomic="true" tabindex="0"> </h4>'
                 +'<div class="projCont-left">'
-                    +'<div class="projCont-media">'
+                    +'<div class="projCont-media" aria-hidden="true">'
                         +'<div class="Glidder"> </div>'
                     +'</div>'
                 +'</div>'
@@ -70,7 +78,7 @@ var Projects = function() {
                 +'<div class="projCont-right">'
                     +'<div class="projCont-links"></div>'
                     +'<div class="projCont-descript">'
-                        +'<p class="projCont-intro"> </p>'
+                        +'<h5 class="projCont-intro"> </h5>'
                         +'<p class="projCont-details"> </p>'
                     +'</div>'
                     +'<div class="projCont-about">'
@@ -83,13 +91,15 @@ var Projects = function() {
         +'</div>');
     }
 
-    function buildNav() {
-        var elProjNav = '';
+    function buildNav(ariaHidden) {
+        var elProjNav = '',
+            projName,
+            nameSlug;
 
-        for (var i = 0, projName, nameSlug, projLength = arrProjects.length; i < projLength; i++) {
+        for (var i = 0, l = arrProjects.length; i < l; i++) {
             projName = arrProjects[i];
             nameSlug = Util.stringSlugLower(projName);
-            elProjNav += getElBtn(nameSlug, projName);
+            elProjNav += getElBtn(nameSlug, projName, ariaHidden);
         }
 
         return elProjNav;
@@ -113,7 +123,7 @@ var Projects = function() {
                     projName = arrProjects[projI];
                 }
                 nameSlug = Util.stringSlugLower(projName);
-                navProjects = getElBtn(nameSlug, projName) + navProjects; // reverse order
+                navProjects = getElBtn(nameSlug, projName, true) + navProjects; // reverse order
                 projI--;
             }
 
@@ -128,7 +138,7 @@ var Projects = function() {
                     projName = arrProjects[projI];
                 }
                 nameSlug = Util.stringSlugLower(projName);
-                navProjects += getElBtn(nameSlug, projName);
+                navProjects += getElBtn(nameSlug, projName, true);
                 projI++;
             }
 
@@ -136,8 +146,11 @@ var Projects = function() {
         }
     }
 
-    function getElBtn(nameSlug, projName) {
-        return `<button type="button" name="${nameSlug}" class="projNav-btn" data-gaec="projNavClick">${projName}</button>`;
+    function getElBtn(nameSlug, projName, ariaHidden) {
+        if (ariaHidden) {
+            return `<button type="button" name="${nameSlug}" class="projNav-btn" data-gaec="projNavClick" aria-hidden="true" tabindex="-1">${projName}</button>`;
+        }
+        return `<button type="button" name="${nameSlug}" class="projNav-btn" data-gaec="projNavClick" aria-expanded="false" aria-controls="a11y-projCont">${projName}</button>`;
     }
 
 
@@ -149,11 +162,9 @@ var Projects = function() {
         $pivot = $(classPivot);
         $projBotTip = $(classProjBotTip);
 
+        $projTitle = $(classProjTitle);
         $projMedia = $(classProjMedia);
         $projTeam = $(classProjTeam);
-        // $projRole = $(classProjRole);
-        // $projIntro = $(classProjIntro);
-        // $projDetails = $(classProjDetails);
         $projLinks = $(classProjLinks);
     }
 
@@ -207,12 +218,13 @@ var Projects = function() {
     }
 
     function revealProject(projName) {
-        // FIXME take out var from here.
-        var data = chatContent.practice[projName];
+        projData = chatContent.practice[projName];
 
-        $projMedia.html(getImages(data.img));
-        $projLinks.html(getProjectLinks(data.links));
-        $projTeam.html(data.team);
+        $projTitle.text(projName);
+        $projTitle.focus();
+        $projMedia.html(getImages(projData.img));
+        $projLinks.html(getProjectLinks(projData.links));
+        $projTeam.html(projData.team);
 
         baffleSub.reveal(400, 150);
         baffleIntro.reveal(400, 0);
@@ -221,11 +233,11 @@ var Projects = function() {
         baffleDetails.reveal(400, 300);
 
         /* eslint-disable no-unused-vars */
-        baffleSub.text(currentText => data.sub);
-        baffleIntro.text(currentText => data.capt);
-        baffleRole.text(currentText => data.role);
-        baffleDate.text(currentText => data.date);
-        baffleDetails.text(currentText => data.more);
+        baffleSub.text(currentText => projData.sub);
+        baffleIntro.text(currentText => projData.capt);
+        baffleRole.text(currentText => projData.role);
+        baffleDate.text(currentText => projData.date);
+        baffleDetails.text(currentText => projData.more);
         /* eslint-enable no-unused-vars */
 
 
@@ -315,7 +327,7 @@ var Projects = function() {
 
         Hashs.set(newActiveText);
 
-        $projActive.removeClass(activeClass).removeAttr('disabled');
+        $projActive.removeClass(activeClass).attr('aria-expanded', false);
 
         if (addProjNumb > 0) {
             addProjNav(addProjNumb);
@@ -326,7 +338,7 @@ var Projects = function() {
             // calculate ~ final width before it happens - might not be the best solution, but it's the best i could do.
             estimateFinalWidth = !isParentLeft || untilTablet;
 
-            $newActive.addClass(activeClass).prop('disabled', true);
+            $newActive.addClass(activeClass).attr('aria-expanded', true);
             $projActive = $newActive;
 
             alignPivot();
@@ -393,12 +405,10 @@ var Projects = function() {
             var projNameSlugged = Util.stringSlugLower(projName);
             revealProject(projName);
 
-            $(`.projNav-btn[name='${projNameSlugged}']`)
-                .first()
-                .addClass(activeClass)
-                .attr('disabled', true);
+            $projActive = $(`.projNav-btn[name='${projNameSlugged}']`).first();
 
-            $projActive = $('button.'+activeClass);
+            $projActive.addClass(activeClass).attr('aria-expanded', true);
+
             alignPivot();
 
             setTimeout(() => alignPivot(), 150); // align Pivot again to pixel perfect
@@ -411,7 +421,6 @@ var Projects = function() {
 
     function onNavProjClick($btn) {
         $newActive = $btn;
-        isParentLeft = checkIsParentLeft();
 
         // FIXME | BUG - if the current btn and new btn are not in the same parent, it's a false true
         direction =
@@ -419,13 +428,13 @@ var Projects = function() {
                 ? 'right'
                 : 'left';
 
-        if(numbOfGestures == 0) {
+        if (numbOfGestures === 0) {
             Util.hasTouchEvents
                 ? changeBotNavText(chatContent.behaviour.navProjMob)
                 : changeBotNavText(chatContent.behaviour.navProjDesk);
         }
 
-        updateVarsOnNav(isParentLeft);
+        updateVarsOnNav(checkIsParentLeft());
         showNewProject();
     }
 
@@ -507,11 +516,15 @@ var Projects = function() {
                 moveNavTo('right');
             }
         }
-
     });
 
     $(document).on('click', '.projNav-btn', function(e){
         e.stopPropagation(); // prevent scroll to top
+
+        if ($(this).hasClass(activeClass)) {
+            $projTitle.focus();
+            return true;
+        }
         onNavProjClick($(this));
     });
 
