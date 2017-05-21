@@ -525,8 +525,8 @@ var Projects = function() {
 
             console.log(elProjects);
 
-            Swipper.right(elProjects, moveNavTo, 'left');
-            Swipper.left(elProjects, moveNavTo, 'right');
+            Swipped.right(elProjects, moveNavTo, 'left');
+            Swipped.left(elProjects, moveNavTo, 'right');
         }
     }
 

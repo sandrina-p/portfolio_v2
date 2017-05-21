@@ -3,10 +3,15 @@
 // Based on https://gist.github.com/SleepWalker/da5636b1abcbaff48c4d
 
 /* eslint-disable no-unused-vars */
-var Swipper = function() {
+var Swipped = function() {
     const doc = document.documentElement;
-    const SWIPE_MIN = 40; // min px needed to trigger swipe
-    const SWIPE_OPPOSITE_MAX = 75; // max px on opposite direction to prevent swipe
+
+    // min px needed to trigger swipe
+    const SWIPE_MIN = 40;
+
+    // max px on opposite direction to prevent swipe
+    // ex: on swipe left/right prevent if swipe top bottom is bigger than 75px
+    const SWIPE_OPPOSITE_MAX = 75;
 
     // touch events coordinates
     let touchstartX = 0;
@@ -69,7 +74,7 @@ var Swipper = function() {
     }
 
     function handleSwipe(direction, callback, args) {
-        console.log('Swipper:', {
+        console.log('Swipped:', {
             touchstartX, touchendX, touchstartY, touchendY,
             scrollStartTop, scrollStartLeft, scrollEndTop, scrollEndLeft
         });
