@@ -1,20 +1,30 @@
+// Swipped 1.0.0
+// @sandrina-p - May 2017
 // Based on https://gist.github.com/SleepWalker/da5636b1abcbaff48c4d
 
 /* eslint-disable no-unused-vars */
-
 var Swipper = function() {
     const doc = document.documentElement;
     const SWIPE_MIN = 40; // min px needed to trigger swipe
     const SWIPE_OPPOSITE_MAX = 75; // max px on opposite direction to prevent swipe
+
+    // touch events coordinates
     let touchstartX = 0;
     let touchstartY = 0;
     let touchendX = 0;
     let touchendY = 0;
+
+    // document scrolled coordinates
     let scrolled = {};
     let scrollStartTop = 0;
     let scrollStartLeft = 0;
     let scrollEndTop = 0;
     let scrollEndLeft = 0;
+
+    // document total scrolled
+    let scrolledTop = 0;
+    let scrolledLeft = 0;
+
 
     function right(el, callback, args) {
         on(el, 'right', callback, args);
@@ -38,7 +48,6 @@ var Swipper = function() {
             top: (window.pageYOffset || doc.scrollTop)  - (doc.clientTop || 0),
         };
     }
-
 
     function on(el, direction, callback, args) {
         el.addEventListener('touchstart', function(event) {
@@ -65,47 +74,66 @@ var Swipper = function() {
             scrollStartTop, scrollStartLeft, scrollEndTop, scrollEndLeft
         });
 
-        const scrolledTop = (scrollEndTop + touchendY) - (scrollStartTop + touchstartY);
-        const scrolledLeft = (scrollEndLeft + touchendX) - (scrollStartLeft + touchstartX);
+        scrolledTop = (scrollEndTop + touchendY) - (scrollStartTop + touchstartY);
+        scrolledLeft = (scrollEndLeft + touchendX) - (scrollStartLeft + touchstartX);
 
         switch (direction) {
         case 'left': // <<
-            if (scrollEndLeft + touchendX + SWIPE_MIN < scrollStartLeft + touchstartX
-                && -SWIPE_OPPOSITE_MAX < scrolledTop && scrolledTop < SWIPE_OPPOSITE_MAX) {
-                console.log('px swipped left:', (scrollStartLeft + touchstartX) - (scrollEndLeft + touchendX + SWIPE_MIN));
-                return callback(args);
-            }
-            break;
+            return checkLeft(callback, args);
         case 'right': // >>
-            if (scrollStartLeft + touchstartX + SWIPE_MIN < scrollEndLeft + touchendX
-                && -SWIPE_OPPOSITE_MAX < scrolledTop && scrolledTop < SWIPE_OPPOSITE_MAX) {
-                console.log('px swipped right:', (scrollStartLeft + touchstartX + SWIPE_MIN) - (scrollEndLeft + touchendX));
-                return callback(args);
-            }
-            break;
+            return checkRight(callback, args);
         case 'top': // ^
-            if (scrollEndTop + touchendY + SWIPE_MIN < scrollStartTop + touchstartY
-                && -SWIPE_OPPOSITE_MAX < scrolledLeft && scrolledLeft < SWIPE_OPPOSITE_MAX) {
-                console.log('px swipped down:', (scrollEndTop + touchendY + SWIPE_MIN ) - (scrollStartTop + touchstartY));
-                return callback(args);
-            }
-            break;
+            return checkTop(callback, args);
         case 'bottom': // v
-            if (scrollStartTop + touchstartY + SWIPE_MIN < scrollEndTop + touchendY
-                && -SWIPE_OPPOSITE_MAX < scrolledLeft && scrolledLeft < SWIPE_OPPOSITE_MAX) {
-                console.log('px swipped top:', (scrollStartTop + touchstartY + SWIPE_MIN) - (scrollEndTop + touchendY));
-                return callback(args);
-            }
-            break;
+            return checkBottom(callback, args);
         default:
             break;
         }
     }
 
-    return {
-        right,
-        left,
-        top,
-        down,
-    };
+    function checkLeft(callback, args) {
+        if (scrollEndLeft + touchendX + SWIPE_MIN < scrollStartLeft + touchstartX
+            && -SWIPE_OPPOSITE_MAX < scrolledTop && scrolledTop < SWIPE_OPPOSITE_MAX) {
+
+            console.log('px swipped left:', (scrollStartLeft + touchstartX) - (scrollEndLeft + touchendX + SWIPE_MIN));
+
+            if (callback) { return callback(args); }
+        }
+
+        return false;
+    }
+
+    function checkRight(callback, args) {
+        if (scrollStartLeft + touchstartX + SWIPE_MIN < scrollEndLeft + touchendX
+            && -SWIPE_OPPOSITE_MAX < scrolledTop && scrolledTop < SWIPE_OPPOSITE_MAX) {
+
+            console.log('px swipped right:', (scrollStartLeft + touchstartX + SWIPE_MIN) - (scrollEndLeft + touchendX));
+
+            if (callback) { return callback(args); }
+        }
+        return false;
+    }
+
+    function checkTop(callback, args) {
+        if (scrollEndTop + touchendY + SWIPE_MIN < scrollStartTop + touchstartY
+            && -SWIPE_OPPOSITE_MAX < scrolledLeft && scrolledLeft < SWIPE_OPPOSITE_MAX) {
+            console.log('px swipped down:', (scrollEndTop + touchendY + SWIPE_MIN ) - (scrollStartTop + touchstartY));
+
+            if (callback) { return callback(args); }
+        }
+        return false;
+    }
+
+    function checkBottom(callback, args) {
+        if (scrollStartTop + touchstartY + SWIPE_MIN < scrollEndTop + touchendY
+            && -SWIPE_OPPOSITE_MAX < scrolledLeft && scrolledLeft < SWIPE_OPPOSITE_MAX) {
+
+            console.log('px swipped top:', (scrollStartTop + touchstartY + SWIPE_MIN) - (scrollEndTop + touchendY));
+
+            if (callback) { return callback(args); }
+        }
+        return false;
+    }
+
+    return { right, left, top, down };
 }();
