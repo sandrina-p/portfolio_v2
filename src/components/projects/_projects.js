@@ -96,24 +96,25 @@ var Projects = function() {
         var navProjects = '',
             nameSlug,
             projName = '',
-            projsIndexs = arrProjects.length - 1,
+            projLastIndex = arrProjects.length - 1,
             projI = isParentLeft
                 ? arrProjects.indexOf($projsLeft.children(':first').text()) - 1
                 : arrProjects.indexOf($projsRight.children(':last').text()) + 1;
-
 
         if (isParentLeft) {
             for (let i = 0; i < numberOfProj; i++) {
                 if (arrProjects[projI]) {
                     projName = arrProjects[projI];
                 } else {
-                    projI = projsIndexs;
+                    projI = projLastIndex;
                     projName = arrProjects[projI];
                 }
                 nameSlug = Util.stringSlugLower(projName);
                 navProjects = getElBtn(nameSlug, projName) + navProjects; // reverse order
                 projI--;
             }
+
+            $projsLeft.prepend(navProjects);
 
         } else {
             for (let i = 0; i < numberOfProj; i++) {
@@ -127,9 +128,9 @@ var Projects = function() {
                 navProjects += getElBtn(nameSlug, projName);
                 projI++;
             }
-        }
 
-        $projsLeft.prepend(navProjects);
+            $projsRight.append(navProjects);
+        }
     }
 
     function getElBtn(nameSlug, projName) {
