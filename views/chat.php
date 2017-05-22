@@ -3,13 +3,15 @@
         <h2 class="sr-only">Chat Bot sections</h2>
         <a href="#projects" class="Nav-item js-NavItem js-chatSection"
             data-section="practice" data-gaec="chatNavL"
-            aria-expanded="false">
+            aria-expanded="false"
+            aria-label="Projects">
             Projects
         </a>
 
         <a href="#journey" class="Nav-item js-NavItem js-chatSection"
             data-section="journey" data-gaec="chatNavL"
-            aria-expanded="false">
+            aria-expanded="false"
+            aria-label="Journey">
             Journey
         </a>
 

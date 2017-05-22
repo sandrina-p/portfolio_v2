@@ -45,7 +45,8 @@ var ChatApp = function() {
 
         // prevent buildSection twice
         if ($this.hasClass('is-selected') || $this.hasClass('js-botTrigger')) {
-            return false;
+            $(`#${$this.data('section')}-intro`).find(`${chatPClass}title`).focus();
+            return true;
         }
 
         $this.addClass('is-selected').attr('aria-expanded', true);
@@ -114,14 +115,14 @@ var ChatApp = function() {
     }
     function getElSentence() {
         return '<div class="chatPart-bot">'
-                    +`<p class="chatPart-text jsLoading" role="alert" aria-atomic="true">${sentence}</p>`
+                    +`<p class="chatPart-text jsLoading" aria-live="polite" aria-atomic="true">${sentence}</p>`
                     // options
                 +'</div>';
     }
 
     function getElBtn(text) {
         return '<div class="chatPart-option jsLoading">'
-                    +`<button type="button" name="${text}" class="btnB jsLoading js-chatOpt" data-gaec="chat" aria-label="Know more about ${text}">${text}</button>`
+                    +`<button type="button" name="${text}" class="btnB jsLoading js-chatOpt" data-gaec="chat">${text}</button>`
                 +'</div>';
     }
 
@@ -226,7 +227,7 @@ var ChatApp = function() {
             setTimeout(function () {                    // REVIEW better buttons target
                 finishLoading($part.find(`${chatPClass}option:last-of-type .js-chatOpt`));
 
-                // a11y focus text
+                // a11y purposes
                 $part.find(`${chatPClass}text`).focus();
             }, 300);
         }, 400);
