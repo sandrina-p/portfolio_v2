@@ -17,11 +17,11 @@ var TalkChat = function(){
 
     var conversation = {
         journey: {
-            'intro': 'Right now she\'s loving to work as a <strong>UI Developer</strong> <span class="nowrap">at Farfetch.</span>'
-                +brk+'On her free time, she explores new ideas and techs that cross her feeds.',
-            'ambition': 'She believes design is more than a interface and coding is not only about performance.'
-                +brk+'She seeks for a scenario where both can work as one to <strong>explore new possibilites.</strong>',
-            'hobbies': '<span class="nowrap"><strong>Video Games</strong></span> are on of her choices. It\'s where <strong>experience is on its richer state</strong>: Interface, interaction and sound focused on <span class="nowrap">the user behavior.</span>',
+            'intro': 'Right now she\'s working as a <strong>UI Developer</strong> <span class="nowrap">at Farfetch.</span>'
+                +brk+'On her free time, she loves to explore and share new ideas with the web.',
+            'ambition': 'She believes that design is more than a interface and coding is not only about performance.'
+                +brk+'She seeks for a web where both can work as one to <strong>accomplish a great experience.</strong>',
+            'hobbies': '<span class="nowrap"><strong>Video Games</strong></span> is one of her choices. It\'s where <strong>experience is on its richer state</strong>: Interface, interaction and sound focused on <span class="nowrap">the user behavior.</span>',
             'what else': 'She likes <strong>open-source</strong> projects! She would love to hear your next crazy idea!',
             'workplace': 'She is a fast paced worker, so she likes to work alone.'
                 +brk+'Unless your ambitions are as high as hers, then it’s a match made in heaven.'
