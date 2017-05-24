@@ -65,6 +65,7 @@ $textPaddingTab: 20vw;
         padding-top: $safeArea*5;
         padding-bottom: $safeArea*4;
         overflow: auto;
+        max-height: 100vh;
     }
 
     &-text {

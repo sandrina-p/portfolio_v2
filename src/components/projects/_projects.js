@@ -210,7 +210,7 @@ var Projects = function() {
         for (let i = 0, l = links.length; i < l; i++) {
             elLinks += '<div class="projCont-links-option">'
                             +`<a href="${links[i][0]}" target="_blank" class="btnCheck">`
-                                +`<i class="fa fa-${links[i][2]}"></i>${links[i][1]}`
+                                +links[i][1]
                             +'</a>'
                         +'</div>';
         }

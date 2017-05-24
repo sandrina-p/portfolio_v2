@@ -126,7 +126,7 @@ $navSpeed: 250ms;
             @extend %cf;
             font-size: $fontXS;
             display: block;
-            padding: $safeArea/2 $safeArea;
+            padding: $safeArea/2 $safeArea $safeArea;
             border-top: 1px solid $clrGray;
         }
 
@@ -181,8 +181,11 @@ $navSpeed: 250ms;
                 position: absolute;
                 width: 100%;
                 height: 100%;
-            }
 
+                &:hover + .projCont-right {
+                    opacity: 0.1;
+                }
+            }
 
             &-right {
                 position: relative;
@@ -194,6 +197,7 @@ $navSpeed: 250ms;
                 width: 30%;
                 max-width: rem(400);
                 z-index: 2;
+                transition: opacity $speed/2;
 
                 &::before {
                     content: '';
@@ -206,11 +210,10 @@ $navSpeed: 250ms;
                     transition: opacity $speed/2;
                 }
 
-                &:hover:before {
-                    opacity: 0.95;
+                &:hover::before {
+                    opacity: 1;
                 }
             }
-
 
             &-links {
                 display: inline-block;
@@ -224,7 +227,7 @@ $navSpeed: 250ms;
                 &-option {
                     display: inline-block;
                     &:not(:last-of-type) {
-                        margin: 0;
+                        margin-right: 0;
                     }
                 }
             }
@@ -238,7 +241,6 @@ $navSpeed: 250ms;
 
             &-intro {
                 padding: 0;
-                padding-top: $safeArea;
                 font-size: $fontXL;
             }
 
@@ -251,7 +253,6 @@ $navSpeed: 250ms;
             &-about {
                 padding-left: 0;
                 padding-right: 0;
-
             }
 
         }
@@ -319,45 +320,24 @@ $glidderTime: 15;
 }
 
 @keyframes glidder {
-    0% {z-index: 0;}
-    1% {z-index: -1; left:$safeArea/4; top:$safeArea/4;}
-    1.5% {z-index: 2; left:$safeArea/2; top:$safeArea;}
-    2.5% {z-index: 2; left:-$safeArea;}
-    3.5% {z-index: -1; left:$safeArea*3/2;}
-    4% {z-index: -1; left:$safeArea/4; top:$safeArea/4;}
-    5% {z-index: -1; left:0; top:0}
-    92% {z-index: 2;}
-    93.5% {z-index: 2; left:0;}
-    94% {z-index: 2; left:-$safeArea/5;}
-    94.5% {z-index: 2; left:0; top:0}
-    95% {z-index: -1; left:$safeArea/4; top:$safeArea/4;}
-    96% {z-index: 2; left:$safeArea/2; top:$safeArea;}
-    97% {z-index: -1; left:$safeArea*3/2;}
-    98% {z-index: -1; left:0; top:0;}
-    99% {z-index: -1;}
-    100%  {z-index: 0;}
+    0% { z-index: 0; }
+    1% { z-index: -1; left: $safeArea/4; top: $safeArea/4; }
+    1.5% { z-index: 2; left: $safeArea/2; top: $safeArea; }
+    2.5% { z-index: 2; left: -$safeArea; }
+    3.5% { z-index: -1; left: $safeArea*3/2; }
+    4% { z-index: -1; left: $safeArea/4; top: $safeArea/4; }
+    5% { z-index: -1; left: 0; top: 0}
+    92% { z-index: 2; }
+    93.5% { z-index: 2; left: 0; }
+    94% { z-index: 2; left: -$safeArea/5; }
+    94.5% { z-index: 2; left: 0; top: 0}
+    95% { z-index: -1; left: $safeArea/4; top: $safeArea/4; }
+    96% { z-index: 2; left: $safeArea/2; top: $safeArea; }
+    97% { z-index: -1; left: $safeArea*3/2; }
+    98% { z-index: -1; left: 0; top: 0; }
+    99% { z-index: -1; }
+    100% { z-index: 0; }
 }
-
-// @keyframes glidder {
-//     0% {z-index: 0;}
-//     1% {z-index: -1; transform: translateX($safeArea/4); transform: translateY($safeArea/4);}
-//     1.5% {z-index: 2; transform: translateX($safeArea/2); transform: translateY($safeArea);}
-//     2.5% {z-index: 2; transform: translateX(-$safeArea);}
-//     3.5% {z-index: -1; transform: translateX($safeArea*3/2);}
-//     4% {z-index: -1; transform: translateX($safeArea/4); transform: translateY($safeArea/4);}
-//     5% {z-index: -1; transform: translateX(0); transform: translateY(0)}
-//     92% {z-index: 2;}
-//     93.5% {z-index: 2; transform: translateX(0);}
-//     94% {z-index: 2; transform: translateX(-$safeArea/5);}
-//     94.5% {z-index: 2; transform: translateX(0); transform: translateY(0)}
-//     95% {z-index: -1; transform: translateX($safeArea/4); transform: translateY($safeArea/4);}
-//     96% {z-index: 2; transform: translateX($safeArea/2); transform: translateY($safeArea);}
-//     97% {z-index: -1; transform: translateX($safeArea*3/2);}
-//     98% {z-index: -1; transform: translateX(0); transform: translateY(0);}
-//     99% {z-index: -1;}
-//     100%  {z-index: 0;}
-// }
-
 
 .bot-nav {
     position: absolute;
