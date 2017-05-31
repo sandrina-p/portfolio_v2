@@ -79,6 +79,7 @@ var OnWeb = function() {
         baffleWebSite = baffle('.js-onWeb-site'),
         baffleWebDd = baffle('.js-onWeb-dd');
 
+        /* eslint-disable no-unused-vars */
         $(document).on('mouseenter focus', '.js-onWeb-link', function(){
             baffleWebSite
                 .start()
@@ -91,7 +92,7 @@ var OnWeb = function() {
                 .reveal(150, 150);
 
             $onWebLink.attr('href', $(this).attr('href')).attr('target', '_blank');
-        }).on('mouseleave', '.js-onWeb-link', function(){
+        }).on('mouseleave blur', '.js-onWeb-link', function(){
             baffleWebSite
                 .start()
                 .text(currentText => intro)
@@ -103,6 +104,7 @@ var OnWeb = function() {
                 .reveal(150, 150);
             $onWebLink.removeAttr('href');
         });
+        /* eslint-enable no-unused-vars */
     }
 
     return {

@@ -437,11 +437,17 @@ $cvPaddingLeft: 10vw;
 
 
 .onWeb {
-    // &-href { }
-
+    &-href-item,
     &-link {
         display: inline-block;
+    }
+
+    &-link {
         margin: $safeArea;
+
+        &:focus {
+            box-shadow: none;
+        }
     }
 
     &-icon {
@@ -449,7 +455,8 @@ $cvPaddingLeft: 10vw;
         height: 2rem;
         fill: $clrPrimarySoft;
 
-        &:hover {
+        .onWeb-link:hover &,
+        .onWeb-link:focus & {
             fill: $clrWhite;
         }
     }

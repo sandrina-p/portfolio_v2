@@ -18,36 +18,45 @@
 
             <div class="onWeb cv-dl">
                 <div class="onWeb-site">
-                    <span class="cv-dt js-onWeb-site">social networks</span>
+                    <h4 class="sr-only">social networks</h4>
+                    <span class="cv-dt js-onWeb-site" aria-hidden="true">social networks</span>
                 </div>
-                <div class="onWeb-href">
-                    <a href="//codepen.io/sandrina-p" target="_blank" title="sandrina's codepen"
-                        aria-label="codepen - because coding without fun is just boring" class="onWeb-link js-onWeb-link" data-site="codepen" data-dd="because coding without fun is just boring">
-                        <svg viewBox="0 0 26 26" aria-hidden="true" class="onWeb-icon">
-                           <use class="code" xlink:href="src/media/svg/sprite.svg#codepen"/>
-                        </svg>
-                    </a>
+                <ul class="onWeb-href">
+                    <li class="onWeb-href-item">
+                        <a href="//codepen.io/sandrina-p" target="_blank" title="sandrina's codepen"
+                            aria-label="codepen: because coding without fun is just boring" class="onWeb-link js-onWeb-link" data-site="codepen" data-dd="because coding without fun is just boring">
+                            <svg viewBox="0 0 26 26" aria-hidden="true" class="onWeb-icon">
+                               <use class="code" xlink:href="src/media/svg/sprite.svg#codepen"/>
+                           </svg>
+                       </a>
+                   </li>
 
-                    <a href="//github.com/sandrina-p" target="_blank" title="sandrina's github" aria-label="github - Sharing it's what make us better" class="onWeb-link js-onWeb-link" data-site="github" data-dd="Sharing it's what make us better">
-                        <svg viewBox="0 0 26 26" aria-hidden="true" class="onWeb-icon">
-                           <use class="code" xlink:href="src/media/svg/sprite.svg#github"/>
-                        </svg>
-                    </a>
+                    <li class="onWeb-href-item">
+                        <a href="//github.com/sandrina-p" target="_blank" title="sandrina's github" aria-label="Github: Sharing it's what make us better" class="onWeb-link js-onWeb-link" data-site="github" data-dd="Sharing it's what make us better">
+                            <svg viewBox="0 0 26 26" aria-hidden="true" class="onWeb-icon">
+                               <use class="code" xlink:href="src/media/svg/sprite.svg#github"/>
+                            </svg>
+                        </a>
+                    </li>
 
-                    <a href="//stackoverflow.com/story/sandrina" target="_blank" title="sandrina's stack-overflow" aria-label="stack-overflow - helping others is as important as being helped" class="onWeb-link js-onWeb-link" data-site="stack-overflow" data-dd="helping others is as important as being helped">
-                        <svg viewBox="0 0 26 26" aria-hidden="true" class="onWeb-icon">
-                           <use class="code" xlink:href="src/media/svg/sprite.svg#stack-overflow"/>
-                        </svg>
-                    </a>
+                    <li class="onWeb-href-item">
+                        <a href="//stackoverflow.com/story/sandrina" target="_blank" title="sandrina's stack-overflow" aria-label="Stackoverflow: helping others is as important as being helped" class="onWeb-link js-onWeb-link" data-site="stack-overflow" data-dd="helping others is as important as being helped">
+                            <svg viewBox="0 0 26 26" aria-hidden="true" class="onWeb-icon">
+                               <use class="code" xlink:href="src/media/svg/sprite.svg#stack-overflow"/>
+                            </svg>
+                        </a>
+                    </li>
 
-                    <a href="//www.twitter.com/a_sandrina_p" target="_blank" title="sandrina's twitter" aria-label="twitter - where geeks share geek stuff" class="onWeb-link js-onWeb-link" data-site="twitter" data-dd="where geeks share geek stuff">
-                        <svg viewBox="0 0 26 26" aria-hidden="true" class="onWeb-icon">
-                           <use class="code" xlink:href="src/media/svg/sprite.svg#twitter"/>
-                        </svg>
-                    </a>
-                </div>
-                <div class="onWeb-desc" aria-hidden="true">
-                    <span class="cv-dd js-onWeb-dd">not a big fan of facebook</span>
+                    <li class="onWeb-href-item">
+                        <a href="//www.twitter.com/a_sandrina_p" target="_blank" title="sandrina's twitter" aria-label="Twitter: where geeks share geek's stuff" class="onWeb-link js-onWeb-link" data-site="twitter" data-dd="where geeks share geek stuff">
+                            <svg viewBox="0 0 26 26" aria-hidden="true" class="onWeb-icon">
+                               <use class="code" xlink:href="src/media/svg/sprite.svg#twitter"/>
+                            </svg>
+                        </a>
+                    </li>
+                </ul>
+                <div class="onWeb-desc">
+                    <p class="cv-dd js-onWeb-dd">not a big fan of facebook</p>
                 </div>
             </div>
         </div>
