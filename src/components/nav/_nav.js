@@ -25,6 +25,11 @@ var Nav = function() {
         setTimeout(function () {
             showNav();
         }, 1500);
+
+        if (Util.hasTouchEvents) {
+           // TODO Hide all bot stuff on touch devices
+            $('.js-NavItem.js-botTrigger').remove();
+        }
     }
 
     function showNav() {
