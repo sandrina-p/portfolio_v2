@@ -45,7 +45,7 @@ var TalkChat = function(){
                     'src/media/img/projects/rnex3.png',
                 ],
                 capt: 'Everyone knows that Rede Expressos is not an user friendly platform...',
-                more: 'As a final project for her post graduation she redesigned and coded the website\'s homepage and used Jekyll. UX / UI wise, she redesigned the "buy ticket" userflow for Mobile iOS and Android. The project had several phases: competitor Analysis, product SWOT, wireframes, design and prototype. She also learned how to adapt an app to follow both Human Guidelines and Material Design.',
+                more: 'During her post graduation she redesigned and coded the website\'s homepage and used Jekyll. UX / UI wise, she redesigned the "buy ticket" userflow for Mobile iOS and Android. The project had several phases: competitor Analysis, product SWOT, wireframes, design and prototype. She also learned how to adapt an app to follow both Human Guidelines and Material Design.',
                 date: 'JUN\'16',
                 links: [
                     ['https://marvelapp.com/6jef9dg', 'iOS prototype', 'apple'],
