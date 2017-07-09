@@ -212,27 +212,13 @@
         <div class="cv-projs-proj js-cvShow">
             <span class="cv-projs-proj-sub js-cvProjSub" aria-hidden="true" id="cvProjSub"></span>
             <ul class="cv-projs-proj-ul js-cvProj">
-                <li><a target="_blank" href="https://vimeo.com/176452854" class="cv-link" data-gaec="cvproj" data-sub="video game concept" aria-labelledby="cvProjSub">
-                    N O X
-                </a></li>
-                <li><a target="_blank" href="https://vimeo.com/115483647" class="cv-link" data-gaec="cvproj" data-sub="3D animation" aria-labelledby="cvProjSub">
-                    141205
-                </a></li>
-                <li><a target="_blank" href="https://sandrina-p.github.io/rede-expressos/" class="cv-link" data-gaec="cvproj" data-sub="web and app concept redesign" aria-labelledby="cvProjSub">
-                    Rede Expressos
-                </a></li>
-                <li><a target="_blank" href="https://www.behance.net/gallery/26687261/Digital-Magazine-Dutch-experimental-typography" class="cv-link" data-gaec="cvproj" data-sub="digital magazine" aria-labelledby="cvProjSub">
-                    DET
-                </a></li>
-                <li><a target="_blank" href="https://sandrina-p.github.io/portfolio-15/" class="cv-link" data-gaec="cvproj" data-sub="previous website" aria-labelledby="cvProjSub">
-                    portfolio 15
-                </a></li>
-                <li><a target="_blank" href="https://sandrina-p.github.io/pistol-shrimp" class="cv-link" data-gaec="cvproj" data-sub="net label website" aria-labelledby="cvProjSub">
-                    pistol shrimp
-                </a></li>
-                <li><a target="_blank" href="https://sandrina-p.github.io/moon/" class="cv-link" data-gaec="cvproj" data-sub="movie website" aria-labelledby="cvProjSub">
-                    moon
-                </a></li>
+                <li><a target="_blank" href="https://vimeo.com/176452854" class="cv-link" data-gaec="cvproj" data-sub="video game concept" aria-labelledby="cvProjSub">N O X</a></li>
+                <li><a target="_blank" href="https://vimeo.com/115483647" class="cv-link" data-gaec="cvproj" data-sub="3D animation" aria-labelledby="cvProjSub">141205</a></li>
+                <li><a target="_blank" href="https://sandrina-p.github.io/rede-expressos/" class="cv-link" data-gaec="cvproj" data-sub="web and app concept redesign" aria-labelledby="cvProjSub">rede expressos</a></li>
+                <li><a target="_blank" href="https://www.behance.net/gallery/26687261/Digital-Magazine-Dutch-experimental-typography" class="cv-link" data-gaec="cvproj" data-sub="digital magazine" aria-labelledby="cvProjSub">DET</a></li>
+                <li><a target="_blank" href="https://sandrina-p.github.io/portfolio-15/" class="cv-link" data-gaec="cvproj" data-sub="previous website" aria-labelledby="cvProjSub">portfolio 15</a></li>
+                <li><a target="_blank" href="https://sandrina-p.github.io/pistol-shrimp" class="cv-link" data-gaec="cvproj" data-sub="net label website" aria-labelledby="cvProjSub">pistol shrimp</a></li>
+                <li><a target="_blank" href="https://sandrina-p.github.io/moon/" class="cv-link" data-gaec="cvproj" data-sub="movie website" aria-labelledby="cvProjSub">moon</a></li>
                 <?php /*
                 <li><a target="_blank" href="http://carolina-machado.com/" class="cv-link" data-gaec="cvproj" data-sub="fashion website" aria-labelledby="cvProjSub">
                     carolina machado
