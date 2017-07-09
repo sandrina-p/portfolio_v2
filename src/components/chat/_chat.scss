@@ -5,8 +5,8 @@
         padding-bottom: $safeArea*8;
 
         @include media(tablet) {
-            min-height: 50vh;
-            padding-bottom: 80vh;
+            min-height: 30vh;
+            padding-bottom: 40vh;
         }
     }
 

@@ -1,13 +1,10 @@
 <section class="cv" id="cv" aria-labelledby="about">
-    <span class="cv-bg js-cvBg" aria-hidden="true"></span>
+    <?php // <span class="cv-bg js-cvBg" aria-hidden="true"></span> ?>
     <h2 class="sr-only" id="about">About</h2>
 
-    <?php // Contact ?>
-    <article class="cv-article" aria-label="contact">
+    <article class="cv-article cv-article--contact" aria-label="contact">
         <div class="cv-article-in">
-            <div class="cv-article-header">
-                <h3 class="sr-only cv-title js-cvShowTitle">Contact</h3>
-            </div>
+            <h3 class="sr-only">Contact</h3>
 
             <dl class="cv-dl js-onWebAfter js-cvShow">
                 <dt class="cv-dt">
@@ -23,6 +20,22 @@
                 </div>
                 <ul class="onWeb-href">
                     <li class="onWeb-href-item">
+                        <a href="//www.twitter.com/a_sandrina_p" target="_blank" title="sandrina's twitter" aria-label="Twitter: where geeks share geek's stuff" class="onWeb-link js-onWeb-link" data-site="twitter" data-dd="where geeks share geek stuff">
+                            <svg viewBox="0 0 26 26" aria-hidden="true" class="onWeb-icon">
+                               <use class="code" xlink:href="src/media/svg/sprite.svg#twitter"/>
+                            </svg>
+                        </a>
+                    </li>
+
+                    <li class="onWeb-href-item">
+                        <a href="//medium.com/@a.sandrina.p/" target="_blank" title="sandrina's medium" aria-label="Medium: web is not only about code" class="onWeb-link js-onWeb-link" data-site="medium" data-dd="the web is not only about code">
+                            <svg viewBox="0 0 26 26" aria-hidden="true" class="onWeb-icon">
+                               <use class="code" xlink:href="src/media/svg/sprite.svg#medium"/>
+                            </svg>
+                        </a>
+                    </li>
+
+                    <li class="onWeb-href-item">
                         <a href="//codepen.io/sandrina-p" target="_blank" title="sandrina's codepen"
                             aria-label="codepen: because coding without fun is just boring" class="onWeb-link js-onWeb-link" data-site="codepen" data-dd="because coding without fun is just boring">
                             <svg viewBox="0 0 26 26" aria-hidden="true" class="onWeb-icon">
@@ -32,7 +45,7 @@
                    </li>
 
                     <li class="onWeb-href-item">
-                        <a href="//github.com/sandrina-p" target="_blank" title="sandrina's github" aria-label="Github: Sharing it's what make us better" class="onWeb-link js-onWeb-link" data-site="github" data-dd="Sharing it's what make us better">
+                        <a href="//github.com/sandrina-p" target="_blank" title="sandrina's github" aria-label="Github: Sharing it's what make us better" class="onWeb-link js-onWeb-link" data-site="github" data-dd="sharing it's what make us better">
                             <svg viewBox="0 0 26 26" aria-hidden="true" class="onWeb-icon">
                                <use class="code" xlink:href="src/media/svg/sprite.svg#github"/>
                             </svg>
@@ -46,23 +59,16 @@
                             </svg>
                         </a>
                     </li>
-
-                    <li class="onWeb-href-item">
-                        <a href="//www.twitter.com/a_sandrina_p" target="_blank" title="sandrina's twitter" aria-label="Twitter: where geeks share geek's stuff" class="onWeb-link js-onWeb-link" data-site="twitter" data-dd="where geeks share geek stuff">
-                            <svg viewBox="0 0 26 26" aria-hidden="true" class="onWeb-icon">
-                               <use class="code" xlink:href="src/media/svg/sprite.svg#twitter"/>
-                            </svg>
-                        </a>
-                    </li>
                 </ul>
                 <div class="onWeb-desc">
                     <p class="cv-dd js-onWeb-dd">not a big fan of facebook</p>
                 </div>
             </div>
+
+            <?php include 'views/myself.php';?>
         </div>
     </article>
 
-    <?php // superpowers ?>
     <article class="cv-article" aria-label="superpowers">
         <div class="cv-article-in">
             <div class="cv-article-header">
@@ -70,19 +76,16 @@
             </div>
 
             <div class="cv-list js-cvShow">
-                <h4 class="cv-list-title">new in town</h4>
+                <h4 class="cv-list-title">rocking at</h4>
                 <ul class="cv-list-ul cv-list-ul--split">
-                    <li>React</li>
-                    <li>Webpack 2</li>
-                    <li>NodeJS</li>
-                    <li>Redux</li>
                     <li>PostCSS</li>
-                    <li>Google Firebase</li>
+                    <li>React | Redux</li>
+                    <li>Webpack</li>
                 </ul>
             </div>
 
             <div class="cv-list js-cvShow">
-                <h4 class="cv-list-title">rocking at</h4>
+                <h4 class="cv-list-title">the roots</h4>
                 <ul class="cv-list-ul">
                     <li>HTML5</li>
                     <li>SEO | A11Y</li>
@@ -104,24 +107,33 @@
             </div>
 
             <div class="cv-list js-cvShow">
+                <h4 class="cv-list-title">curious about</h4>
+                <ul class="cv-list-ul cv-list-ul--split">
+                    <li>Node.js</li>
+                    <li>Styled components</li>
+                    <li>Three.js</li>
+                </ul>
+            </div>
+
+            <div class="cv-list js-cvShow">
                 <h4 class="cv-list-title">with the help of</h4>
                 <ul class="cv-list-ul">
                     <li>Atom</li>
                     <li>Git</li>
                     <li>Gulp</li>
-                    <li>Toggl</li>
+                    <?php // <li>Toggl</li> ?>
                 </ul>
                 <ul class="cv-list-ul">
                     <li>Caniuse</li>
-                    <li>Browserstack</li>
+                    <?php // <li>Browserstack</li> ?>
                     <li>Google Analytics</li>
                     <li>Mouseflow</li>
                 </ul>
                 <ul class="cv-list-ul">
                     <li>Sketch</li>
-                    <li>Adobe Tools</li>
                     <li>Zeplin</li>
-                    <li>Invision</li>
+                    <li>Adobe Tools</li>
+                    <?php // <li>Invision</li> ?>
                 </ul>
             </div>
 
@@ -137,7 +149,6 @@
         </div>
     </article>
 
-    <?php // timeline ?>
     <article class="cv-article" aria-label="timeline">
         <div class="cv-article-in">
             <div class="cv-article-header">
@@ -175,23 +186,24 @@
                 </dl>
             </div>
 
+            <?php /*
             <div class="cv-list js-cvShow">
                 <h4 class="cv-list-title">shared bytes with</h4>
                 <dl class="cv-list-dl">
                     <dt><a href="http://www.codeschool.com/" target="_blank" class="link">Code School</a></dt>
-                    <dd class="cv-list-dl-desc">SCSS, JS, ES2015, jQuery, etc...</dd>
+                    <!-- <dd class="cv-list-dl-desc">SCSS, JS, ES2015, jQuery, etc...</dd> -->
                 </dl>
 
                 <dl class="cv-list-dl">
                     <dt><a href="https://www.youtube.com/learncodeacademy/" target="_blank" class="link">LearnCode.academy</a></dt>
-                    <dd class="cv-list-dl-desc">Modular JS, React, etc..</dd>
+                    <!-- <dd class="cv-list-dl-desc">Modular JS, React, etc..</dd> -->
                 </dl>
             </div>
+            */ ?>
 
         </div>
     </article>
 
-    <?php // projects ?>
     <article class="cv-projs js-cvUnder" aria-label="projects">
         <div class="cv-article-header">
             <h3 class="cv-title js-cvShowTitle">Projects</h3>
@@ -221,20 +233,22 @@
                 <li><a target="_blank" href="https://sandrina-p.github.io/moon/" class="cv-link" data-gaec="cvproj" data-sub="movie website" aria-labelledby="cvProjSub">
                     moon
                 </a></li>
+                <?php /*
                 <li><a target="_blank" href="http://carolina-machado.com/" class="cv-link" data-gaec="cvproj" data-sub="fashion website" aria-labelledby="cvProjSub">
                     carolina machado
                 </a></li>
+                */ ?>
             </ul>
         </div>
     </article>
 </section>
 
 <article class="sr-only" aria-labelledby="a11y-msg">
-    <h4 id="a11y-msg">Psst... You, yes you that are listening me.</h4>
+    <h4 id="a11y-msg">Psst... You, yes you that are listening to me.</h4>
     <p class="sr-only">
         Currently I'm being improved in accessibility and usability by Sandrina and she would love to have insights about it.
         This is something that she is starting to really care. She truly believes that when you improve the usability of 1% of users, you are also improving the experience of another x% of users. The web should be delivered to everyone within the best possible scenario.
-        You can contact her at <a href="mailto:a.sandrina.p4@gmail.com?subject=Hey%20there!%20I%20did%20listen%20your%20website!" title="sandrina's e-mail" class="cv-link"> a.sandrina.p@gmail.com</a>
+        Please give her some feedback at <a href="mailto:a.sandrina.p4@gmail.com?subject=Hey%20there!%20I%20did%20listen%20your%20website!" title="sandrina's e-mail" class="cv-link"> a.sandrina.p@gmail.com</a>
     </p>
 </article>
 

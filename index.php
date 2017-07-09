@@ -25,8 +25,6 @@
         <?php include 'views/cli.php';?>
     </main>
 
-    <?php include 'views/myself.php';?>
-
     <script>
         var cb = function() {
             var l = document.createElement('link'); l.rel = 'stylesheet';
@@ -39,6 +37,7 @@
     </script>
 
     <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script defer src="src/data.min.js" charset="utf-8"></script>
     <script defer src="src/vendor.min.js" charset="utf-8"></script>
     <script defer src="src/index.min.js" charset="utf-8"></script>
 

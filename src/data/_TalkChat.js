@@ -30,8 +30,8 @@ var TalkChat = function(){
                 +brk+'She also did a post-graduation on <strong>Digital Experience Design</strong> <span class="nowrap">at the same faculty.</span>'
         },
         practice: {
-            intro: 'The constant searching for <strong>something unique and interactive</strong> is what connects her projects.',
-            projects: ['rede expressos', 'carolina machado', 'portfolio 15', 'pistol shrimp', 'moon', 'NOX', 'DET', '141205'],
+            intro: 'These were born during her academic studies. The constant searching for <strong>something interactive</strong> is what connects her projects.',
+            projects: ['rede expressos', /*'carolina machado',*/ 'portfolio 15', 'pistol shrimp', 'moon', 'NOX', 'DET', '141205'],
             'rede expressos': {
                 categ: 'www projects',
                 title: 'Rede Expressos',
@@ -45,30 +45,30 @@ var TalkChat = function(){
                     'src/media/img/projects/rnex3.png',
                 ],
                 capt: 'Everyone knows that Rede Expressos is not an user friendly platform...',
-                more: 'As a final project for her post graduation she redesigned and coded the website\'s homepage and used Jekyll. UX / UI wise, she redesigned the "buy ticket" userflow for Mobile iOS and Android. The project had several phases: competitor Analysis, product SWOT, wireframes, design and prototype. She also learned how to adapt an app to follow both Human Guidelines and Material Design.',
+                more: 'During her post graduation she redesigned and coded the website\'s homepage and used Jekyll. UX / UI wise, she redesigned the "buy ticket" userflow for Mobile iOS and Android. The project had several phases: competitor Analysis, product SWOT, wireframes, design and prototype. She also learned how to adapt an app to follow both Human Guidelines and Material Design.',
                 date: 'JUN\'16',
                 links: [
                     ['https://marvelapp.com/6jef9dg', 'iOS prototype', 'apple'],
                     ['https://sandrina-p.github.io/rede-expressos/', 'homepage', 'desktop']
                 ]
             },
-            'carolina machado': {
-                categ: 'www projects',
-                title: 'Carolina Machado',
-                sub: 'fashion website',
-                role: 'Tumblr theme developer',
-                team: 'Individual project',
-                img: [
-                    'src/media/img/projects/cm0.png',
-                    'src/media/img/projects/cm1.png',
-                    'src/media/img/projects/cm2.png',
-                    'src/media/img/projects/cm3.png',
-                ],
-                capt: 'A Tumblr theme build from scratch. Ajax is the secret',
-                more: 'After the first static website, she decided to give it an upgrade by adding some CMS to make the content dynamic and of course, easier for Carolina to update. Tumblr was the chosen one for its simple API and content management. With Ajax it was possible to have almost full control over it that now no one says it\'s a Tumblr.',
-                date: 'mar\'16',
-                links: [['//carolina-machado.com', 'check the website', 'desktop']],
-            },
+            // 'carolina machado': {
+            //     categ: 'www projects',
+            //     title: 'Carolina Machado',
+            //     sub: 'fashion website',
+            //     role: 'Tumblr theme developer',
+            //     team: 'Individual project',
+            //     img: [
+            //         'src/media/img/projects/cm0.png',
+            //         'src/media/img/projects/cm1.png',
+            //         'src/media/img/projects/cm2.png',
+            //         'src/media/img/projects/cm3.png',
+            //     ],
+            //     capt: 'A Tumblr theme build from scratch. Ajax is the secret',
+            //     more: 'After the first static website, she decided to give it an upgrade by adding some CMS to make the content dynamic and of course, easier for Carolina to update. Tumblr was the chosen one for its simple API and content management. With Ajax it was possible to have almost full control over it that now no one says it\'s a Tumblr.',
+            //     date: 'mar\'16',
+            //     links: [['//carolina-machado.com', 'check the website', 'desktop']],
+            // },
             'portfolio 15': {
                 categ: 'www projects',
                 title: 'Portfolio15',
@@ -175,24 +175,6 @@ var TalkChat = function(){
         onWeb: {
             intro: 'social networks',
             dd: 'not a big fan of facebook',
-            social: {
-                codepen: {
-                    link: '//codepen.io/sandrina-p',
-                    dd: 'because coding without fun is just boring'
-                },
-                github: {
-                    link: '//github.com/sandrina-p',
-                    dd: 'Sharing it\'s what make us better'
-                },
-                'stack-overflow': {
-                    link: '//stackoverflow.com/story/sandrina',
-                    dd: 'helping others is as important as being helped'
-                },
-                behance: {
-                    link: '//www.behance.net/sandrin4p',
-                    dd: 'it can\'t be all about code'
-                }
-            },
         },
         behaviour: {
             navProjMob: 'you can also <span>swipe</span> to the left or to the right',
@@ -200,13 +182,13 @@ var TalkChat = function(){
             // returnFocus: "It seems her project kept you interested in this conversation. Go on, don't be shy.",
             // returnOnFly: "Hey there, where have you been?",
             psstChat: [
-                'i\'m surprised',
+                'I\'m surprised',
                 'I\'m not allowed to share more info about her.'
                 +brk+'But by all means, don\'t be shy and go <a href=\'mailto:a.sandrina.p@gmail.com?subject=Hello!\' target=\'_blank\' class=\'link\'>say hello</a>.'
                 +brk+'She is very nice, specially if you are a good looking website like me.',
                 'Who are you?'
             ],
-            psstMob : [
+            psstMob: [
                 'Hmm...',
                 'You really like to scroll <span class=\'nowrap\'>don\'t you?</span>'
             ]

@@ -21,6 +21,10 @@ var Util = function(){
         }
     });
 
+    function isOnViewport(elOffsetTop, elOffsetTopWithHeight, scrolled) {
+        return scrolled + wHeight > elOffsetTop && elOffsetTopWithHeight > scrolled;
+    }
+
     function objSize(obj) {
         var size = 0,
             key;
@@ -65,6 +69,7 @@ var Util = function(){
 
     return {
         hasTouchEvents,
+        isOnViewport,
         isRetina,
         objSize,
         objRandom,
