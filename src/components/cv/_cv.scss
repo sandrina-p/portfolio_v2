@@ -1,5 +1,5 @@
 $cvPaddingLeft: 10vw;
-
+$asciiSize: 300px;
 %cvSub {
     font-size: $fontL;
     font-weight: $fMed;
@@ -12,9 +12,9 @@ $cvPaddingLeft: 10vw;
     font-family: $font-mono;
 }
 
-.js-onWebAfter {
-    padding-top: $safeArea*3;
-}
+// .js-onWebAfter {
+//     padding-top: $safeArea*3;
+// }
 
 @mixin ListAlignments {
     width: 50%;
@@ -46,7 +46,7 @@ $cvPaddingLeft: 10vw;
 .cv {
     display: block;
     position: relative;
-    background: $clrDark;
+    background: $clrLight;
     color: $clrLight;
     margin-bottom: rem(280); //space to .psst
     z-index: 2; //above #cv
@@ -67,33 +67,42 @@ $cvPaddingLeft: 10vw;
     }
 
     &-ascii {
-        position: fixed;
-        text-align: center;
-        width: 100%;
+        position: absolute;
+        top: $safeArea*2;
+        left: 50%;
+        width: $asciiSize;
+        height: $asciiSize;
         font-size: 5.2px;
         line-height: 1.2;
-        height: 300px;
         overflow: hidden;
         font-family: $font-mono;
         font-weight: $fBold;
-        z-index: 3;
         color: $clrLight;
-        mix-blend-mode: difference;
-        opacity: 0.7;
+        opacity: 0.5;
         pointer-events: none;
     }
 
     &-article {
         position: relative;
-        margin-bottom: $safeArea*4;
+        padding-bottom: $safeArea*2;
+        background: $clrDark;
         color: $clrLight;
 
-        &:first-of-type {
-            margin-bottom: $safeArea*8;
+        &--contact {
+            padding-bottom: 0;
+            // margin-bottom: $safeArea*8;
+
+            .cv-article-in {
+                min-height: calc(#{$safeArea*4} + #{$asciiSize});
+                padding: $safeArea*3 0 $safeArea*3 $safeArea*2;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+            }
         }
 
         &-in {
-            padding: 0 $safeArea;
+            padding: $safeArea;
         }
 
         &-header {
@@ -127,8 +136,9 @@ $cvPaddingLeft: 10vw;
 
     //Social Network
     &-dl {
-        padding-bottom: $safeArea*2;
-        text-align: center;
+        // padding-bottom: $safeArea*4;
+        z-index: 2;
+        // text-align: center;
     }
 
     &-dt {
@@ -140,11 +150,18 @@ $cvPaddingLeft: 10vw;
     }
 
     &-dd {
-        display: block;
+        position: relative;
+        display: inline-block;
         @extend %cvItems;
+        background: $clrDark;
+        padding-right: $safeArea/2;
+        z-index: 2;
     }
 
     &-link {
+        display: inline-block;
+        padding-right: $safeArea/2;
+        background: $clrDark;
         color: $clrPrimarySoft;
         font-family: $font-mono;
         font-weight: $fMed;
@@ -274,7 +291,9 @@ $cvPaddingLeft: 10vw;
 
 
     &-projs {
+        background: $clrDark;
         width: 100%;
+        padding-bottom: $safeArea*2;
 
         &-proj {
             padding: 0 $safeArea/2;
@@ -284,7 +303,7 @@ $cvPaddingLeft: 10vw;
                 display: block;
                 text-align: center;
                 font-family: $font-mono;
-                color: $clrGray;
+                color: $clrGrayLight;
                 font-size: $fontS;
                 padding: $safeArea $safeArea/2 $safeArea/2;
 
@@ -345,7 +364,6 @@ $cvPaddingLeft: 10vw;
 
         &-list {
             &-ul {
-
                 @include ListAlignments-pha;
 
                 li {
@@ -414,15 +432,33 @@ $cvPaddingLeft: 10vw;
                     &:nth-child(3) { transform: translate(-25vw, 140%); } //red
                     &:nth-child(4) { transform: translate(-40vw, 200%); } //det
                     &:nth-child(5) { transform: translate(4vw, 220%); } //port
-                    &:nth-child(6) { transform: translate(-30vw, 380%); } //ps
+                    &:nth-child(6) { transform: translate(-15vw, 380%); } //ps
                     &:nth-child(7) { transform: translate(30vw, 350%); } //mo
-                    &:nth-child(8) { transform: translate(-5vw, 500%); } //cm
+                    // &:nth-child(8) { transform: translate(-5vw, 500%); } //cm
                 }
             }
         }
     }
 
     @include media(tablet) {
+        &-ascii {
+            top: 5vw;
+            left: auto;
+            right: 5vw;
+            opacity: 0.8;
+        }
+
+        &-article {
+            &--contact {
+                margin: 0 5vw 5vw;
+
+                .cv-article-in {
+                    padding: 5vw;
+                    min-height: calc(10vw + #{$asciiSize});
+                }
+            }
+        }
+
         &-header {
             @extend %cf-tab;
             padding: 25vh 0 $safeArea*4;
@@ -442,8 +478,15 @@ $cvPaddingLeft: 10vw;
         display: inline-block;
     }
 
+    @include media(untilPhablet) {
+        &-href-item:nth-child(n+5) {
+            display: none;
+        }
+    }
+
+
     &-link {
-        margin: $safeArea;
+        margin: $safeArea $safeArea*2 $safeArea 0;
 
         &:focus {
             box-shadow: none;
@@ -494,8 +537,10 @@ $cvPaddingLeft: 10vw;
     }
 
     @include media(tablet) {
-        padding-left: $humanWidthTablet;
+        padding-left: calc(#{$humanWidthTablet} - 5vw);
         text-align: left;
+        width: 90vw;
+        margin: 0 5vw;
 
         .navCV-link {
             padding-left: $safeArea*3;

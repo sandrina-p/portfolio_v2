@@ -25,8 +25,6 @@
         <?php include 'views/cli.php';?>
     </main>
 
-    <?php include 'views/myself.php';?>
-
     <script>
         var cb = function() {
             var l = document.createElement('link'); l.rel = 'stylesheet';

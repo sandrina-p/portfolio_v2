@@ -15,13 +15,13 @@ var OnWeb = function() {
 
         var i,
             scrolled,
-            $ascii = $('.cv-ascii'),
+            // $ascii = $('.cv-ascii'),
             $mee = $('.cv-ascii').find('.mee'),
             $meeLength = $mee.length;
 
         $(window).on('scroll',function(){
 
-            $ascii.css('bottom', $('#cv').offset().top + $(window).scrollTop()*0.9 * -1);
+            // $ascii.css('bottom', $('#cv').offset().top + $(window).scrollTop()*0.9 * -1);
             $mee.css('display','block');
             scrolled = $(window).scrollTop();
 
@@ -38,15 +38,17 @@ var OnWeb = function() {
     function cvShowing() {
 
         // show Titles
-        $('.js-cvShowTitle').each(function(){
-
+        $('.js-cvShowTitle, .js-cvShow').each(function(){
             var $t = $(this),
-                shut = false;
+                shut = false,
+                windowHeight = window.innerHeight*0.7,
+                thisOffset = $t.offset().top;
+
 
             $t.addClass('is-js');
 
             $(document).scroll(function(){
-                if($(this).scrollTop() + window.innerHeight*0.47 > $t.offset().top) {
+                if($(this).scrollTop() + windowHeight > thisOffset) {
                     if (!shut) {
                         $t.addClass('is-active');
                         shut = true;
@@ -54,24 +56,6 @@ var OnWeb = function() {
                 }
             });
         });
-
-        // show Lists
-        $('.js-cvShow').each(function(){
-
-            var $t = $(this),
-                shut = false;
-
-            $t.addClass('is-js');
-
-            $(document).scroll(function(){
-                if(!shut && $(this).scrollTop() + window.innerHeight*0.6 > $t.offset().top) {
-                    $t.addClass('is-active');
-                    shut = true;
-                }
-            });
-
-        });
-
     }
 
     function init() {

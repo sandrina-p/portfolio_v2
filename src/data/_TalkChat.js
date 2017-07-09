@@ -30,8 +30,8 @@ var TalkChat = function(){
                 +brk+'She also did a post-graduation on <strong>Digital Experience Design</strong> <span class="nowrap">at the same faculty.</span>'
         },
         practice: {
-            intro: 'The constant searching for <strong>something unique and interactive</strong> is what connects her projects.',
-            projects: ['rede expressos', 'carolina machado', 'portfolio 15', 'pistol shrimp', 'moon', 'NOX', 'DET', '141205'],
+            intro: 'These were born during her academic studies. The constant searching for <strong>something interactive</strong> is what connects her projects.',
+            projects: ['rede expressos', /*'carolina machado',*/ 'portfolio 15', 'pistol shrimp', 'moon', 'NOX', 'DET', '141205'],
             'rede expressos': {
                 categ: 'www projects',
                 title: 'Rede Expressos',
@@ -52,23 +52,23 @@ var TalkChat = function(){
                     ['https://sandrina-p.github.io/rede-expressos/', 'homepage', 'desktop']
                 ]
             },
-            'carolina machado': {
-                categ: 'www projects',
-                title: 'Carolina Machado',
-                sub: 'fashion website',
-                role: 'Tumblr theme developer',
-                team: 'Individual project',
-                img: [
-                    'src/media/img/projects/cm0.png',
-                    'src/media/img/projects/cm1.png',
-                    'src/media/img/projects/cm2.png',
-                    'src/media/img/projects/cm3.png',
-                ],
-                capt: 'A Tumblr theme build from scratch. Ajax is the secret',
-                more: 'After the first static website, she decided to give it an upgrade by adding some CMS to make the content dynamic and of course, easier for Carolina to update. Tumblr was the chosen one for its simple API and content management. With Ajax it was possible to have almost full control over it that now no one says it\'s a Tumblr.',
-                date: 'mar\'16',
-                links: [['//carolina-machado.com', 'check the website', 'desktop']],
-            },
+            // 'carolina machado': {
+            //     categ: 'www projects',
+            //     title: 'Carolina Machado',
+            //     sub: 'fashion website',
+            //     role: 'Tumblr theme developer',
+            //     team: 'Individual project',
+            //     img: [
+            //         'src/media/img/projects/cm0.png',
+            //         'src/media/img/projects/cm1.png',
+            //         'src/media/img/projects/cm2.png',
+            //         'src/media/img/projects/cm3.png',
+            //     ],
+            //     capt: 'A Tumblr theme build from scratch. Ajax is the secret',
+            //     more: 'After the first static website, she decided to give it an upgrade by adding some CMS to make the content dynamic and of course, easier for Carolina to update. Tumblr was the chosen one for its simple API and content management. With Ajax it was possible to have almost full control over it that now no one says it\'s a Tumblr.',
+            //     date: 'mar\'16',
+            //     links: [['//carolina-machado.com', 'check the website', 'desktop']],
+            // },
             'portfolio 15': {
                 categ: 'www projects',
                 title: 'Portfolio15',
@@ -175,24 +175,24 @@ var TalkChat = function(){
         onWeb: {
             intro: 'social networks',
             dd: 'not a big fan of facebook',
-            social: {
-                codepen: {
-                    link: '//codepen.io/sandrina-p',
-                    dd: 'because coding without fun is just boring'
-                },
-                github: {
-                    link: '//github.com/sandrina-p',
-                    dd: 'Sharing it\'s what make us better'
-                },
-                'stack-overflow': {
-                    link: '//stackoverflow.com/story/sandrina',
-                    dd: 'helping others is as important as being helped'
-                },
-                behance: {
-                    link: '//www.behance.net/sandrin4p',
-                    dd: 'it can\'t be all about code'
-                }
-            },
+            // social: {
+            //     codepen: {
+            //         link: '//codepen.io/sandrina-p',
+            //         dd: 'because coding without fun is just boring'
+            //     },
+            //     github: {
+            //         link: '//github.com/sandrina-p',
+            //         dd: 'Sharing it\'s what make us better'
+            //     },
+            //     'stack-overflow': {
+            //         link: '//stackoverflow.com/story/sandrina',
+            //         dd: 'helping others is as important as being helped'
+            //     },
+            //     behance: {
+            //         link: '//www.behance.net/sandrin4p',
+            //         dd: 'it can\'t be all about code'
+            //     }
+            // },
         },
         behaviour: {
             navProjMob: 'you can also <span>swipe</span> to the left or to the right',

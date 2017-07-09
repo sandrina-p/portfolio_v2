@@ -226,6 +226,7 @@ $navSpeed: 250ms;
 
                 &-option {
                     display: inline-block;
+
                     &:not(:last-of-type) {
                         margin-right: 0;
                     }
@@ -254,7 +255,6 @@ $navSpeed: 250ms;
                 padding-left: 0;
                 padding-right: 0;
             }
-
         }
     }
 
@@ -276,7 +276,6 @@ $navSpeed: 250ms;
 }
 
 
-
 .Glidder {
     position: relative;
     min-height: 53vw; //hold during img loading
@@ -287,7 +286,8 @@ $navSpeed: 250ms;
 
         &:not(:first-of-type) {
             position: absolute;
-            left: 0; top: 0;
+            left: 0;
+            top: 0;
         }
     }
 
