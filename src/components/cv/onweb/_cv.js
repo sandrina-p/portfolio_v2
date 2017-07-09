@@ -12,8 +12,7 @@ var onCV = function() {
         baffleWebDd;
 
     function asciiMotion() {
-        var firstScroll = true,
-            scrolled,
+        var scrolled,
             $ascii = $('.cv-ascii');
 
         $ascii.append(myselfASCII);
@@ -53,14 +52,13 @@ var onCV = function() {
         $('.js-cvShowTitle, .js-cvShow').each(function(){
             var $t = $(this),
                 shut = false,
-                windowHeight = window.innerHeight*0.7,
                 thisOffset = $t.offset().top;
 
 
             $t.addClass('is-js');
 
             $(document).scroll(function(){
-                if($(this).scrollTop() + windowHeight > thisOffset) {
+                if($(this).scrollTop() + window.innerHeight*0.7 > thisOffset) {
                     if (!shut) {
                         $t.addClass('is-active');
                         shut = true;
