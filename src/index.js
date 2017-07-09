@@ -1,10 +1,6 @@
 // =include components/utilities/_Util.js
 // =include components/utilities/_Swipped.js
 
-// =include data/_TalkChat.js
-// =include data/_TalkBot.js
-// =include data/_TalkBot-vocabulary.js
-
 // =include components/nav/_nav.js
 
 // =include components/chat/_chat.js
@@ -12,7 +8,7 @@
 // =include components/projects/_projects.js
 // =include components/cli/_bot.js
 
-// =include components/cv/onweb/_onweb.js
+// =include components/cv/onweb/_cv.js
 
 // =include components/psst/_psst.js
 

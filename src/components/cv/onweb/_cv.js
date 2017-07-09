@@ -1,8 +1,8 @@
-/* global TalkChat:false, baffle:false, cvProjects: false, Util:false */
+/* global TalkChat:false, baffle:false, cvProjects: false, Util:false, myselfASCII:false */
 /* exported currentText */
 /* global currentText */
 
-var OnWeb = function() {
+var onCV = function() {
     var $onWebLink,
         chatContent = TalkChat.conversation,
         contOnWeb = chatContent.onWeb,
@@ -11,32 +11,47 @@ var OnWeb = function() {
         baffleWebSite,
         baffleWebDd;
 
-    function ascii() {
-
-        var i,
+    function asciiMotion() {
+        var firstScroll = true,
             scrolled,
-            // $ascii = $('.cv-ascii'),
-            $mee = $('.cv-ascii').find('.mee'),
-            $meeLength = $mee.length;
+            $ascii = $('.cv-ascii');
 
-        $(window).on('scroll',function(){
+        $ascii.append(myselfASCII);
 
-            // $ascii.css('bottom', $('#cv').offset().top + $(window).scrollTop()*0.9 * -1);
-            $mee.css('display','block');
+        var $mee = $('.cv-ascii').find('.mee');
+        $mee.css('display', 'block');
+
+        var $meeLength = $mee.length,
+            asciiOffsetTop,
+            asciiOffsetTopWithHeight;
+
+        $(window).on('scroll',function() {
             scrolled = $(window).scrollTop();
 
-            if (scrolled % 3 == 0) {
-                i = scrolled%$meeLength;
+            if (firstScroll) {
+                asciiOffsetTop = $ascii.offset().top;
+                asciiOffsetTopWithHeight = asciiOffsetTop + $mee.innerHeight();
+                firstScroll = false;
+            }
+
+            if (!Util.isOnViewport(asciiOffsetTop, asciiOffsetTopWithHeight, scrolled)) {
+                return false;
+            }
+
+            if (!Util.untilTablet) {
+                $ascii.css('transform', `translateY(${(scrolled - asciiOffsetTopWithHeight) * 100 / window.innerHeight + 60}%)`);
+            }
+
+            if (scrolled % 4 == 0) {
                 $mee.css('opacity', 0);
-                $('.myself'+i).css('opacity', 1);
+                $('.myself'+ (scrolled%$meeLength)).css('opacity', 1);
             }
         });
     }
 
-    ascii();
+    asciiMotion();
 
-    function cvShowing() {
-
+    function showContent() {
         // show Titles
         $('.js-cvShowTitle, .js-cvShow').each(function(){
             var $t = $(this),
@@ -58,7 +73,7 @@ var OnWeb = function() {
         });
     }
 
-    function init() {
+    function socialInteraction() {
         $onWebLink = $('.js-onWeb-site').parent(),
         baffleWebSite = baffle('.js-onWeb-site'),
         baffleWebDd = baffle('.js-onWeb-dd');
@@ -92,32 +107,29 @@ var OnWeb = function() {
     }
 
     return {
-        init,
-        cvShowing
+        socialInteraction,
+        showContent
     };
 }();
 
 
 $(function lookIntoOnWww(){
     var $cv = $('#cv'),
-        offsetCv,
-        windowHeight = window.innerHeight,
+        offsetCv = $cv.offset().top,
         triggerOnWebInit = true;
 
     $(window).scroll(function() {
-        offsetCv = $cv.offset().top;
-
-        if(triggerOnWebInit && $(window).scrollTop() + windowHeight - 45 > offsetCv) {
+        if(triggerOnWebInit && $(window).scrollTop() + Util.wHeight - 45 > offsetCv) {
             triggerOnWebInit = false;
 
             $('.navCV').remove();
             cvProjects.setProjLoop(true);
 
             if (!Util.hasTouchEvents) {
-                OnWeb.init();
+                onCV.socialInteraction();
             }
 
-            OnWeb.cvShowing();
+            onCV.showContent();
         }
     });
 });

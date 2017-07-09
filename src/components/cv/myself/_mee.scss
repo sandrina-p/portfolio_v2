@@ -3,7 +3,6 @@ $myselfs: 7;
 .mee {
     position: absolute;
     opacity: 0;
-    // @include centerx;
     transform: translateX(-25%);
 
     @include media(phablet) {

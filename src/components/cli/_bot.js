@@ -261,7 +261,7 @@ var botSection = function() {
 
     // ------ DOM Interactions ------ //
 
-    //showing 008080 section
+    // showing 008080 section
     $(document).on('click', '.js-botTrigger', function(){
 
         if(!firstTrigger) {
@@ -278,8 +278,9 @@ var botSection = function() {
     });
 
     var tooLongWarn = true,
-        inputVal
-    //press ENTER key to send what's on input
+        inputVal;
+
+    // press ENTER key to send what's on input
     $(document).on('keyup', '#'+botInputId, function(e) {
         var inputVal = this.value;
 

@@ -73,7 +73,7 @@ gulp.task('run-prod', function() {
 
 gulp.task('scripts', function(){
     console.log('start task scripts');
-    gulp.src(['src/vendor.js', 'src/index.js'])
+    gulp.src(['src/vendor.js', 'src/data.js', 'src/index.js'])
         .pipe(include())
         .pipe(babel({
             presets: ['es2015-script'],

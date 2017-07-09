@@ -2,10 +2,9 @@ var Psst = function() {
     var { hasTouchEvents } = Util,
         chatContent = TalkChat.conversation;
 
-    // change message only for touch mobile (no bot there).
+    // change message only for touch mobile (no bot there)
     function showScrollify($jsPsst) {
         var $scrolled = $('.js-scrolled'),
-            innerHeight,
             newMargin = 400,
             scrolledRecord = getStorage();
 
@@ -13,15 +12,10 @@ var Psst = function() {
         $jsPsst.find('.psst-parag').html(chatContent.behaviour.psstMob[1]+'<br><br>');
         $jsPsst.find('button').remove();
 
+        getScrolledText();
 
         $(window).scroll(function() {
-            // check if it is a new record or not
-            if ($(window).scrollTop() > scrolledRecord) {
-                scrolledRecord = $(window).scrollTop();
-                $scrolled.text(scrolledRecord);
-            } else {
-                $scrolled.text( Math.abs($(window).scrollTop() - scrolledRecord) +' until new record');
-            }
+            getScrolledText();
 
             // increase document height to keep scrolling
             if ($(document).height() <= (window.innerHeight + $(window).scrollTop())) {
@@ -30,6 +24,15 @@ var Psst = function() {
             }
         });
 
+        function getScrolledText() {
+            // check if it is a new record or not
+            if ($(window).scrollTop() > scrolledRecord) {
+                scrolledRecord = $(window).scrollTop();
+                $scrolled.text(scrolledRecord);
+            } else {
+                $scrolled.text( Math.abs($(window).scrollTop() - scrolledRecord) +' until new record');
+            }
+        }
 
         function getStorage() {
             try { // Safari BUG fixed: SecurityError: DOM Exception 18: An attempt was made to break through the security policy of the user agent.
@@ -49,12 +52,13 @@ var Psst = function() {
     // change message on psstt when clicked on Projects
     function changePsst(context) {
         var $jsPsst = $('.js-psst');
+        var psstText = chatContent.behaviour[context];
 
         if (!hasTouchEvents) { // trigger focus on bot
-            $jsPsst.find('.psst-title').html(chatContent.behaviour[context][0]);
-            $jsPsst.find('.psst-parag').html(chatContent.behaviour[context][1]);
+            $jsPsst.find('.psst-title').html(psstText[0]);
+            $jsPsst.find('.psst-parag').html(psstText[1]);
             $jsPsst.find('button[name="true"]').remove();
-            $jsPsst.find('button[name="false"]').html(chatContent.behaviour[context][2]);
+            $jsPsst.find('button[name="false"]').html(psstText[2]);
 
         } else { // trigger scroll
             setTimeout(function () {
@@ -74,7 +78,7 @@ var Psst = function() {
         $NavItemPractice.trigger('click'); // it will call Psst.changePsst().
 
         if (hasTouchEvents) {
-            // FIXME: DRY here please... it's from _chat.js   scrollSafe()
+            // FIXME: DRY here please... it's from _chat.js -> scrollSafe()
             var wScroll = $(window).scrollTop(),
                 wHeight = window.innerHeight,
                 pHeight =  $NavItemPractice.height(),
