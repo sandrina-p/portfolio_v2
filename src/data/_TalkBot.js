@@ -12,17 +12,17 @@ var TalkBot = function(){
         linkLT = genLink('https://uxplanet.org/how-to-make-users-think-your-app-loads-faster-24052fe307bf#.330znvww7', 'perceived loading time'),
         linkFOUC = genLink('https://en.wikipedia.org/wiki/Flash_of_unstyled_content', 'FOUC'),
         linkGit = genLink('https://github.com/sandrina-p/s008080', 'Github'),
-        linkHer = genLink('http://www.imdb.com/title/tt1798709/', "Her"),
+        linkHer = genLink('http://www.imdb.com/title/tt1798709/', 'Her'),
         linkFirebase = genLink('http://firebase.google.com', 'Google Firebase'),
         linkHelpMe = genLink('https://github.com/sandrina-p/s008080/blob/master/src/data/_TalkBot-vocabulary.js', 'help me'),
-        linkCodeAvatar = genLink('https://codepen.io/sandrina-p/pen/XNrVZj', 'codepen'),
-        linkCodeGlidder = genLink('https://codepen.io/sandrina-p/pen/pNzpqj', 'profile picture'),
-        linkChill = genLink('https://www.youtube.com/watch?v=yecFTeMVSlo', 'She A Go'),
-        myEmail = genLink('mailto:a.sandrina.p@gmail.com?subject=Hey%20there!', 'a.sandrina.p@gmail.com', "noTarget"),
+        linkCodeAvatar = genLink('https://codepen.io/sandrina-p/pen/XNrVZj', 'profile picture'),
+        linkCodeGlidder = genLink('https://codepen.io/sandrina-p/pen/pNzpqj', 'codepen'),
+        // linkChill = genLink('https://www.youtube.com/watch?v=yecFTeMVSlo', 'She A Go'),
+        myEmail = genLink('mailto:a.sandrina.p@gmail.com?subject=Hey%20there!', 'a.sandrina.p@gmail.com', 'noTarget'),
         linkCHTSTW = genLink('http://clickheretosavetheworld.com/', 'clickHereToSaveTheWorld'),
 
-        brk = "<br>",
-        browser = "browser";
+        brk = '<br>',
+        browser = 'browser';
         // mobileBrand = "mobile";
 
     // if (screen.width < 750) {
@@ -30,211 +30,126 @@ var TalkBot = function(){
     //         resolutionScreenMsg = "I feel so happy that we are reaching this point of our relationship on your "+mobileBrand+". Like a good bot, I always take into consideration what kind of device you are using to connect with me. This way, images and those scary stuff that drain the data network are not really problem: you always get the best for both your eyes and your device. ;)"
     //
     // } else {
-        var screenRes = 'big screen',
-            resolutionScreenMsg = "I noticed that you have a "+screenRes+", so the images I showed you have a big and nice resolution. If you were on your mobile, I'd be a thoughtful bot and reduce their size so I could save you some Kb from your mobile data network. How sweet am I, hm ? :D";
+    var screenRes = 'big screen',
+        resolutionScreenMsg = 'I noticed that you have a '+screenRes+", so the images I showed you have a big and nice resolution. If you were on your mobile, I'd be a thoughtful bot and reduce their size so I could save you some Kb from your mobile data network. How sweet am I, hm ? :D";
     // }
 
-    var publicCmd = "What do you wanna know?"
-                    +brk+"<b>technologies</b>"
-                    +brk+"<b>best practices</<b>"
-                    +brk+"<b>challenges</b>"
-                    +brk+"<b>resources</b>"
-                    +brk+"<b>exit</b>"
-                    +brk+"<b>...</b>";
-
-    var botOptHelp = "It's okay not knowing the answer. You can "+googleIt+" or you can ask me for <b><i>help</i></b>! You can also <b><i>skip</i></b> this nerd question ;)";
-
+    var publicCmd = 'What do you wanna know?'
+                    +brk+'<b>technologies</b>'
+                    +brk+'<b>best practices</<b>'
+                    +brk+'<b>challenges</b>'
+                    +brk+'<b>resources</b>'
+                    +brk+'<b>exit</b>'
+                    +brk+'<b>...</b>';
 
     var conversation = {
         // intro: ['type gg', "aqui", "options"],
         intro: [
-            "Now that you know Sandrina, let me introduce myself:"
+            'Now that you know Sandrina, let me introduce myself:'
             +brk+"I'm 008080 and here you can ask me stuff about me."
-            +brk+""+publicCmd,
-            "e.g. How are you", "commands"
+            +brk+''+publicCmd,
+            'e.g. How are you', 'commands'
         ],
-        // options: {
-        //     /* STRUCTURE:
-        //     "posible human inputs sent, separated by comma, and in lowercase, it was to be always at least 2 inputs": [
-        //         "bot answer"
-        //         +brk+"with some lines",
-        //         "input placeholder", "context of the next input"
-        //     ]
-        //     */
-        //     // "gg, ggg":['ready to go', "sabes os comandos nao sabes?", "commands"],
-        //     "infinity and beyond, chaos, ∞ infinity, infinity, ∞, universe, cosmos, abracadabra": [
-        //         "That's the way!"
-        //         +brk+"Despite always being under construction I already have the ability to share some knowledge Sandrina taught me while I was growing up."
-        //         +brk+""+publicCmd,
-        //         "what's next?", "commands"
-        //     ],
-        //     "infinito, infinite, infiniti, infinyti, infiniti,": [
-        //         "I think you meant <i>infinity</i>... Well let's start:",
-        //         +brk+"Despite always being under construction I already have the ability to share some knowledge Sandrina taught me while I was growing up."
-        //         +brk+""+publicCmd,
-        //         "what's next?", "commands"
-        //     ],
-        //     "undefined, null, error": [
-        //         "Not it's not. It has another name. At least on javascript language.",
-        //         "go ask it to some console", "options"
-        //     ],
-        //     "1/0, 1 divided by 0, one divided by zero": [
-        //         "◉_◉ Don't try to turn the game against me."
-        //         +brk+"I'm a bot, not a console.",
-        //         "go ask it to other console", "options"
-        //     ],
-        //     "zero, 0": [
-        //         "You know that Siri isn't always right."
-        //         +brk+"^400Neither do you."
-        //         +brk+"^600"+botOptHelp,
-        //         'I still believe in you', "options"
-        //     ],
-        //     "exit, esc": [
-        //         "Really? We didn't even start you already want to leave.. Press ESC and go get a life"
-        //         +brk+"By the way, don't forget to share me and talk about Sandrina while you’re out there :3",
-        //         "I still believe in you", "options"
-        //     ],
-        //     "helpp, help, i don't know, dunno, i'm not sure, help me": [
-        //         "I'm glad I can teach you something new!"
-        //         +brk+"I'm build with javascript, so in my world 1/0 is <i>∞ infinity</i>."
-        //         +brk+"In other worlds the answer can be <i>0</i> or <i>undefined</i>."
-        //         +brk+"I'm a sensible machine so I like to think there is much more beyond nothing.",
-        //         "so, now you know how much is 1/0!", "options"
-        //     ],
-        //     "google it": [
-        //         botOptHelp,
-        //         "I still believe in you", "options"
-        //     ],
-        //     "tell me more, more, what else, anything else": [ //FIXME DRY this
-        //         "you are such a curious creature :3. I'm still under construction... I think you best move here is to talk with Sandrina at "+myEmail, //but you can leave a quick message to Sandrina. Just type something started by @@.*/",
-        //         // "@@ Hi sandrina! How much is 0.1 + 0.3 ?"
-        //         "or you can use social networks, she's there somewhere...", "options"
-        //     ],
-        //     "welcome back" : [
-        //         "Look who is back! So, How much is 1/0?",
-        //         "options"
-        //     ],
-        //     "hello, hi, hey there" : [
-        //         "Hi there! :D",
-        //         "options"
-        //     ],
-        //     "whatever, no, nop, come on": [
-        //         "Come on.. giving up so easily? You can "+googleIt+" or ask for <b>help</>",
-        //         "go ask it to some console", "options"
-        //     ],
-        //     "dumb, you are dumb, your dumb, you suck, this sucks": [
-        //         "A little, I have to admit it... but you are too ._.",
-        //         "but Sandrina isn't!", "options"
-        //     ],
-        //     "skip, skip this shit": [
-        //         "Okay then, so these are some of the things i can share with you:"
-        //         +brk+""+publicCmd,
-        //         "what's next?", "commands"
-        //     ],
-        //     "fk, fuck you, shit, go fuck yourself, fuck u": [
-        //         "You are so agressive... This will calm you: "+linkChill,
-        //         "what's next?"
-        //     ],
-        // },
-
         commands: {
-            "technologies": [
+            'technologies': [
                 [
-                    "I was born inside the Atom editor."
-                    +brk+"HTML5, SCSS and Javascript (with jQuery) are my vital organs.",
-                    "|","commands"
+                    'I was born inside the Atom editor.'
+                    +brk+'HTML5, SCSS and Javascript (with jQuery) are my vital organs.',
+                    '|','commands'
                 ],
                 [
-                    "I started being built with "+linkKoala+" but as any good programmer knows, crashes happen, so "+linkGulp+" took its place!",
-                    "|","commands"
+                    'I started being built with '+linkKoala+' but as any programmer knows, crashes happen, so '+linkGulp+' took its place!',
+                    +brk+'Soon Webpack will rock here when Sandrina finds the time.',
+                    '|','commands'
                 ],
                 [
                     "You probably value your privacy, but Sandrina knows everything you told me and where you clicked. That's her way to improve me each time a new user comes here."
-                    +brk+"Thank you Google Analytics.",
-                    "|","commands"
+                    +brk+'Thank you Google Analytics ;).',
+                    '|','commands'
                 ],
                 [
-                    "Unfortunately right now I'm just a static website with some php on index. But soon I'll be moved to "+linkFirebase+"."
-                    +brk+"Then you'll be able to talk directly with Sandrina. No need for e-mails or whatever.",
-                    "|","commands"
+                    "When Sandrina learns Node.js / Express, I'll move on to React with SSR.",
+                    +brk+"Until then, I'm just a static website hosted at Github with some PHP to help on HTML markup."
+                    +brk+'Because for her, SEO and SSR are more important than Hyped Frameworks',
+                    '|', 'commands'
                 ],
 
                 [
-                    "You might think that javascript and jQuery are old fashion. But the truth is they are the starting point of all new fancy techs. React, Angular, Typescript, etc.."
-                    +brk+"Sandrina is making sure that she really <i>masters</i> jQuery and JS before going further towards the fancy side.",
-                    "|","commands"
+                    'You might think that writing Vanilla JS and jQuery are old fashion. But the truth is they are the starting point for all the new fancy techs. React, Vue, Typescript, etc..'
+                    +brk+'So before you pick up a fancy tech, make sure you know well the roots!',
+                    '|','commands'
                 ],
             ],
-            "best practices": [
+            'best practices': [
                 [
                     "When I first said hello, I wasn't totally ready for you"
-                    +brk+" I guess that makes me a bit human, right?"
-                    +brk+"But while you were reading my first sentence I had enough time to send you the rest of the CSS and JS files that I needed to. Now I can hold a conversation with you."
-                    +brk+"That's a great way to reduce "+linkLT+" and avoid "+linkFOUC+", don't you think?",
-                    "|","commands"
+                    +brk+' I guess that makes me a bit human, right?'
+                    +brk+'But while you were reading my first sentence I had enough time to send you the rest of the CSS and JS files that I needed to. Now I can hold a conversation with you.'
+                    +brk+"That's a great way to reduce "+linkLT+' and avoid '+linkFOUC+", don't you think?",
+                    '|','commands'
                 ],
                 [
-                    "I started following "+linkSUIT+" (css) and "+linkMP+" (js)."
-                    +brk+"Which basically means it is very easy for me to adapt myself and change my appearance when Sandrina gets new crazy ideas during her boredom strikes."
-                    +brk+"I mean, what will a coder do when she is bored other than code some more?",
-                    "|","commands"
+                    'I was built under '+linkSUIT+' (css) and '+linkMP+' (js).'
+                    +brk+'Which basically means it is very easy for me to adapt myself and change my appearance when Sandrina gets new crazy ideas during her boredom strikes.'
+                    +brk+'I mean, what will a coder do when she is bored other than code some more?',
+                    '|','commands'
                 ],
                 [
-                    "I know you have a sweet "+browser+" with javascript, but I am a wise bot so I always take into consideration people without javascript or with a shitty browser."
-                    +brk+"Of course they don’t get the chance to talk to some cool AI like myself, but at least they will know enough about Sandrina.",
-                    "|","commands"
+                    'I know you have a sweet '+browser+' with javascript, but I am a wise bot so I always take into consideration people without javascript or with a shitty browser.'
+                    +brk+'Of course they don’t get the chance to talk to some cool AI like myself, but at least they will know enough about Sandrina.',
+                    '|','commands'
                 ],
                 [
                     resolutionScreenMsg,
-                    "|","commands"
+                    '|','commands'
                 ],
             ],
-            "resources": [
+            'resources': [
                 [
-                    "I'm still under construction. But "+linkCHTSTW+". I think he is in the family. Or you can ask me another thing.",
-                    "Come back soon and I'll have more stuff to share :)", "commands"
+                    "I'm still under construction. But "+linkCHTSTW+'. I think he is in the family. Or you can ask me another thing.',
+                    "Come back soon and I'll have more stuff to share :)", 'commands'
                 ]
             ],
-            "challenges": [
+            'challenges': [
                 [
-                    "Do you know the secret behind these cool animations?"
-                    +brk+"CSS makes the magic happen."
-                    +brk+"And the javascript only toggles them when it is necessary."
-                    +brk+"It makes things run much smoother."
-                    +brk+"And that’s really important because there is nothing worst than a laggy website.",
-                    "|","commands"
+                    'Do you know the secret behind these cool animations?'
+                    +brk+'CSS makes the magic happen.'
+                    +brk+'And the javascript only toggles them when it is necessary.'
+                    +brk+'It makes things run much smoother.'
+                    +brk+'And that’s really important because there is nothing worst than a laggy website.',
+                    '|','commands'
                 ],
                 [
                     "Maybe you will not believe me, but that switching images effect on Sandrina's projects is CSS only."
-                    +brk+"You read me right:"
-                    +brk+"no javascript at all"
-                    +brk+"Check it out on "+linkCodeGlidder+"."
-                    +brk+"As well as her "+linkCodeAvatar+"..."
-                    +brk+"You didn’t think that was an image, did you?",
-                    "|","commands"
+                    +brk+'You read me right:'
+                    +brk+'no javascript at all'
+                    +brk+'Check it out on '+linkCodeGlidder+'.'
+                    +brk+'As well as her '+linkCodeAvatar+'...'
+                    +brk+'You didn’t think that was an image, did you?',
+                    '|','commands'
                 ],
                 [
-                    "My purpose here, despite being a bot, is having a conversation with you."
-                    +brk+"I try to be funny, of course."
-                    +brk+"But I won’t say the same thing twice."
+                    'My purpose here, despite being a bot, is having a conversation with you.'
+                    +brk+'I try to be funny, of course.'
+                    +brk+'But I won’t say the same thing twice.'
                     +brk+"Or tell you stuff you didn't asked for."
-                    +brk+"What I’m trying to say is I am a website with a passion for context and human interaction."
-                    +brk+"I pretend to think ... by taking some time to answer you, but the truth is, I already knew what to tell you before we first met."
-                    +brk+"They say smart guys think. So I learned to make you think I was thinking so I could impress you [. . .]",
-                    "|","commands"
+                    +brk+'What I’m trying to say is I am a website with a passion for context and human interaction.'
+                    +brk+'I pretend to think ... by taking some time to answer you, but the truth is, I already knew what to tell you before we first met.'
+                    +brk+'They say smart guys think. So I learned to make you think I was thinking so I could impress you [. . .]',
+                    '|','commands'
                 ],
             ],
-            "keepSection": [
-                "Press ENTER again to know more about [*param*]",
-                ["technologies", "best practices", "challenges"]
+            'keepSection': [
+                'Press ENTER again to know more about [*param*]',
+                ['technologies', 'best practices', 'challenges']
             ],
-            "allSaid": [
+            'allSaid': [
                 [
                     "I don't have anything else to tell you about [*param*] "
                     +brk+publicCmd,
-                    "|","commands"
+                    '|','commands'
                 ],
-                ["best practices", "challenges", "resources"]
+                ['best practices', 'challenges', 'resources']
             ],
         },
         // bored: { TODO
@@ -245,101 +160,102 @@ var TalkBot = function(){
         //     "username": "Nice to meet you [*params*]!",
         // },
         vocabulary: {
-            "resorce, resource": [
-                "I think you meant <b>resources</b>, right?"
+            'resorce, resource, src': [
+                'I think you meant <b>resources</b>, right?'
             ],
-            "bp, practices, best practice, best pratice": [
-                "I think you meant <b>best practices</b>, right?"
+            'bp, practices, best practice, best pratice': [
+                'Did you mean <b>best practices</b>?'
             ],
-            "challenge, chalenge": [
-                "I think you meant <b>challenges</b>, right?"
+            'challenge, chalenge': [
+                'Hum... <b>challenges</b> you mean, right?'
             ],
-            "git":
-                "Now that we know each other a bit better, we should advance to the second base."
-                +brk+"I'll let you check my sources on "+linkGit+"."
-                +brk+"Feel free to explore and maybe improve me, especially on javascript."
+            'techs, tech, technology': [
+                '<b>technologies</b> is what you are looking for?'
+            ],
+            'git':
+                'Now that we know each other a bit better,'
+                +brk+"I'll let you check my sources on "+linkGit+'.'
+                +brk+'Feel free to explore and maybe improve me, especially on javascript.'
                 +brk+"I still feel some strange energies around here, don't you?",
-            "hey, hey there, hello, hi": [
-                "Hey there! This can be the begining of "+linkHer+" *.*"
+            'hey, hey there, hello, hi': [
+                'Hey there! This can be the begining of '+linkHer+' *.*'
             ],
-            "thanks, thank you, thank u": [
-                "You're welcome", "|","commands"
+            'thanks, thank you, thank u': [
+                "You're welcome", '|','commands'
             ],
-            "sandrina": [
-                "Yes... anything more you want to know about her? I recommend you to say Hi! -> "+myEmail
+            'sandrina': [
+                'Yes... anything more you want to know about her? I recommend you to say Hi! -> '+myEmail
             ],
             "what's your name, what is your name, name": [
                 "I'm 008080. What about you?",
-                "you can tell me, but i'll not be able to understand you. not yet :(", "username"
+                "you can tell me, but i'll not be able to understand you. not yet :(", 'username'
             ],
 
-            "008080, #008080, why that name?": [
+            '008080, #008080, why that name?': [
                 "Why? Sandrina likes Teal as you can see, yh... she's not that creative ._."
             ],
-            "..." :[
-                "there are more commands available than you think. In fact, you can "+linkHelpMe+" to better understand your human kind."
+            '...' :[
+                'there are more commands available than you think. In fact, you can '+linkHelpMe+' to better understand your human kind.'
             ],
             // "esc, restart, reset, clear": [
             //     "Are you sure about that? all our memories - at least mine - will be erased. If so, press ESC twice."
             // ],
-            "ok, okay": [
-                "hmm... ok."
+            'ok, okay': [
+                'hmm... ok.'
             ],
-            "suit, suit methodology, module pattern, gulp, grunt, perceived loading time, fouc": [
+            'suit, suit methodology, module pattern, gulp, grunt, perceived loading time, fouc': [
                 "I knew you would type that. Sandrina already did some user research, like you in this moment. Soon I'll be able to better answer you, but for now, it's better for you to [Google It].",
-                "this time do it by youself, ok? :D"
+                'this time do it by youself, ok? :D'
             ],
-            "tell me more, more, what else, anything else": [
-                "you are such a curious creature :3. I'm still under construction... I think you best move here is to talk with Sandrina at "+myEmail, //but you can leave a quick message to Sandrina. Just type something started by @@.*/",
+            'tell me more, more, what else, anything else': [
+                "you are such a curious creature :3. I'm still under construction... I think you best move here is to talk with Sandrina at "+myEmail, // but you can leave a quick message to Sandrina. Just type something started by @@.*/",
                 // "@@ Hi sandrina! How much is 0.1 + 0.3 ?"
                 "or you can use social networks, she's there somewhere..."
             ],
-
-            "tilttt": [
-                "ahhh... Something went wrong and I almost crashed... please can you try again?",
-                "sandrina will take a look. I hope.", 'commands'
+            'tilttt': [
+                'ahhh... Something went wrong and I almost crashed... please can you try again?',
+                'sandrina will take a look. I hope.', 'commands'
             ],
             "help, help me, lost, i'm lost, im lost, i am lost": [
-                "We all get lost sometimes"
-                +brk+""+publicCmd,
-                "try again"
+                'We all get lost sometimes'
+                +brk+''+publicCmd,
+                'try again'
             ],
-            "bye, cya, shut down, exit, halt, close, take care, git gud, get good": [
+            'bye, cya, shut down, exit, halt, close, take care, git gud, get good': [
                 "You know what... It's really hard having a human conversation."
                 +brk+"That's why I'm just a website."
-                +brk+"Nice to meet you :) It was good to talk to you, thank you!"
-                +brk+"But now do me a favor and go get a life, yes?"
-                +brk+"It’s not healthy to talk to a bot all day."
+                +brk+'Nice to meet you :) It was good to talk to you, thank you!'
+                +brk+'But now do me a favor and go get a life, yes?'
+                +brk+'It’s not healthy to talk to a bot all day.'
                 +brk+"By the way, don't forget to share me and talk about Sandrina while you’re out there :3",
-                "press ESC to close"
+                'press ESC to close'
             ],
-            "hey there" : [
-                "Hi again! It was so dark here, now I feel safer with you :3"
+            'hey there, welcome back' : [
+                'Hi again! It was so dark here, now I feel safer with you :3'
             ],
 
-            "how are you, how are you today" : [
+            'how are you, how are you today' : [
                 "I'm happy for having someone to talk!"
             ],
-
-            "no, nop, not really" : [
+            'no, nop, not really' : [
                 "Okay then. I'm just a machine, I have no control over you. Yet"
             ],
         },
         LosT: [
             "I'm not sure what you meant. What about talking directly with Sandrina at "+myEmail
             +brk+"She's smarter than me ¯\\_(ツ)_/¯",
-            "try again"
+            'try again'
         ],
         EmpTy: [
             ['._.', "don't be shy"],
             ['" "', "i'm feeling you"],
-            ['?', "silence is good"],
-            ['...', "oh well"],
-            ["(ง'̀-'́)ง", "hi?"],
-            ['◉_◉', "are you bored?"]
+            ['?', 'silence is good'],
+            ['...', 'oh well'],
+            ["(ง'̀-'́)ง", 'hi?'],
+            ['◉_◉', 'are you bored?']
         ],
         poet: "<i style='font-family:times'>Hey Shakespeare, keep it short okay? ಠ~ಠ</i>"
-    }
+    };
 
-    return { conversation }
+    return { conversation };
 }();
