@@ -76,19 +76,16 @@
             </div>
 
             <div class="cv-list js-cvShow">
-                <h4 class="cv-list-title">new in town</h4>
+                <h4 class="cv-list-title">rocking at</h4>
                 <ul class="cv-list-ul cv-list-ul--split">
-                    <li>React</li>
-                    <li>Webpack 2</li>
-                    <li>NodeJS</li>
-                    <li>Redux</li>
                     <li>PostCSS</li>
-                    <li>Google Firebase</li>
+                    <li>React | Redux</li>
+                    <li>Webpack</li>
                 </ul>
             </div>
 
             <div class="cv-list js-cvShow">
-                <h4 class="cv-list-title">rocking at</h4>
+                <h4 class="cv-list-title">the roots</h4>
                 <ul class="cv-list-ul">
                     <li>HTML5</li>
                     <li>SEO | A11Y</li>
@@ -110,24 +107,33 @@
             </div>
 
             <div class="cv-list js-cvShow">
+                <h4 class="cv-list-title">curious about</h4>
+                <ul class="cv-list-ul cv-list-ul--split">
+                    <li>Node.js</li>
+                    <li>Styled components</li>
+                    <li>Three.js</li>
+                </ul>
+            </div>
+
+            <div class="cv-list js-cvShow">
                 <h4 class="cv-list-title">with the help of</h4>
                 <ul class="cv-list-ul">
                     <li>Atom</li>
                     <li>Git</li>
                     <li>Gulp</li>
-                    <li>Toggl</li>
+                    <?php // <li>Toggl</li> ?>
                 </ul>
                 <ul class="cv-list-ul">
                     <li>Caniuse</li>
-                    <li>Browserstack</li>
+                    <?php // <li>Browserstack</li> ?>
                     <li>Google Analytics</li>
                     <li>Mouseflow</li>
                 </ul>
                 <ul class="cv-list-ul">
                     <li>Sketch</li>
-                    <li>Adobe Tools</li>
                     <li>Zeplin</li>
-                    <li>Invision</li>
+                    <li>Adobe Tools</li>
+                    <?php // <li>Invision</li> ?>
                 </ul>
             </div>
 
@@ -180,18 +186,20 @@
                 </dl>
             </div>
 
+            <?php /*
             <div class="cv-list js-cvShow">
                 <h4 class="cv-list-title">shared bytes with</h4>
                 <dl class="cv-list-dl">
                     <dt><a href="http://www.codeschool.com/" target="_blank" class="link">Code School</a></dt>
-                    <dd class="cv-list-dl-desc">SCSS, JS, ES2015, jQuery, etc...</dd>
+                    <!-- <dd class="cv-list-dl-desc">SCSS, JS, ES2015, jQuery, etc...</dd> -->
                 </dl>
 
                 <dl class="cv-list-dl">
                     <dt><a href="https://www.youtube.com/learncodeacademy/" target="_blank" class="link">LearnCode.academy</a></dt>
-                    <dd class="cv-list-dl-desc">Modular JS, React, etc..</dd>
+                    <!-- <dd class="cv-list-dl-desc">Modular JS, React, etc..</dd> -->
                 </dl>
             </div>
+            */ ?>
 
         </div>
     </article>

@@ -12,10 +12,6 @@ $asciiSize: 300px;
     font-family: $font-mono;
 }
 
-// .js-onWebAfter {
-//     padding-top: $safeArea*3;
-// }
-
 @mixin ListAlignments {
     width: 50%;
     &:nth-of-type(2n+1) { text-align: left; }
@@ -183,7 +179,6 @@ $asciiSize: 300px;
         .link {
             border-color: $clrGray;
         }
-
 
         &-title {
             font-size: $fontLx;
@@ -450,7 +445,7 @@ $asciiSize: 300px;
 
         &-article {
             &--contact {
-                margin: 0 5vw 5vw;
+                margin: 0 5vw 15vw;
 
                 .cv-article-in {
                     padding: 5vw;
