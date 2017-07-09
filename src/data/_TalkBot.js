@@ -58,8 +58,8 @@ var TalkBot = function(){
                     '|','commands'
                 ],
                 [
-                    'I started being built with '+linkKoala+' but as any programmer knows, crashes happen, so '+linkGulp+' took its place!',
-                    +brk+'Soon Webpack will rock here when Sandrina finds the time.',
+                    'I started being built with '+linkKoala+' but as any programmer knows, crashes happen, so '+linkGulp+' took its place!'
+                    +brk+'Soon Webpack will rock here when Sandrina finds the time for it.',
                     '|','commands'
                 ],
                 [
@@ -68,7 +68,7 @@ var TalkBot = function(){
                     '|','commands'
                 ],
                 [
-                    "When Sandrina learns Node.js / Express, I'll move on to React with SSR.",
+                    "When Sandrina learns Node.js / Express, I'll move on to React with SSR."
                     +brk+"Until then, I'm just a static website hosted at Github with some PHP to help on HTML markup."
                     +brk+'Because for her, SEO and SSR are more important than Hyped Frameworks',
                     '|', 'commands'
