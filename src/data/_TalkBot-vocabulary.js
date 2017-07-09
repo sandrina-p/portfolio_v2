@@ -54,12 +54,14 @@ var TalkBotVocabulary = function(currentTalkBot){
     knowIt["birthday, bday, when's your birthday, your birthday, when is your birthday, birth date, your birth date"] = [
         'I was created somewhere between July and October 2016, and oficially released on November 2016'
     ];
-    knowIt['personality'] = [
+    knowIt['personality', 'mbti', 'personalities'] = [
         "Clearly, I'm an ENTP, since I'm so good talking to people! Sandrina is an <b>INTJ</b> though, so, we're very unlike each other"
     ];
     knowIt['intj'] = [
         "Well, you know how INTJ's are."
-            +brk+'They are very focused, always trying to be the best at what they love so dearly, their work. Also, they have the rare quality of being very tidy and organized people.'
+            +brk+'They are very focused, always trying to be the best at what they love so dearly, their work.'
+            +brk+'Also, they have the rare quality of being very tidy and organized people.'
+            +brk+'Please, do not ask about the bad side. O.o'
     ];
     knowIt['nestum addiction, nestum'] = [
         'omg. .... omg omg omg'
