@@ -167,7 +167,7 @@ var TalkChat = function(){
                     'src/media/img/projects/blend3.png'
                 ],
                 capt: 'Today is a video, tomorrow might be a website',
-                more: 'Finally she had the opportunity to have 3D classes during her Erasmus in Porto. Although this video project is all about a single solid, she learned the essential about Blender features and 3D mechanisms to keep learning it by herself after Erasmus. She dreams for the day where her path crosses with ThreeJS and she can bring 3D to me!',
+                more: 'Finally she had the opportunity to have 3D classes during her Erasmus in Porto. Although this video project is all about a single solid, she learned the basics essential about Blender and 3D mechanisms to keep learning by herself after Erasmus. She dreams for the day where her path crosses with Three.js and she can bring 3D to websites like me!',
                 date: 'DEC\'14',
                 links: [['https://vimeo.com/115483647', 'check the video', 'vimeo']],
             },
