@@ -27,12 +27,9 @@ var onCV = function() {
 
         $(window).on('scroll',function() {
             scrolled = $(window).scrollTop();
-
-            if (firstScroll) {
-                asciiOffsetTop = $ascii.offset().top;
-                asciiOffsetTopWithHeight = asciiOffsetTop + $mee.innerHeight();
-                firstScroll = false;
-            }
+            // these values change on chat interaction
+            asciiOffsetTop = $ascii.offset().top;
+            asciiOffsetTopWithHeight = asciiOffsetTop + $mee.innerHeight();
 
             if (!Util.isOnViewport(asciiOffsetTop, asciiOffsetTopWithHeight, scrolled)) {
                 return false;
