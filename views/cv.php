@@ -8,7 +8,7 @@
 
             <dl class="cv-dl js-onWebAfter js-cvShow">
                 <dt class="cv-dt">
-                    <a href="mailto:a.sandrina.p4@gmail.com?subject=Hey%20there!" title="sandrina's e-mail" class="cv-link">a.sandrina.p@gmail.com</a>
+                    <a href="mailto:a.sandrina.p@gmail.com?subject=Hey%20there!" title="sandrina's e-mail" class="cv-link">a.sandrina.p@gmail.com</a>
                 </dt>
                 <dd class="cv-dd">waiting for your call</dd>
             </dl>
