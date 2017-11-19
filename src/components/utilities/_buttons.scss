@@ -60,6 +60,7 @@ button {
     background: $clrDark;
     color: $clrLight;
     transition: margin $speed*2;
+    border-radius: 0;
 
     &.jsLoading {
         margin-left: -100%;
