@@ -52,6 +52,7 @@
                         </a>
                     </li>
 
+                    <?php /*
                     <li class="onWeb-href-item">
                         <a href="//stackoverflow.com/story/sandrina" target="_blank" title="sandrina's stack-overflow" aria-label="Stackoverflow: helping others is as important as being helped" class="onWeb-link js-onWeb-link" data-site="stack-overflow" data-dd="helping others is as important as being helped">
                             <svg viewBox="0 0 26 26" aria-hidden="true" class="onWeb-icon">
@@ -59,6 +60,7 @@
                             </svg>
                         </a>
                     </li>
+                    */ ?>
                 </ul>
                 <div class="onWeb-desc">
                     <p class="cv-dd js-onWeb-dd">not a big fan of facebook</p>
@@ -77,32 +79,36 @@
 
             <div class="cv-list js-cvShow">
                 <h4 class="cv-list-title">rocking at</h4>
-                <ul class="cv-list-ul cv-list-ul--split">
+                <ul class="cv-list-ul">
                     <li>PostCSS</li>
-                    <li>React | Redux</li>
+                    <li>SEO | A11Y</li>
+                </ul>
+                <ul class="cv-list-ul">
+                    <li>React</li>
+                    <li>Redux</li>
+                </ul>
+                <ul class="cv-list-ul">
+                    <li>Jest</li>
                     <li>Webpack</li>
                 </ul>
             </div>
 
             <div class="cv-list js-cvShow">
-                <h4 class="cv-list-title">the roots</h4>
+                <h4 class="cv-list-title">the core</h4>
                 <ul class="cv-list-ul">
                     <li>HTML5</li>
-                    <li>SEO | A11Y</li>
-                    <li>CSS3 / SCSS</li>
-                    <li>SUIT methologody</li>
+                    <li>CSS3</li>
+                    <li>SCSS</li>
                 </ul>
                 <ul class="cv-list-ul">
                     <li>Javascript</li>
                     <li>ES2015 / ES6</li>
-                    <li>JS Modular Pattern</li>
-                    <li>jQuery</li>
+                    <li>Flow</li>
                 </ul>
                 <ul class="cv-list-ul">
-                    <li>E-mails</li>
+                    <li>jQuery</li>
+                    <li>e-mails</li>
                     <li>Jekyll</li>
-                    <li>PHP</li>
-                    <li>Tumblr</li>
                 </ul>
             </div>
 
@@ -110,7 +116,7 @@
                 <h4 class="cv-list-title">curious about</h4>
                 <ul class="cv-list-ul cv-list-ul--split">
                     <li>Node.js</li>
-                    <li>Styled components</li>
+                    <li>Styled Components</li>
                     <li>Three.js</li>
                 </ul>
             </div>
@@ -120,20 +126,17 @@
                 <ul class="cv-list-ul">
                     <li>Atom</li>
                     <li>Git</li>
-                    <li>Gulp</li>
-                    <?php // <li>Toggl</li> ?>
+                    <li>Travis CI</li>
                 </ul>
                 <ul class="cv-list-ul">
-                    <li>Caniuse</li>
-                    <?php // <li>Browserstack</li> ?>
                     <li>Google Analytics</li>
                     <li>Mouseflow</li>
+                    <li>Caniuse</li>
                 </ul>
                 <ul class="cv-list-ul">
                     <li>Sketch</li>
                     <li>Zeplin</li>
                     <li>Adobe Tools</li>
-                    <?php // <li>Invision</li> ?>
                 </ul>
             </div>
 
@@ -153,6 +156,15 @@
         <div class="cv-article-in">
             <div class="cv-article-header">
                 <h3 class="cv-title js-cvShowTitle">Timeline</h3>
+            </div>
+
+            <div class="cv-list js-cvShow">
+                <h4 class="cv-list-title">shared words at</h4>
+                <dl class="cv-list-dl cv-list-dl--full">
+                    <dt>🇭🇺 &nbsp; <a href="http://jsconfbp.com/speakers/sandrina-pereira/" target="_blank" class="link">JSConf Budapest 2017</a></dt>
+                    <dd class="cv-list-dl-desc">How can Javascript improve your CSS Mixins
+                        - <a href="https://github.com/sandrina-p/how-can-js-improve-your-css-mixins" target="_blank" class="link">Slides</a></dd>
+                </dl>
             </div>
 
             <div class="cv-list js-cvShow">
@@ -214,7 +226,9 @@
             <ul class="cv-projs-proj-ul js-cvProj">
                 <li><a target="_blank" href="https://vimeo.com/176452854" class="cv-link" data-gaec="cvproj" data-sub="video game concept" aria-labelledby="cvProjSub">N O X</a></li>
                 <li><a target="_blank" href="https://vimeo.com/115483647" class="cv-link" data-gaec="cvproj" data-sub="3D animation" aria-labelledby="cvProjSub">141205</a></li>
+                <?php /*
                 <li><a target="_blank" href="https://sandrina-p.github.io/rede-expressos/" class="cv-link" data-gaec="cvproj" data-sub="web and app concept redesign" aria-labelledby="cvProjSub">rede expressos</a></li>
+                */ ?>
                 <li><a target="_blank" href="https://www.behance.net/gallery/26687261/Digital-Magazine-Dutch-experimental-typography" class="cv-link" data-gaec="cvproj" data-sub="digital magazine" aria-labelledby="cvProjSub">DET</a></li>
                 <li><a target="_blank" href="https://sandrina-p.github.io/portfolio-15/" class="cv-link" data-gaec="cvproj" data-sub="previous website" aria-labelledby="cvProjSub">portfolio 15</a></li>
                 <li><a target="_blank" href="https://sandrina-p.github.io/pistol-shrimp" class="cv-link" data-gaec="cvproj" data-sub="net label website" aria-labelledby="cvProjSub">pistol shrimp</a></li>
