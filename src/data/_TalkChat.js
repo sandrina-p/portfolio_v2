@@ -18,40 +18,41 @@ var TalkChat = function(){
     var conversation = {
         journey: {
             'intro': 'Right now she\'s working as a <strong>UI Developer</strong> <span class="nowrap">at Farfetch.</span>'
-                +brk+'On her free time, she loves to explore and share new ideas with the web.',
-            'ambition': 'She believes that design is more than a interface and coding is not only about performance.'
-                +brk+'She seeks for a web where both can work as one to <strong>accomplish a great experience.</strong>',
+                +brk+'On her free time, she loves to explore and share new ideas with the web.'
+                +brk+'She loves what she does and she does what she loves. It\'s a passion',
+            'ambition': 'She believes design is more than making it pretty and code is not only about performance.'
+                +brk+'She seeks for a scenario where both can work as one to <strong>accomplish a stuning experience.</strong>',
             'hobbies': '<span class="nowrap"><strong>Video Games</strong></span> is one of her choices. It\'s where <strong>experience is on its richer state</strong>: Interface, interaction and sound focused on <span class="nowrap">the user behavior.</span>',
-            'what else': 'She likes <strong>open-source</strong> projects! She would love to hear your next crazy idea!',
-            'workplace': 'She is a fast paced worker, so she likes to work alone.'
+            'what else': 'She loves <strong>open-source</strong>! She would love to hear your next crazy idea!',
+            'workplace': 'She is a fast paced worker, so she prefers to work alone.'
                 +brk+'Unless your ambitions are as high as hers, then it’s a match made in heaven.'
                 +brk+'From <strong>creative to technical, she can excel at any role.</strong>',
             'education': 'She has a degree in Design of Communication at FBAUL.'
                 +brk+'She also did a post-graduation on <strong>Digital Experience Design</strong> <span class="nowrap">at the same faculty.</span>'
         },
         practice: {
-            intro: 'These were born during her academic studies. The constant searching for <strong>something interactive</strong> is what connects her projects.',
-            projects: ['rede expressos', /*'carolina machado',*/ 'portfolio 15', 'pistol shrimp', 'moon', 'NOX', 'DET', '141205'],
-            'rede expressos': {
-                categ: 'www projects',
-                title: 'Rede Expressos',
-                sub: 'web and app concept redesign',
-                role: 'creative and front-end',
-                team: 'Individual project',
-                img: [
-                    'src/media/img/projects/rnex0.png',
-                    'src/media/img/projects/rnex1.png',
-                    'src/media/img/projects/rnex2.png',
-                    'src/media/img/projects/rnex3.png',
-                ],
-                capt: 'Everyone knows that Rede Expressos is not an user friendly platform...',
-                more: 'During her post graduation she redesigned and coded the website\'s homepage and used Jekyll. UX / UI wise, she redesigned the "buy ticket" userflow for Mobile iOS and Android. The project had several phases: competitor Analysis, product SWOT, wireframes, design and prototype. She also learned how to adapt an app to follow both Human Guidelines and Material Design.',
-                date: 'JUN\'16',
-                links: [
-                    ['https://marvelapp.com/6jef9dg', 'iOS prototype', 'apple'],
-                    ['https://sandrina-p.github.io/rede-expressos/', 'homepage', 'desktop']
-                ]
-            },
+            intro: 'During her academic studies, a constant <strong>search for interaction</strong> resulted in some cool projects.',
+            projects: [/* 'rede expressos', 'carolina machado', */ 'portfolio 15', 'pistol shrimp', 'moon', 'NOX', 'DET', '141205'],
+            // 'rede expressos': {
+            //     categ: 'www projects',
+            //     title: 'Rede Expressos',
+            //     sub: 'web and app concept redesign',
+            //     role: 'creative and front-end',
+            //     team: 'Individual project',
+            //     img: [
+            //         'src/media/img/projects/rnex0.png',
+            //         'src/media/img/projects/rnex1.png',
+            //         'src/media/img/projects/rnex2.png',
+            //         'src/media/img/projects/rnex3.png',
+            //     ],
+            //     capt: 'Everyone knows that Rede Expressos is not an user friendly platform...',
+            //     more: 'During her post graduation she redesigned and coded the website\'s homepage and used Jekyll. UX / UI wise, she redesigned the "buy ticket" userflow for Mobile iOS and Android. The project had several phases: competitor Analysis, product SWOT, wireframes, design and prototype. She also learned how to adapt an app to follow both Human Guidelines and Material Design.',
+            //     date: 'JUN\'16',
+            //     links: [
+            //         ['https://marvelapp.com/6jef9dg', 'iOS prototype', 'apple'],
+            //         ['https://sandrina-p.github.io/rede-expressos/', 'homepage', 'desktop']
+            //     ]
+            // },
             // 'carolina machado': {
             //     categ: 'www projects',
             //     title: 'Carolina Machado',
@@ -150,7 +151,7 @@ var TalkChat = function(){
                     'src/media/img/projects/det3.png'
                 ],
                 capt: '"I heard we can create digital magazines with inDesign!", "Oh really? Let\'s try it out!"',
-                more: 'Because creating books it\'s not her thing, she and her friend Margarida decided to experiment a new digital world once again. They came up with "Dutch Experimental Typography\”, a digital catalogue of typography, developed from the 70’s throughout the 90’s in the Netherlands. I wish you could use it by yourself. It\'s really funny playing with its cover.',
+                more: 'Because creating books it\'s not her thing, she and her friend Margarida decided to experiment a new digital world once again. They came up with "Dutch Experimental Typography”, a digital catalogue of typography, developed from the 70’s throughout the 90’s in the Netherlands. I wish you could use it by yourself. It\'s really funny playing with its cover.',
                 date: 'Mar\'15',
                 links: [['https://www.behance.net/gallery/26687261/Digital-Magazine-Dutch-experimental-typography', 'check it on behance', 'behance']],
             },

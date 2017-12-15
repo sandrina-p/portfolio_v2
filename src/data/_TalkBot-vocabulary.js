@@ -41,11 +41,11 @@ var TalkBotVocabulary = function(currentTalkBot){
             +brk+'^300...BA-NA-NAA-NAAAAAA!'
     ];
     knowIt['lol, lolol, ahah'] = [
-        "I'm a funny bot ;)"
+        "I'm a funny bot 👽"
             +brk+'It all has to do with my personality.'
     ];
     knowIt["sorry, i'm sorry, i am sorry"] = [
-        "Don't worry, I'm a bot. I have no feelings ;)"
+        "Don't worry, I'm a bot. I have no feelings 💔"
     ];
     knowIt['mm'] = [
         'Meamu.',
