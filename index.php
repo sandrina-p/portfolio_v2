@@ -57,8 +57,8 @@
         `
 %cDon't judge Sandrina's technical skills only based on this code.
 I was built during 2016 and a lot she's been learning since those times.
-Module approach, Unit Testing (TDD), Type Checkers, Linters, etc...
-All those tools and methods to have a readable and solid code.
+Module approach, Unit Testing, TDD, Type Checkers, Linters, etc...
+All those tools and methods to have a more readable and solid code.
 
 Still, I'm very accessible and that's something most of the developers (and designers) forget about!
 

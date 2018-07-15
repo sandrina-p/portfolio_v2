@@ -88,25 +88,38 @@
                     <li>Redux</li>
                 </ul>
                 <ul class="cv-list-ul">
-                    <li>Jest</li>
+                  <li>JS ES6</li>
+                  <li>Jest</li>
+                </ul>
+            </div>
+
+            <div class="cv-list js-cvShow">
+                <h4 class="cv-list-title">had fun with</h4>
+                <ul class="cv-list-ul">
+                    <li>React Native</li>
+                    <li>Styled Components</li>
+                </ul>
+                <ul class="cv-list-ul">
+                    <li>Vue</li>
+                    <li>SCSS</li>
+                </ul>
+                <ul class="cv-list-ul">
+                    <li>Gulp</li>
                     <li>Webpack</li>
                 </ul>
             </div>
 
             <div class="cv-list js-cvShow">
-                <h4 class="cv-list-title">the core</h4>
+                <h4 class="cv-list-title">the roots</h4>
                 <ul class="cv-list-ul">
                     <li>HTML5</li>
                     <li>CSS3</li>
-                    <li>SCSS</li>
                 </ul>
                 <ul class="cv-list-ul">
                     <li>Javascript</li>
-                    <li>ES2015 / ES6</li>
-                    <li>Flow</li>
+                    <li>jQuery</li>
                 </ul>
                 <ul class="cv-list-ul">
-                    <li>jQuery</li>
                     <li>e-mails</li>
                     <li>Jekyll</li>
                 </ul>
@@ -116,8 +129,8 @@
                 <h4 class="cv-list-title">curious about</h4>
                 <ul class="cv-list-ul cv-list-ul--split">
                     <li>Node.js</li>
-                    <li>Styled Components</li>
-                    <li>Three.js</li>
+                    <li>Typescript | Flow</li>
+                    <li>Canvas | 3D</li>
                 </ul>
             </div>
 
@@ -126,17 +139,14 @@
                 <ul class="cv-list-ul">
                     <li>Atom</li>
                     <li>Git</li>
-                    <li>Travis CI</li>
                 </ul>
                 <ul class="cv-list-ul">
                     <li>Google Analytics</li>
                     <li>Mouseflow</li>
-                    <li>Caniuse</li>
                 </ul>
                 <ul class="cv-list-ul">
-                    <li>Sketch</li>
-                    <li>Zeplin</li>
                     <li>Adobe Tools</li>
+                    <li>Sketch & Zeplin</li>
                 </ul>
             </div>
 
@@ -170,6 +180,10 @@
             <div class="cv-list js-cvShow">
                 <h4 class="cv-list-title">crossed paths with</h4>
                 <dl class="cv-list-dl">
+                    <dt><a href="https://groupincome.org/" target="_blank" class="link">Group Income</a></dt>
+                    <dd class="cv-list-dl-date">since mar'18</dd>
+                    <dd class="cv-list-dl-desc">web designer</dd>
+
                     <dt><a href="https://www.farfetch.com" target="_blank" class="link">Farfetch</a></dt>
                     <dd class="cv-list-dl-date">since jan'17</dd>
                     <dd class="cv-list-dl-desc">ui developer</dd>
@@ -224,7 +238,7 @@
         <div class="cv-projs-proj js-cvShow">
             <span class="cv-projs-proj-sub js-cvProjSub" aria-hidden="true" id="cvProjSub"></span>
             <ul class="cv-projs-proj-ul js-cvProj">
-                <li><a target="_blank" href="https://vimeo.com/176452854" class="cv-link" data-gaec="cvproj" data-sub="video game concept" aria-labelledby="cvProjSub">N O X</a></li>
+                <li><a target="_blank" href="https://vimeo.com/176452854" class="cv-link" data-gaec="cvproj" data-sub="video game concept" aria-labelledby="cvProjSub">NOX</a></li>
                 <li><a target="_blank" href="https://vimeo.com/115483647" class="cv-link" data-gaec="cvproj" data-sub="3D animation" aria-labelledby="cvProjSub">141205</a></li>
                 <?php /*
                 <li><a target="_blank" href="https://sandrina-p.github.io/rede-expressos/" class="cv-link" data-gaec="cvproj" data-sub="web and app concept redesign" aria-labelledby="cvProjSub">rede expressos</a></li>
