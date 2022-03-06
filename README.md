@@ -14,4 +14,4 @@ She is a front-end developer with a great passion for interaction design.
 
 Where would you like to start?
 
-[projects](http://sandrina-p.net/#projects)  ||  [journey](http://sandrina-p.net/#journey)  ||  [about](http://sandrina-p.net/#about)
+[projects](https://sandrina-p.github.io/portfolio_v2/#projects)  ||  [journey](https://sandrina-p.github.io/portfolio_v2/#journey)  ||  [about](https://sandrina-p.github.io/portfolio_v2//#about)
